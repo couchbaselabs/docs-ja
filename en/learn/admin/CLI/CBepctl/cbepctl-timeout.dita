@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbepctl-timeout">
+  <title>Changing out-of-memory thresholds</title>
+  <shortdesc>A out-of-memory error message is sent when RAM consumption threshold is at
+    95%.</shortdesc>
+  <refbody>
+    <section><title>Description</title>
+    
+    <p>By default, Couchbase Server sends clients a temporary out-of-memory error message if RAM is 95%
+      consumed and only 5% RAM remains for overhead. 
+      Use the <codeph>cbepctl set flush_param mutation_mem-threshold</codeph> command parameter to change this threshold value.</p> 
+      
+      <note type="note">We do not recommend that you change this default to a higher value. However,
+        this value might be reduced if you need more RAM for system overhead such as disk queue or
+        for server data structures.</note>
+    </section>
+    
+    <section><title>Syntax</title>
+      <p>Basic syntax:</p>
+      <codeblock>cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set flush_param mutation_mem_threshold [value]
+</codeblock>
+    </section>
+    
+    <section><title>Example</title>
+      <p>In this example, the threshold is reduced to 65% of RAM.</p>
+    
+    <codeblock>cbepctl 10.5.2.117:11210 -b foo-bucket -p foo-password set flush_param mutation_mem_threshold 65
+</codeblock>
+    
+    
+    </section>
+    
+    <section><title>Response</title>
+      <p>The following example response shows the RAM threshold set to 65%.</p>
+      <codeblock>
+setting param: mutation_mem_threshold 65
+set mutation_mem_threshold to 65
+      </codeblock>
+    </section>
+  </refbody>
+</reference>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_dl3_clp_yn">
+ <title>Tunable memory</title>
+ <shortdesc>Tunable memory enables both value-only ejection and full metadata ejection from memory. </shortdesc>
+ <conbody>
+  
+  
+  <p>The cache management approach for item ejection is implemented with value-only ejection and
+   full metadata ejection: </p>
+  <ul>
+   <li>Value-only ejection (the default) removes the data from cache but keeps all keys and metadata
+    fields for non-resident items. When the value bucket ejection occurs, the item's value is reset. </li>
+   <li>Full metadata ejection removes all data including keys, metadata, and key-values from cache
+    for non-resident items. Full metadata ejection reduces RAM requirement for large buckets.</li>
+  </ul>
+  
+  <p>Full-bucket ejection supports very large data footprints (a large number of data sets or
+			items/keys) since the working sets in memory are smaller. The smaller working sets allow
+			efficient cache management and reduced warmup times. Metadata ejection is configured at the
+			bucket-level. </p>
+  
+  <p>For example, you might want to enable the full metadata ejection on that bucket if you need to
+			store huge amounts of data (for example, terabytes or petabytes).</p>
+  
+  <image href="../images/tunable_memory.png" width="280"></image>
+  
+  
+  <draft-comment author="Ruth" disposition="open" status="unchanged">Need GRAPHICs: Ejection Logic Table</draft-comment>
+  
+  <p>For information on how to eject metadata from memory, see the Couchbase web console, CLI, and
+   REST API sections.</p>
+
+
+  
+  
+  <section><title>Backward compatibility</title>
+   <p>With full metadata ejection, an item’s key and metadata is ejected along with its value. In
+    previous releases, an item’s value is only ejected from cache while its key and metadata remain
+    in cache.</p>
+
+  </section> 
+  
+
+  
+  
+ </conbody>
+ 
+
+</concept>

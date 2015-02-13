@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbstats-intro">
+	<title>cbstats tool</title>
+	<shortdesc>The <codeph>cbstats</codeph> tool is used to get node and cluster-level statistics about
+		performance and items in storage.</shortdesc>
+	<refbody>
+		
+		<section><title>Description</title>
+			<p>The <codeph>cbstats</codeph> tool is a per-node, per-bucket operation.
+				That means that the IP address of a node in the cluster and a named bucket must be specified. 
+				If a named bucket is not provided, the server applies the
+				setting to any default bucket that exists at the specified node. 
+				To perform this operation for an entire cluster, perform the command for every
+				node/bucket combination that exists for that cluster.</p>
+			
+		<p>The tool is found in the following locations:</p>
+
+		<table>
+			<tgroup cols="2">
+				<thead>
+					<row>
+						<entry>Platform</entry>
+						<entry>Location</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>Linux</entry>
+						<entry><codeph>/opt/couchbase/bin/cbstats</codeph></entry>
+					</row>
+
+					<row>
+						<entry>Windows</entry>
+						<entry><codeph>C:\Program Files\Couchbase\Server\bin\cbstats.exe</codeph></entry>
+					</row>
+					<row>
+						<entry>Mac OS X</entry>
+						<entry><codeph>/Applications/Couchbase Server.app/Contents/Resources/couchbase-core/bin/cbstats</codeph></entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		
+			
+		</section>
+		
+		<section><title>CLI command and parameters</title>
+		<p>This tool is used to get the couchbase node statistics. The general format for this command
+				is:</p>
+			<codeblock>
+cbstats [host]:11210 [command] -b [bucket-name] -p [bucket-password]
+			</codeblock>
+			
+			
+		
+		
+		<p>The following are commands. The <codeph>all</codeph> and <codeph>timings</codeph>
+				commands are used to understand cluster or node performance. The majority of these
+				commands are predominately used by Couchbase internally and to help resolve
+				customer support incidents. </p>
+					
+
+		<pre>
+all
+allocator
+checkpoint [vbid]
+config
+dcp
+dcp-takeover vb name
+dcpagg
+diskinfo [detail]
+dispatcher [logs]
+failovers [vbid]
+hash [detail]
+items (memcached bucket only)
+key keyname vbid
+kvstore
+kvtimings
+memory
+prev-vbucket
+raw argument
+reset
+runtimes
+scheduler
+slabs (memcached bucket only)
+tap [username password]
+tap-takeover vb name
+tapagg
+timings
+vbucket
+vbucket-detail [vbid]
+vbucket-seqno [vbid]
+vkey keyname vbid
+warmup
+workload
+</pre>
+			<p>The following are command options:</p>
+			
+			<table>
+				<tgroup cols="2">
+					<thead>
+						<row>
+							<entry>Options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>-h, --help</entry>
+							<entry>Shows the help message and exits.</entry>
+						</row>
+						<row>
+							<entry>-a</entry>
+							<entry>Iterates over all the vBuckets. Requires administrator username and password.</entry>
+						</row>
+						<row>
+							<entry>-b [bucket-name]</entry>
+							<entry>The vBucket to get the status from. Default: default</entry>
+						</row>
+						<row>
+							<entry>-p [password]</entry>
+							<entry>The password for the vBucket if one exists.</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+			
+			
+		</section>
+		
+		<section><title>Syntax</title>
+			<p>Request syntax:</p>
+			<codeblock>
+cbstats [host]:11210 [command]
+			</codeblock>
+		</section>
+		
+		<section><title>Example: Timings</title>
+			<p>To get statistics, for example, timings on host 10.5.2.117:</p>
+			<codeblock>cbstats 10.5.2.117:11210 timings</codeblock>
+			
+			<p>Response:</p>
+			<codeblock>
+ disk_commit (1024 total)
+    0 - 1s : (100.00%) 1024 ###################################################
+    Avg    : (     1s)
+ get_stats_cmd (30663276 total)
+    0 - 1us       : (  0.05%)    14827 
+    1us - 2us     : (  6.56%)  1995778 ##
+    2us - 4us     : ( 41.79%) 10804626 ##############
+    4us - 8us     : ( 45.20%)  1044043 #
+    8us - 16us    : ( 45.49%)    89929 
+    16us - 32us   : ( 45.90%)   124472 
+    32us - 64us   : ( 46.38%)   148935 
+    64us - 128us  : ( 56.17%)  2999690 ###
+    128us - 256us : ( 68.57%)  3804009 ####
+    256us - 512us : ( 69.91%)   411281 
+    512us - 1ms   : ( 78.77%)  2717402 ###
+    1ms - 2ms     : ( 96.36%)  5391526 #######
+    2ms - 4ms     : ( 99.05%)   826345 #
+    4ms - 8ms     : ( 99.96%)   278727 
+    8ms - 16ms    : (100.00%)    11443 
+    16ms - 32ms   : (100.00%)      217 
+    32ms - 65ms   : (100.00%)       19 
+    65ms - 131ms  : (100.00%)        7 
+    Avg           : (  347us)
+ disk_vbstate_snapshot (93280 total)
+    32us - 64us   : ( 15.34%) 14308 ######
+    64us - 128us  : ( 74.74%) 55413 #########################
+    128us - 256us : ( 91.39%) 15532 #######
+    256us - 512us : ( 95.69%)  4007 #
+    512us - 1ms   : ( 99.49%)  3546 #
+    1ms - 2ms     : ( 99.95%)   423 
+    2ms - 4ms     : ( 99.99%)    43 
+    4ms - 8ms     : (100.00%)     4 
+    2s - 4s       : (100.00%)     4 
+    Avg           : (  190us)
+ notify_io (4 total)
+    4us - 8us   : ( 25.00%) 1 ############
+    16us - 32us : ( 75.00%) 2 ########################
+    32us - 64us : (100.00%) 1 ############
+    Avg         : (   17us)
+			</codeblock>
+			
+			
+		
+		</section>
+		
+		<section><title>Example: Using with other CLI tools</title>
+		
+		<p>The <codeph>cbstats</codeph> output can be used with other command-line tools
+			to sort and filter the data, for example, the <codeph>watch</codeph> command.</p>
+		
+		<codeblock>watch --diff "cbstats \
+    ip-10-12-19-81:11210 -b bucket_name -p bucket_password all | egrep 'item|mem|flusher|ep_queue|bg|eje|resi|warm'"
+</codeblock>
+		</section>
+		
+	</refbody>
+	<related-links>
+		<linklist>
+			<link href="../Monitoring/monitor-statistics.dita" />
+		</linklist>
+	</related-links>
+</reference>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+
+<reference xml:lang="en-us" id="cbstats-timing">
+  <title>Timings</title>
+  <shortdesc>The <codeph>cbstats timings</codeph> command provides timing statistics.</shortdesc>
+  <refbody>
+    <section><title>Description</title>
+    <p>Timing stats provide histogram data from high resolution timers over various operations
+      within the system.</p>
+    </section>
+    
+    <section><title>Syntax</title>
+      <p>To request the timings statistic, use the following syntax:</p>
+      <codeblock>cbstats [host]:[dataport] timings</codeblock>
+    </section>
+    
+    <section><title>Example</title>
+      
+      <p>The following example, uses the 10.5.2.117 host and the default port, 11210:</p>
+      <codeblock>cbstats 10.5.2.117:11210 timings</codeblock>
+    </section>
+    
+    <section><title>Response</title>
+    
+    <p>The following is sample output from <codeph>cbstats timings</codeph> :</p>
+    <codeblock>
+disk_commit (1024 total)
+    0 - 1s : (100.00%) 1024 ###################################################
+    Avg    : (     1s)
+ get_stats_cmd (30663276 total)
+    0 - 1us       : (  0.05%)    14827 
+    1us - 2us     : (  6.56%)  1995778 ##
+    2us - 4us     : ( 41.79%) 10804626 ##############
+    4us - 8us     : ( 45.20%)  1044043 #
+    8us - 16us    : ( 45.49%)    89929 
+    16us - 32us   : ( 45.90%)   124472 
+    32us - 64us   : ( 46.38%)   148935 
+    64us - 128us  : ( 56.17%)  2999690 ###
+    128us - 256us : ( 68.57%)  3804009 ####
+    256us - 512us : ( 69.91%)   411281 
+    512us - 1ms   : ( 78.77%)  2717402 ###
+    1ms - 2ms     : ( 96.36%)  5391526 #######
+    2ms - 4ms     : ( 99.05%)   826345 #
+    4ms - 8ms     : ( 99.96%)   278727 
+    8ms - 16ms    : (100.00%)    11443 
+    16ms - 32ms   : (100.00%)      217 
+    32ms - 65ms   : (100.00%)       19 
+    65ms - 131ms  : (100.00%)        7 
+    Avg           : (  347us)
+ disk_vbstate_snapshot (93280 total)
+    32us - 64us   : ( 15.34%) 14308 ######
+    64us - 128us  : ( 74.74%) 55413 #########################
+    128us - 256us : ( 91.39%) 15532 #######
+    256us - 512us : ( 95.69%)  4007 #
+    512us - 1ms   : ( 99.49%)  3546 #
+    1ms - 2ms     : ( 99.95%)   423 
+    2ms - 4ms     : ( 99.99%)    43 
+    4ms - 8ms     : (100.00%)     4 
+    2s - 4s       : (100.00%)     4 
+    Avg           : (  190us)
+ notify_io (4 total)
+    4us - 8us   : ( 25.00%) 1 ############
+    16us - 32us : ( 75.00%) 2 ########################
+    32us - 64us : (100.00%) 1 ############
+    Avg         : (   17us)
+
+</codeblock>
+
+    <p>The following are the possible return values provided by <codeph>cbstats
+      timings</codeph>. The return values provided by this command depend on what has actually
+      occurred on a data bucket:</p>
+    <table>
+      <tgroup cols="2">
+        <colspec colname="col1"/>
+        <colspec colname="col2"/>
+        <thead>
+          <row>
+            <entry>Values</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>bg_load</entry>
+            <entry>Background fetches waiting for disk</entry>
+          </row>
+          <row>
+            <entry>bg_wait</entry>
+            <entry>Background fetches waiting in the dispatcher queue</entry>
+          </row>
+          <row>
+            <entry>data_age</entry>
+            <entry>Age of data written to disk</entry>
+          </row>
+          <row>
+            <entry>disk_commit</entry>
+            <entry>Time waiting for a commit after a batch of updates</entry>
+          </row>
+          <row>
+            <entry>disk_del</entry>
+            <entry>Wait for disk to delete an item</entry>
+          </row>
+          <row>
+            <entry>disk_insert</entry>
+            <entry>Wait for disk to store a new item</entry>
+          </row>
+          <row>
+            <entry>disk_vbstate_snapshot</entry>
+            <entry>Time spent persisting vbucket state changes</entry>
+          </row>
+          <row>
+            <entry>disk_update</entry>
+            <entry>Wait time for disk to modify an existing item</entry>
+          </row>
+          <row>
+            <entry>get_cmd</entry>
+            <entry>Servicing get requests</entry>
+          </row>
+          <row>
+            <entry>get_stats_cmd</entry>
+            <entry>Servicing get_stats requests</entry>
+          </row>
+          <row>
+            <entry>set_vb_cmd</entry>
+            <entry>Servicing vbucket set state commands</entry>
+          </row>
+          <row>
+            <entry>item_alloc_sizes</entry>
+            <entry>Item allocation size counters (in bytes)</entry>
+          </row>
+          <row>
+            <entry>notify_io</entry>
+            <entry>Time for waking blocked connections</entry>
+          </row>
+          <row>
+            <entry>storage_age</entry>
+            <entry>Time since most recently persisted item was initially queued for
+              storage.</entry>
+          </row>
+          <row>
+            <entry>tap_mutation</entry>
+            <entry>Time spent servicing tap mutations</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    
+    </section>
+    
+    
+  </refbody>
+</reference>

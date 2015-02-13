@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbcli-intro">
+	<title>couchbase-cli tool</title>
+	<shortdesc>The <codeph>couchbase-cli</codeph> tool is used to perform operations on an entire cluster.</shortdesc>
+	<refbody>
+		<section><title>Description</title>
+			<p>The  <codeph>couchbase-cli</codeph> tool is located in the following paths, depending upon the
+				platform. This tool can perform operations on an entire cluster, on a bucket shared
+				across an entire cluster, or on a single node in a cluster. For instance, if this
+				tool is used to create a data bucket, all nodes in the cluster have access the
+				bucket.</p>
+			
+			<p>This tool provides access to various management operations for Couchbase Server clusters,
+				nodes and buckets. </p>
+		<note type="note">Many of these settings can be performed using the REST API.</note>
+
+		<table>
+			<tgroup cols="2">
+				<colspec colname="col1"/>
+				<colspec colname="col2"/>
+				<thead>
+					<row>
+						<entry>Operating System</entry>
+						<entry>Directory Locations</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry><b>Linux</b></entry>
+						<entry><codeph>/opt/couchbase/bin/couchbase-cli</codeph></entry>
+					</row>
+					<row>
+						<entry><b>Windows</b></entry>
+						<entry><codeph>C:\Program Files\Couchbase\Server\bin\couchbase-cli.exe</codeph></entry>
+					</row>
+					<row>
+						<entry><b>Mac OS X</b></entry>
+						<entry><codeph>/Applications/Couchbase Server.app/Contents/Resources/couchbase-core/bin/couchbase-cli</codeph></entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		
+			
+		</section>
+		
+		<section><title>couchbase-cli options</title>
+			<p>The <codeph>couchbase-cli</codeph> tool has the following generic options:</p>
+			<table>
+				<title>couchbase-cli command options</title>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>Option</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>-u USERNAME, --user=USERNAME</entry>
+							<entry>Admin username of the cluster</entry>
+						</row>
+						<row>
+							<entry>-p PASSWORD, --password=PASSWORD</entry>
+							<entry>Admin password of the cluster</entry>
+						</row>
+						<row>
+							<entry>-o KIND, --output=KIND</entry>
+							<entry>Type of document: JSON or standard</entry>
+						</row>
+						<row>
+							<entry>-d, --debug</entry>
+							<entry>Output debug information</entry>
+						</row>
+						<row>
+							<entry>-h, --help</entry>
+							<entry>Help information</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+			
+			<note type="note">The user name can be in the environment variable CB_REST_USERNAME and 
+			the password can be set in the environment variable CB_REST_PASSWORD.</note>
+		</section>
+		
+		<section><title>Syntax</title>
+			<p>The basic usage format is:</p>
+		<codeblock>couchbase-cli COMMAND [bucket-name] CLUSTER [OPTIONS]
+		</codeblock>
+		<p>Where:</p>
+		<ul>
+			<li><codeph>COMMAND</codeph> is a CLI command. </li>
+			<li><codeph>CLUSTER</codeph> is a cluster specification. The following shows both
+					short and long form syntax:</li>
+		</ul>
+		<codeblock><codeph>// Short form
+    -c [host]:[port]
+// Long form
+    --cluster=[host]:[port]
+</codeph></codeblock>
+			
+		</section>
+		
+	</refbody>
+</reference>

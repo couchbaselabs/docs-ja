@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_xcc_31b_k4">
+  <title>Setting bucket priority</title>
+  <shortdesc>The disk I/O priority for a bucket can be set to either low or high.</shortdesc>
+  <refbody>
+    
+    <section><title>Description</title>
+      <p>To set the disk I/O priority for a bucket, use the <codeph>couchbase-cli</codeph> tool, <codeph>bucket-create</codeph> or 
+        <codeph>bucket-edit</codeph> command, and the <codeph>--bucket-priority=[low | high]</codeph> option.</p>
+    </section>
+    
+    <section><title>CLI command and parameter</title>
+      <p>Disk I/O priority can be changed when either creating or editing a bucket. 
+        Use either the <codeph>bucket-create</codeph> or <codeph>bucket-edit</codeph> command with
+      the <codeph>--bucket-priority</codeph> parameter</p>
+
+    </section>
+    
+    
+    <section><title>Syntax</title>
+      <p>Basic syntax:</p>
+      <p>To set bucket bucket priority when creating a bucket, set
+        the <codeph>--enable-priority</codeph> parameter.</p>
+      
+      <codeblock>couchbase-cli bucket-create -c [localhost]:8091 -u [admin] -p [password] 
+    --bucket=[bucket-name]
+    --enable-priority=[low | high]
+    [options]
+      </codeblock>
+      
+      <p>To enable bucket flush when editing the bucket properties:</p>
+      <codeblock>couchbase-cli bucket-edit -c [localhost]:8091 -u [admin] -p [password] 
+    --bucket=[bucket-name]
+    --enable-priority=[low | high]
+    [options]
+      </codeblock>
+      
+    </section>
+    
+
+      <section><title>Example: Creating a bucket and setting high priority</title>
+      <p>To create a new couchbase bucket with high priority:</p>
+      <codeblock>
+couchbase-cli bucket-create -c 192.168.0.1:8091 -u Administrator -p password
+    --bucket=test_bucket 	
+    --bucket-type=couchbase 
+    --bucket-port=11222 
+    --bucket-ramsize=200 
+    --bucket-replica=1 
+    --bucket-priority=high
+   </codeblock>
+      </section>
+    
+    <section><title>Example: Setting high priority</title>
+      
+      <p>To modify a bucket to high priority:</p>
+      <codeblock>
+couchbase-cli bucket-edit -c 192.168.0.1:8091 -u Administrator -p password
+    --bucket=test_bucket 
+    --bucket-priority=high
+   </codeblock>
+      
+      </section>
+    
+
+      
+      
+  </refbody>
+</reference>

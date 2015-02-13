@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_ebk_c35_cq">
+  <title>Swap space</title><shortdesc>On Linux, swap space is used when the physical memory (RAM)
+    is full.</shortdesc>
+  <body>
+    <p>If the system needs more memory resources and the RAM is full, inactive pages in
+      memory are moved to the swap space. <term>Swappiness</term> indicates how frequently a system uses the 
+      swap space based on RAM usage. The swappiness range is from 0 to 100 where, by default, most
+      Linux platforms have swappiness set to 60.</p>
+    
+    <p>For the optimal Couchbase
+        Server operations, set the swappiness to <b>0</b> (zero). </p>
+    <p>To change the swap configuration:</p><ol>
+            <li>Execute <userinput>cat /proc/sys/vm/swappiness</userinput> on each node to determine the
+              current swap usage configuration.</li>
+            <li>Execute 
+             <userinput> sudo sysctl vm.swappiness=0 </userinput>to immediately change the swap
+              configuration and ensure that it persists through server restarts.</li>
+            <li>Using <codeph>sudo</codeph> or <codeph>root</codeph> user privileges, edit the kernel parameters configuration file,
+              <filepath>/etc/sysctl.conf</filepath>, so that the change is always in effect.</li>
+            <li>Append <codeph>vm.swappiness = 0</codeph> to the file.</li>
+            <li>Reboot your system.</li>
+          </ol>
+
+            <note>Executing <userinput>sudo sysctl vm.swappiness=0</userinput> ensures that the
+              operating system no longer uses swapping unless memory is completely exhausted. Updating the
+              kernel parameters configuration file <codeph>sysctl.conf</codeph> ensures that the
+              operating system always uses swapping in accordance with Couchbase recommendations, even when the
+              node is rebooted.</note>
+            
+             
+  </body>
+</topic>

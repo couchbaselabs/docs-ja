@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_byh_lbg_q4">
+  <title>Removing nodes</title>
+  <shortdesc>Removing a node marks
+    the node for removal from the cluster and completely disables the node from serving any
+    requests across the cluster.</shortdesc>
+  <body>
+    <p>Once a node is removed, it is no longer part of the cluster and can be switched off, updated, or upgraded. 
+      Removing a node does not stop the node from servicing requests.
+      Instead, it only marks the node ready for removal from the cluster. You must perform a
+      rebalance operation to complete the removal process.</p>
+    
+   <note type="important">Before you remove a node from the cluster, ensure that you have the capacity within the remaining nodes to handle the workload. For the best results, 
+        use swap rebalance. </note>
+    
+    <note type="warning">Occasionally, during an online upgrade, VM-based configurations can swap out old 
+      VM nodes in place of a totally new set.  If all old nodes are removed from the cluster, 
+      clients may no longer know about any nodes and fail to connect. To prevent such problems, 
+      make sure that you provide one of the following solutions: <ul>
+          <li>At least one of the original nodes is maintained in the cluster, and this node is
+            listed in the client's server configuration.</li>
+          <li>The client's server configuration is appropriately updated to include at least one
+            new node before the last old node is removed.</li>
+        </ul></note>
+    
+    <p>Nodes can be removed either via the Couchbase Web Console or CLI.</p>
+      
+<section><title>Using the Couchbase Web Console</title>
+          <p>You can remove a node from the cluster from within the <wintitle>Manage Server Nodes</wintitle> 
+            section of the Couchbase Web Console.</p><p>Click on the <uicontrol>Remove Server</uicontrol> button 
+              next to the node you want to remove. A warning will appear to confirm that you want to remove the node. 
+              Click <uicontrol>Remove</uicontrol> to mark the node for removal.</p>
+            </section>
+                
+<section><title>Using CLI</title>
+              <p>You cannot mark a node for removal from the command-line without simultaneously initiating a
+                rebalance operation. The <cmdname>rebalance</cmdname> command accepts one or more
+                <codeph>--server-add</codeph> or <codeph>--server-remove</codeph> options. This adds or
+                removes the server from the cluster, and immediately initiates a rebalance operation.</p>
+                  
+                  <p>T o remove a node during a rebalance operation:</p>
+                  
+                  <codeblock>
+&gt; couchbase-cli rebalance --cluster=127.0.0.1:8091 \
+          -u Administrator -p Password \
+          --server-remove=192.168.0.73
+</codeblock>
+                  
+                </section>
+
+  </body>
+</topic>

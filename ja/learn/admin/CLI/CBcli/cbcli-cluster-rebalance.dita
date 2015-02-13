@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_hl3_v2v_sq">
+  <title>Rebalancing clusters</title>
+  <shortdesc>Clusters are rebalanced whenever a node is added or removed from a cluster.</shortdesc>
+  <refbody>
+    <section><title>Description</title>
+      <p>The available <codeph>couchbase-cli</codeph> rebalance commands are:</p><table>
+        <tgroup cols="2">
+          <colspec colname="col1"/>
+          <colspec colname="col2"/>
+          <thead>
+            <row>
+              <entry>Command</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>rebalance</entry>
+              <entry>Starts a cluster rebalancing.</entry>
+            </row>
+            <row>
+              <entry>rebalance-stop</entry>
+              <entry>Stops the current cluster rebalancing.</entry>
+            </row>
+            <row>
+              <entry>rebalance-status</entry>
+              <entry>Shows the status of the current cluster rebalancing.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>> </section>
+    
+    <section><title>CLI command and parameters</title>
+      <p>The <codeph>couchbase-cli rebalance</codeph> command options have all of the 
+        <codeph>server-add</codeph> command options and some additional options.</p>
+      
+      <table>
+        <tgroup cols="2">
+          <colspec colname="col1"/>
+          <colspec colname="col2"/>
+          <thead>
+            <row>
+              <entry>Parameter</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>--server-add=[host]:[port]</entry>
+              <entry>Server to be added</entry>
+            </row>
+            <row>
+              <entry>--server-add-username=[username]</entry>
+              <entry>Administrator username for the server to be added.</entry>
+            </row>
+            <row>
+              <entry>--server-add-password=[password]</entry>
+              <entry>Administrator password for the server to be added.</entry>
+            </row>
+            <row>
+              <entry>--server-remove=[host]:[port]</entry>
+              <entry>The server to be removed.</entry>
+            </row>
+            <row>
+              <entry>--recovery-buckets=BUCKETS</entry>
+              <entry>Comma separated list of bucket name. Default is for all buckets.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+    </section>
+    
+    <section><title>Syntax</title>
+    <p>Syntax:</p>
+    <codeblock>
+      
+    </codeblock>
+    </section>
+    
+    
+    <section><title>Example: Removing nodes and rebalancing</title>
+      <p>The following example removes a node from a cluster and rebalances:</p>
+      <codeblock>couchbase-cli rebalance -c 192.168.0.1:8091
+    --server-remove=192.168.0.2:8091
+</codeblock>
+    </section>
+    
+    
+    
+    <section><title>Example: Adding nodes and rebalancing</title>
+      <p>The following example adds a node to a cluster and rebalances:</p>
+      <codeblock>couchbase-cli rebalance -c 192.168.0.1:8091 
+    --server-add=192.168.0.2:8091 
+    --server-add-username=Administrator 
+    --server-add-password=password
+</codeblock>
+    </section>
+    
+    
+    <section><title>Example: Removing nodes, adding nodes, and rebalancing</title>
+      
+      <p>The following example removes and adds nodes from/to a cluster and rebalances:</p>
+      
+      <codeblock>couchbase-cli rebalance -c 192.168.0.1:8091 
+    --server-remove=192.168.0.2 
+    --server-add=192.168.0.4 
+    --server-add-username=Administrator 
+    --server-add-password=password
+</codeblock>
+    </section>
+    
+    
+    <section><title>Example: Stopping rebalance</title>
+      <p>The following example stops the current rebalancing:</p>
+      
+      <codeblock>couchbase-cli rebalance-stop -c 192.168.0.1:8091
+</codeblock>
+    </section>
+  </refbody>
+</reference>

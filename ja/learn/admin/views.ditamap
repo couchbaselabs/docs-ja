@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map>
+ <title>Couchbase Views</title>
+ <topicref href="Views/views-intro.dita" collection-type="sequence">
+		<topicref href="Views/views-basics.dita" />
+		<topicref href="Views/views-index-updates.dita" />
+		<topicref href="Views/views-operation.dita" />
+		<topicref href="Views/views-storedData.dita" />
+		<topicref href="Views/views-development.dita" />
+		<topicref href="Views/views-production.dita" />
+		<topicref href="Views/views-writing.dita" />
+		<topicref href="Views/views-geospatial.dita" />
+		<topicref href="Views/views-schemaless.dita" />
+		<topicref href="Views/views-translateSQL.dita" />
+		<topicref href="Views/views-querying.dita" />
+		<topicref href="Views/views-querySample.dita" />
+		<topicref href="Misc/sample-bucket-intro.dita" collection-type="sequence">
+			<topicref href="Misc/sample-bucket-beer.dita" />
+			<topicref href="Misc/sample-bucket-game.dita" />
+		</topicref>
+	</topicref>
+</map>

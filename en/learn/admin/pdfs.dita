@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_c42_fyb_5p">
+  <title>PDFs</title>
+  <body>
+    <section><title>Couchbase Server 3.0</title></section>
+    <p>The following Couchbase PDF includes Installation, Administration, CLI reference, REST API reference, and release notes.</p>
+    
+    <ul>
+      <li><xref href="http://docs.couchbase.com/prebuilt/pdfs/couchbase-3.0-2014-12-16.pdf" format="pdf">Couchbase Server 3.0 PDF - December 16, 2014</xref></li>
+      </ul>
+    
+    
+  </body>
+</topic>

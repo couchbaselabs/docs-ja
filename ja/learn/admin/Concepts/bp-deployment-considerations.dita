@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE topic
+  PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic xml:lang="ja" id="topic1398">
+ <title>デプロイ構成の考慮事項</title>
+ <shortdesc>アクセス制限、ノード間通信、スワップの設定、接続タイムアウトなどの考慮事項について説明します。</shortdesc>
+ <body>
+  <p>When configuring the Couchbase Server deployment, pay attention to the following:</p>
+  
+  <dl>
+   <dlentry>
+    <dt>Restricted access to Moxi ports</dt>
+    <dd>Make sure that only trusted machines (including the other nodes in the cluster) can access the
+     ports that Moxi uses.</dd>
+   </dlentry>
+  </dl>
+  <dl>
+   <dlentry>
+    <dt>Restricted access to web console (port 8091)</dt>
+    <dd>The web console is password protected. However, we recommend that you restrict access to port
+     8091; an abuser could do potentially harmful operations (like remove a node) from the web
+     console.</dd>
+   </dlentry>
+  </dl>
+  <dl>
+   <dlentry>
+    <dt>Node to node communication on ports</dt>
+    <dd>All nodes in the cluster should be able to communicate with each other on 11210 and 8091</dd>
+   </dlentry>
+  </dl>
+  <dl>
+   <dlentry>
+    <dt>Swap configuration</dt>
+    <dd>Swap should be configured on Couchbase Server. This prevents the operating system from
+     killing Couchbase Server should the system RAM be exhausted. Having swap provides more options on
+     how to manage such a situation.</dd><dd>See <xref href="swap-space.dita">Swap space </xref> 
+      for a recommendation about setting up a swap space on Linux.</dd>
+   </dlentry>
+  </dl>
+  <dl>
+   <dlentry>
+    <dt>Idle connection timeouts</dt>
+    <dd>Some firewall or proxy software will drop TCP connections if they are idle for a certain amount
+     of time (e.g. 20 minutes). If the software does not allow you to change that timeout, send a
+     command from the client periodically to keep the connection alive.</dd>
+   </dlentry>
+  </dl>
+  <dl>
+   <dlentry>
+    <dt>Port Exhaustion on Windows</dt>
+    <dd>The TCP/IP port allocation on Windows by default includes a restricted number of ports
+     available for client communication.</dd>
+   </dlentry>
+  </dl>
+  
+ </body>
+
+</topic>

@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbbackup-tool">
+   <title>cbbackup tool</title>
+   <shortdesc>The <codeph>cbbackup</codeph> tool creates a copy of data from an entire running cluster,
+      an entire bucket, a single node, or a single bucket on a single functioning node.</shortdesc>
+   
+   <refbody>
+      <section><title>Description</title>
+      <p>The backup process writes a copy of data onto disk. 
+         To create a backup using <codeph>cbbackup</codeph>, the node or cluster needs to be functioning in order.</p>
+
+      <p>The <codeph>cbbackup</codeph>, <codeph>cbrestore</codeph>, and <codeph>cbtransfer</codeph>
+         tools do not communicate with external IP addresses for server nodes outside of a cluster.
+         Backup, restore, or transfer operations are performed on data from a node within a
+         Couchbase cluster. They only communicate with nodes from a node list obtained within a
+         cluster. This also means that if Couchbase Server is installed with a default IP address,
+         an external hostname cannot be used to access it.</p>
+         
+         <p>This tool has several different options which you can use to:</p>
+         <ul>
+            <li>Backup all buckets in an entire cluster</li>
+            <li>Backup one named bucket in a cluster</li>
+            <li>Backup all buckets on a node in a cluster</li>
+            <li>Backup one named buckets on a specified node</li>
+         </ul>
+         
+         <note type="tip">We recommended that <codeph>cbbackup</codeph> output be generated on a file system 
+            local to the server. Specifically, back up to a dedicated partition. 
+            A dedicated partition prevents the backup from from filling the Couchbase data stores and operating system partitions.</note>
+         
+         
+         <note type="caution">Avoid routing the  <codeph>cbbackup</codeph> output to remote share file systems (NFS). 
+            This is because  <codeph>cbbackup</codeph> files are based on sqlite format and sqlite-formatted  file have issues being written to remote file systems.</note>
+        
+         
+      <p>This tool is the following directories:</p>
+
+      <table>
+         <tgroup cols="2">
+            <colspec colname="col1"/>
+            <colspec colname="col2"/>
+            <thead>
+               <row>
+                  <entry>Operating system</entry>
+                  <entry>Location</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>Linux</entry>
+                  <entry><codeph>/opt/couchbase/bin/cbbackup</codeph></entry>
+               </row>
+               <row>
+                  <entry>Windows</entry>
+                  <entry><codeph>C:\Program Files\Couchbase\Server\bin\cbbackup</codeph></entry>
+               </row>
+               <row>
+                  <entry>Mac OS X</entry>
+                  <entry><codeph>/Applications/Couchbase Server.app/Contents/Resources/couchbase-core/bin/cbbackup</codeph></entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      </section>
+      
+      <section><title>CLI commands and parameters</title>
+
+      <p>The format of the <codeph>cbbackup</codeph> command is:</p>
+      <codeblock>cbbackup [options] [source] [backup-dir]
+</codeblock>
+      <p>Where:</p>
+      <ul>
+         <li>[options]<p>Same options available for <codeph>cbtransfer</codeph> tool.</p></li>
+         <li>[source]<p>Source for the backup. This can be either a URL of a node when backing up a single node or
+         the cluster, or a URL specifying a directory where the data for a single bucket is
+         located.</p></li>
+         <li>[backup-dir]<p>The directory for the backup files to be stored. Either the directory must
+         exist, and be empty, or the directory will be created. The parent directory must exist.</p></li>
+      </ul>
+
+      
+      <p>The following are the command options:</p>
+      <table>
+         <title>cbrestore options</title>
+         <tgroup cols="2">
+            <colspec colname="col1"/>
+            <colspec colname="col2"/>
+            <thead>
+               <row>
+                  <entry>Parameters</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>-h, –help</entry>
+                  <entry>Command line help.</entry>
+               </row>
+               <row>
+                  <entry>-b BUCKET_SOURCE, --bucket-source=BUCKET_SOURCE</entry>
+                  <entry>Single named bucket from source cluster to transfer. If the backup
+                        directory only contains a single bucket, then that bucket is automatically
+                        used.</entry>
+               </row>
+               <row>
+                  <entry>--single-node</entry>
+                  <entry>Use a single server node from the source only, not all server nodes from the entire cluster. 
+                     This single server node is defined by the source URL.</entry>
+               </row>
+               <row>
+                  <entry>-m MODE, --mode=MODE</entry>
+                  <entry></entry>
+               </row>
+               <row>
+                  <entry>-i ID, –id=ID</entry>
+                  <entry>Transfer only items that match a vbucket ID.</entry>
+               </row>
+               <row>
+                  <entry>-k KEY, –key=KEY</entry>
+                  <entry>Transfer only items with keys that match a regexp.</entry>
+               </row>
+               <row>
+                  <entry>-n, –dry-run</entry>
+                  <entry>No actual transfer. Just validate parameters, files, connectivity and
+                     configurations.</entry>
+               </row>
+               <row>
+                  <entry>-u USERNAME, –username=USERNAME</entry>
+                  <entry>REST username for source cluster or server node.</entry>
+               </row>
+               <row>
+                  <entry>-p PASSWORD, –password=PASSWORD</entry>
+                  <entry>REST password for cluster or server node.</entry>
+               </row>
+               <row>
+                  <entry>-t THREADS, –threads=THREADS</entry>
+                  <entry>Number of concurrent workers threads performing the transfer. </entry>
+               </row>
+               <row>
+                  <entry>-v, –verbose</entry>
+                  <entry>Verbose logging. More v's provide more verbosity. Max: -vvv.</entry>
+               </row>
+               <row>
+                  <entry>-x EXTRA, –extra=EXTRA</entry>
+                  <entry>Provide extra, uncommon configuration parameters. Comma-separated key=val(key-val)* pairs.</entry>
+               </row>
+               
+            </tbody>
+         </tgroup>
+      </table>
+      <p>The following are extra, specialized command options with the <codeph>cbbackup -x</codeph>
+            parameter.</p>
+      
+      <table>
+         <title>cbbackup -x options</title>
+         <tgroup cols="2">
+            <colspec colname="col1"/>
+            <colspec colname="col2"/>
+            <thead>
+               <row>
+                  <entry>-x options</entry>
+                  <entry>Description</entry>
+               </row>
+               
+            </thead>
+            <tbody>
+               <row>
+                  <entry>backoff_cap=10</entry>
+                  <entry>Maximum backoff time during the rebalance period.</entry>
+               </row>
+               <row>
+                  <entry>batch_max_bytes=400000</entry>
+                  <entry>Transfer this # of bytes per batch.</entry>
+               </row>
+               <row>
+                  <entry>batch_max_size=1000</entry>
+                  <entry>Transfer this # of documents per batch.</entry>
+               </row>
+               <row>
+                  <entry>cbb_max_mb=100000</entry>
+                  <entry>Split backup file on destination cluster if it exceeds the MB.</entry>
+               </row>
+               <row>
+                  <entry>conflict_resolve=1</entry>
+                  <entry>By default, disable conflict resolution.</entry>
+               </row>
+               <row>
+                  <entry>data_only=0</entry>
+                  <entry>For value 1, transfer only data from a backup file or cluster.</entry>
+               </row>
+               <row>
+                  <entry>design_doc_only=0</entry>
+                  <entry>For value 1, transfer only design documents from a backup file or cluster. Default: 0.</entry>
+               </row>
+               <row>
+                  <entry>max_retry=10</entry>
+                  <entry>Max number of sequential retries if the transfer fails.</entry>
+               </row>
+               <row>
+                  <entry>mcd_compatible=1</entry>
+                  <entry>For value 0, display extended fields for stdout output.</entry>
+               </row>
+               <row>
+                  <entry>nmv_retry=1</entry>
+                  <entry>0 or 1, where 1 retries transfer after a NOT_MY_VBUCKET message. Default: 1.</entry>
+               </row>
+               <row>
+                  <entry>recv_min_bytes=4096</entry>
+                  <entry>Amount of bytes for every TCP/IP batch transferred.</entry>
+               </row>
+               <row>
+                  <entry>rehash=0</entry>
+                  <entry>For value 1, rehash the partition id's of each item. 
+                     This is required when transferring data between clusters with
+                     different number of partitions, such as when transferring data from an
+                     Mac OS X server to a non-Mac OS X cluster.</entry>
+               </row>
+               <row>
+                  <entry>report=5</entry>
+                  <entry>Number batches transferred before updating progress bar in console.</entry>
+               </row>
+               <row>
+                  <entry>report_full=2000</entry>
+                  <entry>Number batches transferred before emitting progress information in console.</entry>
+               </row>
+               <row>
+                  <entry>seqno=0</entry>
+                  <entry>By default, start seqno from beginning.</entry>
+               </row>
+               <row>
+                  <entry>try_xwm=1</entry>
+                  <entry>Transfer documents with metadata. Default: 1. Value of 0 is only used when transferring
+                     from 1.8.x to 1.8.x.</entry>
+               </row>
+               <row>
+                  <entry>uncompress=0</entry>
+                  <entry>For value 1, restore data in uncompressed mode.</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      </section>
+      
+      <section><title>Syntax</title>
+         <p>The following is the basic syntax:</p>
+         <codeblock>cbrestore [options] [backup-dir] [destination]</codeblock>
+         
+         
+         <p>The following syntax examples include a full backup and two incremental backups for a
+            cluster.:</p>
+         
+         <codeblock>
+cbbackup http://HOST:8091 /backup-42
+cbbackup http://HOST:8091 /backup-42
+cbbackup http://HOST:8091 /backup-42
+			</codeblock>
+         
+         <p>The following syntax examples include a full backup, two differential backups, and one
+            accumulative backup for a single node.</p>
+         <codeblock>
+cbbackup couchbase://HOST:8091 /backup-43 [-m full] --single-node
+cbbackup couchbase://HOST:8091 /backup-43 [-m diff] --single-node
+cbbackup couchbase://HOST:8091 /backup-43 [-m diff] --single-node
+cbbackup couchbase://HOST:8091 /backup-43 -m accu --single-node
+         </codeblock>
+            
+         <note type="note">After backing up and restoring a cluster, be sure to rebuild your indexes. </note>
+
+      </section>
+      
+      
+      <section><title>Example: Backing up clusters</title>
+      <p>An entire cluster can be backed up. This includes all of the data buckets and data at all
+            nodes and all design documents. To backup an entire cluster and all buckets for that
+            cluster:</p>
+      <codeblock>cbbackup http://HOST:8091 ~/backups \
+          -u Administrator -p password
+</codeblock>
+      <p>Where <codeph>~/backups</codeph> is the directory where you want to store the data. When
+            this operation is performed, be aware that cbbackup creates the following directory
+            structure and files in the <codeph>~/backups</codeph> directory assuming there two
+            buckets in the cluster named <codeph>my_name</codeph> and <codeph>sasl</codeph> and two
+            nodes <codeph>N1</codeph> and <codeph>N2</codeph> :</p>
+      <codeblock>~/backups
+        bucket-my_name
+            N1
+            N2
+        bucket-sasl
+            N1
+            N2
+</codeblock>
+      <p>Where <codeph>bucket-my_name</codeph> and <codeph>bucket-sasl</codeph> are directories
+         containing data files and where <codeph>N1</codeph> and <codeph>N2</codeph> are two sets of
+         data files for each node in the cluster. 
+         </p>
+         
+         </section>
+      
+      <section><title>Example: Backing up a single bucket</title>
+         <p>To backup a single bucket in a cluster:</p>
+      
+      <codeblock>cbbackup http://HOST:8091 /backups/backup-20120501 \
+  -u Administrator -p password \
+  -b default
+</codeblock>
+      <p>In this case, the default bucket in the cluster is specified and the data from the default
+            bucket is backed up. </p>
+         
+      </section>
+      
+      
+      <section><title>Example: Backing up multiple buckets</title>
+         <p>To backup all data from multiple buckets on a single node:</p>
+      <codeblock>&gt; cbbackup http://HOST:8091 /backups/ \
+  -u Administrator -p password \
+  --single-node
+</codeblock>
+      <p>To backup data from a single bucket on a single node:</p>
+      <codeblock>cbbackup http://HOST:8091 /backups \
+  -u Administrator -p password \
+  --single-node \
+  -b bucket_name
+</codeblock>
+      </section>
+      
+      <section><title>Example: Backing up keys</title>
+      <p>To specify the keys that are backed up using the <codeph>- k</codeph> option. For example,
+            to backup all keys from a bucket with the prefix ‘object’:</p>
+      
+      <codeblock>&gt; cbbackup http://HOST:8091 /backups/backup-20120501 \
+  -u Administrator -p password \
+  -b bucket_name \
+  -k '^object.*'
+</codeblock>
+      </section>
+
+      
+   </refbody>
+   <related-links>
+      <linklist>
+
+         
+         
+         <link href="../Install/hostnames.dita"/>
+         <link href="../CLI/cbcli-intro.dita"/>
+         <link href="../CLI/cbrestore_tool.dita"/>
+         <link href="../CLI/cbtransfer_tool.dita"/>
+         <link href="https://github.com/couchbase/couchbase-cli" scope="external" format="html">
+            <linktext>Couchbase command-line tools GitHub repository</linktext>
+         </link>
+      </linklist>
+   </related-links>
+</reference>

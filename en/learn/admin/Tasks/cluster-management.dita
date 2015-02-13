@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_rvf_xrb_54">
+  <title>Cluster management</title><shortdesc>Management of the Couchbase Server cluster is a core administrative task.</shortdesc>
+  <body>
+    <p>The management tasks include handling of Couchbase Server's warmup, handling of replication,
+      compacting of data files, and cluster maintenance.</p>
+   <p>Each of these tasks are explained in the following sections.</p> 
+  </body>
+</topic>

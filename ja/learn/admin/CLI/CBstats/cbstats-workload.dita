@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="cbstats-workload">
+  <title>Workload</title>
+  <shortdesc>The <codeph>cbstats workload</codeph> command provides the workload status of threads
+    for buckets.</shortdesc>
+  <refbody>
+    
+    <section><title>Description</title>
+      <p>This command is used to check how many threads of various types are currently running.</p>
+    </section>
+    
+    <section><title>Syntax</title>
+      <p>Basic syntax:</p>
+      <codeblock>cbstats [hostname]:11210 -b bucket_name workload</codeblock>
+    </section>
+    
+    
+    <section><title>Example</title>
+      <p>Request example:</p>
+      <codeblock>cbstats 10.5.2.54:11210 workload</codeblock>
+      </section>
+
+
+  <section><title>Response</title>
+    
+    <p>This example shows four reader threads and four writer threads on
+      the default bucket in the cluster at <codeph>10.5.2.54:11210</codeph>. The
+      vBucket map for the data bucket is grouped into multiple shards, where one read worker
+      accesses one of the shards. In this example, there is one reader for each of the four
+      shards.</p>
+    <p>Example response:</p>
+    
+    <codeblock>
+ ep_workload:LowPrioQ_AuxIO:InQsize:   5
+ ep_workload:LowPrioQ_AuxIO:OutQsize:  0
+ ep_workload:LowPrioQ_NonIO:InQsize:   55
+ ep_workload:LowPrioQ_NonIO:OutQsize:  0
+ ep_workload:LowPrioQ_Reader:InQsize:  20
+ ep_workload:LowPrioQ_Reader:OutQsize: 0
+ ep_workload:LowPrioQ_Writer:InQsize:  30
+ ep_workload:LowPrioQ_Writer:OutQsize: 0
+ ep_workload:max_auxio:                1
+ ep_workload:max_nonio:                1
+ ep_workload:max_readers:              4
+ ep_workload:max_writers:              4
+ ep_workload:num_auxio:                1
+ ep_workload:num_nonio:                1
+ ep_workload:num_readers:              4
+ ep_workload:num_shards:               4
+ ep_workload:num_sleepers:             10
+ ep_workload:num_writers:              4
+ ep_workload:ready_tasks:              0
+    </codeblock>
+  
+  </section>
+        
+        
+        
+  </refbody>
+</reference>

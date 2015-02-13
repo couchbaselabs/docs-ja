@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbstats-memory">
+	<title>Memory</title>
+	<shortdesc>The <codeph>cbstats memory</codeph> command gets memory-related statistics.</shortdesc>
+	<refbody>
+		<section><title>CLI command and parameter</title>
+		<p>This provides various memory-related stats including the stats from tcmalloc.</p>
+			
+			<codeblock>cbstats all</codeblock>
+			
+			<note type="note">tcmalloc stats are not available on operating systems (e.g., Windows) that do not
+				support tcmalloc.</note>
+			
+		<table>
+			<tgroup cols="2">
+				<colspec colname="col1"/>
+				<colspec colname="col2"/>
+				<thead>
+					<row>
+						<entry>Stat</entry>
+						<entry>Description</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>mem_used (deprecated)</entry>
+						<entry>Engine’s total memory usage</entry>
+					</row>
+					<row>
+						<entry>bytes</entry>
+						<entry>Engine’s total memory usage</entry>
+					</row>
+					<row>
+						<entry>ep_kv_size</entry>
+						<entry>Memory used to store item metadata,</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>keys and values, no matter the</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>vbucket’s state. If an item’s value</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>is ejected, this stat will be</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>decremented by the size of the</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>item’s value.</entry>
+					</row>
+					<row>
+						<entry>ep_value_size</entry>
+						<entry>Memory used to store values for</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>resident keys</entry>
+					</row>
+					<row>
+						<entry>ep_overhead</entry>
+						<entry>Extra memory used by transient data</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>like persistence queue, replication</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>queues, checkpoints, etc</entry>
+					</row>
+					<row>
+						<entry>ep_max_size</entry>
+						<entry>Max amount of data allowed in memory</entry>
+					</row>
+					<row>
+						<entry>ep_mem_low_wat</entry>
+						<entry>Low water mark for auto-evictions</entry>
+					</row>
+					<row>
+						<entry>ep_mem_high_wat</entry>
+						<entry>High water mark for auto-evictions</entry>
+					</row>
+					<row>
+						<entry>ep_oom_errors</entry>
+						<entry>Number of times unrecoverable OOMs</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>happened while processing operations</entry>
+					</row>
+					<row>
+						<entry>ep_tmp_oom_errors</entry>
+						<entry>Number of times temporary OOMs</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>happened while processing operations</entry>
+					</row>
+					<row>
+						<entry>ep_mem_tracker_enabled</entry>
+						<entry>If smart memory tracking is enabled</entry>
+					</row>
+					<row>
+						<entry>tcmalloc_allocated_bytes</entry>
+						<entry>Engine’s total memory usage reported</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>from tcmalloc</entry>
+					</row>
+					<row>
+						<entry>tcmalloc_heap_size</entry>
+						<entry>Bytes of system memory reserved by</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>tcmalloc</entry>
+					</row>
+					<row>
+						<entry>tcmalloc_free_bytes</entry>
+						<entry>Number of bytes in free, mapped</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>pages in page heap</entry>
+					</row>
+					<row>
+						<entry>tcmalloc_unmapped_bytes</entry>
+						<entry>Number of bytes in free, unmapped</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>pages in page heap. These are bytes</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>that have been released back to OS</entry>
+					</row>
+					<row>
+						<entry>tcmalloc_max_thread_cache_bytes</entry>
+						<entry>A limit to how much memory TCMalloc</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>dedicates for small objects</entry>
+					</row>
+					<row>
+						<entry>tcmalloc_current_thread_cache_bytes</entry>
+						<entry>A measure of some of the memory</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>TCMalloc is using for small objects</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		</section>
+		
+		
+		
+		<section><title>Syntax</title>
+			<p>Request syntax:</p>
+			<codeblock>cbstats [localhost]:11210 memory</codeblock>
+		</section>
+		
+		<section><title>Example</title>
+			<p>Example request:</p>
+			<codeblock>cbstats 10.5.2.54:11210 memory</codeblock>
+			
+		</section>
+		
+		<section><title>Response</title>
+			<p>Example response:</p>
+			<codeblock>
+bytes:                               23716184
+ ep_blob_num:                         0
+ ep_blob_overhead:                    0
+ ep_item_num:                         1364
+ ep_kv_size:                          0
+ ep_max_size:                         524288000
+ ep_mem_high_wat:                     445644800
+ ep_mem_low_wat:                      393216000
+ ep_mem_tracker_enabled:              true
+ ep_oom_errors:                       0
+ ep_overhead:                         18344996
+ ep_storedval_num:                    0
+ ep_storedval_overhead:               0
+ ep_storedval_size:                   0
+ ep_tmp_oom_errors:                   0
+ ep_value_size:                       0
+ mem_used:                            23716184
+ tcmalloc_current_thread_cache_bytes: 18642072
+ tcmalloc_max_thread_cache_bytes:     33554432
+ total_allocated_bytes:               211297528
+ total_fragmentation_bytes:           33069832
+ total_free_mapped_bytes:             5283840
+ total_free_unmapped_bytes:           7684096
+ total_heap_bytes:                    257335296
+			</codeblock>
+		</section>
+	</refbody>
+</reference>

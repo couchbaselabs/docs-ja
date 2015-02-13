@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.entryd">
+<topic id="rel-notes">
+  <title>Release notes</title>
+  <abstract><shortdesc>Couchbase Server 3.0 is a major release that extends Couchbase lead as the most
+    performant and scalable NoSQL database for mission critical enterprise applications.</shortdesc> In
+    addition to adding great new functionality for the enterprise, 3.0 delivers many new features
+    that make it easier for developers and administrators to work with Couchbase Server, making it
+    the best choice for your NoSQL projects.</abstract>
+ 
+  <topic id="rel-notes-3.0.2">
+    <title>Release notes for 3.0.2</title>
+    <body>
+      <p>Couchbase Server 3.0.2, released in December 2014, is the second maintenance release for
+        Couchbase Server 3.0. This release further fortifies Couchbase Server 3.0 and includes some
+        critical bug fixes in the areas of database engine, performance, security, and server
+        operations. It also includes several bug fixes related to the Windows platform.</p> 
+      <section>
+        <title>Fixed issues in 3.0.2</title> 
+        <p>The following issues are fixed in the Couchbase Server 3.0.2 release.</p>
+        <table>
+          
+          <tgroup cols="4">
+            <colspec colname="col1" colwidth="1*"/>
+            <colspec colname="col2" colwidth="1*"/>
+            <colspec colname="col3" colwidth="4*"/>
+            <thead>
+              
+              <row rowsep="1">
+                <entry></entry>    
+                <entry>Issue</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>           
+            <tbody> 
+               
+              <row>
+                <entry>Couchbase bucket</entry>
+                <entry> </entry>
+                <entry> </entry>   
+              </row>
+              
+              <row>
+                <entry></entry>
+                
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12160" scope="external"
+                  format="html">MB-12160</xref></entry>
+                <entry>When a key is locked, <codeph>setWithMeta()</codeph> is able to update the
+                  key even when the set fails.</entry>
+              </row>
+              
+              
+              <row >
+                <entry></entry>   
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12305" scope="external"
+                  format="html">MB-12305</xref></entry>
+                <entry><codeph>memcached</codeph> was crashing during the online upgrade from the Couchbase Server version 2.5.0 to version 3.0.1. </entry>
+              </row>
+              
+              
+              <row rowsep="1">
+                <entry></entry>   
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12647" scope="external"
+                  format="html">MB-12647</xref></entry>
+                <entry><codeph>gethrtime()</codeph> implementation on Windows can cause requests to
+                    <codeph>store()</codeph> with CAS to be incorrectly processed. </entry>
+              </row>
+              
+              
+              <row>
+                <entry>Performance</entry>
+                <entry></entry>
+                <entry></entry>   
+              </row>
+              <row> 
+                <entry></entry>   
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12117" scope="external"
+                  format="html">MB-12117</xref></entry>
+                <entry>Access log locks for heavy write workloads can cause performance
+                  slowdowns.</entry>
+              </row>
+              
+              
+              <row rowsep="1">
+                <entry></entry>   
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12576" scope="external"
+                  format="html">MB-12576</xref></entry>
+                <entry>Massive increase in disk write queue size on both SSD and HDD was
+                  detected.</entry>
+              </row>
+              
+              <row >
+                <entry>Security</entry>
+                <entry></entry>
+                <entry></entry>   
+              </row>
+              
+              <row>
+                
+                <entry></entry>   
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-8872" scope="external"
+                  format="html">MB-8872</xref></entry>
+                <entry>A number of CAPI REST API endpoints is not secured.</entry>
+              </row>
+              <row>
+                
+                <entry></entry>   
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-9890" scope="external"
+                  format="html">MB-9890</xref></entry>
+                <entry>XDCR crash logs can sometimes have document contents.</entry>
+              </row>
+              <row>
+                <entry></entry>   
+                
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-10262" scope="external"
+                  format="html">MB-10262</xref></entry>
+                <entry>Corrupted key in a data file rolls backwards to an earlier version, or
+                  disappears without detection.</entry>
+              </row>
+              <row>
+                
+                <entry></entry>       
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12288" scope="external"
+                  format="html">MB-12288</xref></entry>
+                <entry>The XDCR-over-SSL proxy allows for a connection to any port on the
+                  destination nodes.</entry>
+              </row>
+              <row>
+                
+                <entry></entry>       
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12358" scope="external"
+                  format="html">MB-12358</xref></entry>
+                <entry>Remove support for SSL v3 in ns_server SSL server sockets to mitigate against
+                  the POODLE attack.</entry>
+              </row>
+              
+              <row>
+                
+                <entry></entry>       
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12655" scope="external"
+                  format="html">MB-12655</xref></entry>
+                <entry>Configuration replication of certain per-node keys is broken after a node is
+                  upgraded offline from 2.x to 3.0 and then added back to formerly 2.x cluster that
+                  is now upgraded to 3.0.</entry>
+              </row>
+              <row rowsep="1">
+                
+                <entry></entry>     
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-" scope="external"
+                  format="html">MB-12695</xref></entry>
+                <entry>Certain XDCR logging exposes remote cluster passwords.</entry>
+              </row> 
+              
+              <row>
+                <entry>Server operations</entry>
+                <entry></entry>
+                <entry></entry>   
+              </row>
+              
+              <row>
+                
+                <entry></entry>    
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-11935" scope="external"
+                  format="html">MB-11935</xref></entry>
+                <entry>Failed connections on port 11213 cause <systemoutput>Unable to
+                  listen</systemoutput> errors and server restarts.</entry>
+              </row>
+              <row>
+                
+                <entry></entry>   
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12156" scope="external"
+                  format="html">MB-12156</xref></entry>
+                <entry>Race condition with time check when changing the data path may lead to
+                  deletion of all buckets after adding a node to a cluster.</entry>
+              </row>
+              <row>
+                
+                <entry></entry>   
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12382" scope="external"
+                  format="html">MB-12382</xref></entry>
+                <entry>Offline cluster upgrade failed when upgrading from 2.0.1-170-rel to
+                  3.0.1-1422-rel.</entry>
+              </row>
+              <row rowsep="1">
+                <entry></entry>    
+                
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12706" scope="external"
+                  format="html">MB-12706</xref></entry>
+                <entry>In an XDCR environment, when <codeph>add-delete-add</codeph> operations are performed, the
+                  second <codeph>add</codeph> operation fails when performed on temporary items.</entry>
+              </row>
+              
+              <row >
+                <entry>Windows</entry>
+                <entry></entry>
+                <entry></entry>   
+              </row>        
+              
+              <row>
+                
+                <entry></entry>   
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-11611" scope="external"
+                  format="html">MB-11611</xref></entry>
+                <entry><codeph>memcached.logs</codeph> can grow large after the node failure and
+                  bucket flush.</entry>
+              </row>
+              <row>
+                
+                <entry></entry>    
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12091" scope="external"
+                  format="html">MB-12091</xref></entry>
+                <entry>Compact files might not be cleaned up after compaction.</entry>
+              </row>
+              <row>
+                <entry></entry>   
+                
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12247" scope="external"
+                  format="html">MB-12247</xref></entry>
+                <entry>View engine failed to index documents in a query after the rebalance.</entry>
+              </row>
+              
+              <row>
+                <entry></entry>   
+                
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12371"
+                  scope="external" format="html">MB-12371</xref></entry>
+                <entry>Incremental backup must not consume additional space with no
+                  delta.</entry>
+              </row> 
+              
+              <row>
+                <entry></entry>   
+                
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12483"
+                  scope="external" format="html">MB-12483</xref></entry>
+                <entry>Online upgrade from 2.0.0 to 3.0.1 with a single bucket might
+                  fail warmup.</entry>
+              </row>   
+              <row>
+                
+                <entry></entry>   
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12238"
+                  scope="external" format="html">MB-12238</xref></entry>
+                <entry>An infinite timeout on the outgoing <codeph>xmem
+                </codeph>request might lead to XDCR hanging when there are
+                  network or NAT issues.</entry>
+              </row>
+                          
+              
+            </tbody>
+          </tgroup>
+        </table> 
+       
+      </section>
+      
+      <section>
+      
+        <title>Known issues in 3.0.2</title>
+        <p>The following known issues are associated with Couchbase Server release 3.0.2.</p>
+        <table>
+          
+          <tgroup cols="3">
+            <colspec colname="col1" colwidth="1*"/>
+            <colspec colname="col2" colwidth="1*"/>
+            <colspec colname="col3" colwidth="4*"/>
+            <thead>
+              <row rowsep="1">
+                <entry/>
+                <entry>Issue</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>Security</entry>
+                <entry/>
+                <entry/>
+              </row>
+              <row>
+                <entry></entry>   
+                
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12359" scope="external"
+                  format="html">MB-12359</xref></entry>
+                <entry>Remove support for SSL v3 in memcached SSL server sockets to mitigate against
+                  the POODLE attack.</entry>
+              </row>
+             
+            </tbody>
+          </tgroup>
+        </table>
+        <note type="note">Port scanners might detect that port 11207 
+          negotiates SSLv3. Upgrading to the latest 2.x client SDKs blocks pre-TLS 
+          communication and reduces the risk of the POODLE bug.</note>
+      </section> 
+    </body>    
+  </topic> 
+  
+  
+  
+  
+  <topic id="rel-notes-3.0.1">
+    <title>Release notes for 3.0.1</title>
+    <body>
+      <p>Couchbase Server 3.0.1, released in October 2014, is the first maintenance release for
+        Couchbase Server 3.0. This release focuses on getting the system stability bugs fixed for
+        the Windows platform and providing general availability. In addition, this release includes
+        some critical bug fixes related to meta data corruption.</p>
+     
+      
+      
+      <section>
+        <title>Fixed issues in 3.0.1</title> 
+        <p>The following issues are fixed in the Couchbase Server 3.0.1 release.</p>
+        <table>
+          
+          <tgroup cols="3">
+            <colspec colname="col1" colwidth="1*"/>
+            <colspec colname="col2" colwidth="1*"/>
+            <colspec colname="col3" colwidth="4*"/>
+            <thead>
+              <row rowsep="1">
+                <entry/>
+                <entry>Issue</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>Couchbase bucket</entry>
+                <entry> </entry>
+                <entry> </entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12197" scope="external"
+                  format="html">MB-12197</xref></entry>
+                <entry>Bucket deletion failing with error 500 and reason: <systemoutput>unknown
+                  {"_":"Bucket deletion not yet complete, but will
+                  continue."}</systemoutput></entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-11955" scope="external"
+                  format="html">MB-11955</xref></entry>
+                <entry>Could not recreate the default bucket after deleting it.</entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-11934" scope="external"
+                  format="html">MB-11934</xref></entry>
+                <entry>After warmup, fewer items are shown.</entry>
+              </row>
+              <row rowsep="1">
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-11804" scope="external"
+                  format="html">MB-11804</xref></entry>
+                <entry>Memcached error #132 <systemoutput>Internal error: Internal error for
+                  vbucket...</systemoutput> when set key to bucket.</entry>
+              </row>
+              <row>
+                <entry>Installation</entry>
+                <entry> </entry>
+                <entry> </entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12321" scope="external"
+                  format="html">MB-12321</xref></entry>
+                <entry>New message box is thrown during the silent installation.</entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12135" scope="external"
+                  format="html">MB-12135</xref></entry>
+                <entry>Once installation of the Couchbase Server is completed, it launches a console
+                  page that opens with a blank page.</entry>
+              </row>
+              <row rowsep="1">
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-11567" scope="external"
+                  format="html">MB-11567</xref></entry>
+                <entry>Failed to load Beer Sample in the initial setup.</entry>
+              </row>
+              <row>
+                <entry>Rebalance</entry>
+                <entry> </entry>
+                <entry> </entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12328" scope="external"
+                  format="html">MB-12328</xref></entry>
+                <entry>Item flags are mangled during rebalance.</entry>
+              </row>
+              <row rowsep="1">
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-11948" scope="external"
+                  format="html">MB-11948</xref></entry>
+                <entry>Simple test broken - Rebalance exited with the following reason:
+                  <systemoutput>unexpected_exit..{dcp_wait_for_data_move_failed,"default",254,..wrong_rebalancer_pid}}}</systemoutput></entry>
+              </row>
+              <row>
+                <entry>Upgrade</entry>
+                <entry> </entry>
+                <entry> </entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12425" scope="external"
+                  format="html">MB-12425</xref></entry>
+                <entry>Bucket failed to restore after an offline upgrade from 2.0.0 to
+                  3.0.1.</entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12209" scope="external"
+                  format="html">MB-12209</xref></entry>
+                <entry>The offline upgrade from 2.5.x to 3.0.1 failed.</entry>
+              </row>
+              <row rowsep="1">
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-11930" scope="external"
+                  format="html">MB-11930</xref></entry>
+                <entry>All data was lost after an offline upgrade from 2.0.0 to 3.0.0.</entry>
+              </row>
+              <row>
+                <entry>Views</entry>
+                <entry> </entry>
+                <entry> </entry>
+              </row>
+              <row rowsep="1">
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12138" scope="external"
+                  format="html">MB-12138</xref></entry>
+                <entry>View query fails with the error 500 and reason:<systemoutput> reason
+                  {"error":"error","reason":"{index_builder_exit,89,&lt;&lt;>>}"}</systemoutput></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>  
+      
+      
+      
+      <section>
+        <title>Known issues in 3.0.1</title>
+        <p>The following issues are associated with Couchbase Server release 3.0.1.</p>
+        <table>
+         
+          <tgroup cols="3">
+            <colspec colname="col1" colwidth="1*"/>
+            <colspec colname="col2" colwidth="1*"/>
+            <colspec colname="col3" colwidth="4*"/>
+            <thead>
+              <row rowsep="1">
+                <entry/>
+                <entry>Issue</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>Database operations</entry>
+                <entry/>
+                <entry/>
+              </row>
+              <row rowsep="1">
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12647" scope="external"
+                    format="html">MB-12647</xref></entry>
+                <entry>In situations with high throughput (when the client is making multiple
+                  parallel requests), or with very low network latency (such as when running on
+                    <codeph>localhost</codeph>), there is a high probability that requests to
+                    <codeph>store()</codeph> with CAS might incorrectly be processed on the Windows
+                  Server due to the change in <codeph>gethrtime()</codeph> implementation. It is
+                  recommended that Windows users stay on version 2.5.x, or wait for the next
+                  maintenance release 3.0.2.</entry>
+              </row>
+              <row>
+                <entry>Performance</entry>
+                <entry/>
+                <entry/>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12353" scope="external"
+                    format="html">MB-12353</xref></entry>
+                <entry>Regression (from 2.5.1) in rebalance out with views and query
+                  workload.</entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12349" scope="external"
+                    format="html">MB-12349</xref></entry>
+                <entry>Regression (from 2.5.1) in rebalance after failover with views and query
+                  workload.</entry>
+              </row>
+              <row rowsep="1">
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12293" scope="external"
+                    format="html">MB-12293</xref></entry>
+                <entry>Regression in 4 to 3 node rebalance out on the Windows 2012 Server.</entry>
+              </row>
+              <row>
+                <entry>Upgrade</entry>
+                <entry> </entry>
+                <entry> </entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12655" scope="external"
+                    format="html">MB-12655</xref></entry>
+                <entry>Replication of certain per-node keys is broken after a node is first upgraded
+                  offline from 2.x to 3.0 and then added back to the formerly 2.x cluster that is
+                  now upgraded to 3.0. <p><b>Workaround:</b> When performing an online upgrade from
+                    Couchbase Server 2.x to 3.x, always fully delete the 2.x package (including the
+                    config files) before installing the 3.x package.</p></entry>
+              </row>
+              <row rowsep="1">
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12483" scope="external"
+                    format="html">MB-12483</xref></entry>
+                <entry>Data lost with online upgrade from 2.0.0 to 3.0.1 and cluster reboot.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        <note type="note">Couchbase is working on known issues related to performance and upgrading
+          on the Windows platform. When upgrading to the Couchbase Server Windows 3.0.1 release,
+          test your applications extensively before upgrading. Couchbase also requires that you
+          upgrade to the latest available production version before upgrading to Couchbase Server
+          3.0.1. For Enterprise Edition customers, that version is Couchbase Server 2.5.1. For
+          Community Edition users, that version is Couchbase Server 2.2.0.</note>
+      </section>
+      
+    </body>
+  </topic>
+  <topic id="rel-notes-3.0.0">
+    <title>Release notes for 3.0.0</title>
+    <body>
+      <p>Couchbase Server 3.0, released in September 2014, includes many major new enhancements and
+        features: </p>
+      <ul>
+        <li><b>Performance and scale</b>
+          <p>This feature allows you to run at planet scale with more data, faster I/O, and improved
+            indexing. </p><ul>
+            <li>Tunable memory lets you configure memory to optimize meta data, data caching and
+              eviction strategies, allowing configurations ranging from full in-memory database to
+              large disk-based datasets.</li>
+            <li>Shared thread pool per node delivers high I/O throughput and low latency for data
+              reads, writes, and other operations such as database warm-up.</li>
+            <li>Stream-based views based on Database Change Protocol (DCP), a new streaming
+              protocol, reduce latency for view updates, and provide faster view consistency and
+              fresher data.</li>
+          </ul>
+          <p>For more information, see: </p><ul>
+            <li><xref href="../Concepts/dcp.dita">Database Change Protocol (DCP)</xref>
+              concepts.</li>
+            <li><xref href="../Concepts/global-thread-pool.dita"/> concepts, <xref
+                href="../UI/ui-dcp-queues.dita"/> via the Couchbase Web Console, and <xref
+                href="../CLI/cli-cbstats-dcp.dita"/> via the CLI.</li>
+            <li><xref href="../Concepts/bucket-eviction.dita"/> concepts, <xref
+                href="../UI/ui-task-bucket-metadata-ejection.dita"/> via the Couchbase Web Console,
+                <xref href="../CLI/CBcli/cbcli-bucket-metadata-ejection.dita"/> via the CLI, and
+                <xref href="../REST/rest-bucket-metadata-ejection.dita"/> via the REST API.</li>
+            <li><xref href="../Views/views-index-updates.dita"/> concepts.</li>
+          </ul>
+        </li>
+        <li><b>Ultra-high availability</b>
+          <p>This feature provides highly available applications with faster and easier data
+            replication across multiple data centers, and advanced disaster recovery options. </p><ul>
+            <li>Stream-based XDCR (Cross Data Center Replication) lowers XDCR latency using
+              memory-to-memory replication of data from the source cluster to the destination
+              cluster, even before it reaches the disk.</li>
+            <li>Delta-node recovery permits that nodes be quickly added back after they are
+              repaired, so they can catch up incrementally from where they left off.</li>
+            <li>Incremental backup and restore enables administrators to quickly back up only
+              modified data in the database, making the backup more efficient for larger
+              datasets.</li>
+          </ul>
+          <p>For more information, see: </p><ul>
+            <li><xref href="../XDCR/xdcr-memory-replication.dita"/> concepts.</li>
+            <li><xref href="../Concepts/delta-node-recovery.dita"/> concepts, <xref
+                href="../UI/ui-task-node-recovery-incremental.dita"/> via the web console, <xref
+                href="../CLI/cli-node-recovery-incremental.dita"/> via the CLI, and <xref
+                href="../REST/rest-node-recovery-incremental.dita"/> via the REST API.</li>
+            <li><xref href="../Tasks/tasks-backup-restore-incremental.dita"/> concepts, <xref
+                href="../CLI/cli-increment-backup.dita"/> and <xref
+                href="../CLI/cli-incremental-restore.dita"/>.</li>
+          </ul>
+        </li>
+        <li><b>Improved security</b>
+          <p>This feature provides secure on-the-wire data access for applications and
+            administrators.</p><ul>
+            <li>Encrypted admin access enables HTTPS access for the Couchbase admin console and the
+              REST API.</li>
+            <li>Encrypted data access with SSL encrypts data in-flight between client and
+              server.</li>
+          </ul>
+          <p>For more information, see: </p><ul>
+            <li><xref href="../security/security-admin-access.dita"/> basics.</li>
+            <li><xref href="../security/security-client-ssl.dita"/> basics.</li>
+          </ul>
+        </li>
+        <li><b>Simplified administration</b>
+          <p>This feature provides easy cluster management and resource governance. </p><ul>
+            <li>Pause and resume XDCR enables XDCR streams between source and destination clusters
+              to be paused during maintenance windows and resumed later, continuing from where they
+              left off.</li>
+            <li>Graceful failover enables nodes to be safely removed from the cluster after all
+              in-flight operations are completed. </li>
+            <li>Bucket priority enables prioritization of buckets so that additional I/O resources
+              can be assigned to the higher priority buckets for faster workload execution.</li>
+            <li>Cluster-wide diagnostics is provided for improved cluster management.</li>
+          </ul>
+          <p>For more information, see: </p><ul>
+            <li><xref href="../XDCR/xdcr-pause-resume.dita"/> concepts, <xref
+                href="../UI/ui-xdcr-pause-resume.dita"/> via the web console, <xref
+                href="../CLI/CBcli/cbcli-xdcr-pause-resume.dita"/> via the CLI, and <xref
+                href="../REST/rest-xdcr-pause-resume.dita"/> via the REST API.</li>
+            <li><xref href="../Concepts/graceful-failover.dita"/> concepts, <xref
+                href="../UI/ui-task-failover-graceful.dita"/> via the web console, <xref
+                href="../CLI/cli-failover.dita"/> via the CLI, and <xref
+                href="../REST/rest-failover-graceful.dita"/> via the REST API.</li>
+            <li>
+              <xref href="../Concepts/bucket-priority.dita"/> concepts, <xref
+                href="../UI/ui-task-set-bucket-priority.dita"/> via the web console, <xref
+                href="../CLI/cli-set-disk-priority.dita"/> via the CLI, and <xref
+                href="../REST/rest-bucket-set-priority.dita"/> via the REST API.</li>
+            <li><xref href="../Misc/cluster-wide-info-intro.dita"/> concepts, <xref
+                href="../UI/ui-cluster-wide-info.dita"/> via the web console, and <xref
+                href="../CLI/cbcollect_info_tool.dita"/> via the CLI. </li>
+          </ul>
+        </li>
+        <li><b>Developer empowerment</b>
+          <p>This feature allows you to build richer and more powerful applications. It
+            provides:</p><ul>
+            <li>Fully integrated native JSON, so that your application can work with high level
+              objects that can be automatically serialized to JSON through the Couchbase APIs.</li>
+            <li>Powerful async and reactive interfaces in Java and .NET, which enable building of
+              richer applications with better IO performance.</li>
+            <li>Rich framework integrations with open source frameworks such as Spring, gEvent,
+              twisted and Ottoman.</li>
+          </ul>
+        </li>
+      </ul>
+      <section>
+        <title>Couchbase .NET incompatibility</title>
+        <p>An incompatibility between Microsoft Framework 4.0 or earlier, the Couchbase .NET SDK
+          1.3.7 or earlier, and Couchbase Server 3.0 has been identified where the URL generated for
+          a View operation on the Couchbase bucket is improperly encoded. This causes view requests
+          to fail with the following message in the body:</p>
+        <codeblock>"Design document not found, body: {"error":"not_found","reason":"missing"}"</codeblock>
+        <dl>
+          <dlentry>
+            <dt>Impact</dt>
+            <dd>The affected Microsoft .NET versions are 4.0 or earlier, Couchbase .NET SDK 1.3.7 or
+              earlier, and Couchbase Server 3.0 (including Beta) is  >= 3.0. </dd>
+            <dd>Microsoft .NET version 4.5 changes the way <codeph>Uri.ToString</codeph> handles its
+              Unicode encoding, which resolves the issue. In this case, clients running on this
+              version or higher of the CLR are not impacted. Additionally, Couchbase Server 2.5 and
+              lower are not impacted. <note type="note">Couchbase .NET 1.3.8 has a patch that
+                resolves the issue for all versions of Couchbase Server and Microsoft .NET
+                Frameworks. </note>
+            </dd>
+          </dlentry>
+          <dlentry>
+            <dt>Workaround</dt>
+            <dd>In addition to the patch released with Couchbase .NET SDK version 1.3.8, add the
+              following element to your <codeph>App.Config </codeph>or <codeph>Web.Config</codeph>
+              to enable support for all SDK and Server versions:<codeblock>&lt;uri&gt;
+    &lt;iriParsing enabled="true"/&gt;
+&lt;uri&gt;
+            </codeblock>
+              <p>Customers who are not ready or cannot upgrade their Couchbase .NET SDKs to 1.3.8 or
+                greater are strongly advised to add this element to their deployments if they intend
+                to use the Couchbase .NET SDK with Couchbase Server 3.0 or greater.</p>
+            </dd>
+          </dlentry>
+          <dlentry>
+            <dt>References</dt>
+            <dd><xref
+                href="https://connect.microsoft.com/VisualStudio/feedback/details/758479/system-uri-tostring-behaviour-change"
+                format="html"/></dd>
+          </dlentry>
+        </dl>
+      </section>
+      <section>
+        <title>Views behavior change</title>
+        <p>The <codeph>stale=false</codeph> view query argument has been enhanced. It considers all
+          document changes that have been received at the time the query was received. This means it
+          is no longer needed to use the durability requirements or the Observe feature to block for
+          persistence in application code before issuing the <codeph>stale=false</codeph> stale
+          query. It is recommended that you remove all such application level checks after
+          completing the upgrade to the 3.0 release. </p>
+      </section>
+      
+      <section>
+        <title>Fixed issues in 3.0.0</title>
+        <p>There are many bugs fixed in the 3.0.0 release. Some of the notable fixes include the
+          following:</p>
+        <table>
+         
+          <tgroup cols="3">
+            <colspec colname="col1" colwidth="1*"/>
+            <colspec colname="col2" colwidth="1*"/>
+            <colspec colname="col3" colwidth="4*"/>
+            <thead>
+              <row rowsep="1">
+                <entry/>
+                <entry>Issue</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>Couchbase bucket</entry>
+                <entry> </entry>
+                <entry> </entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-10059" scope="external"
+                    format="html">MB-10059</xref></entry>
+                <entry>Replica vbucket simply ignores the  <codeph>rev_seq</codeph> values of new
+                  items from the active vbucket.</entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-11037" scope="external"
+                    format="html">MB-11037</xref></entry>
+                <entry>High replication latency is observed due to the racing in pausing and
+                  resuming of the TAP connection notifier.</entry>
+              </row>
+              <row rowsep="1">
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-11411" scope="external"
+                    format="html">MB-11411</xref></entry>
+                <entry>Warmup with an access log always sets the loaded document's
+                    <codeph>rev-id</codeph> to <codeph>1</codeph>.</entry>
+              </row>
+              <row>
+                <entry>Views</entry>
+                <entry> </entry>
+                <entry> </entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-10921" scope="external"
+                    format="html">MB-10921</xref></entry>
+                <entry>File descriptor leak is detected in views with reduce.</entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-11187" scope="external"
+                    format="html">MB-11187</xref></entry>
+                <entry>V8 crashes on memory allocation errors and closes Erlang on some indexing
+                  loads .</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      
+      
+      <section>
+        <title>Known issues in 3.0.0</title>
+        <p>The following known issues are associated with Couchbase Server release 3.0.0:</p>
+        <table>
+          
+          <tgroup cols="3">
+            <colspec colname="col1" colwidth="1*"/>
+            <colspec colname="col2" colwidth="1*"/>
+            <colspec colname="col3" colwidth="4*"/>
+            <thead>
+              <row rowsep="1">
+                <entry/>
+                <entry>Issue</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>DCP/rebalance</entry>
+                <entry/>
+                <entry/>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12226" scope="external"
+                  format="html">MB-12226</xref></entry>
+                <entry>Rebalance operation hung during the online upgrade.</entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12125" scope="external"
+                  format="html">MB-12125</xref></entry>
+                <entry>Rebalance swap regression of 39.3% when compared with release 2.5.1.</entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-12124" scope="external"
+                  format="html">MB-12124</xref></entry>
+                <entry>Rebalance after failover, 3 to 4 nodes regression of 54.9% when compared with
+                  2.5.1.</entry>
+              </row>
+              <row rowsep="1">
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-11642" scope="external"
+                  format="html">MB-11642</xref></entry>
+                <entry>Intra-replication falling far behind under moderate to heavy workload when
+                  XDCR is enabled on the small-scale hardware (for example, AWS instances).</entry>
+              </row>
+              <row>
+                <entry>Views</entry>
+                <entry> </entry>
+                <entry> </entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-11917" scope="external"
+                  format="html">MB-11917</xref></entry>
+                <entry>One node is slow, possibly due to the Erlang scheduler.</entry>
+              </row>
+              <row>
+                <entry/>
+                <entry><xref href="http://www.couchbase.com/issues/browse/MB-11589" scope="external"
+                  format="html">MB-11589</xref></entry>
+                <entry>Sliding <codeph>endseqno</codeph> during initial index build or DCP reading
+                  from disk snapshot results in longer <codeph>stale=false</codeph> query latency
+                  and index start-up time.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+    </body>
+  </topic>
+</topic>

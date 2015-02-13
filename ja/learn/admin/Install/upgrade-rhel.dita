@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_flq_fsy_p4">
+  <title>Upgrading on RHEL</title><shortdesc>For RHEL or CentoOS, you can perform an upgrade installation using
+    the RPM package.</shortdesc>
+  <body>
+    <p>Use the following command to keep the data and existing
+      configuration.</p>
+    
+    <codeblock>rpm -U couchbase-server-architecture___meta_current_version__.rpm</codeblock>
+    
+   
+  </body>
+</topic>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_ldx_gqs_g4">
+  <title>Installing on RHEL</title><shortdesc>Install Couchbase Server on RHEL using the <cmdname>rpm</cmdname> command-line tool with the downloaded RPM
+    package.</shortdesc>
+  <body>
+    <note type="important">RHEL6 and other newer Linux distributions running on physical hardware are known to have transparent 
+     <term> huge pages</term> feature enabled. While this can provide a measurable performance boost, under some conditions that the Couchbase Server 
+      is known to trigger, this option may cause severe delays in page allocations. Therefore, it is strongly recommended to 
+      disable the transparent huge pages feature when installing the Couchbase Server. </note>
+    <p> Log in as root (superuser) to complete the installation:</p>
+      <codeblock>
+root-&gt; rpm --install couchbase-server-<varname>version</varname>.rpm 
+     </codeblock>
+      <p>where <varname>version</varname> is the version number of the downloaded package.</p>
+      <p>After the <cmdname>rpm</cmdname> command completes, the Couchbase Server starts automatically. It 
+        is configured to automatically start during boot under the 2, 3, 4, and 5 runlevels. Refer to
+        the Red Hat RPM documentation for more information about installing packages using RPM.</p>
+      <p>After installation is completed, the installation process displays a message similar to the following:</p>
+      <codeblock>
+Minimum RAM required : 4 GB 
+    System RAM configured : 8174464 KB
+    Minimum number of processors required :  4 cores 
+    Number of processors on the system : 4 cores
+    
+    
+Starting couchbase-server[ OK ]
+
+You have successfully installed Couchbase Server. 
+    Browse to http://host_name:8091/ to configure your server. 
+   Refer to http://couchbase.com for additional resources.
+
+   Update your firewall configuration 
+    to allow connections to the following ports: 
+   
+    11211, 11210, 11209, 4369, 8091, 8092 and from 21100 to 21299.
+
+
+By using this software you agree to the End User License Agreement. 
+See /opt/couchbase/LICENSE.txt.
+     </codeblock>
+    
+    
+    <p>After the installation is completed, use the Red Hat <cmdname>chkconfig</cmdname> command to
+      manage the Couchbase Server service, including checking the current status and creating the
+      links to turn on and off the automatic start-up. To perform the initial Couchbase Server
+      setup, open a web browser and access the Couchbase Web Console.</p>
+    
+  </body>
+</topic>

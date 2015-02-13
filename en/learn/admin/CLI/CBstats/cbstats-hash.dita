@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbstats-hash">
+	<title>Hash</title>
+	<shortdesc>The <codeph>cbstats hash</codeph> command provides information on vBucket hash tables.</shortdesc>
+	<refbody>
+		<section><title>Description</title>
+		<p>Requesting these stats does affect performance, so don’t do it too regularly, but it’s useful
+				for debugging certain types of performance issues. For example, if your hash table
+				is tuned to have too few buckets for the data load within it, the max_depth will be
+				too large and performance will suffers.</p>
+		
+		<p>It is also possible to get more detailed hash tables stats by using ‘hash detail’. 
+			This prints per-vbucket stats. 
+			Each stat is prefixed with vb_ followed by a number, a colon, then the individual stat
+			name. For example, the stat representing the size of the hash table for vbucket 0 is
+			vb_0:size=.</p>
+		
+		</section>
+		
+		<section><title>Syntax</title>
+		<p>Request syntax:</p>
+		<codeblock>cbstats [hostname]:11210 hash
+cbstats [hostname]:11210 hash detail
+		</codeblock>
+		</section>
+		
+		<section><title>Example: hash</title>
+			<p>Request example:</p>
+			<codeblock>cbstats 10.5.2.54:11210 hash</codeblock></section>
+		
+		<section><title>Example: hash detail</title>
+			<p>Request example:</p>
+			<codeblock>cbstats 10.5.2.54:11210 hash detail</codeblock></section>
+		
+		<section><title>Response: hash</title>
+			<p>Example response:</p>
+			<codeblock>
+ avg_count:    0
+ avg_max:      0
+ avg_min:      0
+ largest_max:  0
+ largest_min:  0
+ max_count:    0
+ min_count:    0
+ total_counts: 0
+			</codeblock>
+		
+			<table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>Stat</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>avg_count</entry>
+							<entry>The average number of items per vbucket</entry>
+						</row>
+						<row>
+							<entry>avg_max</entry>
+							<entry>The average max depth of a vbucket hash table</entry>
+						</row>
+						<row>
+							<entry>avg_min</entry>
+							<entry>The average min depth of a vbucket hash table</entry>
+						</row>
+						<row>
+							<entry>largest_max</entry>
+							<entry>The largest hash table depth of in all vbuckets</entry>
+						</row>
+						<row>
+							<entry>largest_min</entry>
+							<entry>The largest minimum hash table depth of all vbuckets</entry>
+						</row>
+						<row>
+							<entry>max_count</entry>
+							<entry>The largest number of items in a vbucket</entry>
+						</row>
+						<row>
+							<entry>min_count</entry>
+							<entry>The smallest number of items in a vbucket</entry>
+						</row>
+						<row>
+							<entry>total_counts</entry>
+							<entry>The total number of items in all vbuckets</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</section>
+
+		
+		<section><title>Response: hash detail</title>
+			<p>Example response:</p>
+			<codeblock>
+ avg_count:                0
+ avg_max:                  0
+ avg_min:                  0
+ largest_max:              0
+ largest_min:              0
+ max_count:                0
+ min_count:                0
+ total_counts:             0
+ vb_0:counted:             0
+ vb_0:locks:               5
+ vb_0:max_depth:           0
+ vb_0:mem_size:            0
+ vb_0:mem_size_counted:    0
+ vb_0:min_depth:           0
+ vb_0:reported:            0
+ vb_0:resized:             0
+ vb_0:size:                3079
+ vb_0:state:               replica
+ ...
+			</codeblock>
+		
+			<table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>Stat</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>state</entry>
+							<entry>The current state of this vbucket</entry>
+						</row>
+						<row>
+							<entry>size</entry>
+							<entry>Number of hash buckets</entry>
+						</row>
+						<row>
+							<entry>locks</entry>
+							<entry>Number of locks covering hash table operations</entry>
+						</row>
+						<row>
+							<entry>min_depth</entry>
+							<entry>Minimum number of items found in a bucket</entry>
+						</row>
+						<row>
+							<entry>max_depth</entry>
+							<entry>Maximum number of items found in a bucket</entry>
+						</row>
+						<row>
+							<entry>reported</entry>
+							<entry>Number of items this hash table reports having</entry>
+						</row>
+						<row>
+							<entry>counted</entry>
+							<entry>Number of items found while walking the table</entry>
+						</row>
+						<row>
+							<entry>resized</entry>
+							<entry>Number of times the hash table resized</entry>
+						</row>
+						<row>
+							<entry>mem_size</entry>
+							<entry>Running sum of memory used by each item</entry>
+						</row>
+						<row>
+							<entry>mem_size_counted</entry>
+							<entry>Counted sum of current memory used by each item</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</section>
+		
+	</refbody>
+</reference>

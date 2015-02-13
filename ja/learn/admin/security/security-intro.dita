@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!--
+
+-->
+<concept xml:lang="ja" id="concept_kx3_kkf_xp">
+	<title>セキュリティ</title>
+	<shortdesc>Couchbase Server 3.0は、アプリケーションや管理者向けに安全なネットワーク経由のデータアクセスをサポートしています。</shortdesc>
+	<conbody>
+		<p>Security is very important for big data applications, which process a large amount of
+			unstructured data coming in big volumes and at high speed. </p>
+		
+		<p>Couchbase Server provides security features associated with administrative access and
+			client access via Secure Socket Layer (SSL). </p>
+		
+	</conbody>
+</concept>

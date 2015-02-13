@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE topic
+  PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic xml:lang="en-us" id="topic3716">
+  <title>Common administration tasks</title><shortdesc>Couchbase Server is capable to perform self-managing tasks such as general running and
+    configuration.</shortdesc>
+  <body>
+    <p>The management
+      infrastructure and components of the Couchbase Server system are able to adapt to the
+      different events within the cluster. There are only a few different configuration variables,
+      and the majority of these configuration variables do not need to be modified or altered in most
+      installations.</p>
+    <p>However, there are a number of different tasks that are performed over the lifetime of the
+      cluster environment including:</p>
+    <ul>
+      <li>Expanding your cluster when you need to expand the RAM or disk I/O capabilities.</li>
+      <li>Failing over and altering the size of your cluster as your application demands change.</li>
+      <li>Monitoring and reacting to the various statistics reported by the server to ensure that
+        your cluster is operating at the highest performance level.</li>
+      <li>Backing up the cluster.</li>
+    </ul>
+    <p>These tasks require additional activities such as:</p>
+    <section><title>Increasing or reducing your cluster size</title>
+    <p>When your cluster requires additional RAM, disk I/O, or network capacity, you will need to
+      expand its size. If the increased load is only a temporary event, then you may
+      later want to reduce the size of your cluster.</p>
+    <p>You can add or remove multiple nodes from your cluster at the same time. Once the new node
+      arrangement has been configured, the process of re-distributing the data and bringing the nodes
+      into the cluster is called <term>rebalancing</term>. The rebalancing process moves the
+      data around the cluster to match the new structure, and can be performed live while the
+      cluster is still servicing application data requests.</p>
+    </section>
+    
+
+    <section><title>Warming up a server</title>
+    
+    <p>In some cases you might want to explicitly shut down a server
+      and then restart it. Typically, the server has been running for a while and contains data stored on
+      disk when you restart it. In this case, the server needs to undergo a warmup process before it
+      can again serve data requests. </p>
+    </section>
+    
+    <section><title>Handling a failover situation</title>
+    <p>A failover situation occurs when one of the nodes within your cluster fails, usually due to a
+      significant hardware or network problem. Couchbase Server is designed to cope with this
+      situation through the use of replicas, which provide copies of the data around the cluster
+      that can be activated when a node fails.</p>
+    <p>Couchbase Server provides two mechanisms for handling failovers. <dl>
+          <dlentry>
+            <dt>Automated failover</dt>
+            <dd>It enables the cluster to operate autonomously and react to failovers without human
+              intervention.</dd>
+          </dlentry>
+        </dl><dl>
+          <dlentry>
+            <dt>Monitored failover</dt>
+            <dd>It enables you to perform a controlled failure by manually failing over a node.
+              There are additional considerations for each failover type, and you should read the
+              notes to ensure that you know the best solution for your specific situation.</dd>
+          </dlentry>
+        </dl></p>
+    </section>
+    
+    <section><title>Managing database and view fragmentation</title>
+    <p>The database and view index files created by Couchbase Server can become fragmented. This can
+      cause performance problems and an increase in space used on disk by the files 
+      compared to the size of the information they hold. Compaction reduces this fragmentation to
+      reclaim the disk space.</p>
+    </section>
+
+    <section><title>Backing up and restoring your cluster data</title>
+    <p>Couchbase Server automatically distributes your data across the nodes within the cluster, and
+      supports replicas of that data. It is a good practice to have a backup of your bucket
+      data in the event of a more significant failure.</p>
+    </section>
+  </body>
+  
+  <related-links>
+    <linklist>
+      <link href="../CLI/cli-overview.dita"></link>
+      <link href="../REST/overview-rest-api.dita"></link>
+    </linklist>
+  </related-links>
+</topic>

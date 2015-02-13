@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_vkn_kqj_dq">
+  <title>Specifying backoff for replication</title>
+  <shortdesc>Data replication enables high availability of data in a cluster so that data is still available at a replica in case any node in a cluster fails. </shortdesc>
+  <body>
+      
+      <p>Your cluster is set up to perform some level of data replication between nodes within
+        the cluster for any given node. Every node contains both active data and replica data.
+        Active data is all the data that had been written to the node from a client, while
+        replica data is a copy of data from another node in the cluster. </p>
+      
+      <p>On any given node, both active and replica data must wait in a disk write queue before
+        being persisted, or written to disk. If your node experiences a heavy load of writes, the replication
+        queue can become overloaded with replica and active data waiting to be persisted.</p>
+      
+      <p>By default, a node will send backoff messages when the disk write queue on the node
+        contains one million items or 10%. When other nodes receive this message, they will
+        reduce the rate at which they send replica data. You can configure this default to be a
+        given number so long as this value is less than 10% of the total items currently in a
+        replica partition. For instance, if a node contains 20 million items, when the disk write
+        queue reaches 2 million items a backoff message will be sent to nodes sending replica
+        data. You use the Couchbase command-line tool, <cmdname>cbepctl</cmdname> to change this
+        configuration:</p>
+      
+      <dl>
+        <dlentry>
+          <dt>Example 1</dt>
+          <dd>A node sends replication backoff requests when it has two
+            million items or 10% of all items, whichever is greater.
+            <codeblock>&gt; ./cbepctl 10.5.2.31:11210 -b bucket_name -p bucket_password set tap_param tap_throttle_queue_cap 2000000
+</codeblock></dd>
+        </dlentry>
+      </dl>
+     
+  <dl>
+    <dlentry>
+      <dt>Example 2</dt>
+      <dd>The default percentage, used to manage the replication stream,
+        is changed. If the items in a disk write queue reach the greater of this percentage or a
+        specified number of items, replication requests slow down:
+        <codeblock>setting param: tap_throttle_queue_cap 2000000
+</codeblock>
+      </dd>
+    </dlentry>
+  </dl>
+      
+  <dl>
+    <dlentry>
+      <dt>Example 3</dt>
+      <dd>The threshold is set to 15% of all items at a replica node.
+        When a disk write queue on a node reaches this point, it sends replication backoff
+        requests to other nodes.
+        <codeblock>&gt; ./cbepctl  10.5.2.31:11210 set -b bucket_name tap_param tap_throttle_cap_pcnt 15
+</codeblock></dd>
+    </dlentry>
+  </dl>    
+       
+      <note type="important">The <codeph>cbepctl</codeph> tool provides per-node, per-bucket
+        operations. That means that if you want to perform this operation, you must specify the
+        IP address of a node in the cluster and a named bucket. If you do not provided a named
+        bucket, the server applies the setting to any default bucket that exists at the
+        specified node. If you want to perform this operation for an entire cluster, perform the
+        command for every node/bucket combination that exists for that cluster.</note>
+      <p> You can also monitor the progress of this backoff operation in Couchbase Web Console
+        under <menucascade>
+          <uicontrol>Tap Queue Statistics</uicontrol><uicontrol>Back-off rate.</uicontrol>
+        </menucascade> </p>
+    
+  </body>
+</topic>

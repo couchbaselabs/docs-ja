@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_ns4_g2r_5q">
+  <title>Enterprise edition features</title><shortdesc>Several features are included only in Couchbase Server 3.0  Enterprise
+    edition.</shortdesc>
+  <body>
+    <p>These features are:
+      <ul>
+        <li>
+          <xref href="Concepts/concept-rack-awareness.dita#concept_exs_rrg_rn"/></li>
+        <li><xref href="security/security-admin-access.dita#security-admin-access"/></li>
+        <li><xref href="security/security-client-ssl.dita#security-client-ssl"/></li>
+        <li><xref href="XDCR/xdcr-dataEncryption.dita#topic1666"/></li>
+        <li><xref href="Tasks/tasks-backup-restore-incremental.dita">Incremental backup and
+            restore</xref></li>
+      </ul>
+    </p>
+  </body>
+</topic>
+

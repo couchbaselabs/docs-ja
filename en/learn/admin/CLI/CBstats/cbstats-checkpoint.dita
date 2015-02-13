@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbstats-checkpoint">
+	
+	<title>Checkpoint</title>
+	<shortdesc>Checkpoint stats provide detailed information on per-vbucket checkpoint
+		data structure.</shortdesc>
+	<refbody>
+		<section><title>Description</title>
+
+
+		<p>Like Hash stats, requesting these stats has some impact on performance. Therefore, do not poll
+				them from the server frequently.</p>
+			
+			<p>The following are command options:</p>
+			
+			<table>
+				<tgroup cols="2">
+					<thead>
+						<row>
+							<entry>Options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>-h, --help</entry>
+							<entry>Shows the help message and exits.</entry>
+						</row>
+						<row>
+							<entry>-a</entry>
+							<entry>Iterates over all the vBuckets. Requires administrator username and password.</entry>
+						</row>
+						<row>
+							<entry>-b [bucket-name]</entry>
+							<entry>The vBucket to get the status from. Default: default</entry>
+						</row>
+						<row>
+							<entry>-p [password]</entry>
+							<entry>The password for the vBucket if one exists.</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+			
+			
+	<table>
+		<title>cbstats checkpoint values</title>
+		<tgroup cols="2"><colspec colname="col1"/><colspec colname="col2"/><thead><row>
+	<entry>Stat</entry>
+	<entry>Description</entry>
+</row></thead><tbody><row>
+	<entry>cursor_name:cursor_checkpoint_id</entry>
+	<entry>Checkpoint ID at which the cursor is</entry>
+</row><row>
+	<entry/>
+	<entry>name ‘cursor_name’ is pointing now</entry>
+</row><row>
+	<entry>open_checkpoint_id</entry>
+	<entry>ID of the current open checkpoint</entry>
+</row><row>
+	<entry>num_tap_cursors</entry>
+	<entry>Number of referencing TAP cursors</entry>
+</row><row>
+	<entry>num_checkpoint_items</entry>
+	<entry>Number of total items in a checkpoint</entry>
+</row><row>
+	<entry/>
+	<entry>data structure</entry>
+</row><row>
+	<entry>num_open_checkpoint_items</entry>
+	<entry>Number of items in the open checkpoint</entry>
+</row><row>
+	<entry>num_checkpoints</entry>
+	<entry>Number of checkpoints in a checkpoint</entry>
+</row><row>
+	<entry/>
+	<entry>data structure</entry>
+</row><row>
+	<entry>num_items_for_persistence</entry>
+	<entry>Number of items remaining for persistence</entry>
+</row><row>
+	<entry>checkpoint_extension</entry>
+	<entry>True if the open checkpoint is in the</entry>
+</row><row>
+	<entry/>
+	<entry>extension mode</entry>
+</row><row>
+	<entry>state</entry>
+	<entry>The state of the vbucket this checkpoint</entry>
+</row><row>
+	<entry/>
+	<entry>contains data for</entry>
+</row><row>
+	<entry>last_closed_checkpoint_id</entry>
+	<entry>The last closed checkpoint number</entry>
+</row><row>
+	<entry>persisted_checkpoint_id</entry>
+	<entry>The last persisted checkpoint number</entry>
+</row>
+</tbody>
+		
+		</tgroup>
+	</table>
+			
+		</section>
+		
+		<section><title>Syntax</title>
+			<p>Request syntax:</p>
+			<codeblock>
+cbstats [host]:11210 checkpoint
+			</codeblock>
+		</section>
+		
+		<section><title>Example</title>
+		<p>Request example:</p>
+			<codeblock>
+cbstats 10.5.2.117:11210 checkpoint
+			</codeblock>
+		</section>
+		
+		<section><title>Response</title>
+			<p>Response example:</p>
+			<codeblock>
+ vb_0:last_closed_checkpoint_id:    1
+ vb_0:num_checkpoint_items:         1
+ vb_0:num_checkpoints:              1
+ vb_0:num_items_for_persistence:    0
+ vb_0:num_open_checkpoint_items:    0
+ vb_0:num_tap_cursors:              0
+ vb_0:open_checkpoint_id:           2
+ vb_0:persisted_checkpoint_id:      1
+ vb_0:state:                        active
+ ...
+ vb_9:last_closed_checkpoint_id:    1
+ vb_9:num_checkpoint_items:         1
+ vb_9:num_checkpoints:              1
+ vb_9:num_items_for_persistence:    0
+ vb_9:num_open_checkpoint_items:    0
+ vb_9:num_tap_cursors:              0
+ vb_9:open_checkpoint_id:           2
+ vb_9:persisted_checkpoint_id:      1
+ vb_9:state:                        active
+			</codeblock>
+		</section>
+	</refbody>
+
+
+
+
+</reference>

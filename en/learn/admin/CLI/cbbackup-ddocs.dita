@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="cbbackup-ddocs">
+  <title>Backing up design documents</title>
+  <shortdesc>Design documents are backed up with the <codeph>design_doc_only=1</codeph> option.</shortdesc>
+  <refbody>
+     <section><title>Description</title>
+
+    <p>Backup only design documents from a cluster or bucket with the option,
+               <codeph>design_doc_only=1</codeph>. Restore only design documents with
+               <codeph>cbrestore design_doc_only=1</codeph>.</p>
+     </section>
+     
+     <section><title>Syntax</title>
+        <p>Basic syntax:</p>
+        <codeblock>cbbackup http://[host]:8091 [backup-location] -x design_doc_only=1 -b [bucket-name]</codeblock>
+     </section>
+     
+     <section><title>Example</title>
+        <p>The following example creates a backup copy
+           of all design documents from <codeph>foo-bucket</codeph> and store this as
+           <codeph>design.json</codeph> in the directory <codeph>~/backup/foo-bucket</codeph>.
+           If a bucket is not specified, design documents for all buckets in the cluster are backed
+           up. </p>
+
+    <codeblock>cbbackup http://10.5.2.117:8091 ~/backup -x design_doc_only=1</codeblock>
+    
+    
+    
+    
+        </section>
+     
+     <section><title>Response</title>
+        <p>The following example response shows only design documents for all buckets being backed up. 
+        In this case, the source node had two (2) buckets including the default bucket.</p>
+        <codeblock>
+transfer design doc only. bucket msgs will be skipped.
+transfer design doc only. bucket msgs will be skipped.
+done
+        </codeblock>
+        
+     <p>In the following output, two design documents were backed up.</p>
+    
+    <codeblock>[
+   {
+      "controllers":{
+         "compact":"/pools/default/buckets/default/ddocs/_design%2Fddoc1/controller/compactView",
+         "setUpdateMinChanges":"/pools/default/buckets/default/ddocs/_design%2Fddoc1/controller/setUpdateMinChanges"
+      },
+      "doc":{
+         "json":{
+            "views":{
+               "view1":{
+                  "map":"function(doc){emit(doc.key,doc.key_num);}"
+               },
+               "view2":{
+                  "map":"function(doc,meta){emit(meta.id,doc.key);}"
+               }
+            }
+         },
+         "meta":{
+            "rev":"1-6f9bfe0a",
+            "id":"_design/ddoc1"
+         }
+      }
+   },
+   {
+      "controllers":{
+         "compact":"/pools/default/buckets/default/ddocs/_design%2Fddoc2/controller/compactView",
+         "setUpdateMinChanges":"/pools/default/buckets/default/ddocs/_design%2Fddoc2/controller/setUpdateMinChanges"
+      },
+      "doc":{
+         "json":{
+            "views":{
+               "dothis":{
+                  "map":"function (doc, meta) {\n  emit(meta.id, null);\n}"
+               }
+            }
+         },
+         "meta":{
+            "rev":"1-4b533871",
+            "id":"_design/ddoc2"
+         }
+      }
+   },
+   {
+      "controllers":{
+         "compact":"/pools/default/buckets/default/ddocs/_design%2Fdev_ddoc2/controller/compactView",
+         "setUpdateMinChanges":"/pools/default/buckets/default/ddocs/_design%2Fdev_ddoc2/controller/setUpdateMinChanges"
+      },
+      "doc":{
+         "json":{
+            "views":{
+               "dothat":{
+                  "map":"function (doc, meta) {\n  emit(meta.id, null);\n}"
+               }
+            }
+         },
+         "meta":{
+            "rev":"1-a8b6f59b",
+            "id":"_design/dev_ddoc2"
+         }
+      }
+   }
+]
+</codeblock>
+     </section>
+  </refbody>
+</reference>

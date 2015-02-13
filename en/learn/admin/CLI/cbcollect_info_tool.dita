@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbcollect-info-tool">
+	<title>cbcollect_info tool</title>
+	<shortdesc>The <codeph>cbcollect_info</codeph> tool provides detailed statistics for a specific node.</shortdesc>
+	<refbody>
+		<section><title>Description</title>
+			
+			<p>This tool is a per-node operation. 
+				This command collects information from an individual Couchbase Server node.
+				To collect diagnostic information for an entire cluster, perform the command for every node that exists for that
+				cluster.
+				If you are experiencing problems with multiple nodes in a cluster, you may need to run it on
+				all nodes in a cluster.
+			</p>
+			<p>A root account is required to run this command and collect all the server information
+				needed. There are internal server files and directories that this tool accesses which
+				require root privileges.</p>
+			<p>To use this command, remotely connect to the machine which contains the Couchbase
+				Server then issue the command with options. This command is typically run under the
+				direction of technical support at Couchbase and generates a large .zip file. This
+				archive contains files which contain performance statistics and
+				extracts from server logs.
+			</p>
+			
+			
+		<note type="attention"><codeph>cbcollect_info</codeph> is one of the most important diagnostic tools used by Couchbase technical support.</note>
+		
+		<p>This tool is at the following locations</p>
+		<table>
+			<tgroup cols="2">
+				<colspec colname="col1"/>
+				<colspec colname="col2"/>
+				<thead>
+					<row>
+						<entry>Operating System</entry>
+						<entry>Location</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>Linux</entry>
+						<entry>/opt/couchbase/bin/cbcollect_info</entry>
+					</row>
+					<row>
+						<entry>Windows</entry>
+						<entry>C:\Program Files\Couchbase\Server\bin\cbcollect_info</entry>
+					</row>
+					<row>
+						<entry>Mac OS X</entry>
+						<entry>/Applications/Couchbase Server.app/Contents/Resources/couchbase-core/bin/cbcollect_info</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		
+			<p>The tool creates the following log files in the output file:</p>
+			<table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>Log file</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>couchbase.log</entry>
+							<entry>OS-level information about a node.</entry>
+						</row>
+						<row>
+							<entry>ddocs.log</entry>
+							<entry>Contains diagnostic dumps design documents and replication documents from this node.</entry>
+						</row>
+						<row>
+							<entry>diag.log</entry>
+							<entry>Contains all kinds of internal diagnostics (list and states of processes, user-visible logs, in-memory stats, etc) 
+								from within live node.</entry>
+						</row>
+						<row>
+							<entry>ini.log</entry>
+							<entry>Contains dumps of couchdb .ini files.</entry>
+						</row>
+						<row>
+							<entry>memcached.log</entry>
+							<entry>Contains logs from memcached.</entry>
+						</row>
+						<row>
+							<entry>ns_server.babysitter.log</entry>
+							<entry>Logs of babysitter.</entry>
+						</row>
+						<row>
+							<entry>ns_server.couchdb.log</entry>
+							<entry>Information about the persistence layer for a node.</entry>
+						</row>
+						<row>
+							<entry>ns_server.debug.log</entry>
+							<entry>Debug-level information for the cluster management component of this
+								node.</entry>
+						</row>
+						<row>
+							<entry>ns_server.error.log</entry>
+							<entry>Error-level information for the cluster management component of this
+								node.</entry>
+						</row>
+						<row>
+							<entry>ns_server.http_access.log</entry>
+							<entry>Contains log of http requests to port 8091.</entry>
+						</row>
+						<row>
+							<entry>ns_server.info.log</entry>
+							<entry>Info-level entries for the cluster management component of this
+								node.</entry>
+						</row>
+						<row>
+							<entry>ns_server.mapreduce_errors.log</entry>
+							<entry>Contains logs of errors from map/reduce functions.</entry>
+						</row>
+						<row>
+							<entry>ns_server.reports.log</entry>
+							<entry>Contains crash reports of erlang services.</entry>
+						</row>
+						<row>
+							<entry>ns_server.ssl_proxy.log</entry>
+							<entry>Los of the ssl proxy component.</entry>
+						</row><row>
+							<entry>ns_server.stats.log</entry>
+							<entry>Logs of statistic related components of ns_server.</entry>
+						</row>
+						<row>
+							<entry>ns_server.views.log</entry>
+							<entry>Includes information about indexing, time taken for indexing, queries
+								which have been run, and other statistics about views.</entry>
+						</row>
+						<row>
+							<entry>ns_server.xdcr_errors.log</entry>
+							<entry>Error-level messages of the ns_server.</entry>
+						</row>
+						<row>
+							<entry>ns_server.xdcr.log</entry>
+							<entry>XDCR logs.</entry>
+						</row>
+						<row>
+							<entry>stats.log</entry>
+							<entry>The results from multiple <codeph>cbstats</codeph> options run for
+								the node.</entry>
+						</row>
+						<row>
+							<entry>syslog.tar.gz</entry>
+							<entry>Archive of the operating system logs.</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</section>
+		
+		<section><title>CLI command and parameters</title>
+			<p>The following describes usage, where <codeph>output-file</codeph> is the name of the .zip file 
+				to create and send to Couchbase technical support.</p>
+		<codeblock>cbcollect_info [options] [output-file]</codeblock>
+			
+		<p>The<codeph>cbcollect_info</codeph> command gathers statistics  from an
+				individual node in the cluster.</p>
+			
+			<table>
+				<title>cbcollect_info options</title>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>Parameter</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>-h, --help</entry>
+							<entry>Shows help information.</entry>
+						</row>
+						<row>
+							<entry>-r ROOT</entry>
+							<entry>Root directory. Default to <codeph>/opt/couchbase/bin/..</codeph></entry>
+						</row>
+						<row>
+							<entry>-v</entry>
+							<entry>Increases verbosity level. If specified, debugging information for
+								<codeph>cbcollect_info</codeph> is also displayed on your console.
+							</entry>
+						</row>
+						<row>
+							<entry>-p</entry>
+							<entry>Gathers only product-related information.</entry>
+						</row>
+						<row>
+							<entry>-d</entry>
+							<entry>Dumps a list of commands that <codeph>cbcollect_info</codeph> needs.</entry>
+						</row>
+						<row>
+							<entry>--initargs-INITARG</entry>
+							<entry>Ther server <codeph>initargs</codeph> path.</entry>
+						</row>
+						<row>
+							<entry>--single-node-diag</entry>
+							<entry>Collects on aper node basis, diagnostics on just this node. The default is all reachable nodes.</entry>
+						</row>
+						<row>
+							<entry>--upload-host=UPLOAD_HOST</entry>
+							<entry>Fully-qualified domain name of the host you want the logs uploaded to. 
+								The protocol prefix of the domain name, <codeph>https://</codeph>, is optional. 
+								It is the default only supported protocol.</entry>
+						</row>
+						<row>
+							<entry>--customer=UPLOAD_CUSTOMER</entry>
+							<entry>
+								Customer name. This value is a string with a maximum length of 50 characters that contains only the following characters: [A-Za-z0-9_.-]. 
+								If any other characters are included in the string, the request is rejected. 
+							</entry>
+						</row>
+						<row>
+							<entry>--ticket=UPLOAD_TICKET</entry>
+							<entry>Couchbase support ticket number. This value is a string with a maximum length of 7 character that contains only digits 0-9. The ticket number is optional and is used only in conjunction with the --upload option.
+							</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+
+			
+		</section>
+		
+		<section><title>Example</title>
+			<p>To create a diagnostics .zip file, log onto the node and run the <codeph>cbcollect_info</codeph> tool.</p>
+			<codeblock>
+cbcollect_info collect.zip
+			</codeblock>
+		</section>
+		
+		<section><title>Response</title>
+			
+			<p>The following example response shows partial output when running the <codeph>cbcollect_info</codeph> command.</p>
+			<codeblock>
+uname (uname -a) - OK
+time and TZ (date; date -u) - OK
+raw /etc/sysconfig/clock (cat /etc/sysconfig/clock) - OK
+raw /etc/timezone (cat /etc/timezone) - Exit code 1
+System Hardware (lshw -json || lshw) - Exit code 127
+
+...
+
+adding: /tmp/tmpMYbSyD/couchbase.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/couchbase.log
+adding: /tmp/tmpMYbSyD/ns_server.xdcr.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.xdcr.log
+adding: /tmp/tmpMYbSyD/ns_server.couchdb.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.couchdb.log
+adding: /tmp/tmpMYbSyD/stats.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/stats.log
+adding: /tmp/tmpMYbSyD/ini.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ini.log
+adding: /tmp/tmpMYbSyD/ns_server.error.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.error.log
+adding: /tmp/tmpMYbSyD/ns_server.ssl_proxy.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.ssl_proxy.log
+adding: /tmp/tmpMYbSyD/ns_server.views.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.views.log
+adding: /tmp/tmpMYbSyD/ns_server.info.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.info.log
+adding: /tmp/tmpMYbSyD/ns_server.xdcr_errors.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.xdcr_errors.log
+adding: /tmp/tmpMYbSyD/ns_server.mapreduce_errors.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.mapreduce_errors.log
+adding: /tmp/tmpMYbSyD/diag.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/diag.log
+adding: /tmp/tmpMYbSyD/ns_server.http_access.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.http_access.log
+adding: /tmp/tmpMYbSyD/syslog.tar.gz -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/syslog.tar.gz
+adding: /tmp/tmpMYbSyD/ns_server.debug.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.debug.log
+adding: /tmp/tmpMYbSyD/ddocs.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ddocs.log
+adding: /tmp/tmpMYbSyD/ns_server.reports.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.reports.log
+adding: /tmp/tmpMYbSyD/memcached.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/memcached.log
+adding: /tmp/tmpMYbSyD/ns_server.babysitter.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.babysitter.log
+adding: /tmp/tmpMYbSyD/ns_server.stats.log -> cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.stats.log
+			</codeblock>
+			
+		</section>
+		
+		
+		
+	</refbody>
+	<related-links>
+		<linklist>
+			<link href="../CLI/cbstats-intro.dita"/>
+			<link
+				href="http://www.couchbase.com/wiki/display/couchbase/Working+with+the+Couchbase+Technical+Support+Team"
+				scope="external" format="html">
+				<linktext>Working with Couchbase Customer Support</linktext>
+			</link>
+		</linklist>
+	</related-links>
+</reference>

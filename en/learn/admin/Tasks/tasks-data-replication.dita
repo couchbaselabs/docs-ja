@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA General Task//EN" "generalTask.dtd">
+<task id="task_dqs_tz3_dq">
+    <title>Providing data replication</title><shortdesc>You can configure data replication for each bucket in a cluster.</shortdesc>
+ 
+    <taskbody>
+        <context>
+           
+               
+                <p>You can also configure
+                    different buckets to have different levels of data replication, depending how many
+                    copies of your data you need. For the highest level of data redundancy and availability,
+                    you can specify that a data bucket will be replicated three times within the
+                    cluster.</p>
+                <p>Replication is enabled once the number of nodes in your cluster meets the number of
+                    replicas you specify. For example, if you configure three replicas for a data bucket,
+                    replication will only be enabled once you have four nodes in the cluster.</p>
+                
+                <p>After you specify the number of replicas you want for a bucket and then create the
+                    bucket, you cannot change the value. Therefore be certain you specify the number of
+                    replicas you truly want.</p>
+            
+            
+        </context>
+    </taskbody>
+</task>

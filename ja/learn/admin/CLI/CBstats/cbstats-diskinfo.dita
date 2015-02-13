@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="cbstats-diskinfo">
+  <title>Diskinfo</title>
+  <shortdesc>The <codeph>cbstats diskinfo</codeph> command provides data and file size information.</shortdesc>
+  <refbody>
+    <section><title>CLI command and parameters</title>
+      <p></p>
+      <codeblock>cbstats diskinfo</codeblock>
+      
+    </section>
+    
+    <section><title>Syntax</title>
+      <p>Request syntax:</p>
+      <codeblock>cbstats [localhost]:11210 diskinfo</codeblock>
+    </section>
+    
+    <section><title>Example</title>
+      <p>Example request:</p>
+      <codeblock>cbstats 10.5.2.54:11210 diskinfo</codeblock>
+      
+      </section>
+    
+    <section><title>Response</title>
+      <p>Example response:</p>
+      <codeblock>
+ ep_db_data_size: 121104
+ ep_db_file_size: 19036812
+      </codeblock>
+    </section>
+    
+    
+  </refbody>
+</reference>

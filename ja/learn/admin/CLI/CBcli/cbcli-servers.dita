@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbcli-servers">
+    <title>Server nodes</title>
+    <shortdesc>Managing server nodes in a cluster involve a variety of
+            <codeph>couchbase-cli</codeph> tool commands.</shortdesc>
+    <refbody>
+        <section><title>Description</title>
+            <p>This section provides examples of miscellaneous <codeph>couchbase-cli</codeph> tool
+                commands for cluster operations.</p>
+        
+        
+        
+        <p>To list servers in a cluster:</p>
+        <codeblock>
+couchbase-cli server-list -c 192.168.0.1:8091
+</codeblock>
+        
+        
+        <p>To retrieve server information:</p>
+            <codeblock>couchbase-cli server-info -c 192.168.0.1:8091
+</codeblock></section>
+       
+        
+        <section><title>Example: Setting cluster parameters</title><p>The following example sets the
+                username, password, port and ram
+                quota:</p>
+            <codeblock>couchbase-cli cluster-init -c 192.168.0.1:8091 
+    --cluster-init-username=Administrator 
+    --cluster-init-password=password 
+    --cluster-init-port=8080 
+    --cluster-init-ramsize=300
+</codeblock>
+            
+            <p>The following example changes the cluster username, password, port and ram
+            quota:</p>
+            <codeblock>couchbase-cli cluster-edit -c 192.168.0.1:8091 
+    --cluster-username=Administrator 
+    --cluster-password=password 
+    --cluster-port=8080 
+    --cluster-ramsize=300
+</codeblock></section>
+        
+        
+        <section><title>Example: Setting data paths</title>
+            <p>To set a data path for an unprovisioned cluster:</p>
+            <codeblock>
+couchbase-cli node-init -c 192.168.0.1:8091 
+    --node-init-data-path=/tmp/data 
+    --node-init-index-path=/tmp/index
+</codeblock>
+
+        <p>To change the data path and hostname for an unprovisioned cluster:</p>
+            
+            <codeblock>
+couchbse-cli node-init -c 192.168.0.1:8091 
+    --node-init-data-path=/tmp/data 
+    --node-init-index-path=/tmp/index 
+    --node-init-hostname=myhostname 
+    -u Administrator -p password 
+</codeblock>
+        </section>
+            
+            
+
+    </refbody>
+</reference>

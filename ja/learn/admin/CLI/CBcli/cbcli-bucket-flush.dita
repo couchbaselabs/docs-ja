@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="cbcli-bucket-flush">
+  <title>Flushing buckets</title>
+  <shortdesc>Buckets are flushed by enable the flush option then flushing.</shortdesc>
+  <refbody>
+    <section><title>Description</title> Flushing buckets involves: <ol>
+        <li>Enable the flush buckets option.</li>
+        <li>Flush the bucket.</li>
+      </ol>
+      <p>When you want to flush a data bucket, first enable this option and then actually issue the
+        command to flush the data bucket. The <codeph>--enable-flush</codeph> option is either true
+        or false. False is 0, meaning, do not enable flush (default). True is 1, meaning enable
+        flush.</p>
+      <p>You can enable this option when you create the data bucket or edit bucket properties.</p>
+      <note type="important">After you explicitly enable data bucket flush, flush the data from the
+        bucket. Flushing a bucket is data destructive. Client applications using this are advised to
+        double check with the end user before sending such a request. You can control and limit the
+        ability to flush individual buckets by setting the <codeph>flushEnabled</codeph> parameter
+        on a bucket in Couchbase web console.</note>
+      <note type="warning">We do not advise that you enable this option if your data bucket is in a
+        production environment. </note>
+    </section>
+    
+    <section><title>CLI command and parameter</title>
+      <p>Flush can be enable when either creating or editing a bucket with the 
+        <codeph>bucket-create</codeph> and <codeph>bucket-edit</codeph> commands.</p>
+      
+      <p>To enable bucket flush when creating a bucket, set the 
+          <codeph>--enable-flush</codeph> parameter to 1:</p>
+      
+      <p>To flush the bucket, use <codeph>couchbase-cli bucket-flush</codeph> command.</p>
+      
+    </section>
+
+      
+    <section><title>Syntax</title>
+      <p>By default, the <codeph>bucket-flush</codeph> command confirms whether or not you truly want to
+        flush the data bucket. You can optionally call this command with the
+        <codeph>--force</codeph> option to flush data without
+        confirmation.</p>
+      <p>Request syntax:</p>
+      <codeblock>
+couchbase-cli bucket-flush -c [localhost]:8091 -u [admin] -p [password] 
+    --bucket=[bucket-name] 
+    --enable-flush=[0 | 1]
+    [OPTIONS]
+      </codeblock>
+      
+    </section>
+
+      
+  <section><title>Example</title>
+    <p>Example request:</p>
+      <codeblock>
+couchbase-cli bucket-flush -c 192.168.0.1:8091 -u Administrator -p password 
+       --bucket=testBucket
+       --enable-flush=1
+</codeblock></section>
+    
+    <section><title>Response</title>
+    <p>Example request response where you need to verify whether you want to flush the bucket. In
+        this case, you need to specify either Yes or No.</p>
+      <codeblock>Running this command will totally PURGE database data from disk. Do you really want to do it? (Yes/No)</codeblock>
+      
+      <p>Example request error response where the bucket that you want to flush is set up with XDCR replication:</p>
+      <codeblock>
+ERROR: unable to bucket-flush; please check if the bucket exists or not; (503) Service Unavailable
+{u'_': u'Cannot flush buckets with outgoing XDCR'}
+      </codeblock>
+    </section>
+
+  </refbody>
+</reference>

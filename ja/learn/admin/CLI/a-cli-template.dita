@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_bcs_xmz_gq">
+  <title>Reference title</title>
+  <shortdesc>Short reference description.</shortdesc>
+  <refbody>
+    <section><title>Description</title>
+      <p></p>
+    </section>
+    
+    <section><title>CLI command and parameters</title>
+      <p></p>
+      <codeblock></codeblock>
+      <table>
+        <tgroup cols="2">
+          <colspec colname="col1"/>
+          <colspec colname="col2"/>
+          <thead>
+            <row>
+              <entry>Parameter</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry></entry>
+              <entry></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      
+    </section>
+    
+    <section><title>Syntax</title>
+      <p>Request syntax:</p>
+      <codeblock></codeblock>
+    </section>
+    
+    <section><title>Example</title>
+      <p>Example request:</p>
+      <codeblock></codeblock>
+      
+      </section>
+    
+    <section><title>Response</title>
+      <p>Example response:</p>
+      <codeblock></codeblock>
+    </section>
+    
+    
+  </refbody>
+</reference>

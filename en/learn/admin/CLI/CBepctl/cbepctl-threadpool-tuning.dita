@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="cbepctl-threadpool-tuning">
+  <title>Changing shared thread pool settings</title>
+  <shortdesc>Dynamic shared thread pool performance is tunable via <codeph>cbepctl set flush_param</codeph> command options.</shortdesc>
+  <refbody>
+    <section><title>Description</title>
+      <p>The dynamic shared thread pool performance is tunable by changing the thread types inside
+        the ep-engine and memcached at run time. <codeph>cbepctl set flush_param</codeph> command
+        options adjust the number of threads that prioritize read, write, non-i/o and auxiliary-i/o
+        operations. These settings take effect immediately and do not require that the bucket be
+        restarted. </p>
+        
+      <note type="note">These settings only take effect if the underlying operating system has a
+        sufficient number of CPU cores. The minimum number of CPU cores is four (4), however,  
+        three (3) additional cores are required for each additional writer thread. 
+        For example, five (5) writer threads is a valid setting if the underlying hardware has at least 
+        sixteen (16) cores.</note>
+    
+      
+      <p>The following are the command option parameters used for performance tuning:</p>
+      <table>
+        <title>Performance tuning parameters</title>
+        <tgroup cols="2">
+          <colspec colname="col1"/>
+          <colspec colname="col2"/>
+          <thead>
+            <row>
+              <entry>Parameter</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>max_num_readers</entry>
+              <entry>Overrides the default number of global threads that prioritize read operations.</entry>
+            </row>
+            <row>
+              <entry>max_num_writers</entry>
+              <entry>Overrides the default number of global threads that prioritize write operations.</entry>
+            </row>
+            <row>
+              <entry>max_num_auxio</entry>
+              <entry>Overrides the default number of global threads that prioritize auxio operations.</entry>
+            </row>
+            <row>
+              <entry>max_num_nonio</entry>
+              <entry>Overrides the default number of global threads that prioritize nonio operations.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      
+    </section>
+    
+    <section><title>Syntax</title>
+      <p>The following is the basic syntax:</p>
+      <codeblock>cbepctl [localhost]:11210 -b [bucket-name] set flush_param [parameter] [value]</codeblock>
+
+    </section>
+    
+    <section><title>Example</title>
+      <p>To set the maximum number of writers, use <codeph>max_num_writers</codeph> parameter. 
+        In the following example, <codeph>max_num_writers</codeph> sets the number of writer threads to five (5).</p>
+      <codeblock>cbepctl 10.5.2.117:11210 -b foo_bucket set flush_param max_num_writers 5 </codeblock>
+      
+      
+      
+    </section>
+    
+    <section><title>Response</title>
+      <p>The following is an example response when setting the maximum number of writer threads.</p>
+      <codeblock>
+setting param: max_num_writers 5
+set max_num_writers to 5
+      </codeblock>
+      
+      
+      <p>To check how many threads of various types are currently running, use <codeph>cbstats workload</codeph>. 
+        For example:</p>
+      <codeblock>cbstats [localhost]:11210 -b [bucket-name] workload </codeblock>
+      
+      <p>For example, the following shows an example request and response for <codeph>cbstats
+          workload</codeph>, in this case, for the default bucket. The setting change,
+          <codeph>ep_workload:max_writers: 5</codeph>, is displayed via the <codeph>cbstats
+          workload</codeph> response: </p>
+      
+      <codeblock>
+cbstats 10.5.2.117:11210 workload
+
+ ep_workload:LowPrioQ_AuxIO:InQsize:   2
+ ep_workload:LowPrioQ_AuxIO:OutQsize:  0
+ ep_workload:LowPrioQ_NonIO:InQsize:   18
+ ep_workload:LowPrioQ_NonIO:OutQsize:  0
+ ep_workload:LowPrioQ_Reader:InQsize:  8
+ ep_workload:LowPrioQ_Reader:OutQsize: 0
+ ep_workload:LowPrioQ_Writer:InQsize:  12
+ ep_workload:LowPrioQ_Writer:OutQsize: 0
+ ep_workload:max_auxio:                1
+ ep_workload:max_nonio:                1
+ ep_workload:max_readers:              4
+ ep_workload:max_writers:              5
+ ep_workload:num_auxio:                1
+ ep_workload:num_nonio:                1
+ ep_workload:num_readers:              4
+ ep_workload:num_shards:               4
+ ep_workload:num_sleepers:             10
+ ep_workload:num_writers:              5
+ ep_workload:ready_tasks:              0
+      </codeblock>
+      
+    </section>
+    
+    
+  </refbody>
+</reference>

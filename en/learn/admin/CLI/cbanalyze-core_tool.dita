@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbanalyze-core_tool">
+	<title>cbanalyze-core tool</title>
+	<shortdesc>The <codeph>cbanalyze-core</codeph> tool is used to parse and analyze core dump
+		data.</shortdesc>
+	<refbody>
+		<section><title>Description</title>
+		<p>Helper script to parse and analyze core dump from a Couchbase node. </p>
+			
+			<table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>Options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>-r [root]</entry>
+							<entry>Search for the binary in root.</entry>
+						</row>
+						<row>
+							<entry>-f [reportfile]</entry>
+							<entry>Use the specified file for output.</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+			
+			
+			
+			<p>Depending upon your platform, this tool is at the following locations:</p>
+		<table>
+			<tgroup cols="2">
+				<colspec colname="col1"/>
+				<colspec colname="col2"/>
+				<thead>
+					<row>
+						<entry>Operating system</entry>
+						<entry>Location</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>Linux</entry>
+						<entry>/opt/couchbase/bin/tools/</entry>
+					</row>
+					<row>
+						<entry>Windows</entry>
+						<entry>Not Available on this platform.</entry>
+					</row>
+					<row>
+						<entry>Mac OS X</entry>
+						<entry>/Applications/Couchbase Server.app/Contents/Resources/couchbase-core/bin/tools/</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		</section>
+		
+		
+		<section><title>Syntax</title>
+			<p>Basic syntax:</p>
+			<codeblock>cbanalyze-core -r [root] -f [reportfile] [corefile]</codeblock>
+		</section>
+		
+		
+	</refbody>
+</reference>

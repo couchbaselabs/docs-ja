@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_mdz_4gw_h4">
+	<title>Cluster-wide diagnostics</title>
+	<shortdesc> The Couchbase support team uses logs and other system diagnostics to analyze customer
+		issues. </shortdesc>
+	<conbody>
+		<p>If you contact the Couchbase customer support, you might be asked to collect diagnostics from
+			your cluster. Couchbase Server offers several methods that enable you to efficiently
+			collect diagnostics for an entire cluster. </p>
+		<p>To collect diagnostic information, you can use either the Couchbase Web Console, CLI, or
+			the REST API.</p>
+		
+		<ul>
+			<li>To use the Couchbase Web Console to collect and view diagnostic information, see <xref
+					href="../UI/ui-cluster-wide-info.dita"/></li>
+			<li>To use the CLI <codeph>couchbase-cli</codeph> tool to collect information, see <xref
+					href="../CLI/CBcli/cbcli-cluster-wide-info.dita"/></li>
+			<li>To use the CLI <codeph>cbcollect</codeph> tool to collect information, see <xref
+					href="../CLI/cbcollect_info_tool.dita"/></li>
+		</ul>
+		
+	</conbody>
+</concept>

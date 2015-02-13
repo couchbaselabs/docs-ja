@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="cli-incremental-restore">
+	<title>Restoring incrementally</title>
+	<shortdesc>Incremental restore operations are run by using the <codeph>cbrestore</codeph>
+			command-line tool.</shortdesc>
+
+	<refbody>
+		<section><title>Description</title>
+
+		<p>The updated tool adds new options to support partial
+			restore operations. The tool still supports the existing options for full restores. </p>
+		<p>The following table describes the new incremental restore options:</p>
+
+		<table frame="all" id="table_wts_fw5_c4">
+			
+			<tgroup cols="2">
+				<thead>
+					<row>
+						<entry>Option</entry>
+						<entry>Description</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry><codeph>--from-date=DATE</codeph></entry>
+						<entry>Restores the data beginning with the specified date. Data collected before this date is
+							not restored. </entry>
+					</row>
+					<row>
+						<entry><codeph>--to-date=DATE</codeph></entry>
+						<entry>Restores data ending with the specified date. Data collected after this date is not
+							restored.</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		
+		<p>
+			The format of the <codeph>DATE</codeph> specification is <codeph>YYYY-MM-DD</codeph>, where: <dl>
+				<dlentry>
+					<dt><codeph>YYYY</codeph></dt>
+					<dd>4-digit year</dd>
+				</dlentry>
+				<dlentry>
+					<dt><codeph>MM</codeph></dt>
+					<dd>2-digit month</dd>
+				</dlentry>
+				<dlentry>
+					<dt><codeph>DD</codeph></dt>
+					<dd>2-digit day</dd>
+				</dlentry>
+			</dl>
+		</p>
+		</section>
+		
+		<section><title>Syntax</title>
+			<p>The general format of the <codeph>cbrestore</codeph> command is:</p>
+			<codeblock>cbrestore [options] [backup_dir] [destination]</codeblock>
+		</section>
+		
+		<section><title>Example</title>
+		
+		<p>The following example requests a restoration of data backed up between August 1, 2014 and
+			August 3, 2014. The &#x2011;b option specifies the name of the bucket to restore from the backup file and the &#x2011;B option specifies the name of the destination bucket in the cluster.</p>
+		
+		<codeblock>cbrestore -b source-bucket -B destination-bucket --from-date=2014-08-01 --to-date=2014-08-03 /backups/backup-1 http://example.com:8091</codeblock>
+			
+		</section>
+
+
+	</refbody>
+</reference>

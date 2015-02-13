@@ -1,0 +1,817 @@
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="cbcli-commands">
+	<title>couchbase-cli commands</title>
+	<shortdesc>Commands used with the CLI <codeph>couchbase-cli</codeph> tool.</shortdesc>
+	<refbody>
+		<table>
+			<title>couchbase-cli commands</title>
+			<tgroup cols="2">
+				<colspec colname="col1"/>
+				<colspec colname="col2"/>
+				<thead>
+					<row>
+						<entry>Command</entry>
+						<entry>Description</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>server-list</entry>
+						<entry>List all servers in a cluster.</entry>
+					</row>
+					<row>
+						<entry>server-info</entry>
+						<entry>Show details on one server.</entry>
+					</row>
+					<row>
+						<entry>server-add</entry>
+						<entry>Add one or more servers to the cluster.</entry>
+					</row>
+					<row>
+						<entry>server-readd</entry>
+						<entry>Readds a server that was failed over.</entry>
+					</row>
+					<row>
+						<entry>group-manage</entry>
+						<entry>Manages server groups (Enterprise Edition only).</entry>
+					</row>
+					<row>
+						<entry>rebalance</entry>
+						<entry>Start a cluster rebalancing.</entry>
+					</row>
+					<row>
+						<entry>rebalance-stop</entry>
+						<entry>Stop current cluster rebalancing.</entry>
+					</row>
+					<row>
+						<entry>rebalance-status</entry>
+						<entry>Show status of current cluster rebalancing.</entry>
+					</row>
+					<row>
+						<entry>failover</entry>
+						<entry>Failover one or more servers. Default: Graceful failover
+						<p>Hard failover is implemented with the <codeph>--force</codeph> option.</p></entry>
+					</row>
+					<row>
+						<entry>cluster-init</entry>
+						<entry>Set the username,password and port of the cluster.</entry>
+					</row>
+					<row>
+						<entry>cluster-edit</entry>
+						<entry>Modify cluster settings.</entry>
+					</row>
+					<row>
+						<entry>node-init</entry>
+						<entry>Set node specific parameters.</entry>
+					</row>
+					<row>
+						<entry>bucket-list</entry>
+						<entry>List all buckets in a cluster.</entry>
+					</row>
+					<row>
+						<entry>bucket-create</entry>
+						<entry>Add a new bucket to the cluster.</entry>
+					</row>
+					<row>
+						<entry>bucket-edit</entry>
+						<entry>Modify an existing bucket.</entry>
+					</row>
+					<row>
+						<entry>bucket-delete</entry>
+						<entry>Delete an existing bucket.</entry>
+					</row>
+					<row>
+						<entry>bucket-flush</entry>
+						<entry>Flush all data from disk for a given bucket.</entry>
+					</row>
+					<row>
+						<entry>bucket-compact</entry>
+						<entry>Compact database and index data.</entry>
+					</row>
+					<row>
+						<entry>setting-compaction</entry>
+						<entry>Set auto compaction settings.</entry>
+					</row>
+					<row>
+						<entry>setting-notification</entry>
+						<entry>Set notifications.</entry>
+					</row>
+					<row>
+						<entry>setting-alert</entry>
+						<entry>Email alert settings.</entry>
+					</row>
+					<row>
+						<entry>setting-autofailover</entry>
+						<entry>Set auto failover settings.</entry>
+					</row>
+					<row>
+						<entry>setting-xdcr</entry>
+						<entry>Set XDCR-related configuration which affect behavior.</entry>
+					</row>
+					<row>
+						<entry>ssl-manage</entry>
+						<entry>Manage cluster SSL certificate.</entry>
+					</row>
+					<row>
+						<entry>xdcr-setup</entry>
+						<entry>Set up XDCR replication.</entry>
+					</row>
+					<row>
+						<entry>xdcr-replicate</entry>
+						<entry>Create and run replication via XDCR.</entry>
+					</row>
+					<row>
+						<entry>help show longer</entry>
+						<entry>Syntax, usage, and examples.</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		<section><title>couchbase-cli command options</title><p>The following are options which can be used with their respective commands.</p></section>
+		<section><title>server-list options</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>server-list options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>–-group-name=GROUPNAME</entry>
+							<entry>Displays all server in a server group (Enterprise Edition
+								only)</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		<section><title>server-add options</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>server-add options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--server-add=HOST[:PORT]</entry>
+							<entry>Server to add to cluster</entry>
+						</row>
+						<row>
+							<entry>--server-add-username=USERNAME</entry>
+							<entry>Admin username for the server to be added</entry>
+						</row>
+						<row>
+							<entry>--server-add-password=PASSWORD</entry>
+							<entry>Admin password for the server to be added</entry>
+						</row>
+						<row>
+							<entry>--group-name=GROUPNAME</entry>
+							<entry>Server group where the server is to be added (Enterprise Edition
+								only) </entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		<section><title>server-readd options</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>server-readd options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--server-add=HOST[:PORT]</entry>
+							<entry>Server to re-add to cluster</entry>
+						</row>
+						<row>
+							<entry>--server-add-username=USERNAME</entry>
+							<entry>Administrator username for the server to be added</entry>
+						</row>
+						<row>
+							<entry>--server-add-password=PASSWORD</entry>
+							<entry>Administrator password for the server to be added</entry>
+						</row>
+						<row>
+							<entry>--group-name=GROUPNAME</entry>
+							<entry>Server group where the server is to be added (Enterprise Edition
+								only)</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		<section><title>group-manage options (Enterprise Edition only)</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>group-manage options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--group-name=GROUPNAME</entry>
+							<entry>Server group name</entry>
+						</row>
+						<row>
+							<entry>--list</entry>
+							<entry>Shows the server groups and the server assigned to each server
+								group</entry>
+						</row>
+						<row>
+							<entry>--create</entry>
+							<entry>Creates a server group.</entry>
+						</row>
+						<row>
+							<entry>--delete</entry>
+							<entry>Removes an empty server group.</entry>
+						</row>
+						<row>
+							<entry>--rename=NEWGROUPNAME</entry>
+							<entry>Renames an existing server group.</entry>
+						</row>
+						<row>
+							<entry><codeph>--add-servers="HOST:PORT;HOST:PORT"</codeph></entry>
+							<entry>Adds servers to a group</entry>
+						</row>
+						<row>
+							<entry>--move-servers="HOST:PORT;HOST:PORT"</entry>
+							<entry>Moves a list of server from a group</entry>
+						</row>
+						<row>
+							<entry>--from-group=GROUPNAME</entry>
+							<entry>Moves one or more servers from a group.</entry>
+						</row>
+						<row>
+							<entry>--to-group=GROUPNAME</entry>
+							<entry>Moves one or more server to a group</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		<section><title>rebalance options</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>rebalance options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--server-add*</entry>
+							<entry>See server-add OPTIONS</entry>
+						</row>
+						<row>
+							<entry>--server-remove=[host]:[port]</entry>
+							<entry>The server to remove from cluster </entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		<section><title>failover option</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>failover option</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--server-failover=[host]:[port]</entry>
+							<entry>Server to failover.</entry>
+						</row>
+						<row>
+							<entry>--force</entry>
+							<entry>Force a hard failover.</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		<section><title>cluster-* options</title>
+			<table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>cluster-* options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--cluster-username=USER</entry>
+							<entry>New admin username</entry>
+						</row>
+						<row>
+							<entry>--cluster-password=PASSWORD</entry>
+							<entry>New admin password</entry>
+						</row>
+						<row>
+							<entry>--cluster-port=PORT</entry>
+							<entry>New cluster REST/http port</entry>
+						</row>
+						<row>
+							<entry>--cluster-ramsize=RAMSIZEMB</entry>
+							<entry>Per node RAM quota in MB </entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		<section><title>node-init options</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>node-init options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--node-init-data-path=PATH</entry>
+							<entry>Per node path to store data</entry>
+						</row>
+						<row>
+							<entry>--node-init-index-path=PATH</entry>
+							<entry>Per node path to store index </entry>
+						</row>
+						<row>
+							<entry>--node-init-hostname=NAME</entry>
+							<entry>Host name for the node. Default: 127.0.0.1</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		<section><title>bucket-* options</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>bucket-* options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--bucket=BUCKETNAME</entry>
+							<entry>Named bucket to act on</entry>
+						</row>
+						<row>
+							<entry>--bucket-type=TYPE</entry>
+							<entry>Bucket type, either memcached or couchbase</entry>
+						</row>
+						<row>
+							<entry>--bucket-port=PORT</entry>
+							<entry>Supports ASCII protocol and does not require
+								authentication</entry>
+						</row>
+						<row>
+							<entry>--bucket-password=PASSWORD</entry>
+							<entry>Standard port, exclusive with bucket-port</entry>
+						</row>
+						<row>
+							<entry>--bucket-ramsize=RAMSIZEMB</entry>
+							<entry>Bucket RAM quota in MB</entry>
+						</row>
+						<row>
+							<entry>--bucket-replica=COUNT</entry>
+							<entry>Replication count</entry>
+						</row>
+						<row>
+							<entry>--enable-flush=[0\|1]</entry>
+							<entry>Enable/disable flush</entry>
+						</row>
+						<row>
+							<entry>--enable-index-replica=[0\|1]</entry>
+							<entry>Enable/disable index replicas</entry>
+						</row>
+						<row>
+							<entry>--wait</entry>
+							<entry>Wait for bucket create to be complete before returning</entry>
+						</row>
+						<row>
+							<entry>--force</entry>
+							<entry>Force command execution without asking for confirmation</entry>
+						</row>
+						<row>
+							<entry>--data-only</entry>
+							<entry>Compact database data only</entry>
+						</row>
+						<row>
+							<entry>--view-only</entry>
+							<entry>Compact view data only </entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		<section><title>setting-compaction options</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>setting-compaction options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--compaction-db-percentage=PERCENTAGE</entry>
+							<entry>Percentage of disk fragmentation when database compaction is
+								triggered</entry>
+						</row>
+						<row>
+							<entry>--compaction-db-size=SIZE[MB]</entry>
+							<entry>Size of disk fragmentation when database compaction is
+								triggered</entry>
+						</row>
+						<row>
+							<entry>--compaction-view-percentage=PERCENTAGE</entry>
+							<entry>Percentage of disk fragmentation when views compaction is
+								triggered</entry>
+						</row>
+						<row>
+							<entry>--compaction-view-size=SIZE[MB]</entry>
+							<entry>Size of disk fragmentation when views compaction is
+								triggered</entry>
+						</row>
+						<row>
+							<entry>--compaction-period-from=HH:MM</entry>
+							<entry>Enable compaction from this time onwards</entry>
+						</row>
+						<row>
+							<entry>--compaction-period-to=HH:MM</entry>
+							<entry>Stop enabling compaction at this time</entry>
+						</row>
+						<row>
+							<entry>--enable-compaction-abort=[0\|1]</entry>
+							<entry>Allow compaction to abort when time expires</entry>
+						</row>
+						<row>
+							<entry>--enable-compaction-parallel=[0\|1]</entry>
+							<entry>Allow parallel compaction processes for database and view
+							</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		<section><title>setting-alert and notification options</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>setting-alert options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--enable-email-alert=[0\|1]</entry>
+							<entry>Allow email alert</entry>
+						</row>
+						<row>
+							<entry>--email-recipients=RECIPIENT</entry>
+							<entry>Email recipents, separate addresses with, or ;</entry>
+						</row>
+						<row>
+							<entry>--email-sender=SENDER</entry>
+							<entry>Sender email address</entry>
+						</row>
+						<row>
+							<entry>--email-user=USER</entry>
+							<entry>Email server username</entry>
+						</row>
+						<row>
+							<entry>--email-password=PWD</entry>
+							<entry>Email server password</entry>
+						</row>
+						<row>
+							<entry>--email-host=HOST</entry>
+							<entry>Email server hostname</entry>
+						</row>
+						<row>
+							<entry>--email-port=PORT</entry>
+							<entry>Email server port</entry>
+						</row>
+						<row>
+							<entry>--enable-email-encrypt=[0\|1]</entry>
+							<entry>Email encryption with 0 the default for no encryption</entry>
+						</row>
+						<row>
+							<entry>--alert-auto-failover-node</entry>
+							<entry>Node was failed over via autofailover</entry>
+						</row>
+						<row>
+							<entry>--alert-auto-failover-max-reached</entry>
+							<entry>Maximum number of auto failover nodes reached</entry>
+						</row>
+						<row>
+							<entry>--alert-auto-failover-node-down</entry>
+							<entry>Node not auto failed-over as other nodes are down at the same
+								time</entry>
+						</row>
+						<row>
+							<entry>--alert-auto-failover-cluster-small</entry>
+							<entry>Node not auto failed-over as cluster was too small</entry>
+						</row>
+						<row>
+							<entry>--alert-ip-changed</entry>
+							<entry>Node ip address changed unexpectedly</entry>
+						</row>
+						<row>
+							<entry>--alert-disk-space</entry>
+							<entry>Disk space used for persistent storage has reached at least 90%
+								capacity</entry>
+						</row>
+						<row>
+							<entry>--alert-meta-overhead</entry>
+							<entry>Metadata overhead is more than 50% of RAM for node</entry>
+						</row>
+						<row>
+							<entry>--alert-meta-oom</entry>
+							<entry>Bucket memory on a node is entirely used for metadata</entry>
+						</row>
+						<row>
+							<entry>--alert-write-failed</entry>
+							<entry>Writing data to disk for a specific bucket has failed </entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>setting-notification option</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--enable-notification=[0\|1]</entry>
+							<entry>Allow notifications </entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		
+		<section><title>setting-autofailover options</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>setting-autofailover options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--enable-auto-failover=[0\|1]</entry>
+							<entry>Allow auto failover</entry>
+						</row>
+						<row>
+							<entry>--auto-failover-timeout=TIMEOUT
+								(&gt;=30)</entry>
+							<entry>Specify amount of node timeout that triggers auto failover
+							</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		
+		<section><title>setting-xdcr options</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>setting-xdcr options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--max-concurrent-reps=[32]</entry>
+							<entry>Maximum concurrent replicators per bucket, 8 to 256.</entry>
+						</row>
+						<row>
+							<entry>--checkpoint-interval=[1800]</entry>
+							<entry>Intervals between checkpoints, 60 to 14400 seconds.</entry>
+						</row>
+						<row>
+							<entry>--worker-batch-size=[500]</entry>
+							<entry>Doc batch size, 500 to 10000.</entry>
+						</row>
+						<row>
+							<entry>--doc-batch-size=[2048]KB</entry>
+							<entry>Document batching size, 10 to 100000 KB</entry>
+						</row>
+						<row>
+							<entry>--failure-restart-interval=[30]</entry>
+							<entry>Interval for restarting failed xdcr, 1 to 300 seconds</entry>
+						</row>
+						<row>
+							<entry>--optimistic-replication-threshold=[256]</entry>
+							<entry>Document body size threshold (bytes) to trigger optimistic
+								replication </entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		<section><title>xdcr-setup options</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>xdcr-setup options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody><row>
+						<entry>--create</entry>
+						<entry>Creates a new XDCR configuration.</entry>
+					</row>
+						<row>
+							<entry>--edit</entry>
+							<entry>Modifies an existing XDCR configuration.</entry>
+						</row>
+						<row>
+							<entry>--delete</entry>
+							<entry>Deletes an existing XDCR configuration.</entry>
+						</row>
+						<row>
+							<entry>--list</entry>
+							<entry>Lists all XDCR configurations.</entry>
+						</row>
+						<row>
+							<entry>--xdcr-cluster-name=[clustername]</entry>
+							<entry>Cluster name.</entry>
+						</row>
+						<row>
+							<entry>--xdcr-hostname=[hostname]</entry>
+							<entry>Remote host name to connect to.</entry>
+						</row>
+						<row>
+							<entry>--xdcr-username=[username]</entry>
+							<entry>Remote cluster administrator username.</entry>
+						</row>
+						<row>
+							<entry>--xdcr-password=[password</entry>
+							<entry>Remote cluster administrator password.</entry>
+						</row>
+						<row>
+							<entry>--xdcr-demand-encryption=[0 | 1]</entry>
+							<entry>Enables and disables data encrypted using ssl. True is 1 and enables data encryption.
+								False is 0 and disables data encryption. Default: 0 (Enterprise
+								Edition only)</entry>
+						</row>
+						<row>
+							<entry>--xdcr-certificate=[certificate]</entry>
+							<entry>Specifies the pem-encoded certificate. The certificate is required for XDCR data
+								encryption. Specify the full path for the location of the
+								pem-encoded certificate file on the source cluster. (Enterprise
+								Edition only)</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		<section><title>xdcr-replicate options</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>xdcr-replicate options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--create</entry>
+							<entry>Create and start a new replication</entry>
+						</row>
+						<row>
+							<entry>--delete</entry>
+							<entry>Stop and cancel a replication</entry>
+						</row>
+						<row>
+							<entry>--list</entry>
+							<entry>List all XDCR replications</entry>
+						</row>
+						<row>
+							<entry>--pause</entry>
+							<entry>Pause the replication</entry>
+						</row>
+						<row>
+							<entry>--resume</entry>
+							<entry>Resume the replication</entry>
+						</row>
+						<row>
+							<entry>--settings</entry>
+							<entry>Update settings for the replication</entry>
+						</row>
+						<row>
+							<entry>--xdcr-replicator=REPLICATOR</entry>
+							<entry>Replication ID</entry>
+						</row>
+						<row>
+							<entry>--xdcr-from-bucket=BUCKET</entry>
+							<entry>Local bucket name to replicate from</entry>
+						</row>
+						<row>
+							<entry>--xdcr-cluster-name=CLUSTERNAME</entry>
+							<entry>Remote cluster to replicate to</entry>
+						</row>
+						<row>
+							<entry>--xdcr-to-bucket=BUCKETNAME</entry>
+							<entry>Remote bucket to replicate to</entry>
+						</row>
+						<row>
+							<entry>--max-concurrent-reps =[ 16 ]</entry>
+							<entry>Maximum concurrent replications per bucket, 8 to 256. Default: 16</entry>
+						</row>
+						<row>
+							<entry>--checkpoint-interval =[ 1800 ]</entry>
+							<entry>Intervals between checkpoints , 60 to 14400 seconds</entry>
+						</row>
+						<row>
+							<entry>--worker-batch-size =[ 500 ]</entry>
+							<entry>Document batch size,  500 to 10000</entry>
+						</row>
+						<row>
+							<entry>--doc-batch size =[ 2048 ] KB</entry>
+							<entry>Document batch size, 10 to 100000 KB</entry>
+						</row>
+						<row>
+							<entry>--failure-restart-interval =[ 30 ]</entry>
+							<entry>Interval for restarting failed XDCR, 1 to 300 seconds</entry>
+						</row>
+						<row>
+							<entry>--optimistic-replication-threshold =[ 256 ]</entry>
+							<entry>Document body size threshold (bytes) to trigger optimistic replication</entry>
+						</row>
+						<row>
+							<entry>--xdcr-replication-mode=[xmem | capi]</entry>
+							<entry>Replication protocol, either capi or xmem.
+								<codeph>xmem</codeph> indicates memcached while
+								<codeph>capi</codeph> indicates REST protocol. </entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+		<section><title>ssl-manage options (Enterprise Edition only)</title><table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>ssl-manage options</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>--regenerate-cert=[certificate]</entry>
+							<entry>Regenerates a self-signed certificate on the destination cluster.
+								Specify the full path for the location of the pem-encoded
+								certificate file. For example,
+									<codeph>--regenerate-cert=./new.pem</codeph>. (Enterprise
+								Edition only)</entry>
+						</row>
+						<row>
+							<entry>--retrieve-cert=[certificate]</entry>
+							<entry>Retrieves the self-signed certificate from the destination
+								cluster to the source cluster. Specify a local location (full path)
+								and file name for the pem-encoded certificate. For example,
+									<codeph>--retrieve-cert=./newCert.pem</codeph>. (Enterprise
+								Edition only)</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table></section>
+	</refbody>
+</reference>

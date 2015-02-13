@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE topic
+  PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic xml:lang="ja" id="topic227">
+  <title>モニタリング</title>
+  <shortdesc>プロセス、ポート、キューなど、Couchbase Serverをモニタリングするためのさまざまな方法があります。</shortdesc>
+  
+  <body>
+
+  </body>
+</topic>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbstats-key">
+	<title>Key and vkey</title>
+	<shortdesc>The <codeph>cbstats key</codeph> and  <codeph>cbstats vkey</codeph> commands provide
+		information on keys.</shortdesc>
+	<refbody>
+		
+		<section><title>Description</title>
+			<p>The following key information is available.</p>
+		<table>
+			<tgroup cols="3">
+				<colspec colname="col1"/>
+				<colspec colname="col2"/>
+				<colspec colname="col3"/>
+				<thead>
+					<row>
+						<entry>Stat</entry>
+						<entry>Description</entry>
+						<entry>K/V</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>key_cas</entry>
+						<entry>The keys current cas value</entry>
+						<entry>KV</entry>
+					</row>
+					<row>
+						<entry>key_data_age</entry>
+						<entry>How long the key has waited for its</entry>
+						<entry>KV</entry>
+					</row>
+					<row>
+						<entry/>
+						<entry>value to be persisted (0 if clean)</entry>
+						<entry>KV</entry>
+					</row>
+					<row>
+						<entry>key_exptime</entry>
+						<entry>Expiration time from the epoch</entry>
+						<entry>KV</entry>
+					</row>
+					<row>
+						<entry>key_flags</entry>
+						<entry>Flags for this key</entry>
+						<entry>KV</entry>
+					</row>
+					<row>
+						<entry>key_is_dirty</entry>
+						<entry>If the value is not yet persisted</entry>
+						<entry>KV</entry>
+					</row>
+					<row>
+						<entry>key_valid</entry>
+						<entry>See description below</entry>
+						<entry>V</entry>
+					</row>
+					<row>
+						<entry>key_vb_state</entry>
+						<entry>The vbucket state of this key</entry>
+						<entry>KV</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		<p><codeph>key_valid</codeph>= can have the following responses:</p>
+		<ul>
+			<li>this_is_a_bug - Some case we didn’t take care of.</li>
+			<li>dirty - The value in memory has not been persisted yet.</li>
+			<li>length_mismatch - The key length in memory doesn’t match the length on
+				disk.</li>
+			<li>data_mismatch - The data in memory doesn’t match the data on disk.</li>
+			<li>flags_mismatch - The flags in memory don’t match the flags on disk.</li>
+			<li>valid - The key is both on disk and in memory</li>
+			<li>ram_but_not_disk - The value doesn’t exist yet on disk.</li>
+			<li>item_deleted - The item has been deleted.</li>
+		</ul>
+			
+			
+		</section>
+		
+		<section><title>Syntax</title>
+			<p>Request syntax:</p>
+			<codeblock>cbstats [hostname]:11210 key [keyname] [vbid]
+cbstats [hostname]:11210 vkey [keyname] [vbid]
+			</codeblock>
+		</section>
+		
+		<section><title>Example</title>
+			<p>Example request:</p>
+			<codeblock>cbstats 10.5.2.54:11210 key foo 115</codeblock>
+			
+		</section>
+		
+		<section><title>Response</title>
+			<p>Example response for key foo:</p>
+			<codeblock>
+ key_cas: 41206791218746
+ key_exptime: 0
+ key_flags: 0
+ key_is_dirty: 0 
+			</codeblock>
+		</section>
+	</refbody>
+</reference>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE topic
+  PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic xml:lang="en-us" id="topic12527">
+  <title>Initial server setup</title><shortdesc>After installation is completed, Couchbase Server has to be set up. </shortdesc>
+  <body>
+    
+    <ol>
+      <li>Open Couchbase Web Console.</li>
+      <li>Set up the disk storage and cluster configuration.
+        <ul>
+        <li>The <wintitle>Configure Disk Storage</wintitle> option specifies the location of the
+            persistent storage used by the Couchbase Server. The setting affects only this node and
+            sets the directory where all the data is stored on disk. It also sets the location where
+            the indexes created by views are stored. <p>If you are not indexing data with views, you
+              can accept the default setting. For the best performance, you can configure different
+              disks for the server, for storing your document and for index data.</p></li>
+         <li>The <wintitle>Configure Server Memory</wintitle> section sets the amount of physical RAM that will be allocated by
+          the Couchbase Server for storage. <p>If you are creating a new cluster, this is the amount
+          of memory that is allocated on each node within your Couchbase cluster. Same amount
+          of memory is allocated to each node in the cluster. Since the same setting applies to the whole cluster, 
+          specify a value that can be supported by all nodes. The default value is 60% of your total free RAM and is 
+          calculated to provide a RAM capacity for use by the operating system caching layer when accessing and using
+          views.</p></li></ul></li>
+      <li>Provide a node IP or host name under <wintitle>Configure Server Hostname</wintitle>. 
+            <fig><image href="../images/configure_server1.png" width="600"></image></fig>
+          </li>
+      <li>Provide the IP address or host name of an existing node and administrative credentials for
+        that existing cluster.</li>
+      <li>To join an existing cluster, check the radio button <uicontrol>Join a cluster now</uicontrol>.</li>
+      <li>Click <uicontrol>Next</uicontrol>.<p>The <wintitle>Sample Buckets</wintitle> panel appears where you can select the sample data
+          buckets you want to load.</p></li>
+      <li>Click the names of sample buckets to load to the Couchbase Server. These data sets
+        demonstrate Couchbase Server's features and help you understand and develop views. If you
+        decide to install sample data, the installer creates one Couchbase bucket for each set of
+        sample data you choose. <fig>
+          <image href="../images/web-console-startup-3.png" width="600"/>
+        </fig>
+        <p>After you create sample data buckets, the <wintitle>Create Bucket</wintitle> panel
+          appears where you create new data buckets</p></li>
+      <li>Set up a test bucket for Couchbase Server. You can change all bucket settings later, except
+        for the bucket name.<p>Enter <userinput>default</userinput> as the bucket name and accept all other defaults in
+          this panel. </p><p>Couchbase Server will create a new data bucket named <codeph>default</codeph>. You can
+          use this test bucket to learn more about Couchbase Server and use it in a test
+          environment.</p></li>
+      <li>Select <uicontrol>Update Notifications</uicontrol>.Couchbase Web Console communicates with
+        Couchbase nodes and confirms the version numbers of each node. <p>As long as you have
+          Internet access this information will be sent anonymously to Couchbase corporate, which
+          uses this information only to provide you with updates and information to help improve
+          Couchbase Server and related products. When you provide an email address, it is added to
+          the Couchbase community mailing list for news and update information about Couchbase and
+          related products. You can unsubscribe from the mailing list at any time using the
+            <codeph>Unsubscribe</codeph> link provided in each newsletter.</p><p> Couchbase Web
+          Console communicates the following information:</p><ul>
+          <li>The current version. When a new version of Couchbase Server exists, you get
+            information about where you can download the new version.</li>
+          <li>Information about the size and configuration of your Couchbase cluster to Couchbase
+            corporate. This information helps prioritize the development efforts. </li>
+        </ul></li>
+      <li>Enter a username and password. Your username must have up to 24 characters, and
+        your password must have 6 to 24 characters. Use these credentials each time you add a
+        new server into the cluster. These are the same credentials you use for Couchbase REST API.
+     </li>
+    
+   <li>After you finish this setup, you see the Couchbase Web Console with the <wintitle>Cluster
+          Overview</wintitle> page: <fig>
+          <image href="../images/web-console-startup-7.png" width="600"/>
+        </fig>
+        <p>Couchbase Server is now running and ready to use. </p><p>After you complete the
+          installation and the initial server setup, you can also optionally configure other
+          settings, such as the port and RAM, using any of the following methods:</p></li></ol>
+    
+    <dl>
+      <dlentry>
+        <dt>Command-line tools</dt>
+        <dd>The command line-tools included in your
+          Couchbase Server installation includes <codeph>couchbase-cli</codeph>, which allows   
+          access to the core functionality of the Couchbase Server by providing a wrapper to the REST
+          API. For more information, see <codeph>couchbase-cli</codeph> tool.</dd>
+      </dlentry>
+    </dl>
+    <dl>
+      <dlentry>
+        <dt>REST API</dt>
+        <dd>Couchbase Server can be configured and controlled using the REST API
+          on which both the command-line tools and Web interface to Couchbase Server are
+          based.For more information see REST API.</dd>
+      </dlentry>
+    </dl>
+   
+  </body>
+  <related-links>
+    <linklist>
+      <link href="../Concepts/bp-sizingGuidelines.dita"></link>
+      <link href="../Install/hostnames.dita"></link>
+      <link href="../Misc/sample-bucket-beer.dita"></link>
+      <link href="../Misc/sample-bucket-game.dita"></link>
+      <link href="../UI/ui-data-buckets.dita"></link>
+      <link href="../CLI/cli-overview.dita"></link>
+      <link href="../CLI/cbcli-intro.dita"></link>
+      <link href="../REST/overview-rest-api.dita"></link>
+    </linklist>
+  </related-links>
+</topic>

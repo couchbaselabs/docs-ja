@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="topic1303">
+  <title>Changing disk cleanup intervals</title>
+  <shortdesc>Disk cleanup is the maintenance process of erasing expired items.</shortdesc>
+  <refbody>
+    <section><title>Description</title>
+    <p>The <codeph>cbepctl flush_param exp_pager_stime</codeph> command sets the time interval for
+        disk cleanup. Couchbase Server does lazy expiration, that is, expired items are flagged as
+        deleted rather than being immediately erased. Couchbase Server has a maintenance process
+        that periodically look through all information and erase expired items. By default, this
+        maintenance process runs every 60 minutes, but it can be configured to run at a different
+        interval. </p>
+    </section>
+    
+    <section><title>Syntax</title>
+      <p>Basic syntax:</p>
+      <codeblock>cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set flush_param exp_pager_stime [value]
+</codeblock>
+      
+    </section>
+    
+    <section><title>Example</title>
+      
+      <p>The following example sets the cleanup process to run every 600 seconds (10 minutes). 
+        This is the interval that Couchbase Server waits before it tries to remove expired items from disk.</p>
+      
+    <codeblock>cbepctl 10.5.2.117:11210 set flush_param exp_pager_stime 600
+</codeblock>
+    </section>
+    
+    <section><title>Response</title>
+    <p>The following example response shows the cleanup process set to 600 seconds.</p>
+      <codeblock>
+setting param: exp_pager_stime 600
+set exp_pager_stime to 600
+      </codeblock>
+    </section>
+    
+  </refbody>
+</reference>

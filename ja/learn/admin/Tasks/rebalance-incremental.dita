@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_gp4_rx2_lq">
+  <title>Resuming rebalance after a failure</title><shortdesc>Improved rebalance latency of Couchbase Server is demonstrated through its ability to
+    better resume rebalancing operation after any blips or failures have occurred in the
+    process.</shortdesc>
+  <body>
+    <p>In case the rebalancing operation is interrupted at any point, it can be resumed instead of
+      repeating the whole process.</p> 
+      <p>Couchbase Server is able to perform incremental catch-up due to the
+        <term>restartability</term> option provided through DCP (Database Change Protocol). </p>
+    <p>With DCP, the improved rebalance latency is achieved through efficient data movement, which
+      is characterized by better capability to resume operation after failures,  as well as to
+      perform incremental catch-up.</p>
+  </body>
+</topic>

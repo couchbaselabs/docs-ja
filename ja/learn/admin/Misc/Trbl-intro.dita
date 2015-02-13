@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE topic
+  PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic xml:lang="ja" id="topic199">
+  <title>トラブルシューティング</title>
+  <shortdesc>トラブルシューティングの一般的なヒント、一般的なエラー、ログ情報、およびその他の問題について説明します。</shortdesc>
+  <body>
+    <p>When troubleshooting your Couchbase Server deployment there are a number of different
+      approaches available to you. </p>
+    
+  </body>
+</topic>

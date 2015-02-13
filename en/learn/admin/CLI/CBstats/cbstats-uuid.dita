@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="cbstats-uuid">
+  <title>UUID</title>
+  <shortdesc>The <codeph>cbstats uuid</codeph> command provides the UUID for the server node.</shortdesc>
+  <refbody>
+    <section><title>CLI command and parameters</title>
+      <p></p>
+      <codeblock>cbstasts uuid</codeblock>
+      </section>
+    
+    <section><title>Syntax</title>
+      <p>Request syntax:</p>
+      <codeblock>cbstats [localhost]:11210 uuid</codeblock>
+    </section>
+    
+    <section><title>Example</title>
+      <p>Example request:</p>
+      <codeblock>cbstats 10.5.2.54:11210 uuid</codeblock>
+      
+      </section>
+    
+    <section><title>Response</title>
+      <p>Example response:</p>
+      <codeblock>uuid: 8a741dd4e271ff88c0b609dd43497d74</codeblock>
+    </section>
+    
+    
+  </refbody>
+</reference>

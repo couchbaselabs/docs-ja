@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="cbstats-vbucket">
+  <title>vBucket</title>
+  <shortdesc>The <codeph>cbstats vbucket</codeph> commands provide information</shortdesc>
+  <refbody>
+    <section><title>Description</title>
+      <p>The <codeph>vbucket</codeph> command shows whether a vBucket is an active or a replia vBucket.</p>
+    </section>
+    
+    <section><title>CLI command and parameters</title>
+      <p></p>
+      <codeblock>
+cbstats vbucket
+cbstats vbucket-details
+cbstats vbucket-seqno
+      </codeblock>
+      
+    </section>
+    
+    <section><title>Syntax</title>
+      <p>Request syntax:</p>
+      <codeblock>cbstats [localhost]:11210 vbucket
+cbstats [localhost]:11210 vbucket-details [vbid]
+cbstats [localhost]:11210 vbucket [vbid]
+      </codeblock>
+    </section>
+    
+    <section><title>Example</title>
+      <p>Example requests:</p>
+      <codeblock>cbstats 10.5.2.54:11210 vbucket</codeblock>
+      <codeblock>cbstats 10.5.2.54:11210 vbucket-details 115</codeblock>
+      <codeblock>cbstats 10.5.2.54:11210 vbucket-seqno 115</codeblock>
+      
+      </section>
+    
+    <section><title>Response</title>
+      <p>Example response for <codeph>vbucket</codeph>:</p>
+      <codeblock>
+vb_0:    replica
+ vb_1:    replica
+ vb_10:   replica
+ vb_100:  active
+ vb_1000: replica
+ vb_1001: replica
+ vb_1002: replica
+ vb_1003: replica
+ vb_1004: replica
+ vb_1005: replica
+ ...
+      </codeblock>
+      
+      <p>Example response for <codeph>vbucket-details</codeph>:</p>
+        <codeblock>
+ vb_115:                  active
+ vb_115:db_data_size:     174
+ vb_115:db_file_size:     24622
+ vb_115:high_seqno:       0
+ vb_115:ht_cache_size:    0
+ vb_115:ht_item_memory:   0
+ vb_115:ht_memory:        25096
+ vb_115:num_ejects:       0
+ vb_115:num_items:        0
+ vb_115:num_non_resident: 0
+ vb_115:num_temp_items:   0
+ vb_115:ops_create:       0
+ vb_115:ops_delete:       0
+ vb_115:ops_reject:       0
+ vb_115:ops_update:       0
+ vb_115:pending_writes:   0
+ vb_115:purge_seqno:      0
+ vb_115:queue_age:        0
+ vb_115:queue_drain:      0
+ vb_115:queue_fill:       0
+ vb_115:queue_memory:     0
+ vb_115:queue_size:       0
+ vb_115:uuid:             219212055839841
+        </codeblock>
+      
+      
+      <p>Example response for <codeph>vbucket-seqno</codeph>:</p>
+      <codeblock>
+ vb_115:abs_high_seqno: 0
+ vb_115:high_seqno:     0
+ vb_115:purge_seqno:    0
+ vb_115:uuid:           219212055839841
+        </codeblock>
+    </section>
+    
+    
+  </refbody>
+</reference>

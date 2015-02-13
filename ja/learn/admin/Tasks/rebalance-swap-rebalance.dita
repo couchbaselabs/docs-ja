@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_cqg_2zf_q4">
+ <title>Swap rebalance</title>
+ <shortdesc>Swap rebalance is an automatic process that optimizes the movement of data when you are
+    adding and removing the same number of nodes within the same operation. </shortdesc>
+ <conbody>
+
+  <p>Swap rebalance optimizes the rebalance operation by moving data directly from the nodes
+      being removed to the nodes being added. This is more efficient than standard rebalancing,
+      which normally moves data across the entire cluster.</p>
+  <p>Swap rebalance occurs automatically if the number of nodes being added and removed is
+      identical. For example, two nodes are marked to be removed and another two nodes are added to
+      the cluster. There is no configuration or selection mechanism to force a swap rebalance. If a
+      swap rebalance cannot take place, then a normal rebalance operation is used instead. </p>
+    <p>Swap rebalance operates as follows:</p>
+  <ul>
+   <li><p>Data is moved directly from a node being removed to the node being added on a one-to-one
+     basis. This eliminates the need to restructure the entire vBucket map.</p></li>
+   <li><p>Active vBuckets are moved, one at a time, from the source node to the destination
+    node.</p></li>
+   <li><p>Replica vBuckets are created on the new node and populated with existing data before being
+     activated as the live replica bucket. This ensures that your replicas are still in place 
+     in case there is a failure during the rebalance operation.</p></li>
+  </ul>
+  <p>For example, you have a cluster with 20 nodes and configure two nodes (X and Y) to be
+   added, and two nodes to be removed (A and B):</p>
+  <ul>
+   <li><p>vBuckets from node A are moved to node X.</p></li>
+   <li><p>vBuckets from node B are moved to node Y.</p></li>
+  </ul>
+   
+   <section><title>Swap rebalance benefits</title>
+  <p>The benefits of swap rebalance are:</p>
+  <ul>
+   <li><p>Reduced rebalance duration, since the move takes place directly from the nodes being
+     removed to the nodes being added.</p></li>
+   <li><p>Reduced load on the cluster during rebalance.</p></li>
+   <li><p>Reduced network overhead during the rebalance.</p></li>
+   <li><p>Reduced chance of a rebalance failure if a failover occurs during the rebalance operation,
+     since replicas are created in tandem on the new hosts while the old host replicas still remain
+     available.</p></li>
+   <li><p>Because data on the nodes are swapped, rather than performing a full rebalance, the
+     capacity of the cluster remains unchanged during the rebalance operation, helping to ensure
+     performance and failover support.</p></li>
+  </ul></section>
+   
+   <section><title>Rebalance failures</title>
+<dl>
+  <dlentry>
+    <dt>Rebalance process failure</dt>
+    <dd>If rebalance fails, or has been deliberately stopped, the active and
+      replica vBuckets that have been transitioned will be part of the active vBucket map. Any
+      transfers still in progress will be canceled. Restarting the rebalance operation will continue
+      the rebalance from where it left off.</dd>
+  </dlentry>
+</dl>
+     <dl>
+       <dlentry>
+         <dt>Node failure</dt>
+         <dd>When a node failed, removing it and adding a replacement
+           node (or adding the node back) will be treated as swap rebalance.</dd>
+       </dlentry>
+     </dl>
+
+  <note type="important">If a node fails over during a swap rebalance, either clean up and re-add
+        the failed node, or add a new node and perform the rebalance as normal. </note>
+
+   </section>
+
+ </conbody>
+</concept>

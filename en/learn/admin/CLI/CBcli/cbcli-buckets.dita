@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbcli-buckets">
+        <title>Buckets</title>
+        <shortdesc>Buckets are managed with the <codeph>couchbase-cli</codeph> tool and the <codeph>bucket-*</codeph> commands.</shortdesc>
+        
+        <refbody>
+                <section><title>Description</title>
+                        <p>This section provides examples for listing, creating, modifying, flushing, and
+                                compacting buckets.</p>
+                </section>
+                
+                <section><title>CLI command and parameters</title>
+                
+                        <table>
+                                <title>bucket-* options</title>
+                                <tgroup cols="2">
+                                        <colspec colname="col1"/>
+                                        <colspec colname="col2"/>
+                                        <thead>
+                                                <row>
+                                                        <entry>Parameter</entry>
+                                                        <entry>Description</entry>
+                                                </row>
+                                        </thead>
+                                        <tbody>
+                                                <row>
+                                                        <entry>--bucket=BUCKETNAME</entry>
+                                                        <entry>Named bucket to act on</entry>
+                                                </row>
+                                                <row>
+                                                        <entry>--bucket-type=TYPE</entry>
+                                                        <entry>Bucket type, either memcached or couchbase</entry>
+                                                </row>
+                                                <row>
+                                                        <entry>--bucket-port=PORT</entry>
+                                                        <entry>Supports ASCII protocol and does not require
+                                                                authentication</entry>
+                                                </row>
+                                                <row>
+                                                        <entry>--bucket-password=PASSWORD</entry>
+                                                        <entry>Standard port, exclusive with bucket-port</entry>
+                                                </row>
+                                                <row>
+                                                        <entry>--bucket-ramsize=RAMSIZEMB</entry>
+                                                        <entry>Bucket RAM quota in MB</entry>
+                                                </row>
+                                                <row>
+                                                        <entry>--bucket-replica=COUNT</entry>
+                                                        <entry>Replication count</entry>
+                                                </row>
+                                                <row>
+                                                        <entry>--enable-flush=[0 | 1]</entry>
+                                                        <entry>Enables and disables flush</entry>
+                                                </row>
+                                                <row>
+                                                        <entry>--enable-index-replica=[0 | 1]</entry>
+                                                        <entry>Enable and disables index replicas</entry>
+                                                </row>
+                                                <row>
+                                                        <entry>--wait</entry>
+                                                        <entry>Wait for bucket create to be complete before returning</entry>
+                                                </row>
+                                                <row>
+                                                        <entry>--force</entry>
+                                                        <entry>Force command execution without asking for confirmation</entry>
+                                                </row>
+                                                <row>
+                                                        <entry>--data-only</entry>
+                                                        <entry>Compact database data only</entry>
+                                                </row>
+                                                <row>
+                                                        <entry>--view-only</entry>
+                                                        <entry>Compact view data only </entry>
+                                                </row>
+                                        </tbody>
+                                </tgroup>
+                        </table>
+                
+                </section>
+                
+                <section><title>Syntax</title>
+                        <p>Request syntax:</p>
+                        <codeblock>couchbase-cli bucket-list -c [localhost]:8091 
+        -u [admin] -p [password]
+        [options]</codeblock>
+                </section>
+                
+                
+                <section><title>Example: Listing buckets</title><p>To list buckets in a
+                        cluster:</p>
+                        
+                        <codeblock>
+couchbase-cli bucket-list -c 192.168.0.1:8091 -u Administrator -p password
+</codeblock></section>
+                
+               
+                
+                
+                <section><title>Example: Modifying buckets</title>
+                        
+                        <p>To modify a dedicated port bucket:</p>
+                        <codeblock>
+couchbase-cli bucket-edit -c 192.168.0.1:8091 -u Administrator -p password \
+       --bucket=test_bucket \
+       --bucket-port=11222 \
+       --bucket-ramsize=400 \
+       --enable-flush=1
+       
+SUCCESS: bucket-create
+</codeblock></section>
+                
+                <section><title>Example: Deleting buckets</title>
+                        <p>To delete a bucket:</p>
+                        <codeblock>
+couchbase-cli bucket-delete -c 192.168.0.1:8091 -u Administrator -p password \
+       --bucket=test_bucket
+</codeblock></section>
+                
+                
+                
+                
+        </refbody>
+
+</reference>

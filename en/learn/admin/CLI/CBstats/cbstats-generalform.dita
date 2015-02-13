@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbstats-generalform">
+  <title>General form</title>
+  <shortdesc>This section describes the general form of statistics.</shortdesc>
+  <refbody>
+    <section><title>Description</title>
+    <p>The following sample statistics show that disk_insert took 8–16µs 9,488 times, 16–32µs 290
+      times, and so on.</p>
+    
+      <codeblock>
+STAT disk_insert_8,16 9488
+STAT disk_insert_16,32 290
+STAT disk_insert_32,64 73
+STAT disk_insert_64,128 86
+STAT disk_insert_128,256 48
+STAT disk_insert_256,512 2
+STAT disk_insert_512,1024 12
+STAT disk_insert_1024,2048 1
+      </codeblock>
+
+
+
+      <p>The same statistics displayed by the CLI <codeph>cbstats</codeph> tool looks like the following:</p>
+      <codeblock>
+disk_insert (10008 total)
+8us - 16us : ( 94.80%) 9488 ###########################################
+16us - 32us : ( 97.70%) 290 #
+32us - 64us : ( 98.43%) 73
+64us - 128us : ( 99.29%) 86
+128us - 256us : ( 99.77%) 4
+256us - 512us : ( 99.79%) 2
+512us - 1ms : ( 99.91%) 12
+1ms - 2ms : ( 99.92%) 1
+      </codeblock>
+      
+    </section>
+
+  </refbody>
+</reference>

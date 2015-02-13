@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbepctl-intro">
+	<title>cbepctl tool</title>
+	<shortdesc>The <codeph>cbepctl</codeph> tool is used to control vBucket states, configuration, and 
+		memory and disk persistence behavior.</shortdesc>
+	<refbody>
+		
+		<section><title>Description</title>
+			<p>This tool is a per-node, per-bucket operation. 
+				That means that the IP address of a node in the cluster and a named bucket must be specified. 
+				If a named bucket is not provided, the server applies the setting to any default bucket that exists at the specified node. 
+				To perform this operation for an entire cluster, perform the command for every node/bucket combination that exists 
+				for that cluster.</p>
+			
+			<p>For example, when a data bucket is shared by two nodes, 
+				issue this command twice and provide the different host names and ports
+				for each node along with the bucket name. Similarly, when two data buckets are on the same node, 
+				issue the command twice for each data bucket. If a bucket is not
+				specified, the command applies to the default bucket or returns an error if a default bucket does not
+				exist.</p>
+			
+			<note type="important">Changes to the cluster configuration using <codeph>cbepctl</codeph> are not persisted
+				over a cluster restart.</note>
+				
+				<p>The tool is found in the following locations:</p>
+		
+		<table>
+			<tgroup cols="2">
+				<colspec colname="col1"/>
+				<colspec colname="col2"/>
+				<thead>
+					<row>
+						<entry>Operating system</entry>
+						<entry>Location</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>Linux</entry>
+						<entry>/opt/couchbase/bin/cbepctl</entry>
+					</row>
+					<row>
+						<entry>Windows</entry>
+						<entry>C:\Program Files\Couchbase\Server\bin\cbepctl.exe</entry>
+					</row>
+					<row>
+						<entry>Mac OS X</entry>
+						<entry>/Applications/Couchbase Server.app/Contents/Resources/couchbase-core/bin/cbepctl</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		
+	</section>
+		
+		<section><title>CLI command and parameters</title>
+			<p>Basic syntax for this command:</p>
+		<codeblock>cbepctl [localhost]:11210 -b [bucket_name] -p [bucket-password] start
+cbepctl [localhost]:11210 -b [bucket_name] -p [bucket-password] stop
+cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-type] [parameter] [value]
+</codeblock>
+		<p>For this command, <codeph>host</codeph> is the IP address for the Couchbase cluster or node in
+				the cluster. The port is always the standard port used for cluster-wide stats and is
+				at <codeph>11210</codeph>. The bucket name and password is provided first and then
+				the command option and authentication.</p>
+		<p>Use the following command options to manage persistence:</p>
+		<table>
+			<title>cbepctl command options</title>
+			<tgroup cols="2">
+				<colspec colname="col1" colwidth="1*"/>
+				<colspec colname="col2" colwidth="4.41*"/>
+				<thead>
+					<row>
+						<entry>Command option</entry>
+						<entry>Description</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>stop</entry>
+						<entry>Stop persistence</entry>
+					</row>
+					<row>
+						<entry>start</entry>
+						<entry>Start persistence</entry>
+					</row>
+					<row>
+						<entry>drain</entry>
+						<entry>Wait until queues are drained</entry>
+					</row>
+					<row>
+						<entry>set</entry>
+						<entry>Set <codeph>checkpoint_param</codeph>, <codeph>flush_param</codeph>, and
+									<codeph>tap_param</codeph> command types. This changes how or
+								when persistence occurs.</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+			
+		<p>The <codeph>set</codeph> command option along with the <codeph>checkpoint_param</codeph>,
+					<codeph>flush_param</codeph>, and <codeph>tap_param</codeph> command types
+				change the behavior of persistence in Couchbase Server.</p>
+			
+		</section>
+		
+		<section><title>cbepctl set checkpoint_param</title>
+		<p>The parameters for <codeph>set checkpoint_param</codeph> are:</p>
+		<table>
+			<tgroup cols="2">
+				<colspec colname="col1"/>
+				<colspec colname="col2"/>
+				<thead>
+					<row>
+						<entry>Parameter</entry>
+						<entry>Description</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>chk_max_items</entry>
+						<entry>Max number of items allowed in a checkpoint.</entry>
+					</row>
+					<row>
+						<entry>chk_period</entry>
+						<entry>Time bound (in sec.) on a checkpoint.</entry>
+					</row>
+					<row>
+						<entry>item_num_based_new_chk</entry>
+						<entry>True if a new checkpoint can be created based on. the number of items
+							in the open checkpoint.</entry>
+					</row>
+					<row>
+						<entry>keep_closed_chks</entry>
+						<entry>True if we want to keep closed checkpoints in memory, as long as the
+							current memory usage is below high water mark.</entry>
+					</row>
+					<row>
+						<entry>max_checkpoints</entry>
+						<entry>Max number of checkpoints allowed per vbucket. </entry>
+					</row>
+					<row>
+						<entry>enable_chk_merge</entry>
+						<entry>True, if merging closed checkpoints is enabled.</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		</section>
+	
+		
+		<section><title>cbepctl set flush_param</title>
+			
+			<p>The parameters for <codeph>set flush_param</codeph> are:</p>
+			<table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>Parameter</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>alog_sleep_time</entry>
+							<entry>Access scanner interval (minute)</entry>
+						</row>
+						<row>
+							<entry>alog_task_time</entry>
+							<entry>Access scanner next task time (UTC)</entry>
+						</row>
+						<row>
+							<entry>backfile_mem_threshold</entry>
+							<entry>Memory threshold (%) on the current bucket quota before backfill task is made to back off.</entry>
+						</row>
+						<row>
+							<entry>bg_fetch_delay</entry>
+							<entry>Delay before executing a bg fetch (test feature).</entry>
+						</row>
+						<row>
+							<entry>couch_response_timeout</entry>
+							<entry>timeout in receiving a response from CouchDB.</entry>
+						</row>
+						<row>
+							<entry>exp_pager_stime</entry>
+							<entry>Expiry Pager interval. Time interval that Couchbase Server waits
+								before it performs cleanup and removal of expired items from
+								disk.</entry>
+						</row>
+						<row>
+							<entry>flushall_enabled</entry>
+							<entry>Deprecated. Enable flush operation.</entry>
+						</row>
+						<row>
+							<entry>pager_active_vb_pcnt</entry>
+							<entry>Percentage of active vBuckets items among all ejected items by item pager.</entry>
+						</row>
+						<row>
+							<entry>max_size</entry>
+							<entry>Maximum memory used by the server.</entry>
+						</row>
+						<row>
+							<entry>mem_high_wat</entry>
+							<entry>Low water mark by percentage.</entry>
+						</row>
+						<row>
+							<entry>mem_low_wat</entry>
+							<entry>High water mark by percentage.</entry>
+						</row>
+						<row>
+							<entry>mutation_mem_threshold</entry>
+							<entry>Amount of RAM that can be consumed in that caching layer before
+								clients start receiving temporary out of memory messages.</entry>
+						</row>
+						<row>
+							<entry>timing_log</entry>
+							<entry>Path to log detailed timing stats. </entry>
+						</row>
+						<row>
+							<entry>warmup_min_memory_threshold</entry>
+							<entry>Memory threshold (%) during warmup to enable traffic.</entry>
+						</row>
+						<row>
+							<entry>warmup_min_item_threshold</entry>
+							<entry>Item number threshold (%) during warmup to enable traffic.</entry>
+						</row>
+						<row>
+							<entry>max_num_readers</entry>
+							<entry>Override the default number of global threads that prioritize read operations.</entry>
+						</row>
+						<row>
+							<entry>max_num_writers</entry>
+							<entry>Override the default number of global threads that prioritize write
+								operations.</entry>
+						</row>
+						<row>
+							<entry>max_num_auxio</entry>
+							<entry>Override the default number of global threads that prioritize auxio
+								operations.</entry>
+						</row>
+						<row>
+							<entry>max_num_nonio</entry>
+							<entry>Override the default number of global threads that prioritize nonio
+								operations.</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+
+		</section>
+		
+		<section><title>cbepctl set tap_param</title>
+			<p>The parameters for <codeph>set tap_param</codeph> are:</p>
+		
+			<table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>Parameter</entry>
+							<entry>Description</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>tap_keepalive</entry>
+							<entry>Seconds to hold a named tap connection.</entry>
+						</row>
+						<row>
+							<entry>tap_throttle_queue_cap</entry>
+							<entry>Maximum disk write queue size to throttle tap streams (infinite means no cap).</entry>
+						</row>
+						<row>
+							<entry>tap_throttle_cap_pcnt</entry>
+							<entry>Percentage of total items in write queue at which we throttle tap input.</entry>
+						</row>
+						<row>
+							<entry>tap_throttle_threshold</entry>
+							<entry>Percentage of memory in use to throttle tap streams</entry>
+						</row>
+						
+					</tbody>
+				</tgroup>
+			</table>
+		
+		</section>
+		
+	</refbody>
+	<related-links>
+		<linklist>
+			<link href="CBcli/cbcli-buckets.dita"/>
+			<link href="../REST/rest-bucket-flush.dita"/>
+			<link href="../UI/ui-data-buckets.dita"/>
+		</linklist>
+	</related-links>
+</reference>

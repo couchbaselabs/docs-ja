@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="cbtransfer-tool">
+	<title>cbtransfer tool</title>
+	<shortdesc>The <codeph>cbtransfer</codeph> tool is used to transfer data between clusters and
+		to/from files. </shortdesc>
+	<refbody>
+		<section>
+			<title>Description</title>
+			<p>In addition to transferring data between clusters and to/from files, the
+					<codeph>cbtransfer</codeph> tool can also be used create a copy of data from a
+				node that no longer running. This tool is the underlying, generic data transfer tool
+				that <codeph>cbbackup</codeph> and <codeph>cbrestore</codeph> are built upon. It is
+				a lightweight extract-transform-load (ETL) tool that can move data from a source to
+				a destination. The source and destination parameters are similar to URLs or file
+				paths.</p>
+			<note type="note">The most important way to use this tool is for transferring data from
+				a Couchbase node that is no longer running to a cluster that is running. The
+					<codeph>cbbackup</codeph>, <codeph>cbrestore</codeph>, and
+					<codeph>cbtransfer</codeph> tools do not communicate with external IP addresses
+				for server nodes outside of a cluster. Backup, restore, or transfer operations are
+				performed on data from a node within a Couchbase cluster. They only communicate with
+				nodes from a node list obtained within a cluster. This also means that if Couchbase
+				Server is installed with a default IP address, an external hostname cannot be used
+				to access it.</note>
+			<note type="note">Couchbase Server does not transfer design documents. To backup design
+				document, use <codeph>cbbackup</codeph> to store the information and
+					<codeph>cbrestore</codeph> to read it back into memory.</note>
+			<p>The tool is at the following location:</p>
+			<table>
+				<tgroup cols="2">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<thead>
+						<row>
+							<entry>Operating system</entry>
+							<entry>Location</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>Linux</entry>
+							<entry>/opt/couchbase/bin/</entry>
+						</row>
+						<row>
+							<entry>Windows</entry>
+							<entry>C:\Program Files\Couchbase\Server\bin\</entry>
+						</row>
+						<row>
+							<entry>Mac OS X</entry>
+							<entry>/Applications/Couchbase Server.app/Contents/Resources/couchbase-core/bin/</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</section>
+		
+		<section><title>CLI command and parameters</title>
+			
+		<p>Basic syntax for this command:</p>
+		<codeblock>cbtransfer [options] source destination</codeblock>
+		<p>The following are the command options:</p>
+		<table>
+			<title>cbtransfer options</title>
+			<tgroup cols="2">
+				<colspec colname="col1"/>
+				<colspec colname="col2"/>
+				<thead>
+					<row>
+						<entry>Parameters</entry>
+						<entry>Description</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>-h, –help</entry>
+						<entry>Command line help.</entry>
+					</row>
+					<row>
+						<entry>-b BUCKET_SOURCE</entry>
+						<entry>Single named bucket from source cluster to transfer.</entry>
+					</row>
+					<row>
+						<entry>-B BUCKET_DESTINATION, –bucket-destination=BUCKET_DESTINATION</entry>
+						<entry>Single named bucket on destination cluster which receives transfer. This enables you to
+							transfer to a bucket with a different name as your source bucket. If you
+							do not provide defaults to the same name as the bucket-source.</entry>
+					</row>
+					<row>
+						<entry>-i ID, –id=ID</entry>
+						<entry>Transfer only items that match a vbucket ID.</entry>
+					</row>
+					<row>
+						<entry>-k KEY, –key=KEY</entry>
+						<entry>Transfer only items with keys that match a regexp.</entry>
+					</row>
+					<row>
+						<entry>-n, –dry-run</entry>
+						<entry>No actual transfer; just validate parameters, files, connectivity and
+							configurations.</entry>
+					</row>
+					<row>
+						<entry>-u USERNAME, –username=USERNAME</entry>
+						<entry>REST username for source cluster or server node.</entry>
+					</row>
+					<row>
+						<entry>-p PASSWORD, –password=PASSWORD</entry>
+						<entry>REST password for cluster or server node.</entry>
+					</row>
+					<row>
+						<entry>-t THREADS, –threads=THREADS</entry>
+						<entry>Number of concurrent workers threads performing the transfer. Default: 4.</entry>
+					</row>
+					<row>
+						<entry>-v, –verbose</entry>
+						<entry>Verbose logging; provide more verbosity.</entry>
+					</row>
+					<row>
+						<entry>-x EXTRA, –extra=EXTRA</entry>
+						<entry>Provide extra, uncommon config parameters.</entry>
+					</row>
+					<row>
+						<entry>–single-node</entry>
+						<entry>Transfer from a single server node in a source cluster. This single server node is a
+							source node URL.</entry>
+					</row>
+					<row>
+						<entry>–source-vbucket-state=SOURCE_VBUCKET_STATE</entry>
+						<entry>Only transfer from source vbuckets in this state, such as ‘active’
+							(default) or ‘replica’. Must be used with Couchbase cluster as
+							source.</entry>
+					</row>
+					<row>
+						<entry>–destination-vbucket-state=DESTINATION_VBUCKET_STATE</entry>
+						<entry>Only transfer to destination vbuckets in this state, such as ‘active’
+							(default) or ‘replica’. Must be used with Couchbase cluster as
+							destination.</entry>
+					</row>
+					<row>
+						<entry>–destination-operation=DESTINATION_OPERATION</entry>
+						<entry>Perform this operation on transfer. “set” will override an existing
+							document, ‘add’ will not override, ‘get’ will load all keys transferred
+							from a source cluster into the caching layer at the destination.</entry>
+					</row>
+					<row>
+						<entry><codeph>/path/to/filename</codeph></entry>
+						<entry>Export a.csv file from the server or import a.csv file to the server.
+						</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+			<p>The following are extra, specialized command options with the <codeph>cbtransfer -x</codeph>
+				parameter.</p>
+			
+			<table>
+				<title>cbtransfer -x options</title>
+			<tgroup cols="2">
+				<colspec colname="col1"/>
+				<colspec colname="col2"/>
+				<thead>
+					<row>
+						<entry>-x options</entry>
+						<entry>Description</entry>
+					</row>
+					
+				</thead>
+				<tbody>
+					<row>
+						<entry>backoff_cap=10</entry>
+						<entry>Maximum backoff time during the rebalance period.</entry>
+					</row>
+					<row>
+						<entry>batch_max_bytes=400000</entry>
+						<entry>Transfer this # of bytes per batch.</entry>
+					</row>
+					<row>
+						<entry>batch_max_size=1000</entry>
+						<entry>Transfer this # of documents per batch.</entry>
+					</row>
+					<row>
+						<entry>cbb_max_mb=100000</entry>
+						<entry>Split backup file on destination cluster if it exceeds the MB.</entry>
+					</row>
+					<row>
+						<entry>conflict_resolve=1</entry>
+						<entry>By default, disable conflict resolution.</entry>
+					</row>
+					<row>
+						<entry>data_only=0</entry>
+						<entry>For value 1, transfer only data from a backup file or cluster.</entry>
+					</row>
+					<row>
+						<entry>design_doc_only=0</entry>
+						<entry>For value 1, transfer only design documents from a backup file or cluster. Default: 0.</entry>
+					</row>
+					<row>
+						<entry>max_retry=10</entry>
+						<entry>Max number of sequential retries if the transfer fails.</entry>
+					</row>
+					<row>
+						<entry>mcd_compatible=1</entry>
+						<entry>For value 0, display extended fields for stdout output.</entry>
+					</row>
+					<row>
+						<entry>nmv_retry=1</entry>
+						<entry>0 or 1, where 1 retries transfer after a NOT_MY_VBUCKET message. Default: 1.</entry>
+					</row>
+					<row>
+						<entry>recv_min_bytes=4096</entry>
+						<entry>Amount of bytes for every TCP/IP batch transferred.</entry>
+					</row>
+					<row>
+						<entry>rehash=0</entry>
+						<entry>For value 1, rehash the partition id's of each item. 
+							This is required when transferring data between clusters with
+							different number of partitions, such as when transferring data from an
+							Mac OS X server to a non-Mac OS X cluster.</entry>
+					</row>
+					<row>
+						<entry>report=5</entry>
+						<entry>Number batches transferred before updating progress bar in console.</entry>
+					</row>
+					<row>
+						<entry>report_full=2000</entry>
+						<entry>Number batches transferred before emitting progress information in console.</entry>
+					</row>
+					<row>
+						<entry>seqno=0</entry>
+						<entry>By default, start seqno from beginning.</entry>
+					</row>
+					<row>
+						<entry>try_xwm=1</entry>
+						<entry>Transfer documents with metadata. Default: 1. Value of 0 is only used when transferring
+								from 1.8.x to 1.8.x.</entry>
+					</row>
+					<row>
+						<entry>uncompress=0</entry>
+						<entry>For value 1, restore data in uncompressed mode.</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		</section>
+		
+		<section><title>Syntax</title>
+			<p>The following is the basic syntax:</p>
+			<codeblock>cbtransfer [options] source destination</codeblock>
+			
+			
+			<p>The following are syntax examples:</p>
+			
+			<codeblock>
+cbtransfer http://SOURCE:8091 /backups/backup-42
+cbtransfer /backups/backup-42 http://DEST:8091
+cbtransfer /backups/backup-42 couchbase://DEST:8091
+cbtransfer http://SOURCE:8091 http://DEST:8091
+cbtransfer file.csv http://DEST:8091
+			</codeblock>
+		
+		
+		</section>
+		
+		<section><title>Example: Transferring data to a cluster</title>
+			<p>The following example and response transfers data from a non-running node to a running cluster:</p>
+			<p>Syntax:</p>
+			<codeblock>
+cbtransfer
+	couchstore-files://COUCHSTORE_BUCKET_DIR
+	couchbase://HOST:PORT
+	--bucket-destination=DESTINATION_BUCKET
+			</codeblock>
+       
+
+<codeblock>cbtransfer
+	couchstore-files:///opt/couchbase/var/lib/couchbase/data/default
+	couchbase://10.5.3.121:8091
+	--bucket-destination=foo
+</codeblock>
+		
+			<p>The response shows 10000 total documents transferred in batch size of 1088 documents each.</p>
+		<codeblock>[####################] 100.0% (10000/10000 msgs)
+bucket: bucket_name, msgs transferred...
+      : total | last | per sec
+batch : 1088 | 1088 | 554.8
+byte : 5783385 | 5783385 | 3502156.4
+msg : 10000 | 10000 | 5230.9
+done
+</codeblock>
+		</section>
+		
+		<section><title>Example: Transferring data to standard output</title>
+			<p>The following example and response sends all the data from a node to standard output:</p>
+		<codeblock>cbtransfer http://10.5.2.37:8091/ stdout:
+
+set pymc40 0 0 10
+0000000000
+set pymc16 0 0 10
+0000000000
+set pymc9 0 0 10
+0000000000
+set pymc53 0 0 10
+0000000000
+set pymc34 0 0 10
+0000000000
+</codeblock>
+		
+		</section>
+		
+		
+		<section><title>Example: Exporting and importing CSV files</title>
+		<p>The <codeph>cbtransfer</codeph> tool is also used to import and export <codeph>csv</codeph>
+				files. Data is imported into Couchbase Server as documents and documents are
+				exported from the server into comma-separated values. Design documents associated
+				with vBuckets are not included.</p>
+			<p>In these examples, the following records are in the default bucket where re-fdeea652a89ec3e9
+				is the document ID, 0 are flags, 0 is the expiration, and the CAS value is
+				4271152681275955. The actual value is the hash starting with "{""key""....... </p>
+		<codeblock>re-fdeea652a89ec3e9,
+0,
+0,
+4271152681275955,
+"{""key"":""re-fdeea652a89ec3e9"",
+ ""key_num"":4112,
+ ""name"":""fdee c3e"",
+ ""email"":""fdee@ea.com"",
+ ""city"":""a65"",
+ ""country"":""2a"",
+ ""realm"":""89"",
+ ""coins"":650.06,
+ ""category"":1,
+ ""achievements"":[77, 149, 239, 37, 76],""body"":""xc4ca4238a0b923820d
+ .......
+""}"
+......
+</codeblock>
+			<p>This example exports these items to a .csv file. All items are transferred from the default
+				bucket, <codeph>-b default</codeph> available at the node
+					<codeph>http://localhost:8091</codeph> and put into the
+					<codeph>/data.csv</codeph> file. If a different bucket is provided for the
+					<codeph>-b</codeph> option, all items are exported from that bucket. Credentials
+				are required for the cluster when exporting items from a bucket in the cluster. </p>
+		<codeblock>cbtransfer http://[localhost]:8091 csv:./data.csv -b default -u Administrator -p password
+</codeblock>
+		
+			<p>The following example response is similar to that in other <codeph>cbtransfer</codeph>
+				scenarios:</p>
+		<codeblock>[####################] 100.0% (10000/10000 msgs)
+bucket: default, msgs transferred...
+       : total | last | per sec
+ batch : 1053 | 1053 | 550.8
+ byte : 4783385 | 4783385 | 2502156.4
+ msg : 10000 | 10000 | 5230.9
+2013-05-08 23:26:45,107: mt warning: cannot save bucket design on a CSV destination
+done
+</codeblock>
+		<p>The following example syntax shows 1053 batches of data transferred at 550.8 batches per
+				second. The tool outputs “cannot save bucket design….” to indicate that no design
+				documents were exported. To import information from a.csv file to a named bucket in
+				a cluster:</p>
+		<codeblock>cbtransfer /data.csv http://[hostname]:[port] -B bucket_name -u Administrator -p password
+</codeblock>
+		<p>If the .csv file is not correctly formatted, the following error displays during import:</p>
+		<codeblock>w0 error: fails to read from csv file, .....
+</codeblock>
+			
+		</section>
+		
+		
+	</refbody>
+</reference>
