@@ -8,6 +8,8 @@ Couchbase Server公式ドキュメントの翻訳プロジェクトです。ド�
 Contribute方法
 ==================
 
+## 翻訳に協力
+
 ドキュメントは[DITA](http://ja.wikipedia.org/wiki/Darwin_Information_Typing_Architecture)で記述されています。各トピックが個別のXMLファイル(.dita)です。
 翻訳状況の管理と、作業の重複を防ぐために、この翻訳プロジェクトでは各DITAファイルにつきissueを一つずつ作成しています。
 
@@ -20,12 +22,16 @@ jaディレクトリの下にある*.ditaファイルを翻訳し、pull request
 
 ご不明な点はissueのコメントにお願いします。
 
+## レビューに協力
+
+[previewページ](http://labs.couchbase.com/docs-ja/preview/)をご覧いただき、誤字や誤訳を発見した場合はissueを起票してください:
+- 該当箇所がわかるようにコメントをお願いします、ファイル: admin/xxx.dita、もしくはpreviewのURL
+- 正誤方式が分かりやすいです、例) 誤:パケットを作成し 正:バケットを作成し
 
 翻訳時の注意事項
 =================
 
-## 言語指定
-DITA XMLファイル内のmap, topic要素には*xml:lang="ja"*を指定してください。
+- 言語指定: DITA XMLファイル内のmap, topic要素には*xml:lang="ja"*を指定してください。
 
 HTML生成方法
 ============
