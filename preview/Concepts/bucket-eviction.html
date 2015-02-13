@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="concept">
+<meta name="description" content="Tunable memory enables both value-only ejection and full metadata ejection from memory."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/bucket-priority.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-docExpiration.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-workingset-mgmt.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="concept_dl3_clp_yn">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Tunable memory</title>
+</head>
+<body id="concept_dl3_clp_yn">
+
+
+ <h1 class="title topictitle1">Tunable memory</h1>
+
+ 
+ <div class="body conbody"><p class="shortdesc">Tunable memory enables both value-only ejection and full metadata ejection from memory. </p>
+
+  
+  
+  <p class="p">The cache management approach for item ejection is implemented with value-only ejection and
+   full metadata ejection: </p>
+
+  <ul class="ul">
+   <li class="li">Value-only ejection (the default) removes the data from cache but keeps all keys and metadata
+    fields for non-resident items. When the value bucket ejection occurs, the item's value is reset. </li>
+
+   <li class="li">Full metadata ejection removes all data including keys, metadata, and key-values from cache
+    for non-resident items. Full metadata ejection reduces RAM requirement for large buckets.</li>
+
+  </ul>
+
+  
+  <p class="p">Full-bucket ejection supports very large data footprints (a large number of data sets or
+			items/keys) since the working sets in memory are smaller. The smaller working sets allow
+			efficient cache management and reduced warmup times. Metadata ejection is configured at the
+			bucket-level. </p>
+
+  
+  <p class="p">For example, you might want to enable the full metadata ejection on that bucket if you need to
+			store huge amounts of data (for example, terabytes or petabytes).</p>
+
+  
+  <img class="image" src="../images/tunable_memory.png" width="280">
+  
+  
+  
+  
+  <p class="p">For information on how to eject metadata from memory, see the Couchbase web console, CLI, and
+   REST API sections.</p>
+
+
+
+  
+  
+  <div class="section"><h2 class="title sectiontitle">Backward compatibility</h2>
+   <p class="p">With full metadata ejection, an item’s key and metadata is ejected along with its value. In
+    previous releases, an item’s value is only ejected from cache while its key and metadata remain
+    in cache.</p>
+
+
+  </div>
+ 
+  
+
+  
+  
+ </div>
+
+ 
+
+<nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../Concepts/concept-workingset-mgmt.html">Working set management and ejection</a><br>
+Working set management is the process of freeing up space and ensuring that the most   used items are available in RAM. Ejection is the process of removing data from RAM to provide room   for frequently used items. </li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/bucket-priority.html" title="Disk I/O priority enables workload priorities to be set at the bucket level.">Disk I/O priority</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/concept-docExpiration.html" title="Each document stored in the database has an optional expiration value (TTL, time to live) that is used to automatically deleted items.">Expiration</a></div>
+</div>
+</nav>
+</body>
+</html>

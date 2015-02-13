@@ -1,0 +1,108 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="During an offline upgrade, the cluster must be shut down and all applications built on it will not be available during that time."><meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-backup-restore.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-serverWarmup.html">
+<meta name="DC.Relation" scheme="URI" content="../Monitoring/monitor-warmup.html">
+<meta name="DC.Relation" scheme="URI" content="../Monitoring/monitor-diskqueue.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbbackup_tool.html">
+<meta name="DC.Relation" scheme="URI" content="../UI/ui-settings-autofailover.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_q11_1my_p4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Offline upgrade</title>
+</head>
+<body id="topic_q11_1my_p4">
+
+
+  <h1 class="title topictitle1">Offline upgrade</h1>
+
+  
+  
+  <div class="body"><p class="shortdesc">During an offline upgrade, the cluster must be shut down and all applications built on it will not be
+    available during that time.</p>
+
+    
+    
+    
+      
+      <div class="note note"><span class="notetitle">Note:</span> If you are upgrading from Couchbase
+        Server 1.8 to Couchbase Server 2.0 or later, there are more steps for the upgrade because
+        you must first upgrade to Couchbase 1.8.1 for data compatibility.</div>
+
+      
+      <div class="note tip"><span class="tiptitle">Tip:</span> Check that the disk write queue is completely drained to make sure that 
+        all data has been persisted to disk and will be available after the upgrade. It is 
+        recommended that you turn off your application and allow the queue to drain before upgrading.
+        Back up all data before upgrading. </div>
+
+      
+      <p class="p">To perform an offline upgrade:</p>
+
+      <ol class="ol">
+            <li class="li">Under <span class="ph menucascade"><span class="ph uicontrol">Settings</span> &gt; <span class="ph uicontrol">Auto-Failover</span></span>, disable auto-failover for all nodes in the cluster. If you leave
+            this option enabled, the first node that you shut down will be auto-failed over. </li>
+
+            <li class="li">Shut down your application so that no more requests are forwarded to Couchbase Cluster.
+              <p class="p">You can monitor the activity of your cluster by using the Couchbase Web Console. The
+                cluster needs to finish writing all information to disk. This will make sure that when you
+                restart your cluster, all of your data can be brought back into the caching layer from
+                disk. You can do this by monitoring the Disk Write Queue for every bucket in your
+                cluster. When the queue reaches zero, no more data remains to be
+                written to disk.</p>
+</li>
+
+        <li class="li">Open the Couchbase Web Console at a node in your cluster.</li>
+
+            <li class="li">Click <span class="ph uicontrol">Data Buckets |<var class="keyword varname">your_bucket</var></span>. 
+              In the <span class="keyword wintitle">Summary</span> section, check that
+              <span class="keyword wintitle">Disk write queue</span> reads 0. If you have more than one data bucket in 
+              your cluster, repeat this step to verify that each bucket has a disk write queue of 0.
+                <div class="fig fignone"><img class="image" src="../images/upgrade_disk_write_zero.png" width="800"></div>
+</li>
+
+            <li class="li">Create a backup of your cluster data using <span class="keyword cmdname">cbbackup</span>. </li>
+
+            <li class="li">Shut down Couchbase Server on each machine in your cluster.</li>
+
+            <li class="li">After you shut down the nodes, perform a standard node upgrade to the new version of
+              Couchbase Server as explained in <a class="xref" href="upgrade-individual-nodes.html" title="To upgrade a single Couchbase Server node, first back it up and then install the software.">Upgrading one node</a>.
+              <p class="p">Couchbase Server starts automatically on each node after you perform the node
+                upgrade.</p>
+</li>
+
+            <li class="li">As the cluster warms up, you can monitor the status of the warmup process to
+              determine when you can switch on your application.</li>
+
+          </ol>
+
+      <p class="p">After the cluster finishes warmup, you can restart your application on the upgraded
+            cluster.</p>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">Offline upgrade to Enterprise Edition</h2><p class="p">Shut down the
+      entire cluster and uninstall Couchbase Server Community Edition from each machine. Then
+      install Couchbase Server Enterprise Edition on these machines. The data files will be retained, and the
+      cluster can be restarted.</p>
+</div>
+
+    
+  </div>
+
+  <nav class="related-links">
+<div class="linklist linklist">
+<div><a class="link" href="../Tasks/tasks-backup-restore.html" title="Back up your entire cluster periodically to minimize data inconsistency when a restore is required.">Backup and restore</a></div>
+<div><a class="link" href="../Concepts/concept-serverWarmup.html" title="Whenever Couchbase server is restarted or data is restored to a server instance, the server undergoes a warmup process before data requests can be handled.">Server warmup</a></div>
+<div><a class="link" href="../Monitoring/monitor-warmup.html">Monitoring startup (warmup)</a></div>
+<div><a class="link" href="../Monitoring/monitor-diskqueue.html" title="Disk writing is implemented as a 2-queue system: commit to DRAM and then queued to be written to disk">Disk write queue</a></div>
+<div><a class="link" href="../CLI/cbbackup_tool.html" title="The cbbackup tool creates a copy of data from an entire running cluster, an entire bucket, a single node, or a single bucket on a single functioning node.">cbbackup tool</a></div>
+<div><a class="link" href="../UI/ui-settings-autofailover.html">Auto-Failover tab</a></div></div>
+</nav>
+
+</body>
+</html>

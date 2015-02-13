@@ -1,0 +1,92 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-backup-restore.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-backup-restore-incremental.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_wgq_wzw_fp">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Backing up and restoring between platforms</title>
+</head>
+<body id="topic_wgq_wzw_fp">
+
+
+  <h1 class="title topictitle1">Backing up and restoring between platforms</h1>
+
+  <div class="body">
+    <p class="p">Couchbase Server on Mac OS X uses a different number of configured vBuckets than the Linux
+      and Windows installations. Backing up is a standard backup, however, 
+      restoring to Mac OS X from a Linux or Windows backup or restoring to Linux/Windows from a Mac OS X backup 
+      requires the <samp class="ph codeph">rehash=1</samp> option.</p>
+
+    <div class="section"><h2 class="title sectiontitle">Backing up Mac OS X and restoring on Linux/Windows</h2>
+      
+      <p class="p">To backup the data from Mac OS X, use the standard <samp class="ph codeph">cbbackup</samp> tool and options:</p>
+
+      <pre class="pre codeblock">cbbackup http://Administrator:password@mac:8091 /macbackup/today</pre>
+
+      <p class="p">To restore the data to a Linux/Windows cluster, connect to the 8091 port, and use the
+          <samp class="ph codeph">rehash=1</samp> option to rehash the information and distribute the data to
+        the appropriate node within the cluster. <samp class="ph codeph">rehash=1</samp> rehashes the partition
+        id's of each item. </p>
+
+      <pre class="pre codeblock">cbrestore backup 
+  -u [username] -p [password] 
+  -x rehash=1
+  http://[localhost]:8091 --bucket-source [my_bucket] --bucket-destination [my_bucket]</pre>
+
+      <div class="note note"><span class="notetitle">Note:</span> If you have backed up multiple buckets from your Mac, you must restore to each bucket
+        individually.</div>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Backing up Linux/Windows and restoring on Mac OS X</h2>
+      
+      <p class="p">To backup the data from Linux or Windows, use the standard <samp class="ph codeph">cbbackup</samp> tool
+        and options:</p>
+
+      <pre class="pre codeblock">cbbackup http://Administrator:password@linux:8091 /linuxbackup/today</pre>
+
+      <p class="p">To restore to the Mac OS X node or cluster, connect to the 8091 port, and use the
+          <samp class="ph codeph">rehash=1</samp> option to rehash the information and distribute the data to the
+        appropriate node within the cluster. <samp class="ph codeph">rehash=1</samp> rehashes the partition id's
+        of each item. This is needed when transferring data between clusters with different number
+        of partitions, such as when transferring data from a Mac OS X server to a non-Mac OS X
+        cluster.</p>
+
+      <p class="p">Syntax:</p>
+
+      <pre class="pre codeblock">./cbrestore backup 
+  -u [username] -p [password] 
+  -x rehash=1
+  http://[localhost]:8091 --bucket-source [my_bucket] --bucket-destination [my_bucket]
+      </pre>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Transferring data directly</h2>
+      
+      <p class="p">The <samp class="ph codeph">cbtransfer</samp> tool can be used to move data directly between Mac OS X and
+        Linux/Windows clusters without creating the backup file.</p>
+
+      <pre class="pre codeblock">
+cbtransfer http://linux:8091 http://mac:8091 -b [bucket-source] -B [bucket-destination] -x rehash=1
+cbtransfer http://mac:8091 http://linux:8091 -b [bucket-source] -B [bucket-destination] -x rehash=1
+    </pre>
+
+    </div>
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Tasks/tasks-backup-restore.html" title="Back up your entire cluster periodically to minimize data inconsistency when a restore is required.">Backup and restore</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Tasks/tasks-backup-restore-incremental.html" title="Incremental backup and restore enables administrators to quickly back up only modified data in the database, making backup and restore more efficient for larger data sets.">Incremental backup and restore</a></div>
+</div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="The cbcollect_info tool provides detailed statistics for a specific node."><meta name="DC.Relation" scheme="URI" content="cbstats-intro.html">
+<meta name="DC.Relation" scheme="URI" content="http://www.couchbase.com/wiki/display/couchbase/Working+with+the+Couchbase+Technical+Support+Team">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cbcollect-info-tool">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>cbcollect_info tool</title>
+</head>
+<body id="cbcollect-info-tool">
+
+
+	<h1 class="title topictitle1">cbcollect_info tool</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbcollect_info</samp> tool provides detailed statistics for a specific node.</p>
+
+		<div class="section"><h2 class="title sectiontitle">Description</h2>
+			
+			<p class="p">This tool is a per-node operation. 
+				This command collects information from an individual Couchbase Server node.
+				To collect diagnostic information for an entire cluster, perform the command for every node that exists for that
+				cluster.
+				If you are experiencing problems with multiple nodes in a cluster, you may need to run it on
+				all nodes in a cluster.
+			</p>
+
+			<p class="p">A root account is required to run this command and collect all the server information
+				needed. There are internal server files and directories that this tool accesses which
+				require root privileges.</p>
+
+			<p class="p">To use this command, remotely connect to the machine which contains the Couchbase
+				Server then issue the command with options. This command is typically run under the
+				direction of technical support at Couchbase and generates a large .zip file. This
+				archive contains files which contain performance statistics and
+				extracts from server logs.
+			</p>
+
+			
+			
+		<div class="note attention"><span class="attentiontitle">Attention:</span> <samp class="ph codeph">cbcollect_info</samp> is one of the most important diagnostic tools used by Couchbase technical support.</div>
+
+		
+		<p class="p">This tool is at the following locations</p>
+
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="50%" id="d7251e52">Operating System</th>
+
+						<th class="entry" valign="top" width="50%" id="d7251e55">Location</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7251e52 ">Linux</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7251e55 ">/opt/couchbase/bin/cbcollect_info</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7251e52 ">Windows</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7251e55 ">C:\Program&nbsp;Files\Couchbase\Server\bin\cbcollect_info</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7251e52 ">Mac OS X</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7251e55 ">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbcollect_info</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		
+			<p class="p">The tool creates the following log files in the output file:</p>
+
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d7251e107">Log file</th>
+
+							<th class="entry" valign="top" width="50%" id="d7251e110">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">couchbase.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">OS-level information about a node.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ddocs.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Contains diagnostic dumps design documents and replication documents from this node.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">diag.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Contains all kinds of internal diagnostics (list and states of processes, user-visible logs, in-memory stats, etc) 
+								from within live node.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ini.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Contains dumps of couchdb .ini files.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">memcached.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Contains logs from memcached.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ns_server.babysitter.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Logs of babysitter.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ns_server.couchdb.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Information about the persistence layer for a node.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ns_server.debug.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Debug-level information for the cluster management component of this
+								node.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ns_server.error.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Error-level information for the cluster management component of this
+								node.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ns_server.http_access.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Contains log of http requests to port 8091.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ns_server.info.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Info-level entries for the cluster management component of this
+								node.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ns_server.mapreduce_errors.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Contains logs of errors from map/reduce functions.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ns_server.reports.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Contains crash reports of erlang services.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ns_server.ssl_proxy.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Los of the ssl proxy component.</td>
+
+						</tr>
+<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ns_server.stats.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Logs of statistic related components of ns_server.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ns_server.views.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Includes information about indexing, time taken for indexing, queries
+								which have been run, and other statistics about views.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ns_server.xdcr_errors.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Error-level messages of the ns_server.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">ns_server.xdcr.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">XDCR logs.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">stats.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">The results from multiple <samp class="ph codeph">cbstats</samp> options run for
+								the node.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e107 ">syslog.tar.gz</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e110 ">Archive of the operating system logs.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">CLI command and parameters</h2>
+			<p class="p">The following describes usage, where <samp class="ph codeph">output-file</samp> is the name of the .zip file 
+				to create and send to Couchbase technical support.</p>
+
+		<pre class="pre codeblock">cbcollect_info [options] [output-file]</pre>
+
+			
+		<p class="p">The<samp class="ph codeph">cbcollect_info</samp> command gathers statistics  from an
+				individual node in the cluster.</p>
+
+			
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. cbcollect_info options</span></caption>
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d7251e340">Parameter</th>
+
+							<th class="entry" valign="top" width="50%" id="d7251e343">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e340 ">-h, --help</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e343 ">Shows help information.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e340 ">-r ROOT</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e343 ">Root directory. Default to <samp class="ph codeph">/opt/couchbase/bin/..</samp></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e340 ">-v</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e343 ">Increases verbosity level. If specified, debugging information for
+								<samp class="ph codeph">cbcollect_info</samp> is also displayed on your console.
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e340 ">-p</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e343 ">Gathers only product-related information.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e340 ">-d</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e343 ">Dumps a list of commands that <samp class="ph codeph">cbcollect_info</samp> needs.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e340 ">--initargs-INITARG</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e343 ">Ther server <samp class="ph codeph">initargs</samp> path.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e340 ">--single-node-diag</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e343 ">Collects on aper node basis, diagnostics on just this node. The default is all reachable nodes.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e340 ">--upload-host=UPLOAD_HOST</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e343 ">Fully-qualified domain name of the host you want the logs uploaded to. 
+								The protocol prefix of the domain name, <samp class="ph codeph">https://</samp>, is optional. 
+								It is the default only supported protocol.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e340 ">--customer=UPLOAD_CUSTOMER</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e343 ">
+								Customer name. This value is a string with a maximum length of 50 characters that contains only the following characters: [A-Za-z0-9_.-]. 
+								If any other characters are included in the string, the request is rejected. 
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7251e340 ">--ticket=UPLOAD_TICKET</td>
+
+							<td class="entry" valign="top" width="50%" headers="d7251e343 ">Couchbase support ticket number. This value is a string with a maximum length of 7 character that contains only digits 0-9. The ticket number is optional and is used only in conjunction with the --upload option.
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+
+			
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Example</h2>
+			<p class="p">To create a diagnostics .zip file, log onto the node and run the <samp class="ph codeph">cbcollect_info</samp> tool.</p>
+
+			<pre class="pre codeblock">
+cbcollect_info collect.zip
+			</pre>
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Response</h2>
+			
+			<p class="p">The following example response shows partial output when running the <samp class="ph codeph">cbcollect_info</samp> command.</p>
+
+			<pre class="pre codeblock">
+uname (uname -a) - OK
+time and TZ (date; date -u) - OK
+raw /etc/sysconfig/clock (cat /etc/sysconfig/clock) - OK
+raw /etc/timezone (cat /etc/timezone) - Exit code 1
+System Hardware (lshw -json || lshw) - Exit code 127
+
+...
+
+adding: /tmp/tmpMYbSyD/couchbase.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/couchbase.log
+adding: /tmp/tmpMYbSyD/ns_server.xdcr.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.xdcr.log
+adding: /tmp/tmpMYbSyD/ns_server.couchdb.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.couchdb.log
+adding: /tmp/tmpMYbSyD/stats.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/stats.log
+adding: /tmp/tmpMYbSyD/ini.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ini.log
+adding: /tmp/tmpMYbSyD/ns_server.error.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.error.log
+adding: /tmp/tmpMYbSyD/ns_server.ssl_proxy.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.ssl_proxy.log
+adding: /tmp/tmpMYbSyD/ns_server.views.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.views.log
+adding: /tmp/tmpMYbSyD/ns_server.info.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.info.log
+adding: /tmp/tmpMYbSyD/ns_server.xdcr_errors.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.xdcr_errors.log
+adding: /tmp/tmpMYbSyD/ns_server.mapreduce_errors.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.mapreduce_errors.log
+adding: /tmp/tmpMYbSyD/diag.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/diag.log
+adding: /tmp/tmpMYbSyD/ns_server.http_access.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.http_access.log
+adding: /tmp/tmpMYbSyD/syslog.tar.gz -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/syslog.tar.gz
+adding: /tmp/tmpMYbSyD/ns_server.debug.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.debug.log
+adding: /tmp/tmpMYbSyD/ddocs.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ddocs.log
+adding: /tmp/tmpMYbSyD/ns_server.reports.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.reports.log
+adding: /tmp/tmpMYbSyD/memcached.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/memcached.log
+adding: /tmp/tmpMYbSyD/ns_server.babysitter.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.babysitter.log
+adding: /tmp/tmpMYbSyD/ns_server.stats.log -&gt; cbcollect_info_ns_1@10.5.2.117_20141209-024045/ns_server.stats.log
+			</pre>
+
+			
+		</div>
+
+		
+		
+		
+	</div>
+
+	<nav class="related-links">
+<div class="linklist linklist">
+<div><a class="link" href="cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
+<div><a class="link" href="http://www.couchbase.com/wiki/display/couchbase/Working+with+the+Couchbase+Technical+Support+Team" target="_blank">Working with Couchbase Customer Support</a></div></div>
+</nav>
+
+</body>
+</html>

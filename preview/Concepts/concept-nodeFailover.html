@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Failover is the process in which a node in a cluster is declared as unavailable and a replica vBucket is enabled."><meta name="DC.Relation" scheme="URI" content="../Tasks/maintenance-server-node.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/recovery-failover-nodes.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-nodeFailover.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/graceful-failover.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/hard-failover.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-nodeFailover.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic907">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Failing over nodes</title>
+</head>
+<body id="topic907">
+
+
+  <h1 class="title topictitle1">Failing over nodes</h1>
+
+  
+  <div class="body"><p class="shortdesc">Failover is the process in which a node in a cluster is declared as unavailable and a replica vBucket is 
+  enabled.</p>
+
+    <p class="p">Information is distributed around a cluster using a series of <dfn class="term">replicas</dfn>, which are complete copies of the
+      data stored in the bucket and kept within the Couchbase Server Cluster. For Couchbase
+      buckets, you can configure a number of replicas.</p>
+
+    <p class="p">In the event of a failure in the server (either due to transient failure or for
+      administrative purposes), use a process called <dfn class="term">failover</dfn> to indicate that a
+      specific node within the cluster is no longer available and to enable the replica vBuckets for
+      the failed over node.</p>
+
+    <p class="p">The failover process contacts each server that was acting as a replica and updates the
+      internal table that maps client requests for documents to an available Couchbase Server.</p>
+
+    <p class="p">Failover can be performed manually or automatically using the built-in automatic failover
+      process. Auto failover acts after a preset time, when a node in the cluster becomes
+      unavailable.</p>
+
+
+  </div>
+
+  
+  <nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../Tasks/tasks-nodeFailover.html">Failover considerations</a><br>
+Failing over a node means that Couchbase Server removes the node from a cluster and     makes replicated data at other nodes available for client requests.</li>
+<li class="link olchildlink"><a href="../Concepts/graceful-failover.html">Graceful failover</a><br>
+Graceful failover provides the time to administrators to safely fail over a node from the cluster  	 after all in-flight operations are completed and without data loss.</li>
+<li class="link olchildlink"><a href="../Tasks/hard-failover.html">Hard failover</a><br>
+Hard failover immediately fails over nodes from clusters.</li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Tasks/maintenance-server-node.html" title="Server maintenance involves removing a server node and then re-adding it after you have performed maintenance activities.">Server maintenance</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Tasks/recovery-failover-nodes.html" title="The options for recovering failed over nodes are delta node recovery and full recovery.">Recovering failed over nodes</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../Tasks/tasks-nodeFailover.html" title="Failing over a node means that Couchbase Server removes the node from a cluster and makes replicated data at other nodes available for client requests.">Failover considerations</a></div></div>
+</nav>
+
+</body>
+</html>

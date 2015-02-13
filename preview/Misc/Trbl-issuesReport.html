@@ -1,0 +1,157 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="A description on information to include when reporting an issue (JIRA)."><meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-logs.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-beam-smp-issue.html">
+<meta name="DC.Relation" scheme="URI" content="http://www.couchbase.com/issues">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic2891">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Reporting issues</title>
+</head>
+<body id="topic2891">
+
+
+   <h1 class="title topictitle1">Reporting issues</h1>
+
+   
+   <div class="body"><p class="shortdesc">A description on information to include when reporting an issue (JIRA).</p>
+
+      <p class="p">When reporting issues to Couchbase, add the following information to JIRA issues:</p>
+
+      <ul class="ul">
+         <li class="li">Provide a description of your environment (for example, package installation,
+            cluster_run, build number, operating system, and so on).</li>
+
+         <li class="li">Show all the steps necessary to reproduce the issue (if applicable).</li>
+
+         <li class="li">Show the full content of all the design documents.</li>
+
+         <li class="li">Describe how your documents are structured (for example, if they are all same structure
+            or if they have different structures).</li>
+
+         <li class="li">If you generated the data with a tool, identify the tool name and all the parameters
+            given to it (full command line).</li>
+
+         <li class="li"><p class="p">Show the queries you were performing (include all query parameters and the full URL). For
+               example, if you are using curl, use the verbose option (-v) and show the full
+               output.</p>
+</li>
+
+      </ul>
+
+      <p class="p">The following request uses curl with the -v option with test as the bucket, dev_zlat as the
+         design document, and Python (installed separately) as the tool used to format the
+         output.</p>
+
+      <pre class="pre codeblock">curl -v http://10.5.2.54:8092/test/_design/dev_zlat | python -m json.tool
+
+* About to connect() to 10.5.2.54 port 8092 (#0)
+*   Trying 10.5.2.54...   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0connected
+* Connected to 10.5.2.54 (10.5.2.54) port 8092 (#0)
+  GET /test/_design/dev_zlat HTTP/1.1
+  User-Agent: curl/7.21.4 (x86_64-unknown-linux-gnu) libcurl/7.21.4 OpenSSL/0.9.8b zlib/1.2.3
+  Host: 10.5.2.54:8092
+  Accept: */*
+  
+  HTTP/1.1 200 OK
+  X-Couchbase-Meta: {"id":"_design/dev_zlat","rev":"1-08738b26","type":"json"}
+  Server: MochiWeb/1.0 (Any of you quaids got a smint?)
+  Date: Mon, 24 Nov 2014 21:17:13 GMT
+  Content-Type: application/json
+  Content-Length: 159
+  Cache-Control: must-revalidate
+  
+{ [data not shown]
+100   159  100   159    0     0  36780      0 --:--:-- --:--:-- --:--:-- 79500* Connection #0 to host 10.5.2.54 left intact
+
+* Closing connection #0
+{
+    "views": {
+        "byloc": {
+            "map": "function (doc, meta) {\n  
+            if (meta.type == \"json\") {\n    emit(doc.city, doc.sales);\n  } 
+            else {\n    emit([\"blob\"]);\n  }\n}"
+        }
+    }
+}
+
+      </pre>
+
+      <ul class="ul">
+         <li class="li">Repeat the query with different values for the stale parameter and show the
+               output</li>
+
+         <li class="li">Attach logs from all nodes in the cluster</li>
+
+         <li class="li">Try all view related operations, including creating, updating, and deleting design
+            documents from the command line. The goal is to isolate UI problems from the view
+            engine.</li>
+
+         <li class="li">If you suspect the indexer is stuck or blocked, use curl against the
+                  <samp class="ph codeph">_active_tasks</samp> API to isolate UI issues from view-engine issues. For example:
+            <pre class="pre codeblock">curl -s http://10.5.2.54:8092/_active_tasks
+[
+    {
+        "limit": 16, 
+        "pid": "&lt;0.1006.0&gt;", 
+        "running": 0, 
+        "started_on": 1407799619, 
+        "type": "couch_main_index_barrier", 
+        "updated_on": 1410294790, 
+        "waiting": 0
+    }, 
+    {
+        "limit": 2, 
+        "pid": "&lt;0.1007.0&gt;", 
+        "running": 0, 
+        "started_on": 1407799619, 
+        "type": "couch_replica_index_barrier", 
+        "updated_on": 1407799619, 
+        "waiting": 0
+    }, 
+    {
+        "limit": 4, 
+        "pid": "&lt;0.1008.0&gt;", 
+        "running": 0, 
+        "started_on": 1407799619, 
+        "type": "couch_spatial_index_barrier", 
+        "updated_on": 1407799619, 
+        "waiting": 0
+    }
+]
+</pre>
+</li>
+
+      </ul>
+
+      <div class="note note"><span class="notetitle">Note:</span> The <samp class="ph codeph">started_on</samp> and <samp class="ph codeph">update_on</samp> fields are
+         UNIX timestamps. There are tools (even online) and programming language APIs (Perl, Python,
+         etc) to convert them into human readable form, including date and time. The
+            <samp class="ph codeph">_active_tasks</samp> API contains information on the specific nodes, so query
+            <samp class="ph codeph">_active_tasks</samp> on every node in the cluster to verify whether progress
+         is stuck.</div>
+
+   </div>
+
+   <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Misc/Trbl-intro.html" title="トラブルシューティングの一般的なヒント、一般的なエラー、ログ情報、およびその他の問題について説明します。">トラブルシューティング</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Misc/Trbl-logs.html" title="Couchbase Server creates a number of different log files depending on the component of the system that produce the error, and the level and severity of the problem being reported.">Logs and logging</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Misc/Trbl-beam-smp-issue.html" title="Beam.smp uses excessive memory on Linux">Beam.smp</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="http://www.couchbase.com/issues" target="_blank">couchbase.com/issues</a></div></div>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Relation" scheme="URI" content="../UI/ui-settings.html">
+<meta name="DC.Relation" scheme="URI" content="../UI/ui-settings-cluster.html">
+<meta name="DC.Relation" scheme="URI" content="../UI/ui-settings-autofailover.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_fwj_gnc_34">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Update Notifications tab</title>
+</head>
+<body id="topic_fwj_gnc_34">
+
+
+  <h1 class="title topictitle1">Update Notifications tab</h1>
+
+  <div class="body">
+    <p class="p">You can enable or disable Update
+      Notifications by checking the <samp class="ph codeph">Enable software update notifications</samp> check box
+      within the <samp class="ph codeph">Update Notifications</samp> screen. Once you have changed the option,
+      click <samp class="ph codeph">Save</samp> to record the change.</p>
+
+    
+    <p class="p">If update notifications are
+        disabled, then the Update Notifications screen only notifies you of your currently
+        installed version, and no alert is provided.</p>
+
+    
+          <img class="image" src="../images/web-console-server-settings-update-notifications.png">
+    
+    
+    <p class="p">During installation you can select to enable the Update Notification function. Update
+      notifications allow a client accessing the Couchbase Web Console to determine whether a newer
+      version of Couchbase Server is available for download.</p>
+
+    <p class="p">If <samp class="ph codeph">Enable software update notifications</samp> is selected, the web console
+      communicates with Couchbase servers to confirm the version number of your Couchbase
+      installation. During this process, the client submits the following information to 
+      Couchbase server:</p>
+
+    <ul class="ul">
+      <li class="li"><p class="p">The current version of your Couchbase Server installation. 
+        When a new version of  Couchbase Server becomes available, 
+        you are provided with notification of the new version and information on where to download the new version.</p>
+</li>
+
+      <li class="li"><p class="p">Basic information about the size and configuration of your Couchbase cluster. This
+        information is used to help Couchbase prioritize development efforts.</p>
+</li>
+
+    </ul>
+
+    <p class="p">You can enable/disable software update notifications. 
+    The process occurs within the browser accessing the web console, not within the server itself. 
+      No further configuration or internet access is required on the server to enable
+      this functionality. Providing the client accessing Couchbase Server Console has internet
+      access, the information can be communicated to the Couchbase servers.</p>
+
+    <p class="p">The update notification process the information anonymously, and the data cannot be tracked.
+      The information is only used to provide you with update notification and to provide
+      information that will help improve future development process for Couchbase Server and
+      related products.</p>
+
+    <div class="note note"><span class="notetitle">Note:</span> If the browser or computer that you are using to connect to your Couchbase Server web console
+      does not have Internet access, the update notification system does not work.</div>
+
+    
+        
+  </div>
+
+
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../UI/ui-settings.html" title="The Settings section provides configuration and information for the cluster, update notifications, auto failover, alerts, auto compaction, sample buckets, and account management.">Settings</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../UI/ui-settings-cluster.html" title="Cluster settings tab shows cluster name, SSL certificate, and RAM quota.">Cluster tab</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../UI/ui-settings-autofailover.html">Auto-Failover tab</a></div>
+</div>
+</nav>
+</body>
+</html>

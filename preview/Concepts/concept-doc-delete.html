@@ -1,0 +1,55 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="concept">
+<meta name="description" content="Couchbase Server never deletes entire items from disk unless a client explicitly deletes the item from the database or the expiration value for the item is reached."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-diskStorage.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-readerWriter.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-tombstone.html">
+<meta name="DC.Relation" scheme="URI" content="concept-intro.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="concept_yvq_lh3_wn">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Document deletion</title>
+</head>
+<body id="concept_yvq_lh3_wn">
+
+
+ <h1 class="title topictitle1">Document deletion</h1>
+
+ 
+ <div class="body conbody"><p class="shortdesc">Couchbase Server never deletes entire items from disk 
+  unless a client explicitly deletes the item from the database or the expiration
+  value for the item is reached.</p>
+
+  <p class="p">The ejection mechanism removes an item from RAM, while
+   keeping a copy of the key and metadata for that document in RAM and also keeping copy of
+   that document on disk.
+  </p>
+
+  <div class="note important"><span class="importanttitle">Important:</span> 
+   If only memcached buckets are used with Couchbase Server, 
+   the server provides only a caching layer as storage and no data persistence
+   on disk. If your server runs out of space in RAM, items are evicted from RAM
+   on a least recently used basis (LRU). Eviction means the server removes the
+   key, metadata and all other data for the item from RAM. After eviction, the item
+   is irretrievable.
+  </div>
+
+ </div>
+
+ <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-diskStorage.html" title="Couchbase Server mainly stores and retrieves information for clients using RAM. At the same time, Couchbase Server eventually stores all data to disk to provide a higher level of reliability.">Disk storage</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concept-readerWriter.html" title="Multi-threaded readers and writers provide multiple processes to simultaneously read and write data on disk. Simultaneous reads and writes increase disk speed and improve the read rate from disk.">Multiple readers and writers</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/concept-tombstone.html" title="Tombstones are records of expired or deleted items that include item keys and metadata.">Tombstone purging</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div></div>
+</nav>
+
+</body>
+</html>

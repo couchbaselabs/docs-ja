@@ -1,0 +1,203 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Relation" scheme="URI" content="../UI/ui-xdcr-panel.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/xdcr-specify-adv-settings.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/xdcr-monitor-replication.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic3554">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Managing XDCR data encryption</title>
+</head>
+<body id="topic3554">
+
+
+	<h1 class="title topictitle1">Managing XDCR data encryption</h1>
+
+	<div class="body">
+		<p class="p">The cross data center (XDCR) data security feature (Enterprise Edition only) provides
+			secure cross data center replication using Secure Socket Layer (SSL) data encryption.
+			The data replicated between clusters can be encrypted in both uni-directional and
+			bi-directional replications. </p>
+
+		<div class="section"><h2 class="title sectiontitle">XDCR data encryption prerequisites</h2><ul class="ul">
+				<li class="li">Couchbase servers on both source and destination clusters must have Couchbase
+					2.5 Enterprise Edition and above installed.</li>
+
+				<li class="li">The source cluster must use the destination cluster’s certificate. The
+					certificate is a self-signed certificate used by SSL to initiate secure
+					sessions.</li>
+
+				<li class="li">The reserved ports for XDCR data encryption must be available.</li>
+
+			</ul>
+
+			
+			<div class="note important"><span class="importanttitle">Important:</span> Ensure that the Secure Socket Layer (SSL) reserved ports are
+				available prior to using XDCR data encryption. Otherwise, XDCR data encryption is
+				unavailable.</div>
+
+			
+			<p class="p">With XDCR data encryption, the following ports are reserved:</p>
+
+			
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d50332e48">Port</th>
+
+							<th class="entry" valign="top" width="50%" id="d50332e51">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d50332e48 ">11214</td>
+
+							<td class="entry" valign="top" width="50%" headers="d50332e51 ">Incoming SSL Proxy</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d50332e48 ">11215</td>
+
+							<td class="entry" valign="top" width="50%" headers="d50332e51 ">Internal Outgoing SSL Proxy</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d50332e48 ">18091</td>
+
+							<td class="entry" valign="top" width="50%" headers="d50332e51 ">Internal REST HTTPS for SSL</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d50332e48 ">18092</td>
+
+							<td class="entry" valign="top" width="50%" headers="d50332e51 ">Internal CAPI HTTPS for SSL </td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			
+			<div class="note note"><span class="notetitle">Note:</span> If XDCR  is employed in a situation where the XDCR traffic between data centers 
+				travels over the internet, Couchbase recommends that you use VPN.</div>
+
+		
+		
+		
+		</div>
+
+		<div class="section"><h2 class="title sectiontitle">To enable XDCR data security</h2><p class="p">To enable XDCR data security using
+				SSL and create replication:</p>
+<ol class="ol">
+				<li class="li">On the destination cluster, navigate to Settings &gt; Cluster and copy the
+					certificate. <ul class="ul">
+						<li class="li">(Optional) To regenerate the existing destination certificate, click
+								<strong class="ph b">Regenerate</strong> before copying.</li>
+
+					</ul>
+</li>
+
+				<li class="li">On the source cluster, select the XDCR tab.</li>
+
+				<li class="li">On the Remote Clusters panel, click <strong class="ph b">Create Cluster Reference</strong> to verify or
+					create the cluster reference.</li>
+
+				<li class="li">Select the <strong class="ph b">Enable Encryption</strong> box and paste the certificate in the
+					provided area and click <strong class="ph b">Save</strong>.</li>
+
+				<li class="li">On the Ongoing Replications panel, click <strong class="ph b">Create Replication</strong>, provide the
+					cluster and bucket information, and click <strong class="ph b">Replicate</strong>.</li>
+
+			</ol>
+</div>
+
+		<div class="section"><h2 class="title sectiontitle">To change XDCR data encryption</h2><p class="p">In some situations (such as
+				updating SSL data security), the SSL certificate is regenerated and the XDCR data
+				encryption is updated. To change XDCR data encryption:</p>
+<ol class="ol">
+				<li class="li">On the destination cluster, navigate to Settings &gt; Cluster.</li>
+
+				<li class="li">Click <strong class="ph b">Regenerate</strong> and copy the certificate.</li>
+
+				<li class="li">On the source cluster, select the XDCR tab.</li>
+
+				<li class="li">On the <strong class="ph b">Remote Clusters</strong> panel, for the destination cluster, click
+						<strong class="ph b">Edit</strong>.</li>
+
+				<li class="li">Paste the regenerated certificate in the provided area and click
+					<strong class="ph b">Save</strong>.</li>
+
+			</ol>
+<p class="p">Anytime a destination cluster’s certificate is regenerated, the corresponding
+				source cluster(s) must be updated with the regenerated certificate.</p>
+<p class="p">For
+				example, if source clusters A, B, and C use XDCR data encryption to replicate to
+				destination cluster D, each of the source clusters must be updated whenever the
+				certificate on the destination cluster D is regenerated
+				(changed).</p>
+<p class="p">Important</p>
+<p class="p">If a destination cluster's certificate is
+				regenerated and the source cluster(s) are not updated with the new certificate,
+				replication stops. </p>
+</div>
+
+		<div class="section"><h2 class="title sectiontitle">SSL certificate</h2><p class="p">The following is an example of an SSL certificate
+				and where the certificate is obtained on the cluster.</p>
+
+			
+			<div class="fig fignone"><img class="image" src="../images/xdcr-remote-cert3.png" width="720" alt="Remote certificate"></div>
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Create Cluster Reference</h2><p class="p">The following is an example of the Create
+			Cluster Reference pop-up.</p>
+
+			<div class="fig fignone"><img class="image" src="../images/xdcr-source-encrypt.png" width="480" alt="Create Cluster Reference">
+				</div>
+</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">XDCR data security error messages</h2><p class="p">When creating the cluster
+				reference, if the SSL certificates are not the same on the destination and source
+				clusters, the following error message
+				displays:</p>
+<pre class="pre codeblock"><samp class="ph codeph">Attention - Got certificate mismatch while trying to send https request to HOST:18091
+</samp></pre>
+<p class="p">If
+				the SSL certificates become mismatched (for example, if the certificate on the
+				destination cluster is regenerated and the source cluster is not updated with the
+				new certificate), vBucket replication stops and the following error message
+				displays:</p>
+<pre class="pre codeblock"><samp class="ph codeph">Error replicating vbucket &lt;bucketNumber&gt;. Please see logs for details.
+</samp></pre>
+</div>
+
+	</div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../UI/ui-xdcr-panel.html" title="The XDCR panel is used to create a remote cluster reference and specify replication.">XDCR</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Tasks/xdcr-specify-adv-settings.html" title="When creating a new replication, advanced settings are modified (from the default) via XDCR &gt; Ongoing Replications &gt; Create Replication.">Specifying XDCR settings</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Tasks/xdcr-monitor-replication.html" title="Replication status is monitored via the XDCR and Data Buckets tabs.">Monitoring replication status</a></div>
+</div>
+</nav>
+</body>
+</html>

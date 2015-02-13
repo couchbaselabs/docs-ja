@@ -1,0 +1,343 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Debugging stale=false queries for missing/unexpected data"><meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-replicaIndex.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-timeoutErrors.html">
+<meta name="DC.Relation" scheme="URI" content="http://www.couchbase.com/issues/browse/MB-7161">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic9362">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Debugging stale=false queries</title>
+</head>
+<body id="topic9362">
+
+
+   <h1 class="title topictitle1">Debugging stale=false queries</h1>
+
+   
+   <div class="body"><p class="shortdesc">Debugging stale=false queries for missing/unexpected data</p>
+
+      <p class="p">The query parameter <samp class="ph codeph">debug=true</samp> can be used to debug queries with
+            <samp class="ph codeph">stale=false</samp> that are not returning all expected data or return
+         unexpected data. This is particularly useful when clients issue a
+            <samp class="ph codeph">stale=false</samp> query right after being unblocked by a memcached OBSERVE
+         command. .</p>
+
+      <p class="p">Here follows an example of how to debug this sort of issues on a simple scenario where
+         there’s only 16 vbuckets (instead of 1024) and 2 nodes. The tools
+            <samp class="ph codeph">couchdb_dump</samp> and <samp class="ph codeph">couchdb_info</samp> (from the couchstore git
+         project) are used to help analyze this type of issues (available under
+            <samp class="ph codeph">install/bin</samp> directory).</p>
+
+      <p class="p">Querying a view with <samp class="ph codeph">debug=true</samp> will add an extra field, named
+            <samp class="ph codeph">debug_info</samp> in the view response. This field has one entry per node in
+         the cluster (if no errors happened, like down/timed out nodes for example). Example:</p>
+
+      <pre class="pre codeblock"><samp class="ph codeph">&gt; curl -s 'http://localhost:9500/default/_design/test/_view/view1?stale=false&amp;limit=5&amp;debug=true' | json_xs
+ {
+    "debug_info" : {
+       "local" : {
+          "main_group" : {
+             "passive_partitions" : [],
+             "wanted_partitions" : [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+             ],
+             "wanted_seqs" : {
+                "0002" :00,
+                "0001" :00,
+                "0006" :00,
+                "0005" :00,
+                "0004" :00,
+                "0000" :00,
+                "0007" :00,
+                "0003" :00
+             },
+             "indexable_seqs" : {
+                "0002" :00,
+                "0001" :00,
+                "0006" :00,
+                "0005" :00,
+                "0004" :00,
+                "0000" :00,
+                "0007" :00,
+                "0003" :00
+             },
+             "cleanup_partitions" : [],
+             "stats" : {
+                "update_history" : [
+                   {
+                      "deleted_ids" : 0,
+                      "inserted_kvs" :00,
+                      "inserted_ids" :00,
+                      "deleted_kvs" : 0,
+                      "cleanup_kv_count" : 0,
+                      "blocked_time" : 0.000258,
+                      "indexing_time" : 103.222201
+                   }
+                ],
+                "updater_cleanups" : 0,
+                "compaction_history" : [],
+                "full_updates" : 1,
+                "accesses" : 1,
+                "cleanups" : 0,
+                "compactions" : 0,
+                "partial_updates" : 0,
+                "stopped_updates" : 0,
+                "cleanup_history" : [],
+                "update_errors" : 0,
+                "cleanup_stops" : 0
+             },
+             "active_partitions" : [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+             ],
+             "pending_transition" : null,
+             "unindexeable_seqs" : {},
+             "replica_partitions" : [
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+             ],
+             "original_active_partitions" : [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+             ],
+             "original_passive_partitions" : [],
+             "replicas_on_transfer" : []
+          }
+       },
+       "http://10.17.30.98:9501/_view_merge/" :   {
+          "main_group" : {
+             "passive_partitions" : [],
+             "wanted_partitions" : [
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+             ],
+             "wanted_seqs" : {
+                "0008" :00,
+                "0009" :00,
+                "0011" :00,
+                "0012" :00,
+                "0015" :00,
+                "0013" :00,
+                "0014" :00,
+                "0010" :00
+             },
+             "indexable_seqs" : {
+                "0008" :00,
+                "0009" :00,
+                "0011" :00,
+                "0012" :00,
+                "0015" :00,
+                "0013" :00,
+                "0014" :00,
+                "0010" :00
+             },
+             "cleanup_partitions" : [],
+             "stats" : {
+                "update_history" : [
+                   {
+                      "deleted_ids" : 0,
+                      "inserted_kvs" :00,
+                      "inserted_ids" :00,
+                      "deleted_kvs" : 0,
+                      "cleanup_kv_count" : 0,
+                      "blocked_time" : 0.000356,
+                      "indexing_time" : 103.651148
+                   }
+                ],
+                "updater_cleanups" : 0,
+                "compaction_history" : [],
+                "full_updates" : 1,
+                "accesses" : 1,
+                "cleanups" : 0,
+                "compactions" : 0,
+                "partial_updates" : 0,
+                "stopped_updates" : 0,
+                "cleanup_history" : [],
+                "update_errors" : 0,
+                "cleanup_stops" : 0
+             },
+             "active_partitions" : [
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+             ],
+             "pending_transition" : null,
+             "unindexeable_seqs" : {},
+             "replica_partitions" : [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+             ],
+             "original_active_partitions" : [
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+             ],
+             "original_passive_partitions" : [],
+             "replicas_on_transfer" : []
+          }
+       }
+    },
+    "total_rows" : 1000000,
+    "rows" : [
+       {
+          "value" : {
+             "ratio" : 1.8,
+             "type" : "warrior",
+             "category" : "orc"
+          },
+          "id" : "0000014",
+          "node" : "http://10.17.30.98:9501/_view_merge/",
+          "partition" : 14,
+          "key" : 1
+       },
+       {
+          "value" : {
+             "ratio" : 1.8,
+             "type" : "warrior",
+             "category" : "orc"
+          },
+          "id" : "0000017",
+          "node" : "local",
+          "partition" : 1,
+          "key" : 1
+       },
+       {
+          "value" : {
+             "ratio" : 1.8,
+             "type" : "priest",
+             "category" : "human"
+          },
+          "id" : "0000053",
+          "node" : "local",
+          "partition" : 5,
+          "key" : 1
+       },
+       {
+          "value" : {
+             "ratio" : 1.8,
+             "type" : "priest",
+             "category" : "orc"
+          },
+          "id" : "0000095",
+          "node" : "http://10.17.30.98:9501/_view_merge/",
+          "partition" : 15,
+          "key" : 1
+       },
+       {
+          "value" : {
+             "ratio" : 1.8,
+             "type" : "warrior",
+             "category" : "elf"
+          },
+          "id" : "0000151",
+          "node" : "local",
+          "partition" : 7,
+          "key" : 1
+       }
+    ]
+ }
+</samp></pre>
+
+      <p class="p">For each node, there are 2 particular fields of interest when debugging
+            <samp class="ph codeph">stale=false</samp> queries that apparently miss some data:</p>
+
+      <ul class="ul">
+         <li class="li"><p class="p"><samp class="ph codeph">wanted_seqs</samp> - This field has an object (dictionary) value where
+               keys are vbucket IDs and values are vbucket database sequence numbers for an
+               explanation of sequence numbers). This field tells us the sequence number of each
+               vbucket database file (at the corresponding node) at the moment the query arrived at
+               the server (all these vbuckets are <samp class="ph codeph">active vbuckets</samp> ).</p>
+</li>
+
+         <li class="li"><p class="p"><samp class="ph codeph">indexable_seqs</samp> - This field has an object (dictionary) value where
+               keys are vbucket IDs and values are vbucket database sequence numbers. This field
+               tells us, for each active vbucket database, up to which sequence the index has
+               processed/indexed documents (remember, each vbucket database sequence number is
+               associated with 1, and only 1, document).</p>
+</li>
+
+      </ul>
+
+      <p class="p">For queries with <samp class="ph codeph">stale=false</samp>, all the sequences in
+            <samp class="ph codeph">indexable_seqs</samp> must be greater or equal then the sequences in
+            <samp class="ph codeph">wanted_seqs</samp> - otherwise the <samp class="ph codeph">stale=false</samp> option can be
+         considered broken. What happens behind the scenes is, at each node, when the query request
+         arrives, the value for <samp class="ph codeph">wanted_seqs</samp> is computed (by asking each active
+         vbucket database for its current sequence number), and if any sequence is greater than the
+         corresponding entry in <samp class="ph codeph">indexable_seqs</samp> (stored in the index), the client is
+         blocked, the indexer is started to update the index, the client is unblocked when the
+         indexer finishes updating the index, and finally the server starts streaming rows to the
+         client - note that at this point, all sequences in <samp class="ph codeph">indexable_seqs</samp> are
+         necessarily greater or equal then the corresponding sequences in
+            <samp class="ph codeph">wanted_sequences</samp>, otherwise the <samp class="ph codeph">stale=false</samp>
+         implementation is broken.</p>
+
+   </div>
+
+   <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Misc/Trbl-intro.html" title="トラブルシューティングの一般的なヒント、一般的なエラー、ログ情報、およびその他の問題について説明します。">トラブルシューティング</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Misc/Trbl-replicaIndex.html" title="Description of how to test and verify that the replica index is working.">Debugging replica index</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Misc/Trbl-timeoutErrors.html" title="Timeout errors when querying a view with stale=false.">Timeout errors</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="http://www.couchbase.com/issues/browse/MB-7161" target="_blank">MB–7161</a></div></div>
+</nav>
+
+</body>
+</html>

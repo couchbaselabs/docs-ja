@@ -1,0 +1,347 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Couchbase Server creates a number of different log files depending on the component of the system that produce the error, and the level and severity of the problem being reported."><meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-generalTips.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-issuesReport.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic4685">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Logs and logging</title>
+</head>
+<body id="topic4685">
+
+
+	<h1 class="title topictitle1">Logs and logging</h1>
+
+	
+	<div class="body"><p class="shortdesc">Couchbase Server creates a number of different log files depending on the component of
+		the system that produce the error, and the level and severity of the problem being
+		reported.</p>
+
+
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="50%" id="d29719e27">Platform</th>
+
+						<th class="entry" valign="top" width="50%" id="d29719e30">Location</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e27 ">Linux</td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e30 "><samp class="ph codeph">/opt/couchbase/var/lib/couchbase/logs</samp></td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e27 ">Windows</td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e30 "><samp class="ph codeph">C:\Program
+								Files\Couchbase\Server\var\lib\couchbase\logs</samp> Assumes
+							default installation location</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e27 ">Mac OS X</td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e30 "><samp class="ph codeph">/Users/couchbase/Library/Application
+								Support/Couchbase/var/lib/couchbase/logs </samp>
+						</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		<p class="p">Individual log files are automatically numbered, with the number suffix incremented for
+			each new log, with a maximum of 20 files per log. Individual log file sizes are limited
+			to 10MB by default.</p>
+
+		
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="50%" id="d29719e87">File</th>
+
+						<th class="entry" valign="top" width="50%" id="d29719e90">Log Contents</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e87 "><samp class="ph codeph">couchdb</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e90 ">Errors relating to the couchdb subsystem that supports views, indexes
+							and related REST API issues</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e87 "><samp class="ph codeph">debug</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e90 ">Debug level error messages related to the core server management
+							subsystem, excluding information included in the
+								<samp class="ph codeph">couchdb</samp>, <samp class="ph codeph">xdcr</samp> and
+								<samp class="ph codeph">stats</samp> logs.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e87 "><samp class="ph codeph">info</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e90 ">Information level error messages related to the core server
+							management subsystem, excluding information included in the
+								<samp class="ph codeph">couchdb</samp>, <samp class="ph codeph">xdcr</samp> and
+								<samp class="ph codeph">stats</samp> logs.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e87 "><samp class="ph codeph">http_access.log</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e90 ">The admin access log records server requests (including admin logins) 
+							coming through the REST or Couchbase web console. 
+							It is output in common log format and contains several important fields such as remote client IP, 
+							timestamp, GET/POST request and resource requested, HTTP status code, and so on.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e87 "><samp class="ph codeph">error</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e90 ">Error level messages for all subsystems excluding
+								<samp class="ph codeph">xdcr</samp>.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e87 "><samp class="ph codeph">xcdr_error</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e90 ">XDCR error messages.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e87 "><samp class="ph codeph">xdcr</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e90 ">XDCR information messages.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e87 "><samp class="ph codeph">mapreduce_errors</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e90 ">JavaScript and other view-processing errors are reported in this
+							file.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e87 "><samp class="ph codeph">views</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e90 ">Errors relating to the integration between the view system and the
+							core server subsystem.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e87 "><samp class="ph codeph">stats</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e90 ">Contains periodic reports of the core statistics.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e87 "><samp class="ph codeph">memcached.log</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e90 ">Contains information relating to the core memcache component,
+							including vBucket and replica and rebalance data streams requests.
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d29719e87 "><samp class="ph codeph">reports.log</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d29719e90 ">Contains only progress report and crash reports for the Erlang process.
+						</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		<p class="p">Each log file group will also include a <samp class="ph codeph">.idx</samp> and <samp class="ph codeph">.siz</samp>
+			file which holds meta information about the log file group. These files are
+			automatically updated by the logging system.</p>
+
+		
+		
+		<div class="section"><h2 class="title sectiontitle">Changing log file location</h2>
+			<p class="p">The default file log location is
+				/opt/couchbase/var/lib/couchbase/logs, however, if you want to change the default
+				log location to a different directory, change the log file configuration option.
+				</p>
+<p class="p">Note</p>
+<p class="p">To implement a log file location change (from the default), you
+				must be log in as either root or sudo and the Couchbase service must be
+				restarted.</p>
+<p class="p">To change the log file configuration:</p>
+<ol class="ol">
+				<li class="li">Log in as root or sudo and navigate to the directory where you installed
+					Couchbase. For example:
+						<samp class="ph codeph">/opt/couchbase/etc/couchbase/static_config</samp></li>
+
+				<li class="li">Edit the static_config file and change the <samp class="ph codeph">error_logger_mf_dir</samp>
+					variable to a different directory. For example: <samp class="ph codeph">{error_logger_mf_dir,
+						"/home/user/cb/opt/couchbase/var/lib/couchbase/logs"}</samp></li>
+
+				<li class="li">Restart the Couchbase service. After restarting the Couchbase service, all
+					subsequent logs will be in the new directory.</li>
+
+			</ol>
+</div>
+
+		
+		
+		<div class="section"><h2 class="title sectiontitle">Changing logging levels</h2>
+			
+			<p class="p">The default logging level for all log
+				files are set to debug except for couchdb, which is set to info. If you want to
+				change the default logging level, modify the logging level configuration options.
+				</p>
+<p class="p">The configuration change can be performed in one of the following ways:</p>
+<ul class="ul">
+				<li class="li">persistent</li>
+
+				<li class="li">dynamic (on the fly, without restarting).</li>
+
+			</ul>
+</div>
+
+		
+		
+		<div class="section"><h2 class="title sectiontitle">Changing logging levels to be persistent</h2>
+			<p class="p">Logging
+					levels can be changed so that the changes are persistent, that is, the changes
+					continue to be implemented should a Couchbase Server reboot
+					occur.</p>
+
+			
+			<div class="note note"><span class="notetitle">Note:</span> To implement logging level changes, the Couchbase
+					service must be restarted.</div>
+
+			
+			<p class="p">To change logging levels to be persistent:</p>
+
+			
+			<ol class="ol">
+					<li class="li">Log in as root or sudo and navigate to the directory where you installed
+						Couchbase. For example:
+							<samp class="ph codeph">/opt/couchbase/etc/couchbase/static_config</samp></li>
+
+					<li class="li">Edit the <strong class="ph b">static_config</strong> file and change the desired log component. For
+						example, parameters with the <samp class="ph codeph">loglevel_</samp> prefix set the
+						logging level.</li>
+
+					<li class="li">Restart the Couchbase service.</li>
+
+				</ol>
+
+			
+			<p class="p">After restarting the Couchbase service, logging levels for that component
+					will be changed.</p>
+</div>
+
+		
+		
+		<div class="section"><h2 class="title sectiontitle">Changing logging levels dynamically</h2>
+			
+			<p class="p">If logging
+					levels are changed dynamically and if a Couchbase server reboot occurs, then the
+					changed logging levels revert to the default. </p>
+<p class="p">To change logging levels
+					dynamically, execute a curl POST command using the following syntax:</p>
+
+			
+			<pre class="pre codeblock">
+curl -X POST -u adminName:adminPassword
+  HOST:PORT/diag/eval 
+  –d ‘ale:set_loglevel(&lt;log_component&gt;,&lt;logging_level&gt;).’
+</pre>
+
+					
+						<p class="p">Where:</p>
+
+					<dl class="dl">
+					
+						<dt class="dt dlterm">Log_component</dt>
+
+						<dd class="dd">The default log level (except <samp class="ph codeph">couchdb</samp>) is <samp class="ph codeph">debug</samp>; for
+						example <samp class="ph codeph">ns_server</samp>. The available loggers are
+							<samp class="ph codeph">ns_server</samp>, <samp class="ph codeph">couchdb</samp>,
+							<samp class="ph codeph">user</samp>, <samp class="ph codeph">Menelaus</samp>,
+							<samp class="ph codeph">ns_doctor</samp>, <samp class="ph codeph">stats</samp>,
+							<samp class="ph codeph">rebalance</samp>, <samp class="ph codeph">cluster</samp>, views,
+							<samp class="ph codeph">mapreduce_errors</samp> , xdcr and
+							<samp class="ph codeph">error_logger.</samp></dd>
+
+					
+
+
+					
+						<dt class="dt dlterm">Logging_level</dt>
+
+						<dd class="dd">The available log levels are <samp class="ph codeph">debug</samp>, <samp class="ph codeph">info</samp>,
+							<samp class="ph codeph">warning</samp>, and <samp class="ph codeph">error</samp>.</dd>
+
+					
+					</dl>
+
+		</div>
+
+
+				<div class="example">
+			<pre class="pre codeblock">
+curl -X POST -u Administrator:password 
+	http://127.0.0.1:8091/diag/eval 
+	-d 'ale:set_loglevel(ns_server,error).
+</pre>
+</div>
+
+		
+	</div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Misc/Trbl-intro.html" title="トラブルシューティングの一般的なヒント、一般的なエラー、ログ情報、およびその他の問題について説明します。">トラブルシューティング</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Misc/Trbl-generalTips.html" title="General tips include various initial diagnostics activities.">General tips</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Misc/Trbl-issuesReport.html" title="A description on information to include when reporting an issue (JIRA).">Reporting issues</a></div>
+</div>
+</nav>
+</body>
+</html>

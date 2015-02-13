@@ -1,0 +1,73 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Couchbase views enable indexing and querying of data."><meta name="DC.Relation" scheme="URI" content="../REST/rest-views-intro.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic2724">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Views and indexes</title>
+</head>
+<body id="topic2724">
+
+
+ <h1 class="title topictitle1">Views and indexes</h1>
+
+ 
+ <div class="body"><p class="shortdesc">Couchbase views enable indexing and querying of data.</p>
+
+  <p class="p">A view creates an index on the data according to the defined format and structure. The view consists of specific fields
+   and information extracted from the objects in Couchbase. Views create indexes on your
+   information that enables search and select operations on the data. </p>
+
+  <p class="p">Views are eventually consistent compared to the underlying stored documents. Documents are
+   included in views when the document data is persisted to disk. Documents with expiry times are
+   removed from indexes when the expiration pager operates to remove the document from the
+   database.</p>
+
+  <p class="p">Views are used for a number of reasons, including:</p>
+
+  <ul class="ul">
+   <li class="li">Indexing and querying data from stored objects</li>
+
+   <li class="li">Producing lists of data on specific object types</li>
+
+   <li class="li">Producing tables and lists of information based on your stored data</li>
+
+   <li class="li">Extracting or filtering information from the database</li>
+
+   <li class="li">Calculating, summarizing or reducing the information on a collection of stored
+    data</li>
+
+  </ul>
+
+  <div class="p">Multiple views can be created which provides multiple indexes and routes into the stored data. 
+   By exposing specific fields from the stored information, views enable the following:
+   <ul class="ul">
+    <li class="li">Creating and querying stored data</li>
+
+    <li class="li">Performing queries and selection on the data</li>
+
+    <li class="li">Paginating through the view output</li>
+
+   </ul>
+
+  </div>
+
+  
+  <p class="p">The View Builder provides an interface for creating views within the web console. Views can be
+   accessed by using a Couchbase client library to retrieve matching records.</p>
+
+ </div>
+
+ <nav class="related-links">
+<div class="linklist linklist">
+<div><a class="link" href="../REST/rest-views-intro.html" title="The Views REST API is used to index and query JSON documents.">Views API</a></div></div>
+</nav>
+
+</body>
+</html>

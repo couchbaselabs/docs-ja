@@ -1,0 +1,75 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="task">
+<meta name="description" content="Failover is performed on a specific node via Server Nodes &gt; Failover"><meta name="DC.Relation" scheme="URI" content="../UI/ui-server-nodes.html">
+<meta name="DC.Relation" scheme="URI" content="../UI/ui-dcp-queues.html">
+<meta name="DC.Relation" scheme="URI" content="../UI/ui-task-node-recovery-incremental.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="task_wkh_ccb_k4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Failing over a node</title>
+</head>
+<body id="task_wkh_ccb_k4">
+
+
+    <h1 class="title topictitle1">Failing over a node</h1>
+
+    
+    <div class="body taskbody"><p class="shortdesc">Failover is performed on a specific node via <span class="ph uicontrol">Server Nodes &gt;
+            Failover</span>
+    </p>
+
+        
+        <div class="section context">
+            <p class="p">To perform a failover:</p>
+
+        </div>
+
+        <ol class="ol steps"><li class="li step stepexpand">
+                <span class="ph cmd">Navigate to <span class="ph uicontrol">Server Nodes</span>.</span>
+            </li>
+<li class="li step stepexpand">
+                <span class="ph cmd">For the server node, select <span class="ph uicontrol">Fail Over</span>.</span>
+                    
+            </li>
+<li class="li step stepexpand">
+                <span class="ph cmd">Select <span class="ph uicontrol">Graceful Failover</span> to gracefully failover.
+                    Alternatively, select <span class="ph uicontrol">Hard Fail Over</span> to force the
+                    failover or cancel.</span>
+                <div class="itemgroup stepresult"><img class="image" src="../images/ui-node-failover-options.png" width="500"></div>
+                
+            </li>
+<li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Fail Over</span>.</span>
+                <div class="itemgroup info">While the node is being failed over, the failover process can be stopped by clicking on 
+                <span class="ph uicontrol">Stop Failover</span>.</div>
+                <div class="itemgroup info">When failover occurs on a specific node, that node is marked as
+                        <span class="ph uicontrol">Failed Over: Pending Removal</span></div>
+                
+                <div class="itemgroup stepresult"><img class="image" src="../images/ui-delta-recovery.png" width="720"></div>
+            </li>
+<li class="li step stepexpand">
+                <span class="ph cmd">To view the status of the failover operation, click <span class="ph uicontrol">Pending Rebalance</span>.</span>
+                <div class="itemgroup info"><div class="note note"><span class="notetitle">Note:</span> If you perform the rebalance operation at this point (before selecting a recovery
+                        option), the server node is removed from the cluster. Once the node is removed from the cluster, that same node can be added to the cluster, however, 
+                        it is treated the same as a new server node. That means that all data on the server node is removed.</div>
+</div>
+                <div class="itemgroup stepresult"><img class="image" src="../images/ui-failover-pending-removal.png" width="720"></div>
+            </li>
+</ol>
+
+    </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../UI/ui-server-nodes.html" title="The Server Nodes section shows statistics across the server nodes in the cluster.">Server Nodes</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../UI/ui-dcp-queues.html" title="DCP queues provide information about the Database Change Protocol (DCP) protocol used to stream data changes to buckets.">Viewing DCP queues</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../UI/ui-task-node-recovery-incremental.html" title="Recovery is performed after a server node is failed over and before rebalance operations. Either Delta or Full recovery can be specified.">Recovering a node</a></div>
+</div>
+</nav>
+</body>
+</html>

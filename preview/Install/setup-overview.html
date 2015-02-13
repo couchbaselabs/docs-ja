@@ -1,0 +1,137 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Quick overview of the setup process."><meta name="DC.Relation" scheme="URI" content="http://www.couchbase.com/downloads">
+<meta name="DC.Relation" scheme="URI" content="init-setup.html">
+<meta name="DC.Relation" scheme="URI" content="testing.html">
+<meta name="DC.Relation" scheme="URI" content="upgrading.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic1601">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Couchbase setup overview</title>
+</head>
+<body id="topic1601">
+
+
+  <h1 class="title topictitle1">Couchbase setup overview</h1>
+
+  
+  <div class="body"><p class="shortdesc">Quick overview of the setup process.</p>
+
+    <ol class="ol">
+      <li class="li">Make sure your machine meets the system requirements.</li>
+
+      <li class="li">Install Couchbase Server. <p class="p">To install Couchbase Server, download the appropriate package
+          for your chosen platform and follow the corresponding platform-specific instructions. </p>
+<ul class="ul">
+          <li class="li">To perform a fresh installation (not an upgrade) over a previous Couchbase Server
+            installation, remove Couchbase Server and any associated data from your machine before
+            installing.</li>
+
+          <li class="li">To retain existing datasets from a previous Couchbase Server installation, perform an
+            upgrade installation.</li>
+
+        </ul>
+</li>
+
+      <li class="li">Test the installation by connecting and storing some data using the native memcached
+          protocol.</li>
+
+      <li class="li">Set up the new Couchbase Server system by completing the web-based setup instructions. </li>
+
+    </ol>
+
+    <div class="note warning"><span class="warningtitle">Warning:</span> Implement the same operating system on all machines within each discreet
+      cluster. If XDCR (Cross Data Center Replication) is used, implement the same operating system
+      on the target cluster(s) as on the source cluster(s). Mixed clusters and mixed XDCR deployments
+      are not supported due to incompatibility caused by differences in the number of shards between
+      platforms. </div>
+
+    
+    
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="topic1601__table_sqb_db3_mp" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. Example deployments</span></caption>
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="21.645021645021643%" id="d25758e60">Scenario</th>
+
+              <th class="entry" valign="top" width="45.02164502164502%" id="d25758e63">Implementation</th>
+
+              <th class="entry" valign="top" width="33.33333333333333%" id="d25758e66">Compatibility</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d25758e60 ">Standalone cluster</td>
+
+              <td class="entry" valign="top" width="45.02164502164502%" headers="d25758e63 ">Cluster A with 4 nodes all Linux OR all Windows</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d25758e66 ">OK</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d25758e60 ">Standalone cluster</td>
+
+              <td class="entry" valign="top" width="45.02164502164502%" headers="d25758e63 ">Cluster A with 2 nodes Linux AND 2 nodes Windows</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d25758e66 ">NOT OK</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d25758e60 ">Separate discreet clusters</td>
+
+              <td class="entry" valign="top" width="45.02164502164502%" headers="d25758e63 ">Cluster A = Linux, Cluster B = Windows</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d25758e66 ">OK</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d25758e60 ">Replicating clusters</td>
+
+              <td class="entry" valign="top" width="45.02164502164502%" headers="d25758e63 ">Cluster A = Linux with XDCR to Cluster B = Linux</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d25758e66 ">OK</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d25758e60 ">Replicating clusters</td>
+
+              <td class="entry" valign="top" width="45.02164502164502%" headers="d25758e63 ">Cluster A = Windows with XDCR to Cluster B = Linux</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d25758e66 ">NOT OK</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    
+  </div>
+
+  <nav class="related-links">
+<div class="linklist linklist">
+<div><a class="link" href="http://www.couchbase.com/downloads" target="_blank">Couchbase downloads</a></div>
+<div><a class="link" href="init-setup.html" title="After installation is completed, Couchbase Server has to be set up.">Initial server setup</a></div>
+<div><a class="link" href="testing.html" title="Testing the connection to the Couchbase Server can be performed in a number of different ways.">Testing Couchbase Server</a></div>
+<div><a class="link" href="upgrading.html" title="The Couchbase Server can be upgraded online (using swap rebalance or the standard online upgrade), offline, or using XDCR.">Upgrading</a></div></div>
+</nav>
+
+</body>
+</html>

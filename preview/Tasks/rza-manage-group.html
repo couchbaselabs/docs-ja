@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="task">
+<meta name="description" content="The Rack Awareness feature (Enterprise Edition) enables logical groupings of servers on a cluster where each server group physically belongs to a rack or availability zone. This feature provides the ability to specify that active and corresponding replica partitions be created on servers that are part of a separate rack or zone."><meta name="DC.Relation" scheme="URI" content="../UI/ui-cluster-summary.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/rza-create-group.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/rza-delete-group.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/rza-move-server.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/rza-add-server.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/rza-remove-server.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/rza-rename-group.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbcli-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-rza.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="task_ts4_4xg_rn">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Managing Rack Awareness</title>
+</head>
+<body id="task_ts4_4xg_rn">
+
+
+    <h1 class="title topictitle1">Managing Rack Awareness</h1>
+
+    
+    <div class="body taskbody"><p class="shortdesc">The Rack Awareness feature (Enterprise Edition) enables logical groupings of servers on 
+        a cluster where each server group physically belongs to a rack or availability zone. 
+        This feature provides the ability to specify that active and corresponding replica 
+        partitions be created on servers that are part of a separate rack or zone.</p>
+
+        <div class="section context">
+            <p class="p">This section describes how to manage server groups through the Web Console. Server
+                and server groups can also be managed through the Couchbase command-line interface
+                (CLI) and REST API.</p>
+
+            <div class="note note"><span class="notetitle">Note:</span> By default, when a Couchbase cluster is initialized, Group 1 is created.</div>
+               
+        <ul class="ul">
+            <li class="li">Upgrade all servers in the cluster to version 2.5 or higher and to Couchbase Enterprise Edition</li>
+
+            <li class="li">Configure at least two server groups.</li>
+
+            <li class="li">Configure all of the servers to use server groups.</li>
+
+            <li class="li">Configure each server group to have the same number of serves (recommended).</li>
+
+        </ul>
+
+            
+            <p class="p">The servers and server groups are displayed from the Server Nodes tab. 
+                Server groups are edited and created by clicking on Server Groups</p>
+
+            <div class="fig fignone"><span class="figcap">Figure 1. Server Nodes tab</span>
+            <img class="image" src="../images/rack-aware-groups.png" width="700"></div>
+
+
+            <div class="fig fignone"><span class="figcap">Figure 2. Server Groups</span>
+                <img class="image" src="../images/rack-aware-groups2.png" width="700"></div>
+
+            
+        </div>
+
+    </div>
+
+    
+    <nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../Tasks/rza-create-group.html">Creating server groups</a><br>
+Server groups are created from the web console by selecting the Server Nodes tab and clicking on Server Groups.</li>
+<li class="link olchildlink"><a href="../Tasks/rza-delete-group.html">Deleting server groups</a><br>
+Server groups are deleted by removing all nodes from the server group and then deleting the server group.</li>
+<li class="link olchildlink"><a href="../Tasks/rza-move-server.html">Moving servers between server groups</a><br>
+Servers are moved between server groups from the Server Groups section.</li>
+<li class="link olchildlink"><a href="../Tasks/rza-add-server.html">Adding servers to server groups</a><br>
+Server are added to server groups from the Server Nodes tab.</li>
+<li class="link olchildlink"><a href="../Tasks/rza-remove-server.html">Removing servers from server groups</a><br>
+Servers are removed from server groups group.</li>
+<li class="link olchildlink"><a href="../Tasks/rza-rename-group.html">Renaming server groups</a><br>
+Server groups are rename from the web console by selecting the Server Nodes tab and clicking on Server Groups.</li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../UI/ui-cluster-summary.html" title="Cluster Overview is the home page and provides an overview of your cluster health, including RAM and disk usage and activity.">Cluster Overview</a></div>
+</div>
+
+<div class="linklist linklist relinfo relref"><strong>Related reference</strong><br>
+
+<div><a class="link" href="../CLI/cbcli-intro.html" title="The couchbase-cli tool is used to perform operations on an entire cluster.">couchbase-cli tool</a></div>
+<div><a class="link" href="../REST/rest-rza.html" title="The server groups REST API refers to the Rack Zone Awareness feature, which enables logical groupings of servers on a cluster where each server group physically belongs to a rack or availability zone.">Server groups API</a></div></div>
+</nav>
+
+</body>
+</html>

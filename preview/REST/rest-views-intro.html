@@ -1,0 +1,110 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="The Views REST API is used to index and query JSON documents."><meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reference_rest_views">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Views API</title>
+</head>
+<body id="reference_rest_views">
+
+
+  <h1 class="title topictitle1">Views API</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">The Views REST API is used to index and query JSON documents.</p>
+
+    <div class="section"><h2 class="title sectiontitle">Description</h2>
+    <p class="p">Views are
+      functions written in JavaScript that can serve several purposes in your
+      application. You can use them to: find all the documents in your database,
+      create a copy of data in a document and present it in a specific order, create
+      an index to efficiently find documents by a particular value or by a particular
+      structure in the document, represent relationships between documents, and
+      perform calculations on data contained in documents.</p>
+
+    
+    <div class="note note"><span class="notetitle">Note:</span> View functions are stored in a design document as JSON. You can use the REST API
+        to manage your design documents.</div>
+
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. Views endpoints</span></caption>
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="13.513513513513512%" id="d41327e42">HTTP method</th>
+
+              <th class="entry" valign="top" width="45.13513513513513%" id="d41327e45">URI path</th>
+
+              <th class="entry" valign="top" width="41.351351351351354%" id="d41327e48">Description</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="13.513513513513512%" headers="d41327e42 ">GET</td>
+
+              <td class="entry" valign="top" width="45.13513513513513%" headers="d41327e45 ">/[bucket_name]/_design/[ddoc-name]</td>
+
+              <td class="entry" valign="top" width="41.351351351351354%" headers="d41327e48 ">Retrieves design documents.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="13.513513513513512%" headers="d41327e42 ">PUT</td>
+
+              <td class="entry" valign="top" width="45.13513513513513%" headers="d41327e45 ">/[bucket_name]/_design/[ddoc-name]</td>
+
+              <td class="entry" valign="top" width="41.351351351351354%" headers="d41327e48 ">Creates a news design document with one or more views.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="13.513513513513512%" headers="d41327e42 ">DELETE</td>
+
+              <td class="entry" valign="top" width="45.13513513513513%" headers="d41327e45 ">/[bucket_name]/_design/[ddoc-name]</td>
+
+              <td class="entry" valign="top" width="41.351351351351354%" headers="d41327e48 ">Deletes design documents.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="13.513513513513512%" headers="d41327e42 ">GET</td>
+
+              <td class="entry" valign="top" width="45.13513513513513%" headers="d41327e45 ">/[bucket_name]/_design/[ddoc-name]/_view/[view-name]</td>
+
+              <td class="entry" valign="top" width="41.351351351351354%" headers="d41327e48 ">Retrieves views.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="13.513513513513512%" headers="d41327e42 ">POST</td>
+
+              <td class="entry" valign="top" width="45.13513513513513%" headers="d41327e45 ">/internalSettings</td>
+
+              <td class="entry" valign="top" width="41.351351351351354%" headers="d41327e48 ">Changes the number of simultaneous requests each node can accept.</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+      
+    </div>
+
+  </div>
+
+
+</body>
+</html>

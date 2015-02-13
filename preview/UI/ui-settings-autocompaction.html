@@ -1,0 +1,140 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Relation" scheme="URI" content="../UI/ui-settings.html">
+<meta name="DC.Relation" scheme="URI" content="../UI/ui-settings-alerts.html">
+<meta name="DC.Relation" scheme="URI" content="../UI/ui-settings-sample-buckets.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-tombstone.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-compaction.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/compaction-rest-api.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_etf_npc_34">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Auto-Compaction tab</title>
+</head>
+<body id="topic_etf_npc_34">
+
+
+  <h1 class="title topictitle1">Auto-Compaction tab</h1>
+
+  <div class="body">
+    <p class="p">The <span class="ph uicontrol">Auto-Compaction</span> tab
+      configures the default auto-compaction settings for all the databases. 
+      These can be overridden using per-bucket settings available when creating or editing data buckets. 
+      You can provide a purge interval to remove the key and metadata for items that have been deleted or are expired. 
+      This is known as ‘tombstone purging’. </p>
+
+    
+              <img class="image" src="../images/web-console-server-settings-autocompaction.png" width="720">
+    
+    <p class="p">The Auto-Compaction tab sets the following default parameters:</p>
+
+
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="topic_etf_npc_34__table_m3c_tqc_34" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. Auto-compaction parameters</span></caption>
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="30.959752321981426%" id="d58689e38">Parameter</th>
+
+              <th class="entry" valign="top" width="69.04024767801857%" id="d58689e41">Description</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="30.959752321981426%" headers="d58689e38 ">Database Fragmentation</td>
+
+              <td class="entry" valign="top" width="69.04024767801857%" headers="d58689e41 ">If checked, you must specify either the percentage of fragmentation at which
+                database compaction will be triggered, or the database size at which compaction will
+                be triggered. You can also configure both trigger parameters.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.959752321981426%" headers="d58689e38 ">View Fragmentation</td>
+
+              <td class="entry" valign="top" width="69.04024767801857%" headers="d58689e41 ">If checked, you must specify either the percentage of fragmentation at which
+                database compaction will be triggered, or the view size at which compaction will be
+                triggered. You can also configure both trigger parameters.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.959752321981426%" headers="d58689e38 ">Time Period</td>
+
+              <td class="entry" valign="top" width="69.04024767801857%" headers="d58689e41 ">If checked, you must specify the start hour and minute, and end hour and minute
+                of the time period when compaction is allowed to occur.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.959752321981426%" headers="d58689e38 ">Abort if run time exceeds the above period</td>
+
+              <td class="entry" valign="top" width="69.04024767801857%" headers="d58689e41 ">If checked, if database compaction is running when the configured time period
+                ends, the compaction process will be terminated.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.959752321981426%" headers="d58689e38 ">Process Database and View compaction in parallel</td>
+
+              <td class="entry" valign="top" width="69.04024767801857%" headers="d58689e41 ">If enabled, database and view compaction will be executed simultaneously,
+                implying a heavier processing and disk I/O load during the compaction
+                process.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.959752321981426%" headers="d58689e38 ">Metadata Purge Interval</td>
+
+              <td class="entry" valign="top" width="69.04024767801857%" headers="d58689e41 ">
+                <p class="p">Defaults to three days. Tombstones are records of expired or deleted items and
+                  they include the key and metadata. Tombstones are used in Couchbase Server to
+                  provide eventual consistency of data between clusters.</p>
+
+                <p class="p">The auto-compaction process waits this number of days before it permanently
+                  deletes tombstones for expired or deleted items. </p>
+
+                <p class="p">If you set this value too low, you may see more inconsistent results in views
+                  queries such as deleted items in a result set. You may also see inconsistent items
+                  in clusters with XDCR set up between the clusters. If you set this value too high,
+                  it will delay the server from reclaiming disk space.</p>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+
+    
+  </div>
+
+  <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../UI/ui-settings.html" title="The Settings section provides configuration and information for the cluster, update notifications, auto failover, alerts, auto compaction, sample buckets, and account management.">Settings</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../UI/ui-settings-alerts.html">Alerts tab</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../UI/ui-settings-sample-buckets.html">Sample Buckets tab</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../Concepts/concept-tombstone.html" title="Tombstones are records of expired or deleted items that include item keys and metadata.">Tombstone purging</a></div>
+<div><a class="link" href="../Tasks/tasks-compaction.html" title="Database and view compaction helps to reclaim disk space and reduce fragmentation.">Compacting data files</a></div>
+<div><a class="link" href="../REST/rest-bucket-intro.html" title="The Buckets REST API creates, deletes, flushes, and retrieves information about buckets and bucket operations.">Buckets API</a></div>
+<div><a class="link" href="../REST/compaction-rest-api.html" title="Compaction is used to reclaim disk space and reduce disk fragmentation.">Compaction API</a></div></div>
+</nav>
+
+</body>
+</html>

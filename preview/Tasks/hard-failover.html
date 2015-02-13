@@ -1,0 +1,55 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Hard failover immediately fails over nodes from clusters."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-nodeFailover.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/graceful-failover.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_mkw_5qc_3p">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Hard failover</title>
+</head>
+<body id="topic_mkw_5qc_3p">
+
+
+  <h1 class="title topictitle1">Hard failover</h1>
+
+  
+  <div class="body"><p class="shortdesc">Hard failover immediately fails over nodes from clusters.</p>
+
+    <p class="p">During failover, replica vBuckets are promoted to active vBuckets and active vBuckets on the
+      failed over node are transitioned to replica vBuckets. After a node is failed over, it can be
+      added back to the cluster via delta or full recovery. When a node is added back to the cluster
+      after a failover has been performed, the replica vBuckets on the failed over node are
+      resynchronized and promoted back to active. Topology changes (such as adding, removing, or
+      failing over a server) after a failover, initiates a different type of rebalance operation. </p>
+
+      
+      <p class="p">Hard failover is typically used when the node is in a bad state. Auto-failover is a hard failover.
+      The following conditions are usually present when hard failover is used:</p>
+
+      
+      <ul class="ul">
+        <li class="li">The server node is not healthy.</li>
+
+        <li class="li">Each active vBucket does not have an equivalent replica bucket.</li>
+
+        <li class="li">No replica buckets are present.</li>
+
+      </ul>
+
+      
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-nodeFailover.html" title="Failover is the process in which a node in a cluster is declared as unavailable and a replica vBucket is enabled.">Failing over nodes</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/graceful-failover.html" title="Graceful failover provides the time to administrators to safely fail over a node from the cluster after all in-flight operations are completed and without data loss.">Graceful failover</a></div>
+</div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="concept">
+<meta name="description" content="Tombstones are records of expired or deleted items that include item keys and metadata."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-diskStorage.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-doc-delete.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cli-overview.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/overview-rest-api.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="concept_t2w_sr3_wn">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Tombstone purging</title>
+</head>
+<body id="concept_t2w_sr3_wn">
+
+
+ <h1 class="title topictitle1">Tombstone purging</h1>
+
+ 
+ <div class="body conbody"><p class="shortdesc">Tombstones are records of expired or deleted items that include item keys and metadata.</p>
+
+  <p class="p">Couchbase Server and other distributed databases
+    maintain tombstones in order to provide eventual consistency between nodes and between
+    clusters. Tombstones are records of expired or deleted items and they include the key for
+    the item and metadata. Couchbase Server stores the key plus several bytes of metadata
+    per deleted item in two structures per node. With millions of mutations, the space taken up
+    by tombstones can grow quickly. This is especially the case if there are a large number of
+    deletions or expired documents.</p>
+
+    
+    <p class="p">The Metadata Purge Interval sets how frequently a node permanently purges metadata on deleted and expired
+     items. The Metadata Purge Interval setting runs as part of auto-compaction. This helps reduce the storage
+     requirement by roughly 3x times lower than before and also frees up space much faster.</p>
+
+
+ </div>
+
+ <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-diskStorage.html" title="Couchbase Server mainly stores and retrieves information for clients using RAM. At the same time, Couchbase Server eventually stores all data to disk to provide a higher level of reliability.">Disk storage</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concept-doc-delete.html" title="Couchbase Server never deletes entire items from disk unless a client explicitly deletes the item from the database or the expiration value for the item is reached.">Document deletion</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../CLI/cli-overview.html" title="The command-line tools perform different functions and operations, these CLI tools are described individually.">CLI overview</a></div>
+<div><a class="link" href="../REST/overview-rest-api.html" title="Use the REST API to manage clusters, server nodes, and buckets, and to retrieve run-time statistics within a Couchbase Server deployment.">REST API overview</a></div></div>
+</nav>
+
+</body>
+</html>

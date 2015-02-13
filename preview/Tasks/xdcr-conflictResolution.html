@@ -1,0 +1,78 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="XDCR automatically performs conflict resolution for different document versions on source and destination clusters."><meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-manage-xdcr.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/xdcr-configure-replications.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/xdcr-secure-communication.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_dz3_wk4_14">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Conflict resolution in XDCR</title>
+</head>
+<body id="topic_dz3_wk4_14">
+
+
+  <h1 class="title topictitle1">Conflict resolution in XDCR</h1>
+
+  
+  <div class="body"><p class="shortdesc">XDCR automatically performs conflict resolution for different document versions on source and
+    destination clusters.</p>
+
+
+      <p class="p">The algorithm is designed to consistently select the same document on
+        either a source or destination cluster. For each stored document, XDCR perform checks of
+        metadata to resolve conflicts. It checks the following:</p>
+<ul class="ul">
+          <li class="li"><p class="p">Numerical sequence, which is incremented on each mutation</p>
+</li>
+
+          <li class="li"><p class="p">CAS value</p>
+</li>
+
+          <li class="li"><p class="p">Document flags</p>
+</li>
+
+          <li class="li"><p class="p">Expiration (TTL) value</p>
+</li>
+
+        </ul>
+<p class="p">If a document does not have the highest revision number, changes to this document will
+          not be stored or replicated; instead the document with the highest score will take precedence on
+          both clusters. Conflict resolution is automatic and does not require any manual correction or
+          selection of documents.</p>
+<p class="p">By default XDCR fetches metadata twice from every document before
+            it replicates the document at a destination cluster. XDCR fetches metadata on the source cluster
+            and looks at the number of revisions for a document. It compares this number with the number of
+            revisions on the destination cluster and the document with more revisions is considered the
+            ‘winner.’</p>
+<p class="p">If XDCR determines a document from a source cluster will win conflict
+              resolution, it puts the document into the replication queue. If the document will lose conflict
+              resolution because it has a lower number of mutations, XDCR will not put it into the replication
+              queue. Once the document reaches the destination, this cluster will request metadata once again
+              to confirm the document on the destination has not changed since the initial check. If the
+              document from the source cluster is still the ‘winner’ it will be persisted onto disk at the
+              destination. The destination cluster will discard the document version with the lowest number of
+              mutations.</p>
+<p class="p">The key point is that the number of document mutations is the main factor that
+                determines whether XDCR keeps a document version or not. This means that the document that has
+                the most recent mutation may not be necessarily the one that wins conflict resolution. If both
+                documents have the same number of mutations, XDCR selects a winner based on other document
+                metadata. Precisely determining which document is the most recently changed is often difficult
+                in a distributed system. The algorithm Couchbase Server uses does ensure that each cluster can
+                independently reach a consistent decision on which document wins.</p>
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Tasks/tasks-manage-xdcr.html" title="Cross datacenter replication (XDCR) provides an easy method of replicating data from one cluster to another for disaster recovery as well as better data locality (getting data closer to its users).">Managing XDCR</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Tasks/xdcr-configure-replications.html" title="Configuration of XDCR replications is done on a per-bucket basis.">Configuring XDCR replications</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Tasks/xdcr-secure-communication.html" title="To ensure security for the replicated information, configure a suitable VPN gateway between the two datacenters that encrypts the data between each route between datacenters.">Securing data communication</a></div>
+</div>
+</nav>
+</body>
+</html>

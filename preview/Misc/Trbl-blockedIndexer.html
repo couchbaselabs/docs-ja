@@ -1,0 +1,199 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Indexer shows no progress for long periods of time."><meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-beam-smp-issue.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-common.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic5635">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Blocked indexer</title>
+</head>
+<body id="topic5635">
+
+
+   <h1 class="title topictitle1">Blocked indexer</h1>
+
+   
+   <div class="body"><p class="shortdesc">Indexer shows no progress for long periods of time.</p>
+
+      <p class="p">Each design document maps to one indexer, so when the indexer runs it updates all views
+         defined in the corresponding design document. Indexing takes resources (CPU, disk IO,
+         memory), therefore Couchbase Server limits the maximum number of indexers that can run in
+         parallel. There are 2 configuration parameters to specify the limit, one for regular
+         (main/active) indexers and other for replica indexers (more on this in a later section).
+         The default for the former is 4 and for the later is 2. They can be queried like this:</p>
+
+      <pre class="pre codeblock"><samp class="ph codeph">&gt; curl -s 'http://Administrator:asdasd@localhost:8091/settings/maxParallelIndexers'
+{"globalValue":4,"nodes":{"n_0@192.168.1.80":4}}
+</samp></pre>
+
+      <p class="p"><samp class="ph codeph">maxParallelIndexers</samp> is for main indexes and
+            <samp class="ph codeph">maxParallelReplicaIndexers</samp> is for replica indexes. When there are more
+         design documents (indexers) than maxParallelIndexers, some indexers are blocked until
+         there’s a free slot, and the rule is simple as first-come-first-served. These slots are
+         controlled by 2 barriers processes, one for main indexes, and the other for replica
+         indexes. Their current state can be seen from <samp class="ph codeph">_active_tasks</samp> (per node),
+         for example when there’s no indexing happening:</p>
+
+      <pre class="pre codeblock"><samp class="ph codeph">&gt; curl -s 'http://localhost:9500/_active_tasks' | json_xs
+[
+ {
+     "waiting" : 0,
+         "started_on" : 1345642656,
+         "pid" : "&lt;0.234.0&gt;",
+         "type" : "couch_main_index_barrier",
+         "running" : 0,
+         "limit" : 4,
+         "updated_on" : 1345642656
+         },
+ {
+     "waiting" : 0,
+         "started_on" : 1345642656,
+         "pid" : "&lt;0.235.0&gt;",
+         "type" : "couch_replica_index_barrier",
+         "running" : 0,
+         "limit" : 2,
+         "updated_on" : 1345642656
+         }
+ ]
+</samp></pre>
+
+      <p class="p">The <samp class="ph codeph">waiting</samp> fields tells us how many indexers are blocked, waiting for
+         their turn to run. Queries with <samp class="ph codeph">stale=false</samp> have to wait for the indexer
+         to be started (if not already), unblocked and to finish, which can lead to a long time when
+         there are many design documents in the system. Also take into account that the indexer for
+         a particular design document might be running for one node but it might be blocked in
+         another node - when it’s blocked it’s not necessarily blocked in all nodes of the cluster
+         nor when it’s running is necessarily running in all nodes of the cluster - you verify this
+         by querying _active_tasks for each node (this API is not meant for direct user consumption,
+         just for developers and debugging/troubleshooting).</p>
+
+      <p class="p">Through <samp class="ph codeph">_active_tasks</samp> (remember, it’s per node, so check it for every node
+         in the cluster), you can see which indexers are running and which are blocked. Here follows
+         an example where we have 5 design documents (indexers) and
+            <samp class="ph codeph">&gt;maxParallelIndexers</samp> is 4:</p>
+
+      <pre class="pre codeblock"><samp class="ph codeph">&gt; curl -s 'http://localhost:9500/_active_tasks' | json_xs
+[
+   {
+      "waiting" : 1,
+      "started_on" : 1345644651,
+      "pid" :  "&lt;0.234.0&gt;",
+      "type" :  "couch_main_index_barrier",
+      "running" : 4,
+      "limit" : 4,
+      "updated_on" : 1345644923
+   },
+   {
+      "waiting" : 0,
+      "started_on" : 1345644651,
+      "pid" :  "&lt;0.235.0&gt;",
+      "type" :  "couch_replica_index_barrier",
+      "running" : 0,
+      "limit" : 2,
+      "updated_on" : 1345644651
+   },
+   {
+      "indexer_type" : "main",
+      "started_on" : 1345644923,
+      "updated_on" : 1345644923,
+      "design_documents" : [
+         "_design/test"
+      ],
+      "pid" :  "&lt;0.4706.0&gt;",
+      "signature" : "4995c136d926bdaf94fbe183dbf5d5aa",
+      "type" :  "blocked_indexer",
+      "set" :  "default"
+   },
+   {
+      "indexer_type" : "main",
+      "started_on" : 1345644923,
+      "progress" : 0,
+      "initial_build" : true,
+      "updated_on" : 1345644923,
+      "total_changes" : 250000,
+      "design_documents" : [
+         "_design/test4"
+      ],
+      "pid" :  "&lt;0.4715.0&gt;",
+      "changes_done" : 0,
+      "signature" : "15e1f576bc85e3e321e28dc883c90077",
+      "type" :  "indexer",
+      "set" :  "default"
+   },
+   {
+      "indexer_type" : "main",
+      "started_on" : 1345644923,
+      "progress" : 0,
+      "initial_build" : true,
+      "updated_on" : 1345644923,
+      "total_changes" : 250000,
+      "design_documents" : [
+         "_design/test3"
+      ],
+      "pid" :  "&lt;0.4719.0&gt;",
+      "changes_done" : 0,
+      "signature" : "018b83ca22e53e14d723ea858ba97168",
+      "type" :  "indexer",
+      "set" :  "default"
+   },
+   {
+      "indexer_type" : "main",
+      "started_on" : 1345644923,
+      "progress" : 0,
+      "initial_build" : true,
+      "updated_on" : 1345644923,
+      "total_changes" : 250000,
+      "design_documents" : [
+         "_design/test2"
+      ],
+      "pid" :  "&lt;0.4722.0&gt;",
+      "changes_done" : 0,
+      "signature" : "440b0b3ded9d68abb559d58b9fda3e0a",
+      "type" :  "indexer",
+      "set" : "default"
+   },
+   {
+      "indexer_type" : "main",
+      "started_on" : 1345644923,
+      "progress" : 0,
+      "initial_build" : true,
+      "updated_on" : 1345644923,
+      "total_changes" : 250000,
+      "design_documents" : [
+         "_design/test7"
+      ],
+      "pid" :  "&lt;0.4725.0&gt;",
+      "changes_done" : 0,
+      "signature" : "fd2bdf6191e61af6e801e3137e2f1102",
+      "type" :  "indexer",
+      "set" :  "default"
+   }
+]
+</samp></pre>
+
+      <p class="p">The indexer for design document _design/test is represented by a task with a
+            <samp class="ph codeph">type</samp> field of <samp class="ph codeph">blocked_indexer</samp>, while other indexers
+         have a task with type <samp class="ph codeph">indexer</samp>, meaning they’re running. The task with type
+            <samp class="ph codeph">couch_main_index_barrier</samp> confirms this by telling us there are
+         currently 4 indexers running and 1 waiting for its turn. When an indexer is allowed to
+         execute, its active task with type <samp class="ph codeph">blocked_indexer</samp> is replaced by a new
+         one with type <samp class="ph codeph">indexer</samp>.</p>
+
+   </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Misc/Trbl-intro.html" title="トラブルシューティングの一般的なヒント、一般的なエラー、ログ情報、およびその他の問題について説明します。">トラブルシューティング</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Misc/Trbl-beam-smp-issue.html" title="Beam.smp uses excessive memory on Linux">Beam.smp</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Misc/Trbl-common.html" title="Troubleshooting Couchbase Server represents a basic action associated with critical and informational issues.">Server issues</a></div>
+</div>
+</nav>
+</body>
+</html>

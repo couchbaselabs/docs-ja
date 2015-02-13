@@ -1,0 +1,139 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="concept">
+<meta name="description" content="Whenever Couchbase server is restarted or data is restored to a server instance, the server undergoes a warmup process before data requests can be handled."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-docExpiration.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-replication.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbepctl-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBepctl/cbepctl-accesslog.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbstats-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-manage-serverWarmup.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="concept_a4m_zmj_wn">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Server warmup</title>
+</head>
+<body id="concept_a4m_zmj_wn">
+
+
+ <h1 class="title topictitle1">Server warmup</h1>
+
+ 
+ <div class="body conbody"><p class="shortdesc">Whenever Couchbase server is restarted or data is restored to a server instance, the
+  server undergoes a warmup process before data requests can be handled.</p>
+
+  
+  
+  <p class="p">During server warmup, the server loads data persisted on disk into RAM. Couchbase Server
+   provides an optimized warmup process which loads data sequentially from disk into RAM, it divides
+   the data to be loaded and handles it in multiple phases. After the warmup process completes, the
+   data is available for clients to read and write. The time needed for server warmup depends on
+   system size, system configuration and the amount of data persisted in the system.</p>
+
+   
+   <div class="note note"><span class="notetitle">Note:</span> Couchbase Server is able to begin serving data before it has actually loaded all
+    the keys and data from vBuckets.</div>
+
+
+   
+   <p class="p">Couchbase server identifies items that are frequently used, prioritizes them, and loads them 
+    before sequentially loading the remaining data.
+   The frequently-used items are prioritized in an access log. The
+   server pre-fetches a list of the most frequently accessed keys and then fetches these documents
+   before any other items from disk.</p>
+
+   <p class="p">The server runs a configurable scanner process that determines which keys are most
+   frequently-used. The scanner process is pre-set and is configurable. The command-line tool,
+    <samp class="ph codeph">cbepctl flush_param</samp> is used to change the initial time and interval for the
+   scanner process. For example, you might want to configure the scanner process to be run during a
+   specific time period when certain keys need to be identified and made available sooner.</p>
+
+   <p class="p">The server can also switch into a ready mode before it has actually retrieved all documents
+   for keys into RAM, therefore, data can be served before all stored items are loaded. Switching
+   into ready mode is a configurable setting so that server warmup time can be adjusted.</p>
+
+  
+   <p class="p">The following describes the initial warmup phases for Couchbase Server. In these first
+   phase, the server begins to fetch all keys and metadata from disk. Then the server accesses
+   the log information that it needs to retrieve the most used keys:</p>
+
+  
+   <ol class="ol">
+    <li class="li"><strong class="ph b">Initialize</strong> - At this phase, the server does not have any data that it can serve yet.
+     The server starts populating a list of all vBuckets stored on disk by loading the recorded,
+     initial state of each vBucket.</li>
+
+    <li class="li"><strong class="ph b">Key Dump</strong> - The server begins pre-fetching all keys and metadata
+     from disk based on items in the vBucket list.</li>
+
+    <li class="li"><strong class="ph b">Check Access Logs</strong> - The server then reads a single cached access log which indicates
+     which keys are frequently accessed. The server generates and maintains this log on a periodic
+     basis and it is configurable. If this log exists, the server first loads items based on
+     this log before it loads other items from disk.</li>
+
+   </ol>
+
+   <p class="p">Once Couchbase Server has the information about keys and has read in any access log information, 
+    it loads documents based on the following criteria:</p>
+
+   <ul class="ul">
+    <li class="li"><p class="p"><strong class="ph b">Loading based on Access Logs</strong> - Couchbase Server loads documents into memory based on
+     the frequently-used items identified in the access log.</p>
+</li>
+
+    <li class="li"><p class="p"><strong class="ph b">Loading Data</strong> - If the access log is empty or is disabled, the server
+     sequentially loads documents for each key based on the vBucket list.</p>
+</li>
+
+   </ul>
+
+   <p class="p">Couchbase Server is able to serve information from RAM when one of the following conditions is
+    met during warmup:</p>
+
+   <ul class="ul">
+    <li class="li">The server has finished loading documents for all keys listed in the access log</li>
+
+    <li class="li">The server has finished loading documents for every key stored on disk for all vBuckets</li>
+
+    <li class="li">The percentage of documents loaded into memory is greater than, or equal to, the setting for the 
+      <samp class="ph codeph">cbepctl ep_warmup_min_items_threshold</samp> parameter</li>
+
+    <li class="li">If total % of RAM filled by documents is greater than, or equal to, the setting for the 
+      <samp class="ph codeph">cbepctl ep_warmup_min_memory_threshold</samp> parameter</li>
+
+    <li class="li">If total RAM usage by a node is greater than or equal to the setting for
+     <samp class="ph codeph">mem_low_wat</samp>.</li>
+
+   </ul>
+
+   <p class="p">When the server reaches one of these states, known as the <em class="ph i">run level</em>, 
+    the server stops loading documents for the remaining keys. and 
+    loads the remaining documents from disk into RAM as a background data fetch.</p>
+
+   
+   
+   
+   
+  
+ </div>
+
+ <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concept-docExpiration.html" title="Each document stored in the database has an optional expiration value (TTL, time to live) that is used to automatically deleted items.">Expiration</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/concept-replication.html" title="Replicas are copies of data that are proved on another node in a cluster.">Replicas and replication</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../CLI/cbepctl-intro.html" title="The cbepctl tool is used to control vBucket states, configuration, and memory and disk persistence behavior.">cbepctl tool</a></div>
+<div><a class="link" href="../CLI/CBepctl/cbepctl-accesslog.html" title="Access log settings determine when the access scanner process initially runs and how often.">Changing access log settings</a></div>
+<div><a class="link" href="../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
+<div><a class="link" href="../Tasks/tasks-manage-serverWarmup.html" title="Couchbase server warmup behavior can be modified by changing the access scanner and warmup threshold settings via the cbepctl tool.">Handling server warmup</a></div></div>
+</nav>
+
+</body>
+</html>

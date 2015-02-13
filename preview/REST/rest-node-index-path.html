@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="The path for the index files can be configured with POST /nodes/self/controller/settings."><meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reference_ywl_gkf_q4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Setting index paths</title>
+</head>
+<body id="reference_ywl_gkf_q4">
+
+
+  <h1 class="title topictitle1">Setting index paths</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">The path for the index files can be configured with <samp class="ph codeph">POST /nodes/self/controller/settings</samp>.</p>
+
+    
+    <div class="section"><h2 class="title sectiontitle">HTTP method and URI</h2>
+    <p class="p">The path for the index files is configured with the <samp class="ph codeph">index_path</samp>
+        parameter.</p>
+
+      <pre class="pre codeblock">
+POST /nodes/self/controller/settings
+      </pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">Curl request syntax:</p>
+
+    <pre class="pre codeblock">curl -X POST -u [admin]:[password]
+    -d index_path=[index file and path]
+    http://[localhost]:8091/nodes/self/controller/settings     
+    </pre>
+</div>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+      
+        <p class="p">Raw HTTP request:</p>
+
+          
+          <pre class="pre codeblock">POST /nodes/self/controller/settings HTTP/1.1
+Host: localhost:8091
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Authorization: Basic YWRtaW46YWRtaW4=
+Content-Length: xx path=/var/tmp/test_indexpath
+</pre>
+
+          
+          <p class="p">Curl request example</p>
+
+          <pre class="pre codeblock">curl -X POST -u admin:password \
+    -d index_path=/var/tmp/test_indexpath \
+    http://127.0.0.1:8091/nodes/self/controller/settings
+</pre>
+
+          
+        </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Response codes</h2>
+          
+          
+          <p class="p">The HTTP response contains the response code and optional error message:</p>
+
+    
+    <pre class="pre codeblock">HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 0
+</pre>
+
+    
+    <div class="note note"><span class="notetitle">Note:</span> If you try to set the data path at this endpoint, the following error
+        displays:
+        <pre class="pre codeblock">
+ERROR: unable to init 10.3.4.23 (400) Bad Request
+{u'error': u'Changing data of nodes that are part of provisioned cluster is not supported'}
+</pre>
+
+      </div>
+
+    </div>
+
+   
+   
+      
+    
+    
+    
+  </div>
+
+
+</body>
+</html>

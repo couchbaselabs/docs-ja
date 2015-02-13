@@ -1,0 +1,393 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Couchbase Server uses specific network ports for communication between server components and with the clients accessing the data stored in the Couchbase cluster."><meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic2659">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Network ports</title>
+</head>
+<body id="topic2659">
+
+
+	<h1 class="title topictitle1">Network ports</h1>
+
+	
+	<div class="body"><p class="shortdesc">Couchbase Server uses specific network ports for communication between server components
+		and with the clients accessing the data stored in the Couchbase cluster.</p>
+
+		<p class="p">The listed ports must be available on the host for Couchbase Server to run and operate
+			correctly. Couchbase Server configures these ports automatically, but you must verify
+			that the firewall and IP tables configuration allow communication on the specified ports
+			for each usage type. On Linux, the installer will notify you that you need to open these
+			ports.</p>
+
+		<p class="p">The following table lists the ports used for different types of communication with
+			Couchbase Server:</p>
+
+		<dl class="dl">
+			
+				<dt class="dt dlterm">Node to node</dt>
+
+				<dd class="dd">These ports are used by Couchbase Server
+					for communication between all nodes within the cluster. These ports must be open to 
+					enable nodes to communicate with each other.</dd>
+
+			
+		
+			
+				<dt class="dt dlterm">Node to client</dt>
+
+				<dd class="dd">These ports are used by Couchbase Server
+					for communication between all nodes within the cluster. These ports must be open to 
+					enable nodes to communicate with each other.</dd>
+
+			
+		</dl>
+
+		<dl class="dl">
+			
+				<dt class="dt dlterm">Cluster administration</dt>
+
+				<dd class="dd">These ports are used for Couchbase administration including the REST
+					API, command-line clients, and web browsers.</dd>
+
+			
+			
+				<dt class="dt dlterm">XDCR</dt>
+
+				<dd class="dd">These ports are used for XDCR (Cross Data Center Replication) communication between
+					all nodes in both the source and destination clusters.</dd>
+
+			
+		</dl>
+
+		
+		
+		
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+				
+				
+				
+				
+				
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="14.270613107822411%" id="d23631e86">Port</th>
+
+						<th class="entry" valign="top" width="25.687103594080334%" id="d23631e89">Description</th>
+
+						<th class="entry" valign="top" width="10.570824524312895%" id="d23631e92">Node to node</th>
+
+						<th class="entry" valign="top" width="12.262156448202958%" id="d23631e95">Node to client</th>
+
+						<th class="entry" valign="top" width="14.270613107822411%" id="d23631e98">Cluster admin</th>
+
+						<th class="entry" valign="top" width="10.782241014799153%" id="d23631e102">XDCR v1</th>
+
+						<th class="entry" valign="top" width="12.156448202959828%" id="d23631e105">XDCR v2</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e86 ">8091</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d23631e89 ">Web Administration Port</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d23631e92 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d23631e95 ">Yes</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e98 ">Yes</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d23631e102 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d23631e105 ">Yes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e86 ">8092</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d23631e89 ">Couchbase API Port</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d23631e92 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d23631e95 ">Yes</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d23631e102 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d23631e105 ">Yes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e86 ">11207</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d23631e89 ">Internal/External Bucket Port for SSL</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d23631e92 ">No</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d23631e95 ">Yes</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d23631e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d23631e105 ">No</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e86 ">11209</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d23631e89 ">Internal Bucket Port</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d23631e92 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d23631e95 ">No</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d23631e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d23631e105 ">No</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e86 ">11210</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d23631e89 ">Internal/External Bucket Port</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d23631e92 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d23631e95 ">Yes</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d23631e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d23631e105 ">Yes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e86 ">11211</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d23631e89 ">Client interface (proxy)</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d23631e92 ">No</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d23631e95 ">Yes</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d23631e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d23631e105 ">No</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e86 ">11214</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d23631e89 ">Incoming SSL Proxy</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d23631e92 ">No</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d23631e95 ">No</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d23631e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d23631e105 ">Yes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e86 ">11215</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d23631e89 ">Internal Outgoing SSL Proxy</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d23631e92 ">No</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d23631e95 ">No</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d23631e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d23631e105 ">Yes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e86 ">18091</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d23631e89 ">Internal REST HTTPS for SSL</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d23631e92 ">No</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d23631e95 ">Yes</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e98 ">Yes</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d23631e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d23631e105 ">Yes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e86 ">18092</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d23631e89 ">Internal CAPI HTTPS for SSL</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d23631e92 ">No</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d23631e95 ">Yes</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d23631e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d23631e105 ">Yes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e86 ">4369</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d23631e89 ">Erlang Port Mapper ( <samp class="ph codeph">epmd</samp> )</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d23631e92 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d23631e95 ">No</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d23631e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d23631e105 ">No</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e86 ">21100 to 21299 (inclusive)</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d23631e89 ">Node data exchange</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d23631e92 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d23631e95 ">No</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d23631e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d23631e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d23631e105 ">No </td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		
+		<dl class="dl">
+				
+					<dt class="dt dlterm">Port 8091</dt>
+
+					<dd class="dd">Used by the Couchbase Web Console for REST/HTTP traffic.</dd>
+
+				
+
+
+				
+					<dt class="dt dlterm">Port 8092</dt>
+
+					<dd class="dd">Used to access views, run queries, and update design documents.</dd>
+
+				
+			
+			
+				<dt class="dt dlterm">Port 11207</dt>
+
+				<dd class="dd">Used by smart client libraries to access data nodes using SSL.</dd>
+
+			
+
+
+				
+					<dt class="dt dlterm">Port 11210</dt>
+
+					<dd class="dd">Used by smart client libraries or Moxi to directly connect to the data nodes.</dd>
+
+				
+
+
+				
+					<dt class="dt dlterm">Port 11211</dt>
+
+					<dd class="dd">Used by pre-existing Couchbase and memcached (non-smart) client libraries.</dd>
+
+				
+
+
+				
+					<dt class="dt dlterm">Ports 11214 and 11215</dt>
+
+					<dd class="dd">Used for SSL XDCR data encryption.</dd>
+
+				
+			
+				<dt class="dt dlterm">Port 18091</dt>
+
+				<dd class="dd">Used by the Couchbase Web Console for REST/HTTP traffic with SSL.</dd>
+
+			
+			
+				<dt class="dt dlterm">Port 18092</dt>
+
+				<dd class="dd">Used to access views, run queries, and update design documents with SSL.</dd>
+
+			
+
+
+				
+					<dt class="dt dlterm">All other Ports</dt>
+
+					<dd class="dd">Used for other Couchbase Server communications.</dd>
+
+				
+
+			</dl>
+
+		
+		<div class="note note"><span class="notetitle">Note:</span> Port 11213 is an internal ports used on the local host for memcached and compaction. 
+			The node is not used for communication between nodes in a cluster. For firewall purposes, 
+			you do not need to take port 11213 into consideration. 
+			However, if a service is listening on this port, Couchbase Server does not start correctly.
+		</div>
+
+
+	</div>
+
+
+</body>
+</html>

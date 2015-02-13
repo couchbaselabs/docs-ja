@@ -1,0 +1,102 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="task">
+<meta name="description" content="One non-administrative user can be created with read-only access for the Web Console and REST API."><meta name="DC.Relation" scheme="URI" content="../UI/ui-settings-account-mgmt.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-users.html">
+<meta name="DC.Relation" scheme="URI" content="http://www.couchbase.com/communities/all-client-libraries">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="task_a5k_wcj_wn">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Creating a read-only user</title>
+</head>
+<body id="task_a5k_wcj_wn">
+
+
+    <h1 class="title topictitle1">Creating a read-only user</h1>
+
+    
+    <div class="body taskbody"><p class="shortdesc">One non-administrative user can be created with read-only access for the Web Console and REST API.</p>
+
+        <div class="section context">
+            <p class="p">A read-only user cannot create buckets, edit buckets, add nodes to clusters, change XDCR settings, create views or see any stored data. 
+                Any REST API calls which require an administrator fail and return an error for this user. </p>
+
+                
+               <p class="p"> In the Couchbase web console, a read-only user can view:</p>
+<ul class="ul">
+                    <li class="li">Cluster Overview.</li>
+
+                    <li class="li">Design documents and view definitions but cannot query views.</li>
+
+                    <li class="li">Bucket summaries including Cache Size and Storage Size, but cannot view documents.</li>
+
+                    <li class="li">List of XDCR replications and remote clusters.</li>
+
+                    <li class="li">Logged events under the Log tab, but the user cannot Generate Diagnostic Report.</li>
+
+                    <li class="li">Settings for a cluster.</li>
+
+                </ul>
+
+            
+            <div class="note note"><span class="notetitle">Note:</span> 
+                <p class="p">If a read-only user performs a REST POST or DELETE request that changes cluster, bucket, XDCR, or node settings, 
+                    the server sends an HTTP 401 error:</p>
+             
+                <pre class="pre codeblock">
+HTTP/1.1 401 Unauthorized WWW-Authenticate: Basic realm="Couchbase Server Admin / REST"
+....
+</pre>
+
+            </div>
+
+            
+            <div class="note tip"><span class="tiptitle">Tip:</span> The read-only user cannot set up a Couchbase SDK to connect to the server. 
+                All SDKs require that a client connect with bucket-level credentials.</div>
+
+            
+            
+        </div>
+
+
+        
+            
+
+        <ol class="ol steps"><li class="li step stepexpand">
+                
+                <span class="ph cmd">In the Couchbase Web Console, click Settings.</span>
+                <div class="itemgroup stepresult">A panel appears with several different sub-tabs.
+                    <div class="fig fignone"><img class="image" src="../images/read_only_setup.png" width="600"></div>
+</div>
+            </li>
+<li class="li step stepexpand"><span class="ph cmd">Click Account Management. A panel appears where you can add a read-only user.</span></li>
+<li class="li step stepexpand"><span class="ph cmd">Enter a Username, Password and verify the password.</span></li>
+<li class="li step stepexpand"><span class="ph cmd">Click Create. </span>
+                <div class="itemgroup stepresult">The panel refreshes and has options for resetting the read-only user password or deleting the user.
+                    <div class="fig fignone"><img class="image" src="../images/read_only_created.png" width="600"></div>
+</div>
+            </li>
+</ol>
+
+      
+        
+        
+    </div>
+
+    
+    <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../UI/ui-settings-account-mgmt.html">Account Management tab</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../REST/rest-users.html" title="A read-only user is created with the /settings/readOnlyUser URI endpont. Only one read-only user can be created.">User API</a></div>
+<div><a class="link" href="http://www.couchbase.com/communities/all-client-libraries" target="_blank">Couchbase, All Client Libraries</a></div></div>
+</nav>
+
+</body>
+</html>

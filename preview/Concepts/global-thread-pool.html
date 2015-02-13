@@ -1,0 +1,145 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="concept">
+<meta name="description" content="A shared thread pool is a collection of threads which are shared across multiple buckets."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-diskStorage.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/bucket-priority.html">
+<meta name="DC.Relation" scheme="URI" content="bucket-priority.html">
+<meta name="DC.Relation" scheme="URI" content="../Monitoring/monitor-statistics.html">
+<meta name="DC.Relation" scheme="URI" content="concept-cacheLayer.html">
+<meta name="DC.Relation" scheme="URI" content="concept-readerWriter.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="concept_mzx_cmx_b4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Shared thread pool</title>
+</head>
+<body id="concept_mzx_cmx_b4">
+
+
+
+ <h1 class="title topictitle1">Shared thread pool</h1>
+
+ 
+ 
+ <div class="body conbody"><p class="shortdesc">A shared thread pool is a collection of threads which are shared across multiple buckets.</p>
+
+  <p class="p">A thread pool is a collection of threads used to perform similar jobs. Each server node has a
+   thread pool that is shared across multiple buckets. Shared thread pool optimizes dispatch tasks
+   by decoupling buckets from thread allocation. </p>
+
+  
+  <p class="p">Threads are spawned at initial startup of a server node instance and are based on the number of
+   CPU cores.</p>
+
+  
+   <p class="p">With the shared thread pool associated with each node, threads and buckets are decoupled. By
+   decoupling threads from specific buckets, threads can run tasks for any bucket. Since the global
+   thread pool permits for bucket priority levels, a separate I/O queue is available with the reader
+   and writer workers at every priority level. This provides improved task queueing. For example,
+   when a thread is assigned to running a task from an I/O queue and a second task is requested,
+   another thread is assigned to pick up the second task.</p>
+
+  
+  <p class="p">Shared thread pool management promotes:</p>
+
+  <ul class="ul">
+   <li class="li">Better parallelism for thread workers with more efficient I/O resource management.</li>
+
+   <li class="li">Better system scalability with more buckets being serviced with fewer worker threads.</li>
+
+   <li class="li">Availability of task priority if the disk bucket I/O priority setting is implemented.</li>
+
+  </ul>
+
+  
+  <p class="p">The following circumstances describes how threads are scheduled to dispatch tasks:</p>
+
+  <ul class="ul">
+  
+  <li class="li">If all buckets have the same priority (default setting), each thread evenly round-robins over
+    all the task queues of the buckets.</li>
+
+  
+  <li class="li">If buckets have different priorities, the threads spend an appropriate fraction of time (scheduling frequency)
+   dispatching tasks from queues of these bucket.</li>
+
+  
+  <li class="li">If a bucket is being compacted, threads are not allocated to dispatch tasks for that bucket.</li>
+
+   <li class="li">If all buckets are either empty or being serviced by other threads, the thread goes to
+    sleep.</li>
+
+  </ul>
+
+ 
+  
+  <img class="image" src="../images/sharedthreadpool_DCP.png" width="500">
+
+  
+  
+  
+  
+  
+  <div class="section"><h2 class="title sectiontitle">Viewing thread status</h2>
+   <p class="p">The <samp class="ph codeph">cbstats raw workload</samp> is used to view the status of the threads. 
+   The following is example code and results.</p>
+
+   
+   <pre class="pre codeblock">
+# cbstats 10.5.2.54:11210 -b default raw workload
+
+ ep_workload:LowPrioQ_AuxIO:InQsize:   3
+ ep_workload:LowPrioQ_AuxIO:OutQsize:  0
+ ep_workload:LowPrioQ_NonIO:InQsize:   33
+ ep_workload:LowPrioQ_NonIO:OutQsize:  0
+ ep_workload:LowPrioQ_Reader:InQsize:  12
+ ep_workload:LowPrioQ_Reader:OutQsize: 0
+ ep_workload:LowPrioQ_Writer:InQsize:  15
+ ep_workload:LowPrioQ_Writer:OutQsize: 0
+ ep_workload:num_auxio:                1
+ ep_workload:num_nonio:                1
+ ep_workload:num_readers:              1
+ ep_workload:num_shards:               4
+ ep_workload:num_sleepers:             4
+ ep_workload:num_writers:              1
+ ep_workload:ready_tasks:              0
+ ep_workload:shard0_locked:            false
+ ep_workload:shard0_pendingTasks:      0
+ ep_workload:shard1_locked:            false
+ ep_workload:shard1_pendingTasks:      0
+ ep_workload:shard2_locked:            false
+ ep_workload:shard2_pendingTasks:      0
+ ep_workload:shard3_locked:            false
+ ep_workload:shard3_pendingTasks:      0       
+   </pre>
+
+  
+  </div>
+
+  
+  
+ </div>
+
+ 
+ <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concept-diskStorage.html" title="Couchbase Server mainly stores and retrieves information for clients using RAM. At the same time, Couchbase Server eventually stores all data to disk to provide a higher level of reliability.">Disk storage</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/bucket-priority.html" title="Disk I/O priority enables workload priorities to be set at the bucket level.">Disk I/O priority</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="bucket-priority.html" title="Disk I/O priority enables workload priorities to be set at the bucket level.">Disk I/O priority</a></div>
+<div><a class="link" href="../Monitoring/monitor-statistics.html" title="Couchbase Server provides statistics at multiple levels throughout the cluster.">Couchbase Server statistics</a></div>
+<div><a class="link" href="concept-cacheLayer.html" title="Couchbase Server includes a built-in caching layer which acts as a central part of the server and provides very rapid reads and writes of data.">Caching layer</a></div>
+<div><a class="link" href="concept-readerWriter.html" title="Multi-threaded readers and writers provide multiple processes to simultaneously read and write data on disk. Simultaneous reads and writes increase disk speed and improve the read rate from disk.">Multiple readers and writers</a></div></div>
+</nav>
+
+
+
+</body>
+</html>

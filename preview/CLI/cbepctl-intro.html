@@ -1,0 +1,474 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="The cbepctl tool is used to control vBucket states, configuration, and memory and disk persistence behavior."><meta name="DC.Relation" scheme="URI" content="CBcli/cbcli-buckets.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-flush.html">
+<meta name="DC.Relation" scheme="URI" content="../UI/ui-data-buckets.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cbepctl-intro">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>cbepctl tool</title>
+</head>
+<body id="cbepctl-intro">
+
+
+	<h1 class="title topictitle1">cbepctl tool</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbepctl</samp> tool is used to control vBucket states, configuration, and 
+		memory and disk persistence behavior.</p>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Description</h2>
+			<p class="p">This tool is a per-node, per-bucket operation. 
+				That means that the IP address of a node in the cluster and a named bucket must be specified. 
+				If a named bucket is not provided, the server applies the setting to any default bucket that exists at the specified node. 
+				To perform this operation for an entire cluster, perform the command for every node/bucket combination that exists 
+				for that cluster.</p>
+
+			
+			<p class="p">For example, when a data bucket is shared by two nodes, 
+				issue this command twice and provide the different host names and ports
+				for each node along with the bucket name. Similarly, when two data buckets are on the same node, 
+				issue the command twice for each data bucket. If a bucket is not
+				specified, the command applies to the default bucket or returns an error if a default bucket does not
+				exist.</p>
+
+			
+			<div class="note important"><span class="importanttitle">Important:</span> Changes to the cluster configuration using <samp class="ph codeph">cbepctl</samp> are not persisted
+				over a cluster restart.</div>
+
+				
+				<p class="p">The tool is found in the following locations:</p>
+
+		
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="50%" id="d8628e49">Operating system</th>
+
+						<th class="entry" valign="top" width="50%" id="d8628e52">Location</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d8628e49 ">Linux</td>
+
+						<td class="entry" valign="top" width="50%" headers="d8628e52 ">/opt/couchbase/bin/cbepctl</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d8628e49 ">Windows</td>
+
+						<td class="entry" valign="top" width="50%" headers="d8628e52 ">C:\Program&nbsp;Files\Couchbase\Server\bin\cbepctl.exe</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d8628e49 ">Mac OS X</td>
+
+						<td class="entry" valign="top" width="50%" headers="d8628e52 ">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbepctl</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		
+	</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">CLI command and parameters</h2>
+			<p class="p">Basic syntax for this command:</p>
+
+		<pre class="pre codeblock">cbepctl [localhost]:11210 -b [bucket_name] -p [bucket-password] start
+cbepctl [localhost]:11210 -b [bucket_name] -p [bucket-password] stop
+cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-type] [parameter] [value]
+</pre>
+
+		<p class="p">For this command, <samp class="ph codeph">host</samp> is the IP address for the Couchbase cluster or node in
+				the cluster. The port is always the standard port used for cluster-wide stats and is
+				at <samp class="ph codeph">11210</samp>. The bucket name and password is provided first and then
+				the command option and authentication.</p>
+
+		<p class="p">Use the following command options to manage persistence:</p>
+
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. cbepctl command options</span></caption>
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="18.484288354898336%" id="d8628e127">Command option</th>
+
+						<th class="entry" valign="top" width="81.51571164510166%" id="d8628e130">Description</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="18.484288354898336%" headers="d8628e127 ">stop</td>
+
+						<td class="entry" valign="top" width="81.51571164510166%" headers="d8628e130 ">Stop persistence</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="18.484288354898336%" headers="d8628e127 ">start</td>
+
+						<td class="entry" valign="top" width="81.51571164510166%" headers="d8628e130 ">Start persistence</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="18.484288354898336%" headers="d8628e127 ">drain</td>
+
+						<td class="entry" valign="top" width="81.51571164510166%" headers="d8628e130 ">Wait until queues are drained</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="18.484288354898336%" headers="d8628e127 ">set</td>
+
+						<td class="entry" valign="top" width="81.51571164510166%" headers="d8628e130 ">Set <samp class="ph codeph">checkpoint_param</samp>, <samp class="ph codeph">flush_param</samp>, and
+									<samp class="ph codeph">tap_param</samp> command types. This changes how or
+								when persistence occurs.</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+			
+		<p class="p">The <samp class="ph codeph">set</samp> command option along with the <samp class="ph codeph">checkpoint_param</samp>,
+					<samp class="ph codeph">flush_param</samp>, and <samp class="ph codeph">tap_param</samp> command types
+				change the behavior of persistence in Couchbase Server.</p>
+
+			
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">cbepctl set checkpoint_param</h2>
+		<p class="p">The parameters for <samp class="ph codeph">set checkpoint_param</samp> are:</p>
+
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="50%" id="d8628e224">Parameter</th>
+
+						<th class="entry" valign="top" width="50%" id="d8628e227">Description</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d8628e224 ">chk_max_items</td>
+
+						<td class="entry" valign="top" width="50%" headers="d8628e227 ">Max number of items allowed in a checkpoint.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d8628e224 ">chk_period</td>
+
+						<td class="entry" valign="top" width="50%" headers="d8628e227 ">Time bound (in sec.) on a checkpoint.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d8628e224 ">item_num_based_new_chk</td>
+
+						<td class="entry" valign="top" width="50%" headers="d8628e227 ">True if a new checkpoint can be created based on. the number of items
+							in the open checkpoint.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d8628e224 ">keep_closed_chks</td>
+
+						<td class="entry" valign="top" width="50%" headers="d8628e227 ">True if we want to keep closed checkpoints in memory, as long as the
+							current memory usage is below high water mark.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d8628e224 ">max_checkpoints</td>
+
+						<td class="entry" valign="top" width="50%" headers="d8628e227 ">Max number of checkpoints allowed per vbucket. </td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d8628e224 ">enable_chk_merge</td>
+
+						<td class="entry" valign="top" width="50%" headers="d8628e227 ">True, if merging closed checkpoints is enabled.</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		</div>
+
+	
+		
+		<div class="section"><h2 class="title sectiontitle">cbepctl set flush_param</h2>
+			
+			<p class="p">The parameters for <samp class="ph codeph">set flush_param</samp> are:</p>
+
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d8628e315">Parameter</th>
+
+							<th class="entry" valign="top" width="50%" id="d8628e318">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">alog_sleep_time</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Access scanner interval (minute)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">alog_task_time</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Access scanner next task time (UTC)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">backfile_mem_threshold</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Memory threshold (%) on the current bucket quota before backfill task is made to back off.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">bg_fetch_delay</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Delay before executing a bg fetch (test feature).</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">couch_response_timeout</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">timeout in receiving a response from CouchDB.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">exp_pager_stime</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Expiry Pager interval. Time interval that Couchbase Server waits
+								before it performs cleanup and removal of expired items from
+								disk.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">flushall_enabled</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Deprecated. Enable flush operation.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">pager_active_vb_pcnt</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Percentage of active vBuckets items among all ejected items by item pager.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">max_size</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Maximum memory used by the server.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">mem_high_wat</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Low water mark by percentage.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">mem_low_wat</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">High water mark by percentage.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">mutation_mem_threshold</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Amount of RAM that can be consumed in that caching layer before
+								clients start receiving temporary out of memory messages.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">timing_log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Path to log detailed timing stats. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">warmup_min_memory_threshold</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Memory threshold (%) during warmup to enable traffic.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">warmup_min_item_threshold</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Item number threshold (%) during warmup to enable traffic.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">max_num_readers</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Override the default number of global threads that prioritize read operations.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">max_num_writers</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Override the default number of global threads that prioritize write
+								operations.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">max_num_auxio</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Override the default number of global threads that prioritize auxio
+								operations.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e315 ">max_num_nonio</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Override the default number of global threads that prioritize nonio
+								operations.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">cbepctl set tap_param</h2>
+			<p class="p">The parameters for <samp class="ph codeph">set tap_param</samp> are:</p>
+
+		
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d8628e525">Parameter</th>
+
+							<th class="entry" valign="top" width="50%" id="d8628e528">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e525 ">tap_keepalive</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e528 ">Seconds to hold a named tap connection.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e525 ">tap_throttle_queue_cap</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e528 ">Maximum disk write queue size to throttle tap streams (infinite means no cap).</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e525 ">tap_throttle_cap_pcnt</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e528 ">Percentage of total items in write queue at which we throttle tap input.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8628e525 ">tap_throttle_threshold</td>
+
+							<td class="entry" valign="top" width="50%" headers="d8628e528 ">Percentage of memory in use to throttle tap streams</td>
+
+						</tr>
+
+						
+					</tbody>
+
+				</table>
+</div>
+
+		
+		</div>
+
+		
+	</div>
+
+	<nav class="related-links">
+<div class="linklist linklist">
+<div><a class="link" href="CBcli/cbcli-buckets.html" title="Buckets are managed with the couchbase-cli tool and the bucket-* commands.">Buckets</a></div>
+<div><a class="link" href="../REST/rest-bucket-flush.html" title="To flush all buckets, use the POST /pools/default/buckets/default/controller/doFlush HTTP method and URI.">Flushing buckets</a></div>
+<div><a class="link" href="../UI/ui-data-buckets.html">Data Buckets</a></div></div>
+</nav>
+
+</body>
+</html>

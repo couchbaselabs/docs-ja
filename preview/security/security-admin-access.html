@@ -1,0 +1,116 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="concept">
+<meta name="description" content="Encrypted administrative access enables HTTPS access for Couchbase Web Console and REST API using the Secure Socket Layer (SSL) authentication."><meta name="DC.Relation" scheme="URI" content="../security/security-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../security/security-client-ssl.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="security-admin-access">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Encrypted administrative access</title>
+</head>
+<body id="security-admin-access">
+
+
+  <h1 class="title topictitle1">Encrypted administrative access</h1>
+
+  
+  <div class="body conbody"><p class="shortdesc">Encrypted administrative access enables HTTPS access for Couchbase Web Console and REST
+    API using the Secure Socket Layer (SSL) authentication.</p>
+
+    <div class="note attention"><span class="attentiontitle">Attention:</span> This feature is available only in the Enterprise edition.</div>
+
+    <p class="p">Couchbase Server client libraries support client-side encryption using  the Secure Sockets Layer (SSL) 
+      protocol by encrypting data in-flight between the client and the server. 
+      A secure channel is established between the remote machine and the server.</p>
+
+    
+    <p class="p">Couchbase Server generates a self-signed certificate for the initial node, which is
+      propagated throughout the server nodes in the cluster. If the self-signed certificate is
+      regenerated or updated, it must be obtained again before secure server communication is
+      re-established. The secure connection is on the cluster level (rather than bucket level) and
+      is established through the dedicated HTTPS REST port <samp class="ph codeph">18091</samp>, or the HTTPS CAPI
+      port <samp class="ph codeph">18092</samp>. </p>
+
+    <div class="section"><h2 class="title sectiontitle">Configuring a secure administrative access for your web browser</h2>    
+      <ol class="ol">
+        <li class="li">Connect to Couchbase Server through an encrypted port to communicate on a secure
+          channel (<samp class="ph codeph">18091</samp> for REST HTTP or <samp class="ph codeph">18092</samp> for CAPI HTTP). </li>
+
+        <li class="li">Log in with the administrator name and password. </li>
+
+          <li class="li">Once you are logged in, the URL shows a secure
+          connection. 
+          <p class="p">The following is an example URL of a secure connection using the
+            Safari web browser:</p>
+                
+          <p class="p"><img class="image" id="security-admin-access__image_tp1_2r1_mp" src="../images/ui-ssl-ip.png" width="420">
+          </p>
+          
+        </li>
+
+      </ol>
+  
+    </div>
+
+    <div class="example"><h2 class="title sectiontitle">SSL certificate</h2>
+      <pre class="pre codeblock">-----BEGIN CERTIFICATE-----
+MIIC/jCCAeigAwIBAgIIE3jc9BofgigwCwYJKoZIhvcNAQEFMCQxIjAgBgNVBAMT
+GUNvdWNoYmFzZSBTZXJ2ZXIgOTRmYTE3YTUwHhcNMTMwMTAxMDAwMDAwWhcNNDkx
+MjMxMjM1OTU5WjAkMSIwIAYDVQQDExlDb3VjaGJhc2UgU2VydmVyIDk0ZmExN2E1
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxaaXsKm06xxzzYqejDAO
+3qW1x6vLz9jcLdZkNQgxGk4+/ulrfK4PSLHARf4vml8Ev3bcOzCwfyDCp2/TCSX0
+qDTn4iBRp9CJtxVyY/xqWkYkld+GGtj28P0CtZ1UKOHCRB7KInzxesxITg/a0vsL
+M8GrcwFpmZEJjeY7HGdUuBRcoMfm2Yn28drmr92SNSsz+npdfEFkQloYStqemOOG
+h1Jn7ldU5rBj/B2zcvh6guDXKKz/bMMeCTX84BmkG3rmiKQwxyizuxtYi5u1BthC
+X3aO58lC9uRMja1lA5TrJnZOCRT24G6VTh2bYhN98W6YmvF9l4ESDR4I7nE8E6Gt
+eQIDAQABozgwNjAOBgNVHQ8BAf8EBAMCAKQwEwYDVR0lBAwwCgYIKwYBBQUHAwEw
+DwYDVR0TAQH/BAUwAwEB/zALBgkqhkiG9w0BAQUDggEBAF0Bz2MpQoBEdOdDRix3
+j0/XGKjH7kI5zDFiOlUvANMeErVZf9kM8xqS7Yd3bCa2rjT1Y8BM3Sciurtrd/Cy
+iTVzpXjQOR/K1AFtiBtuNb2Hx5SXvgeW4p4uNmK74u1UUNmAyb3mwSQ+duuqK/Ef
+D4wTolPTZP5gcricyWI3qUCi3pTeCz/2jcAWn3DI4KVtlAsOy9sFFo4RxBDgmOuS
+klUAb8eu4e2XxcLJ++geYoum0VIKa3ygjpZ800PupwZZetjD8/6tfbYFuoBTXL+r
+27M9ArsOxkVbh3fDQ8b8qnr5sam1P7IfSzqq/Lq4vjh1mvred62zuJlMvY9KmNJU
+rqw=
+-----END CERTIFICATE-----</pre>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Using REST for encrypted access</h2>
+      <p class="p">GET filepath <span class="ph filepath">/pools/default/certificate</span> REST API HTTP method and URI retrieves the SSL self-signed certificate from the cluster.</p>
+
+  
+    <p class="p">The following shows REST syntax with <span class="keyword cmdname">curl</span> for retrieving the certificate:</p>
+
+      <pre class="pre codeblock">curl –X GET  -u adminName:adminPassword
+    http://localHost:Port/pools/default/certificate &gt; ./&lt;certificate_name&gt;</pre>
+
+      <p class="p">The following examples use <span class="keyword cmdname">curl</span> and <span class="keyword cmdname">wget</span> to retrieve the certificate</p>
+
+      <pre class="pre codeblock">curl http://10.5.2.54:8091/pools/default/certificate &gt; clusterCertificate</pre>
+
+      <pre class="pre codeblock">wget http://10.5.2.54:8091/pools/default/certificate -O clusterCertificate</pre>
+
+      <p class="p">The following examples use <span class="keyword cmdname">curl</span> and <span class="keyword cmdname">wget</span> with the SSL certificate to retrieve cluster information over an encrypted connection. 
+      The port used is the encrypted REST port <samp class="ph codeph">18091</samp>.</p>
+
+    
+    <pre class="pre codeblock">curl --cacert clusterCertificate https://10.5.2.54:18091/pools/default</pre>
+
+    <pre class="pre codeblock">wget --ca-certificate clusterCertificate  https://10.5.2.54:18091/pools/default -O output</pre>
+        
+    </div>
+    
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../security/security-intro.html" title="Couchbase Server 3.0は、アプリケーションや管理者向けに安全なネットワーク経由のデータアクセスをサポートしています。">セキュリティ</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../security/security-client-ssl.html" title="Couchbase Server client libraries support client-side encryption using the Secure Sockets Layer (SSL) protocol.">Encrypted data access</a></div>
+</div>
+</nav>
+</body>
+</html>

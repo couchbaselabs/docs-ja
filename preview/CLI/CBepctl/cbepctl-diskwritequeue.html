@@ -1,0 +1,153 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="The quota in disk write queues impact the rate of data sent from source nodes to destination nodes."><meta name="DC.Relation" scheme="URI" content="../../Concepts/concept-replication.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cbepctl-diskwritequeue">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../../commonltr.css">
+<title>Changing disk write queue quotas</title>
+</head>
+<body id="cbepctl-diskwritequeue">
+
+
+	<h1 class="title topictitle1">Changing disk write queue quotas</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">The quota in disk write queues impact the rate of data sent from source nodes to
+		destination nodes. </p>
+
+		<div class="section"><h2 class="title sectiontitle">Description</h2>
+		<p class="p">One of the specific uses of the <samp class="ph codeph">cbepctl set tap_param</samp> command option is to the
+				change the default maximum items for a disk write queue. This impacts replication of
+				data that occurs between source and destination nodes within a cluster. Both data
+				that a node receives from client applications and replicated items that it receives
+				are placed on a disk write queue. If there are too many items waiting in the disk
+				write queue at any given destination, Couchbase Server reduces the rate of data that
+				is sent to a destination. This is process is also known as backoff.</p>
+
+			
+		<p class="p">By default, when a disk write queue contains one million items, a Couchbase node 
+			reduces the rate it sends out data to be replicated. 
+			This setting can be changed to be
+			the greater of 10% of the items at a destination node or a specific number.</p>
+
+			
+			<p class="p">The <samp class="ph codeph">tap_param</samp> parameters are:</p>
+
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. tap_param parameters</span></caption>
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d3648e49">Parameter</th>
+
+							<th class="entry" valign="top" width="50%" id="d3648e52">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d3648e49 ">tap_keepalive</td>
+
+							<td class="entry" valign="top" width="50%" headers="d3648e52 ">Seconds to hold a named tap connection.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d3648e49 ">tap_throttle_queue_cap</td>
+
+							<td class="entry" valign="top" width="50%" headers="d3648e52 ">Max disk write queue size when tap streams are put into a temporary,
+								5-second pause. Infinite means there is no cap.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d3648e49 ">tap_throttle_cap_pcnt</td>
+
+							<td class="entry" valign="top" width="50%" headers="d3648e52 ">Maximum items in disk write queue as percentage of all items on a
+								node. At this point, tap streams are put into a temporary, 5-second
+								pause.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d3648e49 ">tap_throttle_threshold</td>
+
+							<td class="entry" valign="top" width="50%" headers="d3648e52 ">Percentage of memory in use when tap streams are put into a
+								temporary, 5-second pause. </td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+			
+			<div class="section"><h2 class="title sectiontitle">Syntax</h2>
+				<p class="p">Basic syntax:</p>
+
+				<pre class="pre codeblock">
+cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set tap_param [parameter] [value]
+cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set tap_param tap_throttle_queue_cap [value]
+cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set tap_param tap_throttle_cap_pcnt [value]
+				</pre>
+
+			</div>
+
+			
+			<div class="section"><h2 class="title sectiontitle">Example</h2>
+				
+				<p class="p">The following example changes the setting (for the default bucket) to specify that a replica
+				node send a request to backoff when it has two million items.</p>
+
+				<pre class="pre codeblock">cbepctl 10.5.2.117:11210 set tap_param tap_throttle_queue_cap 2000000</pre>
+
+				
+				<p class="p">The following example changes (for the default bucket) the default percentage used to manage
+				the replication stream. If the items in a disk write queue reach the greater of this
+				percentage or a specified number of items, replication requests slow down.</p>
+
+				<p class="p">The threshold is set to 15% of all items at a replica node. When a disk
+					write queue on a replica node reaches this point, it requests replication backoff.</p>
+
+				<pre class="pre codeblock">cbepctl 10.5.2.117:11210 set tap_param tap_throttle_cap_pcnt 15</pre>
+
+			
+			</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Response</h2>
+			<p class="p">The following example responses show a two million setting and a 15% threshold:</p>
+
+			<pre class="pre codeblock">
+setting param: tap_throttle_queue_cap 2000000
+set tap_throttle_queue_cap to 2000000
+
+setting param: tap_throttle_cap_pcnt 15
+set tap_throttle_cap_pcnt to 15
+			</pre>
+
+
+		</div>
+
+		
+	</div>
+
+	<nav class="related-links">
+<div class="linklist linklist">
+<div><a class="link" href="../../Concepts/concept-replication.html" title="Replicas are copies of data that are proved on another node in a cluster.">Replicas and replication</a></div></div>
+</nav>
+
+</body>
+</html>

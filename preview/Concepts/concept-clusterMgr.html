@@ -1,0 +1,76 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="The Cluster Manager is responsible for node and cluster management. Every node within a Couchbase cluster includes the Cluster Manager component."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-dataStorage.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-nodesCluster.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-rack-awareness.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic633">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Cluster Manager</title>
+</head>
+<body id="topic633">
+
+
+  <h1 class="title topictitle1">Cluster Manager</h1>
+
+  
+  <div class="body"><p class="shortdesc">The Cluster Manager is responsible for  node and cluster management. 
+    Every node within a Couchbase cluster includes the Cluster Manager component.</p>
+
+    <p class="p">The Cluster Manager is responsible for the following within a cluster:</p>
+
+    <ul class="ul">
+      <li class="li"><p class="p">Cluster management</p>
+</li>
+
+      <li class="li"><p class="p">Node administration</p>
+</li>
+
+      <li class="li"><p class="p">Node monitoring</p>
+</li>
+
+      <li class="li"><p class="p">Statistics gathering and aggregation</p>
+</li>
+
+      <li class="li"><p class="p">Run-time logging</p>
+</li>
+
+      <li class="li"><p class="p">Multi-tenancy</p>
+</li>
+
+      <li class="li"><p class="p">Security for administrative and client access</p>
+</li>
+
+      <li class="li"><p class="p">Client proxy service to redirect requests</p>
+</li>
+
+    </ul>
+
+    <p class="p">Access to the Cluster Manager is provided through the administration interface on a dedicated
+      network port and through dedicated network ports for client access. Additional ports are
+      configured for inter-node communication.</p>
+
+  </div>
+
+<nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../Concepts/concept-nodesCluster.html">Nodes and clusters</a><br>
+Couchbase Server can be used either in a standalone configuration or cluster     configuration. A cluster configuration is multiple Couchbase Servers connected together to provide a single,     distributed data store.</li>
+<li class="link olchildlink"><a href="../Concepts/concept-rack-awareness.html">Rack Awareness</a><br>
+The Rack Awareness feature permits logical groupings of servers on a cluster where each server    group physically belongs to a rack or Availability Zone. </li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/concept-dataStorage.html" title="Couchbase Server provides data management services using buckets, which are isolated virtual containers for data. A bucket is a logical grouping of physical resources within a cluster of Couchbase Servers.">Data storage</a></div>
+</div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage."><meta name="DC.Relation" scheme="URI" content="../Monitoring/monitor-statistics.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cbstats-intro">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>cbstats tool</title>
+</head>
+<body id="cbstats-intro">
+
+
+	<h1 class="title topictitle1">cbstats tool</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbstats</samp> tool is used to get node and cluster-level statistics about
+		performance and items in storage.</p>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Description</h2>
+			<p class="p">The <samp class="ph codeph">cbstats</samp> tool is a per-node, per-bucket operation.
+				That means that the IP address of a node in the cluster and a named bucket must be specified. 
+				If a named bucket is not provided, the server applies the
+				setting to any default bucket that exists at the specified node. 
+				To perform this operation for an entire cluster, perform the command for every
+				node/bucket combination that exists for that cluster.</p>
+
+			
+		<p class="p">The tool is found in the following locations:</p>
+
+
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="50%" id="d11623e41">Platform</th>
+
+						<th class="entry" valign="top" width="50%" id="d11623e44">Location</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d11623e41 ">Linux</td>
+
+						<td class="entry" valign="top" width="50%" headers="d11623e44 "><samp class="ph codeph">/opt/couchbase/bin/cbstats</samp></td>
+
+					</tr>
+
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d11623e41 ">Windows</td>
+
+						<td class="entry" valign="top" width="50%" headers="d11623e44 "><samp class="ph codeph">C:\Program&nbsp;Files\Couchbase\Server\bin\cbstats.exe</samp></td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d11623e41 ">Mac OS X</td>
+
+						<td class="entry" valign="top" width="50%" headers="d11623e44 "><samp class="ph codeph">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbstats</samp></td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		
+			
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">CLI command and parameters</h2>
+		<p class="p">This tool is used to get the couchbase node statistics. The general format for this command
+				is:</p>
+
+			<pre class="pre codeblock">
+cbstats [host]:11210 [command] -b [bucket-name] -p [bucket-password]
+			</pre>
+
+			
+			
+		
+		
+		<p class="p">The following are commands. The <samp class="ph codeph">all</samp> and <samp class="ph codeph">timings</samp>
+				commands are used to understand cluster or node performance. The majority of these
+				commands are predominately used by Couchbase internally and to help resolve
+				customer support incidents. </p>
+
+					
+
+		<pre class="pre">
+all
+allocator
+checkpoint [vbid]
+config
+dcp
+dcp-takeover vb name
+dcpagg
+diskinfo [detail]
+dispatcher [logs]
+failovers [vbid]
+hash [detail]
+items (memcached bucket only)
+key keyname vbid
+kvstore
+kvtimings
+memory
+prev-vbucket
+raw argument
+reset
+runtimes
+scheduler
+slabs (memcached bucket only)
+tap [username password]
+tap-takeover vb name
+tapagg
+timings
+vbucket
+vbucket-detail [vbid]
+vbucket-seqno [vbid]
+vkey keyname vbid
+warmup
+workload
+</pre>
+
+			<p class="p">The following are command options:</p>
+
+			
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" id="d11623e119">Options</th>
+
+							<th class="entry" valign="top" id="d11623e122">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" headers="d11623e119 d11623e122 ">-h, --help</td>
+
+							<td class="entry" valign="top" headers="d11623e119 d11623e122 ">Shows the help message and exits.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d11623e119 d11623e122 ">-a</td>
+
+							<td class="entry" valign="top" headers="d11623e119 d11623e122 ">Iterates over all the vBuckets. Requires administrator username and password.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d11623e119 d11623e122 ">-b [bucket-name]</td>
+
+							<td class="entry" valign="top" headers="d11623e119 d11623e122 ">The vBucket to get the status from. Default: default</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d11623e119 d11623e122 ">-p [password]</td>
+
+							<td class="entry" valign="top" headers="d11623e119 d11623e122 ">The password for the vBucket if one exists.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			
+			
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Syntax</h2>
+			<p class="p">Request syntax:</p>
+
+			<pre class="pre codeblock">
+cbstats [host]:11210 [command]
+			</pre>
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Example: Timings</h2>
+			<p class="p">To get statistics, for example, timings on host 10.5.2.117:</p>
+
+			<pre class="pre codeblock">cbstats 10.5.2.117:11210 timings</pre>
+
+			
+			<p class="p">Response:</p>
+
+			<pre class="pre codeblock">
+ disk_commit (1024 total)
+    0 - 1s : (100.00%) 1024 ###################################################
+    Avg    : (     1s)
+ get_stats_cmd (30663276 total)
+    0 - 1us       : (  0.05%)    14827 
+    1us - 2us     : (  6.56%)  1995778 ##
+    2us - 4us     : ( 41.79%) 10804626 ##############
+    4us - 8us     : ( 45.20%)  1044043 #
+    8us - 16us    : ( 45.49%)    89929 
+    16us - 32us   : ( 45.90%)   124472 
+    32us - 64us   : ( 46.38%)   148935 
+    64us - 128us  : ( 56.17%)  2999690 ###
+    128us - 256us : ( 68.57%)  3804009 ####
+    256us - 512us : ( 69.91%)   411281 
+    512us - 1ms   : ( 78.77%)  2717402 ###
+    1ms - 2ms     : ( 96.36%)  5391526 #######
+    2ms - 4ms     : ( 99.05%)   826345 #
+    4ms - 8ms     : ( 99.96%)   278727 
+    8ms - 16ms    : (100.00%)    11443 
+    16ms - 32ms   : (100.00%)      217 
+    32ms - 65ms   : (100.00%)       19 
+    65ms - 131ms  : (100.00%)        7 
+    Avg           : (  347us)
+ disk_vbstate_snapshot (93280 total)
+    32us - 64us   : ( 15.34%) 14308 ######
+    64us - 128us  : ( 74.74%) 55413 #########################
+    128us - 256us : ( 91.39%) 15532 #######
+    256us - 512us : ( 95.69%)  4007 #
+    512us - 1ms   : ( 99.49%)  3546 #
+    1ms - 2ms     : ( 99.95%)   423 
+    2ms - 4ms     : ( 99.99%)    43 
+    4ms - 8ms     : (100.00%)     4 
+    2s - 4s       : (100.00%)     4 
+    Avg           : (  190us)
+ notify_io (4 total)
+    4us - 8us   : ( 25.00%) 1 ############
+    16us - 32us : ( 75.00%) 2 ########################
+    32us - 64us : (100.00%) 1 ############
+    Avg         : (   17us)
+			</pre>
+
+			
+			
+		
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Example: Using with other CLI tools</h2>
+		
+		<p class="p">The <samp class="ph codeph">cbstats</samp> output can be used with other command-line tools
+			to sort and filter the data, for example, the <samp class="ph codeph">watch</samp> command.</p>
+
+		
+		<pre class="pre codeblock">watch --diff "cbstats \
+    ip-10-12-19-81:11210 -b bucket_name -p bucket_password all | egrep 'item|mem|flusher|ep_queue|bg|eje|resi|warm'"
+</pre>
+
+		</div>
+
+		
+	</div>
+
+	<nav class="related-links">
+<div class="linklist linklist">
+<div><a class="link" href="../Monitoring/monitor-statistics.html" title="Couchbase Server provides statistics at multiple levels throughout the cluster.">Couchbase Server statistics</a></div></div>
+</nav>
+
+</body>
+</html>

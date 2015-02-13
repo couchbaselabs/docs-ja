@@ -1,0 +1,128 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="XDCR replication is paused and resumed using the /settings/replications/ URI path and the pauseRequested option."><meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reference_kz4_khq_w4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Pausing XDCR replication streams</title>
+</head>
+<body id="reference_kz4_khq_w4">
+
+
+  <h1 class="title topictitle1">Pausing XDCR replication streams</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">XDCR replication is paused and resumed using the
+      <samp class="ph codeph">/settings/replications/</samp> URI path and the <samp class="ph codeph">pauseRequested</samp>
+    option.</p>
+
+    <div class="section"><h2 class="title sectiontitle">HTTP method and URI</h2>
+      
+      <pre class="pre codeblock">
+POST /settings/replications/
+POST /settings/replications/[replication_id]</pre>
+
+    
+   
+       
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="reference_kz4_khq_w4__table_xdcr_settings_uri" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. XDCR URI paths for settings</span></caption>
+        
+        
+        <thead class="thead" align="left">
+          <tr class="row">
+            <th class="entry" valign="top" width="35.3356890459364%" id="d42264e43">URI path</th>
+
+            <th class="entry" valign="top" width="64.66431095406361%" id="d42264e46">Description</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+          <tr class="row">
+            <td class="entry" valign="top" width="35.3356890459364%" headers="d42264e43 ">/settings/replications/</td>
+
+            <td class="entry" valign="top" width="64.66431095406361%" headers="d42264e46 ">Global setting supplied to all replications for a cluster.</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="35.3356890459364%" headers="d42264e43 ">/settings/replications/[replication_id]</td>
+
+            <td class="entry" valign="top" width="64.66431095406361%" headers="d42264e46 ">Settings for specific replication for a bucket.</td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+</div>
+
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="reference_kz4_khq_w4__table_xdcr_adv_settings" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 2. XDCR advanced settings</span></caption>
+        
+        
+        
+        <thead class="thead" align="left">
+          <tr class="row">
+            <th class="entry" valign="top" width="22.483940042826553%" id="d42264e91">Parameter</th>
+
+            <th class="entry" valign="top" width="21.413276231263385%" id="d42264e94">Value</th>
+
+            <th class="entry" valign="top" width="56.102783725910065%" id="d42264e97">Description</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+          <tr class="row">
+            <td class="entry" valign="top" width="22.483940042826553%" headers="d42264e91 "><samp class="ph codeph">pauseRequested</samp></td>
+
+            <td class="entry" valign="top" width="21.413276231263385%" headers="d42264e94 ">Boolean (true or false)</td>
+
+            <td class="entry" valign="top" width="56.102783725910065%" headers="d42264e97 ">Specify true to pause the replication. Specify false to continue replication.
+              Initially set to false.</td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+</div>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      
+      <pre class="pre codeblock">
+# curl -X POST -u [admin]:[password] http://[localhost]:8091/settings/replications -d pauseRequested=[true | false]    
+    </pre>
+
+    </div>
+
+    
+      
+    
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+      
+      <pre class="pre codeblock">
+# curl -X POST -u Administrator:password http://10.5.2.54:8091/settings/replications -d pauseRequested=true    
+    </pre>
+
+    </div>
+
+    
+    
+    
+  </div>
+
+
+</body>
+</html>

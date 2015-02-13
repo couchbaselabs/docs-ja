@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Couchbase Server mainly stores and retrieves information for clients using RAM. At the same time, Couchbase Server eventually stores all data to disk to provide a higher level of reliability."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-cacheLayer.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/global-thread-pool.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-readerWriter.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-doc-delete.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-tombstone.html">
+<meta name="DC.Relation" scheme="URI" content="concept-workingset-mgmt.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic1135">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Disk storage</title>
+</head>
+<body id="topic1135">
+
+
+  <h1 class="title topictitle1">Disk storage</h1>
+
+  
+  <div class="body"><p class="shortdesc">Couchbase Server mainly stores and retrieves information for clients using
+    RAM. At the same time, Couchbase Server eventually stores all data to disk to provide a
+    higher level of reliability.</p>
+
+    <p class="p">It writes data to the caching layer and puts the data into a disk write queue to be persisted to
+      disk. Disk persistence enables you to perform backup and restore operations and 
+      to grow your datasets larger than the built-in caching layer. 
+      This disk storage process is called <em class="ph i">eventual persistence</em> 
+      since the server does not block a client while it writes to disk. 
+    </p>
+
+    <p class="p">If a node fails and all data in the caching layer is lost, 
+      the items are recovered from disk. 
+       When the server identifies an item that needs to be loaded from disk, because it is not in
+      active memory, the process is handled by a background process that processes the load queue
+      and reads the information back from disk and into memory. The client waits until the
+      data has been loaded back into memory before the information is returned.</p>
+
+  </div>
+
+  
+  <nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../Concepts/concept-readerWriter.html">Multiple readers and writers</a><br>
+Multi-threaded readers and writers provide multiple processes to simultaneously read     and write data on disk. Simultaneous reads and writes increase disk speed and improve the read     rate from disk. </li>
+<li class="link olchildlink"><a href="../Concepts/concept-doc-delete.html">Document deletion</a><br>
+Couchbase Server never deletes entire items from disk    unless a client explicitly deletes the item from the database or the expiration   value for the item is reached.</li>
+<li class="link olchildlink"><a href="../Concepts/concept-tombstone.html">Tombstone purging</a><br>
+Tombstones are records of expired or deleted items that include item keys and metadata.</li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concept-cacheLayer.html" title="Couchbase Server includes a built-in caching layer which acts as a central part of the server and provides very rapid reads and writes of data.">Caching layer</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/global-thread-pool.html" title="A shared thread pool is a collection of threads which are shared across multiple buckets.">Shared thread pool</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="concept-workingset-mgmt.html" title="Working set management is the process of freeing up space and ensuring that the most used items are available in RAM. Ejection is the process of removing data from RAM to provide room for frequently used items.">Working set management and ejection</a></div></div>
+</nav>
+
+</body>
+</html>

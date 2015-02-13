@@ -1,0 +1,196 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="The Game Simulation sample bucket shows a gaming application."><meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic3625">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Game Simulation sample bucket</title>
+</head>
+<body id="topic3625">
+
+
+   <h1 class="title topictitle1">Game Simulation sample bucket</h1>
+
+   
+   <div class="body"><p class="shortdesc">The Game Simulation sample bucket shows a gaming application.</p>
+
+      <p class="p">The Game Simulation sample bucket is designed to showcase a typical gaming application that
+         combines records showing individual gamers, game objects and how this information can be
+         merged together and then reported on using views.</p>
+
+      <p class="p">For example, a typical game player record looks like the one below:</p>
+
+      <pre class="pre codeblock"><samp class="ph codeph">{
+    "experience": 14248,
+    "hitpoints": 23832,
+    "jsonType": "player",
+    "level": 141,
+    "loggedIn": true,
+    "name": "Aaron1",
+    "uuid": "78edf902-7dd2-49a4-99b4-1c94ee286a33"
+}
+</samp></pre>
+
+      <p class="p">A game object, in this case an Axe, is shown below:</p>
+
+      <pre class="pre codeblock"><samp class="ph codeph">{
+   "jsonType" : "item",
+   "name" : "Axe_14e3ad7b-8469-444e-8057-ac5aefcdf89e",
+   "ownerId" : "Benjamin2",
+   "uuid" : "14e3ad7b-8469-444e-8057-ac5aefcdf89e"
+}
+</samp></pre>
+
+      <p class="p">In this example, you can see how the game object has been connected to an individual user
+         through the <samp class="ph codeph">ownerId</samp> field of the item JSON.</p>
+
+      <p class="p">Monsters within the game are similarly defined through another JSON object type:</p>
+
+      <pre class="pre codeblock"><samp class="ph codeph">{
+    "experienceWhenKilled": 91,
+    "hitpoints": 3990,
+    "itemProbability": 0.19239324085462631,
+    "jsonType": "monster",
+    "name": "Wild-man9",
+    "uuid": "f72b98c2-e84b-4b17-9e2a-bcec52b0ce1c"
+}
+</samp></pre>
+
+      <p class="p">For each of the three records, the <samp class="ph codeph">jsonType</samp> field is used to define the
+         type of the object being stored.</p>
+
+      <div class="section"><h2 class="title sectiontitle">leaderboard view</h2><p class="p">The <samp class="ph codeph">leaderboard</samp> view is designed
+            to generate a list of the players and their current
+            score:</p>
+<pre class="pre codeblock"><samp class="ph codeph">function (doc) {
+  if (doc.jsonType == "player") {
+  emit(doc.experience, null);
+  }
+}
+</samp></pre>
+<p class="p">The
+            view looks for records with a <samp class="ph codeph">jsonType</samp> of “player”, and then outputs
+            the <samp class="ph codeph">experience</samp> field of each player record. Because the output from
+            views is naturally sorted by the key value, the output of the view will be a sorted list
+            of the players by their score. For
+            example:</p>
+<pre class="pre codeblock"><samp class="ph codeph">{
+   "total_rows" : 81,
+   "rows" : [
+      {
+         "value" : null,
+         "id" : "Bob0",
+         "key" : 1
+      },
+      {
+         "value" : null,
+         "id" : "Dustin2",
+         "key" : 1
+      },
+…
+      {
+         "value" : null,
+         "id" : "Frank0",
+         "key" : 26
+      }
+   ]
+}
+</samp></pre>
+<p class="p">To
+            get the top 10 highest scores (and ergo players), you can send a request that reverses
+            the sort order (by using <samp class="ph codeph">descending=true</samp>, for
+            example:</p>
+<pre class="pre codeblock"><samp class="ph codeph">http://127.0.0.1:8092/gamesim-sample/_design/dev_players/_view/leaderboard?descending=true&amp;connection_timeout=60000&amp;limit=10&amp;skip=0
+</samp></pre>
+<p class="p">Which
+            generates the
+         following:</p>
+<pre class="pre codeblock"><samp class="ph codeph">{
+   "total_rows" : 81,
+   "rows" : [
+      {
+         "value" : null,
+         "id" : "Tony0",
+         "key" : 23308
+      },
+      {
+         "value" : null,
+         "id" : "Sharon0",
+         "key" : 20241
+      },
+      {
+         "value" : null,
+         "id" : "Damien0",
+         "key" : 20190
+      },
+…
+      {
+         "value" : null,
+         "id" : "Srini0",
+         "key" :9
+      },
+      {
+         "value" : null,
+         "id" : "Aliaksey1",
+         "key" : 17263
+      }
+   ]
+}
+</samp></pre>
+</div>
+
+      <div class="section"><h2 class="title sectiontitle">playerlist view</h2><p class="p">The <samp class="ph codeph">playerlist</samp> view creates a list
+            of all the players by using a map function that looks for “player”
+            records.</p>
+<pre class="pre codeblock"><samp class="ph codeph">function (doc, meta) {
+  if (doc.jsonType == "player") {
+    emit(meta.id, null);
+  }
+}
+</samp></pre>
+<p class="p">This
+            outputs a list of players in the
+         format:</p>
+<pre class="pre codeblock"><samp class="ph codeph">{
+   "total_rows" : 81,
+   "rows" : [
+      {
+         "value" : null,
+         "id" : "Aaron0",
+         "key" : "Aaron0"
+      },
+      {
+         "value" : null,
+         "id" : "Aaron1",
+         "key" : "Aaron1"
+      },
+      {
+         "value" : null,
+         "id" : "Aaron2",
+         "key" : "Aaron2"
+      },
+      {
+         "value" : null,
+         "id" : "Aliaksey0",
+         "key" : "Aliaksey0"
+      },
+      {
+         "value" : null,
+         "id" : "Aliaksey1",
+         "key" : "Aliaksey1"
+      }
+   ]
+}
+</samp></pre>
+</div>
+
+   </div>
+
+
+</body>
+</html>

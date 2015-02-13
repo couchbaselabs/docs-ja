@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="Access log settings determine when the access scanner process initially runs and how often."><meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cbepctl-accesslog">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../../commonltr.css">
+<title>Changing access log settings</title>
+</head>
+<body id="cbepctl-accesslog">
+
+
+  <h1 class="title topictitle1">Changing access log settings</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">Access log settings determine when the access scanner process initially runs and how
+    often.</p>
+
+    <div class="section"><h2 class="title sectiontitle">Description</h2>
+    <p class="p">Couchbase Server has an optimized disk warmup. Couchbase Server pre-fetches a list of
+        most-frequently accessed keys and fetches these documents first. The server runs a periodic
+        scanner process which determines which keys are most frequently used. The <samp class="ph codeph">cbepctl
+          flush_param</samp> command is used to change the initial time and the interval for the
+        process. For example, the initial time and interval might be changed to accommodate a peak
+        time when an application needs these keys to be quickly available.</p>
+
+
+    <p class="p">By default, the scanner process runs once every 24 hours with a default initial start time of
+        2:00 AM UTC. This means after installing a new Couchbase Server instance or restarting the
+        server, the scanner runs every 24 hour time period at 2:00 AM GMT and then 2:00 PM GMT by
+        default. </p>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">Basic syntax:</p>
+
+      <pre class="pre codeblock">
+cbepctl [hostname]:11210 -b [bucket-name] -p [bucket-password] set flush_param alog_sleep_time [value]
+cbepctl [hostname]:11210 -b [bucket-name] -p [bucket-password] set flush_param alog_task_time [value]
+</pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+      <p class="p">The following example changes the time interval when the access scanner process runs to
+        every 20 minutes.</p>
+
+    <pre class="pre codeblock">cbepctl 10.5.2.117:11210 -b foo-bucket -p foo-password set flush_param alog_sleep_time 20
+</pre>
+
+    <p class="p">The following example changes the initial time that the access scanner process runs from the 2:00 AM
+      UTC default to 11:00 PM UTC.</p>
+
+    <pre class="pre codeblock">cbepctl 10.5.2.117:11210 foo-bucket -p foo-password set flush_param alog_task_time 23
+</pre>
+
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Response</h2>
+      <p class="p">The following example response shows the time interval changed to 20 minutes.</p>
+
+      <pre class="pre codeblock">
+setting param: alog_sleep_time 20
+set alog_sleep_time to 20
+      </pre>
+
+      
+      
+      <p class="p">The following example response shows the initial access scanner run time changed to 11:00
+        PM UTC.</p>
+
+      <pre class="pre codeblock">
+setting param: alog_task_time 23
+set alog_task_time to 23
+      </pre>
+
+    
+    </div>
+
+  </div>
+
+
+</body>
+</html>

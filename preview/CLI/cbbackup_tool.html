@@ -1,0 +1,534 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="The cbbackup tool creates a copy of data from an entire running cluster, an entire bucket, a single node, or a single bucket on a single functioning node."><meta name="DC.Relation" scheme="URI" content="../Install/hostnames.html">
+<meta name="DC.Relation" scheme="URI" content="cbcli-intro.html">
+<meta name="DC.Relation" scheme="URI" content="cbrestore_tool.html">
+<meta name="DC.Relation" scheme="URI" content="cbtransfer_tool.html">
+<meta name="DC.Relation" scheme="URI" content="https://github.com/couchbase/couchbase-cli">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cbbackup-tool">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>cbbackup tool</title>
+</head>
+<body id="cbbackup-tool">
+
+
+   <h1 class="title topictitle1">cbbackup tool</h1>
+
+   
+   
+   <div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbbackup</samp> tool creates a copy of data from an entire running cluster,
+      an entire bucket, a single node, or a single bucket on a single functioning node.</p>
+
+      <div class="section"><h2 class="title sectiontitle">Description</h2>
+      <p class="p">The backup process writes a copy of data onto disk. 
+         To create a backup using <samp class="ph codeph">cbbackup</samp>, the node or cluster needs to be functioning in order.</p>
+
+
+      <p class="p">The <samp class="ph codeph">cbbackup</samp>, <samp class="ph codeph">cbrestore</samp>, and <samp class="ph codeph">cbtransfer</samp>
+         tools do not communicate with external IP addresses for server nodes outside of a cluster.
+         Backup, restore, or transfer operations are performed on data from a node within a
+         Couchbase cluster. They only communicate with nodes from a node list obtained within a
+         cluster. This also means that if Couchbase Server is installed with a default IP address,
+         an external hostname cannot be used to access it.</p>
+
+         
+         <p class="p">This tool has several different options which you can use to:</p>
+
+         <ul class="ul">
+            <li class="li">Backup all buckets in an entire cluster</li>
+
+            <li class="li">Backup one named bucket in a cluster</li>
+
+            <li class="li">Backup all buckets on a node in a cluster</li>
+
+            <li class="li">Backup one named buckets on a specified node</li>
+
+         </ul>
+
+         
+         <div class="note tip"><span class="tiptitle">Tip:</span> We recommended that <samp class="ph codeph">cbbackup</samp> output be generated on a file system 
+            local to the server. Specifically, back up to a dedicated partition. 
+            A dedicated partition prevents the backup from from filling the Couchbase data stores and operating system partitions.</div>
+
+         
+         
+         <div class="cautiontitle">CAUTION:</div><div class="note caution">Avoid routing the  <samp class="ph codeph">cbbackup</samp> output to remote share file systems (NFS). 
+            This is because  <samp class="ph codeph">cbbackup</samp> files are based on sqlite format and sqlite-formatted  file have issues being written to remote file systems.</div>
+
+        
+         
+      <p class="p">This tool is the following directories:</p>
+
+
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+            
+            
+            <thead class="thead" align="left">
+               <tr class="row">
+                  <th class="entry" valign="top" width="50%" id="d5169e89">Operating system</th>
+
+                  <th class="entry" valign="top" width="50%" id="d5169e92">Location</th>
+
+               </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e89 ">Linux</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e92 "><samp class="ph codeph">/opt/couchbase/bin/cbbackup</samp></td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e89 ">Windows</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e92 "><samp class="ph codeph">C:\Program&nbsp;Files\Couchbase\Server\bin\cbbackup</samp></td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e89 ">Mac OS X</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e92 "><samp class="ph codeph">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbbackup</samp></td>
+
+               </tr>
+
+            </tbody>
+
+         </table>
+</div>
+
+      </div>
+
+      
+      <div class="section"><h2 class="title sectiontitle">CLI commands and parameters</h2>
+
+      <p class="p">The format of the <samp class="ph codeph">cbbackup</samp> command is:</p>
+
+      <pre class="pre codeblock">cbbackup [options] [source] [backup-dir]
+</pre>
+
+      <p class="p">Where:</p>
+
+      <ul class="ul">
+         <li class="li">[options]<p class="p">Same options available for <samp class="ph codeph">cbtransfer</samp> tool.</p>
+</li>
+
+         <li class="li">[source]<p class="p">Source for the backup. This can be either a URL of a node when backing up a single node or
+         the cluster, or a URL specifying a directory where the data for a single bucket is
+         located.</p>
+</li>
+
+         <li class="li">[backup-dir]<p class="p">The directory for the backup files to be stored. Either the directory must
+         exist, and be empty, or the directory will be created. The parent directory must exist.</p>
+</li>
+
+      </ul>
+
+
+      
+      <p class="p">The following are the command options:</p>
+
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. cbrestore options</span></caption>
+            
+            
+            <thead class="thead" align="left">
+               <tr class="row">
+                  <th class="entry" valign="top" width="50%" id="d5169e189">Parameters</th>
+
+                  <th class="entry" valign="top" width="50%" id="d5169e192">Description</th>
+
+               </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e189 ">-h, –help</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e192 ">Command line help.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e189 ">-b BUCKET_SOURCE, --bucket-source=BUCKET_SOURCE</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e192 ">Single named bucket from source cluster to transfer. If the backup
+                        directory only contains a single bucket, then that bucket is automatically
+                        used.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e189 ">--single-node</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e192 ">Use a single server node from the source only, not all server nodes from the entire cluster. 
+                     This single server node is defined by the source URL.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e189 ">-m MODE, --mode=MODE</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e192 ">&nbsp;</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e189 ">-i ID, –id=ID</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e192 ">Transfer only items that match a vbucket ID.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e189 ">-k KEY, –key=KEY</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e192 ">Transfer only items with keys that match a regexp.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e189 ">-n, –dry-run</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e192 ">No actual transfer. Just validate parameters, files, connectivity and
+                     configurations.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e189 ">-u USERNAME, –username=USERNAME</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e192 ">REST username for source cluster or server node.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e189 ">-p PASSWORD, –password=PASSWORD</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e192 ">REST password for cluster or server node.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e189 ">-t THREADS, –threads=THREADS</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e192 ">Number of concurrent workers threads performing the transfer. </td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e189 ">-v, –verbose</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e192 ">Verbose logging. More v's provide more verbosity. Max: -vvv.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e189 ">-x EXTRA, –extra=EXTRA</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e192 ">Provide extra, uncommon configuration parameters. Comma-separated key=val(key-val)* pairs.</td>
+
+               </tr>
+
+               
+            </tbody>
+
+         </table>
+</div>
+
+      <p class="p">The following are extra, specialized command options with the <samp class="ph codeph">cbbackup -x</samp>
+            parameter.</p>
+
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 2. cbbackup -x options</span></caption>
+            
+            
+            <thead class="thead" align="left">
+               <tr class="row">
+                  <th class="entry" valign="top" width="50%" id="d5169e332">-x options</th>
+
+                  <th class="entry" valign="top" width="50%" id="d5169e335">Description</th>
+
+               </tr>
+
+               
+            </thead>
+
+            <tbody class="tbody">
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">backoff_cap=10</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">Maximum backoff time during the rebalance period.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">batch_max_bytes=400000</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">Transfer this # of bytes per batch.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">batch_max_size=1000</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">Transfer this # of documents per batch.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">cbb_max_mb=100000</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">Split backup file on destination cluster if it exceeds the MB.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">conflict_resolve=1</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">By default, disable conflict resolution.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">data_only=0</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">For value 1, transfer only data from a backup file or cluster.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">design_doc_only=0</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">For value 1, transfer only design documents from a backup file or cluster. Default: 0.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">max_retry=10</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">Max number of sequential retries if the transfer fails.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">mcd_compatible=1</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">For value 0, display extended fields for stdout output.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">nmv_retry=1</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">0 or 1, where 1 retries transfer after a NOT_MY_VBUCKET message. Default: 1.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">recv_min_bytes=4096</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">Amount of bytes for every TCP/IP batch transferred.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">rehash=0</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">For value 1, rehash the partition id's of each item. 
+                     This is required when transferring data between clusters with
+                     different number of partitions, such as when transferring data from an
+                     Mac OS X server to a non-Mac OS X cluster.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">report=5</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">Number batches transferred before updating progress bar in console.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">report_full=2000</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">Number batches transferred before emitting progress information in console.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">seqno=0</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">By default, start seqno from beginning.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">try_xwm=1</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">Transfer documents with metadata. Default: 1. Value of 0 is only used when transferring
+                     from 1.8.x to 1.8.x.</td>
+
+               </tr>
+
+               <tr class="row">
+                  <td class="entry" valign="top" width="50%" headers="d5169e332 ">uncompress=0</td>
+
+                  <td class="entry" valign="top" width="50%" headers="d5169e335 ">For value 1, restore data in uncompressed mode.</td>
+
+               </tr>
+
+            </tbody>
+
+         </table>
+</div>
+
+      </div>
+
+      
+      <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+         <p class="p">The following is the basic syntax:</p>
+
+         <pre class="pre codeblock">cbrestore [options] [backup-dir] [destination]</pre>
+
+         
+         
+         <p class="p">The following syntax examples include a full backup and two incremental backups for a
+            cluster.:</p>
+
+         
+         <pre class="pre codeblock">
+cbbackup http://HOST:8091 /backup-42
+cbbackup http://HOST:8091 /backup-42
+cbbackup http://HOST:8091 /backup-42
+			</pre>
+
+         
+         <p class="p">The following syntax examples include a full backup, two differential backups, and one
+            accumulative backup for a single node.</p>
+
+         <pre class="pre codeblock">
+cbbackup couchbase://HOST:8091 /backup-43 [-m full] --single-node
+cbbackup couchbase://HOST:8091 /backup-43 [-m diff] --single-node
+cbbackup couchbase://HOST:8091 /backup-43 [-m diff] --single-node
+cbbackup couchbase://HOST:8091 /backup-43 -m accu --single-node
+         </pre>
+
+            
+         <div class="note note"><span class="notetitle">Note:</span> After backing up and restoring a cluster, be sure to rebuild your indexes. </div>
+
+
+      </div>
+
+      
+      
+      <div class="section"><h2 class="title sectiontitle">Example: Backing up clusters</h2>
+      <p class="p">An entire cluster can be backed up. This includes all of the data buckets and data at all
+            nodes and all design documents. To backup an entire cluster and all buckets for that
+            cluster:</p>
+
+      <pre class="pre codeblock">cbbackup http://HOST:8091 ~/backups \
+          -u Administrator -p password
+</pre>
+
+      <p class="p">Where <samp class="ph codeph">~/backups</samp> is the directory where you want to store the data. When
+            this operation is performed, be aware that cbbackup creates the following directory
+            structure and files in the <samp class="ph codeph">~/backups</samp> directory assuming there two
+            buckets in the cluster named <samp class="ph codeph">my_name</samp> and <samp class="ph codeph">sasl</samp> and two
+            nodes <samp class="ph codeph">N1</samp> and <samp class="ph codeph">N2</samp> :</p>
+
+      <pre class="pre codeblock">~/backups
+        bucket-my_name
+            N1
+            N2
+        bucket-sasl
+            N1
+            N2
+</pre>
+
+      <p class="p">Where <samp class="ph codeph">bucket-my_name</samp> and <samp class="ph codeph">bucket-sasl</samp> are directories
+         containing data files and where <samp class="ph codeph">N1</samp> and <samp class="ph codeph">N2</samp> are two sets of
+         data files for each node in the cluster. 
+         </p>
+
+         
+         </div>
+
+      
+      <div class="section"><h2 class="title sectiontitle">Example: Backing up a single bucket</h2>
+         <p class="p">To backup a single bucket in a cluster:</p>
+
+      
+      <pre class="pre codeblock">cbbackup http://HOST:8091 /backups/backup-20120501 \
+  -u Administrator -p password \
+  -b default
+</pre>
+
+      <p class="p">In this case, the default bucket in the cluster is specified and the data from the default
+            bucket is backed up. </p>
+
+         
+      </div>
+
+      
+      
+      <div class="section"><h2 class="title sectiontitle">Example: Backing up multiple buckets</h2>
+         <p class="p">To backup all data from multiple buckets on a single node:</p>
+
+      <pre class="pre codeblock">&gt; cbbackup http://HOST:8091 /backups/ \
+  -u Administrator -p password \
+  --single-node
+</pre>
+
+      <p class="p">To backup data from a single bucket on a single node:</p>
+
+      <pre class="pre codeblock">cbbackup http://HOST:8091 /backups \
+  -u Administrator -p password \
+  --single-node \
+  -b bucket_name
+</pre>
+
+      </div>
+
+      
+      <div class="section"><h2 class="title sectiontitle">Example: Backing up keys</h2>
+      <p class="p">To specify the keys that are backed up using the <samp class="ph codeph">- k</samp> option. For example,
+            to backup all keys from a bucket with the prefix ‘object’:</p>
+
+      
+      <pre class="pre codeblock">&gt; cbbackup http://HOST:8091 /backups/backup-20120501 \
+  -u Administrator -p password \
+  -b bucket_name \
+  -k '^object.*'
+</pre>
+
+      </div>
+
+
+      
+   </div>
+
+   <nav class="related-links">
+<div class="linklist linklist">
+<div><a class="link" href="../Install/hostnames.html" title="Each Couchbase Server's instance can have its own hostname.">Using hostnames</a></div>
+<div><a class="link" href="cbcli-intro.html" title="The couchbase-cli tool is used to perform operations on an entire cluster.">couchbase-cli tool</a></div>
+<div><a class="link" href="cbrestore_tool.html" title="The cbrestore tool restores data from a file to an entire cluster or to a single bucket in the cluster.">cbrestore tool</a></div>
+<div><a class="link" href="cbtransfer_tool.html" title="The cbtransfer tool is used to transfer data between clusters and to/from files.">cbtransfer tool</a></div>
+<div><a class="link" href="https://github.com/couchbase/couchbase-cli" target="_blank">Couchbase command-line tools GitHub repository</a></div></div>
+</nav>
+
+</body>
+</html>

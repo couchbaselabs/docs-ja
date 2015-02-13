@@ -1,0 +1,57 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Each document stored in the database has an optional expiration value (TTL, time to live) that is used to automatically deleted items."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/bucket-eviction.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-serverWarmup.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbepctl-intro.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic998">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Expiration</title>
+</head>
+<body id="topic998">
+
+
+  <h1 class="title topictitle1">Expiration</h1>
+
+  
+  <div class="body"><p class="shortdesc">Each document stored in the database has an optional expiration value (TTL, time to live) 
+  that is used to automatically deleted items.</p>
+
+    <p class="p">The expiration option can be used for data that has a limited life and could be automatically
+      deleted. </p>
+
+    <p class="p">The expiration value is user-specified on a per document basis at the point when the object is 
+      created, updated, or changed through the Couchbase SDK.
+      If you want an object to expire before 30 days, you can provide a TTL in seconds, or as Unix epoch time. 
+      If you want an object to expire sometime after 30 days, you must provide a TTL in Unix epoch time; 
+      for example, 1 095 379 198 indicates the seconds since 1970.</p>
+
+    
+    <p class="p">The default is no expiration, that is, the information is stored indefinitely.
+    Typical uses for an expiration value include web session data where the actively stored
+      information needs to be removed from the system once the user activity has stopped. With an
+      expiration value, the data times out and is removed from the system without being explicitly
+      deleted. This frees up RAM and disk for more active data.</p>
+
+  </div>
+
+  <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/bucket-eviction.html" title="Tunable memory enables both value-only ejection and full metadata ejection from memory.">Tunable memory</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/concept-serverWarmup.html" title="Whenever Couchbase server is restarted or data is restored to a server instance, the server undergoes a warmup process before data requests can be handled.">Server warmup</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../CLI/cbepctl-intro.html" title="The cbepctl tool is used to control vBucket states, configuration, and memory and disk persistence behavior.">cbepctl tool</a></div></div>
+</nav>
+
+</body>
+</html>

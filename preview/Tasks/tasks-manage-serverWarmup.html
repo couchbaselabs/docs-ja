@@ -1,0 +1,119 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Couchbase server warmup behavior can be modified by changing the access scanner and warmup threshold settings via the cbepctl tool."><meta name="DC.Relation" scheme="URI" content="../Tasks/cluster-management.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-manage-replication.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbepctl-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBepctl/cbepctl-accesslog.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbstats-intro.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic10294">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Handling server warmup</title>
+</head>
+<body id="topic10294">
+
+
+ <h1 class="title topictitle1">Handling server warmup</h1>
+
+ 
+ 
+ 
+ <div class="body"><p class="shortdesc">Couchbase server warmup behavior can be modified by changing the access scanner and warmup
+  threshold settings via the <samp class="ph codeph">cbepctl</samp> tool.</p>
+
+
+ <p class="p"> In order to adjust warmup behavior, it is important to understand the access log
+  and scanning process in Couchbase Server. </p>
+
+  <p class="p">The server uses the access log to determine which
+  documents are most frequently used, and therefore which documents to load first. 
+  It has a process that periodically scans every key in RAM and compiles them into a log 
+   named <samp class="ph codeph">access.log</samp>. It also maintains a backup of this access log, named
+    <samp class="ph codeph">access.old</samp>.</p>
+ 
+   <p class="p">The server can use this backup file during warmup if the most
+   recent access log has been corrupted during warmup or node failure. By default, this process runs
+   initially at 2:00 GMT and then again each 24 hour time periods. You can configure
+   this process to run at a different initial time and at a different fixed interval.</p>
+
+  
+  <p class="p">If a client tries to contact Couchbase Server during warmup, the server produces a
+    <samp class="ph codeph">ENGINE_TMPFAIL (0x0d)</samp> error code. This error indicates that data access is
+   still not available because warmup has not yet finished. </p>
+
+   
+   <div class="note note"><span class="notetitle">Note:</span> If you are creating your
+   own Couchbase SDK, you need to handle this error in your library. This may mean that the
+   client waits and retries, performs a backoff of requests, or produces an error
+   and does not retry the request. </div>
+
+   
+   <div class="note note"><span class="notetitle">Note:</span> If you are building an application with a Couchbase
+   SDK, be aware that delivery and handling of this error depends on the individual SDKs.
+   </div>
+
+   
+<p class="p">These are the actions to take during Couchbase Server warmup:</p>
+
+  
+  <dl class="dl">
+   
+    <dt class="dt dlterm">Getting warmup information</dt>
+
+    <dd class="dd">The <samp class="ph codeph">cbstats</samp> tool is used to
+     get information about server warmup, including the warmup status and whether warmup is enabled.</dd>
+
+   
+  </dl>
+
+<dl class="dl">
+ 
+  <dt class="dt dlterm">Changing the warmup threshold</dt>
+
+  <dd class="dd">Modify warmup behavior by changing the
+   <samp class="ph codeph">cbepctl ep_warmup_min_items_threshold</samp> parameter. This indicates the percentage
+   of items loaded in RAM that must be reached for Couchbase Server to begin serving data. The
+   lower this number, the sooner your server can begin serving data. Be aware, however that if you
+   set this value to be too low, once requests come in for items, the item may not be in memory and
+   Couchbase Server will experience cache-miss errors.</dd>
+
+ 
+</dl>
+
+  <dl class="dl">
+   
+    <dt class="dt dlterm">Changing access scanner settings</dt>
+
+    <dd class="dd">The server runs a periodic scanner process which determines which keys are most frequently-used, and therefore, which documents
+     should be loaded first during server warmup. The settings, <samp class="ph codeph">cbepctl flush_param</samp>
+     <samp class="ph codeph">alog_sleep_ time</samp> and <samp class="ph codeph">alog_task_ time</samp>parameters are used to
+     change the initial time and the interval for the process.</dd>
+
+   
+  </dl>
+
+
+
+ </div>
+
+ 
+ <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Tasks/cluster-management.html" title="運用で重要となるCouchbase Serverクラスタ管理について説明します。">クラスタ管理</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Tasks/tasks-manage-replication.html" title="Data replication is distributed throughout the Couchbase cluster to prevent a single point of failure. Data replication is configurable on a bucket-level and node-basis.">Handling replication</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../CLI/cbepctl-intro.html" title="The cbepctl tool is used to control vBucket states, configuration, and memory and disk persistence behavior.">cbepctl tool</a></div>
+<div><a class="link" href="../CLI/CBepctl/cbepctl-accesslog.html" title="Access log settings determine when the access scanner process initially runs and how often.">Changing access log settings</a></div>
+<div><a class="link" href="../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div></div>
+</nav>
+
+</body>
+</html>

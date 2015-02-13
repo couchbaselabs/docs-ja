@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="ja">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。"><meta name="DC.Relation" scheme="URI" content="../admin-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/admin-basics.html">
+<meta name="DC.Relation" scheme="URI" content="../security/security-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-clusterMgr.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-dataStorage.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-ramQuota.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-vBucket.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-cacheLayer.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-diskStorage.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/global-thread-pool.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/bucket-priority.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/bucket-eviction.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-docExpiration.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-serverWarmup.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-replication.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concepts-TAP.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/dcp.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-client-interface.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concepts-statsMonitor.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic574">
+<meta name="DC.Language" content="ja">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>アーキテクチャと概念</title>
+</head>
+<body id="topic574">
+
+<h1 class="title topictitle1">アーキテクチャと概念</h1>
+
+  
+  <div class="body"><p class="shortdesc">単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。</p>
+<p class="p"></p>
+</div>
+<nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../Concepts/concept-clusterMgr.html">Cluster Manager</a><br>
+The Cluster Manager is responsible for  node and cluster management.      Every node within a Couchbase cluster includes the Cluster Manager component.</li>
+<li class="link olchildlink"><a href="../Concepts/concept-dataStorage.html">Data storage</a><br>
+Couchbase Server provides data management services using <dfn class="term">buckets</dfn>, which are 		isolated virtual containers for data. A bucket is a logical grouping of physical resources 		within a cluster of Couchbase Servers.</li>
+<li class="link olchildlink"><a href="../Concepts/concept-ramQuota.html">RAM quotas</a><br>
+RAM is allocated to Couchbase Server in the following configurable quantities:       <em class="ph i">Server Quota</em> and <em class="ph i">Bucket Quota</em>. </li>
+<li class="link olchildlink"><a href="../Concepts/concept-vBucket.html">vBuckets</a><br>
+A vBucket is defined as the <em class="ph i">owner</em> of a subset of the key space of a Couchbase     cluster. These vBuckets are used to distributed information effectively across a cluster. </li>
+<li class="link olchildlink"><a href="../Concepts/concept-cacheLayer.html">Caching layer</a><br>
+Couchbase Server includes a built-in caching layer which      acts as a central part of the server and provides very rapid reads and writes of data.</li>
+<li class="link olchildlink"><a href="../Concepts/concept-diskStorage.html">Disk storage</a><br>
+Couchbase Server mainly stores and retrieves information for clients using     RAM. At the same time, Couchbase Server eventually stores all data to disk to provide a     higher level of reliability.</li>
+<li class="link olchildlink"><a href="../Concepts/global-thread-pool.html">Shared thread pool</a><br>
+A shared thread pool is a collection of threads which are shared across multiple buckets.</li>
+<li class="link olchildlink"><a href="../Concepts/bucket-priority.html">Disk I/O priority</a><br>
+Disk I/O priority enables workload priorities to be set at the bucket level.</li>
+<li class="link olchildlink"><a href="../Concepts/bucket-eviction.html">Tunable memory</a><br>
+Tunable memory enables both value-only ejection and full metadata ejection from memory. </li>
+<li class="link olchildlink"><a href="../Concepts/concept-docExpiration.html">Expiration</a><br>
+Each document stored in the database has an optional expiration value (TTL, time to live)    that is used to automatically deleted items.</li>
+<li class="link olchildlink"><a href="../Concepts/concept-serverWarmup.html">Server warmup</a><br>
+Whenever Couchbase server is restarted or data is restored to a server instance, the   server undergoes a warmup process before data requests can be handled.</li>
+<li class="link olchildlink"><a href="../Concepts/concept-replication.html">Replicas and replication</a><br>
+Replicas are copies of data that are proved on another node in a cluster.</li>
+<li class="link olchildlink"><a href="../Concepts/concepts-TAP.html">TAP</a><br>
+The TAP protocol is an internal part of the Couchbase Server system that is used to 		exchange data throughout the system. </li>
+<li class="link olchildlink"><a href="../Concepts/dcp.html">Database Change Protocol</a><br>
+Database Change Protocol (DCP) is the protocol used to stream data changes to 		buckets.</li>
+<li class="link olchildlink"><a href="../Concepts/concept-client-interface.html">Client interface</a><br>
+</li>
+<li class="link olchildlink"><a href="../Concepts/concepts-statsMonitor.html">Statistics and monitoring</a><br>
+A complete set of statistical and monitoring information is provided through the   Couchbase Web Console, CLI, and REST API.</li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../admin-intro.html" title="Couchbase Serverの管理を行う上でさまざまなツールやシステムを利用可能です。">Couchbase Serverの管理</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../Misc/admin-basics.html" title="Couchbase Serverで使用する管理ツール、CouchbaseのWebコンソール、コマンドラインインターフェイス（CLI）およびREST APIについての説明です。">管理の基礎</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../security/security-intro.html" title="Couchbase Server 3.0は、アプリケーションや管理者向けに安全なネットワーク経由のデータアクセスをサポートしています。">セキュリティ</a></div>
+</div>
+</nav>
+</body>
+</html>

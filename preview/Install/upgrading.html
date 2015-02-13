@@ -1,0 +1,177 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="The Couchbase Server can be upgraded online (using swap rebalance or the standard online upgrade), offline, or using XDCR."><meta name="DC.Relation" scheme="URI" content="../CLI/cbbackup_tool.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbrestore_tool.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic19310">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Upgrading</title>
+</head>
+<body id="topic19310">
+
+
+  <h1 class="title topictitle1">Upgrading </h1>
+
+  <div class="body"><p class="shortdesc">The Couchbase Server can be upgraded online (using swap rebalance or the standard online
+    upgrade), offline, or using XDCR.</p>
+
+    
+    <div class="p"><div class="note remember"><span class="remembertitle">Remember:</span> Before performing an upgrade, whether it is online or offline, back up your data.</div>
+</div>
+ 
+    
+    <p class="p">Install the latest version of the Couchbase Server. The installer will automatically detect
+      the files from the earlier installation and convert them to the correct format, if needed.</p>
+
+    
+    
+    
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+        
+        
+        
+        <thead class="thead" align="left">
+          <tr class="row">
+            <th class="entry" valign="top" width="33.33333333333333%" id="d26734e35">Feature</th>
+
+            <th class="entry" valign="top" width="33.33333333333333%" id="d26734e38">Online upgrades</th>
+
+            <th class="entry" valign="top" width="33.33333333333333%" id="d26734e41">Offline upgrades</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+          <tr class="row">
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e35 ">Applications remain available</td>
+
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e38 ">Yes</td>
+
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e41 ">No</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e35 ">Cluster stays in operation</td>
+
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e38 ">Yes</td>
+
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e41 ">No</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e35 ">Cluster must be shut down</td>
+
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e38 ">No</td>
+
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e41 ">Yes</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e35 ">Time required</td>
+
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e38 ">Requires rebalance, upgrade, rebalance per node</td>
+
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e41 ">All nodes in cluster upgraded at once</td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+</div>
+
+    
+    <div class="cautiontitle">CAUTION:</div><div class="note caution">Replication of certain per-node keys is broken after a node is first
+      upgraded offline from 2.x to 3.0 and then added back to the formerly 2.x cluster that is now
+      upgraded to 3.0. When performing an online upgrade from the Couchbase Server 2.x to 3.x,
+      always fully delete the 2.x package (including the config files) before installing the 3.x
+      package.</div>
+
+    <div class="section"><h2 class="title sectiontitle">Online upgrades</h2></div>
+
+    <p class="p">When you perform an online upgrade, there is no need to take 
+      the cluster down and application keeps running during the upgrade process.</p>
+
+   
+    <div class="p">You can upgrade the Couchbase Server using a standard online upgrade, or an online upgrade
+      with swap rebalance. <div class="note note"><span class="notetitle">Note:</span> Swap rebalance is recommended because it always maintains cluster
+        capacity. Use the standard online upgrade only if upgrade with swap rebalance is not
+        possible.</div>
+</div>
+
+    
+    <dl class="dl">
+      
+        <dt class="dt dlterm">Online upgrade with swap rebalance</dt>
+
+        <dd class="dd">For swap rebalance, first add a node to the cluster and then perform a swap rebalance to
+          shift data from an old node to the new one. This is a preferred upgrade method when there
+          is not enough cluster capacity to handle data when an old node is removed. It is also much
+          faster from the standard online upgrade because you only need to rebalance each upgraded
+          node once. <p class="p">To perform an online upgrade with swap rebalance, see <a class="xref" href="upgrade-online.html" title="Online upgrade with swap rebalance is the preferred upgrade method because cluster capacity is always maintained throughout the upgrade.">Online upgrade with swap rebalance</a>.</p>
+</dd>
+
+      
+    </dl>
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">Standard online upgrade</dt>
+
+        <dd class="dd">For standard online upgrade, take down one or two nodes from a
+          cluster and rebalance so that remaining nodes handle incoming requests. You can use this upgrade option 
+          only if you have enough remaining cluster capacity to handle the nodes you remove and
+          upgrade. You need to perform rebalance twice for every node you upgrade: first 
+          to move data to remaining nodes, and then to move data to the new nodes.<p class="p">Standard online upgrades can take a while because each node must be taken out of the
+            cluster, upgraded to a current version, brought back into the cluster, and then rebalanced.</p>
+</dd>
+
+      
+    </dl>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Offline upgrades</h2>
+  
+    <p class="p">Offline upgrades can take less time than online upgrades
+      because all nodes in the cluster can be upgraded at once.</p>
+
+    <p class="p">An offline upgrade must be well-planned and scheduled. First, shut down your application so
+        that no more incoming data arrives. Second, verify that the disk write queue is 0 and then
+        shut down each node. This way you know that the Couchbase Server has stored all items onto
+        disk during shutdown. After shutting down applications and nodes, perform the upgrade on
+        each machine and then bring the cluster and applications back again.</p>
+
+      <p class="p">To perform an offline upgrade, see <a class="xref" href="upgrade-offline.html" title="During an offline upgrade, the cluster must be shut down and all applications built on it will not be available during that time.">Offline upgrade</a>.</p>
+
+    
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Upgrading with XDCR</h2> This upgrade has to be taken cautiously and only in
+      specific situations. Be sure that you are familiar with all requirements before deciding to
+      use this process.  </div>
+
+    
+   
+  
+    
+  </div>
+
+  <nav class="related-links">
+<div class="linklist linklist">
+<div><a class="link" href="../CLI/cbbackup_tool.html" title="The cbbackup tool creates a copy of data from an entire running cluster, an entire bucket, a single node, or a single bucket on a single functioning node.">cbbackup tool</a></div>
+<div><a class="link" href="../CLI/cbrestore_tool.html" title="The cbrestore tool restores data from a file to an entire cluster or to a single bucket in the cluster.">cbrestore tool</a></div></div>
+</nav>
+
+</body>
+</html>

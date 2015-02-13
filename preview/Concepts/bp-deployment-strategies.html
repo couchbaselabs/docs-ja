@@ -1,0 +1,104 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/bp-deployment-considerations.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/bp-sizingGuidelines.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/bp-maintenance.html">
+<meta name="DC.Relation" scheme="URI" content="http://dustin.github.com/2010/06/29/memcached-vbuckets.html">
+<meta name="DC.Relation" scheme="URI" content="http://docs.couchbase.com/moxi-guide/">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic3524">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Deployment strategies</title>
+</head>
+<body id="topic3524">
+
+
+  <h1 class="title topictitle1">Deployment strategies</h1>
+
+  <div class="body">
+    <p class="p">Here are a number of deployment strategies that you may want to use. Smart clients are the
+      preferred deployment option if your language and development environment supports a smart
+      client library. If not, use the client-side Moxi configuration for the best performance and
+      functionality.</p>
+
+    <div class="section"><h2 class="title sectiontitle">Using a smart (vBucket-aware) client</h2><p class="p">When using a smart client, the
+        client library provides an interface to the cluster and performs server selection directly
+        via the vBucket mechanism. The clients communicate with the cluster using a custom Couchbase
+        protocol. This enables the clients to share the vBucket map, locate the node containing the
+        required vBucket, and read and write information from there.</p>
+
+      <img class="image" src="../images/couchbase-060711-1157-32_img_281.jpg" width="720">
+      <p class="p">In releases prior to Couchbase Server 2.5, a developer, via a client library of their
+        choice, randomly selects a host from which to request an initial topology configuration. Any
+        future changes to the cluster map following the initial bootstrap are based on the
+        NOT_MY_VBUCKET response from the server. This connection is made to port 8091 and is based
+        on an HTTP connection. </p>
+<p class="p">With Couchbase Server 2.5 or higher, client libraries query a
+        cluster for initial topology configuration for a bucket from one of the nodes in the
+        cluster. This is similar to prior releases. However, this information is transmitted via the
+        memcached protocol on port 11210 (rather than via persistent HTTP connections to port 8091).
+        This significantly improves connection scaling capabilities.</p>
+
+      <div class="note note"><span class="notetitle">Note:</span> This change is only applicable to Couchbase-type buckets (not memcached
+        buckets). An error is returned if a configuration request is received on port 8091.
+      </div>
+</div>
+
+    <div class="section"><h2 class="title sectiontitle">Client-side (standalone) proxy</h2>
+      <p class="p">If a smart client is not available for your chosen platform, you can deploy a standalone
+        proxy. This provides the same functionality as the smart client while presenting a memcached
+        compatible interface layer locally. A standalone proxy deployed on a client may also be able
+        to provide valuable services, such as connection pooling. The diagram below shows the flow
+        with a standalone proxy installed on the application server.</p>
+
+      <img class="image" src="../images/couchbase-060711-1157-32_img_280.jpg" width="720">
+      <p class="p">We configured the memcached client to have just one server in its server list (localhost),
+        so all operations are forwarded to <samp class="ph codeph">localhost:11211</samp> — a port serviced by the
+        proxy. The proxy hashes the document ID to a vBucket, looks up the host server in the
+        vBucket table, and then sends the operation to the appropriate Couchbase Server on port
+        11210.</p>
+<p class="p">For the corresponding Moxi product, use the Moxi 1.8 series.</p>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Using server-side (Couchbase embedded) proxy</h2>
+      <div class="note attention"><span class="attentiontitle">Attention:</span> Server-side proxy configuration is <em class="ph i">not</em> recommended for
+        production use. Use either a smart client or the client-side proxy configuration unless your
+        platform and environment do not support that deployment type.</div>
+<p class="p">The server-side
+        (embedded) proxy exists within Couchbase Server using port 11211. It supports the memcached
+        protocol and enables an existing application to communicate with Couchbase Cluster without
+        installing another piece of proxy software. The downside to this approach is
+        performance.</p>
+<p class="p">In this deployment option versus a typical memcached deployment, in a
+        worse-case scenario, server mapping happens twice (such as using Ketama hashing to a server
+        list on the client, then using vBucket hashing and server mapping on the proxy) with an
+        additional round trip network hop introduced.</p>
+
+      <img class="image" src="../images/couchbase-060711-1157-32_img_279.jpg" width="720">
+    </div>
+
+    
+  </div>
+
+  <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/bp-deployment-considerations.html" title="アクセス制限、ノード間通信、スワップの設定、接続タイムアウトなどの考慮事項について説明します。">デプロイ構成の考慮事項</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/bp-sizingGuidelines.html" title="The primary considerations for sizing a Couchbase Server cluster are the number of nodes and node size.">Sizing guidelines</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/bp-maintenance.html" title="There are a number of different statistics used to monitor a cluster and diagnose and identify problems.">Ongoing monitoring and maintenance</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="http://dustin.github.com/2010/06/29/memcached-vbuckets.html" target="_blank">vBucket article</a></div>
+<div><a class="link" href="http://docs.couchbase.com/moxi-guide/" target="_blank">Moxi 1.8 Manual</a></div></div>
+</nav>
+
+</body>
+</html>

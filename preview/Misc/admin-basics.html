@@ -1,0 +1,136 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="ja">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Couchbase Serverで使用する管理ツール、CouchbaseのWebコンソール、コマンドラインインターフェイス（CLI）およびREST APIについての説明です。"><meta name="DC.Relation" scheme="URI" content="../admin-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-common.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/start-stop-couchbase.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/admin-datafiles.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/install-location.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/limits.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/cluster-wide-info-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/install-browsers.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cli-overview.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/overview-rest-api.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/bp-deployment-considerations.html">
+<meta name="DC.Relation" scheme="URI" content="http://www.couchbase.com/develop">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic1647">
+<meta name="DC.Language" content="ja">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>管理の基礎</title>
+</head>
+<body id="topic1647">
+
+
+ <h1 class="title topictitle1">管理の基礎</h1>
+
+ 
+ 
+ <div class="body"><p class="shortdesc">Couchbase Serverで使用する管理ツール、CouchbaseのWebコンソール、コマンドラインインターフェイス（CLI）およびREST APIについての説明です。</p>
+
+  
+   <p class="p">Couchbase Server provides different solutions for managing and monitoring:</p>
+
+  
+  <dl class="dl">
+   
+    <dt class="dt dlterm">Couchbase Web Console</dt>
+
+    <dd class="dd">This is a built-in web-administration console that provides a complete interface for
+     configuring, managing, and monitoring your Couchbase Server installation.</dd>
+
+   
+  </dl>
+
+  
+  <dl class="dl">
+   
+    <dt class="dt dlterm">Command-line Interface (CLI)</dt>
+
+    <dd class="dd">This is a suite of command-line tools that provide information and control over your
+     Couchbase Server and cluster installation. The CLI tools make use of the REST API and  can be
+     used in combination with your own scripts and management procedures to provide additional
+     functionality, such as automated failover, backups and other procedures. </dd>
+
+   
+  </dl>
+
+  
+  <dl class="dl">
+   
+    <dt class="dt dlterm">REST API</dt>
+
+    <dd class="dd">In addition to the Couchbase Web Console, Couchbase Server incorporates a management
+     interface exposed through the standard HTTP REST protocol. This REST interface can be called
+     from your own custom management and administration scripts to support different
+     operations.</dd>
+
+   
+  </dl>
+
+  
+  
+  <div class="section"><h2 class="title sectiontitle">Accessing Couchbase Server directly</h2>
+  <p class="p">To access Couchbase Server and use the CLI or REST API directly, log into the server
+    directly (depending on the operating system). </p>
+
+   <p class="p">To access Couchbase Server and use the Couchbase Web Console, log into the server through
+    a browser such as Firefox, Chrome, Safari, or Internet Explorer.</p>
+
+  </div>
+
+
+  
+  <div class="section"><h2 class="title sectiontitle">Accessing Couchbase Server through a client</h2>
+  <p class="p">If you already have an application that uses the memcached protocol,  you can start using your
+    Couchbase Server immediately. If so, you can simply point your application to this server as you
+    would do with any other memcached server. No code changes or special libraries are needed, and
+    the application will behave exactly as it would against a standard memcached server. Without the
+    client knowing anything about it, the data is being replicated, persisted, and the cluster can
+    be expanded or contracted completely transparently.</p>
+
+  <p class="p">If you do not already have an application, then you should investigate one of the available
+   Couchbase client libraries to connect to your server and start storing and retrieving
+   information.</p>
+
+  </div>
+
+  
+ </div>
+
+ <nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../Tasks/tasks-common.html">Common administration tasks</a><br>
+Couchbase Server is capable to perform self-managing tasks such as general running and     configuration.</li>
+<li class="link olchildlink"><a href="../Misc/start-stop-couchbase.html">Starting and stopping Couchbase Server</a><br>
+Summary of commands for starting and stopping Couchbase Server on Linux (RHEL and     Ubuntu), Windows, and Mac.</li>
+<li class="link olchildlink"><a href="../Misc/admin-datafiles.html">Data file location</a><br>
+Couchbase Server stores data files (database and indices) under <span class="ph menucascade"><span class="ph uicontrol">var</span> &gt; <span class="ph uicontrol">lib</span> &gt; <span class="ph uicontrol">couchbase </span> &gt; <span class="ph uicontrol">data</span></span>. </li>
+<li class="link olchildlink"><a href="../Misc/install-location.html">Installation location</a><br>
+The default installation location for Couchbase Server depends on the operating     system.</li>
+<li class="link olchildlink"><a href="../Misc/limits.html">Limits</a><br>
+Couchbase Server limits and limitations may effect server usage and     implementation.</li>
+<li class="link olchildlink"><a href="../Misc/cluster-wide-info-intro.html">Cluster-wide diagnostics</a><br>
+ The Couchbase support team uses logs and other system diagnostics to analyze customer 		issues. </li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../admin-intro.html" title="Couchbase Serverの管理を行う上でさまざまなツールやシステムを利用可能です。">Couchbase Serverの管理</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../Install/install-browsers.html" title="Supported web browsers include Mozilla Firefox, Apple Safari, Google Chrome, and Microsoft Internet Explorer.">Supported web browsers</a></div>
+<div><a class="link" href="../CLI/cli-overview.html" title="The command-line tools perform different functions and operations, these CLI tools are described individually.">CLI overview</a></div>
+<div><a class="link" href="../REST/overview-rest-api.html" title="Use the REST API to manage clusters, server nodes, and buckets, and to retrieve run-time statistics within a Couchbase Server deployment.">REST API overview</a></div>
+<div><a class="link" href="../Concepts/bp-deployment-considerations.html" title="アクセス制限、ノード間通信、スワップの設定、接続タイムアウトなどの考慮事項について説明します。">デプロイ構成の考慮事項</a></div>
+<div><a class="link" href="http://www.couchbase.com/develop" target="_blank">Couchbase SDKs</a></div></div>
+</nav>
+
+</body>
+</html>

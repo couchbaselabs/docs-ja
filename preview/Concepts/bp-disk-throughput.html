@@ -1,0 +1,88 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Couchbase Server decouples RAM from the I/O layer to enable high scaling."><meta name="DC.Relation" scheme="URI" content="../Concepts/bp-sizingGuidelines.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_lbc_x3p_tq">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Disk throughput and sizing</title>
+</head>
+<body id="topic_lbc_x3p_tq">
+
+
+  <h1 class="title topictitle1">Disk throughput and sizing</h1>
+
+  <div class="body"><p class="shortdesc">Couchbase Server decouples RAM from the
+    I/O layer to enable high scaling.</p>
+
+  
+      <p class="p">Decoupling enables high scaling at very low and consistent latencies and very high write
+      loads without affecting the client application performance.</p>
+
+     
+      <p class="p">Couchbase Server implements an append-only format and a built-in automatic compaction
+      process. Requirements of your disk subsystem are broken down into two components: size and
+      I/O. </p>
+
+      <div class="section"><h2 class="title sectiontitle">Disk size requirements</h2>
+      
+      <p class="p">Disk size requirements are impacted by the Couchbase file write format,
+        append-only, and the built-in automatic compaction process. Append-only format means
+        that every write (insert/update/delete) creates a new entry in the
+        file(s).</p>
+
+      <p class="p">The required disk size increases from the update and delete workload
+        and then shrinks as the automatic compaction process runs. The size increases
+        because of the data expansion rather than the actual data using more disk space.
+        Heavier update and delete workloads increases the size more dramatically than heavy
+        insert and read workloads.</p>
+
+      <p class="p">Size recommendations are available for key-value data only. 
+        If views and indexes or XDCR are implemented, contact Couchbase support for analysis and recommendations.</p>
+
+      <p class="p">Depending on the workload, the required disk size is <strong class="ph b">2–3x</strong> your total dataset size (active
+        and replica data combined). </p>
+
+      <div class="note important"><span class="importanttitle">Important:</span> The disk size requirement of 2-3x
+        your total dataset size applies to key-value data only and does not take into
+        account other data formats and the use of views and indexes or XDCR.</div>
+
+      </div>
+
+      
+      <div class="section"><h2 class="title sectiontitle">I/O requirements</h2>
+      <p class="p">I/O is a combination of the sustained write rate, the need to compact the
+        database files, and anything else that requires disk access. Couchbase Server
+        automatically buffers writes to the database in RAM and eventually persists them to
+        disk. Because of this, the software can accommodate much higher write rates than what a
+        disk is able to handle. However, sustaining these writes eventually requires enough
+        I/O to get it all down to disk. </p>
+
+      <p class="p">To manage I/O, configure the thresholds and schedule when the compaction process starts (or
+        doesn’t start), keeping in mind that the successful completion of compaction is critical to
+        keeping the disk size in check. Disk size and disk I/O become critical to size correctly
+        when using views and indexes and Cross Data Center Replication (XDCR). They are also
+        important for backups and any other operations outside of Couchbase Server that need
+        space or are accessing the disk. </p>
+
+      
+      
+      <div class="note tip"><span class="tiptitle">Tip:</span> Use the available configuration options to separate data files, indexes and
+        the installation/configuration directories on separate drives and devices to ensure that 
+        
+        I/O and space are allocated effectively. </div>
+</div>
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/bp-sizingGuidelines.html" title="The primary considerations for sizing a Couchbase Server cluster are the number of nodes and node size.">Sizing guidelines</a></div>
+</div>
+</nav>
+</body>
+</html>

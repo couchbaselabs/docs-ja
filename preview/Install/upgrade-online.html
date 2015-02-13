@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Online upgrade with swap rebalance is the preferred upgrade method because cluster capacity is always maintained throughout the upgrade."><meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-rebalance.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-backup-restore.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-serverWarmup.html">
+<meta name="DC.Relation" scheme="URI" content="../Monitoring/monitor-warmup.html">
+<meta name="DC.Relation" scheme="URI" content="../Monitoring/monitor-diskqueue.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbbackup_tool.html">
+<meta name="DC.Relation" scheme="URI" content="../UI/ui-settings-autofailover.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_dgv_nky_p4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Online upgrade with swap rebalance</title>
+</head>
+<body id="topic_dgv_nky_p4">
+
+
+  <h1 class="title topictitle1">Online upgrade with swap rebalance</h1>
+
+  
+  
+  <div class="body"><p class="shortdesc">Online upgrade with swap rebalance is the preferred upgrade method because cluster capacity is always maintained 
+    throughout the upgrade.</p>
+
+    <p class="p">You can perform a swap rebalance to upgrade your nodes to Couchbase Server without reducing
+      the performance of your cluster. If you are unable to perform an upgrade via swap rebalance,
+      perform a standard online upgrade as explained in <a class="xref" href="upgrading.html" title="The Couchbase Server can be upgraded online (using swap rebalance or the standard online upgrade), offline, or using XDCR.">Upgrading</a>. </p>
+
+    <p class="p">You will need at least one extra node to perform a swap rebalance:</p>
+
+    <ol class="ol">
+      <li class="li">Install Couchbase Server on one extra machine that is not yet in the cluster. For instructions see <a class="xref" href="upgrade-individual-nodes.html" title="To upgrade a single Couchbase Server node, first back it up and then install the software.">Upgrading one node</a>.</li>
+
+      <li class="li">Create a backup of your cluster data using <span class="keyword cmdname">cbbackup</span>. See <a class="xref" href="../CLI/cbbackup_tool.html" title="The cbbackup tool creates a copy of data from an entire running cluster, an entire bucket, a single node, or a single bucket on a single functioning node.">cbbackup tool</a>.</li>
+
+      <li class="li">Open the Couchbase web console at an existing node in the cluster.</li>
+
+      <li class="li">Go to <span class="ph menucascade"><span class="ph uicontrol">Manage</span> &gt; <span class="ph uicontrol">Server Nodes</span></span>. <div class="p">In the Server panel you can view and managing servers in the cluster:
+        <div class="fig fignone"><img class="image" src="../images/manage-nodes.png" width="600"></div>
+  
+      
+      </div>
+</li>
+
+      <li class="li">Click <span class="ph uicontrol">Add Server</span>. </li>
+
+        <li class="li">In the <span class="keyword wintitle">Add Server</span> dialog, provide either a host name or IP address for the new node (At this point, you can provide a hostname for the node you add). 
+          Enter your username and password.
+          <div class="fig fignone"><img class="image" src="../images/add-server.png" width="400"></div>
+ </li>
+
+      <li class="li">Remove one of your existing old nodes from the cluster. 
+        <p class="p">Under <span class="ph menucascade"><span class="ph uicontrol">Server Nodes </span> &gt; <span class="ph uicontrol">Server panel</span></span>, click <span class="ph uicontrol">Remove Server</span> for the node you want to remove. This will flag this server for removal.</p>
+</li>
+
+    
+      <li class="li">In the <span class="keyword wintitle">Server</span> panel, click <span class="ph uicontrol">Rebalance</span>.
+        <p class="p">This automatically takes all data from the node flagged for removal and moves it to your new node.</p>
+</li>
+
+      
+      
+    </ol>
+
+    <p class="p">Repeat these steps for all the remaining old nodes in the cluster. You can add and remove multiple nodes from a cluster. 
+      However, always add the same number of nodes from the cluster as you remove. 
+      For example, if you add one node, remove one node and if you add two nodes, you can remove two.</p>
+
+    <p class="p">Until all nodes in a cluster are upgraded from 1.8.1 or earlier, features in the new Couchbase Server release are disabled. 
+      This means views or XDCR do not function until all nodes in your cluster are migrated. 
+      After all nodes are upgraded, the features are enabled.</p>
+
+    
+  </div>
+
+  <nav class="related-links">
+<div class="linklist linklist">
+<div><a class="link" href="../Tasks/tasks-rebalance.html" title="Rebalancing is the process of redistributing information across nodes.">Rebalancing</a></div>
+<div><a class="link" href="../Tasks/tasks-backup-restore.html" title="Back up your entire cluster periodically to minimize data inconsistency when a restore is required.">Backup and restore</a></div>
+<div><a class="link" href="../Concepts/concept-serverWarmup.html" title="Whenever Couchbase server is restarted or data is restored to a server instance, the server undergoes a warmup process before data requests can be handled.">Server warmup</a></div>
+<div><a class="link" href="../Monitoring/monitor-warmup.html">Monitoring startup (warmup)</a></div>
+<div><a class="link" href="../Monitoring/monitor-diskqueue.html" title="Disk writing is implemented as a 2-queue system: commit to DRAM and then queued to be written to disk">Disk write queue</a></div>
+<div><a class="link" href="../CLI/cbbackup_tool.html" title="The cbbackup tool creates a copy of data from an entire running cluster, an entire bucket, a single node, or a single bucket on a single functioning node.">cbbackup tool</a></div>
+<div><a class="link" href="../UI/ui-settings-autofailover.html">Auto-Failover tab</a></div></div>
+</nav>
+
+</body>
+</html>

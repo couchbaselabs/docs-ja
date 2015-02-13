@@ -1,0 +1,157 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="concept">
+<meta name="description" content="The Rack Awareness feature permits logical groupings of servers on a cluster where each server group physically belongs to a rack or Availability Zone."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-clusterMgr.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-nodesCluster.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/rza-manage-group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="concept_exs_rrg_rn">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Rack Awareness</title>
+</head>
+<body id="concept_exs_rrg_rn">
+
+
+ <h1 class="title topictitle1">Rack Awareness</h1>
+
+ 
+  
+  <div class="body conbody"><p class="shortdesc">The Rack Awareness feature permits logical groupings of servers on a cluster where each server 
+  group physically belongs to a rack or Availability Zone. </p>
+
+   <div class="note attention"><span class="attentiontitle">Attention:</span> This feature is available only in the Enterprise edition.</div>
+
+   <p class="p">Rack Awareness provides the ability to 
+    specify that active and corresponding replica partitions be created on servers that are part of a separate rack or zone. 
+    To use and enable Rack Awareness, all servers in a cluster must be upgraded to Couchbase Server Enterprise Edition and minimally, version 2.5. 
+    By design, Couchbase Server evenly distributes data of active and replica vBuckets across the cluster for cluster performance and redundancy purposes. 
+   With Rack Awareness, server partitions are laid out so the replica partitions for servers in one server group are distributed in servers for a second group and vice versa. 
+   If one of the servers becomes unavailable or if an entire rack goes down, data is retained since the replicas are available on the second server group.
+  </p>
+
+  <p class="p">Replica vBuckets are evenly distributed from one server group to another server group to provide redundancy and data availability. 
+   The rebalance operation also evenly distributes the replica vBuckets from one server group to another server group across the cluster. 
+   If an imbalance occurs where there is an unequal number of servers in one server group, 
+   the rebalance operation performs a "best effort" of evenly distributing the replica vBuckets across the cluster.</p>
+
+  <div class="section"><h2 class="title sectiontitle">Distribution of vBuckets and replica vBuckets</h2>
+   
+   <p class="p">The following example shows how Rack Awareness functionality implements replica vBuckets to provide redundancy.  
+    In this example, there are two (2) server groups in the cluster and four (4) servers in each server group. 
+    Since there is equal number of servers in each server group, 
+    the cluster is balanced which guarantees that replica vBuckets for one server group are on a different server group.</p>
+
+   <p class="p">The following diagram shows a cluster of servers on two racks, Rack #1 and Rack #2, where each rack has a group of four (4) servers.</p>
+
+    <ul class="ul">
+     <li class="li">Group 1 has Servers 1, 2, 3, and 4.</li>
+
+     <li class="li">Group 1 servers have their active vBuckets and replica vBuckets from Group 2.</li>
+
+     <li class="li">Group 2 has Servers 5, 6, 7, and 8.</li>
+
+     <li class="li">Group 2 servers have their active vBuckets and replica vBuckets from Group 1.</li>
+  
+    </ul>
+
+
+   <div class="fig fignone"><span class="figcap">Figure 1. Rack Awareness</span>
+    <img class="image" src="../images/RZASimple.png" width="680"></div>
+ 
+  </div>
+
+  
+  <div class="section"><h2 class="title sectiontitle">Distribution with additional server</h2>
+   
+   <p class="p">The following scenario shows how Rack Awareness functionality implements replica vBuckets 
+    when an imbalance is caused by an additional server being added to one server group. 
+    In this example, an additional server (Server 9) is added to a server group (Group 1). 
+    An imbalance occurs because one server group has more servers than the other server group. 
+    In this case, the rebalance operation performs a "best effort" of evenly distributing the replica vBuckets 
+    of the additional server across the nodes on all the racks in the cluster.</p>
+
+    <p class="p">The following diagram shows a cluster of servers on two racks, 
+     Rack #1 and Rack #2, where one rack has a group of five (5) servers and the other rack has a group of four (4) servers.</p>
+
+   <ul class="ul">
+    <li class="li">Group 1 has Servers 1, 2, 3, 4, and 9.</li>
+
+    <li class="li">Group 1 servers have their active vBuckets and replica vBuckets from Group 2.</li>
+
+    <li class="li">Group 1 Servers 1 - 4 also has replica vBuckets for Server 9.</li>
+
+    <li class="li">Group 2 has Servers 5, 6, 7, and 8.</li>
+
+     <li class="li">Group 2 servers have their active vBuckets and replica vBuckets from Group 1 including the replica vBuckets from Server 9 in Group 1.</li>
+  
+   </ul>
+
+   
+   <div class="fig fignone"><span class="figcap">Figure 2. Rack Awareness with additional server</span>
+    <img class="image" src="../images/RZAServerIN.png" width="680"></div>
+
+  </div>
+
+  
+  <div class="section"><h2 class="title sectiontitle">Distribution with unavailable server</h2>
+   
+   <p class="p">The following scenario shows how Rack Awareness functionality 
+    implements replica vBuckets when an imbalance is caused by a server being removed or unavailable in a server group. 
+    In this example, a server (Server 2) is unavailable to a server group (Group 1). 
+    An imbalance occurs because one server group has fewer servers than the other server group. 
+    In this case, if the rebalance operation is performed, a "best effort" of evenly 
+    distributing the replica vBuckets across the cluster occurs.</p>
+
+   
+   <div class="note note"><span class="notetitle">Note:</span> 
+    If the cluster becomes imbalanced, add servers to balance the cluster. 
+    For optimal Rack Awareness functionality, a balanced cluster is recommended.
+    If there is only one server or only one server group, 
+    default behavior is automatically implemented, that is, Rack Awareness functionality is disabled.
+   </div>
+
+   
+   <p class="p">The following diagram shows the loss of a server resulting in an imbalance. 
+    In this case, Server 2 (from Group 1, Rack #1) becomes unavailable. 
+    The replica vBuckets for Server 2 in Group 2, Rack #2 become enabled and rebalancing occurs.</p>
+
+   <ul class="ul">
+    <li class="li">Group 1 has Servers 1, 2, 3, and 4.</li>
+
+    <li class="li">Group 1 servers have their active vBuckets and replica vBuckets from Group 2.</li>
+
+    <li class="li">Group 1 Server 2 becomes unavailable.</li>
+
+    <li class="li">Group 2 has Servers 5, 6, 7, and 8.</li>
+
+    <li class="li">Group 2 servers have their active vBuckets and replica vBuckets from Group 1.</li>
+
+    <li class="li">Group 2 server activates the replica vBuckets for Server 2 in Group 1.</li>
+  
+   </ul>
+
+   
+   <div class="fig fignone"><span class="figcap">Figure 3. Rack Awareness with unavailable server</span>
+    <img class="image" src="../images/RZAServerOUT.png" width="680"></div>
+
+  </div>
+
+ 
+ </div>
+
+ <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-clusterMgr.html" title="The Cluster Manager is responsible for node and cluster management. Every node within a Couchbase cluster includes the Cluster Manager component.">Cluster Manager</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concept-nodesCluster.html" title="Couchbase Server can be used either in a standalone configuration or cluster configuration. A cluster configuration is multiple Couchbase Servers connected together to provide a single, distributed data store.">Nodes and clusters</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../Tasks/rza-manage-group.html" title="The Rack Awareness feature (Enterprise Edition) enables logical groupings of servers on a cluster where each server group physically belongs to a rack or availability zone. This feature provides the ability to specify that active and corresponding replica partitions be created on servers that are part of a separate rack or zone.">Managing Rack Awareness</a></div></div>
+</nav>
+
+</body>
+</html>

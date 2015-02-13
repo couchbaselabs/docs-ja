@@ -1,0 +1,64 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Couchbase Server can be used either in a standalone configuration or cluster configuration. A cluster configuration is multiple Couchbase Servers connected together to provide a single, distributed data store."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-clusterMgr.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-rack-awareness.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic1307">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Nodes and clusters</title>
+</head>
+<body id="topic1307">
+
+
+  <h1 class="title topictitle1">Nodes and clusters</h1>
+
+  
+  
+  <div class="body"><p class="shortdesc">Couchbase Server can be used either in a standalone configuration or cluster
+    configuration. A cluster configuration is multiple Couchbase Servers connected together to provide a single,
+    distributed data store.</p>
+
+    
+    <dl class="dl">
+      
+        <dt class="dt dlterm">Couchbase Server or Node</dt>
+
+        <dd class="dd">A single Couchbase Server instance running on a machine (physical or virtual), EC2 instance or other environment. <p class="p">All instances are identical, provide the same functionality, interfaces, and systems,
+            and consist of the same components.</p>
+</dd>
+
+      
+      
+        <dt class="dt dlterm">Cluster</dt>
+
+        <dd class="dd">A cluster is a collection of one or more instances of Couchbase Server that are
+          configured as a logical cluster. All nodes within the cluster are identical and provide
+          the same functionality. Each node is capable of managing the cluster and each node can
+          provide aggregate statistics and operational information about the cluster. User data is
+          stored across the entire cluster through the vBucket system. <p class="p">Clusters operate in a
+            completely horizontal fashion. To increase the size of a cluster, add another node.
+            There are no parent/child relationships or hierarchical structures involved. This means
+            that Couchbase Server scales linearly, both in terms of increasing the storage capacity
+            and performance and scalability.</p>
+
+        </dd>
+
+      
+    </dl>
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-clusterMgr.html" title="The Cluster Manager is responsible for node and cluster management. Every node within a Couchbase cluster includes the Cluster Manager component.">Cluster Manager</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/concept-rack-awareness.html" title="The Rack Awareness feature permits logical groupings of servers on a cluster where each server group physically belongs to a rack or Availability Zone.">Rack Awareness</a></div>
+</div>
+</nav>
+</body>
+</html>

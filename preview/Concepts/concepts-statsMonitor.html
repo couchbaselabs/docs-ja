@@ -1,0 +1,108 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="A complete set of statistical and monitoring information is provided through the Couchbase Web Console, CLI, and REST API."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-client-interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic2096">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Statistics and monitoring</title>
+</head>
+<body id="topic2096">
+
+
+ <h1 class="title topictitle1">Statistics and monitoring</h1>
+
+ 
+ <div class="body"><p class="shortdesc">A complete set of statistical and monitoring information is provided through the
+  Couchbase Web Console, CLI, and REST API.</p>
+
+  <p class="p">In order to understand what your cluster is doing and how it is performing, the Couchbase
+   Server incorporates a complete set of statistical and monitoring information. The statistics are
+   provided through all of the administration interfaces. Within the Couchbase Web Console, a
+   complete suite of statistics is provided including the built-in real-time graphing and
+   performance data.</p>
+
+  <p class="p">The statistics information is divided into a number of groups, allowing you to identify
+   different states and performance information within the cluster.</p>
+
+  
+  <dl class="dl">
+   
+    <dt class="dt dlterm">By node</dt>
+
+    <dd class="dd">Node statistics show CPU, RAM and I/O numbers on each of the servers and across your cluster as
+     a whole. This information can be used to help identify performance and loading issues on a single
+     server.</dd>
+
+   
+  </dl>
+
+  
+  <dl class="dl">
+   
+    <dt class="dt dlterm">By vBucket</dt>
+
+    <dd class="dd">The vBucket statistics shows the usage and performance numbers for the vBuckets and are
+     useful to determine whether you need to reconfigure your buckets or add servers to improve
+     performance.</dd>
+
+   
+  </dl>
+
+  
+  <dl class="dl">
+   
+    <dt class="dt dlterm">By view</dt>
+
+    <dd class="dd">View statistics display information about individual views in your system, including the CPU
+     usage and disk space, so that you can monitor the effects and loading of a view on the
+     Couchbase nodes. This information can indicate that your views need modification or
+     optimization, or that you need to consider defining views across multiple design
+     documents.</dd>
+
+   
+  </dl>
+
+ <dl class="dl">
+  
+   <dt class="dt dlterm">By disk queues</dt>
+
+   <dd class="dd">These statistics monitor the queues used to read and write information to disk and between
+     replicas. This information can be helpful in determine whether you should expand your cluster
+     to reduce disk load.</dd>
+
+  
+ </dl>
+
+  <dl class="dl">
+   
+    <dt class="dt dlterm">By TAP queues</dt>
+
+    <dd class="dd">The TAP interface is used to monitor changes and updates to the database. TAP is used
+     internally by Couchbase Server to provide replication between the nodes, but it can be also
+     used by clients for change notifications.</dd>
+
+   
+  </dl>
+ 
+ <p class="p">In almost all cases, the obtained statistic results can be viewed both on a cluster basis, to
+   monitor the overall RAM or disk usage for a given bucket, or an individual server basis to
+   identify issues within a single machine.</p>
+
+  
+ </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concept-client-interface.html">Client interface</a></div>
+</div>
+</nav>
+</body>
+</html>

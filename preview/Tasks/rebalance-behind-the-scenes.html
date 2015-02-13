@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="concept">
+<meta name="description" content="The rebalance process is managed through a specific process called the orchestrator."><meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-rebalance.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/rebalance-performing.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/rebalance-bucket-types.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="concept_bbv_ywf_q4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Rebalance behind-the-scenes</title>
+</head>
+<body id="concept_bbv_ywf_q4">
+
+
+ <h1 class="title topictitle1">Rebalance behind-the-scenes</h1>
+
+ 
+ <div class="body conbody"><p class="shortdesc">The rebalance process is managed through a
+  specific process called the <dfn class="term">orchestrator</dfn>.</p>
+
+  
+  <p class="p">The orchestrator examines the current vBucket map
+   and then combines that information with the node additions and removals in order to create a new
+   vBucket map.</p>
+
+  <p class="p">The orchestrator starts the process of moving the individual vBuckets from
+    the current vBucket map to the new vBucket structure. It only starts the process while thew nodes 
+    themselves are responsible for actually performing the movement of data
+    between the nodes. The aim is to make the newly calculated vBucket map match the current
+    situation.</p>
+
+  <p class="p">Each vBucket is moved independently, and a number of vBuckets can be migrated
+     simultaneously in parallel between the different nodes in the cluster. On each destination node,
+     a process called <samp class="ph codeph">ebucketmigrator</samp> is started. It uses the TAP system to
+     request that all the data be transferred for a single vBucket, and that the new vBucket data
+     becomes the active vBucket once the migration has been completed.</p>
+
+  <p class="p">While the vBucket
+      migration process is taking place, clients are still sending data to the existing vBucket. This
+      information is migrated along with the original data that existed before the migration was
+      requested. Once the migration of all the data has completed, the original vBucket is marked
+      as disabled, and the new vBucket is enabled. This updates the vBucket map and is communicated
+      back to the connected clients that will now use the new location.</p>
+
+  
+  
+  
+  <div class="section"><h2 class="title sectiontitle">Changing vBucket moves with REST</h2>
+   <p class="p">The number of vBucket moves that occur during the rebalance
+    operation can be modified. The default is one (1) and indicates that only one vBucket is moved at a time
+    during the rebalance operation.</p>
+
+  <p class="p">To change the number of vBucket moves, execute a curl <span class="keyword cmdname">POST</span>
+         command using the following syntax with the <samp class="ph codeph">/internalSettings</samp> endpoint and
+         the option <samp class="ph codeph">rebalanceMovesPerNode</samp>.</p>
+
+
+  <pre class="pre codeblock">
+curl -X POST -u admin:password
+ -d rebalanceMovesPerNode=1
+ http://HOST:PORT/internalSettings
+</pre>
+
+  
+  <p class="p">For example:</p>
+
+   <pre class="pre codeblock">
+curl -X POST -u Administrator:password
+ -d rebalanceMovesPerNode=14
+ http://soursop-s11201.sc.couchbase.com:8091/internalSettings
+</pre>
+
+  </div>
+
+  
+  
+ </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Tasks/tasks-rebalance.html" title="Rebalancing is the process of redistributing information across nodes.">Rebalancing</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Tasks/rebalance-performing.html" title="Rebalancing a cluster involves marking nodes to be added or removed from the cluster and performing the rebalance operation.">Performing a rebalance</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Tasks/rebalance-bucket-types.html" title="The rebalance operation works across the cluster both on the Couchbase and memcached buckets.">Rebalance effect on bucket types</a></div>
+</div>
+</nav>
+</body>
+</html>

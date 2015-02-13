@@ -1,0 +1,62 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="To upgrade a single Couchbase Server node, first back it up and then install the software."><meta name="DC.Relation" scheme="URI" content="hostnames.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbbackup_tool.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_tc1_vry_p4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Upgrading one node</title>
+</head>
+<body id="topic_tc1_vry_p4">
+
+
+  <h1 class="title topictitle1">Upgrading one node</h1>
+
+  
+  <div class="body"><p class="shortdesc">To upgrade a single Couchbase Server node, first back it up and then install the
+    software.</p>
+
+    <p class="p">Steps for upgrading a Couchbase Server node explained in this section are identical for an
+      online upgrade (for a node that has been removed from the cluster) or an offline upgrade (for
+      a node that has not yet been added to the cluster).</p>
+
+ 
+    
+    <ol class="ol">
+        <li class="li">Download Couchbase Server software.</li>
+
+        <li class="li">Back up data for that server. To back up an existing Couchbase Server installation, use
+         <span class="keyword cmdname">cbbackup</span>. </li>
+
+        <li class="li">Back up the server-specific configuration files. While the upgrade scripts perform a
+          backup of the configuration and data files, make your own
+          backup of these files as the best practices rule.</li>
+
+        <li class="li">Stop Couchbase Server instance.</li>
+
+        <li class="li">Check your host name configuration. If you have deployed Couchbase Server in a cloud
+          service, or if you are using hostnames rather than IP addresses, you must verify that the
+          hostname has been configured correctly before performing the upgrade. </li>
+
+        <li class="li">Check for required components and, if needed, install them. This ensures that Couchbase
+        Server can be upgraded and migrates the existing data files. </li>
+
+        <li class="li">Perform the installation upgrade for your platform.</li>
+
+      </ol>
+ 
+  </div>
+
+  <nav class="related-links">
+<div class="linklist linklist">
+<div><a class="link" href="hostnames.html" title="Each Couchbase Server's instance can have its own hostname.">Using hostnames</a></div>
+<div><a class="link" href="../CLI/cbbackup_tool.html" title="The cbbackup tool creates a copy of data from an entire running cluster, an entire bucket, a single node, or a single bucket on a single functioning node.">cbbackup tool</a></div></div>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="A description of the index filesystem struction."><meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-expireddocs.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-queryResults.html">
+<meta name="DC.Relation" scheme="URI" content="../Views/views-intro.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic3173">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Index filesystem structure</title>
+</head>
+<body id="topic3173">
+
+
+     <h1 class="title topictitle1">Index filesystem structure</h1>
+
+     
+     <div class="body"><p class="shortdesc">A description of the index filesystem struction.</p>
+
+          <p class="p">All index files live within a subdirectory of the data directory named
+                    <samp class="ph codeph">@indexes</samp>. Within this subdirectory, there’s a subdirectory for
+               each bucket (which matches exactly the bucket name).</p>
+
+          <p class="p">Any index file has the form
+                    <samp class="ph codeph">&lt;type&gt;_&lt;hexadecimal_signature&gt;.view.N</samp> Each
+               component’s meaning is:</p>
+
+          <ul class="ul">
+               <li class="li"><p class="p"><samp class="ph codeph">type</samp> - the index type, can be main (active vbuckets data) or
+                         replica (replica vbuckets data)</p>
+</li>
+
+               <li class="li"><p class="p"><samp class="ph codeph">hexadecimal_signature</samp> - this is the hexadecimal form of an
+                         MD5 hash computed over the map/reduce functions of a design document, when
+                         these functions change, a new index is created. It’s possible to have
+                         multiple versions of the same design document alive (different signatures).
+                         This happens for a short period, for example a client does a
+                              <samp class="ph codeph">stale=false</samp> request to an index (1 index == 1 design
+                         document), which triggers an index build/update and before this
+                         update/build finishes, the design document is updated (with different
+                         map/reduce functions). The initial version of the index will remain alive
+                         until all currently blocked clients on it are served. In the meanwhile new
+                         query requests are redirected to the latest (second) version of the index,
+                         always. This is what makes it possible to have multiple versions of the
+                         same design document index files at any point in time (however for short
+                         periods).</p>
+</li>
+
+               <li class="li"><p class="p"><samp class="ph codeph">N</samp> - when an index file is created N is 1, always. Every time
+                         the index file is compacted, N is incremented by 1. This is similar to what
+                         happens for vbucket database files Data missing in query response or it’s wrong 
+                         (potentially due to server issues)).</p>
+</li>
+
+          </ul>
+
+          <p class="p">For each design document, there’s also a subdirectory named like
+                    <samp class="ph codeph">tmp_&lt;hexadecimal_signature&gt;_&lt;type&gt;</samp>. This is a
+               directory containing temporary files used for the initial index build (and soon for
+               incremental optimizations). Files within this directory have a name formed by the
+               design document signature and a generated UUID. These files are periodically deleted
+               when they’re not useful anymore.</p>
+
+          <p class="p">All views defined within a design document are backed by a btree data structure, and
+               they all live inside the same index file. Therefore for each design document,
+               independently of the number of views it defines, there’s 2 files, one for main data
+               and the other for replica data.</p>
+
+          <p class="p">Example:</p>
+
+          <pre class="pre codeblock"><samp class="ph codeph">&gt; tree couch/0/\@indexes/
+couch/0/@indexes/
+ ??? default
+     ???
+main_018b83ca22e53e14d723ea858ba97168.view.1
+     ???
+main_15e1f576bc85e3e321e28dc883c90077.view.1
+     ???
+main_440b0b3ded9d68abb559d58b9fda3e0a.view.1
+     ???
+main_4995c136d926bdaf94fbe183dbf5d5aa.view.1
+     ???
+main_fd2bdf6191e61af6e801e3137e2f1102.view.1
+     ???
+replica_018b83ca22e53e14d723ea858ba97168.view.1
+     ???
+replica_15e1f576bc85e3e321e28dc883c90077.view.1
+     ???
+replica_440b0b3ded9d68abb559d58b9fda3e0a.view.1
+     ???
+replica_4995c136d926bdaf94fbe183dbf5d5aa.view.1
+     ???
+replica_fd2bdf6191e61af6e801e3137e2f1102.view.1
+     ???
+tmp_018b83ca22e53e14d723ea858ba97168_main
+     ???
+tmp_15e1f576bc85e3e321e28dc883c90077_main
+     ???
+tmp_440b0b3ded9d68abb559d58b9fda3e0a_main
+     ???
+tmp_4995c136d926bdaf94fbe183dbf5d5aa_main
+     ???
+tmp_fd2bdf6191e61af6e801e3137e2f1102_main
+
+ 6 directories, 10 files
+</samp></pre>
+
+     </div>
+
+     <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Misc/Trbl-intro.html" title="トラブルシューティングの一般的なヒント、一般的なエラー、ログ情報、およびその他の問題について説明します。">トラブルシューティング</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Misc/Trbl-expireddocs.html" title="Expired documents have their associated key-value pairs returned in queries with stale=false.">Expired documents issue</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Misc/Trbl-queryResults.html" title="A specific URI is used to get index results for a single node.">Index results for a single node</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../Views/views-intro.html" title="Couchbase views enable indexing and querying of data.">Views and indexes</a></div></div>
+</nav>
+
+</body>
+</html>

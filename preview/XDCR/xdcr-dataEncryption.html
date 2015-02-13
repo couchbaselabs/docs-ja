@@ -1,0 +1,89 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="The cross data center (XDCR) data security feature provides secure cross data center replication using Secure Socket Layer (SSL) data encryption."><meta name="DC.Relation" scheme="URI" content="../XDCR/xdcr-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../XDCR/xdcr-pause-resume.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-manage-xdcr-dataEncryption.html">
+<meta name="DC.Relation" scheme="URI" content="http://blog.couchbase.com/heartbleed-bug-and-couchbase-server">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic1666">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>XDCR data encryption</title>
+</head>
+<body id="topic1666">
+
+
+  <h1 class="title topictitle1">XDCR data encryption</h1>
+
+  
+  <div class="body"><p class="shortdesc">The cross data center (XDCR) data security feature provides secure cross data center
+    replication using Secure Socket Layer (SSL) data encryption.</p>
+
+    <div class="note attention"><span class="attentiontitle">Attention:</span> This feature is available only in the Enterprise edition.</div>
+
+    <p class="p">The data replicated between
+      clusters can be encrypted in both uni-directional and bi-directional topologies.</p>
+
+    <p class="p">By default, XDCR traffic to a destination cluster is sent in clear text that is unencrypted.
+      In this case, when XDCR traffic occurs across multiple clusters over public networks, it is
+      recommended that a VPN gateway be configured between the two data centers to encrypt the data
+      between each route.</p>
+
+    <p class="p">With the XDCR data encryption feature, the XDCR traffic from the source cluster is secured by
+      enabling the XDCR encryption option, providing the destination cluster’s certificate, and then
+      replicating. The certificate is a self-signed certificate used by SSL to initiate secure
+      sessions.</p>
+
+    
+    <div class="note note"><span class="notetitle">Note:</span> XDCR data encryption is supported only with Couchbase 
+      self-signed certificates. It does not support importing your own certificate files nor does it
+      support signed certificates from a Certificate Authority (CA).</div>
+
+    
+    <p class="p">Data encryption is established between the source and destination clusters. Since data
+      encryption is established at the cluster level, all buckets that are selected for replicated
+      on the destination cluster are data encrypted. For buckets that need to be replicated without
+      data encryption, establish a second XDCR destination cluster without XDCR data encryption
+      enabled.</p>
+
+    <p class="p"><img class="image" src="../images/xdcr-ssl.png" width="400"></p>
+
+        <div class="note important"><span class="importanttitle">Important:</span> Both data encrypted and non-encrypted replication can not occur between the same XDCR source
+      and destination cluster. For example, if Cluster A (source) has data encryption enabled to
+      Cluster B (destination), then Cluster A (source) cannot also have non-encryption (data
+      encryption is not enabled) to Cluster B (destination). </div>
+
+    
+    <p class="p">For XDCR data encryption, the supported SSL/TLS-versions are SSL-3.0 and TLS-1.0. By default,
+      XDCR uses the <samp class="ph codeph">rc4-128</samp> cipher suite, however, 
+      <samp class="ph codeph">aes128</samp> is used if <samp class="ph codeph">rc4-128</samp> isn't available. 
+      XDCR can be forced to only use <samp class="ph codeph">rc4-128</samp> by setting the COUCHBASE_WANT_ARCFOUR environmental
+      variable. OpenSSL is not used for the TLS/SSL handshake logic. Instead, the TLS/SSL logic is
+      implemented in Erlang. If
+      specific ciphers/protocol/certificates are required, an alternative option is to connect to
+      the clusters over an encrypted VPN connection.</p>
+
+    
+   
+   
+    
+  </div>
+
+  <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../XDCR/xdcr-intro.html" title="XDCRは、主に災害復旧のために、あるクラスタのデータを別のクラスタに複製します。">クロスデータセンターレプリケーション（XDCR）</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../XDCR/xdcr-pause-resume.html" title="During XDCR replication, the process can be paused and resumed.">XDCR pause and resume replication</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../Tasks/tasks-manage-xdcr-dataEncryption.html">Managing XDCR data encryption</a></div>
+<div><a class="link" href="http://blog.couchbase.com/heartbleed-bug-and-couchbase-server">Heartbleed Bug and Couchbase Server</a></div></div>
+</nav>
+
+</body>
+</html>

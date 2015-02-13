@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="General tips include various initial diagnostics activities."><meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-commonErrors.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-logs.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbcollect_info_tool.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/install-networkPorts.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic1536">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>General tips</title>
+</head>
+<body id="topic1536">
+
+
+ <h1 class="title topictitle1">General tips</h1>
+
+ 
+ <div class="body"><p class="shortdesc">General tips include various initial diagnostics activities.</p>
+
+  <p class="p">The following are some general tips that may be useful before performing any more detailed
+   investigations:</p>
+
+  <ul class="ul">
+   <li class="li"><p class="p">Try pinging the node.</p>
+</li>
+
+   <li class="li"><p class="p">Try connecting to Couchbase Server Web Console on the node.</p>
+</li>
+
+   <li class="li"><p class="p">Try to use telnet to connect to the
+      various ports that Couchbase Server uses.</p>
+</li>
+
+   <li class="li"><p class="p">Try reloading the web page.</p>
+</li>
+
+   <li class="li"><p class="p">Check firewall settings (if any) on the node. Make sure there isn’t a firewall between you
+     and the node. On a Windows system, for example, the Windows firewall might be blocking the
+     ports (Control Panel &gt; Windows Firewall).</p>
+</li>
+
+   <li class="li"><p class="p">Make sure that the documented ports are open between nodes and make sure the data
+     operation ports are available to clients.</p>
+</li>
+
+   <li class="li"><p class="p">Check your browser’s security settings.</p>
+</li>
+
+   <li class="li"><p class="p">Check any other security software installed on your system, such as antivirus
+     programs.</p>
+</li>
+
+   <li class="li"><p class="p">Generate a Diagnostic Report for use by Couchbase Technical Support to help determine what
+     the problem is. There are two ways of collecting this information:</p>
+
+    <ul class="ul">
+     <li class="li"><p class="p">Click <samp class="ph codeph">Generate Diagnostic Report</samp> on the Log page to obtain a snapshot
+       of your system’s configuration and log information for deeper analysis. You must send this
+       file to Couchbase.</p>
+</li>
+
+     <li class="li"><p class="p">Run the <samp class="ph codeph">cbcollect_info</samp> on each node within your cluster. To run, you
+       must specify the name of the file to be generated:</p>
+</li>
+
+    </ul>
+
+    <p class="p"><samp class="ph codeph"> &gt; cbcollect_info nodename.zip </samp></p>
+
+    <p class="p">This will create a Zip file with the specified name. You must run each command individually
+     on each node within the cluster. You can then send each file to Couchbase for analysis.</p>
+
+    </li>
+
+  </ul>
+
+ </div>
+
+ <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Misc/Trbl-intro.html" title="トラブルシューティングの一般的なヒント、一般的なエラー、ログ情報、およびその他の問題について説明します。">トラブルシューティング</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Misc/Trbl-commonErrors.html" title="Common errors encountered include issues when starting Couchbase server for the first time.">Common errors</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Misc/Trbl-logs.html" title="Couchbase Server creates a number of different log files depending on the component of the system that produce the error, and the level and severity of the problem being reported.">Logs and logging</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../CLI/cbcollect_info_tool.html" title="The cbcollect_info tool provides detailed statistics for a specific node.">cbcollect_info tool</a></div>
+<div><a class="link" href="../Install/install-networkPorts.html" title="Couchbase Server uses specific network ports for communication between server components and with the clients accessing the data stored in the Couchbase cluster.">Network ports</a></div></div>
+</nav>
+
+</body>
+</html>

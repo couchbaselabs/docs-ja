@@ -1,0 +1,83 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Relation" scheme="URI" content="../Monitoring/monitor-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Monitoring/monitor-moxi-statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../Monitoring/monitor-rebalance.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-serverWarmup.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBstats/cbstats-warmup.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic2157">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Monitoring startup (warmup)</title>
+</head>
+<body id="topic2157">
+
+
+	<h1 class="title topictitle1">Monitoring startup (warmup)</h1>
+
+	<div class="body">
+		<p class="p">If a Couchbase Server node is starting up for the first time, it creates whatever DB
+			files necessary and begin serving data immediately. However, if there is already data on
+			disk (likely because the node rebooted or the service restarted) the node needs to read
+			all of this data off of disk before it can begin serving data. This is called “warmup”.
+			Depending on the size of data, this can take some time. </p>
+
+		<p class="p">When starting up a node, there are a few statistics to monitor. Use the
+				<samp class="ph codeph">cbstats</samp> command to watch the warmup stats:</p>
+
+		<pre class="pre codeblock">cbstats localhost:11210 warmup</pre>
+
+		<p class="p">The following statistics are of particular interest when monitoring the warmup.</p>
+
+		<dl class="dl">
+			
+				<dt class="dt dlterm">ep_warmup_thread</dt>
+
+				<dd class="dd">This is the overall indication of whether or not warmup is still running. Look for values: running and complete.</dd>
+
+			
+			
+				<dt class="dt dlterm">ep_warmup_state</dt>
+
+				<dd class="dd">This describes which phase of warmup is currently running. Look for values: loading keys,
+					loading access log, and done. 
+				</dd>
+
+			
+		</dl>
+
+		
+		<ul class="ul">
+			<li class="li">When <samp class="ph codeph">ep_warmup_state</samp> is loading keys, compare
+					<samp class="ph codeph">ep_warmup_key_count</samp> (current number) with
+					<samp class="ph codeph">ep_warmup_estimated_key_count</samp> (target number).</li>
+
+			<li class="li">When <samp class="ph codeph">ep_warmup_state</samp> is loading access log, compare
+				<samp class="ph codeph">ep_warmup_value_count</samp> (current number) with
+				<samp class="ph codeph">ep_warmup_estimated_value_count</samp> (target
+				number).</li>
+
+		</ul>
+
+	</div>
+
+	<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Monitoring/monitor-intro.html" title="プロセス、ポート、キューなど、Couchbase Serverをモニタリングするためのさまざまな方法があります。">モニタリング</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Monitoring/monitor-moxi-statistics.html" title="Regular memcached clients can request statistics through the memcached stats command.">Couchbase Server Moxi statistics</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Monitoring/monitor-rebalance.html" title="Monitoring of the system during and immediately after rebalancing is needed until replication is completed successfully.">Monitoring a rebalance operation</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../Concepts/concept-serverWarmup.html" title="Whenever Couchbase server is restarted or data is restored to a server instance, the server undergoes a warmup process before data requests can be handled.">Server warmup</a></div>
+<div><a class="link" href="../CLI/CBstats/cbstats-warmup.html" title="The cbstats warmup command shows statistics related to warmup logic.">Warmup</a></div></div>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="concept">
+<meta name="description" content="Graceful failover provides the time to administrators to safely fail over a node from the cluster after all in-flight operations are completed and without data loss."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-nodeFailover.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-nodeFailover.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/hard-failover.html">
+<meta name="DC.Relation" scheme="URI" content="delta-node-recovery.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="concept_gvw_zsp_yn">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Graceful failover</title>
+</head>
+<body id="concept_gvw_zsp_yn">
+
+
+ <h1 class="title topictitle1">Graceful failover</h1>
+
+	
+	
+ 
+ <div class="body conbody"><p class="shortdesc">Graceful failover provides the time to administrators to safely fail over a node from the cluster 
+	 after all in-flight operations are completed and without data loss.</p>
+
+  
+  <p class="p">With graceful failover, all in-flight operations are completed, for example, data in the
+   process of being written to the node completes and is transferred to the replica vBuckets. 
+   The replica vBuckets are promoted to active vBuckets and the active vBuckets on the failed over node
+   are transitioned to replica vBuckets. 
+   Because failover occurs after the replica vBuckert are synchronized with the active vBuckets, 
+   graceful failover might take more time to failover the node. </p>
+
+  
+  <p class="p">While the server node is being gracefully failed over (the in-flight operations are
+   completing), the failover can be stopped. Subsequently, graceful failover can be restarted. 
+   When a node is failed over, it can be added back to
+   the cluster via <samp class="ph codeph">delta</samp> or <samp class="ph codeph">full</samp> recovery. </p>
+
+  
+   
+   <div class="note note"><span class="notetitle">Note:</span> Hard failover immediately fails over a node from the cluster which might lead
+   to data loss. Hard failover is typically used when the node is in a bad state. Auto-failover is a
+   hard failover.</div>
+
+  
+  <p class="p">The following conditions must be met for graceful failover, otherwise, hard failover is implemented.</p>
+
+  
+   <ul class="ul">
+    <li class="li">The server node must be healthy.</li>
+
+    <li class="li">Each active vBucket on the failed over server node must have an equivalent replica vBucket.</li>
+
+    <li class="li">At least one (1) replica vBucket must be available.</li>
+
+    </ul>
+
+  
+  <p class="p">For example:</p>
+
+  <ul class="ul">
+   <li class="li">In a 7 node cluster, if a bucket is configured for one replica, only one node can be gracefully failed over.</li>
+
+   <li class="li">In a 7 node cluster, if a bucket is configured for two replica, two nodes can be gracefully failed over.</li>
+
+   <li class="li">In a 7 node cluster, if a bucket is configured for three replica, three nodes can be gracefully failed over.</li>
+
+  </ul>
+
+  
+   <p class="p">Graceful failover does not alter the number of active vBuckets (unlike hard failover). 
+   However, the number of replica vBuckets can be reduced and they can be unevenly distributed.</p>
+
+   
+   
+   
+   
+  
+  
+  
+  
+   
+ 
+    
+
+   
+   
+   
+  
+
+  
+  
+  
+ </div>
+
+ 
+ <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-nodeFailover.html" title="Failover is the process in which a node in a cluster is declared as unavailable and a replica vBucket is enabled.">Failing over nodes</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Tasks/tasks-nodeFailover.html" title="Failing over a node means that Couchbase Server removes the node from a cluster and makes replicated data at other nodes available for client requests.">Failover considerations</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Tasks/hard-failover.html" title="Hard failover immediately fails over nodes from clusters.">Hard failover</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="delta-node-recovery.html" title="Delta node recovery permits nodes to be re-added to the cluster and incrementally caught up with the data changes.">Delta node recovery</a></div></div>
+</nav>
+
+</body>
+</html>

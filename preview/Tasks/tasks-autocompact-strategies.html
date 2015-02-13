@@ -1,0 +1,186 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Couchbase Server incorporates an automated compaction mechanism that can compact both data files and the view index files based on triggers that measure the current fragmentation level within the database and view index data files."><meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-compaction.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-compaction-process.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_sfg_kqp_dq">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Auto-compaction configuration and strategies</title>
+</head>
+<body id="topic_sfg_kqp_dq">
+
+
+  <h1 class="title topictitle1">Auto-compaction configuration and strategies</h1>
+
+  
+  <div class="body"><p class="shortdesc">Couchbase Server incorporates an automated
+    compaction mechanism that can compact both data files and the view index files based on
+    triggers that measure the current fragmentation level within the database and view index data
+    files.</p>
+
+<div class="note note"><span class="notetitle">Note:</span> Spatial indexes are not automatically compacted. They must be compacted manually. </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Configuration</h2>
+    <p class="p">Auto-compaction can be configured using:</p>
+
+    <ul class="ul">
+          <li class="li"><dfn class="term">Default auto-compaction</dfn>, which affects all the Couchbase buckets within
+       Couchbase Server. If you set the default auto-compaction settings for Couchbase
+       Server, auto-compaction is automatically enabled for all Couchbase buckets. </li>
+
+          <li class="li"><dfn class="term">Bucket auto-compaction,</dfn> which can be set on individual Couchbase buckets.
+        The bucket-level compaction always overrides any default auto-compaction settings, even if
+        they have not been configured. You can choose to explicitly override any Couchbase
+        bucket-specific settings when editing or creating a new Couchbase bucket.</li>
+
+        </ul>
+
+    
+    <p class="p">The available settings both for default auto-compaction and Couchbase bucket specific
+      settings are identical:</p>
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">Database Fragmentation</dt>
+
+        <dd class="dd">The primary setting is the percentage level within the database at which compaction
+          occurs. The figure is expressed as a percentage of fragmentation for each item, and you can set
+          the fragmentation level at which the compaction process is triggered.
+          <p class="p">For example, if
+            you set the fragmentation percentage at 10%, the moment the fragmentation level has been
+            identified, the compaction process will be started, unless you have time limited
+            auto-compaction. See <dfn class="term">Time Period</dfn>.</p>
+</dd>
+
+      
+    </dl>
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">View Fragmentation</dt>
+
+        <dd class="dd">It specifies the percentage of fragmentation within all the view
+          index files at which compaction is triggered, expressed as a percentage.</dd>
+
+      
+    </dl>
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">Time Period</dt>
+
+        <dd class="dd">To prevent that auto compaction takes place when your database is in heavy use, you can
+          configure a time during which compaction is allowed. This is expressed as the hour and minute
+          combination between which compaction occurs. For example, you could configure compaction to take
+          place between 01:00 and 06:00.<p class="p">If compaction is identified as required outside of these
+            hours, compaction will be delayed until the specified time period is reached. The time period is
+            applied every day while Couchbase Server is active. The time period cannot be configured on
+            a day-by-day basis.</p>
+</dd>
+
+      
+    </dl>
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">Compaction Abortion</dt>
+
+        <dd class="dd">The compaction process can be configured so that if the allowed compaction time period
+            ends while the compaction process is still going on, the entire compaction process will
+            be terminated. This option affects the compaction process and if this option is enabled
+            and compaction is running, the process will be stopped. The files generated during the
+            compaction process will be kept, and compaction will be restarted when the next time
+            period is reached. This can be a useful setting if you want to ensure the performance of
+            Couchbase Server during a specified time period, as this will ensure that
+            compaction is never running outside of the specified time period. <p class="p">If this option is
+              disabled and the compaction is running when the time period ends, compaction will
+              continue until the process has been completed.</p>
+<p class="p">Using this option can be useful
+              if you want to ensure that the compaction process completes.</p>
+</dd>
+
+      
+    </dl>
+
+   <dl class="dl">
+     
+       <dt class="dt dlterm">Parallel Compaction</dt>
+
+       <dd class="dd">By default, compaction operates sequentially executing first on the database and then
+         the views (if both are configured for auto-compaction). If you enable parallel compaction, both
+         the databases and the views can be compacted at the same time. This requires more CPU and
+         database activity for both to be processed simultaneously, but if you have CPU cores and disk
+         I/O (for example, if the database and view index information is stored on different physical
+         disk devices), the two can complete in a shorter time.</dd>
+
+     
+   </dl>
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">Metadata Purge Interval</dt>
+
+        <dd class="dd">You can remove <dfn class="term">tombstones</dfn> for expired and deleted items as part of the auto-compaction
+          process. Tombstones are records containing the key and metadata for deleted and expired
+          items and are used for consistency between clusters and for views.
+            <p class="p">Configuration of auto-compaction is performed using Couchbase Web Console. Information on
+            per-bucket settings is available in the <span class="keyword wintitle">Couchbase Bucket create/edit</span> screen. You can also
+            view and change these settings using the REST API.</p>
+</dd>
+
+      
+    </dl>
+   </div>
+                         
+      
+    <div class="section"><h2 class="title sectiontitle">Auto-compaction strategies</h2>
+      
+      <p class="p">Choose carefully the exact fragmentation and scheduling
+      settings for auto-compaction to ensure that the database and compaction performance meet your requirements.</p>
+
+      <p class="p">Take <strong class="ph b">into</strong> consideration the following:</p>
+<ul class="ul">
+        <li class="li">Monitor the compaction process to determine how long it takes to compact your
+          database. This will help you identify and schedule a suitable time period for auto-compaction
+          to occur.</li>
+
+        <li class="li">Compaction affects the disk space usage of your database, but it must not affect
+          performance. Frequent compactions run on a small database file are unlikely to cause problems,
+          but frequent compactions on a large database file may impact the performance and disk
+          usage.</li>
+
+        <li class="li">Compaction can be terminated at any time. This means that if you schedule compaction for
+          a specific time period, but then require the additional resources, terminate the compaction 
+          and restart during another off-peak period.</li>
+
+        <li class="li">Since compaction can be stopped and restarted, it is possible to indirectly trigger an
+          incremental compaction. For example, if you configure a one hour compaction period and enable
+          Compaction abortion, if compaction takes 4 hours to complete it will incrementally
+          take place over four days.</li>
+
+        <li class="li">When you have a large number of Couchbase buckets on which you want to use
+          auto-compaction, you might want to schedule your auto-compaction time period for each bucket in
+          a staggered fashion so that compaction on each bucket can take place within it’s own unique
+          time period.</li>
+
+      </ul>
+</div>
+
+  </div>
+
+  
+ 
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Tasks/tasks-compaction.html" title="Database and view compaction helps to reclaim disk space and reduce fragmentation.">Compacting data files</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Tasks/tasks-compaction-process.html" title="Couchbase Server compacts views and data files.">Compaction process</a></div>
+</div>
+</nav>
+</body>
+</html>

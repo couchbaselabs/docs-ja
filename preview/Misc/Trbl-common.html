@@ -1,0 +1,153 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Troubleshooting Couchbase Server represents a basic action associated with critical and informational issues."><meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-blockedIndexer.html">
+<meta name="DC.Relation" scheme="URI" content="../Misc/Trbl-datamissing-server.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic1211">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Server issues</title>
+</head>
+<body id="topic1211">
+
+
+	<h1 class="title topictitle1">Server issues</h1>
+
+	
+	<div class="body"><p class="shortdesc">Troubleshooting Couchbase Server represents a basic action associated with critical
+		and informational issues.</p>
+
+		<p class="p">The following table outlines some specific areas to check when experiencing different
+			problems:</p>
+
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+				
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="33.33333333333333%" id="d27350e32">Severity</th>
+
+						<th class="entry" valign="top" width="33.33333333333333%" id="d27350e35">Issue</th>
+
+						<th class="entry" valign="top" width="33.33333333333333%" id="d27350e38">Suggested Action(s)</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e32 ">Critical</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e35 ">Couchbase Server does not start up.</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e38 ">Check that the service is running.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e32 ">&nbsp;</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e35 ">&nbsp;</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e38 ">Check error logs.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e32 ">&nbsp;</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e35 ">&nbsp;</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e38 ">Try restarting the service.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e32 ">Critical</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e35 ">A server is not responding.</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e38 ">Check that the service is running.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e32 ">&nbsp;</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e35 ">&nbsp;</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e38 ">Check error logs.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e32 ">&nbsp;</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e35 ">&nbsp;</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e38 ">Try restarting the service.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e32 ">Critical</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e35 ">A server is down.</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e38 ">Try restarting the server.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e32 ">&nbsp;</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e35 ">&nbsp;</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e38 ">Use the command-line interface to check connectivity.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e32 ">Informational</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e35 ">Bucket authentication failure.</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d27350e38 ">Check the properties of the bucket that you are attempting to connect
+							to.</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		<p class="p">The primary source for run-time logging information is Couchbase Server Web Console.
+			Run-time logs are automatically set up and started during the installation process.
+			However, Couchbase Server gives you access to lower-level logging details if needed
+			for diagnostic and troubleshooting purposes. </p>
+
+		<p class="p">Log files are stored in a binary format in the logs directory under the Couchbase
+			installation directory. You must use <samp class="ph codeph">browse_logs</samp> to extract the log
+			contents from the binary format to a text file.</p>
+
+	</div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Misc/Trbl-intro.html" title="トラブルシューティングの一般的なヒント、一般的なエラー、ログ情報、およびその他の問題について説明します。">トラブルシューティング</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Misc/Trbl-blockedIndexer.html" title="Indexer shows no progress for long periods of time.">Blocked indexer</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Misc/Trbl-datamissing-server.html" title="Data missing in query response or it’s wrong (potentially due to server issues)">Incorrect or missing data (server issue)</a></div>
+</div>
+</nav>
+</body>
+</html>

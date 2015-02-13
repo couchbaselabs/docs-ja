@@ -1,0 +1,72 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Couchbase Server includes a built-in caching layer which acts as a central part of the server and provides very rapid reads and writes of data."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-vBucket.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-diskStorage.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic2927">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Caching layer</title>
+</head>
+<body id="topic2927">
+
+
+  <h1 class="title topictitle1">Caching layer</h1>
+
+  
+  <div class="body"><p class="shortdesc">Couchbase Server includes a built-in caching layer which 
+    acts as a central part of the server and provides very rapid reads and writes of data.</p>
+
+    
+    <p class="p">Couchbase Server automatically manages the caching layer and coordinates with
+      disk space to ensure that enough cache space exists to maintain performance. It 
+      automatically places items that come into the caching layer into disk queue so that it can
+      write these items to disk. If the server determines that a cached item is infrequently used,
+      it removes it from RAM to free space for other items. Similarly the server retrieves
+      infrequently-used items from disk and stores them into the caching layer when the items are
+      requested. In order to provide the most frequently-used
+      data while maintaining high performance, Couchbase Server manages a <em class="ph i">working set</em> of your
+      entire information. The working set is the data most frequently accessed and is kept
+      in RAM for high performance.</p>
+
+    <p class="p">Couchbase automatically moves data from RAM to disk asynchronously, in the background, 
+      to keep frequently used information in memory and less frequently used data on disk.
+      Couchbase constantly monitors the information accessed by clients and decides how to keep the
+      active data within the caching layer. Data is ejected to disk from memory 
+      while the server continues to service active requests. During sequences of high writes to the
+      database, clients are notified that the server is temporarily out of memory until enough
+      items have been ejected from memory to disk. The asynchronous nature and use of queues in this
+      way enables reads and writes to be handled at a very fast rate, while removing the typical
+      load and performance spikes that would otherwise cause a traditional RDBMS to produce erratic
+      performance.</p>
+
+    <p class="p">When the server stores data on disk and a client requests the data, an individual
+      document ID is sent and then the server determines whether the information exists or not. Couchbase Server
+      does this with metadata structures. The metadata holds information about each
+      document in the database and this information is held in RAM. This means that the server 
+      returns a ‘document ID not found’ response for an invalid document ID, 
+      returns the data from RAM, or returns the data after being fetched from disk.</p>
+
+    
+    <div class="note note"><span class="notetitle">Note:</span> Other database solutions read and write data from disk, which results in much slower performance.
+      One approach used by other database solutions is to install and manage a caching layer as a separate component
+      which works with a database. This approach has drawbacks because of the significant custom code and effort 
+      due to the burden of managing the caching layer and the data transfers between the caching layer and database.</div>
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concept-vBucket.html" title="A vBucket is defined as the owner of a subset of the key space of a Couchbase cluster. These vBuckets are used to distributed information effectively across a cluster.">vBuckets</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/concept-diskStorage.html" title="Couchbase Server mainly stores and retrieves information for clients using RAM. At the same time, Couchbase Server eventually stores all data to disk to provide a higher level of reliability.">Disk storage</a></div>
+</div>
+</nav>
+</body>
+</html>

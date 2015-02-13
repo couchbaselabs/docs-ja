@@ -1,0 +1,129 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Rebalancing a cluster involves marking nodes to be added or removed from the cluster and performing the rebalance operation."><meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-rebalance.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-rebalancing.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/rebalance-behind-the-scenes.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/rebalance-incremental.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_ctg_g1g_q4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Performing a rebalance</title>
+</head>
+<body id="topic_ctg_g1g_q4">
+
+
+  <h1 class="title topictitle1">Performing a rebalance</h1>
+
+  
+  
+  <div class="body"><p class="shortdesc">Rebalancing a cluster involves marking nodes to be added or removed from the cluster
+    and performing the rebalance operation.</p>
+
+    
+    <p class="p">A rebalance moves the data around the cluster so that the data is distributed across the entire
+      cluster, removing and adding data to different nodes in the process. </p>
+
+    
+    <div class="note important"><span class="importanttitle">Important:</span> Until you complete
+      a rebalance, avoid using the failover functionality since it may result in loss of data that
+      has not yet been replicated. </div>
+
+    
+    <p class="p">In the event of a failover situation, a rebalance is required to bring the cluster back
+      to a healthy state and re-enable the configured replicas.</p>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Rebalancing via UI</h2>
+    
+    <p class="p">The Couchbase Web Console indicates when a cluster requires rebalance. This happens when the structure of the cluster has been changed, 
+      either through adding a node, removing a
+      node, or due to a failover. The notification is carried through the servers that
+      require a rebalance. The following figure shows the <span class="keyword wintitle">Manage Server Nodes</span> page.</p>
+
+      
+      <div class="fig fignone"><img class="image" src="../images/admin-tasks-pending-rebalance.png" width="720"></div>
+
+      
+      <p class="p">If Couchbase Server identifies that a rebalance is required (through explicit addition
+        or removal, or through a failover), then the cluster is in a <span class="keyword wintitle">Pending Rebalance</span> state. 
+        This does not affect the cluster operation and merely indicates
+        that a rebalance operation is required to move the cluster into its configured state. To
+        start a rebalance, click <span class="ph uicontrol">Rebalance</span>.</p>
+
+    </div>
+
+        
+  <div class="section"><h2 class="title sectiontitle">Rebalancing via CLI</h2>
+    
+    <p class="p">To initiate a rebalance using the <samp class="ph codeph">couchbase-cli</samp> and the rebalance command:</p>
+
+      
+      <pre class="pre codeblock">
+&gt; couchbase-cli rebalance -c 127.0.0.1:8091 -u Administrator -p Password
+  INFO: rebalancing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  . . . . . . . . . . .
+  SUCCESS: rebalanced cluster
+</pre>
+
+      
+      <p class="p">You can also use this method to add and remove nodes and initiate the rebalance operation using a
+        <span class="keyword cmdname">single</span> command. </p>
+
+        <p class="p">Specify nodes to be added using the <samp class="ph codeph">--server-add</samp>
+        option, and nodes to be removed using the <samp class="ph codeph">--server-remove</samp>.</p>
+ 
+        <p class="p">You can use multiple options of each type. For example, to add two nodes, and remove two
+        nodes, and immediately initiate a rebalance operation:</p>
+
+      
+      <pre class="pre codeblock">
+&gt; couchbase-cli rebalance -c 127.0.0.1:8091 \
+          -u Administrator -p Password \
+          --server-add=192.168.0.72 \
+          --server-add=192.168.0.73 \
+          --server-remove=192.168.0.70 \
+          --server-remove=192.168.0.69
+</pre>
+
+      
+      <p class="p">CLI provides an active view of the progress and will return once the rebalance
+        operation has either completed successfully, or in the event of a failure. 
+        The time taken for a rebalance operation depends on the number of servers, 
+        quantity of data, cluster performance and any existing cluster activity. 
+        It is, therefore, difficult to accurately predict or estimate the duration.</p>
+
+        
+       <div class="note note"><span class="notetitle">Note:</span>  Throughout any rebalance operation, monitor the process to ensure that it completes successfully.</div>
+
+            
+            <p class="p">Stop the rebalance operation by using the CLI command <span class="keyword cmdname">stop-rebalance</span>.</p>
+
+          </div>
+
+      
+  </div>
+
+<nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../Tasks/rebalance-incremental.html">Resuming rebalance after a failure</a><br>
+Improved rebalance latency of Couchbase Server is demonstrated through its ability to     better resume rebalancing operation after any blips or failures have occurred in the     process.</li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Tasks/tasks-rebalance.html" title="Rebalancing is the process of redistributing information across nodes.">Rebalancing</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concept-rebalancing.html" title="Rebalancing operation is performed to expand or reduce the size of a cluster, to react to fail-overs, or to temporary remove nodes for various upgrades.">Rebalancing operation</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Tasks/rebalance-behind-the-scenes.html" title="The rebalance process is managed through a specific process called the orchestrator.">Rebalance behind-the-scenes</a></div>
+</div>
+</nav>
+</body>
+</html>
