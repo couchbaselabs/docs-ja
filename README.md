@@ -26,13 +26,14 @@ WIP (Work In Progress) ブランチをPull Requestする形で運用します。
 3. git checkout -b 359
     * issueの番号でブランチを作成します
 4. git commit --allow-empty -m 'Work-In-Progress on #359'
+5. git push origin 359
     * これで、空コミットが作成されて、Pull Requestできるようになります
-5. Pull Requestする
+6. Pull Requestする
     この段階でissueにプルリクエストが紐付けられ、作業開始を宣言した状態になります。他の翻訳者の方と作業の重複を防ぐため、翻訳するファイルを決めたら、まずここまで一気にやってしまいましょう
-6. 翻訳者は終わったら、最後に push して、プルリクエストの題名プレフィクスを [WIP] から [WFR] にする
+7. 翻訳者は終わったら、最後に push して、プルリクエストの題名プレフィクスを [WIP] から [WFR] にする
     (Work in Progress -> Waiting for Review)
     途中経過を共有したい場合はWIPのままpushしてください
-7 レビューが完了したら、Pull Requestをijokarumawakがマージします
+8 レビューが完了したら、Pull Requestをijokarumawakがマージします
 
 上記手順(4) のコミットコメントが重要で、[#359](https://github.com/couchbaselabs/docs-ja/issues/359)
 のように「プルリクコミットから参照されたよ」と 自動的に記載されるので、
