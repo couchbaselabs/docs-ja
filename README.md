@@ -29,13 +29,19 @@ WIP (Work In Progress) ブランチをPull Requestする形で運用します。
 5. git push origin 359
     * これで、空コミットが作成されて、Pull Requestできるようになります
 6. Pull Requestする
-    この段階でissueにプルリクエストが紐付けられ、作業開始を宣言した状態になります。他の翻訳者の方と作業の重複を防ぐため、翻訳するファイルを決めたら、まずここまで一気にやってしまいましょう
-7. 翻訳者は終わったら、最後に push して、プルリクエストの題名プレフィクスを [WIP] から [WFR] にする
-    (Work in Progress -> Waiting for Review)
-    途中経過を共有したい場合はWIPのままpushしてください
-8 レビューが完了したら、Pull Requestをijokarumawakがマージします
+    * この段階でissueにプルリクエストが紐付けられ、作業開始を宣言した状態になります。他の翻訳者の方と作業の重複を防ぐため、翻訳するファイルを決めたら、まずここまで一気にやってしまいましょう
+7. 翻訳が終わったら、 以下の作業をしてください
+    1. git commit
+        * 最後のコミット
+    2. git rebase -i master
+        * プルリクエスト前にコミットをまとめてください（[参考1](http://www.karakaram.com/git-rebase-i-usage#squash), [参考2](http://www.karakaram.com/git-rebase-i-usage#fixup)）
+    3. git push -f origin 359
+        * rebase後のpushなので、forced pushしてください
+    4. プルリクエストの題名プレフィクスを `[WIP]` から `[WFR]` (Work in Progress -> Waiting for Review) にする
+        * 途中経過を共有したい場合はWIPのままpushしてください
+8. ijokarumawakがPull Requestをレビューし、問題なければマージします
 
-上記手順(4) のコミットコメントが重要で、[#359](https://github.com/couchbaselabs/docs-ja/issues/359)
+上記手順 4. のコミットコメントが重要で、[#359](https://github.com/couchbaselabs/docs-ja/issues/359)
 のように「プルリクコミットから参照されたよ」と 自動的に記載されるので、
 後から見た人が「ああ、これは着手中なんだな」とわかります。
 
