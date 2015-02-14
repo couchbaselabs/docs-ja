@@ -13,5 +13,5 @@ do
   JSON="'{\"title\": \"Translate ${f}\", \"milestone\": $MILESTONE, \"labels\": [\"translation wanted\", \"help wanted\"]}'"
   CMD="curl -XPOST -H \"Content-Type: application/json\" -H \"Authorization: token $OAUTH_TOKEN\" -d $JSON $API_URL"
   eval $CMD
-  sleep 5
+  sleep 10
 done
