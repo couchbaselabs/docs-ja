@@ -59,10 +59,27 @@ HTML生成方法
 
 ## 必要なもの
 
-- Java
+- [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or [OpenJDK](http://openjdk.java.net/)
 - [DITA Open Toolkit](http://www.dita-ot.org/)
 
 ## 生成コマンド
-./bin/rebuild-docs-out.sh
 
-./out ディレクトリにHTMLドキュメントが生成されます。
+以下のコマンドを実行すると、 `out` ディレクトリにHTMLドキュメントが生成されます。
+
+### Unix/Mac
+
+※ `<JRE>/bin` と `<DITA>/bin` にパスが通っていない場合は、 `bin/env.sh.example` を `bin/env.sh` にコピーした上で、書き換えた上で実行してください。
+
+```
+bin/rebuild-docs-out.sh
+```
+
+### Windows
+
+※ `<JRE>\bin` と `<DITA>\bin` にパスが通っていない場合は、 `bin\env.ps1.example` を `bin\env.ps1` にコピーした上で、書き換えた上で実行してください。
+
+※ **エクスプローラ上からダブルクリックでも実行できます**
+
+```
+bin\rebuild-docs-out.ps1
+```
