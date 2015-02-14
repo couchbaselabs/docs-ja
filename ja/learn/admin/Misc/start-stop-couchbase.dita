@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="reference_tsb_3bl_q4">
-  <title>Starting and stopping Couchbase Server</title>
-  <shortdesc>Summary of commands for starting and stopping Couchbase Server on Linux (RHEL and
-    Ubuntu), Windows, and Mac.</shortdesc>
+  <title>Couchbase Serverの起動と停止</title>
+  <shortdesc>Couchbase ServerをLinux(RHELとUbuntu)、Windows、Macで起動および停止するコマンドの一覧です。</shortdesc>
   <refbody>
 
       <table frame="all" id="table_lcw_mfl_q4">
-        <title>Starting and stopping Couchbase Server</title>
+        <title>Couchbase Serverの起動と停止</title>
         <tgroup cols="3">
         <colspec colname="c1" colnum="1" colwidth=".75*"/>
         <colspec colname="c2" colnum="2" colwidth="3.0*"/>
         <colspec colname="newCol3" colnum="3" colwidth="3.0*"/>
         <thead>
           <row>
-            <entry>Operating system</entry>
-            <entry>Start</entry>
-            <entry>Stop</entry>
+            <entry>OS(Operating System)</entry>
+            <entry>起動</entry>
+            <entry>停止</entry>
           </row>
         </thead>
         <tbody>
@@ -63,9 +62,8 @@
           </row>
           <row>
             <entry>Mac</entry>
-            <entry>Double-click on the Couchbase application</entry>
-            <entry>From the Couchbase application, select <uicontrol>Quit Couchbase
-                Server</uicontrol>.</entry>
+            <entry>Couchbaseアプリケーションをダブルクリック</entry>
+            <entry>Couchbaseアプリケーションから<uicontrol>Quit Couchbase Server</uicontrol>を選択</entry>
           </row>
         </tbody>
       </tgroup>
