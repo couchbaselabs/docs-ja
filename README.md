@@ -65,8 +65,15 @@ HTML生成方法
 
 ## 必要なもの
 
+### 必須
+
 - [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or [OpenJDK](http://openjdk.java.net/)
 - [DITA Open Toolkit](http://www.dita-ot.org/)
+
+### オプション
+
+- [Node.js](http://nodejs.org/) 
+    * [ja ディレクトリ配下に変更が入った場合に自動的にビルドする](#ja-ディレクトリ配下に変更が入った場合に自動的にビルドする) 場合に必要
 
 ## 生成コマンド
 
@@ -88,4 +95,27 @@ bin/rebuild-docs-out.sh
 
 ```
 bin\rebuild-docs-out.ps1
+```
+
+## ja ディレクトリ配下に変更が入った場合に自動的にビルドする
+
+node.js を使って、 ja ディレクトリ配下に変更が入った場合に自動的にビルドすることができます。
+
+1. `cd <リポジトリを clone したディレクトリ>`
+2. `npm i watchr iconv-lite http-server`
+3. `bin/env.json.example` を `bin\env.json` にコピーし、環境に合わせて書き換える
+4. `node bin/watch.json` (Unix/Mac) or `node bin\watch.json` (Windows)
+
+また、別のコンソールを立ち上げて、以下の手順を踏むことで、  [http://localhost:8080/](http://localhost:8080/) でドキュメントを見ることができます。
+
+1. `cd <リポジトリを clone したディレクトリ>`
+2. `node_modules/.bin/http-server out` (Unix/Mac) or `node_modules\.bin\http-server out` (Windows)
+
+なお、Tomcat などがローカルで起動していて 8080 がすでに使われている場合、 8081 などで listen します。
+
+実際に listen しているポートは `node_modules/.bin/http-server out` の実行後に出力されるメッセージで確認できます。
+
+```
+Starting up http-server, serving out on: http://0.0.0.0:8081
+Hit CTRL-C to stop the server
 ```

@@ -1,8 +1,10 @@
 out/
 temp/
 pdf/
+node_modules/
 bin/env.sh
 bin/env.ps1
+bin/env.json
 .DS_Store
 crash.log
 out
