@@ -1,51 +1,47 @@
 <!DOCTYPE html
   SYSTEM "about:legacy-compat">
-<html lang="en-us">
+<html lang="ja">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="topic">
-<meta name="description" content="Couchbase Server can be used either in a standalone configuration or cluster configuration. A cluster configuration is multiple Couchbase Servers connected together to provide a single, distributed data store."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-clusterMgr.html">
+<meta name="description" content="Couchbase Serverはスタンドアロンでも、クラスタ構成でも利用できます。クラスタとは複数のCouchbase Serverが相互に接続することにより一つの分散データストアを構成することです。"><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-clusterMgr.html">
 <meta name="DC.Relation" scheme="URI" content="../Concepts/concept-rack-awareness.html">
 <meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="topic1307">
-<meta name="DC.Language" content="en-us">
+<meta name="DC.Language" content="ja">
 <link rel="stylesheet" type="text/css" href="../commonltr.css">
-<title>Nodes and clusters</title>
+<title>ノードとクラスタ</title>
 </head>
 <body id="topic1307">
 
 
-  <h1 class="title topictitle1">Nodes and clusters</h1>
+  <h1 class="title topictitle1">ノードとクラスタ</h1>
 
   
   
-  <div class="body"><p class="shortdesc">Couchbase Server can be used either in a standalone configuration or cluster
-    configuration. A cluster configuration is multiple Couchbase Servers connected together to provide a single,
-    distributed data store.</p>
+  <div class="body"><p class="shortdesc">Couchbase Serverはスタンドアロンでも、クラスタ構成でも利用できます。クラスタとは複数のCouchbase Serverが相互に接続することにより一つの分散データストアを構成することです。</p>
 
     
     <dl class="dl">
       
-        <dt class="dt dlterm">Couchbase Server or Node</dt>
+        <dt class="dt dlterm">Couchbase Serverもしくはノード</dt>
 
-        <dd class="dd">A single Couchbase Server instance running on a machine (physical or virtual), EC2 instance or other environment. <p class="p">All instances are identical, provide the same functionality, interfaces, and systems,
-            and consist of the same components.</p>
+        <dd class="dd">EC2インスタンスやその他の環境の(物理または仮想)マシン上で稼働するCouchbase Serverインスタンスを指します。
+<p class="p">すべてのインスタンスは等しく、同一の機能、インタフェース、システムを提供し、同一のコンポーネントで形成されています。</p>
 </dd>
 
       
       
-        <dt class="dt dlterm">Cluster</dt>
+        <dt class="dt dlterm">クラスタ</dt>
 
-        <dd class="dd">A cluster is a collection of one or more instances of Couchbase Server that are
-          configured as a logical cluster. All nodes within the cluster are identical and provide
-          the same functionality. Each node is capable of managing the cluster and each node can
-          provide aggregate statistics and operational information about the cluster. User data is
-          stored across the entire cluster through the vBucket system. <p class="p">Clusters operate in a
-            completely horizontal fashion. To increase the size of a cluster, add another node.
-            There are no parent/child relationships or hierarchical structures involved. This means
-            that Couchbase Server scales linearly, both in terms of increasing the storage capacity
-            and performance and scalability.</p>
+        <dd class="dd">クラスタとは論理的に一つのクラスタとして構成された、一つ以上のCouchbase Serverインスタンスの集合です。クラスタ内のすべてのノードは等しく、同一の機能を提供します。
+すべてのノードはクラスタを管理することができ、またすべてのノードがクラスタに関する集約された統計情報や運用情報を提供することができます。
+ユーザデータはvBucketシステムによってクラスタ全体にわたって保存されます。
+<p class="p">
+クラスタは完全な水平分散として動作します。クラスタのサイズを拡張するには、ノードを追加します。
+特別な親子関係や階層構造は存在しません。これはCouchbase Serverがストレージ容量についても、パフォーマンスやスケーラビリティについても、リニアにスケールすることを意味しています。
+</p>
 
         </dd>
 
@@ -56,8 +52,8 @@
 
 <nav class="related-links">
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-clusterMgr.html" title="The Cluster Manager is responsible for node and cluster management. Every node within a Couchbase cluster includes the Cluster Manager component.">Cluster Manager</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/concept-rack-awareness.html" title="The Rack Awareness feature permits logical groupings of servers on a cluster where each server group physically belongs to a rack or Availability Zone.">Rack Awareness</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Concepts/concept-clusterMgr.html" title="クラスタマネージャはノードとクラスタの管理を担当します。Couchbaseクラスタ内のすべてのノードはクラスタマネージャコンポーネントを有しています。">クラスタマネージャ</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Concepts/concept-rack-awareness.html" title="ラックアウェアネス機能は、ラックやアベイラビリティゾーンにそれぞれのサーバグループが物理的に属しているクラスタにおける、論理的グループを可能にします。">ラックアウェアネス</a></div>
 </div>
 </nav>
 </body>
