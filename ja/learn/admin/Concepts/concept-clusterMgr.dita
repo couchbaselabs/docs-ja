@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic633">
-  <title>Cluster Manager</title>
-  <shortdesc>The Cluster Manager is responsible for  node and cluster management. 
-    Every node within a Couchbase cluster includes the Cluster Manager component.</shortdesc>
+<topic xml:lang="ja" id="topic633">
+  <title>クラスタマネージャ</title>
+  <shortdesc>クラスタマネージャはノードとクラスタの管理を担当します。Couchbaseクラスタ内のすべてのノードはクラスタマネージャコンポーネントを有しています。</shortdesc>
   <body>
-    <p>The Cluster Manager is responsible for the following within a cluster:</p>
+    <p>クラスタマネージャはクラスタ内の以下の事項を管理します:</p>
     <ul>
-      <li><p>Cluster management</p></li>
-      <li><p>Node administration</p></li>
-      <li><p>Node monitoring</p></li>
-      <li><p>Statistics gathering and aggregation</p></li>
-      <li><p>Run-time logging</p></li>
-      <li><p>Multi-tenancy</p></li>
-      <li><p>Security for administrative and client access</p></li>
-      <li><p>Client proxy service to redirect requests</p></li>
+      <li><p>クラスタの管理</p></li>
+      <li><p>ノードの管理</p></li>
+      <li><p>ノードの監視</p></li>
+      <li><p>統計情報の収集と集約</p></li>
+      <li><p>ランタイムロギング</p></li>
+      <li><p>マルチテナント</p></li>
+      <li><p>管理用あるいはクライアントからのアクセスに対するセキュリティ</p></li>
+      <li><p>リクエストをリダイレクトするクライアントプロキシサービス</p></li>
     </ul>
-    <p>Access to the Cluster Manager is provided through the administration interface on a dedicated
-      network port and through dedicated network ports for client access. Additional ports are
-      configured for inter-node communication.</p>
+    <p>クラスタマネージャへのアクセスは、専用のネットワークポートによる管理用インタフェース、もしくはクライアントアクセス用の専用ネットワークポートを経由して提供されます。加えて、ノード間のコミュニケーション用に幾つかのポートを利用します。
+      </p>
   </body>
 </topic>

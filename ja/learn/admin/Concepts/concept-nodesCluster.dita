@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic1307">
-  <title>Nodes and clusters</title>
-  <shortdesc>Couchbase Server can be used either in a standalone configuration or cluster
-    configuration. A cluster configuration is multiple Couchbase Servers connected together to provide a single,
-    distributed data store.</shortdesc>
+<topic xml:lang="ja" id="topic1307">
+  <title>ノードとクラスタ</title>
+  <shortdesc>Couchbase Serverはスタンドアロンでも、クラスタ構成でも利用できます。クラスタとは複数のCouchbase Serverが相互に接続することにより一つの分散データストアを構成することです。</shortdesc>
   
   <body>
     
     <dl>
       <dlentry>
-        <dt>Couchbase Server or Node</dt>
-        <dd>A single Couchbase Server instance running on a machine (physical or virtual), EC2 instance or other environment. <p>All instances are identical, provide the same functionality, interfaces, and systems,
-            and consist of the same components.</p></dd>
+        <dt>Couchbase Serverもしくはノード</dt>
+        <dd>EC2インスタンスやその他の環境の(物理または仮想)マシン上で稼働するCouchbase Serverインスタンスを指します。
+<p>すべてのインスタンスは等しく、同一の機能、インタフェース、システムを提供し、同一のコンポーネントで形成されています。</p></dd>
       </dlentry>
       <dlentry>
-        <dt>Cluster</dt>
-        <dd>A cluster is a collection of one or more instances of Couchbase Server that are
-          configured as a logical cluster. All nodes within the cluster are identical and provide
-          the same functionality. Each node is capable of managing the cluster and each node can
-          provide aggregate statistics and operational information about the cluster. User data is
-          stored across the entire cluster through the vBucket system. <p>Clusters operate in a
-            completely horizontal fashion. To increase the size of a cluster, add another node.
-            There are no parent/child relationships or hierarchical structures involved. This means
-            that Couchbase Server scales linearly, both in terms of increasing the storage capacity
-            and performance and scalability.</p>
+        <dt>クラスタ</dt>
+        <dd>クラスタとは論理的に一つのクラスタとして構成された、一つ以上のCouchbase Serverインスタンスの集合です。クラスタ内のすべてのノードは等しく、同一の機能を提供します。
+すべてのノードはクラスタを管理することができ、またすべてのノードがクラスタに関する集約された統計情報や運用情報を提供することができます。
+ユーザデータはvBucketシステムによってクラスタ全体にわたって保存されます。
+<p>
+クラスタは完全な水平分散として動作します。クラスタのサイズを拡張するには、ノードを追加します。
+特別な親子関係や階層構造は存在しません。これはCouchbase Serverがストレージ容量についても、パフォーマンスやスケーラビリティについても、リニアにスケールすることを意味しています。
+</p>
         </dd>
       </dlentry>
     </dl>
