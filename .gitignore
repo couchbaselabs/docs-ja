@@ -1,7 +1,9 @@
 out/
 temp/
 pdf/
-ja/*/images
+ja/**/images
+bin/env.sh
+bin/env.ps1
 .DS_Store
 crash.log
 out
