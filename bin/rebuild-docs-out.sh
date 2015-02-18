@@ -5,6 +5,15 @@ PROJECT_HOME=$BIN_DIR/..
 OUT_DIR="$PROJECT_HOME/out"
 DITAMAP="$PROJECT_HOME/ja/learn/admin/Admin.ditamap"
 
+IMAGE_DIR=learn/admin/images
+IMAGE_DIR_JA=$PROJECT_HOME/ja/$IMAGE_DIR
+IMAGE_DIR_EN=../../../en/$IMAGE_DIR
+if [ ! -e $IMAGE_DIR_JA ]
+then
+  echo "creating a symbolic link for $IMAGE_DIR..."
+  ln -s $IMAGE_DIR_EN $IMAGE_DIR_JA
+fi
+
 if [ -d $OUT_DIR ]
 then
   echo "deleting old contents from $OUT_DIR."

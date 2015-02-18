@@ -1,6 +1,7 @@
 out/
 temp/
 pdf/
+ja/*/images
 .DS_Store
 crash.log
 out
