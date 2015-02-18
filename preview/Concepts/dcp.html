@@ -1,15 +1,16 @@
 <!DOCTYPE html
   SYSTEM "about:legacy-compat">
-<html lang="en-us">
+<html lang="ja">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="topic">
-<meta name="description" content="Database Change Protocol (DCP) is the protocol used to stream data changes to buckets."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
+<meta name="description" content="Database Change Protocol (DCP)はバケットのデータ更新をストリームするためのプロトコロルです。"><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
 <meta name="DC.Relation" scheme="URI" content="../Concepts/concepts-TAP.html">
 <meta name="DC.Relation" scheme="URI" content="../Concepts/concept-client-interface.html">
 <meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="topic_wzx_szg_14">
+<meta name="DC.Language" content="ja">
 <link rel="stylesheet" type="text/css" href="../commonltr.css">
 <title>Database Change Protocol</title>
 </head>
@@ -20,162 +21,170 @@
 
 	
 
-	<div class="body"><p class="shortdesc">Database Change Protocol (DCP) is the protocol used to stream data changes to
-		buckets.</p>
+	<div class="body"><p class="shortdesc">Database Change Protocol (DCP)はバケットのデータ更新をストリームするためのプロトコロルです。</p>
 
-		<p class="p">The Database Change Protocol (DCP) is a streaming protocol that significantly reduces
-			latency for view updates. With DCP, changes made to documents in memory are immediately
-			streamed to be indexed without being written to disk. This provides faster view consistency
-			which provides fresher data. DCP reduces latency for cross data center replication (XDCR).
-			Data is replicated memory-to-memory from the source cluster to the destination cluster
-			before being written to disk on the source cluster.</p>
+		<p class="p">The Database Change Protocol (DCP)はView更新のレイテンシを大幅に縮めることができるストリーミングプロトコルです。 
+DCPにより、メモリ上のドキュメントに対する変更はディスクに書き込まれる前に即座にストリームされ、インデクシングされます。
+このため、より高速にViewの一貫性を提供し、最新のデータを返却することができます。
+DCPはまた、クロスデータセンタレプリケーション(XDCR)のレイテンシも小さくします。
+データは、ソースクラスタのディスクに書き込まれる前に、ソースクラスタのメモリから宛先クラスタのメモリへとレプリケートされます。
+</p>
 
 
-		<p class="p">To work with DCP, you need to be familiar with the following concepts, which are listed in
-			alphabetical order for convenience.</p>
+		<p class="p">DCPを利用するには、以下のコンセプト(アルファベット順)を理解する必要があります。</p>
 
 
 		<dl class="dl">
 			
-				<dt class="dt dlterm">Application client</dt>
+				<dt class="dt dlterm">アプリケーションクライアント</dt>
 
-				<dd class="dd">A normal client that transmits read, write, update, delete, and query requests to
-					the server cluster, usually for an interactive web application. </dd>
-
-			
-
-			
-				<dt class="dt dlterm">DCP client</dt>
-
-				<dd class="dd">A special client that streams data from one or more Couchbase server nodes, for
-					purposes of intra-cluster replication (to be a backup in case the master server
-					fails), indexing (to answer queries in aggregate about the data in the whole
-					cluster), XDCR (to replicate data from one cluster to another cluster, usually
-					located in a separate data center), incremental backup, and any 3rd party component
-					that wants to index, monitor, or analyze Couchbase data in near real time, or in
-					batch mode on a schedule. </dd>
+				<dd class="dd">サーバクラスタに参照、書込み、更新、削除、クエリのリクエストを送信する通常のクライアントです。一般的にはインタラクティブなWebアプリケーションです。</dd>
 
 			
 
 			
-				<dt class="dt dlterm">Failover log</dt>
+				<dt class="dt dlterm">DCPクライアント</dt>
 
-				<dd class="dd">A list of previously known vBucket versions for a vBucket. If a client connects to a
-					server and was previously connected to a different version of a vBucket than that
-					server is currently working with, the failure log is used to find a rollback
-					point.</dd>
-
-			
-
-			
-				<dt class="dt dlterm">History branch</dt>
-
-				<dd class="dd">Whenever a node becomes the master node for a vBucket in the event of a failover or
-					uncontrolled shutdown and restart, if it was not the farthest ahead of all processes
-					watching events on that partition and starts taking mutations, it might reuse
-					sequence numbers that other processes have already seen on this partition. This can
-					be a history branch, and the new master must assign the vBucket a new vBucket version
-					so that DCP clients in the distributed system can recognize that they are ahead of
-					the new master and roll back changes at the point this happened in the stream. During
-					a controlled handover from an old master to a new master, the sequence history cannot
-					have branches, so there is no need to assign a new version to the vBucket being
-					handed off. Controlled handovers occur in the case of a rebalance for elasticity
-					(such as adding or removing a node) or a swap rebalance in the case of an upgrade
-					(such as adding a new version of Couchbase Server to a cluster or removing an old
-					version of Couchbase Server).</dd>
+				<dd class="dd">
+ひとつ以上のCouchbase Serverノードからデータをストリーミング受信する特別なクライアントです。
+クラスタ内レプリケーション(マスタサーバがダウンした際にバックアップとなる)、インデクシング(クラスタ全体のデータを集約してクエリに応答するため)、
+XDCR(あるクラスタから別のクラスタへとデータをレプリケートするため、通常は別のデータセンタに設置されたクラスタ)、
+差分バックアップ、そしてCouchbaseのデータを準リアルタイムもしくはスケジュール起動のバッチモードで、
+インデクシング、モニタリング、あるいは分析を行うサードパーティのコンポーネントが該当します。
+</dd>
 
 			
 
 			
-				<dt class="dt dlterm">Mutation</dt>
+				<dt class="dt dlterm">フェイルオーバログ</dt>
 
-				<dd class="dd">A mutation is an event that deletes a key or changes the value a key points to.
-					Mutations occur when transactions such as create, update, delete or expire are
-					executed.</dd>
-
-			
-
-			
-				<dt class="dt dlterm">Rollback point</dt>
-
-				<dd class="dd">The server uses the failover log to find the first possible history branch between
-					the last time a client was receiving mutations for a vBucket and now. The sequence
-					number of that history branch is the rollback point that is sent to the client.</dd>
+				<dd class="dd">
+あるvBucketにおける、以前に接続したことのあるvBucketのバージョンのリストです。
+もしクライアントがサーバに接続し、サーバ上の現在のvBucketのバージョンが、以前に接続したものと異なっている場合、
+フェイルオーバログを利用してロールバックポイントを探します。
+</dd>
 
 			
 
 			
-				<dt class="dt dlterm">Sequence number</dt>
+				<dt class="dt dlterm">ヒストリブランチ</dt>
 
-				<dd class="dd">Each mutation that occurs on a vBucket is assigned a number, which strictly
-					increases as events are assigned numbers (there is no harm in skipping numbers, but
-					they must increase), that can be used to order that event against other mutations
-					within the same vBucket. This does not give a cluster-wide ordering of events, but it
-					does enable processes watching events on a vBucket to resume where they left off
-					after a disconnect. </dd>
+				<dd class="dd">
+あるノードがフェイルオーバや、不正なシャットダウンおよび再起動により、特定のvBucketのマスタとなったとき、
+もしそのノードが、そのvBucketで発生しているイベントを受信しているすべてのプロセスにおいて、
+最新の状態となっていないまま データ更新を引き継いだ場合、
+他のプロセスがすでにこのvBucketで受信済みのシーケンス番号を使い回す可能性があります。
+これは、ヒストリブランチとなり、新しいマスタは、分散システム内のDCPクライアントが
+新しいマスタよりも先に進んでいて、このストリームにおいてマスタ切り替えが発生した時点にロールバックが必要だと
+認識できるように、vBucketを新しいvBucketのバージョンにアサインしなくてはなりません。
 
-			
-
-			
-				<dt class="dt dlterm">Server</dt>
-
-				<dd class="dd">A master or replica node that serves as the network storage component of a cluster.
-					For a given partition, only one node can be master in the cluster. If that node fails
-					or becomes unresponsive, the cluster selects a replica node to become the new
-					master.</dd>
+適切に制御されて旧マスタから新マスタへ引き継がれた場合、
+シーケンスのヒストリにブランチはできません。
+引き継がれるvBucketに新しいバージョンを割り当てる必要はないからです。
+クラスタ伸縮時のリバランス(ノードの追加や削除)、アップグレード時のスワップリバランス(新しいCouchbase Serverバージョンのノードをクラスタへ追加し、古いバージョンのノードを削除)した場合は、正しく引き継ぎを制御することができます。
+</dd>
 
 			
 
 			
-				<dt class="dt dlterm">Snapshot</dt>
+				<dt class="dt dlterm">データの変化(Mutation)</dt>
 
-				<dd class="dd">To send a client a consistent picture of the data it has, the server takes a
-					snapshot of the state of its disk write queue or the state of its storage, depending
-					on where it needs to read from to satisfy the client’s current requests. This
-					snapshot represents the exact state of the mutations it contains at the time it was
-					taken. Using this snapshot, the server can send the items that existed at the point
-					in time the snapshot was taken, and only those items, in the state they were in when
-					the snapshot was taken. Snapshots do not imply that everything is locked or copied
-					into a new structure. In the current Couchbase storage subsystem, snapshots are
-					essentially “free." The only cost is when a file is copy compacted to remove garbage
-					and wasted space, the old file cannot be freed until all snapshot holders have
-					released the old file. It’s also possible to “kick” a snapshot holder if the system
-					determines the holder of the snapshot is taking too long. DCP clients that are kicked
-					can reconnect and a new snapshot will be obtained, allowing it to restart from where
-					it left off. </dd>
+				<dd class="dd">
+データの変化とはキーを削除したり、キーと対になるバリューを変更するイベントのことです。
+データの生成、更新、削除、期限切れなどの更新処理が実行されると発生します。
+					</dd>
+
+			
+
+			
+				<dt class="dt dlterm">ロールバックポイント</dt>
+
+				<dd class="dd">
+サーバはフェイルオーバログを利用して、
+クライアントがデータの変化を最後に受信した時から現在までの間で利用可能な、直近のヒストリブランチを探します。
+そのヒストリブランチのシーケンス番号が、クライアントに送信されるロールバックポイントとなります。
+</dd>
+
+			
+
+			
+				<dt class="dt dlterm">シーケンス番号</dt>
+
+				<dd class="dd">
+あるvBucketで発生した各データの変化には番号が割り当てられます。
+これはイベントに番号を付与するたびに厳密に増加するものです(番号をスキップしても問題ありませんが、増加する必要があります)。
+同一のvBucketにおけるデータの変化イベントのソートに利用します。
+これはクラスタ全体でのイベント順序を保証するものではありませんが、
+特定のvBucketで発生するイベントを監視するプロセスで、切断したところからの再開を可能にします。
+</dd>
+
+			
+
+			
+				<dt class="dt dlterm">サーバ</dt>
+
+				<dd class="dd">
+クラスタのネットワークストレージコンポーネントとして動作するマスタおよびレプリカノードです。
+ひとつのパーティションにつき、クラスタ内で一台のノードだけがマスタになることができます。
+マスタがダウンもしくは利用不可となると、クラスタは新しいマスタとなるレプリカノードを選出します。
+</dd>
+
+			
+
+			
+				<dt class="dt dlterm">スナップショット</dt>
+
+				<dd class="dd">
+クライアントに一貫したデータ像を送信するため、
+クライアントの現在のリクエストを満たす最適な場所を考慮し、
+サーバはディスク書込みキュー状態もしくはストレージ状態のスナップショットを取得します。
+
+このスナップショットは、取得時に含まれるデータの変化の完全な状態を表します。
+スナップショットを利用して、サーバはスナップショット取得時点で存在したアイテムのみを送信することができます。
+
+スナップショットの作成にはすべてをロックして別の構造にコピーする必要はありません。
+原稿のCouchbaseストレージサブシステムでは、
+本質的に、スナップショットの取得にはコストがかかりません。
+唯一のコストは不要なデータとスペースを除去するためのコンパクションでファイルがコピーされる際に、すべてのスナップショットホルダがコンパクション前のファイルをリリースするのを待つ必要があることです。
+
+もしスナップショットホルダがスナップショットの取得に時間がかかり過ぎているとシステムが判断した場合、スナップショットホルダを強制的に停止することができます。
+このとき、切断されたDCPクライアントは再接続し、新規のスナップショットが取得され、切断した箇所からリスタートすることができます。
+</dd>
 
 			
 
 			
 				<dt class="dt dlterm">vBucket</dt>
 
-				<dd class="dd">Couchbase splits the key space into a fixed amount of vBuckets, usually 1024. Keys
-					are deterministically assigned to a vBucket, and vBuckets are assigned to nodes to
-					balance the load across the cluster. </dd>
+				<dd class="dd">
+Couchbaseはキー空間を固定数のvBucketに分割します、通常は1024です。
+キーは決まった方法でvBucketに割り当てられ、vBucketはクラスタ内で不可がバランスされるようにノードに割り当てられます。
+</dd>
 
 			
 
 			
-				<dt class="dt dlterm">vBucket stream</dt>
+				<dt class="dt dlterm">vBucketストリーム</dt>
 
-				<dd class="dd">A grouping of messages related to receiving mutations for a specific vBucket. This
-					includes mutation, deletion, and expiration messages and snapshot marker messages.
-					The transport layer provides a way to separate and multiplex multiple streams of
-					information for different vBuckets. All messages between snapshot marker messages are
-					considered to be one snapshot. A snapshot contains only the recent update for any
-					given key within the snapshot window. It might require several complete snapshots to
-					get the current version of the document. </dd>
+				<dd class="dd">
+特定のvBucketにおけるデータ変化の受信に関連するメッセージのグループです。
+データの変化、削除、期限切れのメッセージ、およびスナップショットマーカのメッセージを含みます。
+転送レイヤは複数の異なるvBucketの情報ストリームを複合化したり、分離する手順を提供します。
+スナップショットマーカ間のすべてのメッセージは単一のスナップショットとして扱われます。
+スナップショットは、各キーについて、取得間隔内で最新の変更しか保持しません。
+ドキュメントの最新バージョンを得るには、いくつかの完全なスナップショットが必要になることがあります。
+</dd>
 
 			
 
 			
-				<dt class="dt dlterm">vBucket version</dt>
+				<dt class="dt dlterm">vBucketのバージョン</dt>
 
-				<dd class="dd">A universally unique identifier (UUID) and sequence number pair associated with a
-					vBucket. A new version is assigned to a vBucket by the new master node any time there
-					might have been a history branch. The UUID is a randomly generated number, and the
-					sequence number is the sequence number that vBucket last processed at the time the
-					version was created. </dd>
+				<dd class="dd">
+vBucketに関連する、普遍的に一意となる識別子(UUID)とシーケンス番号のペアです。
+ヒストリブランチが存在する可能性がある場合に、新しいマスタノードによって、新しいバージョンがvBucketに割り当てられます。
+UUIDはランダムに生成された数値で、シーケンス番号はそのバージョンが作成されたときにvBucketが最後に処理したものです。
+</dd>
 
 			
 
@@ -189,9 +198,9 @@
 
 <nav class="related-links">
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concepts-TAP.html" title="The TAP protocol is an internal part of the Couchbase Server system that is used to exchange data throughout the system.">TAP</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/concept-client-interface.html">Client interface</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../Concepts/concepts-TAP.html" title="The TAP protocol is an internal part of the Couchbase Server system that is used to exchange data throughout the system.">TAP</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Concepts/concept-client-interface.html">Client interface</a></div>
 </div>
 </nav>
 </body>
