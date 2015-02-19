@@ -1,41 +1,42 @@
 <!DOCTYPE html
   SYSTEM "about:legacy-compat">
-<html lang="en-us">
+<html lang="ja">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="topic">
-<meta name="description" content="Couchbase Server provides data management services using buckets, which are isolated virtual containers for data. A bucket is a logical grouping of physical resources within a cluster of Couchbase Servers."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
+<meta name="description" content="Couchbase Serverはバケットを利用してデータ管理サービスを提供します。 バケットは分離された仮想のデータコンテナです。 ひとつのバケットはCouchbase Serverクラスタ内にある複数の物理的なリソースの論理的グループです。"><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
 <meta name="DC.Relation" scheme="URI" content="../Concepts/concept-clusterMgr.html">
 <meta name="DC.Relation" scheme="URI" content="../Concepts/concept-ramQuota.html">
 <meta name="DC.Relation" scheme="URI" content="../CLI/cli-overview.html">
 <meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-intro.html">
 <meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="topic5853">
-<meta name="DC.Language" content="en-us">
+<meta name="DC.Language" content="ja">
 <link rel="stylesheet" type="text/css" href="../commonltr.css">
-<title>Data storage</title>
+<title>データストレージ</title>
 </head>
 <body id="topic5853">
 
 
-	<h1 class="title topictitle1">Data storage</h1>
+	<h1 class="title topictitle1">データストレージ</h1>
 
 	
 	
-	<div class="body"><p class="shortdesc">Couchbase Server provides data management services using <dfn class="term">buckets</dfn>, which are
-		isolated virtual containers for data. A bucket is a logical grouping of physical resources
-		within a cluster of Couchbase Servers.</p>
+	<div class="body"><p class="shortdesc">
+Couchbase Serverは<dfn class="term">バケット</dfn>を利用してデータ管理サービスを提供します。
+バケットは分離された仮想のデータコンテナです。
+ひとつのバケットはCouchbase Serverクラスタ内にある複数の物理的なリソースの論理的グループです。
+</p>
 
-		<p class="p">Buckets provide a secure mechanism for organizing, managing, and analyzing the data storage
-			resources. Two types of data buckets, <samp class="ph codeph">memcached</samp> and
-				<samp class="ph codeph">Couchbase</samp>, enable you to store data either in-memory only or both
-			in-memory and on disk (for added reliability). Select the appropriate bucket type for
-			your implementation during the Couchbase Server setup.</p>
+		<p class="p">
+バケットはデータストレージリソースを組織し、管理し、分析するセキュアなメカニズムを提供します。
+データバケットには<samp class="ph codeph">memcached</samp>と<samp class="ph codeph">Couchbase</samp>の二種類があり、インメモリのみ、もしくはインメモリとディスクの両方(信頼性を高める)から選ぶことができます。
+Couchbase Serverの設定時に、利用用途に応じて適切なバケットタイプを選択してください。
+</p>
 
 		
-		<div class="note note"><span class="notetitle">Note:</span> Buckets can be used by multiple client applications across
-			a cluster. </div>
+		<div class="note note"><span class="notetitle">注:</span> バケットはクラスタ全体で複数のクライアントアプリケーションから利用することができます。</div>
 
 		
 		
@@ -44,9 +45,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="16.5016501650165%" id="d18457e42">Bucket Type</th>
+						<th class="entry" valign="top" width="16.5016501650165%" id="d18457e42">バケットタイプ</th>
 
-						<th class="entry" valign="top" width="83.4983498349835%" id="d18457e45">Description</th>
+						<th class="entry" valign="top" width="83.4983498349835%" id="d18457e45">説明</th>
 
 					</tr>
 
@@ -56,21 +57,21 @@
 					<tr class="row">
 						<td class="entry" valign="top" width="16.5016501650165%" headers="d18457e42 ">Couchbase</td>
 
-						<td class="entry" valign="top" width="83.4983498349835%" headers="d18457e45 ">Provides highly-available and dynamically reconfigurable distributed data storage, with
-							persistence and replication services. Couchbase buckets are 100%
-							protocol compatible with, and built in the spirit of, the memcached open
-							source distributed key-value cache.</td>
+						<td class="entry" valign="top" width="83.4983498349835%" headers="d18457e45 ">
+永続化とレプリケーションにより可用性の高い、動的に変更可能な分散データストレージです。
+Couchbaseバケットはオープンソース分散キーバリューキャッシュであるmemcachedをベースにしており、memcachedプロトコルと100%互換性があります。
+</td>
 
 					</tr>
 
 					<tr class="row">
 						<td class="entry" valign="top" width="16.5016501650165%" headers="d18457e42 ">memcached</td>
 
-						<td class="entry" valign="top" width="83.4983498349835%" headers="d18457e45 ">Provides a directly-addressed, distributed (scale-out), in-memory, key-value cache.
-							Memcached buckets are designed to be used alongside relational database
-							technology. They cache frequently-used data, thereby reducing the number
-							of queries a database server must perform for web servers delivering a
-							web application.</td>
+						<td class="entry" valign="top" width="83.4983498349835%" headers="d18457e45 ">
+直接アドレス指定型の、分散(スケールアウト) インメモリ キーバリューキャッシュです。
+memcachedバケットはリレーショナルデータベーステクノロジと併用して使用するように設計されており、
+Webアプリケーションを提供するWebサーバ群からの、データベースクエリ回数を削減できます。
+</td>
 
 					</tr>
 
@@ -79,7 +80,9 @@
 			</table>
 </div>
 
-		<p class="p">The different bucket types support different capabilities.  </p>
+		<p class="p">
+バケットタイプにより特性が異なります。
+</p>
  
 		
 		
@@ -90,11 +93,11 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="17.006802721088434%" id="d18457e90">Capability</th>
+						<th class="entry" valign="top" width="17.006802721088434%" id="d18457e90">特性</th>
 
-						<th class="entry" valign="top" width="35.374149659863946%" id="d18457e93">memcached buckets</th>
+						<th class="entry" valign="top" width="35.374149659863946%" id="d18457e93">memcachedバケット</th>
 
-						<th class="entry" valign="top" width="47.61904761904761%" id="d18457e96">Couchbase buckets</th>
+						<th class="entry" valign="top" width="47.61904761904761%" id="d18457e96">Couchbaseバケット</th>
 
 					</tr>
 
@@ -102,7 +105,7 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">Item size limit</td>
+						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">アイテムサイズ上限</td>
 
 						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">1 MB</td>
 
@@ -111,47 +114,47 @@
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">Persistence</td>
+						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">永続化</td>
 
-						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">No</td>
+						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">不可</td>
 
-						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">Yes</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">Replication</td>
-
-						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">No</td>
-
-						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">Yes</td>
+						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">可能</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">Rebalance</td>
+						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">レプリケーション</td>
 
-						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">No</td>
+						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">不可</td>
 
-						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">Yes</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">Statistics</td>
-
-						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">Limited set for in-memory stats</td>
-
-						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">Full suite</td>
+						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">可能</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">Client support</td>
+						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">リバランス</td>
 
-						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">memcached, should use Ketama consistent hashing</td>
+						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">不可</td>
 
-						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">Full Smart Client Support</td>
+						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">可能</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">統計情報</td>
+
+						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">インメモリ統計情報のみ</td>
+
+						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">全て</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">クライアントサポート</td>
+
+						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">memcachedクライアント、Ketamaコンシステントハッシュの利用が必要</td>
+
+						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">スマートクライアント</td>
 
 					</tr>
 
@@ -161,36 +164,36 @@
 					<tr class="row">
 						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">XDCR</td>
 
-						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">No</td>
+						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">不可</td>
 
-						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">Yes</td>
+						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">可能</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">Backup</td>
+						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">バックアップ</td>
 
-						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">No</td>
+						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">不可</td>
 
-						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">Yes</td>
+						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">可能</td>
 
 					</tr>
 
 					<tr class="row">
 						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">Tap/DCP</td>
 
-						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">No</td>
+						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">不可</td>
 
-						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">Yes</td>
+						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">可能</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">Encrypted data access </td>
+						<td class="entry" valign="top" width="17.006802721088434%" headers="d18457e90 ">データアクセス暗号化</td>
 
-						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">No</td>
+						<td class="entry" valign="top" width="35.374149659863946%" headers="d18457e93 ">不可</td>
 
-						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">Yes</td>
+						<td class="entry" valign="top" width="47.61904761904761%" headers="d18457e96 ">可能</td>
 
 					</tr>
 
@@ -200,9 +203,10 @@
 </div>
 
 		
-		<p class="p">Couchbase-type buckets provide a highly-available and dynamically reconfigurable distributed
-			data store, survive node failures, and allow cluster reconfiguration while continuing to
-			service requests. They have the following core capabilities:</p>
+		<p class="p">
+Couchbaseバケットタイプはノード障害に対応する高い可用性を持ち、リクエストを受け付けている間でも、
+クラスタを動的に再設定が可能な分散データストアを提供します。
+Couchbaseバケットタイプには次の特性があります:</p>
 
 		
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
@@ -210,9 +214,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="16.5016501650165%" id="d18457e243">Couchbase bucket capability</th>
+						<th class="entry" valign="top" width="16.5016501650165%" id="d18457e243">Couchbaseバケットの特性</th>
 
-						<th class="entry" valign="top" width="83.4983498349835%" id="d18457e246">Description</th>
+						<th class="entry" valign="top" width="83.4983498349835%" id="d18457e246">説明</th>
 
 					</tr>
 
@@ -220,40 +224,45 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="16.5016501650165%" headers="d18457e243 ">Caching</td>
+						<td class="entry" valign="top" width="16.5016501650165%" headers="d18457e243 ">キャッシュ</td>
 
-						<td class="entry" valign="top" width="83.4983498349835%" headers="d18457e246 ">Couchbase buckets operate through RAM. Data is kept in RAM and persisted down to disk.
-							Data will be cached in RAM until the configured RAM is exhausted, and
-							data is ejected from RAM. If the requested data is not currently in the
-							the RAM cache, it will be loaded automatically from disk.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="16.5016501650165%" headers="d18457e243 ">Persistence</td>
-
-						<td class="entry" valign="top" width="83.4983498349835%" headers="d18457e246 ">Data objects can be persisted asynchronously to the hard-disk resources from memory to
-							provide protection from server restarts or minor failures. Persistence
-							properties are set at the bucket level.</td>
+						<td class="entry" valign="top" width="83.4983498349835%" headers="d18457e246 ">
+Couchbaseバケットに対するオペレーションはRAMを経由して行われます。
+データはRAM上に保持され、ディスクに永続化されます。
+設定されたRAM容量が不足するまで、データはRAM上にキャッシュされ、RAMが枯渇するとデータはRAMから除去されます。
+リクエストされたデータがRAM上に存在しない場合、データを自動的にディスクからロードします。
+</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="16.5016501650165%" headers="d18457e243 ">Replication</td>
+						<td class="entry" valign="top" width="16.5016501650165%" headers="d18457e243 ">永続化</td>
 
-						<td class="entry" valign="top" width="83.4983498349835%" headers="d18457e246 ">A configurable number of replica servers can receive copies of all
-							data objects in the Couchbase-type bucket. If the host machine fails, a
-							replica server can be promoted to be the host server, providing high
-							availability cluster operations via failover. Replication is configured
-							at the bucket level.</td>
+						<td class="entry" valign="top" width="83.4983498349835%" headers="d18457e246 ">
+データオブジェクトはサーバの再起動や障害からデータを保護するため、非同期にメモリからハードディスクリソースへと永続化されます。
+永続化の設定はバケット単位に行います。
+</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="16.5016501650165%" headers="d18457e243 ">Rebalancing</td>
+						<td class="entry" valign="top" width="16.5016501650165%" headers="d18457e243 ">レプリケーション</td>
 
-						<td class="entry" valign="top" width="83.4983498349835%" headers="d18457e246 ">Rebalancing enables load distribution across resources and dynamic
-							addition or removal of buckets and servers in the cluster. </td>
+						<td class="entry" valign="top" width="83.4983498349835%" headers="d18457e246 ">
+Couchbaseバケット内の全データオブジェクトのコピーを受信するレプリカサーバの台数を設定可能です。
+ホストマシンに障害が発生した場合、フェイルオーバを行い、レプリカサーバをホストサーバへと昇格することで、
+高い可用性を持つクラスタを提供することができます。
+レプリケーションはバケット単位に設定します。
+</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="16.5016501650165%" headers="d18457e243 ">リバランス</td>
+
+						<td class="entry" valign="top" width="83.4983498349835%" headers="d18457e246 ">
+リバランスは複数のリソース間で負荷を分散させることができ、動的にクラスタ内のバケットやサーバの追加および削除を行うことができます。
+</td>
 
 					</tr>
 
@@ -263,62 +272,68 @@
 </div>
 
 		
-		<p class="p">Both the memcached and Couchbase buckets can be authenticated via SASL, or not authenticated
-			(non-SASL).</p>
+		<p class="p">
+memcachedバケットもCouchbaseバケットも、SASLによる認証を設定可能です。認証をしない設定も可能です。
+</p>
 
-		<p class="p">The following bucket types can be configured: </p>
+		<p class="p">バケットの認証設定には次の種別があります: </p>
 
 		<dl class="dl">
 			
-			<dt class="dt dlterm">Default bucket</dt>
+			<dt class="dt dlterm">デフォルトバケット</dt>
 
-				<dd class="dd">The default bucket is a Couchbase bucket that always resides on port <samp class="ph codeph">11211</samp>
-					and is a non-SASL authenticating bucket. When Couchbase Server is first
-					installed, this bucket is automatically set up during installation. It can be
-					removed after the installation and can also be re-added later. If you decide to
-					add the bucket named <samp class="ph codeph">default</samp> at a later time, it must be placed
-					on port <samp class="ph codeph">11211</samp> and must be a non-SASL authenticating bucket. A
-					bucket that is not named <samp class="ph codeph">default</samp> cannot reside on port
-						<samp class="ph codeph">11211</samp> if it is a non-SASL bucket. The
-						<samp class="ph codeph">default</samp> bucket can be reached with a vBucket aware smart
-					client, an ASCII client or a binary client that doesn’t use SASL
-					authentication.</dd>
+				<dd class="dd">
+デフォルトバケットは必ずポート<samp class="ph codeph">11211</samp>でリスンするCouchbaseバケットです。
+SASL認証を適用することはできません。
+Couchbase Serverを初めてインストールする場合、インストールの途中でデフォルトバケットは自動的にセットアップされます。
 
-			
-			
-				<dt class="dt dlterm">Non-SASL buckets</dt>
+インストール終了後にデフォルトバケットの削除すること、その後再作成することもできます。
+<samp class="ph codeph">default</samp>という名前のバケットを作成する場合、
+<samp class="ph codeph">11211</samp>ポートを設定する必要があり、SASL認証は利用できません。
 
-				<dd class="dd">Non-SASL buckets can be placed on any available port, with the exception of port
-						<samp class="ph codeph">11211</samp> if the bucket is not named <samp class="ph codeph">default</samp>.
-					Only one Non-SASL bucket can be placed on any individual port. These buckets can
-					be reached with a vBucket aware smart client, an ASCII client or a binary client
-					that doesn’t use SASL authentication.</dd>
+<samp class="ph codeph">default</samp>以外の名前で非SASLのバケットを作成する場合、
+<samp class="ph codeph">11211</samp>ポートを設定することはできません。
+<samp class="ph codeph">default</samp>バケットはvBucket対応のスマートクライアント、ASCIIクライアント、SASL認証を利用しないバイナリクライアントから接続することができます。
+</dd>
 
 			
 			
-				<dt class="dt dlterm">SASL buckets</dt>
+				<dt class="dt dlterm">非SASLバケット</dt>
 
-				<dd class="dd">SASL authenticating Couchbase buckets can only be placed on port <samp class="ph codeph">11211</samp> and
-					each bucket is differentiated by its name and password. A SASL bucket cannot be
-					placed on any port other than <samp class="ph codeph">11211</samp> and can be reached with
-					either a vBucket aware smart client, or a binary client that has SASL support.
-					These buckets cannot be reached with ASCII clients. <p class="p">Smart clients discover
-						changes in the cluster using the Couchbase Management REST API. The SASL
-						buckets can be used to isolate individual applications to provide
-						multi-tenancy, or to isolate data types in the cache to enhance performance
-						and visibility. Couchbase Server allows you to configure different
-						ports to access different buckets, and provides the option to access
-						isolated buckets using either the binary protocol with SASL authentication
-						or the ASCII protocol with no authentication.</p>
-<p class="p">Couchbase Server 
-						allows you to use and mix different types of buckets in your environment,
-						Couchbase and memcached. Buckets of different types still share the same
-						resource pool and cluster resources. </p>
-<p class="p">Quotas for RAM and disk usage
-						are configurable per bucket, so that resource usage can be managed across
-						the cluster. Quotas can be modified on a running cluster and administrators
-						can re-allocate resources as usage patterns or priorities change over
-						time.</p>
+				<dd class="dd">
+非SASLバケットは、<samp class="ph codeph">default</samp>以外の名前の場合、
+<samp class="ph codeph">11211</samp>を除く任意の空きポートを設定できます。
+個別のポートを設定できるのは、非SASLバケットだけです。
+非SASLバケットはvBucket対応のスマートクライアント、ASCIIクライアント、SASL認証を利用しないバイナリクライアントから接続することができます。
+</dd>
+
+			
+			
+				<dt class="dt dlterm">SASLバケット</dt>
+
+				<dd class="dd">
+SASL認証を利用するCouchbaseバケットは<samp class="ph codeph">11211</samp>ポートのみ設定できます。
+そして各バケットはバケット名とパスワードで識別されます。
+SASLバケットは<samp class="ph codeph">11211</samp>ポート以外に配置することはできません。
+vBucket対応のスマートクライアント、SASL対応のバイナリクライアントから接続できます。
+ASCIIクライアントからはSASLバケットには接続できません。
+<p class="p">
+スマートクライアントはCouchbase管理用REST APIを利用して、クラスタ内の変更を検知します。
+複数のSASLバケットを利用して各アプリケーションを分離し、マルチテナントとして利用可能です。
+あるいはキャッシュ内のデータタイプを分離し、パフォーマンスと閲覧性を向上することができます。
+Couchbase Serverはまた、バケット毎に異なるポートを設定することができ、
+SASL認証を利用したバイナリプロトコル、もしくは認証なしのASCIIプロトコルで、分離したバケットにアクセスするか選択できます。
+</p>
+
+<p class="p">
+Couchbase ServerはCouchbaseとmemcachedといった異なる種別のバケットを同一の環境で混在させることができます。
+異なるバケット種別であっても、同じリソースプールとクラスタリソースを共有します。
+</p>
+
+<p class="p">
+RAM割当量やディスク利用はバケット単位に設定可能で、クラスタ全体でのリソース利用を管理できます。
+稼働中のクラスタに対して割当量の変更ができ、利用方法や優先度が変わるにつれ、管理者はリソースを再割り当て可能です。
+</p>
 
 				</dd>
 
@@ -330,9 +345,9 @@
 
 	<nav class="related-links">
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concept-clusterMgr.html" title="クラスタマネージャはノードとクラスタの管理を担当します。Couchbaseクラスタ内のすべてのノードはクラスタマネージャコンポーネントを有しています。">クラスタマネージャ</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/concept-ramQuota.html" title="RAM is allocated to Couchbase Server in the following configurable quantities: Server Quota and Bucket Quota.">RAM quotas</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../Concepts/concept-clusterMgr.html" title="クラスタマネージャはノードとクラスタの管理を担当します。Couchbaseクラスタ内のすべてのノードはクラスタマネージャコンポーネントを有しています。">クラスタマネージャ</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Concepts/concept-ramQuota.html" title="RAM is allocated to Couchbase Server in the following configurable quantities: Server Quota and Bucket Quota.">RAM quotas</a></div>
 </div>
 
 <div class="linklist linklist">
