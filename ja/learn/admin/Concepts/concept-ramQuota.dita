@@ -1,46 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic1998">
-  <title>RAM quotas</title>
-  <shortdesc>RAM is allocated to Couchbase Server in the following configurable quantities:
-      <i>Server Quota</i> and <i>Bucket Quota</i>. </shortdesc>
+<topic xml:lang="ja" id="topic1998">
+  <title>RAM割当量</title>
+  <shortdesc>
+RAMはCouchbase Serverに次の割当量として設定されます:
+      <i>サーバ割当量</i>と<i>バケット割当量</i></shortdesc>
   
   <body>
 
     <dl>
-      <dlentry><dt>Server quota</dt>
-        <dd>The Server Quota is the RAM that is allocated to the server when Couchbase Server is first
-      installed. This sets the limit of RAM allocated by Couchbase for caching data <i>for all
-        buckets</i> and is configured on a per-node basis. The Server Quota is initially configured
-      in the first server in your cluster is configured, and the quota is identical on all nodes.
-      For example, if you have 10 nodes and a 16GB Server Quota, there is 160GB RAM available across
-      the cluster. If you were to add two more nodes to the cluster, the new nodes would need 16GB
-      of free RAM, and the aggregate RAM available in the cluster would be 192GB.</dd>
+      <dlentry><dt>Server割当量</dt>
+        <dd>
+サーバ割当量は、Couchbase Serverをインストール時に、サーバに割り当てるRAMです。
+これはCouchbaseが<i>全バケット</i>のキャッシュデータ用に利用する、ノード単位のRAM容量上限となります。
+サーバ割当量はクラスタ内の1台目のサーバ設定時に設定し、すべてのノードで割当量は同じになります。
+例えば、10ノードで16GBのサーバ割当量とした場合、160GBのRAMがクラスタ全体で利用可能となります。
+その後クラスタに二台のノードを追加すると、新しいノードは16GBの空きRAMが必要となり、
+クラスタ全体の利用可能なRAM容量は192GBになります。
+</dd>
       </dlentry>
     <dlentry>
-      <dt>Bucket quota</dt>
-      <dd>The Bucket Quota is the amount of RAM allocated to an individual bucket for caching data.
-          Bucket Quotas are configured on a per-node basis, and is allocated out of the RAM defined
-          by the Server Quota. For example, if you create a new bucket with a Bucket Quota of 1GB,
-          in a 10 node cluster there would be an aggregate bucket quota of 10GB across the cluster.
-          Adding two nodes to the cluster would extend your aggregate bucket quota to 12GB.</dd>
+      <dt>バケット割当量</dt>
+      <dd>
+バケット割当量は個別のバケットに対して、キャッシュデータ用に割り当てるRAM容量です。
+バケット割当量はノード単位の設定であり、サーバ割当量で指定したRAMから割り当てられます。
+例えば、1GBのバケット割当量で新規にバケットを作成する場合、
+10ノードのクラスタでは、クラスタ全体で合計10GBのバケット割当量となります。
+その後2台のノードをクラスタに追加すると、合計のバケット割当量は12GBとなります。
+</dd>
     </dlentry>
     </dl>
     
-    <p>The following diagram shows that adding new nodes to the cluster expands
-      the overall RAM quota and the bucket quota, increasing the amount of information that can be
-      kept in RAM.</p>
+    <p>
+次の図は新しいノードを追加することで、クラスタ全体のRAM割当量とバケット割当量を拡張し、RAMに保存可能な情報量を増加している様子を表しています。
+</p>
     
     <image href="../images/ram-quotas.png" width="720"></image>
     
-    <p>Bucket Quota is used by the system to determine when data should be ejected from memory.
-      Bucket Quotas are dynamically configurable, within the Server Quota limits, and enable
-      individual control of information cached in memory on a per bucket basis. 
-      Therefore, buckets can be configured differently depending your caching RAM allocation requirements.</p>
+    <p>
+バケット割当量はいつメモリからデータを除去するべきかシステムが判断するために利用します。
+バケット割当量はサーバ割当量の上限以内であれば、動的に変更可能で、
+バケット単位にメモリにキャッシュされる情報を制御することができます。
+よって、キャッシュ用のRAM割当量要件に応じてバケットを設定が可能となります。
+</p>
     
-    <note type="note">The Server Quota is also dynamically configurable, however, ensure that the cluster nodes
-      have the available RAM to support the chosen RAM quota configuration.</note>
+    <note type="note">
+サーバ割当量も動的に変更可能ですが、指定したRAM割当量をクラスタ内のノードで利用可能である必要があります。
+</note>
   </body>
   
   <related-links>

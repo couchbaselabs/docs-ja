@@ -1,6 +1,11 @@
 out/
 temp/
 pdf/
+ja/**/images
+bin/env.sh
+bin/env.ps1
+bin/env.json
+node_modules/
 .DS_Store
 crash.log
 out
