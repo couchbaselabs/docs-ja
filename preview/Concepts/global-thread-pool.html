@@ -1,11 +1,11 @@
 <!DOCTYPE html
   SYSTEM "about:legacy-compat">
-<html lang="en-us">
+<html lang="ja">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="concept">
-<meta name="description" content="A shared thread pool is a collection of threads which are shared across multiple buckets."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
+<meta name="description" content="共有スレッドプールは複数のバケット間で共有されるスレッドの集合です。"><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
 <meta name="DC.Relation" scheme="URI" content="../Concepts/concept-diskStorage.html">
 <meta name="DC.Relation" scheme="URI" content="../Concepts/bucket-priority.html">
 <meta name="DC.Relation" scheme="URI" content="bucket-priority.html">
@@ -14,64 +14,81 @@
 <meta name="DC.Relation" scheme="URI" content="concept-readerWriter.html">
 <meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="concept_mzx_cmx_b4">
+<meta name="DC.Language" content="ja">
 <link rel="stylesheet" type="text/css" href="../commonltr.css">
-<title>Shared thread pool</title>
+<title>共有スレッドプール</title>
 </head>
 <body id="concept_mzx_cmx_b4">
 
 
 
- <h1 class="title topictitle1">Shared thread pool</h1>
+ <h1 class="title topictitle1">共有スレッドプール</h1>
 
  
  
- <div class="body conbody"><p class="shortdesc">A shared thread pool is a collection of threads which are shared across multiple buckets.</p>
+ <div class="body conbody"><p class="shortdesc">
+共有スレッドプールは複数のバケット間で共有されるスレッドの集合です。
+</p>
 
-  <p class="p">A thread pool is a collection of threads used to perform similar jobs. Each server node has a
-   thread pool that is shared across multiple buckets. Shared thread pool optimizes dispatch tasks
-   by decoupling buckets from thread allocation. </p>
-
-  
-  <p class="p">Threads are spawned at initial startup of a server node instance and are based on the number of
-   CPU cores.</p>
-
-  
-   <p class="p">With the shared thread pool associated with each node, threads and buckets are decoupled. By
-   decoupling threads from specific buckets, threads can run tasks for any bucket. Since the global
-   thread pool permits for bucket priority levels, a separate I/O queue is available with the reader
-   and writer workers at every priority level. This provides improved task queueing. For example,
-   when a thread is assigned to running a task from an I/O queue and a second task is requested,
-   another thread is assigned to pick up the second task.</p>
+  <p class="p">
+スレッドプールは似たようなジョブを実行するために利用されるスレッドの集合です。
+各サーバノードには複数のバケット間で共有するスレッドプールがあります。
+共有スレッドプールはバケットとスレッドの割り当てを切り離すことで、タスクの起動を最適化します。
+</p>
 
   
-  <p class="p">Shared thread pool management promotes:</p>
+  <p class="p">
+スレッドはサーバノードの起動時に生成されます。スレッド数はCPUコア数が基準になります。
+</p>
+
+  
+   <p class="p">
+共有スレッドプールは各ノードと関連しており、バケットとは切り離されています。
+特定のバケットからスレッドを切り離すことで、スレッドはいかなるバケットのタスクも実行できます。
+グローバルスレッドプールはバケットの優先度をサポートしているので、各優先度において、独立したI/Oキューがreaderとwriterのワーカから利用できます。
+これにより、タスクのキューイングが向上します。
+例えば、あるスレッドがI/Oキューからのタスクの実行を割り当てられているときに、二つ目のタスクがリクエストされると、他のスレッドが二つ目のタスクを担当するように割り当てられます。
+</p>
+
+  
+  <p class="p">
+共有スレッドプールは以下を改善します:
+Shared thread pool management promotes:</p>
 
   <ul class="ul">
-   <li class="li">Better parallelism for thread workers with more efficient I/O resource management.</li>
+   <li class="li">より効率的にI/Oリソースを管理することで、スレッドワーカに高い並列実行性を与えます。</li>
 
-   <li class="li">Better system scalability with more buckets being serviced with fewer worker threads.</li>
+   <li class="li">より多くのバケットをより少ないワーカスレッドで実行できるため、よりスケーラブルなシステムとなります。</li>
 
-   <li class="li">Availability of task priority if the disk bucket I/O priority setting is implemented.</li>
+   <li class="li">ディスクバケットI/O優先度設定を利用すると、タスクの優先度を指定可能です。
+</li>
 
   </ul>
 
   
-  <p class="p">The following circumstances describes how threads are scheduled to dispatch tasks:</p>
+  <p class="p">
+次の事項はどのようにスレッドがタスクを実行するためにスケジュールされるかを説明しています:
+</p>
 
   <ul class="ul">
   
-  <li class="li">If all buckets have the same priority (default setting), each thread evenly round-robins over
-    all the task queues of the buckets.</li>
+  <li class="li">
+すべてのバケットが同一の優先度である場合(デフォルトの設定)、各スレッドはそれらのバケットのすべてのタスクキューにラウンドロビンで均等に割り当てられます。
+</li>
 
   
-  <li class="li">If buckets have different priorities, the threads spend an appropriate fraction of time (scheduling frequency)
-   dispatching tasks from queues of these bucket.</li>
+  <li class="li">
+バケットが異なる優先度で設定されている場合、スレッドは適切に実行時間の一部分ずつ(スケジューリング頻度)をバケットのキューからのタスク実行に費やします。
+</li>
 
   
-  <li class="li">If a bucket is being compacted, threads are not allocated to dispatch tasks for that bucket.</li>
+  <li class="li">
+バケットがコンパクション中の場合、スレッドはそのバケットのタスク実行に割り当てられることはありません。
+</li>
 
-   <li class="li">If all buckets are either empty or being serviced by other threads, the thread goes to
-    sleep.</li>
+   <li class="li">
+すべてのバケットが空であるか、他のスレッドによって処理されている場合、スレッドはスリープします。
+</li>
 
   </ul>
 
@@ -84,9 +101,9 @@
   
   
   
-  <div class="section"><h2 class="title sectiontitle">Viewing thread status</h2>
-   <p class="p">The <samp class="ph codeph">cbstats raw workload</samp> is used to view the status of the threads. 
-   The following is example code and results.</p>
+  <div class="section"><h2 class="title sectiontitle">スレッドステータスの確認</h2>
+   <p class="p"><samp class="ph codeph">cbstats raw workload</samp>を使って、スレッドのステータスを確認できます。 
+以下はコード例と実行結果です。</p>
 
    
    <pre class="pre codeblock">
@@ -127,9 +144,9 @@
  
  <nav class="related-links">
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concept-diskStorage.html" title="Couchbase Server mainly stores and retrieves information for clients using RAM. At the same time, Couchbase Server eventually stores all data to disk to provide a higher level of reliability.">Disk storage</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/bucket-priority.html" title="Disk I/O priority enables workload priorities to be set at the bucket level.">Disk I/O priority</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../Concepts/concept-diskStorage.html" title="Couchbase Server mainly stores and retrieves information for clients using RAM. At the same time, Couchbase Server eventually stores all data to disk to provide a higher level of reliability.">Disk storage</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Concepts/bucket-priority.html" title="Disk I/O priority enables workload priorities to be set at the bucket level.">Disk I/O priority</a></div>
 </div>
 
 <div class="linklist linklist">

@@ -44,16 +44,16 @@
 クラスタマネージャはノードとクラスタの管理を担当します。Couchbaseクラスタ内のすべてのノードはクラスタマネージャコンポーネントを有しています。</li>
 <li class="link olchildlink"><a href="../Concepts/concept-dataStorage.html">データストレージ</a><br>
  Couchbase Serverは<dfn class="term">バケット</dfn>を利用してデータ管理サービスを提供します。 バケットは分離された仮想のデータコンテナです。 ひとつのバケットはCouchbase Serverクラスタ内にある複数の物理的なリソースの論理的グループです。 </li>
-<li class="link olchildlink"><a href="../Concepts/concept-ramQuota.html">RAM quotas</a><br>
-RAM is allocated to Couchbase Server in the following configurable quantities:       <em class="ph i">Server Quota</em> and <em class="ph i">Bucket Quota</em>. </li>
+<li class="link olchildlink"><a href="../Concepts/concept-ramQuota.html">RAM割当量</a><br>
+ RAMはCouchbase Serverに次の割当量として設定されます:       <em class="ph i">サーバ割当量</em>と<em class="ph i">バケット割当量</em></li>
 <li class="link olchildlink"><a href="../Concepts/concept-vBucket.html">vBuckets</a><br>
 A vBucket is defined as the <em class="ph i">owner</em> of a subset of the key space of a Couchbase     cluster. These vBuckets are used to distributed information effectively across a cluster. </li>
 <li class="link olchildlink"><a href="../Concepts/concept-cacheLayer.html">Caching layer</a><br>
 Couchbase Server includes a built-in caching layer which      acts as a central part of the server and provides very rapid reads and writes of data.</li>
 <li class="link olchildlink"><a href="../Concepts/concept-diskStorage.html">Disk storage</a><br>
 Couchbase Server mainly stores and retrieves information for clients using     RAM. At the same time, Couchbase Server eventually stores all data to disk to provide a     higher level of reliability.</li>
-<li class="link olchildlink"><a href="../Concepts/global-thread-pool.html">Shared thread pool</a><br>
-A shared thread pool is a collection of threads which are shared across multiple buckets.</li>
+<li class="link olchildlink"><a href="../Concepts/global-thread-pool.html">共有スレッドプール</a><br>
+ 共有スレッドプールは複数のバケット間で共有されるスレッドの集合です。 </li>
 <li class="link olchildlink"><a href="../Concepts/bucket-priority.html">Disk I/O priority</a><br>
 Disk I/O priority enables workload priorities to be set at the bucket level.</li>
 <li class="link olchildlink"><a href="../Concepts/bucket-eviction.html">Tunable memory</a><br>

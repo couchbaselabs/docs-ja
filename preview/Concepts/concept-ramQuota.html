@@ -1,80 +1,87 @@
 <!DOCTYPE html
   SYSTEM "about:legacy-compat">
-<html lang="en-us">
+<html lang="ja">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="topic">
-<meta name="description" content="RAM is allocated to Couchbase Server in the following configurable quantities: Server Quota and Bucket Quota."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
+<meta name="description" content="RAMはCouchbase Serverに次の割当量として設定されます: サーバ割当量とバケット割当量"><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
 <meta name="DC.Relation" scheme="URI" content="../Concepts/concept-dataStorage.html">
 <meta name="DC.Relation" scheme="URI" content="../Concepts/concept-vBucket.html">
 <meta name="DC.Relation" scheme="URI" content="concept-workingset-mgmt.html">
 <meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="topic1998">
-<meta name="DC.Language" content="en-us">
+<meta name="DC.Language" content="ja">
 <link rel="stylesheet" type="text/css" href="../commonltr.css">
-<title>RAM quotas</title>
+<title>RAM割当量</title>
 </head>
 <body id="topic1998">
 
 
-  <h1 class="title topictitle1">RAM quotas</h1>
+  <h1 class="title topictitle1">RAM割当量</h1>
 
   
   
-  <div class="body"><p class="shortdesc">RAM is allocated to Couchbase Server in the following configurable quantities:
-      <em class="ph i">Server Quota</em> and <em class="ph i">Bucket Quota</em>. </p>
+  <div class="body"><p class="shortdesc">
+RAMはCouchbase Serverに次の割当量として設定されます:
+      <em class="ph i">サーバ割当量</em>と<em class="ph i">バケット割当量</em></p>
 
 
     <dl class="dl">
-      <dt class="dt dlterm">Server quota</dt>
+      <dt class="dt dlterm">Server割当量</dt>
 
-        <dd class="dd">The Server Quota is the RAM that is allocated to the server when Couchbase Server is first
-      installed. This sets the limit of RAM allocated by Couchbase for caching data <em class="ph i">for all
-        buckets</em> and is configured on a per-node basis. The Server Quota is initially configured
-      in the first server in your cluster is configured, and the quota is identical on all nodes.
-      For example, if you have 10 nodes and a 16GB Server Quota, there is 160GB RAM available across
-      the cluster. If you were to add two more nodes to the cluster, the new nodes would need 16GB
-      of free RAM, and the aggregate RAM available in the cluster would be 192GB.</dd>
+        <dd class="dd">
+サーバ割当量は、Couchbase Serverをインストール時に、サーバに割り当てるRAMです。
+これはCouchbaseが<em class="ph i">全バケット</em>のキャッシュデータ用に利用する、ノード単位のRAM容量上限となります。
+サーバ割当量はクラスタ内の1台目のサーバ設定時に設定し、すべてのノードで割当量は同じになります。
+例えば、10ノードで16GBのサーバ割当量とした場合、160GBのRAMがクラスタ全体で利用可能となります。
+その後クラスタに二台のノードを追加すると、新しいノードは16GBの空きRAMが必要となり、
+クラスタ全体の利用可能なRAM容量は192GBになります。
+</dd>
 
       
     
-      <dt class="dt dlterm">Bucket quota</dt>
+      <dt class="dt dlterm">バケット割当量</dt>
 
-      <dd class="dd">The Bucket Quota is the amount of RAM allocated to an individual bucket for caching data.
-          Bucket Quotas are configured on a per-node basis, and is allocated out of the RAM defined
-          by the Server Quota. For example, if you create a new bucket with a Bucket Quota of 1GB,
-          in a 10 node cluster there would be an aggregate bucket quota of 10GB across the cluster.
-          Adding two nodes to the cluster would extend your aggregate bucket quota to 12GB.</dd>
+      <dd class="dd">
+バケット割当量は個別のバケットに対して、キャッシュデータ用に割り当てるRAM容量です。
+バケット割当量はノード単位の設定であり、サーバ割当量で指定したRAMから割り当てられます。
+例えば、1GBのバケット割当量で新規にバケットを作成する場合、
+10ノードのクラスタでは、クラスタ全体で合計10GBのバケット割当量となります。
+その後2台のノードをクラスタに追加すると、合計のバケット割当量は12GBとなります。
+</dd>
 
     
     </dl>
 
     
-    <p class="p">The following diagram shows that adding new nodes to the cluster expands
-      the overall RAM quota and the bucket quota, increasing the amount of information that can be
-      kept in RAM.</p>
+    <p class="p">
+次の図は新しいノードを追加することで、クラスタ全体のRAM割当量とバケット割当量を拡張し、RAMに保存可能な情報量を増加している様子を表しています。
+</p>
 
     
     <img class="image" src="../images/ram-quotas.png" width="720">
     
-    <p class="p">Bucket Quota is used by the system to determine when data should be ejected from memory.
-      Bucket Quotas are dynamically configurable, within the Server Quota limits, and enable
-      individual control of information cached in memory on a per bucket basis. 
-      Therefore, buckets can be configured differently depending your caching RAM allocation requirements.</p>
+    <p class="p">
+バケット割当量はいつメモリからデータを除去するべきかシステムが判断するために利用します。
+バケット割当量はサーバ割当量の上限以内であれば、動的に変更可能で、
+バケット単位にメモリにキャッシュされる情報を制御することができます。
+よって、キャッシュ用のRAM割当量要件に応じてバケットを設定が可能となります。
+</p>
 
     
-    <div class="note note"><span class="notetitle">Note:</span> The Server Quota is also dynamically configurable, however, ensure that the cluster nodes
-      have the available RAM to support the chosen RAM quota configuration.</div>
+    <div class="note note"><span class="notetitle">注:</span> 
+サーバ割当量も動的に変更可能ですが、指定したRAM割当量をクラスタ内のノードで利用可能である必要があります。
+</div>
 
   </div>
 
   
   <nav class="related-links">
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concept-dataStorage.html" title="Couchbase Serverはバケットを利用してデータ管理サービスを提供します。 バケットは分離された仮想のデータコンテナです。 ひとつのバケットはCouchbase Serverクラスタ内にある複数の物理的なリソースの論理的グループです。">データストレージ</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/concept-vBucket.html" title="A vBucket is defined as the owner of a subset of the key space of a Couchbase cluster. These vBuckets are used to distributed information effectively across a cluster.">vBuckets</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../Concepts/concept-dataStorage.html" title="Couchbase Serverはバケットを利用してデータ管理サービスを提供します。 バケットは分離された仮想のデータコンテナです。 ひとつのバケットはCouchbase Serverクラスタ内にある複数の物理的なリソースの論理的グループです。">データストレージ</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Concepts/concept-vBucket.html" title="A vBucket is defined as the owner of a subset of the key space of a Couchbase cluster. These vBuckets are used to distributed information effectively across a cluster.">vBuckets</a></div>
 </div>
 
 <div class="linklist linklist">
