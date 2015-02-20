@@ -1,44 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_mzx_cmx_b4">
+<concept id="concept_mzx_cmx_b4" xml:lang="ja">
 
- <title>Shared thread pool</title>
- <shortdesc>A shared thread pool is a collection of threads which are shared across multiple buckets.</shortdesc>
+ <title>共有スレッドプール</title>
+ <shortdesc>
+共有スレッドプールは複数のバケット間で共有されるスレッドの集合です。
+</shortdesc>
  
  <conbody>
-  <p>A thread pool is a collection of threads used to perform similar jobs. Each server node has a
-   thread pool that is shared across multiple buckets. Shared thread pool optimizes dispatch tasks
-   by decoupling buckets from thread allocation. </p>
+  <p>
+スレッドプールは似たようなジョブを実行するために利用されるスレッドの集合です。
+各サーバノードには複数のバケット間で共有するスレッドプールがあります。
+共有スレッドプールはバケットとスレッドの割り当てを切り離すことで、タスクの起動を最適化します。
+</p>
   
-  <p>Threads are spawned at initial startup of a server node instance and are based on the number of
-   CPU cores.</p>
+  <p>
+スレッドはサーバノードの起動時に生成されます。スレッド数はCPUコア数が基準になります。
+</p>
   
-   <p>With the shared thread pool associated with each node, threads and buckets are decoupled. By
-   decoupling threads from specific buckets, threads can run tasks for any bucket. Since the global
-   thread pool permits for bucket priority levels, a separate I/O queue is available with the reader
-   and writer workers at every priority level. This provides improved task queueing. For example,
-   when a thread is assigned to running a task from an I/O queue and a second task is requested,
-   another thread is assigned to pick up the second task.</p>
+   <p>
+共有スレッドプールは各ノードと関連しており、バケットとは切り離されています。
+特定のバケットからスレッドを切り離すことで、スレッドはいかなるバケットのタスクも実行できます。
+グローバルスレッドプールはバケットの優先度をサポートしているので、各優先度において、独立したI/Oキューがreaderとwriterのワーカから利用できます。
+これにより、タスクのキューイングが向上します。
+例えば、あるスレッドがI/Oキューからのタスクの実行を割り当てられているときに、二つ目のタスクがリクエストされると、他のスレッドが二つ目のタスクを担当するように割り当てられます。
+</p>
   
-  <p>Shared thread pool management promotes:</p>
+  <p>
+共有スレッドプールは以下を改善します:
+Shared thread pool management promotes:</p>
   <ul>
-   <li>Better parallelism for thread workers with more efficient I/O resource management.</li>
-   <li>Better system scalability with more buckets being serviced with fewer worker threads.</li>
-   <li>Availability of task priority if the disk bucket I/O priority setting is implemented.</li>
+   <li>より効率的にI/Oリソースを管理することで、スレッドワーカに高い並列実行性を与えます。</li>
+   <li>より多くのバケットをより少ないワーカスレッドで実行できるため、よりスケーラブルなシステムとなります。</li>
+   <li>ディスクバケットI/O優先度設定を利用すると、タスクの優先度を指定可能です。
+</li>
   </ul>
   
-  <p>The following circumstances describes how threads are scheduled to dispatch tasks:</p>
+  <p>
+次の事項はどのようにスレッドがタスクを実行するためにスケジュールされるかを説明しています:
+</p>
   <ul>
   
-  <li>If all buckets have the same priority (default setting), each thread evenly round-robins over
-    all the task queues of the buckets.</li>
+  <li>
+すべてのバケットが同一の優先度である場合(デフォルトの設定)、各スレッドはそれらのバケットのすべてのタスクキューにラウンドロビンで均等に割り当てられます。
+</li>
   
-  <li>If buckets have different priorities, the threads spend an appropriate fraction of time (scheduling frequency)
-   dispatching tasks from queues of these bucket.</li>
+  <li>
+バケットが異なる優先度で設定されている場合、スレッドは適切に実行時間の一部分ずつ(スケジューリング頻度)をバケットのキューからのタスク実行に費やします。
+</li>
   
-  <li>If a bucket is being compacted, threads are not allocated to dispatch tasks for that bucket.</li>
-   <li>If all buckets are either empty or being serviced by other threads, the thread goes to
-    sleep.</li>
+  <li>
+バケットがコンパクション中の場合、スレッドはそのバケットのタスク実行に割り当てられることはありません。
+</li>
+   <li>
+すべてのバケットが空であるか、他のスレッドによって処理されている場合、スレッドはスリープします。
+</li>
   </ul>
  
   
@@ -51,9 +67,9 @@
    the shard count configurable or is it set automatically based on the CPU core or % of threads? Is
    the default always 4 or does it depend on the # of cores?</draft-comment>
   
-  <section><title>Viewing thread status</title>
-   <p>The <codeph>cbstats raw workload</codeph> is used to view the status of the threads. 
-   The following is example code and results.</p>
+  <section><title>スレッドステータスの確認</title>
+   <p><codeph>cbstats raw workload</codeph>を使って、スレッドのステータスを確認できます。 
+以下はコード例と実行結果です。</p>
    
    <codeblock>
 # cbstats 10.5.2.54:11210 -b default raw workload
