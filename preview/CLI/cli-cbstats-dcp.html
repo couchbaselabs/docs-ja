@@ -1,17 +1,18 @@
 <!DOCTYPE html
   SYSTEM "about:legacy-compat">
-<html lang="en-us">
+<html lang="ja">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="reference">
-<meta name="abstract" content="Statistics for Database Change Protocol (DCP) are obtained via the CLI with the cbstats tool.">
-<meta name="description" content="Statistics for Database Change Protocol (DCP) are obtained via the CLI with the cbstats tool.">
+<meta name="abstract" content="データベース変更プロトコル(DCP)に関する統計情報はcbstatsCLIツールから取得可能です。 以下の表はcbstatsツールでDCP統計情報取得に利用可能なコマンドの一覧です:">
+<meta name="description" content="データベース変更プロトコル(DCP)に関する統計情報はcbstatsCLIツールから取得可能です。 以下の表はcbstatsツールでDCP統計情報取得に利用可能なコマンドの一覧です:">
 <meta name="DC.Relation" scheme="URI" content="../CLI/cbstats-intro.html">
 <meta name="DC.Relation" scheme="URI" content="../CLI/CBstats/cbstats-config.html">
 <meta name="DC.Relation" scheme="URI" content="../CLI/CBstats/cbstats-diskinfo.html">
 <meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="reference_ik4_sxz_n4">
+<meta name="DC.Language" content="ja">
 <link rel="stylesheet" type="text/css" href="../commonltr.css">
 <title>DCP</title>
 </head>
@@ -23,21 +24,23 @@
 	
 
 
-	<div class="body refbody"><div class="abstract"><span class="shortdesc">Statistics for Database Change Protocol (DCP) are obtained via the CLI with
-			the <samp class="ph codeph">cbstats</samp> tool.</span>
- The following table shows the commands you
-		can use with the <samp class="ph codeph">cbstats</samp> tool to retrieve DCP statistics:</div>
+	<div class="body refbody"><div class="abstract"><span class="shortdesc">
+			データベース変更プロトコル(DCP)に関する統計情報は<samp class="ph codeph">cbstats</samp>CLIツールから取得可能です。
+			以下の表は<samp class="ph codeph">cbstats</samp>ツールでDCP統計情報取得に利用可能なコマンドの一覧です:
+		</span>
+
+		</div>
 
 
 
 
 		
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="reference_ik4_sxz_n4__table_psm_zxz_n4" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. DCP statistics</span></caption>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="reference_ik4_sxz_n4__table_psm_zxz_n4" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">表 1. DCP統計情報</span></caption>
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d46220e36">Command</th>
+						<th class="entry" valign="top" width="50%" id="d46225e36">コマンド</th>
 
-						<th class="entry" valign="top" width="50%" id="d46220e39">Description</th>
+						<th class="entry" valign="top" width="50%" id="d46225e39">説明</th>
 
 					</tr>
 
@@ -45,24 +48,23 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d46220e36 "><samp class="ph codeph">dcp</samp></td>
+						<td class="entry" valign="top" width="50%" headers="d46225e36 "><samp class="ph codeph">dcp</samp></td>
 
-						<td class="entry" valign="top" width="50%" headers="d46220e39 ">Retrieves connections specific to statistics.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d46220e36 "><samp class="ph codeph">dcpagg</samp></td>
-
-						<td class="entry" valign="top" width="50%" headers="d46220e39 ">Retrieves statistics that are logically grouped and aggregated together by
-							prefixes.</td>
+						<td class="entry" valign="top" width="50%" headers="d46225e39 ">個別の接続ごとの統計情報を取得します。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d46220e36 "><samp class="ph codeph">failovers</samp></td>
+						<td class="entry" valign="top" width="50%" headers="d46225e36 "><samp class="ph codeph">dcpagg</samp></td>
 
-						<td class="entry" valign="top" width="50%" headers="d46220e39 ">Retrieves vBucket failover logs.</td>
+						<td class="entry" valign="top" width="50%" headers="d46225e39 ">プレフィックスにより論理的にグループ化され、集約した統計情報を取得します。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d46225e36 "><samp class="ph codeph">failovers</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d46225e39 ">vBucketフェイルオーバログを取得します。</td>
 
 					</tr>
 
@@ -75,8 +77,8 @@
 
 
 
-		<div class="section refsyn"><h2 class="title sectiontitle">Syntax</h2>
-			<p class="p">Use the following command syntax for DCP-related <samp class="ph codeph">cbstats</samp> requests:</p>
+		<div class="section refsyn"><h2 class="title sectiontitle">シンタックス</h2>
+			<p class="p">DCPに関連する<samp class="ph codeph">cbstats</samp>リクエストには、以下のコマンドシンタックスを利用してください:</p>
 
 			<pre class="pre">
 cbstats HOST:11210 dcp
@@ -87,16 +89,14 @@ cbstats HOST:11210 failovers
 		</div>
 
 
-		<div class="example"><h2 class="title sectiontitle">Example: request all DCP statistics</h2>
-			<p class="p">The following example shows a <samp class="ph codeph">cbstats</samp> request for all DCP-related
-				statistics.</p>
+		<div class="example"><h2 class="title sectiontitle">例: すべてのDCP統計情報を取得する</h2>
+			<p class="p">以下の例ではDCPに関連するすべての統計情報に対する<samp class="ph codeph">cbstats</samp>のリクエストを示しています。</p>
 
 			<pre class="pre codeblock">
 # ./cbstats 10.5.2.54:11210 dcp
 </pre>
 
-			<p class="p">Here's some output from the command. The output is quite lengthy, so this sample is
-				truncated.</p>
+			<p class="p">コマンドの実行結果は次のようになります。出力結果は非常に長いため、ここでは一部省略しています。</p>
 
 			<pre class="pre">
  ep_dcp_count:                                                                               6
@@ -131,15 +131,14 @@ cbstats HOST:11210 failovers
 
 
 
-		<div class="example"><h2 class="title sectiontitle">Example: request aggregated DCP statistics</h2>
-			<p class="p">The following example shows a <samp class="ph codeph">cbstats</samp> request for a set of aggregated
-				DCP statistics:</p>
+		<div class="example"><h2 class="title sectiontitle">例: 集約したDCP統計情報</h2>
+			<p class="p">以下の例では集約したDCP統計情報に対する<samp class="ph codeph">cbstats</samp>のリクエストを示しています。</p>
 
 			<pre class="pre codeblock">
 # ./cbstats 10.5.2.54:11210 dcpagg
 </pre>
 
-			<p class="p">Here's the output from the command:</p>
+			<p class="p">コマンドの出力例です:</p>
 
 			<pre class="pre">
  :total:backoff:                 0
@@ -161,16 +160,15 @@ cbstats HOST:11210 failovers
 		</div>
 
 
-		<div class="example"><h2 class="title sectiontitle">Example: request failover logs</h2>
-			<p class="p">The following example shows a <samp class="ph codeph">cbstats</samp> request for failover logs. The
-				lengthy output of the command is truncated.</p>
+		<div class="example"><h2 class="title sectiontitle">例: フェイルオーバログ</h2>
+			<p class="p">以下の例はフェイルオーバログに対する<samp class="ph codeph">cbstats</samp>リクエストです。実行結果は長いため、一部省略しています。
+</p>
 
 			<pre class="pre codeblock">
 # cbstats 10.5.2.54:11210 failovers
 </pre>
 
-			<p class="p">Here's some output from the command. The output is quite lengthy, so this sample is
-				truncated.</p>
+			<p class="p">コマンド出力結果例の一部です。</p>
 
 			<pre class="pre">
  vb_1000:0:id:        101754288503529
@@ -182,25 +180,28 @@ cbstats HOST:11210 failovers
 		</div>
 
 
-		<div class="section"><h2 class="title sectiontitle">DCP statistics by connection type</h2>
+		<div class="section"><h2 class="title sectiontitle">接続種別によるDCP統計情報</h2>
 			
-			<p class="p">DCP provides statistics for consumer, producer, and notifier connection types. The following
-				tables describe the available consumer, producer, and notifier connection statistics.
-				Each connection type has a group of statistics that apply to the connection overall and
-				a group of statistics that apply to the individual streams in the connections.</p>
+			<p class="p">
+				DCPにはconsumer, producer, notifierの接続種別があります。
+				以下の表はconsumer, producer, notifierで利用可能な接続統計情報を示しています。
+				各接続種別にはすべての接続種別で有効な統計情報のグループと、
+				接続内の個別のストリームでのみ有効な統計情報のグループがあります。
+			</p>
 
-			<p class="p">The identifier for each DCP statistic begins with the string <samp class="ph codeph">ep_dcpq:</samp>
-				followed by a unique <samp class="ph codeph">client_id</samp> and another colon. For example, if your
-				client is named <samp class="ph codeph">slave1</samp>, the identifier for the DCP statistic named
-					<samp class="ph codeph">created</samp> is <samp class="ph codeph">ep_dcpq:slave1:created</samp>.</p>
+			<p class="p">
+				各DCP統計情報識別子は<samp class="ph codeph">ep_dcpq:</samp>で始まり、一意となる<samp class="ph codeph">client_id</samp>とコロンが続きます。
+				例えば、クライアントが<samp class="ph codeph">slave1</samp>という名前の場合、<samp class="ph codeph">created</samp>のDCP統計情報識別子は
+				<samp class="ph codeph">ep_dcpq:slave1:created</samp>となります。
+			</p>
 
 			
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 2. Consumer connection statistics</span></caption>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">表 2. Consumer接続統計情報</span></caption>
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" id="d46220e191">Name</th>
+							<th class="entry" valign="top" id="d46225e191">名称</th>
 
-							<th class="entry" valign="top" id="d46220e194">Description</th>
+							<th class="entry" valign="top" id="d46225e194">説明</th>
 
 						</tr>
 
@@ -208,51 +209,51 @@ cbstats HOST:11210 failovers
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e191 d46220e194 "><samp class="ph codeph">connected</samp></td>
+							<td class="entry" valign="top" headers="d46225e191 d46225e194 "><samp class="ph codeph">connected</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e191 d46220e194 ">True if this client is connected</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e191 d46220e194 "><samp class="ph codeph">created</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e191 d46220e194 ">Creation time of the DCP connection</td>
+							<td class="entry" valign="top" headers="d46225e191 d46225e194 ">クライアントが接続済みの場合Trueになります</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e191 d46220e194 "><samp class="ph codeph">pending_disconnect</samp></td>
+							<td class="entry" valign="top" headers="d46225e191 d46225e194 "><samp class="ph codeph">created</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e191 d46220e194 ">True if we’re hanging up on this client</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e191 d46220e194 "><samp class="ph codeph">reserved</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e191 d46220e194 ">True if the DCP stream is reserved</td>
+							<td class="entry" valign="top" headers="d46225e191 d46225e194 ">DCP接続の生成時刻です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e191 d46220e194 "><samp class="ph codeph">supports_ack</samp></td>
+							<td class="entry" valign="top" headers="d46225e191 d46225e194 "><samp class="ph codeph">pending_disconnect</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e191 d46220e194 ">True if the connection use flow control</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e191 d46220e194 "><samp class="ph codeph">total_acked_bytes</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e191 d46220e194 ">The amount of bytes that the consumer has acknowledged</td>
+							<td class="entry" valign="top" headers="d46225e191 d46225e194 ">クライアントを切断中の場合Trueになります</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e191 d46220e194 "><samp class="ph codeph">type</samp></td>
+							<td class="entry" valign="top" headers="d46225e191 d46225e194 "><samp class="ph codeph">reserved</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e191 d46220e194 ">The connection type (producer, consumer, or notifier)</td>
+							<td class="entry" valign="top" headers="d46225e191 d46225e194 ">DCPストリームが予約されている場合Trueになります</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e191 d46225e194 "><samp class="ph codeph">supports_ack</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e191 d46225e194 ">接続がフロー制御を利用している場合Trueになります</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e191 d46225e194 "><samp class="ph codeph">total_acked_bytes</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e191 d46225e194 ">consumerがackした総バイト数です</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e191 d46225e194 "><samp class="ph codeph">type</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e191 d46225e194 ">接続種別です(producer, consumer, notifier)</td>
 
 						</tr>
 
@@ -262,12 +263,12 @@ cbstats HOST:11210 failovers
 </div>
 
 			
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 3. Consumer connection per-stream statistics</span></caption>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">表 3. ストリーム単位のConsumer接続統計情報</span></caption>
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" id="d46220e286">Name</th>
+							<th class="entry" valign="top" id="d46225e286">名称</th>
 
-							<th class="entry" valign="top" id="d46220e289">Description</th>
+							<th class="entry" valign="top" id="d46225e289">説明</th>
 
 						</tr>
 
@@ -275,79 +276,79 @@ cbstats HOST:11210 failovers
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">buffer_bytes</samp></td>
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 "><samp class="ph codeph">buffer_bytes</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The amount of unprocessed bytes</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">buffer_items</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The amount of unprocessed items</td>
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 ">滞留中のバイト数です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">end_seqno</samp></td>
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 "><samp class="ph codeph">buffer_items</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The sequence number where this stream should end</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">flags</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The flags used to create this stream</td>
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 ">滞留中のアイテム数です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">items_ready</samp></td>
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 "><samp class="ph codeph">end_seqno</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">Whether the stream has messages ready to send</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">opaque</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The unique stream identifier</td>
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 ">このストリームが終了すべきシーケンス番号です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">snap_end_seqno</samp></td>
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 "><samp class="ph codeph">flags</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The start sequence number of the last snapshot received</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">snap_start_seqno</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The end sequence number of the last snapshot received</td>
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 ">このストリーム作成時に指定されたフラグです</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">start_seqno</samp></td>
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 "><samp class="ph codeph">items_ready</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The start sequence number used to create this stream</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">state</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The stream state (pending, reading, or dead)</td>
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 ">ストリームがメッセージを送信する準備ができているかを示します</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">vb_uuid</samp></td>
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 "><samp class="ph codeph">opaque</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The vBucket UUID used to create this stream</td>
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 ">ストリームの一意な識別子です</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 "><samp class="ph codeph">snap_end_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 ">最後のスナップショット受信時の、開始シーケンス番号です</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 "><samp class="ph codeph">snap_start_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 ">最後のスナップショット受信時の、終了シーケンス番号です</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 "><samp class="ph codeph">start_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 ">このストリーム作成時に利用した開始シーケンス番号です</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 "><samp class="ph codeph">state</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 ">ストリームの状態です(pending, reading, dead)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 "><samp class="ph codeph">vb_uuid</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e286 d46225e289 ">このストリーム作成時に利用したvBucket UUIDです</td>
 
 						</tr>
 
@@ -358,12 +359,12 @@ cbstats HOST:11210 failovers
 </div>
 
 			
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 4. Producer and notifier connection statistics</span></caption>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">表 4. Producer, Notifier接続統計情報</span></caption>
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" id="d46220e422">Name</th>
+							<th class="entry" valign="top" id="d46225e422">名称</th>
 
-							<th class="entry" valign="top" id="d46220e425">Description</th>
+							<th class="entry" valign="top" id="d46225e425">説明</th>
 
 						</tr>
 
@@ -371,117 +372,118 @@ cbstats HOST:11210 failovers
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">bytes_sent</samp></td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">bytes_sent</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The amount of unacknowledged bytes sent to the consumer</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">connected</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">True if this client is connected</td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">consumerに送信されたunack状態の総バイト数です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">created</samp></td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">connected</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">Creation time for the DCP connection</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">flow_control</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">True if the connection uses flow control</td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">クライアントが接続済みの場合Trueになります</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">items_remaining</samp></td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">created</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The amount of items remaining to be sent</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">items_sent</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The amount of items already sent to the consumer </td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">DCPコネクション接続生成時刻です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">last_sent_time</samp></td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">flow_control</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The maximum amount of bytes that can be sent without receiving an
-								acknowledgment from the consumer</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">noop_enabled</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">Indicates whether this connection sends noops </td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">接続がフロー制御を利用している場合Trueになります</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">noop_wait</samp></td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">items_remaining</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">Indicates whether this connection is waiting for a noop response from
-								the consumer</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">pending_disconnect</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">True if we’re hanging up on this client</td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">送信待ち状態のアイテム数です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">reserved</samp></td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">items_sent</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">True if the DCP stream is reserved</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">supports_ack</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">True if the connection uses flow control</td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">consumerに送信済みのアイテム数です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">total_acked_bytes</samp></td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">last_sent_time</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The amount of bytes that have been acknowledged by the consumer when
-								flow control is enabled</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">total_bytes_sent</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The amount of bytes already sent to the consumer</td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">
+								consumerからのackを受診せずに送信可能な最大バイト数です
+								</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">type</samp></td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">noop_enabled</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The connection type (producer, consumer, or notifier)</td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">この接続がnoopを送信するかを示します</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">unacked_bytes</samp></td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">noop_wait</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The amount of bytes the consumer has not acknowledged</td>
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">この接続がnoopのレスポンスをconsumerから待っているかどうかを示します</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">pending_disconnect</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">クライアントを切断中の場合Trueになります</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">reserved</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">DCPストリームが予約されている場合Trueになります</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">supports_ack</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">接続がフロー制御を利用している場合Trueになります</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">total_acked_bytes</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">
+								フロー制御が有効な場合の、consumerからackされたバイトの総数です
+								</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">total_bytes_sent</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">consumerに送信済みのバイト数です</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">type</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">接続種別です(producer, consumer, notifier)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 "><samp class="ph codeph">unacked_bytes</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e422 d46225e425 ">consumerがまだackしていないバイト数です</td>
 
 						</tr>
 
@@ -491,12 +493,12 @@ cbstats HOST:11210 failovers
 </div>
 
 			
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 5. Producer and notifier connection per-stream statistics</span></caption>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">表 5. Producer and notifier connection per-stream statistics</span></caption>
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" id="d46220e608">Name</th>
+							<th class="entry" valign="top" id="d46225e608">名称</th>
 
-							<th class="entry" valign="top" id="d46220e611">Description</th>
+							<th class="entry" valign="top" id="d46225e611">説明</th>
 
 						</tr>
 
@@ -504,110 +506,112 @@ cbstats HOST:11210 failovers
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">backfilled</samp></td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">backfilled</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The amount of items sent from disk</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">cur_snapshot_end</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The end sequence number of the current snapshot being received</td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">ディスクから送信されたアイテム数です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">cur_snapshot_start</samp></td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">cur_snapshot_end</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The start sequence number of the current snapshot being received</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">cur_snapshot_type</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The type of the current snapshot being received</td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">現在受信中のスナップショットの終了シーケンス番号です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">end_seqno</samp></td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">cur_snapshot_start</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The sequence number of the last mutation to send</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">flags</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The flags supplied in the stream request</td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">現在受信中のスナップショットの開始シーケンス番号です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">items_ready</samp></td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">cur_snapshot_type</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">Whether the stream has items ready to send</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">last_sent_seqno</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The last sequence number sent by this stream</td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">現在受信中のスナップショット種別です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">memory</samp></td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">end_seqno</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The amount of items sent from memory</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">opaque</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The unique stream identifier</td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">最終送信データ変化のシーケンス番号です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">snap_end_seqno</samp></td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">flags</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The last snapshot end sequence number (used if a consumer is resuming a
-								stream)</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">snap_start_seqno</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The last snapshot start sequence number (used if a consumer is resuming
-								a stream)</td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">ストリームリクエストで指定されたフラグです</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">start_seqno</samp></td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">items_ready</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The sequence number to start sending mutations from</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">state</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The stream state (pending, backfilling, in-memory, takeover-send,
-								takeover-wait, or dead)</td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">ストリームが送信可能なアイテムを保持しているかを示します</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">vb_uuid</samp></td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">last_sent_seqno</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The vBucket UUID used in the stream request</td>
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">このストリームから送信された最終シーケンス番号です</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">memory</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">メモリから送信されたアイテム数です</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">opaque</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">ストリームのユニークな識別子です</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">snap_end_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">
+								最終スナップショット終了シーケンス番号です(consumerがストリームを再開する場合利用されます)
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">snap_start_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">
+								最終スナップショット開始シーケンス番号です(consumerがストリームを再開する場合利用されます)
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">start_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">データの変化送信を開始するためのシーケンス番号です</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">state</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">ストリームの状態です(pending, backfilling, in-memory, takeover-send,
+								takeover-wait, dead)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 "><samp class="ph codeph">vb_uuid</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e608 d46225e611 ">ストリームリクエストで指定されたvBucket UUIDです</td>
 
 						</tr>
 
@@ -619,26 +623,26 @@ cbstats HOST:11210 failovers
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Aggregated DCP statistics</h2>
+		<div class="section"><h2 class="title sectiontitle">DCP集約統計情報</h2>
 			
-			<p class="p">DCP provides aggregated statistics that logically group the DCP statistics together by
-				prefixes. For example, if all your DCP connections started with the string
-					<samp class="ph codeph">xdcr:</samp> or <samp class="ph codeph">replication:</samp>, you could use the command
-					<samp class="ph codeph">cbstats dcpagg :</samp> to request statistics grouped by everything before
-				the first colon character, giving you a set for <samp class="ph codeph">xdcr:</samp> statistics and a
-				set for <samp class="ph codeph">replication:</samp> statistics.</p>
+			<p class="p">
+				DCPは統計情報をプレフィックスで論理的なグループに集約した統計情報を提供します。
+				例えばすべてのDCP接続を<samp class="ph codeph">xdcr:</samp>や<samp class="ph codeph">replication:</samp>といった文字列でプレフィックスした場合、
+				<samp class="ph codeph">cbstats dcpagg :</samp>コマンドを利用して最初のコロンより前の文字列でグループ化した統計情報をリクエストでき、
+				<samp class="ph codeph">xdcr:</samp>や<samp class="ph codeph">replication:</samp>で始まる統計情報のセットを集約することができます。
+			</p>
 
 			
-			<p class="p">The following table describes the aggregated DCP statistics.</p>
+			<p class="p">以下のテーブルはDCP集約統計情報の説明です。</p>
 
 			
 			
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 6. Aggregated DCP statistics</span></caption>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">表 6. DCP集約統計情報</span></caption>
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" id="d46220e811">Name</th>
+							<th class="entry" valign="top" id="d46225e811">名称</th>
 
-							<th class="entry" valign="top" id="d46220e814">Description</th>
+							<th class="entry" valign="top" id="d46225e814">説明</th>
 
 						</tr>
 
@@ -647,46 +651,46 @@ cbstats HOST:11210 failovers
 					
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e811 d46220e814 "><samp class="ph codeph">[prefix]:count</samp></td>
+							<td class="entry" valign="top" headers="d46225e811 d46225e814 "><samp class="ph codeph">[prefix]:count</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e811 d46220e814 ">Number of connections matching this prefix</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e811 d46220e814 "><samp class="ph codeph">[prefix]:producer_count</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e811 d46220e814 ">Total producer connections with this prefix</td>
+							<td class="entry" valign="top" headers="d46225e811 d46225e814 ">このプレフィックスに一致する接続の数です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e811 d46220e814 "><samp class="ph codeph">[prefix]:items_sent</samp></td>
+							<td class="entry" valign="top" headers="d46225e811 d46225e814 "><samp class="ph codeph">[prefix]:producer_count</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e811 d46220e814 ">Total items sent with this prefix</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e811 d46220e814 "><samp class="ph codeph">[prefix]:items_remaining</samp></td>
-
-							<td class="entry" valign="top" headers="d46220e811 d46220e814 ">Total items remaining to be sent with this
-								prefix</td>
+							<td class="entry" valign="top" headers="d46225e811 d46225e814 ">プレフィックス単位の総producer接続数です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e811 d46220e814 "><samp class="ph codeph">[prefix]:total_bytes</samp></td>
+							<td class="entry" valign="top" headers="d46225e811 d46225e814 "><samp class="ph codeph">[prefix]:items_sent</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e811 d46220e814 ">Total number of bytes sent with this prefix</td>
+							<td class="entry" valign="top" headers="d46225e811 d46225e814 ">プレフィックス単位の総送信済みアイテム数です</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d46220e811 d46220e814 "><samp class="ph codeph">[prefix]:total_backlog_size</samp></td>
+							<td class="entry" valign="top" headers="d46225e811 d46225e814 "><samp class="ph codeph">[prefix]:items_remaining</samp></td>
 
-							<td class="entry" valign="top" headers="d46220e811 d46220e814 ">Total backfill items remaining to be sent
-								with this prefix</td>
+							<td class="entry" valign="top" headers="d46225e811 d46225e814 ">プレフィックス単位の送信待ちアイテム数です</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e811 d46225e814 "><samp class="ph codeph">[prefix]:total_bytes</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e811 d46225e814 ">プレフィックス単位の送信済みバイト数です</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46225e811 d46225e814 "><samp class="ph codeph">[prefix]:total_backlog_size</samp></td>
+
+							<td class="entry" valign="top" headers="d46225e811 d46225e814 ">
+								プレフィックス単位の総未送信backfillアイテム数です
+							</td>
 
 						</tr>
 
@@ -701,9 +705,9 @@ cbstats HOST:11210 failovers
 
 <nav class="related-links">
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../CLI/CBstats/cbstats-config.html" title="The cbstats config command shows configuration statistics.">Config</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../CLI/CBstats/cbstats-diskinfo.html" title="The cbstats diskinfo command provides data and file size information.">Diskinfo</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../CLI/CBstats/cbstats-config.html" title="The cbstats config command shows configuration statistics.">Config</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../CLI/CBstats/cbstats-diskinfo.html" title="The cbstats diskinfo command provides data and file size information.">Diskinfo</a></div>
 </div>
 </nav>
 </body>

@@ -1,17 +1,17 @@
 <!DOCTYPE html
   SYSTEM "about:legacy-compat">
-<html lang="en-us">
+<html lang="ja">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="topic">
-<meta name="description" content="A vBucket is defined as the owner of a subset of the key space of a Couchbase cluster. These vBuckets are used to distributed information effectively across a cluster."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
+<meta name="description" content="vBucketはCouchbaseクラスタにおけるキー空間のサブセットの所有者を定義します。 vBucketはクラスタ内で効率的に情報を分散するために利用されます。"><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-intro.html">
 <meta name="DC.Relation" scheme="URI" content="../Concepts/concept-ramQuota.html">
 <meta name="DC.Relation" scheme="URI" content="../Concepts/concept-cacheLayer.html">
 <meta name="DC.Relation" scheme="URI" content="concept-rebalancing.html">
 <meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="topic2955">
-<meta name="DC.Language" content="en-us">
+<meta name="DC.Language" content="ja">
 <link rel="stylesheet" type="text/css" href="../commonltr.css">
 <title>vBuckets</title>
 </head>
@@ -21,75 +21,87 @@
   <h1 class="title topictitle1">vBuckets</h1>
 
   
-  <div class="body"><p class="shortdesc">A vBucket is defined as the <em class="ph i">owner</em> of a subset of the key space of a Couchbase
-    cluster. These vBuckets are used to distributed information effectively across a cluster. </p>
+  <div class="body"><p class="shortdesc">
+	  vBucketはCouchbaseクラスタにおけるキー空間のサブセットの<em class="ph i">所有者</em>を定義します。
+	  vBucketはクラスタ内で効率的に情報を分散するために利用されます。
+  </p>
 
-    <p class="p">The vBucket system is used both for distributing data and for supporting replicas (copies of
-      bucket data) on more than one node. vBuckets are not a user-accessible component, but they are
-      a critical component of Couchbase Server and are vital to the availability support and elastic
-      nature.</p>
+	  <p class="p">
+		  vBucketシステムは、1つ以上のノードによるデータの分散と、レプリカ(バケットデータのコピー)を実現するために利用されます。
+		  vBucketはユーザがアクセス可能なコンポーネントではありませんが、Couchbase Serverの重要なコンポーネントであり、
+		  可用性と伸縮性のために非常に重要です。
+      </p>
 
-    <p class="p">Clients access the information stored in a bucket by communicating directly with the node
-      responsible for the corresponding vBucket. This direct access enables clients to communicate
-      with the node storing the data, rather than using a proxy or redistribution architecture. The
-      result abstracts the physical topology from the logical partitioning of data. This
-      architecture gives Couchbase Server elasticity and flexibility </p>
+	  <p class="p">
+		  クライアントはvBucketを担当するノードに直接接続して、バケットに保存された情報にアクセスします。
+		  プロキシや再配布のアーキテクチャを利用せず、データを保持するノードに直接接続します。
+		  結果として、物理的なトポロジを、論理的なデータパーティションから分離します。
+		  このアーキテクチャが、Couchbase Serverに伸縮性と柔軟性をもたらしています。
+      </p>
 
-    <p class="p">Every document ID belongs to a vBucket. A mapping function is used to calculate the vBucket
-      in which a given document belongs. In Couchbase Server, that mapping function is a hashing
-      function that takes a document ID as input and outputs a vBucket identifier. Once the vBucket
-      identifier has been computed, a table is consulted to lookup the server that “hosts” that
-      vBucket. The table contains one row per vBucket, pairing the vBucket to its hosting server. A
-      server appearing in this table can be (and usually is) responsible for multiple vBuckets.</p>
+	  <p class="p">
+		  すべてのドキュメントIDはvBucketに属しています。マッピング関数によって、ドキュメントがどのvBucketに属するのかを計算できます。
+		  Couchbase Serverではこのマッピング関数はハッシュ関数であり、ドキュメントIDを入力としてvBucketのIDを出力します。
+		  vBucketのIDを計算したあと、そのvBucketを"ホスト"するサーバを、テーブルから参照します。
+		  このテーブルはvBucketごとに行があり、vBucketとそのホストサーバを関連付けています。
+		  このテーブル内で定義されている各サーバは通常、複数のvBucketを担当します。
+      </p>
 
     
-    <p class="p">The following diagrams shows how the Key to Server mapping (vBucket map) works.</p>
+	  <p class="p">以下の図はキーがサーバにマッピングされている様子(vBucketマップ)を示しています。</p>
 
     
-    <p class="p">In this scenario, there are three servers in the cluster and client wants to look up the value of
-      KEY using the <samp class="ph codeph">GET</samp> operation.</p>
+	  <p class="p">
+		  このシナリオでは、クラスタ内に3台のサーバがあり、クライアントがKEYのバリューを<samp class="ph codeph">GET</samp>操作により参照しようとしています。
+      </p>
 
     
     <ol class="ol">
-      <li class="li">The client first hashes the key to calculate the vBucket which owns KEY. In this example,
-        the hash resolves to vBucket 8 (vB8). </li>
+		<li class="li">
+			クライアントはまず、キーをハッシュ化して、KEYが所属するvBucketを計算します。
+			この例では、ハッシュの結果、vBucket 8(vB8)となります。
+        </li>
 
-      <li class="li">By examining the vBucket map, the
-        client determines Server C hosts vB8.</li>
+		<li class="li">
+			vBucketマップを参照し、クライアントはサーバCがvB8をホストしていることを知ります。
+        </li>
 
-      <li class="li">The client sends the <samp class="ph codeph">GET</samp> operation directly to Server C.</li>
+		<li class="li">
+			クライアントは<samp class="ph codeph">GET</samp>操作を直接サーバCに送信します。
+		</li>
 
     </ol>
 
     
       <img class="image" src="../images/vbuckets.png" width="500">
     
-    <p class="p">In the next scenario, a server added to the original cluster of three. A new node, Server D,
-      is added to the cluster and the vBucket Map is updated (during the rebalance operation). The
-      updated map is then sent to all the cluster participants including the other nodes, any
-      connected “smart” clients, and the Moxi proxy service.</p>
+	  <p class="p">
+		次のシナリオでは、3台のクラスタに新しくサーバを追加しています。
+		新規のサーバDがクラスタに参加すると、リバランス操作によって、vBucketマップが更新されます。
+		更新されたマップは、クラスタ内のその他のノード、すべての接続中の"スマート"クライアント、Moxiプロキシサーバといった、
+		クラスタに接続するすべてのオブジェクトに送信されます。
+		</p>
 
     
-    <p class="p">Within the new four-node cluster model, when a client again wants to determine the 
-      value of KEY using the <samp class="ph codeph">GET</samp> operation:</p>
+		<p class="p">4台のクラスタとなったあと、クライアントが再度KEYのバリューを<samp class="ph codeph">GET</samp>操作により取得すると:</p>
 
     <ul class="ul">
-      <li class="li">The hashing algorithm still resolves to vBucket 8 (vB8).</li>
+		<li class="li">ハッシュアルゴリズムは依然としてvBucket 8(vB8)を出力します。</li>
 
-      <li class="li">The new vBucket Map now maps vBucket 8 to Server D.</li>
- 
-      <li class="li">The client sends the <samp class="ph codeph">GET</samp> operation directly to Server D.</li>
+		<li class="li">更新されたvBucketマップはvBucket 8をサーバDにマッピングしています。</li>
+
+		<li class="li">クライアントは<samp class="ph codeph">GET</samp>操作を直接サーバDに送信します。</li>
 
     </ul>
 
     
     <img class="image" src="../images/vbuckets-after.png" width="500">
     
-    <div class="note note"><span class="notetitle">Note:</span>  This architecture permits Couchbase Server to cope with changes without using
-      the typical RDBMS sharding method. In addition, the architecture differs from the method used
-      by <samp class="ph codeph">memcached</samp>, which uses client-side key hashes to determine the server from
-      a defined list. The memcached method requires active management of the list of servers and
-      specific hashing algorithms such as Ketama to cope with changes to the topology. </div>
+	<div class="note note"><span class="notetitle">注:</span> 
+		このアーキテクチャによりCouchbase Serverは、典型的なRDBMSのシャーディング方式を利用せず変化に対応できます。
+		また、<samp class="ph codeph">memcached</samp>が採用している、クライアント側でキーをハッシュし、定義されたリストからサーバを特定する方式とも異なります。
+		memcachedの方式は、トポロジの変化に対応するために、サーバリストの継続的管理が必要であり、Ketamaなどの特定のハッシュアルゴリズムが必要になります。
+	</div>
 
     
   
@@ -99,9 +111,9 @@
   
   <nav class="related-links">
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concept-ramQuota.html" title="RAMはCouchbase Serverに次の割当量として設定されます: サーバ割当量とバケット割当量">RAM割当量</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/concept-cacheLayer.html" title="Couchbase Server includes a built-in caching layer which acts as a central part of the server and provides very rapid reads and writes of data.">Caching layer</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../Concepts/concept-ramQuota.html" title="RAMはCouchbase Serverに次の割当量として設定されます: サーバ割当量とバケット割当量">RAM割当量</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Concepts/concept-cacheLayer.html" title="Couchbase Server includes a built-in caching layer which acts as a central part of the server and provides very rapid reads and writes of data.">Caching layer</a></div>
 </div>
 
 <div class="linklist linklist">
