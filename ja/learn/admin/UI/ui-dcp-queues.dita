@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
-<task id="task_j41_v5z_n4">
-    <title>Viewing DCP queues</title>
-    <shortdesc>DCP queues provide information about the Database Change Protocol (DCP) protocol used
-        to stream data changes to buckets.</shortdesc>
+<task xml:lang="ja" id="task_j41_v5z_n4">
+    <title>DCPキューの確認</title>
+	<shortdesc>
+		DCPキューは、バケット間でデータ変更をストリームするために使用する、データベース変更プロトコル(DCP)の情報を提供します。
+	</shortdesc>
     <taskbody>
         <context>
-            <p>The DCP queues information is available for each node via the <uicontrol>Server Nodes</uicontrol> tab.</p>
+			<p>
+				DCPキューの情報は各ノードの<uicontrol>Server Nodes</uicontrol>タブから参照できます。
+			</p>
         </context>
         <steps>
-            <step><cmd>Navigate to <uicontrol>Server Nodes > node link</uicontrol>.</cmd></step>
-            <step><cmd>Click on the node link (rather than expanding the triangle).</cmd></step>
-            <step><cmd>Expand the DCP QUEUES module triangle.</cmd></step>
-            <step><cmd>Hover over the DCP information for a description of the bucket analytics.</cmd></step>
-            <step><cmd>Expand the bucket analytics module triangle to show the information by server.</cmd></step>
+            <step><cmd><uicontrol>Server Nodes > node link</uicontrol>に移動します。</cmd></step>
+            <step><cmd>(三角形を開くのではなく)ノードのリンクをクリックします。</cmd></step>
+            <step><cmd>DCP QUEUESモジュールの三角形を開きます。</cmd></step>
+            <step><cmd>DCP情報上にマウスを乗せると、バケット分析に関する説明が確認できます。</cmd></step>
+            <step><cmd>バケット分析モジュールの三角形を開くと、サーバ単位の情報を確認できます。</cmd></step>
         </steps>
         
         <example>
