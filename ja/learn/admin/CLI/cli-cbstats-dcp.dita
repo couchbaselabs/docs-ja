@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="reference_ik4_sxz_n4">
+<reference xml:lang="ja" id="reference_ik4_sxz_n4">
 	<title>DCP</title>
-	<abstract><shortdesc>Statistics for Database Change Protocol (DCP) are obtained via the CLI with
-			the <codeph>cbstats</codeph> tool.</shortdesc> The following table shows the commands you
-		can use with the <codeph>cbstats</codeph> tool to retrieve DCP statistics:</abstract>
+	<abstract><shortdesc>
+			データベース変更プロトコル(DCP)に関する統計情報は<codeph>cbstats</codeph>CLIツールから取得可能です。
+			以下の表は<codeph>cbstats</codeph>ツールでDCP統計情報取得に利用可能なコマンドの一覧です:
+		</shortdesc>
+		</abstract>
 
 
 	<refbody>
@@ -12,27 +14,26 @@
 
 
 		<table frame="all" id="table_psm_zxz_n4">
-			<title>DCP statistics</title>
+			<title>DCP統計情報</title>
 			<tgroup cols="2">
 				<thead>
 					<row>
-						<entry>Command</entry>
-						<entry>Description</entry>
+						<entry>コマンド</entry>
+						<entry>説明</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
 						<entry><codeph>dcp</codeph></entry>
-						<entry>Retrieves connections specific to statistics.</entry>
+						<entry>個別の接続ごとの統計情報を取得します。</entry>
 					</row>
 					<row>
 						<entry><codeph>dcpagg</codeph></entry>
-						<entry>Retrieves statistics that are logically grouped and aggregated together by
-							prefixes.</entry>
+						<entry>プレフィックスにより論理的にグループ化され、集約した統計情報を取得します。</entry>
 					</row>
 					<row>
 						<entry><codeph>failovers</codeph></entry>
-						<entry>Retrieves vBucket failover logs.</entry>
+						<entry>vBucketフェイルオーバログを取得します。</entry>
 					</row>
 
 				</tbody>
@@ -41,8 +42,8 @@
 
 
 
-		<refsyn><title>Syntax</title>
-			<p>Use the following command syntax for DCP-related <codeph>cbstats</codeph> requests:</p>
+		<refsyn><title>シンタックス</title>
+			<p>DCPに関連する<codeph>cbstats</codeph>リクエストには、以下のコマンドシンタックスを利用してください:</p>
 			<pre>
 cbstats HOST:11210 dcp
 cbstats HOST:11210 dcpagg
@@ -50,14 +51,12 @@ cbstats HOST:11210 failovers
 </pre>
 		</refsyn>
 
-		<example><title>Example: request all DCP statistics</title>
-			<p>The following example shows a <codeph>cbstats</codeph> request for all DCP-related
-				statistics.</p>
+		<example><title>例: すべてのDCP統計情報を取得する</title>
+			<p>以下の例ではDCPに関連するすべての統計情報に対する<codeph>cbstats</codeph>のリクエストを示しています。</p>
 			<codeblock>
 # ./cbstats 10.5.2.54:11210 dcp
 </codeblock>
-			<p>Here's some output from the command. The output is quite lengthy, so this sample is
-				truncated.</p>
+			<p>コマンドの実行結果は次のようになります。出力結果は非常に長いため、ここでは一部省略しています。</p>
 			<pre>
  ep_dcp_count:                                                                               6
  ep_dcp_items_remaining:                                                                     0
@@ -89,13 +88,12 @@ cbstats HOST:11210 failovers
 		</example>
 
 
-		<example><title>Example: request aggregated DCP statistics</title>
-			<p>The following example shows a <codeph>cbstats</codeph> request for a set of aggregated
-				DCP statistics:</p>
+		<example><title>例: 集約したDCP統計情報</title>
+			<p>以下の例では集約したDCP統計情報に対する<codeph>cbstats</codeph>のリクエストを示しています。</p>
 			<codeblock>
 # ./cbstats 10.5.2.54:11210 dcpagg
 </codeblock>
-			<p>Here's the output from the command:</p>
+			<p>コマンドの出力例です:</p>
 			<pre>
  :total:backoff:                 0
  :total:count:                   6
@@ -114,14 +112,13 @@ cbstats HOST:11210 failovers
 </pre>
 		</example>
 
-		<example><title>Example: request failover logs</title>
-			<p>The following example shows a <codeph>cbstats</codeph> request for failover logs. The
-				lengthy output of the command is truncated.</p>
+		<example><title>例: フェイルオーバログ</title>
+			<p>以下の例はフェイルオーバログに対する<codeph>cbstats</codeph>リクエストです。実行結果は長いため、一部省略しています。
+</p>
 			<codeblock>
 # cbstats 10.5.2.54:11210 failovers
 </codeblock>
-			<p>Here's some output from the command. The output is quite lengthy, so this sample is
-				truncated.</p>
+			<p>コマンド出力結果例の一部です。</p>
 			<pre>
  vb_1000:0:id:        101754288503529
  vb_1000:0:seq:       0
@@ -131,190 +128,194 @@ cbstats HOST:11210 failovers
 		</example>
 
 		<section>
-			<title>DCP statistics by connection type</title>
-			<p>DCP provides statistics for consumer, producer, and notifier connection types. The following
-				tables describe the available consumer, producer, and notifier connection statistics.
-				Each connection type has a group of statistics that apply to the connection overall and
-				a group of statistics that apply to the individual streams in the connections.</p>
-			<p>The identifier for each DCP statistic begins with the string <codeph>ep_dcpq:</codeph>
-				followed by a unique <codeph>client_id</codeph> and another colon. For example, if your
-				client is named <codeph>slave1</codeph>, the identifier for the DCP statistic named
-					<codeph>created</codeph> is <codeph>ep_dcpq:slave1:created</codeph>.</p>
+			<title>接続種別によるDCP統計情報</title>
+			<p>
+				DCPにはconsumer, producer, notifierの接続種別があります。
+				以下の表はconsumer, producer, notifierで利用可能な接続統計情報を示しています。
+				各接続種別にはすべての接続種別で有効な統計情報のグループと、
+				接続内の個別のストリームでのみ有効な統計情報のグループがあります。
+			</p>
+			<p>
+				各DCP統計情報識別子は<codeph>ep_dcpq:</codeph>で始まり、一意となる<codeph>client_id</codeph>とコロンが続きます。
+				例えば、クライアントが<codeph>slave1</codeph>という名前の場合、<codeph>created</codeph>のDCP統計情報識別子は
+				<codeph>ep_dcpq:slave1:created</codeph>となります。
+			</p>
 			<table>
-				<title>Consumer connection statistics</title>
+				<title>Consumer接続統計情報</title>
 				<tgroup cols="2">
 					<thead>
 						<row>
-							<entry>Name</entry>
-							<entry>Description</entry>
+							<entry>名称</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry><codeph>connected</codeph></entry>
-							<entry>True if this client is connected</entry>
+							<entry>クライアントが接続済みの場合Trueになります</entry>
 						</row>
 						<row>
 							<entry><codeph>created</codeph></entry>
-							<entry>Creation time of the DCP connection</entry>
+							<entry>DCP接続の生成時刻です</entry>
 						</row>
 						<row>
 							<entry><codeph>pending_disconnect</codeph></entry>
-							<entry>True if we’re hanging up on this client</entry>
+							<entry>クライアントを切断中の場合Trueになります</entry>
 						</row>
 						<row>
 							<entry><codeph>reserved</codeph></entry>
-							<entry>True if the DCP stream is reserved</entry>
+							<entry>DCPストリームが予約されている場合Trueになります</entry>
 						</row>
 						<row>
 							<entry><codeph>supports_ack</codeph></entry>
-							<entry>True if the connection use flow control</entry>
+							<entry>接続がフロー制御を利用している場合Trueになります</entry>
 						</row>
 						<row>
 							<entry><codeph>total_acked_bytes</codeph></entry>
-							<entry>The amount of bytes that the consumer has acknowledged</entry>
+							<entry>consumerがackした総バイト数です</entry>
 						</row>
 						<row>
 							<entry><codeph>type</codeph></entry>
-							<entry>The connection type (producer, consumer, or notifier)</entry>
+							<entry>接続種別です(producer, consumer, notifier)</entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table>
 			<table>
-				<title>Consumer connection per-stream statistics</title>
+				<title>ストリーム単位のConsumer接続統計情報</title>
 				<tgroup cols="2">
 					<thead>
 						<row>
-							<entry>Name</entry>
-							<entry>Description</entry>
+							<entry>名称</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry><codeph>buffer_bytes</codeph></entry>
-							<entry>The amount of unprocessed bytes</entry>
+							<entry>滞留中のバイト数です</entry>
 						</row>
 						<row>
 							<entry><codeph>buffer_items</codeph></entry>
-							<entry>The amount of unprocessed items</entry>
+							<entry>滞留中のアイテム数です</entry>
 						</row>
 						<row>
 							<entry><codeph>end_seqno</codeph></entry>
-							<entry>The sequence number where this stream should end</entry>
+							<entry>このストリームが終了すべきシーケンス番号です</entry>
 						</row>
 						<row>
 							<entry><codeph>flags</codeph></entry>
-							<entry>The flags used to create this stream</entry>
+							<entry>このストリーム作成時に指定されたフラグです</entry>
 						</row>
 						<row>
 							<entry><codeph>items_ready</codeph></entry>
-							<entry>Whether the stream has messages ready to send</entry>
+							<entry>ストリームがメッセージを送信する準備ができているかを示します</entry>
 						</row>
 						<row>
 							<entry><codeph>opaque</codeph></entry>
-							<entry>The unique stream identifier</entry>
+							<entry>ストリームの一意な識別子です</entry>
 						</row>
 						<row>
 							<entry><codeph>snap_end_seqno</codeph></entry>
-							<entry>The start sequence number of the last snapshot received</entry>
+							<entry>最後のスナップショット受信時の、開始シーケンス番号です</entry>
 						</row>
 						<row>
 							<entry><codeph>snap_start_seqno</codeph></entry>
-							<entry>The end sequence number of the last snapshot received</entry>
+							<entry>最後のスナップショット受信時の、終了シーケンス番号です</entry>
 						</row>
 						<row>
 							<entry><codeph>start_seqno</codeph></entry>
-							<entry>The start sequence number used to create this stream</entry>
+							<entry>このストリーム作成時に利用した開始シーケンス番号です</entry>
 						</row>
 						<row>
 							<entry><codeph>state</codeph></entry>
-							<entry>The stream state (pending, reading, or dead)</entry>
+							<entry>ストリームの状態です(pending, reading, dead)</entry>
 						</row>
 						<row>
 							<entry><codeph>vb_uuid</codeph></entry>
-							<entry>The vBucket UUID used to create this stream</entry>
+							<entry>このストリーム作成時に利用したvBucket UUIDです</entry>
 						</row>
 
 					</tbody>
 				</tgroup>
 			</table>
 			<table>
-				<title>Producer and notifier connection statistics</title>
+				<title>Producer, Notifier接続統計情報</title>
 				<tgroup cols="2">
 					<thead>
 						<row>
-							<entry>Name</entry>
-							<entry>Description</entry>
+							<entry>名称</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry><codeph>bytes_sent</codeph></entry>
-							<entry>The amount of unacknowledged bytes sent to the consumer</entry>
+							<entry>consumerに送信されたunack状態の総バイト数です</entry>
 						</row>
 						<row>
 							<entry><codeph>connected</codeph></entry>
-							<entry>True if this client is connected</entry>
+							<entry>クライアントが接続済みの場合Trueになります</entry>
 						</row>
 						<row>
 							<entry><codeph>created</codeph></entry>
-							<entry>Creation time for the DCP connection</entry>
+							<entry>DCPコネクション接続生成時刻です</entry>
 						</row>
 						<row>
 							<entry><codeph>flow_control</codeph></entry>
-							<entry>True if the connection uses flow control</entry>
+							<entry>接続がフロー制御を利用している場合Trueになります</entry>
 						</row>
 						<row>
 							<entry><codeph>items_remaining</codeph></entry>
-							<entry>The amount of items remaining to be sent</entry>
+							<entry>送信待ち状態のアイテム数です</entry>
 						</row>
 						<row>
 							<entry><codeph>items_sent</codeph></entry>
-							<entry>The amount of items already sent to the consumer </entry>
+							<entry>consumerに送信済みのアイテム数です</entry>
 						</row>
 						<row>
 							<entry><codeph>last_sent_time</codeph></entry>
-							<entry>The maximum amount of bytes that can be sent without receiving an
-								acknowledgment from the consumer</entry>
+							<entry>
+								consumerからのackを受診せずに送信可能な最大バイト数です
+								</entry>
 						</row>
 						<row>
 							<entry><codeph>noop_enabled</codeph></entry>
-							<entry>Indicates whether this connection sends noops </entry>
+							<entry>この接続がnoopを送信するかを示します</entry>
 						</row>
 						<row>
 							<entry><codeph>noop_wait</codeph></entry>
-							<entry>Indicates whether this connection is waiting for a noop response from
-								the consumer</entry>
+							<entry>この接続がnoopのレスポンスをconsumerから待っているかどうかを示します</entry>
 						</row>
 						<row>
 							<entry><codeph>pending_disconnect</codeph></entry>
-							<entry>True if we’re hanging up on this client</entry>
+							<entry>クライアントを切断中の場合Trueになります</entry>
 						</row>
 						<row>
 							<entry><codeph>reserved</codeph></entry>
-							<entry>True if the DCP stream is reserved</entry>
+							<entry>DCPストリームが予約されている場合Trueになります</entry>
 						</row>
 						<row>
 							<entry><codeph>supports_ack</codeph></entry>
-							<entry>True if the connection uses flow control</entry>
+							<entry>接続がフロー制御を利用している場合Trueになります</entry>
 						</row>
 						<row>
 							<entry><codeph>total_acked_bytes</codeph></entry>
-							<entry>The amount of bytes that have been acknowledged by the consumer when
-								flow control is enabled</entry>
+							<entry>
+								フロー制御が有効な場合の、consumerからackされたバイトの総数です
+								</entry>
 						</row>
 						<row>
 							<entry><codeph>total_bytes_sent</codeph></entry>
-							<entry>The amount of bytes already sent to the consumer</entry>
+							<entry>consumerに送信済みのバイト数です</entry>
 						</row>
 						<row>
 							<entry><codeph>type</codeph></entry>
-							<entry>The connection type (producer, consumer, or notifier)</entry>
+							<entry>接続種別です(producer, consumer, notifier)</entry>
 						</row>
 						<row>
 							<entry><codeph>unacked_bytes</codeph></entry>
-							<entry>The amount of bytes the consumer has not acknowledged</entry>
+							<entry>consumerがまだackしていないバイト数です</entry>
 						</row>
 					</tbody>
 				</tgroup>
@@ -324,73 +325,75 @@ cbstats HOST:11210 failovers
 				<tgroup cols="2">
 					<thead>
 						<row>
-							<entry>Name</entry>
-							<entry>Description</entry>
+							<entry>名称</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry><codeph>backfilled</codeph></entry>
-							<entry>The amount of items sent from disk</entry>
+							<entry>ディスクから送信されたアイテム数です</entry>
 						</row>
 						<row>
 							<entry><codeph>cur_snapshot_end</codeph></entry>
-							<entry>The end sequence number of the current snapshot being received</entry>
+							<entry>現在受信中のスナップショットの終了シーケンス番号です</entry>
 						</row>
 						<row>
 							<entry><codeph>cur_snapshot_start</codeph></entry>
-							<entry>The start sequence number of the current snapshot being received</entry>
+							<entry>現在受信中のスナップショットの開始シーケンス番号です</entry>
 						</row>
 						<row>
 							<entry><codeph>cur_snapshot_type</codeph></entry>
-							<entry>The type of the current snapshot being received</entry>
+							<entry>現在受信中のスナップショット種別です</entry>
 						</row>
 						<row>
 							<entry><codeph>end_seqno</codeph></entry>
-							<entry>The sequence number of the last mutation to send</entry>
+							<entry>最終送信データ変化のシーケンス番号です</entry>
 						</row>
 						<row>
 							<entry><codeph>flags</codeph></entry>
-							<entry>The flags supplied in the stream request</entry>
+							<entry>ストリームリクエストで指定されたフラグです</entry>
 						</row>
 						<row>
 							<entry><codeph>items_ready</codeph></entry>
-							<entry>Whether the stream has items ready to send</entry>
+							<entry>ストリームが送信可能なアイテムを保持しているかを示します</entry>
 						</row>
 						<row>
 							<entry><codeph>last_sent_seqno</codeph></entry>
-							<entry>The last sequence number sent by this stream</entry>
+							<entry>このストリームから送信された最終シーケンス番号です</entry>
 						</row>
 						<row>
 							<entry><codeph>memory</codeph></entry>
-							<entry>The amount of items sent from memory</entry>
+							<entry>メモリから送信されたアイテム数です</entry>
 						</row>
 						<row>
 							<entry><codeph>opaque</codeph></entry>
-							<entry>The unique stream identifier</entry>
+							<entry>ストリームのユニークな識別子です</entry>
 						</row>
 						<row>
 							<entry><codeph>snap_end_seqno</codeph></entry>
-							<entry>The last snapshot end sequence number (used if a consumer is resuming a
-								stream)</entry>
+							<entry>
+								最終スナップショット終了シーケンス番号です(consumerがストリームを再開する場合利用されます)
+							</entry>
 						</row>
 						<row>
 							<entry><codeph>snap_start_seqno</codeph></entry>
-							<entry>The last snapshot start sequence number (used if a consumer is resuming
-								a stream)</entry>
+							<entry>
+								最終スナップショット開始シーケンス番号です(consumerがストリームを再開する場合利用されます)
+							</entry>
 						</row>
 						<row>
 							<entry><codeph>start_seqno</codeph></entry>
-							<entry>The sequence number to start sending mutations from</entry>
+							<entry>データの変化送信を開始するためのシーケンス番号です</entry>
 						</row>
 						<row>
 							<entry><codeph>state</codeph></entry>
-							<entry>The stream state (pending, backfilling, in-memory, takeover-send,
-								takeover-wait, or dead)</entry>
+							<entry>ストリームの状態です(pending, backfilling, in-memory, takeover-send,
+								takeover-wait, dead)</entry>
 						</row>
 						<row>
 							<entry><codeph>vb_uuid</codeph></entry>
-							<entry>The vBucket UUID used in the stream request</entry>
+							<entry>ストリームリクエストで指定されたvBucket UUIDです</entry>
 						</row>
 					</tbody>
 				</tgroup>
@@ -398,52 +401,52 @@ cbstats HOST:11210 failovers
 		</section>
 		
 		<section>
-			<title>Aggregated DCP statistics</title>
-			<p>DCP provides aggregated statistics that logically group the DCP statistics together by
-				prefixes. For example, if all your DCP connections started with the string
-					<codeph>xdcr:</codeph> or <codeph>replication:</codeph>, you could use the command
-					<codeph>cbstats dcpagg :</codeph> to request statistics grouped by everything before
-				the first colon character, giving you a set for <codeph>xdcr:</codeph> statistics and a
-				set for <codeph>replication:</codeph> statistics.</p>
+			<title>DCP集約統計情報</title>
+			<p>
+				DCPは統計情報をプレフィックスで論理的なグループに集約した統計情報を提供します。
+				例えばすべてのDCP接続を<codeph>xdcr:</codeph>や<codeph>replication:</codeph>といった文字列でプレフィックスした場合、
+				<codeph>cbstats dcpagg :</codeph>コマンドを利用して最初のコロンより前の文字列でグループ化した統計情報をリクエストでき、
+				<codeph>xdcr:</codeph>や<codeph>replication:</codeph>で始まる統計情報のセットを集約することができます。
+			</p>
 			
-			<p>The following table describes the aggregated DCP statistics.</p>
+			<p>以下のテーブルはDCP集約統計情報の説明です。</p>
 			
 			<table>
-				<title>Aggregated DCP statistics</title>
+				<title>DCP集約統計情報</title>
 				<tgroup cols="2">
 					<thead>
 						<row>
-							<entry>Name</entry>
-							<entry>Description</entry>
+							<entry>名称</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					
 					<tbody>
 						<row>
 							<entry><codeph>[prefix]:count</codeph></entry>
-							<entry>Number of connections matching this prefix</entry>
+							<entry>このプレフィックスに一致する接続の数です</entry>
 						</row>
 						<row>
 							<entry><codeph>[prefix]:producer_count</codeph></entry>
-							<entry>Total producer connections with this prefix</entry>
+							<entry>プレフィックス単位の総producer接続数です</entry>
 						</row>
 						<row>
 							<entry><codeph>[prefix]:items_sent</codeph></entry>
-							<entry>Total items sent with this prefix</entry>
+							<entry>プレフィックス単位の総送信済みアイテム数です</entry>
 						</row>
 						<row>
 							<entry><codeph>[prefix]:items_remaining</codeph></entry>
-							<entry>Total items remaining to be sent with this
-								prefix</entry>
+							<entry>プレフィックス単位の送信待ちアイテム数です</entry>
 						</row>
 						<row>
 							<entry><codeph>[prefix]:total_bytes</codeph></entry>
-							<entry>Total number of bytes sent with this prefix</entry>
+							<entry>プレフィックス単位の送信済みバイト数です</entry>
 						</row>
 						<row>
 							<entry><codeph>[prefix]:total_backlog_size</codeph></entry>
-							<entry>Total backfill items remaining to be sent
-								with this prefix</entry>
+							<entry>
+								プレフィックス単位の総未送信backfillアイテム数です
+							</entry>
 						</row>
 					</tbody>
 				</tgroup>
