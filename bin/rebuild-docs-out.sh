@@ -3,7 +3,7 @@
 BIN_DIR=`dirname $0`
 PROJECT_HOME=$BIN_DIR/..
 OUT_DIR="$PROJECT_HOME/out"
-DITAMAP="$PROJECT_HOME/ja/learn/admin/Admin.ditamap"
+DITAMAP="$PROJECT_HOME/ja/learn/admin/Couchbase.ditamap"
 
 [ -f $BIN_DIR/env.sh ] && . $BIN_DIR/env.sh
 
