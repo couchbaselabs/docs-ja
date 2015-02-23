@@ -17,7 +17,7 @@ Contribute方法
 
 issueには[translation wanted](https://github.com/couchbaselabs/docs-ja/labels/translation%20wanted)とhelp wantedのlabelを付けています。未着手のDITAファイルを探すのに利用してください。
 
-jaディレクトリの下にある&ast;.ditaファイルを翻訳し、Pull Requestを送ってください。
+jaディレクトリの下にある\*.ditaファイルを翻訳し、Pull Requestを送ってください。
 WIP (Work In Progress) ブランチをPull Requestする形で運用します。
 作業の流れは以下のようになります:
 
