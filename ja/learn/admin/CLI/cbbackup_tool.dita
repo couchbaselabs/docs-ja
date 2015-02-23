@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference xml:lang="ja" id="cbbackup-tool">
-   <title>cbbackup tool</title>
+   <title>cbbackupツール</title>
    <shortdesc><codeph>cbbackup</codeph>ツールは、稼働中の全クラスタ・全バケット・単一ノード・正常稼働中ノード上の単一バケット
    のコピーを作成します。</shortdesc>
    
