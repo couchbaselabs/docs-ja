@@ -1,74 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_hdg_nkd_54">
-  <title>What's new in 3.0</title>
-  <shortdesc>Couchbase Server 3.0 is a major release that provides significant enhancements to
-    scalability, performance, availability and reliability, ease of administration, and
-    security.</shortdesc>
+<topic xml:lang="ja" id="topic_hdg_nkd_54">
+  <title>3.0の新機能</title>
+  <shortdesc>
+	  Couchbase Server 3.0はスケーラビリティ、パフォーマンス、可用性、信頼性、管理の容易性、セキュリティに対する、非常に重要な機能拡張を含むメジャーリリースです。
+  </shortdesc>
   <body>
     
-    <p>Couchbase Server 3.0 is our major release which extends our lead as the most performant and scalable NoSQL database for mission critical enterprise applications. 
-      In addition to adding great new functionality for the enterprise, 3.0 delivers many new features 
-      that make it easier for developers and administrators to work with Couchbase Server, making it the best choice for your NoSQL projects.</p>
+	  <p>
+		Couchbase Server 3.0は、最も高性能でスケーラブルなNoSQLデータベースとして、
+		ミッションクリティカルなエンタープライズアプリケーションにおいて、Couchbaseがリードする領域を広げます。
+		エンタープライズ用途の優れた新機能を追加するだけではなく、3.0では、最適なNoSQLプロダクトとしてご利用いただくため、
+		開発者や管理者がCouchbase Serverをより簡単に扱うための新機能を追加しています。
+	  </p>
     
  
     
-    <section><title>New features</title>
-      <p>The major new enhancements and features available in Couchbase Server 3.0 include: </p>
+    <section><title>新機能</title>
+		<p>次のリストはCouchbase Server 3.0の主要な機能拡張、新機能です:</p>
     
     <ul>
-      <li>Infrastructure enhancements including: 
+      <li>基盤のエンハンスメント: 
         <ul>
-          <li><xref href="Concepts/dcp.dita">Database Change
-            Protocol (DCP)</xref></li>
+          <li><xref href="Concepts/dcp.dita">データベース変更プロトコル(Database Change Protocol, DCP)</xref></li>
           <li><xref href="Concepts/global-thread-pool.dita"/>
-            <p>For information about DCP
-            statistics, see <xref href="UI/ui-dcp-queues.dita"></xref> via the web console and <xref href="CLI/cli-cbstats-dcp.dita"></xref> via the CLI.</p></li>
+			  <p>
+				  DCPに関する統計情報について、Webコンソールは<xref href="UI/ui-dcp-queues.dita"></xref>を、CLIは<xref href="CLI/cli-cbstats-dcp.dita"></xref>をご参照ください。
+            </p></li>
         </ul></li>
-      <li>Bucket and disk I/O enhancements including: <ul>
-            <li><xref href="Concepts/bucket-eviction.dita">Bucket metadata ejections</xref>
-              <p>For information about bucket metadata ejections, see <xref
-                href="UI/ui-task-bucket-metadata-ejection.dita"/> via the web console, 
-                <xref href="CLI/CBcli/cbcli-bucket-metadata-ejection.dita"/> via the CLI, and 
-                <xref href="REST/rest-bucket-metadata-ejection.dita"/> via the REST API.</p></li>
-            <li><xref href="Concepts/bucket-priority.dita">Disk I/O priority</xref>
-              <p>For information about changing disk I/P priority, see <xref
-                  href="UI/ui-task-set-bucket-priority.dita"/> via the web console, <xref
-                  href="CLI/cli-set-disk-priority.dita"/> via the CLI, and <xref
-                  href="REST/rest-bucket-set-priority.dita"/> via the REST API.</p></li>
+		<li>バケットとディスクI/Oに関するエンハンスメント: <ul>
+            <li><xref href="Concepts/bucket-eviction.dita">バケットメタデータの除去</xref>
+              <p>バケットメタデータの除去について、Webコンソールは<xref href="UI/ui-task-bucket-metadata-ejection.dita"/>を、 
+                CLIは<xref href="CLI/CBcli/cbcli-bucket-metadata-ejection.dita"/>を、 
+                REST APIは<xref href="REST/rest-bucket-metadata-ejection.dita"/>をご参照ください。</p></li>
+		<li><xref href="Concepts/bucket-priority.dita">ディスクI/O優先度</xref>
+			<p>ディスクI/O優先度設定の変更方法は、Webコンソール経由の場合<xref
+                  href="UI/ui-task-set-bucket-priority.dita"/>を,CLIからは<xref
+                  href="CLI/cli-set-disk-priority.dita"/>を、REST APIからは<xref
+                  href="REST/rest-bucket-set-priority.dita"/>をご参照ください。</p></li>
           </ul></li>
-      <li>Server maintenance enhancements including: <ul>
+      <li>サーバメンテナンスの向上:<ul>
             <li><xref href="Concepts/graceful-failover.dita"/>
-              <p>For information about graceful failover, see <xref
-                href="UI/ui-task-failover-graceful.dita"/> via the web console, <xref
-                  href="CLI/cli-failover.dita"/> via the CLI, and <xref
-                    href="REST/rest-failover-graceful.dita"/> via the REST API.</p></li>
+              <p>グレイスフルフェイルオーバについて、Webコンソールは<xref
+                href="UI/ui-task-failover-graceful.dita"/>、CLIは<xref
+                  href="CLI/cli-failover.dita"/>、REST APIは<xref
+                    href="REST/rest-failover-graceful.dita"/>をご参照ください。</p></li>
             <li><xref href="Concepts/delta-node-recovery.dita"/>
-              <p>For information about using delta
-              node recovery, see <xref
-                href="UI/ui-task-node-recovery-incremental.dita"/> via the web console, <xref
-                  href="CLI/cli-node-recovery-incremental.dita"/> via the CLI, and <xref
-                    href="REST/rest-node-recovery-incremental.dita"/> via the REST API.</p></li>
+              <p>デルタノードリカバリについて、Webコンソールは<xref
+                href="UI/ui-task-node-recovery-incremental.dita"/>、CLIは<xref
+                  href="CLI/cli-node-recovery-incremental.dita"/>、REST APIは<xref
+                    href="REST/rest-node-recovery-incremental.dita"/>をご参照ください。</p></li>
             <li><xref href="Tasks/tasks-backup-restore-incremental.dita"/>
-              <p>For information about
-              using incremental backup and restore via the CLI, see <xref
-                href="CLI/cli-increment-backup.dita"/> and <xref
-                  href="CLI/cli-incremental-restore.dita"/>.</p></li>
+				<p>差分バックアップとリストアについて、CLIは<xref
+                href="CLI/cli-increment-backup.dita"/>、<xref
+                  href="CLI/cli-incremental-restore.dita"/>をご参照ください。</p></li>
           </ul></li>
-      <li>Views enhancement with <xref href="Views/views-index-updates.dita"/>.</li>
-      <li>XDCR enhancements including <xref href="XDCR/xdcr-memory-replication.dita"/> and <xref
-            href="XDCR/xdcr-pause-resume.dita"/>
-          <p>For information about pausing and resuming XDCR replication, 
-            see <xref href="UI/ui-xdcr-pause-resume.dita"/> via the web console, <xref
-              href="CLI/CBcli/cbcli-xdcr-pause-resume.dita"/>  via the CLI, and <xref
-                href="REST/rest-xdcr-pause-resume.dita"/> via the REST API.</p></li>
-      <li>Security enhancement including <xref href="security/security-admin-access.dita"/> and <xref
-            href="security/security-client-ssl.dita"/>.</li>
-      <li>Log and log collection improvements with <xref href="Misc/cluster-wide-info-intro.dita"/>
-      <p>For more information about collecting diagnostics, see <xref
-        href="UI/ui-cluster-wide-info.dita"/> via the web console, <xref
-          href="CLI/CBcli/cbcli-cluster-wide-info.dita"/> via the CLI, and <xref
-          href="CLI/cbcollect_info_tool.dita"/> via the CLI.
+      <li><xref href="Views/views-index-updates.dita"/>によるViewの向上。</li>
+      <li><xref href="XDCR/xdcr-memory-replication.dita"/>と<xref href="XDCR/xdcr-pause-resume.dita"/>によるXDCRの向上:
+		  <p>XDCRレプリケーションの一時停止と再開について、
+			Webコンソールは<xref href="UI/ui-xdcr-pause-resume.dita"/>、CLIは<xref
+              href="CLI/CBcli/cbcli-xdcr-pause-resume.dita"/>、REST APIは<xref
+                href="REST/rest-xdcr-pause-resume.dita"/>をご参照ください。</p></li>
+      <li><xref href="security/security-admin-access.dita"/>と<xref
+            href="security/security-client-ssl.dita"/>によるセキュティ向上。</li>
+      <li><xref href="Misc/cluster-wide-info-intro.dita"/>によるログとログ収集の向上:
+      <p>診断情報の収集について、Webコンソールは<xref
+        href="UI/ui-cluster-wide-info.dita"/>、CLIは<xref
+          href="CLI/CBcli/cbcli-cluster-wide-info.dita"/>と<xref
+          href="CLI/cbcollect_info_tool.dita"/>をご参照ください。
         <!-- <xref href="REST/rest-cluster-wide-info.dita" ></xref> --></p>
         </li>
         </ul>
