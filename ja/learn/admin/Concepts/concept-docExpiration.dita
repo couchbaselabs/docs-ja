@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic998">
-  <title>Expiration</title>
-  <shortdesc>Each document stored in the database has an optional expiration value (TTL, time to live) 
-  that is used to automatically deleted items.</shortdesc>
+<topic xml:lang="ja" id="topic998">
+  <title>アイテムの有効期限</title>
+  <shortdesc>
+	  データベースに保存された各ドキュメントは、自動的にアイテムを削除するために、オプションで有効期限(TTL、Time to Live)を設定することができます。
+  </shortdesc>
   <body>
-    <p>The expiration option can be used for data that has a limited life and could be automatically
-      deleted. </p>
-    <p>The expiration value is user-specified on a per document basis at the point when the object is 
-      created, updated, or changed through the Couchbase SDK.
-      If you want an object to expire before 30 days, you can provide a TTL in seconds, or as Unix epoch time. 
-      If you want an object to expire sometime after 30 days, you must provide a TTL in Unix epoch time; 
-      for example, 1 095 379 198 indicates the seconds since 1970.</p>
+	  <p>有効期限の設定は生存期間の限定されたデータなど、自動的に削除するデータに利用できます。　
+      </p>
+	  <p>
+		  有効期限はオブジェクトをCouchbase SDKを利用して生成、更新、変更する際に、ドキュメント単位にユーザが指定可能です。
+		  もし30日未満でオブジェクトを削除したい場合、TTLを秒、もしくはUnixエポックタイムで指定します。
+		  もし30日より後に有効期限を設定したい場合、TTLをUnixエポックタイムで指定する必要があります。
+		  例えば、1 095 379 198のように、1970年からの秒数となります。
+	</p>
     
-    <p>The default is no expiration, that is, the information is stored indefinitely.
-    Typical uses for an expiration value include web session data where the actively stored
-      information needs to be removed from the system once the user activity has stopped. With an
-      expiration value, the data times out and is removed from the system without being explicitly
-      deleted. This frees up RAM and disk for more active data.</p>
+	<p>
+		デフォルトでは有効期限は設定されません、すなわち、情報は永久に保持されます。
+		典型的な利用例としては、ユーザのセッションデータを保存し、ユーザのアクティビティが停止した際にシステムから情報を削除する場合などです。
+		有効期限を利用すると、データは期限切れとなり、明示的に削除しなくてもシステムから削除されます。
+		これによりRAMとディスクを他のアクティブなデータに利用できます。
+      </p>
   </body>
   <related-links>
     <linklist>
