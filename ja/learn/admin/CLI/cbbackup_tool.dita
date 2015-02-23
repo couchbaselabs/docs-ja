@@ -14,11 +14,11 @@
          は、クラスタに所属しないサーバーと外部IPアドレスでは通信しません。
          バックアップ、リストア、転送のオペレーションは、Couchbaseクラスタ内のノード内でデータを扱います。
          クラスタから取得したノードリスト内のノードのみと通信します。
-         そのため、CouchbaseServerがデフォルトIPアドレスでインストールされていれば、それ以外のホスト名ではアクセス出来ません。</p>
+         そのため、CouchbaseServerがデフォルトIPアドレスでインストールされていれば、外部からの接続用ホスト名ではアクセス出来ません。</p>
          
          <p>このツールを使うときは、以下のオプションを使うことが出来ます:</p>
          <ul>
-            <li>全てのクラスタの全てのバケットのバックアップを作成</li>
+            <li>クラスタ内の全てのバケットのバックアップを作成</li>
             <li>クラスタ内で、名前を指定したバケットのバックアップを作成</li>
             <li>クラスタ内のあるノードの全バケットのバックアップを作成</li>
             <li>特定ノードの、名前を指定したバケットのバックアップを作成</li>
@@ -26,7 +26,7 @@
          
          <note type="tip"><codeph>cbbackup</codeph>の結果は、サーバーのローカルファイルシステムに出力することを推奨します。
             特に、専用パーティションにバックアップするのが良いでしょう。
-            専用パーティションにすることで、バックアップがCouchbaseのデータストアやOS領域を圧迫することが防げます。
+            専用パーティションにすることで、バックアップがCouchbaseのデータストアやOS領域を圧迫することを防げます。
          </note>
          
          
@@ -141,7 +141,7 @@
                </row>
                <row>
                   <entry>-x EXTRA, –extra=EXTRA</entry>
-                  <entry>外部から非胸痛な設定パラメータを指定します。カンマ区切りで、key=val(key-val)*形式で指定します。</entry>
+                  <entry>一般的ではない拡張設定パラメータを指定します。カンマ区切りで、key=val(key-val)*形式で指定します。</entry>
                </row>
                
             </tbody>
@@ -164,7 +164,7 @@
             <tbody>
                <row>
                   <entry>backoff_cap=10</entry>
-                  <entry>リバランス中の最大バックオフ時間</entry>
+                  <entry>リバランス中の最大バックオフ時間です。</entry>
                </row>
                <row>
                   <entry>batch_max_bytes=400000</entry>
@@ -215,11 +215,11 @@
                </row>
                <row>
                   <entry>report=5</entry>
-                  <entry>指定した数だけ、コンソールのプログレスバーがアップデートする前に転送します。</entry>
+				  <entry>コンソールの進捗バーを更新する間隔となるバッチ転送数を指定します。</entry>
                </row>
                <row>
                   <entry>report_full=2000</entry>
-                  <entry>指定した数だけ、コンソールの進捗状況を笑みっとする前に表示します。</entry>
+				  <entry>コンソールの進捗状況を更新する間隔となるバッチ転送数を指定します。</entry>
                </row>
                <row>
                   <entry>seqno=0</entry>
@@ -253,7 +253,7 @@ cbbackup http://HOST:8091 /backup-42
 cbbackup http://HOST:8091 /backup-42
          </codeblock>
          
-         <p>以下に、フルバックアップ実行後、2度差分バックアップを実行し、シングルノードに対してaccumulative バックアップする例を示します。</p>
+         <p>以下に、フルバックアップ実行後、2度差分バックアップを実行し、シングルノードに対してaccumulativeバックアップする例を示します。</p>
          <codeblock>
 cbbackup couchbase://HOST:8091 /backup-43 [-m full] --single-node
 cbbackup couchbase://HOST:8091 /backup-43 [-m diff] --single-node
@@ -261,7 +261,7 @@ cbbackup couchbase://HOST:8091 /backup-43 [-m diff] --single-node
 cbbackup couchbase://HOST:8091 /backup-43 -m accu --single-node
          </codeblock>
             
-         <note type="note">バックアップ・リストアした後、忘れずにインデックスをリバランスしてください。</note>
+         <note type="note">バックアップ・リストアした後、忘れずにインデックスをリビルドしてください。</note>
 
       </section>
       
@@ -273,8 +273,8 @@ cbbackup couchbase://HOST:8091 /backup-43 -m accu --single-node
       <codeblock>cbbackup http://HOST:8091 ~/backups \
           -u Administrator -p password
 </codeblock>
-      <p><codeph>~/backups</codeph>は、データを保存したいディレクトリを指定します。
-      この操作がされたとき、<codeph>N1</codeph>, <codeph>N2</codeph>というノードがあり、<codeph>my_name</codeph>, <codeph>sasl</codeph>というバケットが会った場合、cbbackupは、以下のとおりのディレクトリとファイルを作成します。</p>
+      <p><codeph>~/backups</codeph>は、データを保存するディレクトリを指定します。
+      この操作がされたとき、<codeph>N1</codeph>, <codeph>N2</codeph>というノードがあり、<codeph>my_name</codeph>, <codeph>sasl</codeph>というバケットがあった場合、cbbackupは、以下のとおりのディレクトリとファイルを作成します:</p>
       <codeblock>~/backups
         bucket-my_name
             N1
