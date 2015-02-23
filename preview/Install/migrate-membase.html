@@ -1,0 +1,135 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Migration guidelines for Membase users."><meta name="DC.Relation" scheme="URI" content="../Install/migrating.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/migrate-couchdb.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_ehs_pxy_p4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Migrating from Membase</title>
+</head>
+<body id="topic_ehs_pxy_p4">
+
+
+  <h1 class="title topictitle1">Migrating from Membase</h1>
+
+  <div class="body"><p class="shortdesc">Migration guidelines for Membase users.</p>
+
+
+      <p class="p">For an existing Membase user, the primary methods for creating, adding, manipulating, and
+      retrieving data remain the same. In addition, the background operational elements of the
+      Couchbase Server deployment will not differ from the basic running of a Membase cluster.</p>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Term and concept differences</h2>The following terms are new or updated in
+      Couchbase Server: <dl class="dl">
+        
+          <dt class="dt dlterm">Views</dt>
+
+          <dd class="dd">Views and the associated terms of the <samp class="ph codeph">map</samp> and <samp class="ph codeph">reduce</samp>
+            functions used to define views. Views provide an alternative method for accessing and
+            querying information stored in key-value pairs within the Couchbase Server. Views allow
+            you to query and retrieve information based on the values of the contents of a key-value
+            pair, provided the information has been stored in a JSON format.</dd>
+
+        
+      </dl>
+<dl class="dl">
+        
+          <dt class="dt dlterm">JSON</dt>
+
+          <dd class="dd">JSON (JavaScript Object Notation) is a data representation format that is required to
+            store the information in a format that can be parsed by the View system.</dd>
+
+        
+      </dl>
+<dl class="dl">
+        
+          <dt class="dt dlterm">Membase Server</dt>
+
+          <dd class="dd">This is now the Couchbase Server.</dd>
+
+        
+      </dl>
+<dl class="dl">
+        
+          <dt class="dt dlterm">Membase buckets</dt>
+
+          <dd class="dd">These are now the Couchbase buckets</dd>
+
+        
+      </dl>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Consistent functionality</h2>
+      <p class="p">The core functionality of
+      Membase, including the methods for basic creation, updating, and retrieval of information
+      all remain identical within Couchbase Server. You can continue to use the same client
+      protocols for setting and retrieving information.</p>
+<p class="p">The administration, deployment,
+        and core of the Couchbase Web Console and administration interfaces are also identical. There are
+        updates and improvements to support additional functionality which is included in existing
+        tools. These include views-related statistics, and an update to the Web Administration
+        Console for building and defining views.</p>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Changed functionality</h2>
+      <p class="p">The main difference available in the Couchbase Server is that, in addition to the key-value
+        data store nature of the database, you can also use views to convert the information from
+        individual objects in your database into lists or tables of records and information. Through
+        the view system, you can also query data from the database based on the value (or fragment
+        of a value) of the information that you have stored against a key.</p>
+<p class="p">This fundamental
+        differences means that applications no longer need to manually manage the concept of lists
+        or sets of data by using other keys as a lookup or compounding
+        values.</p>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Operational and deployment differences</h2>
+      <p class="p">The main components of the operation and deployment of your Couchbase Server remain the
+        same as with the Membase Server. You can add new nodes, fail over, rebalance and otherwise
+        manage your nodes.</p>
+<p class="p">However, the introduction of views means that you need to
+        monitor and control the design documents and views that are created alongside your bucket
+        configurations. Indexes are generated for each design document (that is multiple views), and
+        for optimum reliability you might want to back up the generated index information to reduce
+        the time to bring up a node in the event of a failure, as building a view from raw data on
+        large datasets can take a significant amount of time.</p>
+<p class="p">In addition, you need to
+          understand how to recreate and rebuild view data, and how to compact and clean up view
+          information to help reduce disk space consumption and response
+          times.</p>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Client and application changes</h2>
+      <p class="p">Clients can continue to communicate with the Couchbase Server using the existing memcached
+        protocol interface for the basic create, retrieve, update and delete operations for
+        key-value pairs. However, to access the view functionality you must use a client library
+        that supports the view API (which uses HTTP REST).</p>
+
+      <p class="p">To build views that can output and query your stored data, your objects must be stored in
+        the database in the JSON format. If you have been using the native serialization of your
+        client library to convert a language specific object so that it can be stored into the
+       Membase Server, you might need to structure your data and use a native to JSON serialization
+        solution, or reformat your data so that it can be formatted as JSON.</p>
+
+    </div>
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/migrating.html" title="This section explains how to migrate from Membase or CouchDB to Couchbase Server.">Migrating</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/migrate-couchdb.html" title="Migration guidelines for CouchDB users">Migrating from CouchDB</a></div>
+</div>
+</nav>
+</body>
+</html>

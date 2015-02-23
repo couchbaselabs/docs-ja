@@ -5,7 +5,9 @@
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="reference">
-<meta name="description" content="Requests for XDCR statistics about a destination cluster are performed on the source cluster."><meta name="DC.Format" content="XHTML">
+<meta name="description" content="Requests for XDCR statistics about a destination cluster are performed on the source cluster."><meta name="DC.Relation" scheme="URI" content="../REST/rest-xdcr-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-xdcr-pause-resume.html">
+<meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="rest-xdcr-stats">
 <meta name="DC.Language" content="en-us">
 <link rel="stylesheet" type="text/css" href="../commonltr.css">
@@ -20,7 +22,12 @@
 
     
     
-    <div class="topic reference nested1" id="rest-xdcr-stats-desc">
+    <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-xdcr-intro.html" title="The XDCR REST API is used to manage Cross Datacenter Replication (XDCR) operations.">XDCR API</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-xdcr-pause-resume.html" title="XDCR replication is paused and resumed using the /settings/replications/ URI path and the pauseRequested option.">Pausing XDCR replication streams</a></div>
+</div>
+</nav><div class="topic reference nested1" id="rest-xdcr-stats-desc">
         <h2 class="title topictitle2">Description</h2>
 
         <div class="body refbody">
@@ -70,9 +77,9 @@
                     
                     <thead class="thead" align="left">
                         <tr class="row">
-                            <th class="entry" valign="top" width="23.640661938534276%" id="d42534e76">Stat name</th>
+                            <th class="entry" valign="top" width="23.640661938534276%" id="d106274e100">Stat name</th>
 
-                            <th class="entry" valign="top" width="76.3593380614657%" id="d42534e79">Description</th>
+                            <th class="entry" valign="top" width="76.3593380614657%" id="d106274e103">Description</th>
 
                         </tr>
 
@@ -80,142 +87,142 @@
 
                     <tbody class="tbody">
                         <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">docs_written</td>
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">docs_written</td>
 
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Number of documents written to the destination cluster via
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Number of documents written to the destination cluster via
                                 XDCR.</td>
 
                         </tr>
 
                         <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">data_replicated</td>
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">data_replicated</td>
 
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Size of data replicated in bytes.</td>
-
-                        </tr>
-
-                        <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">changes_left</td>
-
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Number of updates still pending replication.</td>
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Size of data replicated in bytes.</td>
 
                         </tr>
 
                         <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">docs_checked</td>
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">changes_left</td>
 
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Number of documents checked for changes.</td>
-
-                        </tr>
-
-                        <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">num_checkpoints</td>
-
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Number of checkpoints issued in replication queue.</td>
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Number of updates still pending replication.</td>
 
                         </tr>
 
                         <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">num_failedckpts</td>
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">docs_checked</td>
 
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Number of checkpoints failed during replication.</td>
-
-                        </tr>
-
-                        <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">size_rep_queue</td>
-
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Size of replication queue in bytes.</td>
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Number of documents checked for changes.</td>
 
                         </tr>
 
                         <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">active_vbreps</td>
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">num_checkpoints</td>
 
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Active vBucket replicators.</td>
-
-                        </tr>
-
-                        <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">waiting_vbreps</td>
-
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Waiting vBucket replicators.</td>
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Number of checkpoints issued in replication queue.</td>
 
                         </tr>
 
                         <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">time_committing</td>
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">num_failedckpts</td>
 
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Seconds elapsed during replication.</td>
-
-                        </tr>
-
-                        <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">time_working</td>
-
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Time working in seconds including wait time.</td>
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Number of checkpoints failed during replication.</td>
 
                         </tr>
 
                         <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">bandwidth_usage</td>
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">size_rep_queue</td>
 
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Bandwidth used during replication.</td>
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Size of replication queue in bytes.</td>
 
                         </tr>
 
                         <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">docs_latency_aggr</td>
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">active_vbreps</td>
 
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Aggregate time waiting to send changes to destination cluster in
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Active vBucket replicators.</td>
+
+                        </tr>
+
+                        <tr class="row">
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">waiting_vbreps</td>
+
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Waiting vBucket replicators.</td>
+
+                        </tr>
+
+                        <tr class="row">
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">time_committing</td>
+
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Seconds elapsed during replication.</td>
+
+                        </tr>
+
+                        <tr class="row">
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">time_working</td>
+
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Time working in seconds including wait time.</td>
+
+                        </tr>
+
+                        <tr class="row">
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">bandwidth_usage</td>
+
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Bandwidth used during replication.</td>
+
+                        </tr>
+
+                        <tr class="row">
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">docs_latency_aggr</td>
+
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Aggregate time waiting to send changes to destination cluster in
                                 milliseconds.</td>
 
                         </tr>
 
                         <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">docs_latency_wt</td>
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">docs_latency_wt</td>
 
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Weighted average latency for sending replicated changes to
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Weighted average latency for sending replicated changes to
                                 destination cluster.</td>
 
                         </tr>
 
                         <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">docs_rep_queue</td>
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">docs_rep_queue</td>
 
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Number of documents in replication queue.</td>
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Number of documents in replication queue.</td>
 
                         </tr>
 
                         <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">meta_latency_aggr</td>
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">meta_latency_aggr</td>
 
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Aggregate time to request and receive metadata about documents.
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Aggregate time to request and receive metadata about documents.
                                 XDCR uses this for conflict resolution prior to sending the document
                                 into the replication queue.</td>
 
                         </tr>
 
                         <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">meta_latency_wt</td>
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">meta_latency_wt</td>
 
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Weighted average time for requesting document metadata. XDCR uses
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Weighted average time for requesting document metadata. XDCR uses
                                 this for conflict resolution prior to sending the document into the
                                 replication queue.</td>
 
                         </tr>
 
                         <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">rate_replication</td>
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">rate_replication</td>
 
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Bytes replicated per second.</td>
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Bytes replicated per second.</td>
 
                         </tr>
 
                         <tr class="row">
-                            <td class="entry" valign="top" width="23.640661938534276%" headers="d42534e76 ">docs_opt_repd</td>
+                            <td class="entry" valign="top" width="23.640661938534276%" headers="d106274e100 ">docs_opt_repd</td>
 
-                            <td class="entry" valign="top" width="76.3593380614657%" headers="d42534e79 ">Number of docs sent optimistically.</td>
+                            <td class="entry" valign="top" width="76.3593380614657%" headers="d106274e103 ">Number of docs sent optimistically.</td>
 
                         </tr>
 

@@ -1,0 +1,192 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="Auto-compaction settings can be retrieved on a cluster-wide level or bucket level."><meta name="DC.Relation" scheme="URI" content="../REST/compaction-rest-api.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-compact-spatialviews.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reference_epl_5kd_sp">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Getting auto-compaction settings</title>
+</head>
+<body id="reference_epl_5kd_sp">
+
+
+  <h1 class="title topictitle1">Getting auto-compaction settings</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">Auto-compaction settings can be retrieved on a cluster-wide level or bucket level.</p>
+
+
+    
+    <div class="section"><h2 class="title sectiontitle">HTTP method and URI</h2>
+      <p class="p">Auto-compaction settings can be configured for all buckets on a cluster-wide basis or for a specific bucket on the bucket-level</p>
+
+      
+      <pre class="pre codeblock">
+// Cluster-wide
+GET /settings/autoCompaction
+
+// Bucket-level
+GET /pools/default/buckets/[bucket-name]
+      </pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Cluster-wide syntax</h2>
+    
+    <p class="p">To retrieve current auto-compaction settings for a cluster:</p>
+
+    
+    <pre class="pre codeblock">curl -u [admin]:[password] http://[localhost]:8091/settings/autoCompaction
+</pre>
+<p class="p">Replace
+  the <em class="ph i">admin</em>, <em class="ph i">password</em>, and <em class="ph i">localhost</em> values in the above
+  example with your actual values.</p>
+<p class="p">This results in a JSON response as follows:</p>
+
+      
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Cluster-wide example</h2>
+      <p class="p">The following example requests auto-compaction information on a cluster-wide level. 
+        GET is not specified because it is the default HTTP method.</p>
+
+      
+      <pre class="pre codeblock">
+curl -u Administrator:password 
+  http://127.0.0.1:8091/settings/autoCompaction        
+      </pre>
+
+    
+    
+    
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Cluster-wide response</h2>
+      
+      <p class="p">This example response shows a <samp class="ph codeph">purgeInterval</samp> of three days and no current
+        thresholds set for data or index compaction. The field
+        <samp class="ph codeph">parallelDBAndViewCompaction: false</samp> indicates that the cluster
+        will not perform data and index compaction in parallel.</p>
+
+    
+    <pre class="pre codeblock">
+{
+    "autoCompactionSettings": {
+        "databaseFragmentationThreshold": {
+            "percentage": undefined, 
+            "size": "undefined"
+        }, 
+        "parallelDBAndViewCompaction": false, 
+        "viewFragmentationThreshold": {
+            "percentage": undefined, 
+            "size": "undefined"
+        }
+    }, 
+    "purgeInterval": 3
+}
+</pre>
+
+    
+
+      
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Bucket-level syntax</h2>
+    
+    <p class="p">To see auto-compaction settings for a single bucket, use this request:</p>
+
+    <pre class="pre codeblock">curl -u admin:password http://[localhost]:8091/pools/default/buckets/[bucket_name]
+</pre>
+
+    
+    <p class="p">Replace
+      the <em class="ph i">admin</em>, <em class="ph i">password</em>, <em class="ph i">localhost</em>, and <em class="ph i">bucket_name</em>
+      values in the above example with your actual values.</p>
+
+      
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Bucket-level example</h2>
+      
+      <p class="p">The following example requests auto-compaction information for the bucket, test2. 
+        GET is not specified because it is the default HTTP method.</p>
+
+      
+      
+      <pre class="pre codeblock">
+curl -u Administrator:password 
+  http://10.5.2.117:8091/pools/default/buckets/test2
+      </pre>
+
+
+      
+    </div>
+
+      
+      <div class="section"><h2 class="title sectiontitle">Bucket-level response</h2>
+        
+        <div class="p">This example response shows the following:
+          <ul class="ul">
+            <li class="li">A time interval set (from 1:00 am to 2:00 am) for when compaction can run.</li>
+
+            <li class="li">Abort enabled (true) if the run time exceeds the set time interval.</li>
+
+            <li class="li">Database and view fragmentation threshold set at 30%.</li>
+
+            <li class="li">A tombstone purge interval set to two (2) days&gt;. 
+              This means items can be expired for two days or
+              deleted two days ago and their tombstones will be purged during the next cluster-wide auto-compaction run.</li>
+
+          </ul>
+</div>
+
+    
+    <pre class="pre codeblock"> ...
+    "autoCompactionSettings": {
+        "allowedTimePeriod": {
+            "abortOutside": true, 
+            "fromHour": 1, 
+            "fromMinute": 0, 
+            "toHour": 2, 
+            "toMinute": 0
+        }, 
+        "databaseFragmentationThreshold": {
+            "percentage": 30, 
+            "size": "undefined"
+        }, 
+        "parallelDBAndViewCompaction": true, 
+        "viewFragmentationThreshold": {
+            "percentage": 30, 
+            "size": "undefined"
+        }
+    },  
+    ...    
+    "purgeInterval": 2,
+...</pre>
+
+    
+
+    
+    </div>
+
+    
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/compaction-rest-api.html" title="Compaction is used to reclaim disk space and reduce disk fragmentation.">Compaction API</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-compact-spatialviews.html" title="Spatial views are compacted with the POST /[bucket-name]/_design/[ddoc-name]/_spatial/_compact HTTP method and URI">Compacting spatial views</a></div>
+</div>
+</nav>
+</body>
+</html>

@@ -5,7 +5,13 @@
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="reference">
-<meta name="description" content="Compaction is used to reclaim disk space and reduce disk fragmentation."><meta name="DC.Relation" scheme="URI" content="../Concepts/concept-tombstone.html">
+<meta name="description" content="Compaction is used to reclaim disk space and reduce disk fragmentation."><meta name="DC.Relation" scheme="URI" content="../rest-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-xdcr-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/logs-rest-api.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-compact-post.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-compact-spatialviews.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-autocompact-get.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-tombstone.html">
 <meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-compaction.html">
 <meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="reference_rest_compaction">
@@ -38,11 +44,11 @@
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="13.477088948787062%" id="d34726e39">HTTP method</th>
+							<th class="entry" valign="top" width="13.477088948787062%" id="d82700e39">HTTP method</th>
 
-							<th class="entry" valign="top" width="49.73045822102426%" id="d34726e42">URI path</th>
+							<th class="entry" valign="top" width="49.73045822102426%" id="d82700e42">URI path</th>
 
-							<th class="entry" valign="top" width="36.79245283018868%" id="d34726e45">Description</th>
+							<th class="entry" valign="top" width="36.79245283018868%" id="d82700e45">Description</th>
 
 						</tr>
 
@@ -50,29 +56,29 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="13.477088948787062%" headers="d34726e39 ">POST </td>
+							<td class="entry" valign="top" width="13.477088948787062%" headers="d82700e39 ">POST </td>
 
-							<td class="entry" valign="top" width="49.73045822102426%" headers="d34726e42 ">/pools/default/buckets/[bucket_name]/controller/compactBucket</td>
+							<td class="entry" valign="top" width="49.73045822102426%" headers="d82700e42 ">/pools/default/buckets/[bucket_name]/controller/compactBucket</td>
 
-							<td class="entry" valign="top" width="36.79245283018868%" headers="d34726e45 ">Compacts bucket data and indexes.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="13.477088948787062%" headers="d34726e39 ">POST</td>
-
-							<td class="entry" valign="top" width="49.73045822102426%" headers="d34726e42 ">/pools/default/buckets/[bucket_name]/controller/cancelBucketCompaction</td>
-
-							<td class="entry" valign="top" width="36.79245283018868%" headers="d34726e45 ">Cancels compaction for the specified bucket.</td>
+							<td class="entry" valign="top" width="36.79245283018868%" headers="d82700e45 ">Compacts bucket data and indexes.</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="13.477088948787062%" headers="d34726e39 ">POST</td>
+							<td class="entry" valign="top" width="13.477088948787062%" headers="d82700e39 ">POST</td>
 
-							<td class="entry" valign="top" width="49.73045822102426%" headers="d34726e42 ">/[bucket_name]/_design/[ddoc_name]/_spatial/_compact</td>
+							<td class="entry" valign="top" width="49.73045822102426%" headers="d82700e42 ">/pools/default/buckets/[bucket_name]/controller/cancelBucketCompaction</td>
 
-							<td class="entry" valign="top" width="36.79245283018868%" headers="d34726e45 ">Compacts a spatial view.</td>
+							<td class="entry" valign="top" width="36.79245283018868%" headers="d82700e45 ">Cancels compaction for the specified bucket.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="13.477088948787062%" headers="d82700e39 ">POST</td>
+
+							<td class="entry" valign="top" width="49.73045822102426%" headers="d82700e42 ">/[bucket_name]/_design/[ddoc_name]/_spatial/_compact</td>
+
+							<td class="entry" valign="top" width="36.79245283018868%" headers="d82700e45 ">Compacts a spatial view.</td>
 
 						</tr>
 
@@ -104,11 +110,11 @@
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="14.662756598240467%" id="d34726e118">HTTP method</th>
+							<th class="entry" valign="top" width="14.662756598240467%" id="d82700e118">HTTP method</th>
 
-							<th class="entry" valign="top" width="48.53372434017595%" id="d34726e121">URI path</th>
+							<th class="entry" valign="top" width="48.53372434017595%" id="d82700e121">URI path</th>
 
-							<th class="entry" valign="top" width="36.80351906158357%" id="d34726e124">Description</th>
+							<th class="entry" valign="top" width="36.80351906158357%" id="d82700e124">Description</th>
 
 						</tr>
 
@@ -116,39 +122,39 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="14.662756598240467%" headers="d34726e118 ">POST </td>
+							<td class="entry" valign="top" width="14.662756598240467%" headers="d82700e118 ">POST </td>
 
-							<td class="entry" valign="top" width="48.53372434017595%" headers="d34726e121 ">/controller/setAutoCompaction</td>
+							<td class="entry" valign="top" width="48.53372434017595%" headers="d82700e121 ">/controller/setAutoCompaction</td>
 
-							<td class="entry" valign="top" width="36.80351906158357%" headers="d34726e124 ">Sets cluster-wide auto-compaction intervals and
+							<td class="entry" valign="top" width="36.80351906158357%" headers="d82700e124 ">Sets cluster-wide auto-compaction intervals and
 								thresholds</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="14.662756598240467%" headers="d34726e118 ">GET </td>
+							<td class="entry" valign="top" width="14.662756598240467%" headers="d82700e118 ">GET </td>
 
-							<td class="entry" valign="top" width="48.53372434017595%" headers="d34726e121 ">/settings/autoCompaction</td>
+							<td class="entry" valign="top" width="48.53372434017595%" headers="d82700e121 ">/settings/autoCompaction</td>
 
-							<td class="entry" valign="top" width="36.80351906158357%" headers="d34726e124 ">Retrieves cluster-wide settings for auto-compaction</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="14.662756598240467%" headers="d34726e118 ">GET </td>
-
-							<td class="entry" valign="top" width="48.53372434017595%" headers="d34726e121 ">/pools/default/buckets/[bucket_name]</td>
-
-							<td class="entry" valign="top" width="36.80351906158357%" headers="d34726e124 ">Retrieves auto-compaction settings for named bucket</td>
+							<td class="entry" valign="top" width="36.80351906158357%" headers="d82700e124 ">Retrieves cluster-wide settings for auto-compaction</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="14.662756598240467%" headers="d34726e118 ">POST</td>
+							<td class="entry" valign="top" width="14.662756598240467%" headers="d82700e118 ">GET </td>
 
-							<td class="entry" valign="top" width="48.53372434017595%" headers="d34726e121 ">/pools/default/buckets/[bucket_name]</td>
+							<td class="entry" valign="top" width="48.53372434017595%" headers="d82700e121 ">/pools/default/buckets/[bucket_name]</td>
 
-							<td class="entry" valign="top" width="36.80351906158357%" headers="d34726e124 ">Sets auto-compaction interval or thresholds for named
+							<td class="entry" valign="top" width="36.80351906158357%" headers="d82700e124 ">Retrieves auto-compaction settings for named bucket</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="14.662756598240467%" headers="d82700e118 ">POST</td>
+
+							<td class="entry" valign="top" width="48.53372434017595%" headers="d82700e121 ">/pools/default/buckets/[bucket_name]</td>
+
+							<td class="entry" valign="top" width="36.80351906158357%" headers="d82700e124 ">Sets auto-compaction interval or thresholds for named
 								bucket</td>
 
 						</tr>
@@ -169,11 +175,11 @@
 						
 						<thead class="thead" align="left">
 							<tr class="row">
-								<th class="entry" valign="top" width="33.33333333333333%" id="d34726e199">Parameter</th>
+								<th class="entry" valign="top" width="33.33333333333333%" id="d82700e199">Parameter</th>
 
-								<th class="entry" valign="top" width="33.33333333333333%" id="d34726e202">Value</th>
+								<th class="entry" valign="top" width="33.33333333333333%" id="d82700e202">Value</th>
 
-								<th class="entry" valign="top" width="33.33333333333333%" id="d34726e205">Notes</th>
+								<th class="entry" valign="top" width="33.33333333333333%" id="d82700e205">Notes</th>
 
 							</tr>
 
@@ -181,101 +187,101 @@
 
 						<tbody class="tbody">
 							<tr class="row">
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e199 ">databaseFragmentationThreshold: percentage</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e199 ">databaseFragmentationThreshold: percentage</td>
 
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e202 ">Integer between 2 and 100</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e202 ">Integer between 2 and 100</td>
 
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e205 ">Percentage disk fragmentation for data</td>
-
-							</tr>
-
-							<tr class="row">
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e199 ">databaseFragmentationThreshold: size</td>
-
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e202 ">Integer greater than 1</td>
-
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e205 ">Bytes of disk fragmentation for data</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e205 ">Percentage disk fragmentation for data</td>
 
 							</tr>
 
 							<tr class="row">
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e199 ">viewFragmentationThreshold: percentage</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e199 ">databaseFragmentationThreshold: size</td>
 
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e202 ">Integer between 2 and 100</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e202 ">Integer greater than 1</td>
 
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e205 ">Percentage disk fragmentation for index</td>
-
-							</tr>
-
-							<tr class="row">
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e199 ">viewFragmentationThreshold: size</td>
-
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e202 ">Integer greater than 1</td>
-
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e205 ">Bytes of disk fragmentation for index</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e205 ">Bytes of disk fragmentation for data</td>
 
 							</tr>
 
 							<tr class="row">
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e199 ">parallelDBAndViewCompaction</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e199 ">viewFragmentationThreshold: percentage</td>
 
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e202 ">True or false. </td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e202 ">Integer between 2 and 100</td>
 
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e205 ">Run index and data compaction in parallel. Global setting only.</td>
-
-							</tr>
-
-							<tr class="row">
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e199 ">allowedTimePeriod: abortOutside</td>
-
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e202 ">True or false</td>
-
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e205 ">Terminate compaction if the process takes longer than the allowed time</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e205 ">Percentage disk fragmentation for index</td>
 
 							</tr>
 
 							<tr class="row">
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e199 ">allowedTimePeriod: fromHour</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e199 ">viewFragmentationThreshold: size</td>
 
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e202 ">Integer between 0 and 23</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e202 ">Integer greater than 1</td>
 
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e205 ">Compaction can occur from this hour onward</td>
-
-							</tr>
-
-							<tr class="row">
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e199 ">allowedTimePeriod: fromMinute</td>
-
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e202 ">Integer between 0 and 59</td>
-
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e205 ">Compaction can occur from this minute onward</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e205 ">Bytes of disk fragmentation for index</td>
 
 							</tr>
 
 							<tr class="row">
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e199 ">allowedTimePeriod: toHour</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e199 ">parallelDBAndViewCompaction</td>
 
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e202 ">Integer between 0 and 23</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e202 ">True or false. </td>
 
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e205 ">Compaction can occur up to this hour</td>
-
-							</tr>
-
-							<tr class="row">
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e199 ">allowedTimePeriod: toMinute</td>
-
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e202 ">Integer between 0 and 59</td>
-
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e205 ">Compaction can occur up to this minute</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e205 ">Run index and data compaction in parallel. Global setting only.</td>
 
 							</tr>
 
 							<tr class="row">
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e199 ">purgeInterval</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e199 ">allowedTimePeriod: abortOutside</td>
 
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e202 ">Integer between 1 and 60</td>
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e202 ">True or false</td>
 
-								<td class="entry" valign="top" width="33.33333333333333%" headers="d34726e205 ">Number of days a item is deleted or expired. The key and metadata for that item is
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e205 ">Terminate compaction if the process takes longer than the allowed time</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e199 ">allowedTimePeriod: fromHour</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e202 ">Integer between 0 and 23</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e205 ">Compaction can occur from this hour onward</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e199 ">allowedTimePeriod: fromMinute</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e202 ">Integer between 0 and 59</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e205 ">Compaction can occur from this minute onward</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e199 ">allowedTimePeriod: toHour</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e202 ">Integer between 0 and 23</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e205 ">Compaction can occur up to this hour</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e199 ">allowedTimePeriod: toMinute</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e202 ">Integer between 0 and 59</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e205 ">Compaction can occur up to this minute</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e199 ">purgeInterval</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e202 ">Integer between 1 and 60</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d82700e205 ">Number of days a item is deleted or expired. The key and metadata for that item is
 								purged by auto-compaction</td>
 
 							</tr>
@@ -301,6 +307,21 @@
 	</div>
 
 	<nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../REST/rest-compact-post.html">Compacting buckets</a><br>
+Bucket compaction is initiated with the <samp class="ph codeph">POST /pools/default/buckets/[bucket-name]/controller/compactBucket</samp> HTTP method and URI</li>
+<li class="link olchildlink"><a href="../REST/rest-compact-spatialviews.html">Compacting spatial views</a><br>
+Spatial views are compacted with the <samp class="ph codeph">POST /[bucket-name]/_design/[ddoc-name]/_spatial/_compact </samp> HTTP method and URI</li>
+<li class="link olchildlink"><a href="../REST/rest-autocompact-get.html">Getting auto-compaction settings</a><br>
+Auto-compaction settings can be retrieved on a cluster-wide level or bucket level.</li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../rest-intro.html" title="The Couchbase REST API enables you to manage a Couchbase Server deployment as well as perform operations such as storing design documents and querying for results.">REST API reference</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-xdcr-intro.html" title="The XDCR REST API is used to manage Cross Datacenter Replication (XDCR) operations.">XDCR API</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/logs-rest-api.html" title="The Logs REST API provides the REST API endpoints for retrieving log and diagnostic information as well as how an SDK can add entries into a log.">Logs API</a></div>
+</div>
+
 <div class="linklist linklist">
 <div><a class="link" href="../Concepts/concept-tombstone.html" title="Tombstones are records of expired or deleted items that include item keys and metadata.">Tombstone purging</a></div>
 <div><a class="link" href="../Tasks/tasks-compaction.html" title="Database and view compaction helps to reclaim disk space and reduce fragmentation.">Compacting data files</a></div></div>

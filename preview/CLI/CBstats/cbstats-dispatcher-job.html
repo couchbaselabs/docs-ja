@@ -1,0 +1,179 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="The cbstats dispatcher command gets statistics from reader, writer, auxio, and nonio worker threads."><meta name="DC.Relation" scheme="URI" content="../../CLI/cbstats-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBstats/cbstats-diskinfo.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBstats/cbstats-failovers.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cbstats-dispatcher">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../../commonltr.css">
+<title>Dispatcher</title>
+</head>
+<body id="cbstats-dispatcher">
+
+
+	<h1 class="title topictitle1">Dispatcher</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbstats dispatcher</samp> command gets statistics from reader, writer, auxio, and nonio worker threads.</p>
+
+		<div class="section"><h2 class="title sectiontitle">Description</h2>
+		<p class="p">This provides the stats from AUX dispatcher and non-IO dispatcher, and from all the
+			reader and writer threads running for the specific bucket. Along with stats, the job
+			logs for each of the dispatchers and worker threads is also made available.</p>
+
+		<p class="p">The following stats are available for the workers and dispatchers:</p>
+
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="50%" id="d15079e40">Stat</th>
+
+						<th class="entry" valign="top" width="50%" id="d15079e43">Description</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d15079e40 ">cur_time</td>
+
+						<td class="entry" valign="top" width="50%" headers="d15079e43 ">The current timestamp.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d15079e40 ">runtime</td>
+
+						<td class="entry" valign="top" width="50%" headers="d15079e43 ">The amount of time it tool for the job to run in milliseconds.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d15079e40 ">state</td>
+
+						<td class="entry" valign="top" width="50%" headers="d15079e43 ">Threads’s current status: running, sleeping, etc.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d15079e40 ">task</td>
+
+						<td class="entry" valign="top" width="50%" headers="d15079e43 ">The activity the thread ran during that time.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d15079e40 ">waketime</td>
+
+						<td class="entry" valign="top" width="50%" headers="d15079e43 ">The time stamp when the job started.</td>
+
+					</tr>
+
+					
+				</tbody>
+
+			</table>
+</div>
+
+		
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Syntax</h2>
+			<p class="p">Request syntax:</p>
+
+			<pre class="pre codeblock">cbstats [hostname]:11210 dispatcher</pre>
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Example</h2>
+			<p class="p">Example request:</p>
+
+			<pre class="pre codeblock">cbstats 10.5.2.54:11210 dispatcher</pre>
+
+		</div>
+
+		
+		
+		<div class="section"><h2 class="title sectiontitle">Response</h2>
+			<p class="p">Example response:</p>
+
+			<pre class="pre codeblock">
+ auxio_worker_8
+     cur_time: 1419384974021911
+     state:    sleeping
+     task:     Not currently running any task
+     waketime: 1419456378037138
+ nonio_worker_9
+     cur_time: 1419384975434145
+     runtime:  9ms
+     state:    running
+     task:     Connection Manager
+     waketime: 1419384975658388
+ reader_worker_0
+     cur_time: 1419384974167627
+     state:    sleeping
+     task:     Not currently running any task
+     waketime: 1419384976167572
+ reader_worker_1
+     cur_time: 1419384974167633
+     state:    sleeping
+     task:     Not currently running any task
+     waketime: 1419384976167572
+ reader_worker_2
+     cur_time: 1419384974167630
+     state:    sleeping
+     task:     Not currently running any task
+     waketime: 1419384976167572
+ reader_worker_3
+     cur_time: 1419384974167623
+     state:    sleeping
+     task:     Not currently running any task
+     waketime: 1419384976167572
+ writer_worker_4
+     cur_time: 1419384975407423
+     runtime:  31ms
+     state:    running
+     task:     Updating stat snapshot on disk
+     waketime: 1419384975667941
+ writer_worker_5
+     cur_time: 1419384975407908
+     state:    sleeping
+     task:     Not currently running any task
+     waketime: 1419384975667941
+ writer_worker_6
+     cur_time: 1419384975407916
+     state:    sleeping
+     task:     Not currently running any task
+     waketime: 1419384975667941
+ writer_worker_7
+     cur_time: 1419384975407964
+     state:    sleeping
+     task:     Not currently running any task
+     waketime: 1419384975667941
+			</pre>
+
+		</div>
+
+	</div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-diskinfo.html" title="The cbstats diskinfo command provides data and file size information.">Diskinfo</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-failovers.html" title="The cbstats failovers command provides ID, sequence, and number of entries information.">Failovers</a></div>
+</div>
+</nav>
+</body>
+</html>

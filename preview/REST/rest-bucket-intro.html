@@ -5,7 +5,22 @@
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="reference">
-<meta name="description" content="The Buckets REST API creates, deletes, flushes, and retrieves information about buckets and bucket operations."><meta name="DC.Format" content="XHTML">
+<meta name="description" content="The Buckets REST API creates, deletes, flushes, and retrieves information about buckets and bucket operations."><meta name="DC.Relation" scheme="URI" content="../rest-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-server-nodes.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-views-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-buckets-summary.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-info.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-stats.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-buckets-streamingURI.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-create.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-set-priority.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-metadata-ejection.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-parameters.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-auth.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-memory-quota.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-delete.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-flush.html">
+<meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="reference_rest_buckets">
 <link rel="stylesheet" type="text/css" href="../commonltr.css">
 <title>Buckets API</title>
@@ -32,11 +47,11 @@
         
         <thead class="thead" align="left">
           <tr class="row">
-            <th class="entry" valign="top" width="20.746887966804977%" id="d37288e39">HTTP method</th>
+            <th class="entry" valign="top" width="20.746887966804977%" id="d87647e39">HTTP method</th>
 
-            <th class="entry" valign="top" width="41.078838174273855%" id="d37288e42">URI path</th>
+            <th class="entry" valign="top" width="41.078838174273855%" id="d87647e42">URI path</th>
 
-            <th class="entry" valign="top" width="38.17427385892116%" id="d37288e45">Description</th>
+            <th class="entry" valign="top" width="38.17427385892116%" id="d87647e45">Description</th>
 
           </tr>
 
@@ -44,56 +59,56 @@
 
         <tbody class="tbody">
           <tr class="row">
-            <td class="entry" valign="top" width="20.746887966804977%" headers="d37288e39 ">GET</td>
+            <td class="entry" valign="top" width="20.746887966804977%" headers="d87647e39 ">GET</td>
 
-            <td class="entry" valign="top" width="41.078838174273855%" headers="d37288e42 ">/pools/default/buckets</td>
+            <td class="entry" valign="top" width="41.078838174273855%" headers="d87647e42 ">/pools/default/buckets</td>
 
-            <td class="entry" valign="top" width="38.17427385892116%" headers="d37288e45 ">Retrieves all bucket and bucket operations information from a cluster.</td>
-
-          </tr>
-
-          <tr class="row">
-            <td class="entry" valign="top" width="20.746887966804977%" headers="d37288e39 ">GET</td>
-
-            <td class="entry" valign="top" width="41.078838174273855%" headers="d37288e42 ">/pools/default/buckets/default</td>
-
-            <td class="entry" valign="top" width="38.17427385892116%" headers="d37288e45 ">Retrieves information for a single bucket associated with a cluster.</td>
+            <td class="entry" valign="top" width="38.17427385892116%" headers="d87647e45 ">Retrieves all bucket and bucket operations information from a cluster.</td>
 
           </tr>
 
           <tr class="row">
-            <td class="entry" valign="top" width="20.746887966804977%" headers="d37288e39 ">GET</td>
+            <td class="entry" valign="top" width="20.746887966804977%" headers="d87647e39 ">GET</td>
 
-            <td class="entry" valign="top" width="41.078838174273855%" headers="d37288e42 ">/pools/default/buckets/[bucket_name]/stats</td>
+            <td class="entry" valign="top" width="41.078838174273855%" headers="d87647e42 ">/pools/default/buckets/default</td>
 
-            <td class="entry" valign="top" width="38.17427385892116%" headers="d37288e45 ">Retrieves bucket statistics for a specific bucket.</td>
-
-          </tr>
-
-          <tr class="row">
-            <td class="entry" valign="top" width="20.746887966804977%" headers="d37288e39 ">POST</td>
-
-            <td class="entry" valign="top" width="41.078838174273855%" headers="d37288e42 ">/pools/default/buckets</td>
-
-            <td class="entry" valign="top" width="38.17427385892116%" headers="d37288e45 ">Creates a new Couchbase bucket.</td>
+            <td class="entry" valign="top" width="38.17427385892116%" headers="d87647e45 ">Retrieves information for a single bucket associated with a cluster.</td>
 
           </tr>
 
           <tr class="row">
-            <td class="entry" valign="top" width="20.746887966804977%" headers="d37288e39 ">DELETE</td>
+            <td class="entry" valign="top" width="20.746887966804977%" headers="d87647e39 ">GET</td>
 
-            <td class="entry" valign="top" width="41.078838174273855%" headers="d37288e42 ">/pools/default/buckets/[bucket_name]</td>
+            <td class="entry" valign="top" width="41.078838174273855%" headers="d87647e42 ">/pools/default/buckets/[bucket_name]/stats</td>
 
-            <td class="entry" valign="top" width="38.17427385892116%" headers="d37288e45 ">Deletes a specific bucket.</td>
+            <td class="entry" valign="top" width="38.17427385892116%" headers="d87647e45 ">Retrieves bucket statistics for a specific bucket.</td>
 
           </tr>
 
           <tr class="row">
-            <td class="entry" valign="top" width="20.746887966804977%" headers="d37288e39 ">POST</td>
+            <td class="entry" valign="top" width="20.746887966804977%" headers="d87647e39 ">POST</td>
 
-            <td class="entry" valign="top" width="41.078838174273855%" headers="d37288e42 ">/pools/default/buckets/default/controller/doFlush</td>
+            <td class="entry" valign="top" width="41.078838174273855%" headers="d87647e42 ">/pools/default/buckets</td>
 
-            <td class="entry" valign="top" width="38.17427385892116%" headers="d37288e45 ">Flushes a specific bucket.</td>
+            <td class="entry" valign="top" width="38.17427385892116%" headers="d87647e45 ">Creates a new Couchbase bucket.</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="20.746887966804977%" headers="d87647e39 ">DELETE</td>
+
+            <td class="entry" valign="top" width="41.078838174273855%" headers="d87647e42 ">/pools/default/buckets/[bucket_name]</td>
+
+            <td class="entry" valign="top" width="38.17427385892116%" headers="d87647e45 ">Deletes a specific bucket.</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="20.746887966804977%" headers="d87647e39 ">POST</td>
+
+            <td class="entry" valign="top" width="41.078838174273855%" headers="d87647e42 ">/pools/default/buckets/default/controller/doFlush</td>
+
+            <td class="entry" valign="top" width="38.17427385892116%" headers="d87647e45 ">Flushes a specific bucket.</td>
 
           </tr>
 
@@ -109,6 +124,39 @@
   </div>
  
   
+<nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../REST/rest-buckets-summary.html">Getting all bucket information</a><br>
+To retrieve all bucket information for a cluster use the <samp class="ph codeph">GET             /pools/default/buckets</samp> HTTP method and URI.</li>
+<li class="link olchildlink"><a href="../REST/rest-bucket-info.html">Getting single bucket information</a><br>
+To retrieve information about existing buckets and the default bucket,          use the <samp class="ph codeph">GET</samp> operation with the <samp class="ph codeph">/pools/default/buckets/[bucket-name]</samp> URI.</li>
+<li class="link olchildlink"><a href="../REST/rest-bucket-stats.html">Getting bucket statistics</a><br>
+To retrieve bucket statistics, use the <samp class="ph codeph">GET</samp> operation with the             <samp class="ph codeph">/pools/default/buckets/bucket_name/stats</samp> URI.</li>
+<li class="link olchildlink"><a href="../REST/rest-buckets-streamingURI.html">Getting bucket streaming URI</a><br>
+To retrieve the streaming URI, use <samp class="ph codeph">GET /pools/default/buckets/default</samp>     HTTP method and URI.</li>
+<li class="link olchildlink"><a href="../REST/rest-bucket-create.html">Creating and editing buckets</a><br>
+To create and edit buckets, use the <samp class="ph codeph">POST</samp> operation with the  			<samp class="ph codeph">/pools/default/bucket</samp> URI. 			</li>
+<li class="link olchildlink"><a href="../REST/rest-bucket-set-priority.html">Setting disk I/O priority</a><br>
+The disk I/O priority for a bucket is set with the       <samp class="ph codeph">/pools/default/buckets/[bucket-name]</samp> URI and the <samp class="ph codeph">threadNumber</samp>     setting.</li>
+<li class="link olchildlink"><a href="../REST/rest-bucket-metadata-ejection.html">Setting metadata ejection</a><br>
+Bucket ejection from memory is set with <samp class="ph codeph">POST     /pools/default/buckets/default</samp>.</li>
+<li class="link olchildlink"><a href="../REST/rest-bucket-parameters.html">Changing bucket parameters</a><br>
+To modify bucket parameters, use the <samp class="ph codeph">POST       /pools/default/buckets/[bucket-name]</samp> HTTP method and URI with the bucket name being     the REST API endpoint. </li>
+<li class="link olchildlink"><a href="../REST/rest-bucket-auth.html">Changing bucket authentication</a><br>
+To change bucket authentication use the <samp class="ph codeph">POST       /pools/default/buckets/acache</samp> HTTP method and URI with the <samp class="ph codeph">authType</samp>     parameter.</li>
+<li class="link olchildlink"><a href="../REST/rest-bucket-memory-quota.html">Changing bucket memory quota</a><br>
+To increase or decrease bucket memory quota, use the <samp class="ph codeph">POST             /pools/default/buckets/newBucket</samp> HTTP method and URI and the             <samp class="ph codeph">ramQuotaMB</samp> option.</li>
+<li class="link olchildlink"><a href="../REST/rest-bucket-delete.html">Deleting buckets</a><br>
+To delete buckets, use the <samp class="ph codeph">DELETE /pools/default/buckets/[bucket-name]</samp> 		HTTP method and URI.</li>
+<li class="link olchildlink"><a href="../REST/rest-bucket-flush.html">Flushing buckets</a><br>
+To flush all buckets, use the <samp class="ph codeph">POST       /pools/default/buckets/default/controller/doFlush</samp> HTTP method and URI.</li>
+</ol>
 
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../rest-intro.html" title="The Couchbase REST API enables you to manage a Couchbase Server deployment as well as perform operations such as storing design documents and querying for results.">REST API reference</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-server-nodes.html" title="The Server Nodes REST API manages nodes in a cluster.">Server nodes API</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-views-intro.html" title="The Views REST API is used to index and query JSON documents.">Views API</a></div>
+</div>
+</nav>
 </body>
 </html>

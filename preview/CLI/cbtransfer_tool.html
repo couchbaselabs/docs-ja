@@ -5,7 +5,10 @@
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="reference">
-<meta name="description" content="The cbtransfer tool is used to transfer data between clusters and to/from files."><meta name="DC.Format" content="XHTML">
+<meta name="description" content="The cbtransfer tool is used to transfer data between clusters and to/from files."><meta name="DC.Relation" scheme="URI" content="../cli-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbstats-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbworkloadgen_tool.html">
+<meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="cbtransfer-tool">
 <meta name="DC.Language" content="en-us">
 <link rel="stylesheet" type="text/css" href="../commonltr.css">
@@ -52,9 +55,9 @@
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d12092e72">Operating system</th>
+							<th class="entry" valign="top" width="50%" id="d43899e72">Operating system</th>
 
-							<th class="entry" valign="top" width="50%" id="d12092e75">Location</th>
+							<th class="entry" valign="top" width="50%" id="d43899e75">Location</th>
 
 						</tr>
 
@@ -62,23 +65,23 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d12092e72 ">Linux</td>
+							<td class="entry" valign="top" width="50%" headers="d43899e72 ">Linux</td>
 
-							<td class="entry" valign="top" width="50%" headers="d12092e75 ">/opt/couchbase/bin/</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d12092e72 ">Windows</td>
-
-							<td class="entry" valign="top" width="50%" headers="d12092e75 ">C:\Program&nbsp;Files\Couchbase\Server\bin\</td>
+							<td class="entry" valign="top" width="50%" headers="d43899e75 ">/opt/couchbase/bin/</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d12092e72 ">Mac OS X</td>
+							<td class="entry" valign="top" width="50%" headers="d43899e72 ">Windows</td>
 
-							<td class="entry" valign="top" width="50%" headers="d12092e75 ">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/</td>
+							<td class="entry" valign="top" width="50%" headers="d43899e75 ">C:\Program&nbsp;Files\Couchbase\Server\bin\</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d43899e72 ">Mac OS X</td>
+
+							<td class="entry" valign="top" width="50%" headers="d43899e75 ">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/</td>
 
 						</tr>
 
@@ -104,9 +107,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d12092e141">Parameters</th>
+						<th class="entry" valign="top" width="50%" id="d43899e141">Parameters</th>
 
-						<th class="entry" valign="top" width="50%" id="d12092e144">Description</th>
+						<th class="entry" valign="top" width="50%" id="d43899e144">Description</th>
 
 					</tr>
 
@@ -114,124 +117,124 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">-h, –help</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">-h, –help</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">Command line help.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">-b BUCKET_SOURCE</td>
-
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">Single named bucket from source cluster to transfer.</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">Command line help.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">-B BUCKET_DESTINATION, –bucket-destination=BUCKET_DESTINATION</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">-b BUCKET_SOURCE</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">Single named bucket on destination cluster which receives transfer. This enables you to
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">Single named bucket from source cluster to transfer.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">-B BUCKET_DESTINATION, –bucket-destination=BUCKET_DESTINATION</td>
+
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">Single named bucket on destination cluster which receives transfer. This enables you to
 							transfer to a bucket with a different name as your source bucket. If you
 							do not provide defaults to the same name as the bucket-source.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">-i ID, –id=ID</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">-i ID, –id=ID</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">Transfer only items that match a vbucket ID.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">-k KEY, –key=KEY</td>
-
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">Transfer only items with keys that match a regexp.</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">Transfer only items that match a vbucket ID.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">-n, –dry-run</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">-k KEY, –key=KEY</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">No actual transfer; just validate parameters, files, connectivity and
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">Transfer only items with keys that match a regexp.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">-n, –dry-run</td>
+
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">No actual transfer; just validate parameters, files, connectivity and
 							configurations.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">-u USERNAME, –username=USERNAME</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">-u USERNAME, –username=USERNAME</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">REST username for source cluster or server node.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">-p PASSWORD, –password=PASSWORD</td>
-
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">REST password for cluster or server node.</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">REST username for source cluster or server node.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">-t THREADS, –threads=THREADS</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">-p PASSWORD, –password=PASSWORD</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">Number of concurrent workers threads performing the transfer. Default: 4.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">-v, –verbose</td>
-
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">Verbose logging; provide more verbosity.</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">REST password for cluster or server node.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">-x EXTRA, –extra=EXTRA</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">-t THREADS, –threads=THREADS</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">Provide extra, uncommon config parameters.</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">Number of concurrent workers threads performing the transfer. Default: 4.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">–single-node</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">-v, –verbose</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">Transfer from a single server node in a source cluster. This single server node is a
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">Verbose logging; provide more verbosity.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">-x EXTRA, –extra=EXTRA</td>
+
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">Provide extra, uncommon config parameters.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">–single-node</td>
+
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">Transfer from a single server node in a source cluster. This single server node is a
 							source node URL.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">–source-vbucket-state=SOURCE_VBUCKET_STATE</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">–source-vbucket-state=SOURCE_VBUCKET_STATE</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">Only transfer from source vbuckets in this state, such as ‘active’
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">Only transfer from source vbuckets in this state, such as ‘active’
 							(default) or ‘replica’. Must be used with Couchbase cluster as
 							source.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">–destination-vbucket-state=DESTINATION_VBUCKET_STATE</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">–destination-vbucket-state=DESTINATION_VBUCKET_STATE</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">Only transfer to destination vbuckets in this state, such as ‘active’
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">Only transfer to destination vbuckets in this state, such as ‘active’
 							(default) or ‘replica’. Must be used with Couchbase cluster as
 							destination.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 ">–destination-operation=DESTINATION_OPERATION</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e141 ">–destination-operation=DESTINATION_OPERATION</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">Perform this operation on transfer. “set” will override an existing
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">Perform this operation on transfer. “set” will override an existing
 							document, ‘add’ will not override, ‘get’ will load all keys transferred
 							from a source cluster into the caching layer at the destination.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e141 "><samp class="ph codeph">/path/to/filename</samp></td>
+						<td class="entry" valign="top" width="50%" headers="d43899e141 "><samp class="ph codeph">/path/to/filename</samp></td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e144 ">Export a.csv file from the server or import a.csv file to the server.
+						<td class="entry" valign="top" width="50%" headers="d43899e144 ">Export a.csv file from the server or import a.csv file to the server.
 						</td>
 
 					</tr>
@@ -251,9 +254,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d12092e323">-x options</th>
+						<th class="entry" valign="top" width="50%" id="d43899e323">-x options</th>
 
-						<th class="entry" valign="top" width="50%" id="d12092e326">Description</th>
+						<th class="entry" valign="top" width="50%" id="d43899e326">Description</th>
 
 					</tr>
 
@@ -262,86 +265,86 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">backoff_cap=10</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">backoff_cap=10</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">Maximum backoff time during the rebalance period.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">batch_max_bytes=400000</td>
-
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">Transfer this # of bytes per batch.</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">Maximum backoff time during the rebalance period.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">batch_max_size=1000</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">batch_max_bytes=400000</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">Transfer this # of documents per batch.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">cbb_max_mb=100000</td>
-
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">Split backup file on destination cluster if it exceeds the MB.</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">Transfer this # of bytes per batch.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">conflict_resolve=1</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">batch_max_size=1000</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">By default, disable conflict resolution.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">data_only=0</td>
-
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">For value 1, transfer only data from a backup file or cluster.</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">Transfer this # of documents per batch.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">design_doc_only=0</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">cbb_max_mb=100000</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">For value 1, transfer only design documents from a backup file or cluster. Default: 0.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">max_retry=10</td>
-
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">Max number of sequential retries if the transfer fails.</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">Split backup file on destination cluster if it exceeds the MB.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">mcd_compatible=1</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">conflict_resolve=1</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">For value 0, display extended fields for stdout output.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">nmv_retry=1</td>
-
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">0 or 1, where 1 retries transfer after a NOT_MY_VBUCKET message. Default: 1.</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">By default, disable conflict resolution.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">recv_min_bytes=4096</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">data_only=0</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">Amount of bytes for every TCP/IP batch transferred.</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">For value 1, transfer only data from a backup file or cluster.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">rehash=0</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">design_doc_only=0</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">For value 1, rehash the partition id's of each item. 
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">For value 1, transfer only design documents from a backup file or cluster. Default: 0.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">max_retry=10</td>
+
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">Max number of sequential retries if the transfer fails.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">mcd_compatible=1</td>
+
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">For value 0, display extended fields for stdout output.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">nmv_retry=1</td>
+
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">0 or 1, where 1 retries transfer after a NOT_MY_VBUCKET message. Default: 1.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">recv_min_bytes=4096</td>
+
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">Amount of bytes for every TCP/IP batch transferred.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">rehash=0</td>
+
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">For value 1, rehash the partition id's of each item. 
 							This is required when transferring data between clusters with
 							different number of partitions, such as when transferring data from an
 							Mac OS X server to a non-Mac OS X cluster.</td>
@@ -349,38 +352,38 @@
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">report=5</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">report=5</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">Number batches transferred before updating progress bar in console.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">report_full=2000</td>
-
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">Number batches transferred before emitting progress information in console.</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">Number batches transferred before updating progress bar in console.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">seqno=0</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">report_full=2000</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">By default, start seqno from beginning.</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">Number batches transferred before emitting progress information in console.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">try_xwm=1</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">seqno=0</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">Transfer documents with metadata. Default: 1. Value of 0 is only used when transferring
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">By default, start seqno from beginning.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">try_xwm=1</td>
+
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">Transfer documents with metadata. Default: 1. Value of 0 is only used when transferring
 								from 1.8.x to 1.8.x.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d12092e323 ">uncompress=0</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e323 ">uncompress=0</td>
 
-						<td class="entry" valign="top" width="50%" headers="d12092e326 ">For value 1, restore data in uncompressed mode.</td>
+						<td class="entry" valign="top" width="50%" headers="d43899e326 ">For value 1, restore data in uncompressed mode.</td>
 
 					</tr>
 
@@ -545,6 +548,12 @@ done
 		
 	</div>
 
-
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Server command-line interface (CLI) tools are provided to manage and monitor clusters, servers, vBuckets, XDCR, and so on.">CLI reference</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../CLI/cbworkloadgen_tool.html" title="The cbworkloadgen tool is used to generate random data and perform read/writes.">cbworkloadgen tool</a></div>
+</div>
+</nav>
 </body>
 </html>

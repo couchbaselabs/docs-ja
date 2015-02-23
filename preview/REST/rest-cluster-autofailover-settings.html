@@ -1,0 +1,115 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="Auto-failover setting are retrieved with the GET /settins/autoFailover HTTP method and URI."><meta name="DC.Relation" scheme="URI" content="../REST/rest-cluster-autofailover-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-cluster-autofailover-enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rest-cluster-autofailover-settings">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Retrieving auto-failover settings</title>
+</head>
+<body id="rest-cluster-autofailover-settings">
+
+
+  <h1 class="title topictitle1">Retrieving auto-failover settings</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">Auto-failover setting are retrieved with the <samp class="ph codeph">GET /settins/autoFailover</samp> HTTP method and URI.</p>
+
+    
+    <div class="section"><h2 class="title sectiontitle">HTTP method and URI</h2>
+      <p class="p">Use this request to retrieve any auto-failover settings for a cluster. Auto-failover is a
+        global setting for all clusters. Authenticated is required to read this value.</p>
+
+      <pre class="pre codeblock">GET /settings/autoFailover</pre>
+
+      
+      <p class="p">Parameters include:</p>
+
+      <ul class="ul">
+        <li class="li"><samp class="ph codeph">enabled</samp>: Value is true or false. True if auto-failover is enabled;
+          False if it is not.</li>
+
+        <li class="li"><samp class="ph codeph">timeout</samp>: Seconds that must elapse before auto-failover executes on a
+          cluster.</li>
+
+        <li class="li"><samp class="ph codeph">count</samp>: Value is 0 or 1. Number of times any node in a cluster can be
+          automatically failed-over. After one auto-failover occurs, the count is set to 1 and
+          Couchbase server does not perform auto-failover for the cluster again unless the count is
+          reset to 0. To failover more than one node at a time in a cluster, perform a manual
+          failover.</li>
+
+      </ul>
+
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">Curl request syntax:</p>
+
+      <pre class="pre codeblock">curl -u [admin]:[password] http://[localhost]:8091/settings/autoFailover</pre>
+
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+      <p class="p">Curl request example</p>
+
+      <pre class="pre codeblock">curl -u admin:password http://10.5.2.54:8091/settings/autoFailover
+</pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Response</h2>
+    <p class="p">If successful Couchbase Server returns any auto-failover settings for the cluster:</p>
+
+    <pre class="pre codeblock">{
+    "count": 0, 
+    "enabled": false, 
+    "timeout": 120
+}</pre>
+
+     
+    </div>
+
+
+    
+    <div class="section"><h2 class="title sectiontitle">Response codes</h2>
+    <p class="p">Possible errors include:</p>
+
+    <pre class="pre codeblock">HTTP/1.1 401 Unauthorized
+This endpoint isn't available yet.
+</pre>
+
+    <pre class="pre codeblock">GET /settings/autoFailover HTTP/1.1
+Host: localhost:8091
+Authorization: Basic YWRtaW46YWRtaW4=
+Accept: */*
+</pre>
+
+    <pre class="pre codeblock">HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: nnn
+{ "enabled": false, "timeout": 30, "count": 0 }
+</pre>
+
+    </div>
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-cluster-autofailover-intro.html" title="Auto-failover is managed with with the GET /settings/autoFailover HTTP method and URI.">Managing auto-failover</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-cluster-autofailover-enable.html" title="Auto-failover is enabled and disabled the POST /settings/autoFailover HTTP method and URI.">Enabling and disabling auto-failover</a></div>
+</div>
+</nav>
+</body>
+</html>

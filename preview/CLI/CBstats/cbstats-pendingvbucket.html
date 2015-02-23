@@ -1,0 +1,186 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="Description of pending vBucket statistics."><meta name="DC.Relation" scheme="URI" content="../../CLI/CBstats/cbstats-all.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBstats/cbstats-replicavbucket.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cbstats-pending-vbucket">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../../commonltr.css">
+<title>Pending vBucket stats</title>
+</head>
+<body id="cbstats-pending-vbucket">
+
+
+	<h1 class="title topictitle1">Pending vBucket stats</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">Description of pending vBucket statistics.</p>
+
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="50%" id="d18764e27">Stat</th>
+
+						<th class="entry" valign="top" width="50%" id="d18764e30">Description</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_num</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Number of pending vBuckets</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_curr_items</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Number of in memory items</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_num_non_resident</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Number of non-resident items</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_perc_mem_resident</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">% memory resident</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_eject</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Number of times item values got ejected</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_expired</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Number of times an item was expired</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_ht_memory</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Memory overhead of the hashtable</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_itm_memory</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Total item memory</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_meta_data_memory</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Total metadata memory</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_ops_create</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Number of create operations</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_ops_update</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Number of update operations</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_ops_delete</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Number of delete operations</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_ops_reject</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Number of rejected operations</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_queue_size</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Pending items in disk queue</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_queue_memory</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Memory used for disk queue</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_queue_age</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Sum of disk queue item age in milliseconds</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_queue_pending</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Total bytes of pending writes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_queue_fill</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Total enqueued items</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18764e27 ">vb_pending_queue_drain</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18764e30 ">Total drained items</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+	</div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-all.html" title="The cbstats all command lists the information used for statistics.">All</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-replicavbucket.html" title="Description of replica vBucket satistics.">Replica vBucket stats</a></div>
+</div>
+</nav>
+</body>
+</html>

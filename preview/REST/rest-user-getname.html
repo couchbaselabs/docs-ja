@@ -1,0 +1,82 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="The read-only user name is retrieved with the GET /settings/readOnlyAdminName HTTP method and URI."><meta name="DC.Relation" scheme="URI" content="../REST/rest-users.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-user-create.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-user-password-put.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rest-user-get-admin-name">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Getting the read-only user name</title>
+</head>
+<body id="rest-user-get-admin-name">
+
+
+  <h1 class="title topictitle1">Getting the read-only user name</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">The read-only user name is retrieved with the <samp class="ph codeph">GET /settings/readOnlyAdminName</samp> HTTP method and URI.</p>
+
+    
+    <div class="section"><h2 class="title sectiontitle">HTTP method and URI</h2>
+      <p class="p">To retrieve the read-only username, administrative or read-only permissions are required:</p>
+
+      <pre class="pre codeblock">GET /settings/readOnlyAdminName</pre>
+
+    </div>
+
+    
+    
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">Curl request syntax:</p>
+
+      <pre class="pre codeblock">curl -u [admin]:[password] 
+  http://[localhost]:8091/settings/readOnlyAdminName
+</pre>
+
+    </div>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+      <p class="p">Curl request example:</p>
+
+      <pre class="pre codeblock">curl -u Administrator:password
+  http://10.5.2.117:8091/settings/readOnlyAdminName
+</pre>
+
+    </div>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">Response</h2>
+      <p class="p">If successful, a response is returned with the read-only user name as payload:</p>
+
+      <pre class="pre codeblock">"a_user"</pre>
+
+        
+        
+        <p class="p">If there is no read-only user, the following error is returned:</p>
+
+      <pre class="pre codeblock">Requested resource not found.</pre>
+
+    </div>
+
+    
+    
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-users.html" title="A read-only user is created with the /settings/readOnlyUser URI endpont. Only one read-only user can be created.">User API</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-user-create.html" title="A read-only user is create with the POST /settings/readOnlyUser HTTP method and URI.">Creating a read-only user</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-user-password-put.html" title="The user password is changed with the PUT /settings/readOnlyUser HTTP method and URI.">Changing the user password</a></div>
+</div>
+</nav>
+</body>
+</html>

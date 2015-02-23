@@ -1,0 +1,94 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="Spatial views are compacted with the POST /[bucket-name]/_design/[ddoc-name]/_spatial/_compact HTTP method and URI"><meta name="DC.Relation" scheme="URI" content="../REST/compaction-rest-api.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-compact-post.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-autocompact-get.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reference_vvv_t2d_sp">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Compacting spatial views</title>
+</head>
+<body id="reference_vvv_t2d_sp">
+
+
+  <h1 class="title topictitle1">Compacting spatial views</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">Spatial views are compacted with the <samp class="ph codeph">POST /[bucket-name]/_design/[ddoc-name]/_spatial/_compact </samp> HTTP method and URI</p>
+
+    <div class="section"><h2 class="title sectiontitle">Description</h2>
+      <p class="p">Spatial views are not automatically compacted with data and indexes. Instead, each spatial
+        view must be manually compacted.</p>
+
+    </div>
+
+      
+      <div class="section"><h2 class="title sectiontitle">HTTP method and URI</h2>
+        
+        <pre class="pre codeblock">
+POST /[bucket-name]/_design/[ddoc-name]/_spatial/_compact        
+        </pre>
+
+      </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      
+      <p class="p">To compact each spatial view, specify the compaction for the spatial view:</p>
+
+      
+      <pre class="pre codeblock">http://[localhost]:9500/[bucket-name]/_design/[ddoc-name]/_spatial/_compact
+</pre>
+
+      
+      
+      <div class="p">This URL contains the following information: <ul class="ul">
+        <li class="li"><samp class="ph codeph">[localhost]:9500</samp><p class="p"><samp class="ph codeph">localhost</samp> is the IP address for the local host. 
+          The port number, 9500, is unique to the spatial indexing system.</p>
+</li>
+
+        <li class="li"><samp class="ph codeph">bucket_name</samp><p class="p">The name of the bucket where the design
+          document is configured.</p>
+</li>
+
+        <li class="li"><samp class="ph codeph">ddoc_name</samp>
+          <p class="p">The name of the design document that contains the spatial index or
+            indexes that you want to compact.</p>
+</li>
+
+      </ul>
+</div>
+
+      
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+      
+      <p class="p">To send a request using curl:</p>
+
+      
+      <pre class="pre codeblock">curl -u admin:password -X POST
+  http://127.0.0.1:9500/default/_design/dev_test_spatial_compaction/_spatial/_compact
+  -H 'Content-type: application/json'
+</pre>
+
+     
+    </div>
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/compaction-rest-api.html" title="Compaction is used to reclaim disk space and reduce disk fragmentation.">Compaction API</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-compact-post.html" title="Bucket compaction is initiated with the POST /pools/default/buckets/[bucket-name]/controller/compactBucket HTTP method and URI">Compacting buckets</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-autocompact-get.html" title="Auto-compaction settings can be retrieved on a cluster-wide level or bucket level.">Getting auto-compaction settings</a></div>
+</div>
+</nav>
+</body>
+</html>

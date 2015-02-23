@@ -1,0 +1,138 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="The cbstats vbucket commands provide information"><meta name="DC.Relation" scheme="URI" content="../../CLI/cbstats-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBstats/cbstats-uuid.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBstats/cbstats-warmup.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cbstats-vbucket">
+<link rel="stylesheet" type="text/css" href="../../commonltr.css">
+<title>vBucket</title>
+</head>
+<body id="cbstats-vbucket">
+
+
+  <h1 class="title topictitle1">vBucket</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbstats vbucket</samp> commands provide information</p>
+
+    <div class="section"><h2 class="title sectiontitle">Description</h2>
+      <p class="p">The <samp class="ph codeph">vbucket</samp> command shows whether a vBucket is an active or a replia vBucket.</p>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">CLI command and parameters</h2>
+      <p class="p"></p>
+
+      <pre class="pre codeblock">
+cbstats vbucket
+cbstats vbucket-details
+cbstats vbucket-seqno
+      </pre>
+
+      
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">Request syntax:</p>
+
+      <pre class="pre codeblock">cbstats [localhost]:11210 vbucket
+cbstats [localhost]:11210 vbucket-details [vbid]
+cbstats [localhost]:11210 vbucket [vbid]
+      </pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+      <p class="p">Example requests:</p>
+
+      <pre class="pre codeblock">cbstats 10.5.2.54:11210 vbucket</pre>
+
+      <pre class="pre codeblock">cbstats 10.5.2.54:11210 vbucket-details 115</pre>
+
+      <pre class="pre codeblock">cbstats 10.5.2.54:11210 vbucket-seqno 115</pre>
+
+      
+      </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Response</h2>
+      <p class="p">Example response for <samp class="ph codeph">vbucket</samp>:</p>
+
+      <pre class="pre codeblock">
+vb_0:    replica
+ vb_1:    replica
+ vb_10:   replica
+ vb_100:  active
+ vb_1000: replica
+ vb_1001: replica
+ vb_1002: replica
+ vb_1003: replica
+ vb_1004: replica
+ vb_1005: replica
+ ...
+      </pre>
+
+      
+      <p class="p">Example response for <samp class="ph codeph">vbucket-details</samp>:</p>
+
+        <pre class="pre codeblock">
+ vb_115:                  active
+ vb_115:db_data_size:     174
+ vb_115:db_file_size:     24622
+ vb_115:high_seqno:       0
+ vb_115:ht_cache_size:    0
+ vb_115:ht_item_memory:   0
+ vb_115:ht_memory:        25096
+ vb_115:num_ejects:       0
+ vb_115:num_items:        0
+ vb_115:num_non_resident: 0
+ vb_115:num_temp_items:   0
+ vb_115:ops_create:       0
+ vb_115:ops_delete:       0
+ vb_115:ops_reject:       0
+ vb_115:ops_update:       0
+ vb_115:pending_writes:   0
+ vb_115:purge_seqno:      0
+ vb_115:queue_age:        0
+ vb_115:queue_drain:      0
+ vb_115:queue_fill:       0
+ vb_115:queue_memory:     0
+ vb_115:queue_size:       0
+ vb_115:uuid:             219212055839841
+        </pre>
+
+      
+      
+      <p class="p">Example response for <samp class="ph codeph">vbucket-seqno</samp>:</p>
+
+      <pre class="pre codeblock">
+ vb_115:abs_high_seqno: 0
+ vb_115:high_seqno:     0
+ vb_115:purge_seqno:    0
+ vb_115:uuid:           219212055839841
+        </pre>
+
+    </div>
+
+    
+    
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-uuid.html" title="The cbstats uuid command provides the UUID for the server node.">UUID</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-warmup.html" title="The cbstats warmup command shows statistics related to warmup logic.">Warmup</a></div>
+</div>
+</nav>
+</body>
+</html>

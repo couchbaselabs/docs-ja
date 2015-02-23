@@ -1,0 +1,140 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="The item pager process ejects items from RAM when too much space is being taken up in RAM."><meta name="DC.Relation" scheme="URI" content="../../CLI/cbepctl-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBepctl/cbepctl-threadpool-tuning.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBepctl/cbepctl-accesslog.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cbepctl-thresholds">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../../commonltr.css">
+<title>Changing ejection thresholds</title>
+</head>
+<body id="cbepctl-thresholds">
+
+
+  <h1 class="title topictitle1">Changing ejection thresholds</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">The item pager process ejects items from RAM when too much space is being taken up in
+    RAM.</p>
+
+    <div class="section"><h2 class="title sectiontitle">Description</h2>
+      <p class="p">Ejection means that documents are removed from RAM but the key and metadata remain. If the
+        amount of RAM used by items reaches the high water mark (upper threshold), both active and
+        replica data are ejected until the memory usage (amount of RAM consumed) reaches the low
+        water mark (lower threshold). The server determines that items are not frequently used based
+        on a not-recently-used (NRU) value.</p>
+
+      
+      <p class="p">Use the <samp class="ph codeph">mem_low_wat</samp>, <samp class="ph codeph">mem_high_wat</samp>, and
+          <samp class="ph codeph">pager_active_vb_pcnt</samp> settings to change the server thresholds for
+        ejection.</p>
+
+      
+      <div class="note warning"><span class="warningtitle">Warning:</span> We do not recommend that you change the ejection defaults unless
+        required by Couchbase Support.</div>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">Basic syntax:</p>
+
+      <pre class="pre codeblock">cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set flush_param [parameter] [value]</pre>
+
+      
+      <p class="p">Parameters used for changing ejection thresholds:</p>
+
+      <ul class="ul">
+        <li class="li">mem_low_wat</li>
+
+        <li class="li">mem_high_wat</li>
+
+        <li class="li">pager_active_vb_pcnt</li>
+
+      </ul>
+
+    
+    </div>
+
+
+    <div class="section"><h2 class="title sectiontitle">Example: Setting the low water mark</h2>
+      <p class="p">The low water mark sets the lower threshold of RAM for a specific data bucket on
+        a node. The item pager stops ejecting items once the low water mark is reached. </p>
+
+      <p class="p">The following example sets the low water mark percentage to 70% of RAM.</p>
+
+      <pre class="pre codeblock">cbepctl 10.5.2.117:11210 -b foo-bucket -p foo-password set flush_param mem_low_wat 70
+</pre>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Example: Setting the high water mark</h2>
+      <p class="p">The high water mark set the amount of RAM consumed by items that must be breached before
+        infrequently used active and replica items are ejected.</p>
+
+      <p class="p">The following example sets the high water mark percentage to 80% of RAM for a specific data bucket on
+        a node. This means that items in RAM on this node can consume up to 80% of RAM before
+        the item pager begins ejecting items. </p>
+
+      <pre class="pre codeblock">cbepctl 10.5.2.117:11210 -b foo-bucket -p foo-password set flush_param mem_high_wat 80
+</pre>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Example: Setting percentage of ejected items</h2>
+      <p class="p">Based on the NRU algorithm, the server ejects active and replica data from a node. By default, the server is configured to
+        40% active items and 60% replica data from a node.</p>
+
+      <p class="p">The following example increases the percentage of active items that can be ejected from a
+        node to 50%.</p>
+
+      <pre class="pre codeblock">cbepctl 10.5.2.117:11210 -b foo-bucket -p foo-password set flush_param pager_active_vb_pcnt 50
+</pre>
+
+      
+      <p class="p">Be aware of potential performance implications when changing the percentage of ejected items. It may be more
+        desirable to eject as many replica items as possible and limit the amount of active data
+        that can be ejected. By doing so, active data from a source node is maximized while
+        maintaining incoming requests to that node. However, if the server is ejecting a very large
+        percentage of replica data and a node fails, the replica data is not immediately available.
+        In this case, the items are retrieved from disk and put back into RAM before the request is
+        fulfilled. </p>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Response</h2>
+      <p class="p">The following example response shows the low water mark, high water mark, and percentage of ejected items being set.</p>
+
+      <pre class="pre codeblock">
+setting param: mem_low_wat 70
+set mem_low_wat to 70
+
+setting param: mem_high_wat 80
+set mem_high_wat to 80
+
+setting param: pager_active_vb_pcnt 50
+set pager_active_vb_pcnt to 50
+      </pre>
+
+    
+    </div>
+
+  </div>
+
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/cbepctl-intro.html" title="The cbepctl tool is used to control vBucket states, configuration, and memory and disk persistence behavior.">cbepctl tool</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBepctl/cbepctl-threadpool-tuning.html" title="Dynamic shared thread pool performance is tunable via cbepctl set flush_param command options.">Changing shared thread pool settings</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBepctl/cbepctl-accesslog.html" title="Access log settings determine when the access scanner process initially runs and how often.">Changing access log settings</a></div>
+</div>
+</nav>
+</body>
+</html>

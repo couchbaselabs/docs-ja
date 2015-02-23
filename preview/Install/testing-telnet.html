@@ -1,0 +1,89 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="The simplest method to determine whether Couchbase Server is running is to use Telnet to connect to the server with the memcached text protocol."><meta name="DC.Relation" scheme="URI" content="../Install/testing.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/testing-cbworkloadgen.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_us1_cmr_p4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Testing with telnet</title>
+</head>
+<body id="topic_us1_cmr_p4">
+
+
+  <h1 class="title topictitle1">Testing with <span class="keyword cmdname">telnet</span></h1>
+
+  
+  <div class="body"><p class="shortdesc">The simplest method to determine whether Couchbase Server is running is to use
+      <span class="keyword cmdname">Telnet</span> to connect to the server with the memcached text
+    protocol.</p>
+
+
+
+    <p class="p"><span class="keyword cmdname">Telnet</span> must be installed on your server to connect to Couchbase Server
+      using this method. It is supplied as standard on most platforms, or can be obtained as a
+      separate package and installed via your operating system's standard package manager.</p>
+
+
+    <div class="note note"><span class="notetitle">Note:</span> You do not need to use the <span class="keyword cmdname">Telnet</span> method for communicating
+      with your server within your application. Instead, use one of the Couchbase SDKs. </div>
+
+
+    <p class="p">Connect to the server (connecting to the legacy memcached protocol using Moxi):</p>
+
+    <pre class="pre codeblock">&gt; telnet localhost1 11211
+Trying 127.0.0.1...
+Connected to localhost.localdomain (127.0.0.1).
+Escape character is '^]'.</pre>
+
+    <p class="p">Make sure it is responding (stats is a great way to check basic health):</p>
+
+    <pre class="pre codeblock">stats
+STAT delete_misses 0
+STAT ep_io_num_write 0
+STAT rejected_conns 0
+...
+STAT time 1286678223
+...
+STAT curr_items_tot 0
+...
+STAT threads 4
+STAT pid 23871
+...
+END</pre>
+
+    <p class="p">Put a key in:</p>
+
+    <pre class="pre codeblock">set test_key 0 0 1
+a
+STORED</pre>
+
+    <p class="p">Retrieve the key:</p>
+
+    <pre class="pre codeblock">get test_key
+VALUE test_key 0 1
+a
+END</pre>
+
+    <p class="p">Disconnect:</p>
+
+    <pre class="pre codeblock">quit
+Connection closed by foreign host.
+&gt;</pre>
+
+    <p class="p">All of the memcached protocols commands will work through <span class="keyword cmdname">Telnet</span>.</p>
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/testing.html" title="Testing the connection to the Couchbase Server can be performed in a number of different ways.">Testing Couchbase Server</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/testing-cbworkloadgen.html" title="The command cbworkloadgen is a basic tool used to check the availability and connectivity of the Couchbase Server cluster.">Testing with cbworkloadgen</a></div>
+</div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="Auto-failover is reset with the POST /settings/autoFailover/resetCount HTTP method and URI."><meta name="DC.Relation" scheme="URI" content="../REST/rest-cluster-autofailover-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-cluster-autofailover-enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rest-cluster-autofailover-reset">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Resetting auto-failover</title>
+</head>
+<body id="rest-cluster-autofailover-reset">
+
+
+  <h1 class="title topictitle1">Resetting auto-failover</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">Auto-failover is reset with the <samp class="ph codeph">POST /settings/autoFailover/resetCount</samp> HTTP method and URI.</p>
+
+    <div class="section"><h2 class="title sectiontitle">HTTP method and URI</h2>
+      <p class="p">Resets the number of nodes that Couchbase Server has automatically failed over. A request
+        can be sent to reset the auto-failover number to 0. This is a global setting for all
+        clusters. Authenticated is required to change this value. No parameters are required.</p>
+
+      
+      <pre class="pre codeblock">
+POST /settings/autoFailover/resetCount
+      </pre>
+
+    
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+    <pre class="pre codeblock">
+curl -X POST -i -u [admin]:[password] \
+  http://localhost:8091/settings/autoFailover/resetCount
+    </pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+      <p class="p">Curl request example:</p>
+
+    
+    <pre class="pre codeblock">curl -X POST -i -u admin:password \
+    http://10.5.2.54:8091/settings/autoFailover/resetCount
+</pre>
+
+      
+      <p class="p">Raw HTTP request example:</p>
+
+    
+    <pre class="pre codeblock">POST /settings/autoFailover/resetCount HTTP/1.1
+Host: localhost:8091
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic YWRtaW46YWRtaW4=
+</pre>
+
+    </div>
+
+      
+      <div class="section"><h2 class="title sectiontitle">Response codes</h2>
+    <pre class="pre codeblock">HTTP/1.1 200 OK</pre>
+
+    <p class="p">Possible errors include:</p>
+
+    <pre class="pre codeblock">This endpoint isn't available yet.
+401 Unauthorized
+</pre>
+
+      </div>
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-cluster-autofailover-intro.html" title="Auto-failover is managed with with the GET /settings/autoFailover HTTP method and URI.">Managing auto-failover</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-cluster-autofailover-enable.html" title="Auto-failover is enabled and disabled the POST /settings/autoFailover HTTP method and URI.">Enabling and disabling auto-failover</a></div>
+</div>
+</nav>
+</body>
+</html>

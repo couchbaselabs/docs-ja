@@ -1,0 +1,207 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="Buckets are created with the couchbase-cli bucket-create command."><meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-buckets.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-bucket-flush.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reference_llp_znv_sq">
+<link rel="stylesheet" type="text/css" href="../../commonltr.css">
+<title>Creating buckets</title>
+</head>
+<body id="reference_llp_znv_sq">
+
+
+  <h1 class="title topictitle1">Creating buckets</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">Buckets are created with the <samp class="ph codeph">couchbase-cli bucket-create</samp> command.</p>
+
+    <div class="section"><h2 class="title sectiontitle">CLI command and parameter</h2>
+      
+      <p class="p">Buckets are created with the <samp class="ph codeph">couchbase-cli bucket-create</samp> command with the following parameters. 
+      <samp class="ph codeph">bucket-create</samp> adds new buckets to clusters.</p>
+
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="50%" id="d157e43">Parameter</th>
+
+              <th class="entry" valign="top" width="50%" id="d157e46">Description</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d157e43 ">--bucket=BUCKETNAME</td>
+
+              <td class="entry" valign="top" width="50%" headers="d157e46 ">Named bucket to act on</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d157e43 ">--bucket-type=TYPE</td>
+
+              <td class="entry" valign="top" width="50%" headers="d157e46 ">Bucket type, either memcached or couchbase</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d157e43 ">--bucket-port=PORT</td>
+
+              <td class="entry" valign="top" width="50%" headers="d157e46 ">Supports ASCII protocol and does not require
+                authentication</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d157e43 ">--bucket-password=PASSWORD</td>
+
+              <td class="entry" valign="top" width="50%" headers="d157e46 ">Standard port, exclusive with bucket-port</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d157e43 ">--bucket-ramsize=RAMSIZEMB</td>
+
+              <td class="entry" valign="top" width="50%" headers="d157e46 ">Bucket RAM quota in MB</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d157e43 ">--bucket-replica=COUNT</td>
+
+              <td class="entry" valign="top" width="50%" headers="d157e46 ">Replication count</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d157e43 ">--enable-flush=[0 | 1]</td>
+
+              <td class="entry" valign="top" width="50%" headers="d157e46 ">Enables and disables flush</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d157e43 ">--enable-index-replica=[0 | 1]</td>
+
+              <td class="entry" valign="top" width="50%" headers="d157e46 ">Enable and disables index replicas</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d157e43 ">--wait</td>
+
+              <td class="entry" valign="top" width="50%" headers="d157e46 ">Wait for bucket create to be complete before returning</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d157e43 ">--force</td>
+
+              <td class="entry" valign="top" width="50%" headers="d157e46 ">Force command execution without asking for confirmation</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d157e43 ">--data-only</td>
+
+              <td class="entry" valign="top" width="50%" headers="d157e46 ">Compact database data only</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d157e43 ">--view-only</td>
+
+              <td class="entry" valign="top" width="50%" headers="d157e46 ">Compact view data only </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+      
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">Request syntax:</p>
+
+      <pre class="pre codeblock">
+couchbase-cli bucket-create -c [localhost]:8091 -u [Administrator] -p [password] 
+       --bucket=[bucket-name]
+       --bucket-type=[type]
+       --bucket-port=[port]
+       --bucket-ramsize=[size]
+       --bucket-replica=[replicas]
+</pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+      <p class="p">To create a new dedicated port couchbase bucket:</p>
+
+      <pre class="pre codeblock">
+couchbase-cli bucket-create -c 192.168.0.1:8091 -u Administrator -p password 
+       --bucket=test_bucket 
+       --bucket-type=couchbase 
+       --bucket-port=11222 
+       --bucket-ramsize=200 
+       --bucket-replica=1
+</pre>
+
+      
+      <p class="p">To create a couchbase bucket and wait for bucket
+        ready:</p>
+
+      <pre class="pre codeblock">
+couchbase-cli bucket-create -c 192.168.0.1:8091 -u Administrator -p password 
+       --bucket=test_bucket 
+       --bucket-type=couchbase 
+       --bucket-port=11222 
+       --bucket-ramsize=200 
+       --bucket-replica=1 
+       --wait
+</pre>
+
+      
+      
+      <p class="p">To create a new sasl memcached bucket:</p>
+
+      <pre class="pre codeblock">
+couchbase-cli bucket-create -c 192.168.0.1:8091 -u Administrator -p password 
+       --bucket=test_bucket 
+       --bucket-type=memcached 
+       --bucket-password=password 
+       --bucket-ramsize=200 
+       --enable-flush=1 
+       --enable-index-replica=1
+</pre>
+
+    </div>
+
+
+    
+    
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/CBcli/cbcli-buckets.html" title="Buckets are managed with the couchbase-cli tool and the bucket-* commands.">Buckets</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBcli/cbcli-bucket-flush.html" title="Buckets are flushed by enable the flush option then flushing.">Flushing buckets</a></div>
+</div>
+</nav>
+</body>
+</html>

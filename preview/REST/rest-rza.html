@@ -5,7 +5,16 @@
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="reference">
-<meta name="description" content="The server groups REST API refers to the Rack Zone Awareness feature, which enables logical groupings of servers on a cluster where each server group physically belongs to a rack or availability zone."><meta name="DC.Format" content="XHTML">
+<meta name="description" content="The server groups REST API refers to the Rack Zone Awareness feature, which enables logical groupings of servers on a cluster where each server group physically belongs to a rack or availability zone."><meta name="DC.Relation" scheme="URI" content="../rest-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-cluster-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-server-nodes.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-servergroup-get.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-servergroup-post-create.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-servergroup-post-add.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-servergroup-put.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-servergroup-put-membership.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-servergroup-delete.html">
+<meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="reference-rest-servergroups">
 <link rel="stylesheet" type="text/css" href="../commonltr.css">
 <title>Server groups API</title>
@@ -55,11 +64,11 @@
           
           <thead class="thead" align="left">
             <tr class="row">
-              <th class="entry" valign="top" width="21.645021645021643%" id="d40061e60">HTTP method</th>
+              <th class="entry" valign="top" width="21.645021645021643%" id="d97786e60">HTTP method</th>
 
-              <th class="entry" valign="top" width="36.79653679653679%" id="d40061e63">URI path</th>
+              <th class="entry" valign="top" width="36.79653679653679%" id="d97786e63">URI path</th>
 
-              <th class="entry" valign="top" width="41.55844155844156%" id="d40061e66">Description</th>
+              <th class="entry" valign="top" width="41.55844155844156%" id="d97786e66">Description</th>
 
             </tr>
 
@@ -67,47 +76,47 @@
 
           <tbody class="tbody">
             <tr class="row">
-              <td class="entry" valign="top" width="21.645021645021643%" headers="d40061e60 ">GET</td>
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d97786e60 ">GET</td>
 
-              <td class="entry" valign="top" width="36.79653679653679%" headers="d40061e63 ">/pools/default/serverGroups</td>
+              <td class="entry" valign="top" width="36.79653679653679%" headers="d97786e63 ">/pools/default/serverGroups</td>
 
-              <td class="entry" valign="top" width="41.55844155844156%" headers="d40061e66 ">Retrieves information about a server group.</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="21.645021645021643%" headers="d40061e60 ">POST</td>
-
-              <td class="entry" valign="top" width="36.79653679653679%" headers="d40061e63 ">/pools/default/serverGroups</td>
-
-              <td class="entry" valign="top" width="41.55844155844156%" headers="d40061e66 ">Creates a server group with a specific name.</td>
+              <td class="entry" valign="top" width="41.55844155844156%" headers="d97786e66 ">Retrieves information about a server group.</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="21.645021645021643%" headers="d40061e60 ">PUT</td>
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d97786e60 ">POST</td>
 
-              <td class="entry" valign="top" width="36.79653679653679%" headers="d40061e63 ">/pools/default/serverGroups/&lt;:uuid&gt;</td>
+              <td class="entry" valign="top" width="36.79653679653679%" headers="d97786e63 ">/pools/default/serverGroups</td>
 
-              <td class="entry" valign="top" width="41.55844155844156%" headers="d40061e66 ">Updates the server group information.</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="21.645021645021643%" headers="d40061e60 ">PUT</td>
-
-              <td class="entry" valign="top" width="36.79653679653679%" headers="d40061e63 ">/pools/default/serverGroups?rev=&lt;:number&gt;</td>
-
-              <td class="entry" valign="top" width="41.55844155844156%" headers="d40061e66 ">Updates a server’s group memberships.</td>
+              <td class="entry" valign="top" width="41.55844155844156%" headers="d97786e66 ">Creates a server group with a specific name.</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="21.645021645021643%" headers="d40061e60 ">DELETE</td>
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d97786e60 ">PUT</td>
 
-              <td class="entry" valign="top" width="36.79653679653679%" headers="d40061e63 ">/pools/default/serverGroups/&lt;:uuid&gt;</td>
+              <td class="entry" valign="top" width="36.79653679653679%" headers="d97786e63 ">/pools/default/serverGroups/&lt;:uuid&gt;</td>
 
-              <td class="entry" valign="top" width="41.55844155844156%" headers="d40061e66 ">Deletes a specific server group.</td>
+              <td class="entry" valign="top" width="41.55844155844156%" headers="d97786e66 ">Updates the server group information.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d97786e60 ">PUT</td>
+
+              <td class="entry" valign="top" width="36.79653679653679%" headers="d97786e63 ">/pools/default/serverGroups?rev=&lt;:number&gt;</td>
+
+              <td class="entry" valign="top" width="41.55844155844156%" headers="d97786e66 ">Updates a server’s group memberships.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d97786e60 ">DELETE</td>
+
+              <td class="entry" valign="top" width="36.79653679653679%" headers="d97786e63 ">/pools/default/serverGroups/&lt;:uuid&gt;</td>
+
+              <td class="entry" valign="top" width="41.55844155844156%" headers="d97786e66 ">Deletes a specific server group.</td>
 
             </tr>
 
@@ -123,6 +132,27 @@
   </div>
 
 
+<nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../REST/rest-servergroup-get.html">Getting server group information</a><br>
+Server group information is retrieved with the <samp class="ph codeph">GET /pools/default/serverGroups</samp> HTTP method and URI.</li>
+<li class="link olchildlink"><a href="../REST/rest-servergroup-post-create.html">Creating server groups</a><br>
+Server groups are created with the <samp class="ph codeph">POST /pools/default/serverGroups</samp> HTTP method and URI.</li>
+<li class="link olchildlink"><a href="../REST/rest-servergroup-post-add.html">Adding servers to server groups</a><br>
+Servers are added to server groups with the <samp class="ph codeph">POST /pools/default/serverGroups/&lt;:uuid&gt;/addNode</samp> HTTP method and URI.</li>
+<li class="link olchildlink"><a href="../REST/rest-servergroup-put.html">Renaming server groups</a><br>
+Server groups are renamed with the <samp class="ph codeph">PUT /pools/default/serverGroups/&lt;:uuid&gt;</samp> HTTP method and URI.</li>
+<li class="link olchildlink"><a href="../REST/rest-servergroup-put-membership.html">Updating server group memberships</a><br>
+To change server group membership, use the <samp class="ph codeph">PUT /pools/default/serverGroups</samp> HTTP method and URI.</li>
+<li class="link olchildlink"><a href="../REST/rest-servergroup-delete.html">Deleting server groups</a><br>
+Server groups are deleted with the <samp class="ph codeph">DELETE /pools/default/serverGroups/&lt;:uuid&gt;</samp> HTTP method and URI.</li>
+</ol>
 
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../rest-intro.html" title="The Couchbase REST API enables you to manage a Couchbase Server deployment as well as perform operations such as storing design documents and querying for results.">REST API reference</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-cluster-intro.html" title="The Cluster REST API manages cluster operations.">Cluster API</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-server-nodes.html" title="The Server Nodes REST API manages nodes in a cluster.">Server nodes API</a></div>
+</div>
+</nav>
 </body>
 </html>

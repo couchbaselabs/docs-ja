@@ -5,7 +5,16 @@
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="reference">
-<meta name="description" content="The couchbase-cli tool is used to perform operations on an entire cluster."><meta name="DC.Format" content="XHTML">
+<meta name="description" content="The couchbase-cli tool is used to perform operations on an entire cluster."><meta name="DC.Relation" scheme="URI" content="../cli-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cli-overview.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbanalyze-core_tool.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBcli/cbcli-commands.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBcli/cbcli-rza.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBcli/cbcli-buckets.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBcli/cbcli-servers.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBcli/cbcli-xdcr.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBcli/cbcli-cluster-wide-info.html">
+<meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="cbcli-intro">
 <meta name="DC.Language" content="en-us">
 <link rel="stylesheet" type="text/css" href="../commonltr.css">
@@ -39,9 +48,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d6761e46">Operating System</th>
+						<th class="entry" valign="top" width="50%" id="d35905e46">Operating System</th>
 
-						<th class="entry" valign="top" width="50%" id="d6761e49">Directory Locations</th>
+						<th class="entry" valign="top" width="50%" id="d35905e49">Directory Locations</th>
 
 					</tr>
 
@@ -49,23 +58,23 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d6761e46 "><strong class="ph b">Linux</strong></td>
+						<td class="entry" valign="top" width="50%" headers="d35905e46 "><strong class="ph b">Linux</strong></td>
 
-						<td class="entry" valign="top" width="50%" headers="d6761e49 "><samp class="ph codeph">/opt/couchbase/bin/couchbase-cli</samp></td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d6761e46 "><strong class="ph b">Windows</strong></td>
-
-						<td class="entry" valign="top" width="50%" headers="d6761e49 "><samp class="ph codeph">C:\Program&nbsp;Files\Couchbase\Server\bin\couchbase-cli.exe</samp></td>
+						<td class="entry" valign="top" width="50%" headers="d35905e49 "><samp class="ph codeph">/opt/couchbase/bin/couchbase-cli</samp></td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d6761e46 "><strong class="ph b">Mac OS X</strong></td>
+						<td class="entry" valign="top" width="50%" headers="d35905e46 "><strong class="ph b">Windows</strong></td>
 
-						<td class="entry" valign="top" width="50%" headers="d6761e49 "><samp class="ph codeph">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/couchbase-cli</samp></td>
+						<td class="entry" valign="top" width="50%" headers="d35905e49 "><samp class="ph codeph">C:\Program&nbsp;Files\Couchbase\Server\bin\couchbase-cli.exe</samp></td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d35905e46 "><strong class="ph b">Mac OS X</strong></td>
+
+						<td class="entry" valign="top" width="50%" headers="d35905e49 "><samp class="ph codeph">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/couchbase-cli</samp></td>
 
 					</tr>
 
@@ -88,9 +97,9 @@
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d6761e118">Option</th>
+							<th class="entry" valign="top" width="50%" id="d35905e118">Option</th>
 
-							<th class="entry" valign="top" width="50%" id="d6761e121">Description</th>
+							<th class="entry" valign="top" width="50%" id="d35905e121">Description</th>
 
 						</tr>
 
@@ -98,37 +107,37 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d6761e118 ">-u USERNAME, --user=USERNAME</td>
+							<td class="entry" valign="top" width="50%" headers="d35905e118 ">-u USERNAME, --user=USERNAME</td>
 
-							<td class="entry" valign="top" width="50%" headers="d6761e121 ">Admin username of the cluster</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d6761e118 ">-p PASSWORD, --password=PASSWORD</td>
-
-							<td class="entry" valign="top" width="50%" headers="d6761e121 ">Admin password of the cluster</td>
+							<td class="entry" valign="top" width="50%" headers="d35905e121 ">Admin username of the cluster</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d6761e118 ">-o KIND, --output=KIND</td>
+							<td class="entry" valign="top" width="50%" headers="d35905e118 ">-p PASSWORD, --password=PASSWORD</td>
 
-							<td class="entry" valign="top" width="50%" headers="d6761e121 ">Type of document: JSON or standard</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d6761e118 ">-d, --debug</td>
-
-							<td class="entry" valign="top" width="50%" headers="d6761e121 ">Output debug information</td>
+							<td class="entry" valign="top" width="50%" headers="d35905e121 ">Admin password of the cluster</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d6761e118 ">-h, --help</td>
+							<td class="entry" valign="top" width="50%" headers="d35905e118 ">-o KIND, --output=KIND</td>
 
-							<td class="entry" valign="top" width="50%" headers="d6761e121 ">Help information</td>
+							<td class="entry" valign="top" width="50%" headers="d35905e121 ">Type of document: JSON or standard</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d35905e118 ">-d, --debug</td>
+
+							<td class="entry" valign="top" width="50%" headers="d35905e121 ">Output debug information</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d35905e118 ">-h, --help</td>
+
+							<td class="entry" valign="top" width="50%" headers="d35905e121 ">Help information</td>
 
 						</tr>
 
@@ -172,6 +181,27 @@
 		
 	</div>
 
+<nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../CLI/CBcli/cbcli-commands.html">couchbase-cli commands</a><br>
+Commands used with the CLI <samp class="ph codeph">couchbase-cli</samp> tool.</li>
+<li class="link olchildlink"><a href="../CLI/CBcli/cbcli-rza.html">Rack-zone awareness</a><br>
+Rack-Zone Awareness enables logical groupings of servers on a cluster where each server       group physically belongs to a rack or Availability Zone. <strong class="ph b">Enterprise Edition only.</strong></li>
+<li class="link olchildlink"><a href="../CLI/CBcli/cbcli-buckets.html">Buckets</a><br>
+Buckets are managed with the <samp class="ph codeph">couchbase-cli</samp> tool and the <samp class="ph codeph">bucket-*</samp> commands.</li>
+<li class="link olchildlink"><a href="../CLI/CBcli/cbcli-servers.html">Server nodes</a><br>
+Managing server nodes in a cluster involve a variety of             <samp class="ph codeph">couchbase-cli</samp> tool commands.</li>
+<li class="link olchildlink"><a href="../CLI/CBcli/cbcli-xdcr.html">XDCR</a><br>
+XDCR commands used with the <samp class="ph codeph">couchbase-cli</samp> tool.</li>
+<li class="link olchildlink"><a href="../CLI/CBcli/cbcli-cluster-wide-info.html">Diagnostics with couchbase-cli</a><br>
+You can start, stop, and view status of a diagnostics collection by using the <samp class="ph codeph">couchbase-cli</samp> tool.</li>
+</ol>
 
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Server command-line interface (CLI) tools are provided to manage and monitor clusters, servers, vBuckets, XDCR, and so on.">CLI reference</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../CLI/cli-overview.html" title="The command-line tools perform different functions and operations, these CLI tools are described individually.">CLI overview</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../CLI/cbanalyze-core_tool.html" title="The cbanalyze-core tool is used to parse and analyze core dump data.">cbanalyze-core tool</a></div>
+</div>
+</nav>
 </body>
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="Server groups are deleted with the DELETE /pools/default/serverGroups/<:uuid&gt; HTTP method and URI."><meta name="DC.Relation" scheme="URI" content="../REST/rest-rza.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-servergroup-put-membership.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reference_em4_31l_sp">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Deleting server groups</title>
+</head>
+<body id="reference_em4_31l_sp">
+
+
+  <h1 class="title topictitle1">Deleting server groups</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">Server groups are deleted with the <samp class="ph codeph">DELETE /pools/default/serverGroups/&lt;:uuid&gt;</samp> HTTP method and URI.</p>
+
+    <div class="section"><h2 class="title sectiontitle">HTTP method and URI</h2><p class="p"><samp class="ph codeph">DELETE /pools/default/serverGroups/&lt;:uuid&gt;</samp> deletes a specific server group. The
+      server group must be empty for a successful request. </p>
+
+      <pre class="pre codeblock">DELETE /pools/default/serverGroups/&lt;:uuid&gt;</pre>
+
+    </div>
+
+      
+      <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <pre class="pre codeblock">curl -X DELETE -u &lt;administrator&gt;:&lt;password&gt; 
+  http://&lt;host&gt;:&lt;port&gt;/pools/default/serverGroups/&lt;uuid&gt;
+</pre>
+
+      </div>
+
+      
+      <div class="section"><h2 class="title sectiontitle">Example</h2>
+      <p class="p">In the following example, the UUID is the same UUID used in the renaming example.</p>
+
+      <pre class="pre codeblock">curl -X DELETE -u Admin:myPassword 
+  http://192.168.0.1:8091/pools/default/serverGroups/246b5de857e100dbfd8b6dee0406420a
+</pre>
+</div>
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-rza.html" title="The server groups REST API refers to the Rack Zone Awareness feature, which enables logical groupings of servers on a cluster where each server group physically belongs to a rack or availability zone.">Server groups API</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-servergroup-put-membership.html" title="To change server group membership, use the PUT /pools/default/serverGroups HTTP method and URI.">Updating server group memberships</a></div>
+</div>
+</nav>
+</body>
+</html>

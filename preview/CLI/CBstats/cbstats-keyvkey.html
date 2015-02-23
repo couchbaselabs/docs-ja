@@ -1,0 +1,193 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="The cbstats key and cbstats vkey commands provide information on keys."><meta name="DC.Relation" scheme="URI" content="../../CLI/cbstats-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBstats/cbstats-hash.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBstats/cbstats-kv.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cbstats-key">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../../commonltr.css">
+<title>Key and vkey</title>
+</head>
+<body id="cbstats-key">
+
+
+	<h1 class="title topictitle1">Key and vkey</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbstats key</samp> and  <samp class="ph codeph">cbstats vkey</samp> commands provide
+		information on keys.</p>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Description</h2>
+			<p class="p">The following key information is available.</p>
+
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+				
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="33.33333333333333%" id="d16407e42">Stat</th>
+
+						<th class="entry" valign="top" width="33.33333333333333%" id="d16407e45">Description</th>
+
+						<th class="entry" valign="top" width="33.33333333333333%" id="d16407e48">K/V</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e42 ">key_cas</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e45 ">The keys current cas value</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e48 ">KV</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e42 ">key_data_age</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e45 ">How long the key has waited for its</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e48 ">KV</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e42 ">&nbsp;</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e45 ">value to be persisted (0 if clean)</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e48 ">KV</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e42 ">key_exptime</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e45 ">Expiration time from the epoch</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e48 ">KV</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e42 ">key_flags</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e45 ">Flags for this key</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e48 ">KV</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e42 ">key_is_dirty</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e45 ">If the value is not yet persisted</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e48 ">KV</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e42 ">key_valid</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e45 ">See description below</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e48 ">V</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e42 ">key_vb_state</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e45 ">The vbucket state of this key</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d16407e48 ">KV</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		<p class="p"><samp class="ph codeph">key_valid</samp>= can have the following responses:</p>
+
+		<ul class="ul">
+			<li class="li">this_is_a_bug - Some case we didn’t take care of.</li>
+
+			<li class="li">dirty - The value in memory has not been persisted yet.</li>
+
+			<li class="li">length_mismatch - The key length in memory doesn’t match the length on
+				disk.</li>
+
+			<li class="li">data_mismatch - The data in memory doesn’t match the data on disk.</li>
+
+			<li class="li">flags_mismatch - The flags in memory don’t match the flags on disk.</li>
+
+			<li class="li">valid - The key is both on disk and in memory</li>
+
+			<li class="li">ram_but_not_disk - The value doesn’t exist yet on disk.</li>
+
+			<li class="li">item_deleted - The item has been deleted.</li>
+
+		</ul>
+
+			
+			
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Syntax</h2>
+			<p class="p">Request syntax:</p>
+
+			<pre class="pre codeblock">cbstats [hostname]:11210 key [keyname] [vbid]
+cbstats [hostname]:11210 vkey [keyname] [vbid]
+			</pre>
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Example</h2>
+			<p class="p">Example request:</p>
+
+			<pre class="pre codeblock">cbstats 10.5.2.54:11210 key foo 115</pre>
+
+			
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Response</h2>
+			<p class="p">Example response for key foo:</p>
+
+			<pre class="pre codeblock">
+ key_cas: 41206791218746
+ key_exptime: 0
+ key_flags: 0
+ key_is_dirty: 0 
+			</pre>
+
+		</div>
+
+	</div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-hash.html" title="The cbstats hash command provides information on vBucket hash tables.">Hash</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-kv.html" title="The cbstats kvstore and kvtimings commands provide low-level stats and timings from the underlying KV storage system.">Kvstore and kvtimings</a></div>
+</div>
+</nav>
+</body>
+</html>

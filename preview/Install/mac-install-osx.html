@@ -1,0 +1,67 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="task">
+<meta name="description" content="To install Couchbase Server on Mac OSX use the GUI and the command line."><meta name="DC.Relation" scheme="URI" content="../Install/Mac-install.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/mac-non-root-sudo.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="task_on3_yf3_dq">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Installing on Mac OSX</title>
+</head>
+<body id="task_on3_yf3_dq">
+
+
+    <h1 class="title topictitle1">Installing on Mac OSX</h1>
+
+    
+    <div class="body taskbody"><p class="shortdesc">To install Couchbase Server on Mac OSX use the GUI and the command line.</p>
+
+        <div class="section context">
+            <ol class="ol">
+                    <li class="li">Delete any previous installations of Couchbase Server using the command line or by dragging the icon
+                        to the Trash can.</li>
+
+                    <li class="li">Remove remaining files from previous installations:
+                      
+<pre class="pre codeblock">&gt; rm -rf ~/Library/Application Support/Couchbase
+&gt; rm -rf ~/Library/Application Support/Membase</pre>
+</li>
+
+                    <li class="li">Download the Mac OS X zip file.</li>
+
+                    <li class="li">Double-click the downloaded zip installation file to extract the server. This creates a
+                        single folder, the <samp class="ph codeph">Couchbase Server.app</samp> application.</li>
+
+                    <li class="li">Drag and Drop <samp class="ph codeph">Couchbase Server.app</samp> to your chosen installation folder, such
+                        as the system <samp class="ph codeph">Applications</samp> folder.</li>
+
+                </ol>
+<p class="p">After the installation completes, double-click on <samp class="ph codeph">Couchbase Server.app</samp> to start
+                    Couchbase Server. The Couchbase Server icon appears in the menu bar on the right-hand side. If the server was
+                    not configured, the setup process can be completed from the Couchbase Web Console.</p>
+
+                <p class="p">Couchbase Server runs as a background application. Click on the icon in the menu bar
+                    for list of operations that can be performed.</p>
+
+                <p class="p">The command line interface (CLI) tools are included in the Couchbase Server application
+                    directory.  Access the CLI from a terminal window and use the full path of the Couchbase Server
+                    installation. By default, this is
+                    <span class="ph filepath">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/</span>.</p>
+
+            
+        </div>
+
+    </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/Mac-install.html" title="Mac OS 10.7 and 10.8 are supported, but for development purposes only.">Mac OS X installation</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/mac-non-root-sudo.html" title="Installation on Mac OS X as non-root, non-sudo user is used only for development purposes.">Installing as non-root, non-sudo</a></div>
+</div>
+</nav>
+</body>
+</html>

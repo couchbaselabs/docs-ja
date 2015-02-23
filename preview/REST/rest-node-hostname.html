@@ -1,0 +1,67 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="Host names are set during setup of the server."><meta name="DC.Relation" scheme="URI" content="../REST/rest-server-nodes.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-failover-graceful.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-node-set-username.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reference_bcx_rt2_q4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Setting host names</title>
+</head>
+<body id="reference_bcx_rt2_q4">
+
+
+  <h1 class="title topictitle1">Setting host names</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">Host names are set during setup of the server.</p>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Description</h2>
+
+      <p class="p">Host names are provided when you install a Couchbase Server node, when you add it to an
+        existing cluster for online upgrade, or via a REST API call. If a node restarts, any host
+        name that you established is used. A host name cannot be provided for a node that is already
+        part of a Couchbase cluster.</p>
+ 
+      
+      <div class="note important"><span class="importanttitle">Important:</span> Host names must be specified prior to being added to a cluster.</div>
+
+
+    </div>
+
+
+
+    <div class="section"><h2 class="title sectiontitle">Response</h2>
+      
+      <p class="p">If you attempt to specify a host name once the node is in the cluster, the server rejects
+        the request and returns the following:</p>
+
+        
+        <pre class="pre codeblock">error 400 reason: unknown ["Renaming is disallowed
+        for nodes that are already part of a cluster"]</pre>
+
+      
+    </div>
+
+      
+      
+        
+      
+    
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-server-nodes.html" title="The Server Nodes REST API manages nodes in a cluster.">Server nodes API</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-failover-graceful.html" title="Graceful failover is initiated via the POST /controller/startGracefulFailover HTTP method and URI.">Setting graceful failover</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-node-set-username.html" title="User names and password are specified with the POST /settings/web HTTP method and URI.">Setting usernames and passwords</a></div>
+</div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,710 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="abstract" content="Statistics for Database Change Protocol (DCP) are obtained via the CLI with the cbstats tool.">
+<meta name="description" content="Statistics for Database Change Protocol (DCP) are obtained via the CLI with the cbstats tool.">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbstats-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBstats/cbstats-config.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBstats/cbstats-diskinfo.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reference_ik4_sxz_n4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>DCP</title>
+</head>
+<body id="reference_ik4_sxz_n4">
+
+
+	<h1 class="title topictitle1">DCP</h1>
+
+	
+
+
+	<div class="body refbody"><div class="abstract"><span class="shortdesc">Statistics for Database Change Protocol (DCP) are obtained via the CLI with
+			the <samp class="ph codeph">cbstats</samp> tool.</span>
+ The following table shows the commands you
+		can use with the <samp class="ph codeph">cbstats</samp> tool to retrieve DCP statistics:</div>
+
+
+
+
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="reference_ik4_sxz_n4__table_psm_zxz_n4" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. DCP statistics</span></caption>
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="50%" id="d46220e36">Command</th>
+
+						<th class="entry" valign="top" width="50%" id="d46220e39">Description</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d46220e36 "><samp class="ph codeph">dcp</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d46220e39 ">Retrieves connections specific to statistics.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d46220e36 "><samp class="ph codeph">dcpagg</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d46220e39 ">Retrieves statistics that are logically grouped and aggregated together by
+							prefixes.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d46220e36 "><samp class="ph codeph">failovers</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d46220e39 ">Retrieves vBucket failover logs.</td>
+
+					</tr>
+
+
+				</tbody>
+
+			</table>
+</div>
+
+
+
+
+		<div class="section refsyn"><h2 class="title sectiontitle">Syntax</h2>
+			<p class="p">Use the following command syntax for DCP-related <samp class="ph codeph">cbstats</samp> requests:</p>
+
+			<pre class="pre">
+cbstats HOST:11210 dcp
+cbstats HOST:11210 dcpagg
+cbstats HOST:11210 failovers
+</pre>
+
+		</div>
+
+
+		<div class="example"><h2 class="title sectiontitle">Example: request all DCP statistics</h2>
+			<p class="p">The following example shows a <samp class="ph codeph">cbstats</samp> request for all DCP-related
+				statistics.</p>
+
+			<pre class="pre codeblock">
+# ./cbstats 10.5.2.54:11210 dcp
+</pre>
+
+			<p class="p">Here's some output from the command. The output is quite lengthy, so this sample is
+				truncated.</p>
+
+			<pre class="pre">
+ ep_dcp_count:                                                                               6
+ ep_dcp_items_remaining:                                                                     0
+ ep_dcp_items_sent:                                                                          0
+ ep_dcp_producer_count:                                                                      3
+ ep_dcp_queue_backfillremaining:                                                             0
+ ep_dcp_queue_fill:                                                                          0
+ ep_dcp_total_bytes:                                                                         6630
+ ep_dcp_total_queue:                                                                         0
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:connected:                      true
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:created:                        1168
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:pending_disconnect:             false
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:reserved:                       true
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:stream_100_buffer_bytes:        0
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:stream_100_buffer_items:        0
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:stream_100_cur_snapshot_type:   none
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:stream_100_end_seqno:           18446744073709551615
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:stream_100_flags:               0
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:stream_100_items_ready:         false
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:stream_100_last_received_seqno: 0
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:stream_100_opaque:              73
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:stream_100_snap_end_seqno:      0
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:stream_100_snap_start_seqno:    0
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:stream_100_start_seqno:         0
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:stream_100_state:               reading
+ eq_dcpq:replication:ns_1@10.5.2.117-&gt;ns_1@10.5.2.54:default:stream_100_vb_uuid:             122364695596024
+ ...
+</pre>
+
+		</div>
+
+
+
+		<div class="example"><h2 class="title sectiontitle">Example: request aggregated DCP statistics</h2>
+			<p class="p">The following example shows a <samp class="ph codeph">cbstats</samp> request for a set of aggregated
+				DCP statistics:</p>
+
+			<pre class="pre codeblock">
+# ./cbstats 10.5.2.54:11210 dcpagg
+</pre>
+
+			<p class="p">Here's the output from the command:</p>
+
+			<pre class="pre">
+ :total:backoff:                 0
+ :total:count:                   6
+ :total:items_remaining:         0
+ :total:items_sent:              0
+ :total:producer_count:          3
+ :total:total_backlog_size:      0
+ :total:total_bytes:             6630
+ replication:backoff:            0
+ replication:count:              6
+ replication:items_remaining:    0
+ replication:items_sent:         0
+ replication:producer_count:     3
+ replication:total_backlog_size: 0
+ replication:total_bytes:        6630
+</pre>
+
+		</div>
+
+
+		<div class="example"><h2 class="title sectiontitle">Example: request failover logs</h2>
+			<p class="p">The following example shows a <samp class="ph codeph">cbstats</samp> request for failover logs. The
+				lengthy output of the command is truncated.</p>
+
+			<pre class="pre codeblock">
+# cbstats 10.5.2.54:11210 failovers
+</pre>
+
+			<p class="p">Here's some output from the command. The output is quite lengthy, so this sample is
+				truncated.</p>
+
+			<pre class="pre">
+ vb_1000:0:id:        101754288503529
+ vb_1000:0:seq:       0
+ vb_1000:num_entries: 1
+ ...
+</pre>
+
+		</div>
+
+
+		<div class="section"><h2 class="title sectiontitle">DCP statistics by connection type</h2>
+			
+			<p class="p">DCP provides statistics for consumer, producer, and notifier connection types. The following
+				tables describe the available consumer, producer, and notifier connection statistics.
+				Each connection type has a group of statistics that apply to the connection overall and
+				a group of statistics that apply to the individual streams in the connections.</p>
+
+			<p class="p">The identifier for each DCP statistic begins with the string <samp class="ph codeph">ep_dcpq:</samp>
+				followed by a unique <samp class="ph codeph">client_id</samp> and another colon. For example, if your
+				client is named <samp class="ph codeph">slave1</samp>, the identifier for the DCP statistic named
+					<samp class="ph codeph">created</samp> is <samp class="ph codeph">ep_dcpq:slave1:created</samp>.</p>
+
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 2. Consumer connection statistics</span></caption>
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" id="d46220e191">Name</th>
+
+							<th class="entry" valign="top" id="d46220e194">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e191 d46220e194 "><samp class="ph codeph">connected</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e191 d46220e194 ">True if this client is connected</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e191 d46220e194 "><samp class="ph codeph">created</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e191 d46220e194 ">Creation time of the DCP connection</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e191 d46220e194 "><samp class="ph codeph">pending_disconnect</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e191 d46220e194 ">True if we’re hanging up on this client</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e191 d46220e194 "><samp class="ph codeph">reserved</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e191 d46220e194 ">True if the DCP stream is reserved</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e191 d46220e194 "><samp class="ph codeph">supports_ack</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e191 d46220e194 ">True if the connection use flow control</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e191 d46220e194 "><samp class="ph codeph">total_acked_bytes</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e191 d46220e194 ">The amount of bytes that the consumer has acknowledged</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e191 d46220e194 "><samp class="ph codeph">type</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e191 d46220e194 ">The connection type (producer, consumer, or notifier)</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 3. Consumer connection per-stream statistics</span></caption>
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" id="d46220e286">Name</th>
+
+							<th class="entry" valign="top" id="d46220e289">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">buffer_bytes</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The amount of unprocessed bytes</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">buffer_items</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The amount of unprocessed items</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">end_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The sequence number where this stream should end</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">flags</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The flags used to create this stream</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">items_ready</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">Whether the stream has messages ready to send</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">opaque</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The unique stream identifier</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">snap_end_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The start sequence number of the last snapshot received</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">snap_start_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The end sequence number of the last snapshot received</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">start_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The start sequence number used to create this stream</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">state</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The stream state (pending, reading, or dead)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 "><samp class="ph codeph">vb_uuid</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e286 d46220e289 ">The vBucket UUID used to create this stream</td>
+
+						</tr>
+
+
+					</tbody>
+
+				</table>
+</div>
+
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 4. Producer and notifier connection statistics</span></caption>
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" id="d46220e422">Name</th>
+
+							<th class="entry" valign="top" id="d46220e425">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">bytes_sent</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The amount of unacknowledged bytes sent to the consumer</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">connected</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">True if this client is connected</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">created</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">Creation time for the DCP connection</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">flow_control</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">True if the connection uses flow control</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">items_remaining</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The amount of items remaining to be sent</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">items_sent</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The amount of items already sent to the consumer </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">last_sent_time</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The maximum amount of bytes that can be sent without receiving an
+								acknowledgment from the consumer</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">noop_enabled</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">Indicates whether this connection sends noops </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">noop_wait</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">Indicates whether this connection is waiting for a noop response from
+								the consumer</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">pending_disconnect</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">True if we’re hanging up on this client</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">reserved</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">True if the DCP stream is reserved</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">supports_ack</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">True if the connection uses flow control</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">total_acked_bytes</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The amount of bytes that have been acknowledged by the consumer when
+								flow control is enabled</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">total_bytes_sent</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The amount of bytes already sent to the consumer</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">type</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The connection type (producer, consumer, or notifier)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 "><samp class="ph codeph">unacked_bytes</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e422 d46220e425 ">The amount of bytes the consumer has not acknowledged</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 5. Producer and notifier connection per-stream statistics</span></caption>
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" id="d46220e608">Name</th>
+
+							<th class="entry" valign="top" id="d46220e611">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">backfilled</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The amount of items sent from disk</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">cur_snapshot_end</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The end sequence number of the current snapshot being received</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">cur_snapshot_start</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The start sequence number of the current snapshot being received</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">cur_snapshot_type</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The type of the current snapshot being received</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">end_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The sequence number of the last mutation to send</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">flags</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The flags supplied in the stream request</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">items_ready</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">Whether the stream has items ready to send</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">last_sent_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The last sequence number sent by this stream</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">memory</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The amount of items sent from memory</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">opaque</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The unique stream identifier</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">snap_end_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The last snapshot end sequence number (used if a consumer is resuming a
+								stream)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">snap_start_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The last snapshot start sequence number (used if a consumer is resuming
+								a stream)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">start_seqno</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The sequence number to start sending mutations from</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">state</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The stream state (pending, backfilling, in-memory, takeover-send,
+								takeover-wait, or dead)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 "><samp class="ph codeph">vb_uuid</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e608 d46220e611 ">The vBucket UUID used in the stream request</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Aggregated DCP statistics</h2>
+			
+			<p class="p">DCP provides aggregated statistics that logically group the DCP statistics together by
+				prefixes. For example, if all your DCP connections started with the string
+					<samp class="ph codeph">xdcr:</samp> or <samp class="ph codeph">replication:</samp>, you could use the command
+					<samp class="ph codeph">cbstats dcpagg :</samp> to request statistics grouped by everything before
+				the first colon character, giving you a set for <samp class="ph codeph">xdcr:</samp> statistics and a
+				set for <samp class="ph codeph">replication:</samp> statistics.</p>
+
+			
+			<p class="p">The following table describes the aggregated DCP statistics.</p>
+
+			
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 6. Aggregated DCP statistics</span></caption>
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" id="d46220e811">Name</th>
+
+							<th class="entry" valign="top" id="d46220e814">Description</th>
+
+						</tr>
+
+					</thead>
+
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e811 d46220e814 "><samp class="ph codeph">[prefix]:count</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e811 d46220e814 ">Number of connections matching this prefix</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e811 d46220e814 "><samp class="ph codeph">[prefix]:producer_count</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e811 d46220e814 ">Total producer connections with this prefix</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e811 d46220e814 "><samp class="ph codeph">[prefix]:items_sent</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e811 d46220e814 ">Total items sent with this prefix</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e811 d46220e814 "><samp class="ph codeph">[prefix]:items_remaining</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e811 d46220e814 ">Total items remaining to be sent with this
+								prefix</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e811 d46220e814 "><samp class="ph codeph">[prefix]:total_bytes</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e811 d46220e814 ">Total number of bytes sent with this prefix</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d46220e811 d46220e814 "><samp class="ph codeph">[prefix]:total_backlog_size</samp></td>
+
+							<td class="entry" valign="top" headers="d46220e811 d46220e814 ">Total backfill items remaining to be sent
+								with this prefix</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+		
+	</div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../CLI/CBstats/cbstats-config.html" title="The cbstats config command shows configuration statistics.">Config</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../CLI/CBstats/cbstats-diskinfo.html" title="The cbstats diskinfo command provides data and file size information.">Diskinfo</a></div>
+</div>
+</nav>
+</body>
+</html>

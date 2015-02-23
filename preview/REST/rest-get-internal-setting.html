@@ -1,0 +1,356 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="Internal settings change cluster behavior. Internal settings are for Couchbase use only."><meta name="DC.Relation" scheme="URI" content="../REST/rest-cluster-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-cluster-rebalance.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-cluster-autofailover-intro.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rest-get-internal-settings">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Viewing internal settings</title>
+</head>
+<body id="rest-get-internal-settings">
+
+
+  <h1 class="title topictitle1">Viewing internal settings</h1>
+
+  <p class="shortdesc">Internal settings change cluster behavior. Internal settings are for Couchbase use
+    only.</p>
+
+  
+  <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-cluster-intro.html" title="The Cluster REST API manages cluster operations.">Cluster API</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-cluster-rebalance.html" title="Nodes are rebalanced with the POST /controller/rebalance HTTP method and URI.">Rebalancing nodes</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-cluster-autofailover-intro.html" title="Auto-failover is managed with with the GET /settings/autoFailover HTTP method and URI.">Managing auto-failover</a></div>
+</div>
+</nav><div class="topic reference nested1" id="rest-internal-settings-description">
+    <h2 class="title topictitle2">Description</h2>
+
+  <div class="body refbody">
+    <div class="section">
+    <p class="p">These internal settings change cluster behavior, performance, and timing and are exposed only
+      via the REST API. The <samp class="ph codeph">/internalSettings</samp> parameters are implemented on the server level. </p>
+
+    
+    <div class="note warning"><span class="warningtitle">Warning:</span> These settings are for internal Couchbase use only and are not supported
+      for public consumption.</div>
+
+    
+    <div class="note note"><span class="notetitle">Note:</span> The Maximum Parallel Indexer setting can also be implemented on the global level via 
+      <samp class="ph codeph">/settings/maxParallelIndexers globalValue</samp>.</div>
+
+    
+    
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="13.106159895150721%" id="d95215e83">HTTP</th>
+
+              <th class="entry" valign="top" width="38.00786369593709%" id="d95215e86">URI</th>
+
+              <th class="entry" valign="top" width="48.88597640891219%" id="d95215e89">Description</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="13.106159895150721%" headers="d95215e83 ">GET</td>
+
+              <td class="entry" valign="top" width="38.00786369593709%" headers="d95215e86 ">/internalSettings</td>
+
+              <td class="entry" valign="top" width="48.88597640891219%" headers="d95215e89 ">Retrieves Couchbase internal settings.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="13.106159895150721%" headers="d95215e83 ">GET</td>
+
+              <td class="entry" valign="top" width="38.00786369593709%" headers="d95215e86 ">/settings/maxParallelIndexers</td>
+
+              <td class="entry" valign="top" width="48.88597640891219%" headers="d95215e89 ">Retrieves the global and node-specific parallel indexer configuration.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="13.106159895150721%" headers="d95215e83 ">POST</td>
+
+              <td class="entry" valign="top" width="38.00786369593709%" headers="d95215e86 ">/settings/maxParallelIndexers globalValue</td>
+
+              <td class="entry" valign="top" width="48.88597640891219%" headers="d95215e89 ">Sets and retrieves the new global and node-specific parallel indexer
+                configuration. Value range: 1 to 1024. Default: 4</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+    
+    <div class="section"><h3 class="title sectiontitle">Response codes</h3>
+      
+      <pre class="pre codeblock">
+HTTP/1.1 200 OK
+HTTP/1.1 500 Internal Server Error
+      </pre>
+
+    
+    </div>
+
+  </div>
+
+  </div>
+
+  
+  
+  <div class="topic reference nested1" id="rest-internal-settings-get"><h2 class="title topictitle2">Getting internal settings</h2>
+
+    
+    
+    <div class="body refbody"><p class="shortdesc">Couchbase internal settings are retrieved with the <samp class="ph codeph">GET /internalSettings</samp> HTTP method and URI.</p>
+
+     
+    
+    <div class="section"><h3 class="title sectiontitle">HTTP method and URI</h3>
+      
+      <pre class="pre codeblock">GET /internalSettings</pre>
+
+    </div>
+
+    
+    <div class="section"><h3 class="title sectiontitle">Syntax</h3>
+      
+      <pre class="pre codeblock">curl --username=ADMIN --password=PASSWORD HOST:PORT/internalSettings</pre>
+
+    </div>
+
+    <div class="section"><h3 class="title sectiontitle">Example</h3>
+      
+      <pre class="pre codeblock">curl -u admin:password1 http://10.4.2.4:8091/internalSettings</pre>
+
+    </div>
+
+    
+    <div class="section"><h3 class="title sectiontitle">Response</h3>
+      
+      <pre class="pre codeblock">
+{
+    "capiRequestLimit": "", 
+    "dropRequestMemoryThresholdMiB": "", 
+    "indexAwareRebalanceDisabled": false, 
+    "maxBucketCount": 10, 
+    "maxParallelIndexers": 4, 
+    "maxParallelReplicaIndexers": 2, 
+    "rebalanceIgnoreViewCompactions": false, 
+    "rebalanceIndexPausingDisabled": false, 
+    "rebalanceIndexWaitingDisabled": false, 
+    "rebalanceMovesBeforeCompaction": 64, 
+    "rebalanceMovesPerNode": 1, 
+    "restRequestLimit": "", 
+    "xdcrAnticipatoryDelay": 0, 
+    "xdcrCheckpointInterval": 1800, 
+    "xdcrDocBatchSizeKb": 2048, 
+    "xdcrFailureRestartInterval": 30, 
+    "xdcrMaxConcurrentReps": 16, 
+    "xdcrOptimisticReplicationThreshold": 256, 
+    "xdcrWorkerBatchSize": 500
+}    </pre>
+
+      
+      <div class="note note"><span class="notetitle">Note:</span> The following internal parameters are deprecated. Use the equivalent
+        parameter in <samp class="ph codeph">/settings/replications</samp>
+        instead.<pre class="pre codeblock">xdcrCheckpointInterval
+xdcrDocBatchSizeKb
+xdcrFailureRestartInterval
+xdcrMaxConcurrentReps
+xdcrOptimisticReplicationThreshold
+xdcrWorkerBatchSize      </pre>
+</div>
+
+
+    </div>
+
+      
+    </div>
+
+  </div>
+
+  
+  <div class="topic reference nested1" id="rest-internal-settings-post">
+    <h2 class="title topictitle2">Changing internal settings</h2>
+
+    
+    <div class="body refbody"><p class="shortdesc">Couchbase internal settings are changed with the <samp class="ph codeph">POST /internalSettings</samp> HTTP method and URI.</p>
+
+<div class="section"><h3 class="title sectiontitle">HTTP method and URI</h3>
+  <pre class="pre codeblock">POST /internalSettings</pre>
+
+</div>
+
+      <div class="section"><h3 class="title sectiontitle">Syntax</h3>
+        <pre class="pre codeblock">
+curl -v -X POST 
+  http://[admin]:[password]@[localhost]:8091/internalSettings -d [parameter]          
+        </pre>
+
+      </div>
+
+      
+      <div class="section"><h3 class="title sectiontitle">Example</h3>
+      <p class="p">For example, to update the maximum number of buckets:</p>
+
+      
+    <pre class="pre codeblock">
+curl -v -X POST http://Administrator:password@10.5.2.117:8091/internalSettings -d maxBucketCount=15
+    </pre>
+
+      </div>
+
+      
+      <div class="section"><h3 class="title sectiontitle">Response</h3>
+        <pre class="pre codeblock">
+* About to connect() to 10.5.2.117 port 8091 (#0)
+*   Trying 10.5.2.117... connected
+* Connected to 10.5.2.117 (10.5.2.117) port 8091 (#0)
+* Server auth using Basic with user 'Administrator'
+&gt; POST /internalSettings HTTP/1.1
+&gt; Authorization: Basic QWRtaW5pc3RyYXRvcjpwYXNzd29yZA==
+&gt; User-Agent: curl/7.21.4 (x86_64-unknown-linux-gnu) libcurl/7.21.4 OpenSSL/0.9.8b zlib/1.2.3
+&gt; Host: 10.5.2.117:8091
+&gt; Accept: */*
+&gt; Content-Length: 17
+&gt; Content-Type: application/x-www-form-urlencoded 
+
+  HTTP/1.1 200 OK
+  Server: Couchbase Server
+  Pragma: no-cache
+  Date: Tue, 09 Sep 2014 01:01:57 GMT
+  Content-Type: application/json
+  Content-Length: 2
+  Cache-Control: no-cache
+  
+* Connection #0 to host 10.5.2.117 left intact
+* Closing connection #0</pre>
+
+    </div>
+
+    </div>
+
+  </div>
+
+  
+  <div class="topic reference nested1" id="rest-internal-settings-set-maxparallelindexers">
+    <h2 class="title topictitle2">Setting maximum parallel indexers</h2>
+
+    
+    <div class="body refbody"><p class="shortdesc">Couchbase internal settings for the maximum parallel indexers are retrieved and changed with the 
+      <samp class="ph codeph">GET</samp> and <samp class="ph codeph">POST</samp> <samp class="ph codeph">/settings/maxParallelIndexers</samp> HTTP methods and URI.</p>
+
+    
+    <div class="section"><h3 class="title sectiontitle">HTTP method and URI</h3>
+      <p class="p">To set the Maximum Parallel Indexer parameter on the global level, use the
+        <samp class="ph codeph">/settings/maxParallelIndexers</samp> URI and <samp class="ph codeph">globalValue</samp>
+        parameter. The value range is 1 to 1024. Default: 4. The results provide the global and
+        node-specific parallel indexer configuration.</p>
+ 
+      
+      <pre class="pre codeblock">
+GET /settings/maxParallelIndexers
+POST /settings/maxParallelIndexers globalValue
+      </pre>
+
+      
+    </div>
+
+      
+      <div class="section"><h3 class="title sectiontitle">Syntax</h3>
+        
+        <pre class="pre codeblock">
+// Example via browser
+http://[localhost]:8091/settings/maxParallelIndexers
+
+// Example via curl
+curl -u [admin]:[password] http://[localhost]:8091/settings/maxParallelIndexers
+        </pre>
+
+      </div>
+
+      
+      <div class="section"><h3 class="title sectiontitle">Example: GET</h3>
+      
+      
+      <p class="p">To view the current setting:</p>
+
+      
+      <pre class="pre codeblock">
+curl -u Administrator:password http://10.5.2.117:8091/settings/maxParallelIndexers
+      </pre>
+
+      </div>
+
+        
+        <div class="section"><h3 class="title sectiontitle">Response</h3>
+          <pre class="pre codeblock">
+{
+    "globalValue": 4, 
+    "nodes": {
+        "ns_1@10.5.2.117": 4
+    }
+}
+      </pre>
+
+        </div>
+
+      
+      <div class="section"><h3 class="title sectiontitle">Example: POST</h3>
+      
+      
+      <p class="p">To change the setting, use the POST method with the
+          <samp class="ph codeph">/settings/maxParallelIndexers</samp> URI and <samp class="ph codeph">globalValue</samp>
+        parameter. Value range: 1 to 1024. Default: 4.</p>
+
+        
+      <pre class="pre codeblock">
+curl  -X POST -u Administrator:password http://10.5.2.117:8091/settings/maxParallelIndexers -d globalValue=8
+</pre>
+
+      </div>
+
+      
+      <div class="section"><h3 class="title sectiontitle">Response</h3>
+        
+      <pre class="pre codeblock">
+{
+    "globalValue": 8, 
+    "nodes": {
+        "ns_1@10.5.2.117": 8
+    }
+} 
+      </pre>
+
+        
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+</body>
+</html>

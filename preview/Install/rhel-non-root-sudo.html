@@ -1,0 +1,85 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Installing on RHEL as non-root, non-sudo is used only for development purposes."><meta name="DC.Relation" scheme="URI" content="../Install/RHEL-install-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/user-defined-ports.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/rhel-multiple-instances.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_atz_r3s_g4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Installing as non-root, non-sudo</title>
+</head>
+<body id="topic_atz_r3s_g4">
+
+
+  <h1 class="title topictitle1">Installing as non-root, non-sudo</h1>
+
+  
+  <div class="body"><p class="shortdesc">Installing on RHEL as non-root, non-sudo is used only for development purposes.</p>
+
+    <div class="note attention"><span class="attentiontitle">Attention:</span> This installation is
+      for development purposes only.</div>
+ 
+    <p class="p">There are cases when you want to install Couchbase Server as a non-root, non-sudo user. A
+      non-sudo, non-root installation still runs Couchbase Server and all Couchbase command-line
+      tools.</p>
+
+    
+    <ol class="ol">
+        <li class="li">After downloading the Couchbase RPM, go to the directory where it is located and extract
+        it: <pre class="pre codeblock">
+rpm2cpio couchbase-server-community_x86_64_2.0.0-1767-rel.rpm | cpio --extract --make-directories \
+--no-absolute-filenames
+</pre>
+
+        In the directory where the files were extracted, the <samp class="ph codeph">opt</samp> and
+            <samp class="ph codeph">etc</samp> subdirectories are available.
+      </li>
+
+          <li class="li">If you need to separately provide <samp class="ph codeph">openssl098e</samp>, put the
+            contents of this library into <span class="ph filepath">opt/couchbase/lib</span>:
+          <ol class="ol" type="a">
+            <li class="li">Download <samp class="ph codeph">openssl098e–0.9.8e–17.el6.centos.2.x86_64.rpm</samp>.</li>
+
+            <li class="li">Go to the directory where you extracted Couchbase Server: <kbd class="ph userinput">cd opt/couchbase.</kbd></li>
+
+            <li class="li">Extract <samp class="ph codeph">openssl098e</samp> RPM:
+            <pre class="pre codeblock">rpm2cpio
+openssl098e-0.9.8e-17.el6.centos.2.x86_64.rpm | cpio --extract
+--make-directories --no-absolute-filenames</pre>
+</li>
+
+            <li class="li">Move the extracted files to the <span class="ph filepath">/lib</span> directory for Couchbase Server:
+              <kbd class="ph userinput">mv usr/lib64/* lib/</kbd></li>
+
+          </ol>
+</li>
+
+        <li class="li">After you extract the Couchbase Server installation files, go to the subdirectory <kbd class="ph userinput">cd opt/couchbase</kbd>.</li>
+
+        <li class="li">Run the following password-related script: <kbd class="ph userinput">./bin/install/reloc.sh \`pwd`</kbd> 
+         This enables you to continue the installation as a non-root, non-sudo user.</li>
+
+        <li class="li">To run the server, use 
+         <kbd class="ph userinput"> ./bin/couchbase-server \-- -noinput -detached</kbd>. </li>
+
+        <li class="li">To stop the server, use <kbd class="ph userinput">./bin/couchbase-server -k</kbd> .</li>
+
+      </ol>
+
+    
+   </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/RHEL-install-intro.html" title="Couchbase Server supports Red Hat (RHEL) and RHEL-based operating systems such as CentOS.">Red Hat/CentOS installation</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/user-defined-ports.html" title="You can install and run Couchbase Server with user-defined ports rather than with the default ports.">Using user-defined ports</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/rhel-multiple-instances.html" title="Multiple instances of Couchbase Server can be installed on one physical machine for the LInux operating system. The number of instances depends on the capacity of the physical machine.">Installing multiple instances</a></div>
+</div>
+</nav>
+</body>
+</html>

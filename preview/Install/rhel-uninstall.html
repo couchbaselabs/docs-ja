@@ -1,0 +1,58 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Refer to the Red Hat RPM documentation for more information about uninstalling packages using RPM."><meta name="DC.Relation" scheme="URI" content="../Install/RHEL-install-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/rhel-multiple-instances.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/upgrade-rhel.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_xqg_x3y_p4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Uninstalling on RHEL</title>
+</head>
+<body id="topic_xqg_x3y_p4">
+
+
+  <h1 class="title topictitle1">Uninstalling on RHEL</h1>
+
+  
+  <div class="body"><p class="shortdesc">Refer to the Red Hat RPM documentation for more information about uninstalling packages using RPM.</p>
+
+    
+    <div class="p">Before removing Couchbase Server:
+      <ul class="ul">
+        <li class="li">Shut down Couchbase Server. </li>
+
+        <li class="li">If your machine is a part of an active cluster, rebalance the cluster to take
+          the node out of the configuration. </li>
+
+        <li class="li">Update any clients to point to an available node within the Couchbase Server cluster.</li>
+
+      </ul>
+</div>
+
+    <p class="p">Run the following command:</p>
+
+    
+    <pre class="pre codeblock"> &gt; sudo rpm -e couchbase-server</pre>
+
+  
+    <p class="p">You might need to delete the data files associated with your installation. 
+      The default installation location is <span class="ph filepath">/opt</span>. 
+      If an alternative location for your data files was specified, each data directory must be individually deleted from your system.</p>
+
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/RHEL-install-intro.html" title="Couchbase Server supports Red Hat (RHEL) and RHEL-based operating systems such as CentOS.">Red Hat/CentOS installation</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/rhel-multiple-instances.html" title="Multiple instances of Couchbase Server can be installed on one physical machine for the LInux operating system. The number of instances depends on the capacity of the physical machine.">Installing multiple instances</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/upgrade-rhel.html" title="For RHEL or CentoOS, you can perform an upgrade installation using the RPM package.">Upgrading on RHEL</a></div>
+</div>
+</nav>
+</body>
+</html>

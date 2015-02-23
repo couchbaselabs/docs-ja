@@ -1,0 +1,108 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Couchbase Server 3.0 is a major release that provides significant enhancements to scalability, performance, availability and reliability, ease of administration, and security."><meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_hdg_nkd_54">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>What's new in 3.0</title>
+</head>
+<body id="topic_hdg_nkd_54">
+
+
+  <h1 class="title topictitle1">What's new in 3.0</h1>
+
+  
+  <div class="body"><p class="shortdesc">Couchbase Server 3.0 is a major release that provides significant enhancements to
+    scalability, performance, availability and reliability, ease of administration, and
+    security.</p>
+
+    
+    <p class="p">Couchbase Server 3.0 is our major release which extends our lead as the most performant and scalable NoSQL database for mission critical enterprise applications. 
+      In addition to adding great new functionality for the enterprise, 3.0 delivers many new features 
+      that make it easier for developers and administrators to work with Couchbase Server, making it the best choice for your NoSQL projects.</p>
+
+    
+ 
+    
+    <div class="section"><h2 class="title sectiontitle">New features</h2>
+      <p class="p">The major new enhancements and features available in Couchbase Server 3.0 include: </p>
+
+    
+    <ul class="ul">
+      <li class="li">Infrastructure enhancements including: 
+        <ul class="ul">
+          <li class="li"><a class="xref" href="Concepts/dcp.html" title="Database Change Protocol (DCP)はバケットのデータ更新をストリームするためのプロトコロルです。">Database Change
+            Protocol (DCP)</a></li>
+
+          <li class="li"><a class="xref" href="Concepts/global-thread-pool.html" title="共有スレッドプールは複数のバケット間で共有されるスレッドの集合です。">共有スレッドプール</a>
+            <p class="p">For information about DCP
+            statistics, see <a class="xref" href="UI/ui-dcp-queues.html" title="DCP queues provide information about the Database Change Protocol (DCP) protocol used to stream data changes to buckets.">Viewing DCP queues</a> via the web console and <a class="xref" href="CLI/cli-cbstats-dcp.html" title="Statistics for Database Change Protocol (DCP) are obtained via the CLI with the cbstats tool.">DCP</a> via the CLI.</p>
+</li>
+
+        </ul>
+</li>
+
+      <li class="li">Bucket and disk I/O enhancements including: <ul class="ul">
+            <li class="li"><a class="xref" href="Concepts/bucket-eviction.html" title="Tunable memory enables both value-only ejection and full metadata ejection from memory.">Bucket metadata ejections</a>
+              <p class="p">For information about bucket metadata ejections, see <a class="xref" href="UI/ui-task-bucket-metadata-ejection.html" title="Tuning memory to retain or eject meta data is set when creating or editing the bucket properties.">Managing metadata in memory</a> via the web console, 
+                <a class="xref" href="CLI/CBcli/cbcli-bucket-metadata-ejection.html" title="Bucket ejection from memory is set with couchbase-cli tool.">Setting metadata ejection policy</a> via the CLI, and 
+                <a class="xref" href="REST/rest-bucket-metadata-ejection.html" title="Bucket ejection from memory is set with POST /pools/default/buckets/default.">Setting metadata ejection</a> via the REST API.</p>
+</li>
+
+            <li class="li"><a class="xref" href="Concepts/bucket-priority.html" title="Disk I/O priority enables workload priorities to be set at the bucket level.">Disk I/O priority</a>
+              <p class="p">For information about changing disk I/P priority, see <a class="xref" href="UI/ui-task-set-bucket-priority.html" title="The disk I/O priority for a bucket is set via the Data Bucket panel either when creating a data bucket or when editing a data bucket.">Managing disk I/O priority</a> via the web console, <a class="xref" href="CLI/cli-set-disk-priority.html" title="The disk I/O priority for a bucket can be set to either low or high.">Setting bucket priority</a> via the CLI, and <a class="xref" href="REST/rest-bucket-set-priority.html" title="The disk I/O priority for a bucket is set with the /pools/default/buckets/[bucket-name] URI and the threadNumber setting.">Setting disk I/O priority</a> via the REST API.</p>
+</li>
+
+          </ul>
+</li>
+
+      <li class="li">Server maintenance enhancements including: <ul class="ul">
+            <li class="li"><a class="xref" href="Concepts/graceful-failover.html" title="Graceful failover provides the time to administrators to safely fail over a node from the cluster after all in-flight operations are completed and without data loss.">Graceful failover</a>
+              <p class="p">For information about graceful failover, see <a class="xref" href="UI/ui-task-failover-graceful.html" title="Failover is performed on a specific node via Server Nodes &gt; Failover">Failing over a node</a> via the web console, <a class="xref" href="CLI/cli-failover.html" title="Nodes are failed over either by a graceful failover or hard failover operation. Graceful failover is the default.">Failing over nodes</a> via the CLI, and <a class="xref" href="REST/rest-failover-graceful.html" title="Graceful failover is initiated via the POST /controller/startGracefulFailover HTTP method and URI.">Setting graceful failover</a> via the REST API.</p>
+</li>
+
+            <li class="li"><a class="xref" href="Concepts/delta-node-recovery.html" title="Delta node recovery permits nodes to be re-added to the cluster and incrementally caught up with the data changes.">Delta node recovery</a>
+              <p class="p">For information about using delta
+              node recovery, see <a class="xref" href="UI/ui-task-node-recovery-incremental.html" title="Recovery is performed after a server node is failed over and before rebalance operations. Either Delta or Full recovery can be specified.">Recovering a node</a> via the web console, <a class="xref" href="CLI/cli-node-recovery-incremental.html" title="To re-add a server node to a cluster, use the couchbase-cli tool and the recovery command with the --recovery-type parameter.">Recovering nodes</a> via the CLI, and <a class="xref" href="REST/rest-node-recovery-incremental.html" title="Node recover type is set with the POST /controller/setRecoverType HTTP method and URI.">Setting recovery type</a> via the REST API.</p>
+</li>
+
+            <li class="li"><a class="xref" href="Tasks/tasks-backup-restore-incremental.html" title="Incremental backup and restore enables administrators to quickly back up only modified data in the database, making backup and restore more efficient for larger data sets.">Incremental backup and restore</a>
+              <p class="p">For information about
+              using incremental backup and restore via the CLI, see <a class="xref" href="CLI/cli-increment-backup.html" title="Incremental backups are run by using the cbbackup command-line tool.">Backing up incrementally</a> and <a class="xref" href="CLI/cli-incremental-restore.html" title="Incremental restore operations are run by using the cbrestore command-line tool.">Restoring incrementally</a>.</p>
+</li>
+
+          </ul>
+</li>
+
+      <li class="li">Views enhancement with <a class="xref" href="Views/views-index-updates.html" title="Stream-based views reduce latency for view updates, providing faster view consistency and fresher data.">Stream-based views</a>.</li>
+
+      <li class="li">XDCR enhancements including <a class="xref" href="XDCR/xdcr-memory-replication.html" title="Stream-based XDCR collects data changes from memory on the source cluster and streams the data changes directly to memory on the destination cluster.">Stream-based XDCR</a> and <a class="xref" href="XDCR/xdcr-pause-resume.html" title="During XDCR replication, the process can be paused and resumed.">XDCR pause and resume replication</a>
+          <p class="p">For information about pausing and resuming XDCR replication, 
+            see <a class="xref" href="UI/ui-xdcr-pause-resume.html" title="XDCR replication can be paused and resumed via the web console under the XDCR section.">Pausing XDCR replication</a> via the web console, <a class="xref" href="CLI/CBcli/cbcli-xdcr-pause-resume.html" title="The XDCR CLI provides options to pause and resume replication with couchbase-cli xdcr-replicate.">Pausing XDCR replication streams</a>  via the CLI, and <a class="xref" href="REST/rest-xdcr-pause-resume.html" title="XDCR replication is paused and resumed using the /settings/replications/ URI path and the pauseRequested option.">Pausing XDCR replication streams</a> via the REST API.</p>
+</li>
+
+      <li class="li">Security enhancement including <a class="xref" href="security/security-admin-access.html" title="Encrypted administrative access enables HTTPS access for Couchbase Web Console and REST API using the Secure Socket Layer (SSL) authentication.">Encrypted administrative access</a> and <a class="xref" href="security/security-client-ssl.html" title="Couchbase Server client libraries support client-side encryption using the Secure Sockets Layer (SSL) protocol.">Encrypted data access</a>.</li>
+
+      <li class="li">Log and log collection improvements with <a class="xref" href="Misc/cluster-wide-info-intro.html" title="The Couchbase support team uses logs and other system diagnostics to analyze customer issues.">Cluster-wide diagnostics</a>
+      <p class="p">For more information about collecting diagnostics, see <a class="xref" href="UI/ui-cluster-wide-info.html" title="The web console provides a graphical interface for collecting and sending system diagnostics to the Couchbase support team.">Managing diagnostics</a> via the web console, <a class="xref" href="CLI/CBcli/cbcli-cluster-wide-info.html" title="You can start, stop, and view status of a diagnostics collection by using the couchbase-cli tool.">Diagnostics with couchbase-cli</a> via the CLI, and <a class="xref" href="CLI/cbcollect_info_tool.html" title="The cbcollect_info tool provides detailed statistics for a specific node.">cbcollect_info tool</a> via the CLI.
+        </p>
+
+        </li>
+
+        </ul>
+
+
+    </div>
+
+
+    
+    
+  </div>
+
+
+</body>
+</html>

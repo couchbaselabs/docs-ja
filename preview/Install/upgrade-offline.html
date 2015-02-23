@@ -5,7 +5,10 @@
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="topic">
-<meta name="description" content="During an offline upgrade, the cluster must be shut down and all applications built on it will not be available during that time."><meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-backup-restore.html">
+<meta name="description" content="During an offline upgrade, the cluster must be shut down and all applications built on it will not be available during that time."><meta name="DC.Relation" scheme="URI" content="../Install/upgrading.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/upgrade-online.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/upgrade-individual-nodes.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/tasks-backup-restore.html">
 <meta name="DC.Relation" scheme="URI" content="../Concepts/concept-serverWarmup.html">
 <meta name="DC.Relation" scheme="URI" content="../Monitoring/monitor-warmup.html">
 <meta name="DC.Relation" scheme="URI" content="../Monitoring/monitor-diskqueue.html">
@@ -95,12 +98,18 @@
   </div>
 
   <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/upgrading.html" title="The Couchbase Server can be upgraded online (using swap rebalance or the standard online upgrade), offline, or using XDCR.">Upgrading</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/upgrade-online.html" title="Online upgrade with swap rebalance is the preferred upgrade method because cluster capacity is always maintained throughout the upgrade.">Online upgrade with swap rebalance</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/upgrade-individual-nodes.html" title="To upgrade a single Couchbase Server node, first back it up and then install the software.">Upgrading one node</a></div>
+</div>
+
 <div class="linklist linklist">
 <div><a class="link" href="../Tasks/tasks-backup-restore.html" title="Back up your entire cluster periodically to minimize data inconsistency when a restore is required.">Backup and restore</a></div>
 <div><a class="link" href="../Concepts/concept-serverWarmup.html" title="Whenever Couchbase server is restarted or data is restored to a server instance, the server undergoes a warmup process before data requests can be handled.">Server warmup</a></div>
 <div><a class="link" href="../Monitoring/monitor-warmup.html">Monitoring startup (warmup)</a></div>
 <div><a class="link" href="../Monitoring/monitor-diskqueue.html" title="Disk writing is implemented as a 2-queue system: commit to DRAM and then queued to be written to disk">Disk write queue</a></div>
-<div><a class="link" href="../CLI/cbbackup_tool.html" title="The cbbackup tool creates a copy of data from an entire running cluster, an entire bucket, a single node, or a single bucket on a single functioning node.">cbbackup tool</a></div>
+<div><a class="link" href="../CLI/cbbackup_tool.html" title="cbbackupツールは、稼働中の全クラスタ・全バケット・単一ノード・正常稼働中ノード上の単一バケット のコピーを作成します。">cbbackupツール</a></div>
 <div><a class="link" href="../UI/ui-settings-autofailover.html">Auto-Failover tab</a></div></div>
 </nav>
 

@@ -5,7 +5,9 @@
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="topic">
-<meta name="description" content="Quick overview of the setup process."><meta name="DC.Relation" scheme="URI" content="http://www.couchbase.com/downloads">
+<meta name="description" content="Quick overview of the setup process."><meta name="DC.Relation" scheme="URI" content="../install-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/pre-install.html">
+<meta name="DC.Relation" scheme="URI" content="http://www.couchbase.com/downloads">
 <meta name="DC.Relation" scheme="URI" content="init-setup.html">
 <meta name="DC.Relation" scheme="URI" content="testing.html">
 <meta name="DC.Relation" scheme="URI" content="upgrading.html">
@@ -61,11 +63,11 @@
           
           <thead class="thead" align="left">
             <tr class="row">
-              <th class="entry" valign="top" width="21.645021645021643%" id="d25758e60">Scenario</th>
+              <th class="entry" valign="top" width="21.645021645021643%" id="d67551e60">Scenario</th>
 
-              <th class="entry" valign="top" width="45.02164502164502%" id="d25758e63">Implementation</th>
+              <th class="entry" valign="top" width="45.02164502164502%" id="d67551e63">Implementation</th>
 
-              <th class="entry" valign="top" width="33.33333333333333%" id="d25758e66">Compatibility</th>
+              <th class="entry" valign="top" width="33.33333333333333%" id="d67551e66">Compatibility</th>
 
             </tr>
 
@@ -73,47 +75,47 @@
 
           <tbody class="tbody">
             <tr class="row">
-              <td class="entry" valign="top" width="21.645021645021643%" headers="d25758e60 ">Standalone cluster</td>
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d67551e60 ">Standalone cluster</td>
 
-              <td class="entry" valign="top" width="45.02164502164502%" headers="d25758e63 ">Cluster A with 4 nodes all Linux OR all Windows</td>
+              <td class="entry" valign="top" width="45.02164502164502%" headers="d67551e63 ">Cluster A with 4 nodes all Linux OR all Windows</td>
 
-              <td class="entry" valign="top" width="33.33333333333333%" headers="d25758e66 ">OK</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="21.645021645021643%" headers="d25758e60 ">Standalone cluster</td>
-
-              <td class="entry" valign="top" width="45.02164502164502%" headers="d25758e63 ">Cluster A with 2 nodes Linux AND 2 nodes Windows</td>
-
-              <td class="entry" valign="top" width="33.33333333333333%" headers="d25758e66 ">NOT OK</td>
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d67551e66 ">OK</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="21.645021645021643%" headers="d25758e60 ">Separate discreet clusters</td>
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d67551e60 ">Standalone cluster</td>
 
-              <td class="entry" valign="top" width="45.02164502164502%" headers="d25758e63 ">Cluster A = Linux, Cluster B = Windows</td>
+              <td class="entry" valign="top" width="45.02164502164502%" headers="d67551e63 ">Cluster A with 2 nodes Linux AND 2 nodes Windows</td>
 
-              <td class="entry" valign="top" width="33.33333333333333%" headers="d25758e66 ">OK</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="21.645021645021643%" headers="d25758e60 ">Replicating clusters</td>
-
-              <td class="entry" valign="top" width="45.02164502164502%" headers="d25758e63 ">Cluster A = Linux with XDCR to Cluster B = Linux</td>
-
-              <td class="entry" valign="top" width="33.33333333333333%" headers="d25758e66 ">OK</td>
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d67551e66 ">NOT OK</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="21.645021645021643%" headers="d25758e60 ">Replicating clusters</td>
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d67551e60 ">Separate discreet clusters</td>
 
-              <td class="entry" valign="top" width="45.02164502164502%" headers="d25758e63 ">Cluster A = Windows with XDCR to Cluster B = Linux</td>
+              <td class="entry" valign="top" width="45.02164502164502%" headers="d67551e63 ">Cluster A = Linux, Cluster B = Windows</td>
 
-              <td class="entry" valign="top" width="33.33333333333333%" headers="d25758e66 ">NOT OK</td>
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d67551e66 ">OK</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d67551e60 ">Replicating clusters</td>
+
+              <td class="entry" valign="top" width="45.02164502164502%" headers="d67551e63 ">Cluster A = Linux with XDCR to Cluster B = Linux</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d67551e66 ">OK</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="21.645021645021643%" headers="d67551e60 ">Replicating clusters</td>
+
+              <td class="entry" valign="top" width="45.02164502164502%" headers="d67551e63 ">Cluster A = Windows with XDCR to Cluster B = Linux</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d67551e66 ">NOT OK</td>
 
             </tr>
 
@@ -126,6 +128,11 @@
   </div>
 
   <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../install-intro.html" title="This guide explains preinstallation, installation on various platforms, post-installation, upgrading, and migration procedures for Couchbase Server.">Installation and upgrade</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/pre-install.html" title="Pre-installation describes requirements, supported configurations, and reserved or restricted items that have to be considered before installing Couchbase Server.">Pre-installation</a></div>
+</div>
+
 <div class="linklist linklist">
 <div><a class="link" href="http://www.couchbase.com/downloads" target="_blank">Couchbase downloads</a></div>
 <div><a class="link" href="init-setup.html" title="After installation is completed, Couchbase Server has to be set up.">Initial server setup</a></div>

@@ -1,0 +1,188 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Couchbase Server can be installed on machines running Windows operating systems."><meta name="DC.Relation" scheme="URI" content="../install-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/Ubuntu-install.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/Mac-install.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/windows-install-wizard.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/windows-install-unattended.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/uninstall-windows.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/upgrade-windows.html">
+<meta name="DC.Relation" scheme="URI" content="install-platforms.html">
+<meta name="DC.Relation" scheme="URI" content="windows-startup-shutdown.html">
+<meta name="DC.Relation" scheme="URI" content="http://support.microsoft.com/kb/196271">
+<meta name="DC.Relation" scheme="URI" content="http://msdn.microsoft.com/en-us/library/aa560610(v=bts.20).aspx">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic4669">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Microsoft Windows installation</title>
+</head>
+<body id="topic4669">
+
+
+  <h1 class="title topictitle1">Microsoft Windows installation</h1>
+
+  
+  <div class="body"><p class="shortdesc">Couchbase Server can be installed on machines running Windows operating systems.</p>
+
+   
+   <p class="p">Couchbase Server supports the following Windows operating systems.</p>
+
+    <div class="note note"><span class="notetitle">Note:</span> Before installing, verify the list of supported operating systems.</div>
+
+    
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+        
+        
+        
+        
+        
+        <thead class="thead" align="left">
+          <tr class="row">
+            <th class="entry" valign="top" width="20%" id="d60343e40"><strong class="ph b">Platform</strong></th>
+
+            <th class="entry" valign="top" width="20%" id="d60343e44"><strong class="ph b">Version</strong></th>
+
+            <th class="entry" valign="top" width="20%" id="d60343e48"><strong class="ph b">32 / 64 bit</strong></th>
+
+            <th class="entry" valign="top" width="20%" id="d60343e52"><strong class="ph b">Supported</strong></th>
+
+            <th class="entry" valign="top" width="20%" id="d60343e56"><strong class="ph b">Recommended Version</strong></th>
+
+          </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+          <tr class="row">
+            <td class="entry" valign="top" width="20%" headers="d60343e40 ">Windows 2012</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e44 ">R2 SP1</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e48 ">64 bit</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e52 ">Developer and Production</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e56 ">&nbsp;</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="20%" headers="d60343e40 ">Windows 2008</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e44 ">R2 with SP1</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e48 ">64 bit</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e52 ">Developer and Production</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e56 ">Windows 2008</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="20%" headers="d60343e40 ">Windows 8</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e44 ">&nbsp;</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e48 ">32 and 64 bit</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e52 ">Developer only</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e56 ">&nbsp;</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="20%" headers="d60343e40 ">Windows 7</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e44 ">&nbsp;</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e48 ">32 and 64 bit</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e52 ">Developer only</td>
+
+            <td class="entry" valign="top" width="20%" headers="d60343e56 ">&nbsp;</td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+</div>
+
+  
+      <p class="p">To install Couchbase Server on Windows, first download the Windows installer package
+      supplied as a Windows executable. </p>
+
+    <p class="p">You can install the package either <a class="xref" href="windows-install-wizard.html" title="In this installation, you have to follow the steps defined in the wizard.">using the wizard</a>, 
+      or by performing an <a class="xref" href="windows-install-unattended.html" title="An unattended installation uses a script to install Couchbase Server.">unattended installation</a>
+      process. </p>
+
+    <p class="p">In either case, make sure that you have no anti-virus software running on the machine before
+      you start the installation process. Verify also that you have administrator privileges on the
+      machine where you are performing the installation.</p>
+
+    
+    
+    <p class="p">The TCP/IP port allocation on Windows by default includes a restricted number of ports
+      available for client communication. For more information about this issue, including
+      information on how to adjust the configuration and increase the number of available ports, see
+        <a class="xref" href="http://msdn.microsoft.com/en-us/library/aa560610(v=bts.20).aspx" target="_blank"> MSDN: Avoiding TCP/IP Port Exhaustion</a>
+    </p>
+
+    
+   
+    <div class="note important"><span class="importanttitle">Important:</span> Couchbase Server uses the Microsoft C++ redistributable package, which
+      is automatically downloaded during installation. However, if another application on your machine
+      is already using the package, your installation process can fail. To make sure that your
+      installation process completes successfully, shut down all other running applications during
+      installation. For Windows 2008, you must upgrade your Windows Server 2008 R2 installation
+        with Service Pack 1 installed before running Couchbase Server. You can obtain Service Pack 1
+        from <a class="xref" href="http://technet.microsoft.com/en-us/library/ff817647(v=ws.10).aspx" target="_blank">Microsoft TechNet</a>.</div>
+
+      
+    <p class="p">The standard Microsoft Server installation does not provide an adequate number of
+        ephemeral ports for Couchbase clusters. Without the correct number of open ephemeral ports,
+        you can experience errors during rebalance, timeouts on clients, and failed backups. The
+        Couchbase Server installer will check for your current port setting and adjust it if needed.
+        See <a class="xref" href="http://support.microsoft.com/kb/196271" target="_blank">Microsoft KB-196271</a>.
+        </p>
+
+   
+      
+  
+  </div>
+
+  <nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../Install/windows-install-wizard.html">Installing on Windows with the wizard</a><br>
+In this installation, you have to follow the steps defined in the wizard.</li>
+<li class="link olchildlink"><a href="../Install/windows-install-unattended.html">Unattended Windows installation</a><br>
+An unattended installation uses a script to install Couchbase Server.</li>
+<li class="link olchildlink"><a href="../Install/uninstall-windows.html">Uninstalling on Windows</a><br>
+To uninstall Couchbase Server on a Windows system, you must have Administrator or Power     User privileges.</li>
+<li class="link olchildlink"><a href="../Install/upgrade-windows.html">Upgrading on Windows</a><br>
+The installation wizard will upgrade your server installation using the same     installation location.</li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../install-intro.html" title="This guide explains preinstallation, installation on various platforms, post-installation, upgrading, and migration procedures for Couchbase Server.">Installation and upgrade</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/Ubuntu-install.html" title="This installation information applies both to Ubuntu and Debian platforms.">Ubuntu/Debian installation</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/Mac-install.html" title="Mac OS 10.7 and 10.8 are supported, but for development purposes only.">Mac OS X installation</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="install-platforms.html" title="System requirements for supported platforms.">Supported platforms</a></div>
+<div><a class="link" href="windows-startup-shutdown.html" title="Start-up and shutdown scripts are used to manually start up or shut down Couchbase Server.">Start-up and shutdown on Windows</a></div>
+<div><a class="link" href="http://support.microsoft.com/kb/196271" target="_blank">Microsoft Knowledge Base Article 196271</a></div>
+<div><a class="link" href="http://msdn.microsoft.com/en-us/library/aa560610(v=bts.20).aspx" target="_blank">MSDN: Avoiding TCP/IP Port Exhaustion</a></div></div>
+</nav>
+
+</body>
+</html>

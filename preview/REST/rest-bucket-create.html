@@ -1,0 +1,346 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="To create and edit buckets, use the POST operation with the /pools/default/bucket URI."><meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-buckets-streamingURI.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-set-priority.html">
+<meta name="DC.Relation" scheme="URI" content="../Concepts/concept-readerWriter.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rest-bucket-create">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Creating and editing buckets</title>
+</head>
+<body id="rest-bucket-create">
+
+
+	<h1 class="title topictitle1">Creating and editing buckets</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">To create and edit buckets, use the <samp class="ph codeph">POST</samp> operation with the 
+			<samp class="ph codeph">/pools/default/bucket</samp> URI.
+			</p>
+
+		<div class="section"><h2 class="title sectiontitle">Description</h2>
+			<p class="p">Buckets are created and edited with a <samp class="ph codeph">POST</samp> sent to the REST URI endpoint for buckets
+				in a cluster. This can be used to create either a Couchbase or a Memcached type bucket.
+				Bucket names cannot have a leading underscore.</p>
+
+			
+			<p class="p">This endpoint is also used to get a list of buckets that exist for a cluster.</p>
+
+			<div class="note important"><span class="importanttitle">Important:</span>  When editing bucket properties, be sure to  specify all bucket properties.
+				If a bucket property is not specified (whether or not you are changing the existing
+				value), Couchbase Server may reset the property to the default. Even if you do not
+				intend to change a certain property, re-specify the existing value to avoid this
+				behavior.</div>
+
+			<p class="p">The REST API returns a successful response when preliminary files for a data bucket are created
+				on one node. However, if a multi-node cluster is implemented, bucket creation may not
+				have completed for all nodes when a response is sent. Therefore, it is possible that the
+				bucket is not available for operations immediately after this REST call successful
+				returns.</p>
+
+			<p class="p">To verify that a bucket is available, try to read a key from the bucket. If a ‘key not found’
+				error is received or the document for the key is returned, then the bucket exists and is
+				available to all nodes in a cluster. Key requests can be issued via a Couchbase SDK with
+				any node in the cluster. See the <em class="ph i">Couchbase Developer Guide</em> for more
+				information.</p>
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">HTTP method and URI</h2>
+			<pre class="pre codeblock">POST /pools/default/buckets</pre>
+
+		
+		<ul class="ul">
+			<li class="li">Request data - List of payload parameters for the new bucket</li>
+
+			<li class="li">Response data - JSON of the bucket confirmation or an error condition</li>
+
+			<li class="li">Authentication required - Yes </li>
+
+		</ul>
+
+		
+		
+		<p class="p">Parameters for creating buckets:</p>
+
+
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. Create bucket parameters</span></caption>
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="38.02281368821293%" id="d85892e84">Payload Arguments</th>
+
+						<th class="entry" valign="top" width="61.97718631178707%" id="d85892e87">Description</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="38.02281368821293%" headers="d85892e84 "><samp class="ph codeph">authType</samp></td>
+
+						<td class="entry" valign="top" width="61.97718631178707%" headers="d85892e87 ">Required parameter. Type of authorization to be enabled for the new
+							bucket as a string. Defaults to blank password if not specified. “sasl”
+							enables authentication. “none” disables authentication.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="38.02281368821293%" headers="d85892e84 "><samp class="ph codeph">bucketType</samp></td>
+
+						<td class="entry" valign="top" width="61.97718631178707%" headers="d85892e87 ">Required parameter. Type of bucket to be created. String value.
+							“memcached” configures as Memcached bucket. “couchbase” configures as
+							Couchbase bucket</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="38.02281368821293%" headers="d85892e84 "><samp class="ph codeph">flushEnabled</samp></td>
+
+						<td class="entry" valign="top" width="61.97718631178707%" headers="d85892e87 ">Optional parameter. Enables the ‘flush all’ functionality on the
+							specified bucket. Boolean. 1 enables flush all support, 0 disables flush
+							all support. Defaults to 0.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="38.02281368821293%" headers="d85892e84 "><samp class="ph codeph">name</samp></td>
+
+						<td class="entry" valign="top" width="61.97718631178707%" headers="d85892e87 ">Required parameter. Name for new bucket.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="38.02281368821293%" headers="d85892e84 "><samp class="ph codeph">parallelDBAndViewCompaction</samp></td>
+
+						<td class="entry" valign="top" width="61.97718631178707%" headers="d85892e87 ">Optional parameter. String value. Indicates whether database and view
+							files on disk can be compacted simultaneously. Defaults to
+							“false.”</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="38.02281368821293%" headers="d85892e84 "><samp class="ph codeph">proxyPort</samp></td>
+
+						<td class="entry" valign="top" width="61.97718631178707%" headers="d85892e87 ">Required parameter. Numeric. Proxy port on which the bucket
+							communicates. Must be a valid network port which is not already in use.
+							You must provide a valid port number if the authorization type is not
+							SASL.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="38.02281368821293%" headers="d85892e84 "><samp class="ph codeph">ramQuotaMB</samp></td>
+
+						<td class="entry" valign="top" width="61.97718631178707%" headers="d85892e87 ">Required parameter. RAM Quota for new bucket in MB. Numeric. The
+							minimum you can specify is 100, and the maximum can only be as great as
+							the memory quota established for the node. If other buckets are
+							associated with a node, RAM Quota can only be as large as the amount
+							memory remaining for the node, accounting for the other bucket memory
+							quota.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="38.02281368821293%" headers="d85892e84 "><samp class="ph codeph">replicaIndex</samp></td>
+
+						<td class="entry" valign="top" width="61.97718631178707%" headers="d85892e87 ">Optional parameter. Boolean. 1 enable replica indexes for replica
+							bucket data while 0 disables. Default of 1.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="38.02281368821293%" headers="d85892e84 "><samp class="ph codeph">replicaNumber</samp></td>
+
+						<td class="entry" valign="top" width="61.97718631178707%" headers="d85892e87 ">Optional parameter. Numeric. Number of replicas to be configured for
+							this bucket. Required parameter when creating a Couchbase bucket.
+							Default 1, minimum 0, maximum 3.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="38.02281368821293%" headers="d85892e84 "><samp class="ph codeph">saslPassword</samp></td>
+
+						<td class="entry" valign="top" width="61.97718631178707%" headers="d85892e87 ">Optional Parameter. String. Password for SASL authentication.
+							Required if SASL authentication has been enabled.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="38.02281368821293%" headers="d85892e84 "><samp class="ph codeph">threadsNumber</samp></td>
+
+						<td class="entry" valign="top" width="61.97718631178707%" headers="d85892e87 ">Optional Parameter. Integer from 2 to 8. Change the number of concurrent readers and
+							writers for the data bucket. </td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		
+		<p class="p">When creating a bucket, the <samp class="ph codeph">authType</samp> parameter must be provided:</p>
+
+		<ul class="ul">
+			<li class="li"><p class="p">If <samp class="ph codeph">authType</samp> is set to <samp class="ph codeph">none</samp>, then a proxyPort number must be specified.</p>
+</li>
+
+			<li class="li"><p class="p">If <samp class="ph codeph">authType</samp> is set to <samp class="ph codeph">sasl</samp>, then the <samp class="ph codeph">saslPassword</samp> parameter may optionally be specified.</p>
+</li>
+
+		</ul>
+
+		<p class="p">The <samp class="ph codeph">ramQuotaMB</samp> parameter specifies how much memory, in megabytes, is 
+			allocate to each node for the bucket. The minimum supported value is 100MB.</p>
+
+		<ul class="ul">
+			<li class="li"><p class="p">If the items stored in a memcached bucket take space beyond the
+						<samp class="ph codeph">ramQuotaMB</samp>, Couchbase Sever typically evicts items on a 
+					least-requested-item basis. Couchbase Server might evict other infrequently used
+					items depending on object size or on whether or not an item is being referenced.</p>
+</li>
+
+			<li class="li"><p class="p">In the case of Couchbase buckets, the system might return temporary failures if the
+						<samp class="ph codeph">ramQuotaMB</samp> is reached. The system tries to keep 25% of
+					the available ramQuotaMB free for new items by ejecting old items from occupying
+					memory. In the event these items are later requested, they are retrieved
+					from disk.</p>
+</li>
+
+		</ul>
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Syntax</h2>
+			<p class="p">Curl request syntax:</p>
+
+			<pre class="pre codeblock">curl -X POST -u [admin]:[password] 
+	-d name=[new-bucket-name] -d ramQuotaMB=[value] -d authType=[none | sasl] \
+	-d replicaNumber=[value] -d proxyPort=[proxy-port] 
+	http://[localhost]:8091/pools/default/buckets
+			</pre>
+
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Example</h2>
+			
+			<p class="p">Curl request example:</p>
+
+			<pre class="pre codeblock">curl -X POST -u admin:password 
+	-d name=newbucket -d ramQuotaMB=200 -d authType=none \
+	-d replicaNumber=2 -d proxyPort=11215 
+	http://10.5.2.54:8091/pools/default/buckets
+</pre>
+
+			<p class="p">Raw HTTP request example:</p>
+
+			<p class="p">The parameters for configuring the bucket are provided as payload data. Each
+				parameter and value are provided as a key/value pair where each pair is separated by
+				an ampersand. Include the parameters setting in the payload of the HTTP
+					<samp class="ph codeph">POST</samp> request.</p>
+
+			<pre class="pre codeblock">POST /pools/default/buckets
+HTTP/1.1
+Host: 10.5.2.54:8091
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Authorization: Basic YWRtaW46YWRtaW4=
+Content-Length: xx
+name=newbucket&amp;ramQuotaMB=20&amp;authType=none&amp;replicaNumber=2&amp;proxyPort=11215
+</pre>
+
+		</div>
+
+			
+			<div class="section"><h2 class="title sectiontitle">Response</h2>
+				<p class="p">If the bucket creation was successful, HTTP response 202 (Accepted) is returned with
+					empty content.</p>
+
+				<pre class="pre codeblock">202 Accepted</pre>
+
+			</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Response codes</h2>
+			
+			<p class="p">If the bucket could not be created, because the parameter was missing or incorrect, HTTP
+				response 400 returns, with a JSON payload containing the error reason.</p>
+
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 2. Create bucket error codes</span></caption>
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="24.69135802469136%" id="d85892e335">Error codes</th>
+
+							<th class="entry" valign="top" width="75.30864197530865%" id="d85892e338">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="24.69135802469136%" headers="d85892e335 ">202</td>
+
+							<td class="entry" valign="top" width="75.30864197530865%" headers="d85892e338 ">Accepted</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="24.69135802469136%" headers="d85892e335 ">204</td>
+
+							<td class="entry" valign="top" width="75.30864197530865%" headers="d85892e338 ">Bad Request JSON with errors in the form of {“errors”: {…. }}
+								name: Bucket with given name already exists ramQuotaMB: RAM Quota is
+								too large or too small replicaNumber: Must be specified and must be
+								a non-negative integer proxyPort: port is invalid, port is already
+								in use</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="24.69135802469136%" headers="d85892e335 ">404</td>
+
+							<td class="entry" valign="top" width="75.30864197530865%" headers="d85892e338 ">Object Not Found</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			
+		</div>
+
+	</div>
+
+	<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-bucket-intro.html" title="The Buckets REST API creates, deletes, flushes, and retrieves information about buckets and bucket operations.">Buckets API</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-buckets-streamingURI.html" title="To retrieve the streaming URI, use GET /pools/default/buckets/default HTTP method and URI.">Getting bucket streaming URI</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-bucket-set-priority.html" title="The disk I/O priority for a bucket is set with the /pools/default/buckets/[bucket-name] URI and the threadNumber setting.">Setting disk I/O priority</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../Concepts/concept-readerWriter.html" title="Multi-threaded readers and writers provide multiple processes to simultaneously read and write data on disk. Simultaneous reads and writes increase disk speed and improve the read rate from disk.">Multiple readers and writers</a></div></div>
+</nav>
+
+
+</body>
+</html>

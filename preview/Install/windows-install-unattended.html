@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="An unattended installation uses a script to install Couchbase Server."><meta name="DC.Relation" scheme="URI" content="../Install/Windows-install.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/windows-install-wizard.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/uninstall-windows.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_tzd_jjf_2p">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Unattended Windows installation</title>
+</head>
+<body id="topic_tzd_jjf_2p">
+
+
+  <h1 class="title topictitle1">Unattended Windows installation</h1>
+
+  
+  <div class="body"><p class="shortdesc">An unattended installation uses a script to install Couchbase Server.</p>
+
+    
+    <p class="p">To use the unattended installation process:</p>
+
+    <ol class="ol">
+      <li class="li">Record your installation settings in the wizard installation. These settings are saved to
+        a file, which is used to silently install other nodes of the same version. 
+        <ol class="ol" type="a">
+          <li class="li">Open a Command Terminal or Power and start the installation executable with the
+              <samp class="ph codeph">/r</samp> command-line option:
+            <pre class="pre codeblock">&gt; couchbase_server_version.exe /r /f1your_file_name.iss</pre>
+</li>
+
+          <li class="li">Provide your installation options when prompted. The wizard completes the server
+            installation and provides a file with your recorded options at
+              <span class="ph filepath">C:\Windows\your_file_name.iss</span>. <div class="note note"><span class="notetitle">Note:</span> Accept an
+              increase in <samp class="ph codeph">MaxUserPort</samp> (recommended).</div>
+</li>
+
+        </ol>
+
+      </li>
+
+      <li class="li">Copy the <samp class="ph codeph">your_file_name.iss</samp> file into the same directory as the installer executable. 
+        Run the installer from the command-line using the <samp class="ph codeph">/s</samp>
+        option:
+        <pre class="pre codeblock">&gt; couchbase_server_version.exe /s -f1your_file_name.iss</pre>
+
+      </li>
+
+      <li class="li">To repeat this process on multiple machines, copy the installation package and the
+        <samp class="ph codeph">your_file_name.iss</samp> file to the same directory on each machine.</li>
+
+    </ol>
+
+     
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/Windows-install.html" title="Couchbase Server can be installed on machines running Windows operating systems.">Microsoft Windows installation</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/windows-install-wizard.html" title="In this installation, you have to follow the steps defined in the wizard.">Installing on Windows with the wizard</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/uninstall-windows.html" title="To uninstall Couchbase Server on a Windows system, you must have Administrator or Power User privileges.">Uninstalling on Windows</a></div>
+</div>
+</nav>
+</body>
+</html>

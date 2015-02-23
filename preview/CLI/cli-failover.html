@@ -1,0 +1,119 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="Nodes are failed over either by a graceful failover or hard failover operation. Graceful failover is the default."><meta name="DC.Relation" scheme="URI" content="../CLI/CBcli/cbcli-servers.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBcli/cbcli-server-add.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cli-node-recovery-incremental.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cli-failover">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Failing over nodes</title>
+</head>
+<body id="cli-failover">
+
+
+  <h1 class="title topictitle1">Failing over nodes</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">Nodes are failed over either by a graceful failover or hard failover operation. 
+    Graceful failover is the default.</p>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Description</h2>
+      <div class="p">Nodes are failed over with one of the following methods:
+      <ul class="ul">
+        <li class="li">Graceful failover</li>
+
+        <li class="li">Hard failover</li>
+
+      </ul>
+</div>
+
+      
+      <p class="p">Graceful failover safely fails over nodes from clusters by allowing all in-flight operations to complete 
+        before implementing the failover operation. 
+        Graceful failover is the default behavior for the <samp class="ph codeph">couchbase-cli failover</samp> operation.</p>
+
+
+      <p class="p">Hard failover immediately fails over nodes from clusters. 
+        To perform a hard failover, the <samp class="ph codeph">--force</samp> option is used. 
+        Hard failover is typically used when the node is in a bad state. 
+        Auto-failover is a hard failover. </p>
+
+      
+      <div class="note note"><span class="notetitle">Note:</span> Be sure to update any scripts that implement failover.</div>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <pre class="pre codeblock">couchbase-cli failover
+    --cluster=HOST:PORT
+    --server-failover=HOST:PORT
+    --user=ADMIN 
+    --password=PASSWORD </pre>
+
+    
+    </div>
+
+
+      
+      <div class="section"><h2 class="title sectiontitle">Example: Setting failover, readd, recovery, and rebalance operations</h2>
+      <p class="p">The following example shows a failover, readd, recovery and rebalance sequence operations,
+        where as, a node in a cluster is gracefully failed over, the node is re-added to the
+        cluster, a delta recovery is implemented for the node, and rebalance is performed on the
+        cluster:</p>
+
+      
+      <pre class="pre codeblock">
+couchbase-cli failover -c 192.168.0.1:8091 \\	
+    --server-failover=192.168.0.2 \\	
+    -u Administrator -p password	
+				
+couchbase-cli server-readd -c 192.168.0.1:8091 \\	
+    --server-add=192.168.0.2 \\	
+    -u Administrator -p password	
+			
+couchbase-cli recovery -c 192.168.0.1:8091 \\	
+    --server-recovery=192.168.0.2 \\	
+    --recovery-type=delta \\	
+    -u Administrator -p password	
+				
+couchbase-cli rebalance -c 192.168.0.1:8091 \\	
+    -u Administrator -p password          
+      </pre>
+
+      </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Example: Failing over a node immediately</h2>
+      <p class="p">The following example shows a node failing over immediately, that is, a hard failover is
+        implemented rather than a graceful failover.</p>
+
+      <pre class="pre codeblock">
+couchbase-cli failover -c 192.168.0.1:8091 \\	
+    --server-failover=192.168.0.2 \\	
+    --force  \\
+    -u Administrator -p password             
+      </pre>
+
+    </div>
+
+      
+    
+    
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../CLI/CBcli/cbcli-servers.html" title="Managing server nodes in a cluster involve a variety of couchbase-cli tool commands.">Server nodes</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../CLI/CBcli/cbcli-server-add.html" title="Nodes can be added to clusters with either the server-add or rebalance command.">Adding nodes to clusters</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../CLI/cli-node-recovery-incremental.html" title="To re-add a server node to a cluster, use the couchbase-cli tool and the recovery command with the --recovery-type parameter.">Recovering nodes</a></div>
+</div>
+</nav>
+</body>
+</html>

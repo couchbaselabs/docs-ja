@@ -1,0 +1,144 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="To create an XDCR reference to a destination cluster, use the POST /pools/default/remoteClusters HTTP method and URI."><meta name="DC.Relation" scheme="URI" content="../REST/rest-xdcr-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-xdcr-create-replication.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-xdcr-get-ref.html">
+<meta name="DC.Relation" scheme="URI" content="../Tasks/xdcr-configure-replications.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rest-xdcr-create-ref">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Creating a destination cluster reference</title>
+</head>
+<body id="rest-xdcr-create-ref">
+
+
+  <h1 class="title topictitle1">Creating a destination cluster reference</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">To create an XDCR reference to a destination cluster, use the <samp class="ph codeph">POST /pools/default/remoteClusters</samp> HTTP method and URI.</p>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Description</h2>
+      <p class="p">To use XDCR, source and destination clusters must be established. 
+        A source cluster is the cluster where the original data is stored. A destination cluster is the cluster
+        where the replica data is stored. Data is copied from the source cluster to the destination cluster.</p>
+
+    </div>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">HTTP method and URI</h2>
+      <pre class="pre codeblock">POST /pools/default/remoteClusters</pre>
+
+    </div>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">Curl request syntax:</p>
+
+      <pre class="pre codeblock">curl -v -u [admin]:[password] 
+  http://[localhost]:[port]/pools/default/remoteClusters
+  -d uuid=[destination-cluster-uuid]
+  -d name=[destination-cluster-name]
+  -d hostname=[remote-host]:[port]
+  -d username=[admin] 
+  -d password=[password]
+    </pre>
+
+    </div>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+      <p class="p">Credentials are provided for the source cluster and information, including credentials and
+        UUID for the destination cluster.</p>
+
+      <p class="p">Curl request example:</p>
+
+      <pre class="pre codeblock">curl -v -u admin:password1 
+  http://10.4.2.4:8091/pools/default/remoteClusters
+  -d uuid=9eee38236f3bf28406920213d93981a3
+  -d name=remote1
+  -d hostname=10.4.2.6:8091
+  -d username=admin 
+  -d password=password2
+    </pre>
+
+      
+      <p class="p">Raw HTTP request example:</p>
+
+      <pre class="pre codeblock">POST /pools/default/remoteClusters HTTP/1.1
+Authorization: Basic QWRtaW5pc3RyYXRvcjpwYXNzd29yZA==
+User-Agent: curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8r zlib/1.2.5
+Host: 10.4.2.4:8091
+Accept: */*
+Content-Length: 114
+Content-Type: application/x-www-form-urlencoded
+    </pre>
+
+    </div>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">Response</h2>
+      <p class="p">If successful, Couchbase Server responds with a JSON response similar to the following:</p>
+
+      <pre class="pre codeblock">{"name":"remote1","uri":"/pools/default/remoteClusters/remote1",
+"validateURI":"/pools/default/remoteClusters/remote1?just_validate=1",
+"hostname":"10.4.2.6:8091",
+"username":"Administrator",
+"uuid":"9eee38236f3bf28406920213d93981a3",
+"deleted":false}
+      </pre>
+
+      <p class="p">The following describes the response elements:</p>
+
+      <ul class="ul">
+        <li class="li">(String) name: Name of the destination cluster referenced for XDCR.</li>
+
+        <li class="li">(String) validateURI: URI to validate details of cluster reference.</li>
+
+        <li class="li">(String) hostname: Hostname/IP (and :port) of the remote cluster.</li>
+
+        <li class="li">(String) username: Username for the destination cluster administrator.</li>
+
+        <li class="li">(String) uuid: UUID of the remote cluster reference.</li>
+
+        <li class="li">(Boolean) deleted: Indicates whether the reference to the destination cluster has been
+          deleted or not.</li>
+
+      </ul>
+
+    </div>
+
+      
+     
+    
+   
+    
+   
+    
+    
+    
+  </div>
+
+  <nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-xdcr-intro.html" title="The XDCR REST API is used to manage Cross Datacenter Replication (XDCR) operations.">XDCR API</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-xdcr-create-replication.html" title="To create an XDCR replication, use the POST /controller/createReplication HTTP method and URI.">Creating XDCR replications</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-xdcr-get-ref.html" title="To retrieve an XDCR reference to a destination cluster, use the GET /pools/default/remoteClusters HTTP method and URI.">Creating a destination cluster reference</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../Tasks/xdcr-configure-replications.html" title="Configuration of XDCR replications is done on a per-bucket basis.">Configuring XDCR replications</a></div></div>
+</nav>
+
+</body>
+</html>

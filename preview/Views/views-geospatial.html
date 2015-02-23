@@ -1,0 +1,331 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Geospatial views adds two-dimensional spatial index support to Couchbase. Development only."><meta name="DC.Relation" scheme="URI" content="../Views/views-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Views/views-writing.html">
+<meta name="DC.Relation" scheme="URI" content="../Views/views-schemaless.html">
+<meta name="DC.Relation" scheme="URI" content="http://geojson.org/geojson-spec.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic5399">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Writing geospatial views</title>
+</head>
+<body id="topic5399">
+
+
+	<h1 class="title topictitle1">Writing geospatial views</h1>
+
+	
+	<div class="body"><p class="shortdesc">Geospatial views adds two-dimensional spatial index support to Couchbase. Development only.</p>
+
+		<p class="p">Geospatial support was introduced as an experimental feature in Couchbase Server.
+			This feature is currently unsupported and is provided only for the purposes of
+			demonstration and testing.</p>
+
+		<p class="p">GeoCouch adds two-dimensional spatial index support to Couchbase. Spatial support enables
+			you to record geometry data into the bucket and then perform queries which return
+			information based on whether the recorded geometries existing within a given
+			two-dimensional range such as a bounding box. This can be used in spatial queries and in
+			particular geolocationary queries where you want to find entries based on your location
+			or region.</p>
+
+		<p class="p">The GeoCouch support is provided through updated index support and modifications to the
+			view engine to provide advanced geospatial queries.</p>
+
+		
+		
+		
+		
+		<div class="section"><h2 class="title sectiontitle">Adding geometry data</h2>
+			<p class="p">GeoCouch supports the storage of any geometry
+				information using the GeoJSON specification. The format of the
+				storage of the point data is arbitrary with the geometry type being supported during
+				the view index generation.</p>
+
+			<p class="p">For example, you can use two-dimensional geometries
+				for storing simple location data. You can add these to your Couchbase documents
+				using any field name. The convention is to use a single field with two-element array
+				with the point location, but you can also use two separate fields or compound
+				structures as it is the view that compiles the information into the geospatial
+				index.</p>
+<p class="p">For example, to populate a bucket with city location information, the
+				document sent to the bucket could be formatted like that
+				below:</p>
+<pre class="pre codeblock"><samp class="ph codeph">{
+"loc" : [-122.270833, 37.804444],
+"title" : "Oakland"
+}
+</samp></pre>
+
+			</div>
+
+		
+		
+		
+		<div class="section"><h2 class="title sectiontitle">Views and queries</h2><p class="p">The GeoCouch extension uses the standard
+				Couchbase indexing system to build a two-dimensional index from the point data
+				within the bucket. The format of the index information is based on the GeoJSON specification.</p>
+
+			<p class="p">To create a geospatial index, use the
+					<samp class="ph codeph">emit()</samp> function to output a GeoJSON Point value containing the
+				coordinates of the point you are describing. For example, the following function
+				will create a geospatial index on the earlier spatial record
+				example.</p>
+<pre class="pre codeblock"><samp class="ph codeph">function(doc, meta)
+{
+  if (doc.loc)
+  {
+     emit(
+          {
+             type: "Point",
+             coordinates: doc.loc,
+          },
+          [meta.id, doc.loc]);
+  }
+}
+</samp></pre>
+<p class="p">The
+				key in the spatial view index can be any valid GeoJSON geometry value, including
+				points, multipoints, linestrings, polygons and geometry collections.</p>
+<p class="p">The view
+					<samp class="ph codeph">map()</samp> function should be placed into a design document using
+				the <samp class="ph codeph">spatial</samp> prefix to indicate the nature of the view definition.
+				For example, the following design document includes the above function as the view
+					<samp class="ph codeph">points</samp></p>
+<pre class="pre codeblock"><samp class="ph codeph">{
+   "spatial" : {
+      "points" : "function(doc, meta) { if (doc.loc) { emit({ type: \"Point\", coordinates: doc.loc}, [meta.id, doc.loc]);}}",
+   }
+}
+</samp></pre>
+<p class="p">To
+				execute the geospatial query you use the design document format using the embedded
+				spatial indexing. For example, if the design document is called
+					<samp class="ph codeph">main</samp> within the bucket <samp class="ph codeph">places</samp>, the URL will be
+					<samp class="ph codeph">http://localhost:8092/places/_design/main/_spatial/points</samp>.</p>
+<p class="p">Spatial
+				queries include support for a number of additional arguments to the view request.
+				The full list is provided in the following summary
+				table.</p>
+
+			
+			
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d124875e96">Get Spatial Name</th>
+
+							<th class="entry" valign="top" width="50%" id="d124875e99">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 "><strong class="ph b">Method</strong></td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 "><samp class="ph codeph">GET
+									/bucket/_design/design-doc/_spatial/spatial-name</samp></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 "><strong class="ph b">Request Data</strong></td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 ">None</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 "><strong class="ph b">Response Data</strong></td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 ">JSON of the documents returned by the view</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 "><strong class="ph b">Authentication Required</strong></td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 ">no</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 "><strong class="ph b">Query Arguments</strong></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 "><samp class="ph codeph">bbox</samp></td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 ">Specify the bounding box for a spatial query</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 "><strong class="ph b">Parameters</strong> : string; optional</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 "><samp class="ph codeph">limit</samp></td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 ">Limit the number of the returned documents to the specified
+								number</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 "><strong class="ph b">Parameters</strong> : numeric; optional</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 "><samp class="ph codeph">skip</samp></td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 ">Skip this number of records before starting to return the
+								results</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 "><strong class="ph b">Parameters</strong> : numeric; optional</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 "><samp class="ph codeph">stale</samp></td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 ">Allow the results from a stale view to be used</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 "><strong class="ph b">Parameters</strong> : string; optional</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 "><strong class="ph b">Supported Values</strong></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 "><samp class="ph codeph">false</samp> : Force update of the view index before
+								results are returned</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 "><samp class="ph codeph">ok</samp> : Allow stale views</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d124875e96 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="50%" headers="d124875e99 "><samp class="ph codeph">update_after</samp> : Allow stale view, update view
+								after access </td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+<p class="p">Bounding Box Queries If you do not supply a bounding box, the full dataset is
+				returned. When querying a spatial index you can use the bounding box to specify the
+				boundaries of the query lookup on a given value. The specification should be in the
+				form of a comma-separated list of the coordinates to use during the
+				query.</p>
+<p class="p">These coordinates are specified using the GeoJSON format, so the first
+				two numbers are the lower left coordinates, and the last two numbers are the upper
+				right coordinates.</p>
+<p class="p">For example, using the above design
+				document:</p>
+<pre class="pre codeblock"><samp class="ph codeph">GET http://localhost:8092/places/_design/main/_spatial/points?bbox=-180,-90,0,0
+Content-Type: application/json
+</samp></pre>
+<p class="p">Returns
+				the following
+				information:</p>
+<pre class="pre codeblock"><samp class="ph codeph">{
+    "total_rows": 0,
+    "rows": [
+        {
+            "id": "oakland",
+            "key": [
+                [
+                    -122.270833,
+                    -122.270833
+                ],
+                [
+                    37.804444,
+                    37.804444
+                ]
+            ],
+            "value": [
+                "oakland",
+                [
+                    -122.270833,
+                    37.804444
+                ]
+            ],
+            "geometry": {
+                "coordinates": [
+                    -122.270833,
+                    37.804444
+                ],
+                "type": "Point"
+            }
+        }
+    ]
+}
+</samp></pre>
+<div class="note note"><span class="notetitle">Note:</span> The return data includes the value specified in the design document view
+				function, and the bounding box of each individual matching document. If the spatial
+				index includes the <samp class="ph codeph">bbox</samp> bounding box property as part of the
+				specification, then this information will be output in place of the automatically
+				calculated version.</div>
+</div>
+
+	</div>
+
+	<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Views/views-intro.html" title="Couchbase views enable indexing and querying of data.">Views and indexes</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Views/views-writing.html" title="During the view creation process, the output structure, field order, content, and any summary or grouping information desired in the view is defined.">Writing views</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Views/views-schemaless.html" title="A schema-less database along with view definitions provide for a flexible document structure.">Views in a schema-less database</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="http://geojson.org/geojson-spec.html" target="_blank">GeoJSON</a></div></div>
+</nav>
+
+</body>
+</html>

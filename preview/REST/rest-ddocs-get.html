@@ -1,0 +1,284 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="To retrieve a design document, use the GET /bucket/_design/[ddoc-name] HTTP method and URI on the 8092 port."><meta name="DC.Relation" scheme="URI" content="../REST/rest-views-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-ddocs-create.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rest-ddocs-get">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Getting design doc information</title>
+</head>
+<body id="rest-ddocs-get">
+
+
+  <h1 class="title topictitle1">Getting design doc information</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">To retrieve a design document, use the <samp class="ph codeph">GET /bucket/_design/[ddoc-name]</samp>
+    HTTP method and URI on the <samp class="ph codeph">8092</samp> port.</p>
+
+    <div class="section"><h2 class="title sectiontitle">Description</h2>
+      <p class="p">To obtain an existing design document from a bucket, 
+        use the <samp class="ph codeph">8092</samp> port and <samp class="ph codeph">GET /bucket/_design/[ddoc-name]</samp> HTTP method 
+        URI ending with the design document name.</p>
+
+      
+      <p class="p">To retrieve all design documents in a cluster use the <samp class="ph codeph">8091</samp> port with the 
+        <samp class="ph codeph">/pools/default/buckets/[bucket-name]/ddocs</samp> URI.</p>
+ 
+      
+      
+      
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">HTTP method and URI</h2>
+      <p class="p">To retrieve all the design documents with views defined on a bucket:</p>
+ 
+      <pre class="pre codeblock">GET /bucket/_design/[ddoc-name]</pre>
+
+ 
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+          
+          
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="50%"><strong class="ph b">Request Data</strong></td>
+
+              <td class="entry" valign="top" width="50%">Design document definition (JSON)</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%"><strong class="ph b">Response Data</strong></td>
+
+              <td class="entry" valign="top" width="50%">Success and stored design document ID</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%"><strong class="ph b">Authentication Required</strong></td>
+
+              <td class="entry" valign="top" width="50%">optional</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+      
+     
+      
+      <p class="p">Parameters:</p>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">Curl request syntax:</p>
+
+      <pre class="pre codeblock">curl -u [admin]:[password] -X GET 
+  http://[localhost]:8092/[bucket-name]/_design/[ddoc-name]</pre>
+
+      
+      <div class="note note"><span class="notetitle">Note:</span> HTTP response header includes a JSON document containing the metadata about the
+        design document being accessed. The information is returned within the
+        <samp class="ph codeph">X-Couchbase-Meta</samp> header of the returned data. 
+        This information is retrieved by using the <samp class="ph codeph">-v</samp> option to the
+        <samp class="ph codeph">curl</samp> command.</div>
+
+      
+      <p class="p">To get design document information from the cluster, the following request is made on the
+          <samp class="ph codeph">8091</samp> port.</p>
+
+      <pre class="pre codeblock">curl -u [admin]:[password] -X GET 
+  http://[localhost]:8091/pools/default/buckets/[bucket-name]/ddocs</pre>
+
+      
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Examples</h2>
+      <p class="p">Curl request example:</p>
+
+      <div class="note important"><span class="importanttitle">Important:</span> To retrieve design doc information, the request must be made on the <samp class="ph codeph">8092</samp> port.</div>
+
+      
+      <p class="p">To get the existing design document from the bucket <samp class="ph codeph">test2</samp>
+        for the development design document <samp class="ph codeph">ruth</samp> and the view <samp class="ph codeph">ruthView</samp></p>
+
+      
+      <pre class="pre codeblock">curl -u Administrator:password -X GET 
+  http://10.5.2.117:8092/test2/_design/dev_ruth</pre>
+
+      
+      <p class="p">To get design document information from the cluster, the request must be made on the <samp class="ph codeph">8091</samp> port.</p>
+
+      <pre class="pre codeblock">curl -u Administrator:password -X GET 
+  http://10.5.2.117:8091/pools/default/buckets/test2/ddocs</pre>
+
+      
+      
+      
+      
+    
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Response</h2>
+      <p class="p">Response for the following response on the bucket <samp class="ph codeph">test2</samp> and the development design doc <samp class="ph codeph">dev_ruth</samp>. 
+      The design document is empty because no data was added.</p>
+
+      <pre class="pre codeblock">curl -u Administrator:password -X GET 
+  http://10.5.2.117:8092/test2/_design/dev_ruth</pre>
+
+      <pre class="pre codeblock">{
+    "views": {
+        "ruthView": {
+            "map": "function (doc, meta) {\n  emit(meta.id, null);\n}"
+        }
+    }
+}</pre>
+
+      
+      <p class="p">Response for the following request on the bucket <samp class="ph codeph">test2</samp>.</p>
+
+      <pre class="pre codeblock">curl -u Administrator:password -X GET 
+  http://10.5.2.117:8091/pools/default/buckets/test2/ddocs</pre>
+
+      <pre class="pre codeblock">{
+    "rows": [
+        {
+            "controllers": {
+                "compact": "/pools/default/buckets/test2/ddocs/_design%2Fdev_ruth/controller/compactView", 
+                "setUpdateMinChanges": "/pools/default/buckets/test2/ddocs/_design%2Fdev_ruth/controller/setUpdateMinChanges"
+            }, 
+            "doc": {
+                "json": {
+                    "views": {
+                        "ruthView": {
+                            "map": "function (doc, meta) {\n  emit(meta.id, null);\n}"
+                        }
+                    }
+                }, 
+                "meta": {
+                    "id": "_design/dev_ruth", 
+                    "rev": "1-9bdf8353"
+                }
+            }
+        }
+    ]
+}
+      </pre>
+
+      
+      <p class="p">The following response shows that the metadata matches the corresponding metadata for a data document.</p>
+
+      <pre class="pre codeblock">
+      * About to connect() to 192.168.0.77 port 8092 (#0)
+      *   Trying 192.168.0.77...
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+      Dload  Upload   Total   Spent    Left  Speed
+      0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* connected
+      * Connected to 192.168.0.77 (192.168.0.77) port 8092 (#0)
+      * Server auth using Basic with user 'Administrator'
+      &gt; GET /sales/_design/something HTTP/1.1
+      &gt; Authorization: Basic QWRtaW5pc3RyYXRvcjpUYW1zaW4=
+      &gt; User-Agent: curl/7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8r zlib/1.2.5
+      &gt; Host: 192.168.0.77:8092
+      &gt; Accept: */*
+      &gt; Content-Type: application/json
+      &gt;
+      &lt; HTTP/1.1 200 OK
+      &lt; X-Couchbase-Meta: {"id":"_design/dev_sample","rev":"5-2785ea87","type":"json"}
+      &lt; Server: MochiWeb/1.0 (Any of you quaids got a smint?)
+      &lt; Date: Mon, 13 Aug 2012 10:45:46 GMT
+      &lt; Content-Type: application/json
+      &lt; Content-Length: 159
+      &lt; Cache-Control: must-revalidate
+      &lt;
+      { [data not shown]
+      100   159  100   159    0     0  41930      0 --:--:-- --:--:-- --:--:-- 53000
+      * Connection #0 to host 192.168.0.77 left intact
+      * Closing connection #0
+      </pre>
+
+      
+      <p class="p">If the view does not exist, the following error is returned:</p>
+
+      <pre class="pre codeblock">{
+   "error":"not_found",
+   "reason":"missing"
+}
+</pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Response codes</h2>
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="25.97402597402597%" id="d94566e233">Response codes</th>
+
+              <th class="entry" valign="top" width="74.02597402597402%" id="d94566e236">Description</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="25.97402597402597%" headers="d94566e233 ">200</td>
+
+              <td class="entry" valign="top" width="74.02597402597402%" headers="d94566e236 ">Request completed successfully.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="25.97402597402597%" headers="d94566e233 ">401</td>
+
+              <td class="entry" valign="top" width="74.02597402597402%" headers="d94566e236 ">The item requested was not available using the supplied
+                authorization, or authorization was not supplied.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="25.97402597402597%" headers="d94566e233 ">404</td>
+
+              <td class="entry" valign="top" width="74.02597402597402%" headers="d94566e236 ">The requested content could not be found. The returned content
+                includes further information, as a JSON object, if available.</td>
+
+            </tr>
+
+            
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-views-intro.html" title="The Views REST API is used to index and query JSON documents.">Views API</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-ddocs-create.html" title="To create a new design document, use the PUT /bucket/_design/[ddoc-name] HTTP method and URI on the 8092 port.">Creating design documents</a></div>
+</div>
+</nav>
+</body>
+</html>

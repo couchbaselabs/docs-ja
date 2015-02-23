@@ -1,0 +1,155 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="Data encryption with Secure Socket Layer (SSL) authentication used Couchbase self-signed certificates."><meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-xdcr.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-xdcr-manage-encryption.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cbcli-xdcr-ssl">
+<link rel="stylesheet" type="text/css" href="../../commonltr.css">
+<title>Managing SSL certificates</title>
+</head>
+<body id="cbcli-xdcr-ssl">
+
+
+  <h1 class="title topictitle1">Managing SSL certificates</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">Data encryption with Secure Socket Layer (SSL) authentication used Couchbase
+    self-signed certificates.</p>
+
+    <div class="section"><h2 class="title sectiontitle">Description</h2>
+      
+      <p class="p">Retrieving an SSL certificate for XDCR data encryption, should be done in a secure manner,
+        such as with <samp class="ph codeph">ssh</samp> and <samp class="ph codeph">scp</samp>. For example:</p>
+
+      <ol class="ol">
+        <li class="li">Use a secure method to log in to a node on the destination cluster. For example:
+            <samp class="ph codeph">ssh</samp>.</li>
+
+        <li class="li">Retrieve the certificate with the <samp class="ph codeph">couchbase-cli ssl-manage</samp>
+          command.</li>
+
+        <li class="li">Use a secure method to transfer the certificate from the destination cluster to the
+          source cluster. For example: <samp class="ph codeph">scp</samp>.</li>
+
+        <li class="li">Proceed with setting up XDCR with SSL data encryption.</li>
+
+      </ol>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">CLI command and parameters</h2>
+      
+      <div class="p">The <samp class="ph codeph">couchbase-cli ssl-manage</samp> command provides the following options for
+        regenerating and retrieving certificates.
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="cbcli-xdcr-ssl__table_rbb_g5t_qq" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. ssl-manage command options</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="50%" id="d8691e79">Option</th>
+
+                <th class="entry" valign="top" width="50%" id="d8691e82">Description</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="50%" headers="d8691e79 ">--retrieve-cert=[certificate]</td>
+
+                <td class="entry" valign="top" width="50%" headers="d8691e82 ">Retrieves the self-signed certificate from the destination cluster to the
+                  source cluster. Specify a local location (full path) and file name for the
+                  pem-encoded certificate. For example,
+                    <samp class="ph codeph">--retrieve-cert=./newCert.pem</samp>.</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="50%" headers="d8691e79 ">--regenerate-cert=[certificate]</td>
+
+                <td class="entry" valign="top" width="50%" headers="d8691e82 ">Regenerates a self-signed certificate on the destination cluster. Specify the
+                  full path for the location of the pem-encoded certificate file. For example,
+                    <samp class="ph codeph">--regenerate-cert=./newRegen.pem</samp>.</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+</div>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      
+      <p class="p">To retrieve an existing self-signed certificate, use the <samp class="ph codeph">couchbase-cli
+          ssl-manage</samp> command with the <samp class="ph codeph">--retrieve-cert</samp> option.</p>
+
+      <pre class="pre codeblock">couchbase-cli ssl-manage -c [localHost]:[port ]
+  -u [Administrator] -p [password] 
+  --retrieve-cert=./[new-certificate]
+</pre>
+
+      <p class="p">To regenerate a self-signed certificate, use the <samp class="ph codeph">couchbase-cli ssl-manage</samp>
+        command with the <samp class="ph codeph">--regenerate-cert</samp> option. </p>
+
+      <pre class="pre codeblock">couchbase-cli ssl-manage 
+  -c [remoteHost]:[port] 
+  -u [Administrator] -p [password] 
+  --regenerate-cert=[certificate]
+</pre>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+      
+      <p class="p">The following example retrieves an existing self-signed certificate:</p>
+
+      <pre class="pre codeblock">couchbase-cli ssl-manage -c 10.3.4.187:8091 
+  -u Administrator -p password 
+  --retrieve-cert=./newCert.pem 
+    </pre>
+
+      <p class="p">The following example regenerating a self-signed certificate:</p>
+
+      <pre class="pre codeblock">couchbase-cli ssl-manage 
+  -c 10.3.4.187:8091 
+  -u Administrator -p password 
+  --regenerate-cert=./newRegen.pem 
+</pre>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Response</h2>
+      
+      <p class="p">The following is an example of results for a successful retrieval of the certificate:</p>
+
+      <pre class="pre codeblock">SUCCESS: retrieve certificate to './newCert.pem' 
+Certificate matches what seen on GUI 
+</pre>
+
+      <p class="p">The following is an example of results for a successful regeneration of the
+        certification:</p>
+
+      <pre class="pre codeblock">SUCCESS: regenerate certificate to './newRegen.pem' 
+</pre>
+
+    </div>
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/CBcli/cbcli-xdcr.html" title="XDCR commands used with the couchbase-cli tool.">XDCR</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBcli/cbcli-xdcr-manage-encryption.html" title="XDCR data encryption with Secure Socket Layer (SSL) is enabled with the couchbase-cli tool and the xdcr-setup command. Enterprise Edition only.">Managing XDCR data encryption</a></div>
+</div>
+</nav>
+</body>
+</html>

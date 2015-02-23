@@ -1,0 +1,68 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="To uninstall Couchbase Server follow these steps."><meta name="DC.Relation" scheme="URI" content="../Install/Mac-install.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/mac-non-root-sudo.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/upgrade-mac.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_ezm_5hf_2p">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Uninstalling on Mac OS X</title>
+</head>
+<body id="topic_ezm_5hf_2p">
+
+
+  <h1 class="title topictitle1">Uninstalling on Mac OS X</h1>
+
+  
+  <div class="body"><p class="shortdesc">To uninstall Couchbase Server follow these steps.</p>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Before removing the Couchbase Server</h2> 
+      <ol class="ol">
+        <li class="li">Shut down Couchbase Server. </li>
+
+        <li class="li">If your machine is a part of an active cluster, rebalance the cluster to take
+          the node out of the configuration. </li>
+
+        <li class="li">Update clients to point to an available node within the Couchbase Server cluster.</li>
+
+      </ol>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">To uninstall Couchbase Server</h2>
+    
+    <ol class="ol">
+      <li class="li">Open the <samp class="ph codeph">Applications</samp> folder and drag the <samp class="ph codeph">Couchbase
+          Server</samp> icon to the trash. 
+        Alternatively, delete the previous installation from the command line. 
+        If required, provide administrator credentials to complete the deletion.</li>
+
+      <li class="li">Delete the <samp class="ph codeph">Couchbase</samp> and <samp class="ph codeph">Membase</samp> folders from the
+          <span class="ph filepath">~/Library/Application Support</span> folder for the user that was running Couchbase
+        Server. This operation removes the application data.
+        <pre class="pre codeblock">&gt; rm -rf ~/Library/Application Support/Couchbase
+&gt; rm -rf ~/Library/Application Support/Membase</pre>
+
+      </li>
+
+    </ol>
+</div>
+
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/Mac-install.html" title="Mac OS 10.7 and 10.8 are supported, but for development purposes only.">Mac OS X installation</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/mac-non-root-sudo.html" title="Installation on Mac OS X as non-root, non-sudo user is used only for development purposes.">Installing as non-root, non-sudo</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/upgrade-mac.html" title="There is currently no officially supported upgrade installer for Mac OS X.">Upgrading on Mac OS X</a></div>
+</div>
+</nav>
+</body>
+</html>

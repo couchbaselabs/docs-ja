@@ -5,7 +5,14 @@
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="reference">
-<meta name="description" content="XDCR commands used with the couchbase-cli tool."><meta name="DC.Relation" scheme="URI" content="../../XDCR/xdcr-intro.html">
+<meta name="description" content="XDCR commands used with the couchbase-cli tool."><meta name="DC.Relation" scheme="URI" content="../../CLI/cbcli-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-servers.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-cluster-wide-info.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-xdcr-manage-replication.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-xdcr-pause-resume.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-xdcr-manage-encryption.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-ssl.html">
+<meta name="DC.Relation" scheme="URI" content="../../XDCR/xdcr-intro.html">
 <meta name="DC.Relation" scheme="URI" content="../../Tasks/tasks-manage-xdcr-dataEncryption.html">
 <meta name="DC.Relation" scheme="URI" content="../../Tasks/tasks-manage-xdcr.html">
 <meta name="DC.Format" content="XHTML">
@@ -38,9 +45,9 @@
           
           <thead class="thead" align="left">
             <tr class="row">
-              <th class="entry" valign="top" width="33.44481605351171%" id="d1691e45">Command</th>
+              <th class="entry" valign="top" width="33.44481605351171%" id="d10686e45">Command</th>
 
-              <th class="entry" valign="top" width="66.5551839464883%" id="d1691e48">Description</th>
+              <th class="entry" valign="top" width="66.5551839464883%" id="d10686e48">Description</th>
 
             </tr>
 
@@ -48,30 +55,30 @@
 
           <tbody class="tbody">
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e45 ">xdcr-setup</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e45 ">xdcr-setup</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e48 ">Manage the XDCR replication configuration.</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e45 ">setting-xdcr</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e48 ">Set XDCR related replication settings.</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e48 ">Manage the XDCR replication configuration.</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e45 ">xdcr-replicate</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e45 ">setting-xdcr</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e48 ">Manage the XDCR replication operations.</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e48 ">Set XDCR related replication settings.</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e45 ">ssl-manage</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e45 ">xdcr-replicate</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e48 ">Manage cluster SSL certificate.</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e48 ">Manage the XDCR replication operations.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e45 ">ssl-manage</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e48 ">Manage cluster SSL certificate.</td>
 
             </tr>
 
@@ -91,9 +98,9 @@
           
           <thead class="thead" align="left">
             <tr class="row">
-              <th class="entry" valign="top" width="33.44481605351171%" id="d1691e115">xdcr-setup options</th>
+              <th class="entry" valign="top" width="33.44481605351171%" id="d10686e115">xdcr-setup options</th>
 
-              <th class="entry" valign="top" width="66.5551839464883%" id="d1691e118">Description</th>
+              <th class="entry" valign="top" width="66.5551839464883%" id="d10686e118">Description</th>
 
             </tr>
 
@@ -101,72 +108,72 @@
 
           <tbody class="tbody">
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e115 ">--create</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e115 ">--create</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e118 ">Creates a new XDCR configuration.</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e115 ">--edit</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e118 ">Modifies an existing XDCR configuration.</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e118 ">Creates a new XDCR configuration.</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e115 ">--delete</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e115 ">--edit</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e118 ">Deletes an existing XDCR configuration.</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e115 ">--list</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e118 ">Lists all XDCR configurations.</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e118 ">Modifies an existing XDCR configuration.</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e115 ">--xdcr-cluster-name=[clustername]</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e115 ">--delete</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e118 ">Cluster name.</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e115 ">--xdcr-hostname=[hostname]</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e118 ">Remote host name to connect to.</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e118 ">Deletes an existing XDCR configuration.</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e115 ">--xdcr-username=[username]</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e115 ">--list</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e118 ">Remote cluster administrator username.</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e115 ">--xdcr-password=[password</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e118 ">Remote cluster administrator password.</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e118 ">Lists all XDCR configurations.</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e115 ">--xdcr-demand-encryption=[0 | 1]</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e115 ">--xdcr-cluster-name=[clustername]</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e118 ">Enables and disables data encrypted using ssl. True is 1 and enables data encryption. False is 0 and disables data encryption. Default: 0</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e118 ">Cluster name.</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e115 ">--xdcr-certificate=[certificate]</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e115 ">--xdcr-hostname=[hostname]</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e118 ">Pem-encoded certificate. This self-signed certificate must be present if xdcr-demand-encryption is true.</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e118 ">Remote host name to connect to.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e115 ">--xdcr-username=[username]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e118 ">Remote cluster administrator username.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e115 ">--xdcr-password=[password</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e118 ">Remote cluster administrator password.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e115 ">--xdcr-demand-encryption=[0 | 1]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e118 ">Enables and disables data encrypted using ssl. True is 1 and enables data encryption. False is 0 and disables data encryption. Default: 0</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e115 ">--xdcr-certificate=[certificate]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e118 ">Pem-encoded certificate. This self-signed certificate must be present if xdcr-demand-encryption is true.</td>
 
             </tr>
 
@@ -185,9 +192,9 @@
                 
                 <thead class="thead" align="left">
                   <tr class="row">
-                    <th class="entry" valign="top" width="33.44481605351171%" id="d1691e240">setting-xdcr options</th>
+                    <th class="entry" valign="top" width="33.44481605351171%" id="d10686e240">setting-xdcr options</th>
 
-                    <th class="entry" valign="top" width="66.5551839464883%" id="d1691e243">Description</th>
+                    <th class="entry" valign="top" width="66.5551839464883%" id="d10686e243">Description</th>
 
                   </tr>
 
@@ -195,44 +202,44 @@
 
                 <tbody class="tbody">
                   <tr class="row">
-                    <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e240 ">--max-concurrent-reps=[32]</td>
+                    <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e240 ">--max-concurrent-reps=[32]</td>
 
-                    <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e243 ">Maximum concurrent replications per bucket, 8 to 256.</td>
-
-                  </tr>
-
-                  <tr class="row">
-                    <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e240 ">--checkpoint-interval=[1800]</td>
-
-                    <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e243 ">Intervals between checkpoints, 60 to 14400 seconds.</td>
+                    <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e243 ">Maximum concurrent replications per bucket, 8 to 256.</td>
 
                   </tr>
 
                   <tr class="row">
-                    <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e240 ">--worker-batch-size=[500]</td>
+                    <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e240 ">--checkpoint-interval=[1800]</td>
 
-                    <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e243 ">Document worker batch size, 500 to 10000.</td>
-
-                  </tr>
-
-                  <tr class="row">
-                    <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e240 ">--doc-batch-size=[2049]KB</td>
-
-                    <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e243 ">Document batching size, 10 to 100000 KB.</td>
+                    <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e243 ">Intervals between checkpoints, 60 to 14400 seconds.</td>
 
                   </tr>
 
                   <tr class="row">
-                    <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e240 ">--failure-restart-interval=[30]</td>
+                    <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e240 ">--worker-batch-size=[500]</td>
 
-                    <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e243 ">Interval for restarting failed XDCR, 1 to 300 seconds.</td>
+                    <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e243 ">Document worker batch size, 500 to 10000.</td>
 
                   </tr>
 
                   <tr class="row">
-                    <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e240 ">--optimistic-replication-threshold=[256]</td>
+                    <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e240 ">--doc-batch-size=[2049]KB</td>
 
-                    <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e243 ">Document body size threshold (bytes) to trigger optimistic replication.</td>
+                    <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e243 ">Document batching size, 10 to 100000 KB.</td>
+
+                  </tr>
+
+                  <tr class="row">
+                    <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e240 ">--failure-restart-interval=[30]</td>
+
+                    <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e243 ">Interval for restarting failed XDCR, 1 to 300 seconds.</td>
+
+                  </tr>
+
+                  <tr class="row">
+                    <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e240 ">--optimistic-replication-threshold=[256]</td>
+
+                    <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e243 ">Document body size threshold (bytes) to trigger optimistic replication.</td>
 
                   </tr>
 
@@ -252,9 +259,9 @@
           
           <thead class="thead" align="left">
             <tr class="row">
-              <th class="entry" valign="top" width="33.44481605351171%" id="d1691e330">xdcr-replicate options</th>
+              <th class="entry" valign="top" width="33.44481605351171%" id="d10686e330">xdcr-replicate options</th>
 
-              <th class="entry" valign="top" width="66.5551839464883%" id="d1691e333">Description</th>
+              <th class="entry" valign="top" width="66.5551839464883%" id="d10686e333">Description</th>
 
             </tr>
 
@@ -262,121 +269,121 @@
 
           <tbody class="tbody">
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--create</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--create</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Create and start a new replication</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--delete</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Stop and cancel a replication</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Create and start a new replication</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--list</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--delete</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">List all XDCR replications</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--pause</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Pause the replication</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Stop and cancel a replication</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--resume</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--list</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Resume the replication</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--settings</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Update settings for the replication</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">List all XDCR replications</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--xdcr-replicator=[replicator]</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--pause</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Replication ID</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--xdcr-from-bucket=[bucket-name]</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Local bucket name to replicate from</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Pause the replication</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--xdcr-cluster-name=[remote-cluster]</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--resume</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Remote cluster to replicate to</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--xdcr-to-bucket=[remote-bucket]</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Remote bucket to replicate to</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Resume the replication</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--max-concurrent-reps =[ 16 ]</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--settings</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Maximum concurrent replications per bucket, 8 to 256. Default: 16</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--checkpoint-interval =[ 1800 ]</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Intervals between checkpoints , 60 to 14400 seconds</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Update settings for the replication</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--worker-batch-size =[ 500 ]</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--xdcr-replicator=[replicator]</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Document worker batch size, 500 to 10000</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--doc-batch size =[ 2048 ] KB</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Document batch size, 10 to 100000 KB</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Replication ID</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--failure-restart-interval =[ 30 ]</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--xdcr-from-bucket=[bucket-name]</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Interval for restarting failed xdcr, 1 to 300 seconds</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--optimistic-replication-threshold =[ 256 ]</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Document body size threshold (bytes) to trigger optimistic replication</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Local bucket name to replicate from</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d1691e330 ">--xdcr-replication-mode=[xmem | capi]</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--xdcr-cluster-name=[remote-cluster]</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d1691e333 ">Replication protocol, either capi or xmem</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Remote cluster to replicate to</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--xdcr-to-bucket=[remote-bucket]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Remote bucket to replicate to</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--max-concurrent-reps =[ 16 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Maximum concurrent replications per bucket, 8 to 256. Default: 16</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--checkpoint-interval =[ 1800 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Intervals between checkpoints , 60 to 14400 seconds</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--worker-batch-size =[ 500 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Document worker batch size, 500 to 10000</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--doc-batch size =[ 2048 ] KB</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Document batch size, 10 to 100000 KB</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--failure-restart-interval =[ 30 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Interval for restarting failed xdcr, 1 to 300 seconds</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--optimistic-replication-threshold =[ 256 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Document body size threshold (bytes) to trigger optimistic replication</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10686e330 ">--xdcr-replication-mode=[xmem | capi]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10686e333 ">Replication protocol, either capi or xmem</td>
 
             </tr>
 
@@ -396,9 +403,9 @@
           
           <thead class="thead" align="left">
             <tr class="row">
-              <th class="entry" valign="top" width="50%" id="d1691e519">ssl-manage options (Enterprise Edition only)</th>
+              <th class="entry" valign="top" width="50%" id="d10686e519">ssl-manage options (Enterprise Edition only)</th>
 
-              <th class="entry" valign="top" width="50%" id="d1691e522">Description</th>
+              <th class="entry" valign="top" width="50%" id="d10686e522">Description</th>
 
             </tr>
 
@@ -406,9 +413,9 @@
 
           <tbody class="tbody">
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d1691e519 ">--retrieve-cert=[certificate]</td>
+              <td class="entry" valign="top" width="50%" headers="d10686e519 ">--retrieve-cert=[certificate]</td>
 
-              <td class="entry" valign="top" width="50%" headers="d1691e522 ">Retrieves the self-signed certificate from the destination cluster to the
+              <td class="entry" valign="top" width="50%" headers="d10686e522 ">Retrieves the self-signed certificate from the destination cluster to the
                 source cluster. Specify a local location (full path) and file name for the
                 pem-encoded certificate. For example,
                 <samp class="ph codeph">--retrieve-cert=./newCert.pem</samp>.</td>
@@ -416,9 +423,9 @@
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d1691e519 ">--regenerate-cert=[certificate]</td>
+              <td class="entry" valign="top" width="50%" headers="d10686e519 ">--regenerate-cert=[certificate]</td>
 
-              <td class="entry" valign="top" width="50%" headers="d1691e522 ">Regenerates a self-signed certificate on the destination cluster. Specify the
+              <td class="entry" valign="top" width="50%" headers="d10686e522 ">Regenerates a self-signed certificate on the destination cluster. Specify the
                 full path for the location of the pem-encoded certificate file. For example,
                 <samp class="ph codeph">--regenerate-cert=./newRegen.pem</samp>.</td>
 
@@ -586,6 +593,23 @@ stream id: bfa861d3734c90559522a88b9db81606/test2/test
   </div>
 
   <nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-xdcr-manage-replication.html">Managing XDCR replication streams</a><br>
+The XDCR CLI provides options to manage XDCR replications with     <samp class="ph codeph">couchbase-cli xdcr-replicate</samp>.</li>
+<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-xdcr-pause-resume.html">Pausing XDCR replication streams</a><br>
+The XDCR CLI provides options to pause and resume replication with       <samp class="ph codeph">couchbase-cli xdcr-replicate</samp>.</li>
+<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-xdcr-manage-encryption.html">Managing XDCR data encryption</a><br>
+XDCR data encryption with Secure Socket Layer (SSL) is enabled with the <samp class="ph codeph">couchbase-cli</samp> tool     and the <samp class="ph codeph">xdcr-setup</samp> command. Enterprise Edition only.</li>
+<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-ssl.html">Managing SSL certificates</a><br>
+Data encryption with Secure Socket Layer (SSL) authentication used Couchbase     self-signed certificates.</li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/cbcli-intro.html" title="The couchbase-cli tool is used to perform operations on an entire cluster.">couchbase-cli tool</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBcli/cbcli-servers.html" title="Managing server nodes in a cluster involve a variety of couchbase-cli tool commands.">Server nodes</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBcli/cbcli-cluster-wide-info.html" title="You can start, stop, and view status of a diagnostics collection by using the couchbase-cli tool.">Diagnostics with couchbase-cli</a></div>
+</div>
+
 <div class="linklist linklist">
 <div><a class="link" href="../../XDCR/xdcr-intro.html" title="XDCRは、主に災害復旧のために、あるクラスタのデータを別のクラスタに複製します。">クロスデータセンターレプリケーション（XDCR）</a></div>
 <div><a class="link" href="../../Tasks/tasks-manage-xdcr-dataEncryption.html">Managing XDCR data encryption</a></div>

@@ -1,0 +1,234 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="The cbworkloadgen tool is used to generate random data and perform read/writes."><meta name="DC.Relation" scheme="URI" content="../cli-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbtransfer_tool.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cbworkloadgen_tool">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>cbworkloadgen tool</title>
+</head>
+<body id="cbworkloadgen_tool">
+
+
+	<h1 class="title topictitle1">cbworkloadgen tool</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbworkloadgen</samp> tool is used to generate random data and perform read/writes.</p>
+
+		<div class="section"><h2 class="title sectiontitle">Description</h2>
+			<p class="p">The <samp class="ph codeph">cbworkloadgen</samp> tool is useful for testing Couchbase servers and clusters.</p>
+
+			
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d45510e40">Option</th>
+
+							<th class="entry" valign="top" width="50%" id="d45510e43">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d45510e40 ">-h, --help</td>
+
+							<td class="entry" valign="top" width="50%" headers="d45510e43 ">Show this help message and exit.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d45510e40 ">-r [number], --ratio-sets=[number]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d45510e43 ">The percentage of workload that are writes; the remainder is reads.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d45510e40 ">-n [localhost]:8091, --node=[localhost]:8091</td>
+
+							<td class="entry" valign="top" width="50%" headers="d45510e43 ">Node's ns_server ip:port.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d45510e40 ">-b [bucket-name], --bucket=[bucket-name]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d45510e43 ">Insert data to a different bucket other than default.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d45510e40 ">-i [number], --max-items=[number]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d45510e43 ">Number of inserted items.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d45510e40 ">-s [number], --size=[number]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d45510e43 ">Minimum value size.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d45510e40 ">--prefix=pymc</td>
+
+							<td class="entry" valign="top" width="50%" headers="d45510e43 ">Prefix to use for memcached keys or json IDs.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d45510e40 ">-j, --json</td>
+
+							<td class="entry" valign="top" width="50%" headers="d45510e43 ">Insert json data.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d45510e40 ">-l, --loop</td>
+
+							<td class="entry" valign="top" width="50%" headers="d45510e43 ">Loop forever until interrupted by user</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d45510e40 ">-u [username], --username=[username]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d45510e43 ">REST username for cluster or server node.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d45510e40 ">-p [password], --password=[password]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d45510e43 ">REST password for cluster or server node.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d45510e40 ">-t [number], --threads=[number]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d45510e43 ">Number of concurrent threads.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d45510e40 ">-v, --verbose</td>
+
+							<td class="entry" valign="top" width="50%" headers="d45510e43 ">Verbose logging; more -v's provide more verbosity.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			
+		
+		<p class="p">The tool is at the following locations:</p>
+
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="50%" id="d45510e187">Operating system</th>
+
+						<th class="entry" valign="top" width="50%" id="d45510e190">Location</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45510e187 ">Linux</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45510e190 ">/opt/couchbase/bin/</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45510e187 ">Windows</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45510e190 ">C:\Program&nbsp;Files\Couchbase\Server\bin\</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45510e187 ">Mac OS X</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45510e190 ">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		</div>
+
+			
+			<div class="section"><h2 class="title sectiontitle">Syntax</h2>
+		<p class="p">Basic command format:</p>
+
+		<pre class="pre codeblock">cbworkloadgen -n [localhost]:8091 -u [username] -p [password] [option]	</pre>
+
+			</div>
+
+		
+		
+		<div class="section"><h2 class="title sectiontitle">Example</h2>
+			<p class="p">For example, to generate workload on a given Couchbase node and open port on that
+			node:</p>
+
+		<pre class="pre codeblock">
+cbworkloadgen -n 10.5.2.54:8091
+	-r .9 -i 100000
+	-s 100
+	-b my-other-bucket
+	-t 10
+		</pre>
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Response</h2>
+		<p class="p">If successful, produces a result similar to the following</p>
+
+		<pre class="pre codeblock">
+  [####################] 100.0% (1111110/estimated 1111110 msgs)
+bucket: default, msgs transferred...
+       :                total |       last |    per sec
+ byte  :            111111000 |  111111000 |   636622.5
+done
+</pre>
+
+		
+		</div>
+
+	</div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Server command-line interface (CLI) tools are provided to manage and monitor clusters, servers, vBuckets, XDCR, and so on.">CLI reference</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../CLI/cbtransfer_tool.html" title="The cbtransfer tool is used to transfer data between clusters and to/from files.">cbtransfer tool</a></div>
+</div>
+</nav>
+</body>
+</html>

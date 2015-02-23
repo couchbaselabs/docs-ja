@@ -5,7 +5,16 @@
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="reference">
-<meta name="description" content="The cbepctl tool is used to control vBucket states, configuration, and memory and disk persistence behavior."><meta name="DC.Relation" scheme="URI" content="CBcli/cbcli-buckets.html">
+<meta name="description" content="The cbepctl tool is used to control vBucket states, configuration, and memory and disk persistence behavior."><meta name="DC.Relation" scheme="URI" content="../cli-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbdocloader_tool.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbhealthchecker_tool.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBepctl/cbepctl-threadpool-tuning.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBepctl/cbepctl-thresholds.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBepctl/cbepctl-accesslog.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBepctl/cbepctl-diskcleanup.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBepctl/cbepctl-diskwritequeue.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/CBepctl/cbepctl-timeout.html">
+<meta name="DC.Relation" scheme="URI" content="CBcli/cbcli-buckets.html">
 <meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-flush.html">
 <meta name="DC.Relation" scheme="URI" content="../UI/ui-data-buckets.html">
 <meta name="DC.Format" content="XHTML">
@@ -53,9 +62,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d8628e49">Operating system</th>
+						<th class="entry" valign="top" width="50%" id="d38408e49">Operating system</th>
 
-						<th class="entry" valign="top" width="50%" id="d8628e52">Location</th>
+						<th class="entry" valign="top" width="50%" id="d38408e52">Location</th>
 
 					</tr>
 
@@ -63,23 +72,23 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d8628e49 ">Linux</td>
+						<td class="entry" valign="top" width="50%" headers="d38408e49 ">Linux</td>
 
-						<td class="entry" valign="top" width="50%" headers="d8628e52 ">/opt/couchbase/bin/cbepctl</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d8628e49 ">Windows</td>
-
-						<td class="entry" valign="top" width="50%" headers="d8628e52 ">C:\Program&nbsp;Files\Couchbase\Server\bin\cbepctl.exe</td>
+						<td class="entry" valign="top" width="50%" headers="d38408e52 ">/opt/couchbase/bin/cbepctl</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d8628e49 ">Mac OS X</td>
+						<td class="entry" valign="top" width="50%" headers="d38408e49 ">Windows</td>
 
-						<td class="entry" valign="top" width="50%" headers="d8628e52 ">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbepctl</td>
+						<td class="entry" valign="top" width="50%" headers="d38408e52 ">C:\Program&nbsp;Files\Couchbase\Server\bin\cbepctl.exe</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d38408e49 ">Mac OS X</td>
+
+						<td class="entry" valign="top" width="50%" headers="d38408e52 ">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbepctl</td>
 
 					</tr>
 
@@ -113,9 +122,9 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="18.484288354898336%" id="d8628e127">Command option</th>
+						<th class="entry" valign="top" width="18.484288354898336%" id="d38408e127">Command option</th>
 
-						<th class="entry" valign="top" width="81.51571164510166%" id="d8628e130">Description</th>
+						<th class="entry" valign="top" width="81.51571164510166%" id="d38408e130">Description</th>
 
 					</tr>
 
@@ -123,30 +132,30 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="18.484288354898336%" headers="d8628e127 ">stop</td>
+						<td class="entry" valign="top" width="18.484288354898336%" headers="d38408e127 ">stop</td>
 
-						<td class="entry" valign="top" width="81.51571164510166%" headers="d8628e130 ">Stop persistence</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="18.484288354898336%" headers="d8628e127 ">start</td>
-
-						<td class="entry" valign="top" width="81.51571164510166%" headers="d8628e130 ">Start persistence</td>
+						<td class="entry" valign="top" width="81.51571164510166%" headers="d38408e130 ">Stop persistence</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="18.484288354898336%" headers="d8628e127 ">drain</td>
+						<td class="entry" valign="top" width="18.484288354898336%" headers="d38408e127 ">start</td>
 
-						<td class="entry" valign="top" width="81.51571164510166%" headers="d8628e130 ">Wait until queues are drained</td>
+						<td class="entry" valign="top" width="81.51571164510166%" headers="d38408e130 ">Start persistence</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="18.484288354898336%" headers="d8628e127 ">set</td>
+						<td class="entry" valign="top" width="18.484288354898336%" headers="d38408e127 ">drain</td>
 
-						<td class="entry" valign="top" width="81.51571164510166%" headers="d8628e130 ">Set <samp class="ph codeph">checkpoint_param</samp>, <samp class="ph codeph">flush_param</samp>, and
+						<td class="entry" valign="top" width="81.51571164510166%" headers="d38408e130 ">Wait until queues are drained</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="18.484288354898336%" headers="d38408e127 ">set</td>
+
+						<td class="entry" valign="top" width="81.51571164510166%" headers="d38408e130 ">Set <samp class="ph codeph">checkpoint_param</samp>, <samp class="ph codeph">flush_param</samp>, and
 									<samp class="ph codeph">tap_param</samp> command types. This changes how or
 								when persistence occurs.</td>
 
@@ -175,9 +184,9 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d8628e224">Parameter</th>
+						<th class="entry" valign="top" width="50%" id="d38408e224">Parameter</th>
 
-						<th class="entry" valign="top" width="50%" id="d8628e227">Description</th>
+						<th class="entry" valign="top" width="50%" id="d38408e227">Description</th>
 
 					</tr>
 
@@ -185,46 +194,46 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d8628e224 ">chk_max_items</td>
+						<td class="entry" valign="top" width="50%" headers="d38408e224 ">chk_max_items</td>
 
-						<td class="entry" valign="top" width="50%" headers="d8628e227 ">Max number of items allowed in a checkpoint.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d8628e224 ">chk_period</td>
-
-						<td class="entry" valign="top" width="50%" headers="d8628e227 ">Time bound (in sec.) on a checkpoint.</td>
+						<td class="entry" valign="top" width="50%" headers="d38408e227 ">Max number of items allowed in a checkpoint.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d8628e224 ">item_num_based_new_chk</td>
+						<td class="entry" valign="top" width="50%" headers="d38408e224 ">chk_period</td>
 
-						<td class="entry" valign="top" width="50%" headers="d8628e227 ">True if a new checkpoint can be created based on. the number of items
+						<td class="entry" valign="top" width="50%" headers="d38408e227 ">Time bound (in sec.) on a checkpoint.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d38408e224 ">item_num_based_new_chk</td>
+
+						<td class="entry" valign="top" width="50%" headers="d38408e227 ">True if a new checkpoint can be created based on. the number of items
 							in the open checkpoint.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d8628e224 ">keep_closed_chks</td>
+						<td class="entry" valign="top" width="50%" headers="d38408e224 ">keep_closed_chks</td>
 
-						<td class="entry" valign="top" width="50%" headers="d8628e227 ">True if we want to keep closed checkpoints in memory, as long as the
+						<td class="entry" valign="top" width="50%" headers="d38408e227 ">True if we want to keep closed checkpoints in memory, as long as the
 							current memory usage is below high water mark.</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d8628e224 ">max_checkpoints</td>
+						<td class="entry" valign="top" width="50%" headers="d38408e224 ">max_checkpoints</td>
 
-						<td class="entry" valign="top" width="50%" headers="d8628e227 ">Max number of checkpoints allowed per vbucket. </td>
+						<td class="entry" valign="top" width="50%" headers="d38408e227 ">Max number of checkpoints allowed per vbucket. </td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d8628e224 ">enable_chk_merge</td>
+						<td class="entry" valign="top" width="50%" headers="d38408e224 ">enable_chk_merge</td>
 
-						<td class="entry" valign="top" width="50%" headers="d8628e227 ">True, if merging closed checkpoints is enabled.</td>
+						<td class="entry" valign="top" width="50%" headers="d38408e227 ">True, if merging closed checkpoints is enabled.</td>
 
 					</tr>
 
@@ -247,9 +256,9 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d8628e315">Parameter</th>
+							<th class="entry" valign="top" width="50%" id="d38408e315">Parameter</th>
 
-							<th class="entry" valign="top" width="50%" id="d8628e318">Description</th>
+							<th class="entry" valign="top" width="50%" id="d38408e318">Description</th>
 
 						</tr>
 
@@ -257,140 +266,140 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">alog_sleep_time</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">alog_sleep_time</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Access scanner interval (minute)</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">alog_task_time</td>
-
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Access scanner next task time (UTC)</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Access scanner interval (minute)</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">backfile_mem_threshold</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">alog_task_time</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Memory threshold (%) on the current bucket quota before backfill task is made to back off.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">bg_fetch_delay</td>
-
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Delay before executing a bg fetch (test feature).</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Access scanner next task time (UTC)</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">couch_response_timeout</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">backfile_mem_threshold</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">timeout in receiving a response from CouchDB.</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Memory threshold (%) on the current bucket quota before backfill task is made to back off.</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">exp_pager_stime</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">bg_fetch_delay</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Expiry Pager interval. Time interval that Couchbase Server waits
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Delay before executing a bg fetch (test feature).</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">couch_response_timeout</td>
+
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">timeout in receiving a response from CouchDB.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">exp_pager_stime</td>
+
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Expiry Pager interval. Time interval that Couchbase Server waits
 								before it performs cleanup and removal of expired items from
 								disk.</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">flushall_enabled</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">flushall_enabled</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Deprecated. Enable flush operation.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">pager_active_vb_pcnt</td>
-
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Percentage of active vBuckets items among all ejected items by item pager.</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Deprecated. Enable flush operation.</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">max_size</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">pager_active_vb_pcnt</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Maximum memory used by the server.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">mem_high_wat</td>
-
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Low water mark by percentage.</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Percentage of active vBuckets items among all ejected items by item pager.</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">mem_low_wat</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">max_size</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">High water mark by percentage.</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Maximum memory used by the server.</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">mutation_mem_threshold</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">mem_high_wat</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Amount of RAM that can be consumed in that caching layer before
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Low water mark by percentage.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">mem_low_wat</td>
+
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">High water mark by percentage.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">mutation_mem_threshold</td>
+
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Amount of RAM that can be consumed in that caching layer before
 								clients start receiving temporary out of memory messages.</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">timing_log</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">timing_log</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Path to log detailed timing stats. </td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">warmup_min_memory_threshold</td>
-
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Memory threshold (%) during warmup to enable traffic.</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Path to log detailed timing stats. </td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">warmup_min_item_threshold</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">warmup_min_memory_threshold</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Item number threshold (%) during warmup to enable traffic.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">max_num_readers</td>
-
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Override the default number of global threads that prioritize read operations.</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Memory threshold (%) during warmup to enable traffic.</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">max_num_writers</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">warmup_min_item_threshold</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Override the default number of global threads that prioritize write
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Item number threshold (%) during warmup to enable traffic.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">max_num_readers</td>
+
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Override the default number of global threads that prioritize read operations.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">max_num_writers</td>
+
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Override the default number of global threads that prioritize write
 								operations.</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">max_num_auxio</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">max_num_auxio</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Override the default number of global threads that prioritize auxio
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Override the default number of global threads that prioritize auxio
 								operations.</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e315 ">max_num_nonio</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e315 ">max_num_nonio</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e318 ">Override the default number of global threads that prioritize nonio
+							<td class="entry" valign="top" width="50%" headers="d38408e318 ">Override the default number of global threads that prioritize nonio
 								operations.</td>
 
 						</tr>
@@ -414,9 +423,9 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d8628e525">Parameter</th>
+							<th class="entry" valign="top" width="50%" id="d38408e525">Parameter</th>
 
-							<th class="entry" valign="top" width="50%" id="d8628e528">Description</th>
+							<th class="entry" valign="top" width="50%" id="d38408e528">Description</th>
 
 						</tr>
 
@@ -424,30 +433,30 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e525 ">tap_keepalive</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e525 ">tap_keepalive</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e528 ">Seconds to hold a named tap connection.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e525 ">tap_throttle_queue_cap</td>
-
-							<td class="entry" valign="top" width="50%" headers="d8628e528 ">Maximum disk write queue size to throttle tap streams (infinite means no cap).</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e528 ">Seconds to hold a named tap connection.</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e525 ">tap_throttle_cap_pcnt</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e525 ">tap_throttle_queue_cap</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e528 ">Percentage of total items in write queue at which we throttle tap input.</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e528 ">Maximum disk write queue size to throttle tap streams (infinite means no cap).</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d8628e525 ">tap_throttle_threshold</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e525 ">tap_throttle_cap_pcnt</td>
 
-							<td class="entry" valign="top" width="50%" headers="d8628e528 ">Percentage of memory in use to throttle tap streams</td>
+							<td class="entry" valign="top" width="50%" headers="d38408e528 ">Percentage of total items in write queue at which we throttle tap input.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d38408e525 ">tap_throttle_threshold</td>
+
+							<td class="entry" valign="top" width="50%" headers="d38408e528 ">Percentage of memory in use to throttle tap streams</td>
 
 						</tr>
 
@@ -464,6 +473,27 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 	</div>
 
 	<nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-threadpool-tuning.html">Changing shared thread pool settings</a><br>
+Dynamic shared thread pool performance is tunable via <samp class="ph codeph">cbepctl set flush_param</samp> command options.</li>
+<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-thresholds.html">Changing ejection thresholds</a><br>
+The item pager process ejects items from RAM when too much space is being taken up in     RAM.</li>
+<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-accesslog.html">Changing access log settings</a><br>
+Access log settings determine when the access scanner process initially runs and how     often.</li>
+<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-diskcleanup.html">Changing disk cleanup intervals</a><br>
+Disk cleanup is the maintenance process of erasing expired items.</li>
+<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-diskwritequeue.html">Changing disk write queue quotas</a><br>
+The quota in disk write queues impact the rate of data sent from source nodes to 		destination nodes. </li>
+<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-timeout.html">Changing out-of-memory thresholds</a><br>
+A out-of-memory error message is sent when RAM consumption threshold is at     95%.</li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Server command-line interface (CLI) tools are provided to manage and monitor clusters, servers, vBuckets, XDCR, and so on.">CLI reference</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../CLI/cbdocloader_tool.html" title="The cbdocloader tool is used to load a group of JSON documents in a given directory or in a single .zip file.">cbdocloader tool</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../CLI/cbhealthchecker_tool.html" title="The cbhealthchecker tool generates a health report named Cluster Health Check Report for a cluster.">cbhealthchecker tool</a></div>
+</div>
+
 <div class="linklist linklist">
 <div><a class="link" href="CBcli/cbcli-buckets.html" title="Buckets are managed with the couchbase-cli tool and the bucket-* commands.">Buckets</a></div>
 <div><a class="link" href="../REST/rest-bucket-flush.html" title="To flush all buckets, use the POST /pools/default/buckets/default/controller/doFlush HTTP method and URI.">Flushing buckets</a></div>

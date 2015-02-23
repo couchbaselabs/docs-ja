@@ -1,0 +1,222 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="To retrieve information about existing buckets and the default bucket, use the GET operation with the /pools/default/buckets/[bucket-name] URI."><meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-buckets-summary.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-stats.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rest-bucket-info">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Getting single bucket information</title>
+</head>
+<body id="rest-bucket-info">
+
+
+    <h1 class="title topictitle1">Getting single bucket information</h1>
+
+    
+    <div class="body refbody"><p class="shortdesc">To retrieve information about existing buckets and the default bucket, 
+        use the <samp class="ph codeph">GET</samp> operation with the <samp class="ph codeph">/pools/default/buckets/[bucket-name]</samp> URI.</p>
+
+        
+        <div class="section"><h2 class="title sectiontitle">HTTP method and URI</h2>
+            <p class="p">To retrieve information for a single bucket associated with a cluster, 
+                provide the name of a specific bucket.</p>
+
+            <pre class="pre codeblock">GET /pools/default/buckets/[bucket-name]</pre>
+
+            
+            <p class="p">The main REST API bucket endpoint,
+                    <samp class="ph codeph">/pools/default/buckets/[bucket-name]</samp>, ends with the bucket
+                name. Clients MUST use the server list from the bucket, not the pool to indicate the
+                appropriate servers to connect to.</p>
+
+        </div>
+
+            
+        
+        <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+            <p class="p">Curl request syntax:</p>
+
+            <pre class="pre codeblock">
+curl -u [admin]:[password] 
+    http://[localhost]:8091/pools/default/buckets/[bucket-name]</pre>
+
+            
+            <p class="p">To get information about the default bucket, replace <samp class="ph codeph">[bucket-name]</samp> with <samp class="ph codeph">default</samp>:</p>
+
+            <pre class="pre codeblock">
+curl -u [admin]:[password] 
+    http://[localhost]:8091/pools/default/buckets/default</pre>
+
+        </div>
+
+        
+        <div class="section"><h2 class="title sectiontitle">Example</h2>
+        <p class="p">Curl request example:</p>
+
+        <pre class="pre codeblock">curl -u Administrator:password 
+    http://10.5.2.117:8091/pools/default/buckets/test2</pre>
+
+        </div>
+
+        
+        <div class="section"><h2 class="title sectiontitle">Response</h2>
+        <p class="p">Couchbase Server returns a large JSON document with bucket information.</p>
+
+        <pre class="pre codeblock">{
+    "authType": "sasl", 
+    "autoCompactionSettings": {
+        "allowedTimePeriod": {
+            "abortOutside": true, 
+            "fromHour": 1, 
+            "fromMinute": 0, 
+            "toHour": 2, 
+            "toMinute": 0
+        }, 
+        "databaseFragmentationThreshold": {
+            "percentage": 30, 
+            "size": "undefined"
+        }, 
+        "parallelDBAndViewCompaction": true, 
+        "viewFragmentationThreshold": {
+            "percentage": 30, 
+            "size": "undefined"
+        }
+    }, 
+    "basicStats": {
+        "dataUsed": 16824320, 
+        "diskFetches": 0, 
+        "diskUsed": 18068198, 
+        "itemCount": 0, 
+        "memUsed": 33948168, 
+        "opsPerSec": 0, 
+        "quotaPercentUsed": 12.64667809009552
+    }, 
+    "bucketCapabilities": [
+        "cbhello", 
+        "touch", 
+        "couchapi", 
+        "cccp", 
+        "xdcrCheckpointing", 
+        "nodesExt"
+    ], 
+    "bucketCapabilitiesVer": "", 
+    "bucketType": "membase", 
+    "controllers": {
+        "compactAll": "/pools/default/buckets/test2/controller/compactBucket", 
+        "compactDB": "/pools/default/buckets/default/controller/compactDatabases", 
+        "purgeDeletes": "/pools/default/buckets/test2/controller/unsafePurgeBucket", 
+        "startRecovery": "/pools/default/buckets/test2/controller/startRecovery"
+    }, 
+    "ddocs": {
+        "uri": "/pools/default/buckets/test2/ddocs"
+    }, 
+    "evictionPolicy": "valueOnly", 
+    "fastWarmupSettings": false, 
+    "localRandomKeyUri": "/pools/default/buckets/test2/localRandomKey", 
+    "name": "test2", 
+    "nodeLocator": "vbucket", 
+    "nodes": [
+        {
+            "clusterCompatibility": 196608, 
+            "clusterMembership": "active", 
+            "couchApiBase": "http://10.5.2.117:8092/test2%2B19e3c64824c22f9ad5604a15f856999d", 
+            "couchApiBaseHTTPS": "https://10.5.2.117:18092/test2%2B19e3c64824c22f9ad5604a15f856999d", 
+            "hostname": "10.5.2.117:8091", 
+            "interestingStats": {
+                "cmd_get": 0, 
+                "couch_docs_actual_disk_size": 34907800, 
+                "couch_docs_data_size": 33648640, 
+                "couch_views_actual_disk_size": 0, 
+                "couch_views_data_size": 0, 
+                "curr_items": 0, 
+                "curr_items_tot": 0, 
+                "ep_bg_fetched": 0, 
+                "get_hits": 0, 
+                "mem_used": 66961824, 
+                "ops": 0, 
+                "vb_replica_curr_items": 0
+            }, 
+            "mcdMemoryAllocated": 3159, 
+            "mcdMemoryReserved": 3159, 
+            "memoryFree": 2912423936, 
+            "memoryTotal": 4140740608, 
+            "os": "x86_64-unknown-linux-gnu", 
+            "otpNode": "ns_1@10.5.2.117", 
+            "ports": {
+                "direct": 11210, 
+                "httpsCAPI": 18092, 
+                "httpsMgmt": 18091, 
+                "proxy": 11211, 
+                "sslProxy": 11214
+            }, 
+            "recoveryType": "none", 
+            "replication": 0, 
+            "status": "healthy", 
+            "systemStats": {
+                "cpu_utilization_rate": 1, 
+                "mem_free": 2912423936, 
+                "mem_total": 4140740608, 
+                "swap_total": 6140452864, 
+                "swap_used": 0
+            }, 
+            "thisNode": true, 
+            "uptime": "2680754", 
+            "version": "3.0.0-1209-rel-enterprise"
+        }
+    ], 
+    "proxyPort": 0, 
+    "purgeInterval": 2, 
+    "quota": {
+        "ram": 268435456, 
+        "rawRAM": 268435456
+    }, 
+    "replicaIndex": false, 
+    "replicaNumber": 1, 
+    "saslPassword": "", 
+    "stats": {
+        "directoryURI": "/pools/default/buckets/test2/statsDirectory", 
+        "nodeStatsListURI": "/pools/default/buckets/test2/nodes", 
+        "uri": "/pools/default/buckets/test2/stats"
+    }, 
+    "streamingUri": "/pools/default/bucketsStreaming/test2?bucket_uuid=19e3c64824c22f9ad5604a15f856999d", 
+    "threadsNumber": 3, 
+    "uri": "/pools/default/buckets/test2?bucket_uuid=19e3c64824c22f9ad5604a15f856999d", 
+    "uuid": "19e3c64824c22f9ad5604a15f856999d", 
+    "vBucketServerMap": {
+        "hashAlgorithm": "CRC", 
+        "numReplicas": 1, 
+        "serverList": [
+            "10.5.2.117:11210"
+        ], 
+        "vBucketMap": [
+
+</pre>
+
+        </div>
+
+        
+
+        
+        <div class="section"><h2 class="title sectiontitle">Response codes</h2>
+        <pre class="pre codeblock">HTTP/1.1 200 OK</pre>
+
+        </div>
+
+    </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-bucket-intro.html" title="The Buckets REST API creates, deletes, flushes, and retrieves information about buckets and bucket operations.">Buckets API</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-buckets-summary.html" title="To retrieve all bucket information for a cluster use the GET /pools/default/buckets HTTP method and URI.">Getting all bucket information</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-bucket-stats.html" title="To retrieve bucket statistics, use the GET operation with the /pools/default/buckets/bucket_name/stats URI.">Getting bucket statistics</a></div>
+</div>
+</nav>
+</body>
+</html>

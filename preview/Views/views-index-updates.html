@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="concept">
+<meta name="abstract" content="Stream-based views reduce latency for view updates, providing faster view consistency and fresher data.">
+<meta name="description" content="Stream-based views reduce latency for view updates, providing faster view consistency and fresher data.">
+<meta name="DC.Relation" scheme="URI" content="../Views/views-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Views/views-basics.html">
+<meta name="DC.Relation" scheme="URI" content="../Views/views-operation.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="concept_ggp_tqp_yn">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Stream-based views</title>
+</head>
+<body id="concept_ggp_tqp_yn">
+
+
+
+	<h1 class="title topictitle1">Stream-based views</h1>
+
+	
+
+
+	<div class="body conbody"><div class="abstract">
+		 <span class="shortdesc">Stream-based views reduce latency for view updates, providing faster view
+			consistency and fresher data.</span>
+This feature uses the new streaming protocol,
+		Database Change Protocol (DCP). </div>
+
+
+		<p class="p">With DCP, data does not need to be persisted to disk before retrieving it with a view query.
+			DCP offers the following benefits for views: </p>
+
+		<ul class="ul">
+			<li class="li">Views are updated with key-value data sooner.</li>
+
+			<li class="li">Latency for view updates is reduced.</li>
+
+			<li class="li">Views are more closely synchronized with the data.</li>
+
+		</ul>
+
+		
+		<p class="p">The following diagram gives an overview of how stream-based views operate.</p>
+
+		
+		<img class="image" src="../images/stream-based-views.png" width="600">
+
+		<p class="p">When submitting a view query, you can include a parameter that specifies your data freshness
+			requirements. The name of the parameter is <samp class="ph codeph">stale</samp> and it takes the
+			following values:</p>
+
+
+		<ul class="ul">
+			<li class="li"><samp class="ph codeph">ok</samp>—The server returns the current entries from the index file.</li>
+
+			<li class="li"><samp class="ph codeph">update_after</samp>—The server returns the current entries from the index,
+				and then initiates an index update.</li>
+
+			<li class="li"><samp class="ph codeph">false</samp>—The server waits for the indexer to finish the changes that
+				correspond to the current key-value document set and then returns the latest entries
+				from the view index.</li>
+
+		</ul>
+
+
+		<p class="p">Every 5 seconds the automatic update process checks whether 5000 changes have occurred. If
+			a minimum of 5000 changes occurred, an index update is triggered. Otherwise, no update is
+			triggered. When triggered, the indexer requests from DCP all changes since it was last run.
+			The default number of changes to check for is 5000, but that number can be configured by
+			setting the <samp class="ph codeph">updateMinChanges</samp> option. The update interval can also be
+			configured by setting the <samp class="ph codeph">updateInterval</samp> option. </p>
+
+
+		<p class="p">The <samp class="ph codeph">stale=false</samp> view query argument has been enhanced. When an application
+			sends a query that has the <samp class="ph codeph">stale</samp> parameter set to false, the application
+			receives all recent changes to the documents, including changes that haven't yet been
+			persisted to disk. It considers all document changes that have been received at the time
+			the query was received. This means that using the durability requirements or observe
+			feature to block for persistence in application code before issuing the
+				<samp class="ph codeph">stale=false</samp> query is no longer needed. It is recommended that you
+			remove all such application level checks after upgrading.</p>
+
+
+
+		<div class="note note"><span class="notetitle">Best practice:</span> For better scalability and throughput, we
+			recommend that you set the value of the <samp class="ph codeph">stale</samp> parameter to
+				<samp class="ph codeph">ok</samp>. With the stream-based views feature, data returned when
+				<samp class="ph codeph">stale</samp> is set to <samp class="ph codeph">ok</samp> is closer to the key-value data,
+			even though it might not include all of it.</div>
+
+
+	</div>
+
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Views/views-intro.html" title="Couchbase views enable indexing and querying of data.">Views and indexes</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Views/views-basics.html" title="Views allow you to extract specific fields and information from data and create an index.">View basics</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Views/views-operation.html" title="This section describes how Views operate and how various functions impact views and data.">Views operations</a></div>
+</div>
+</nav>
+</body>
+</html>

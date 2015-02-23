@@ -1,0 +1,132 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="To modify bucket parameters, use the POST /pools/default/buckets/[bucket-name] HTTP method and URI with the bucket name being the REST API endpoint."><meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-metadata-ejection.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-bucket-auth.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rest-bucket-change">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Changing bucket parameters</title>
+</head>
+<body id="rest-bucket-change">
+
+
+  <h1 class="title topictitle1">Changing bucket parameters</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">To modify bucket parameters, use the <samp class="ph codeph">POST
+      /pools/default/buckets/[bucket-name]</samp> HTTP method and URI with the bucket name being
+    the REST API endpoint. </p>
+
+    <div class="section"><h2 class="title sectiontitle">Description</h2>
+    <p class="p">You can modify existing bucket parameters by posting the updated parameters used to create
+      the bucket to the bucket’s URI. Do not omit a parameter in your request since this is
+      equivalent to not setting it in many cases. We recommend you do a request to get current
+      bucket settings, make modifications as needed and then make your POST request to the bucket
+      URI.</p>
+
+      
+      <div class="note note"><span class="notetitle">Note:</span> 
+        The bucket name cannot be changed via the REST API.</div>
+
+    
+    <div class="note important"><span class="importanttitle">Important:</span> When changing the active bucket configuration, specify the existing
+      configuration parameters and the changed authentication parameters.</div>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">Curl request syntax:</p>
+
+      <pre class="pre codeblock">curl -v -X POST -u [admin]:[password] 
+  -d name=[customer] 
+  -d flushEnabled=[0 | 1] 
+  -d replicaNumber=[value from 0 to 3] 
+  -d authType=[none | sasl]
+  -d ramQuotaMB=[value] 
+  -d proxyPort=[port]
+  http://[localhost]:8091/pools/default/buckets/[bucket-name]
+      </pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+      <p class="p">Curl request example:</p>
+
+      <p class="p">To edit the bucket <samp class="ph codeph">customer</samp> on server node <samp class="ph codeph">10.5.2.54</samp>:</p>
+
+      <pre class="pre codeblock">curl -v -X POST -u admin:password 
+  -d name=customer 
+  -d flushEnabled=0 
+  -d replicaNumber=1 
+  -d authType=none 
+  -d ramQuotaMB=200 
+  -d proxyPort=11212 
+  http://10.5.2.117:8091/pools/default/buckets/customer
+      </pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Response</h2>
+      <p class="p">If the request is successful, HTTP response 200 is returned with an empty data content.</p>
+
+      <pre class="pre codeblock">202 OK</pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Response codes</h2>
+      
+      <pre class="pre codeblock"></pre>
+
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="25.97402597402597%" id="d88498e92">Response codes</th>
+
+              <th class="entry" valign="top" width="74.02597402597402%" id="d88498e95">Description</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="25.97402597402597%" headers="d88498e92 ">200</td>
+
+              <td class="entry" valign="top" width="74.02597402597402%" headers="d88498e95 ">OK</td>
+
+            </tr>
+
+            
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-bucket-intro.html" title="The Buckets REST API creates, deletes, flushes, and retrieves information about buckets and bucket operations.">Buckets API</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-bucket-metadata-ejection.html" title="Bucket ejection from memory is set with POST /pools/default/buckets/default.">Setting metadata ejection</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-bucket-auth.html" title="To change bucket authentication use the POST /pools/default/buckets/acache HTTP method and URI with the authType parameter.">Changing bucket authentication</a></div>
+</div>
+</nav>
+</body>
+</html>

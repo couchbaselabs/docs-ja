@@ -1,0 +1,296 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="reference">
+<meta name="description" content="The XDCR advanced settings change replication behavior, performance, and timing."><meta name="DC.Relation" scheme="URI" content="../REST/rest-xdcr-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-xdcr-delete-replication.html">
+<meta name="DC.Relation" scheme="URI" content="../REST/rest-xdcr-pause-resume.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rest-xdcr-adv-settings">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Managing advanced XDCR settings</title>
+</head>
+<body id="rest-xdcr-adv-settings">
+
+
+	<h1 class="title topictitle1">Managing advanced XDCR settings</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">The XDCR advanced settings change replication behavior, performance, and timing.</p>
+
+		<div class="section"><h2 class="title sectiontitle">HTTP method and URI</h2>
+			<p class="p">The URI endpoints are available to change global settings for cluster replications
+			and to change settings for a specific replication ID.</p>
+
+			
+			<pre class="pre codeblock">
+POST /settings/replications/
+POST /settings/replications/[replication_id]</pre>
+
+			
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="rest-xdcr-adv-settings__table_xdcr_settings_uri" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. XDCR URI paths for settings</span></caption>
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="42.5531914893617%" id="d102910e40">URI path</th>
+
+							<th class="entry" valign="top" width="57.446808510638306%" id="d102910e43">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="42.5531914893617%" headers="d102910e40 ">/settings/replications/</td>
+
+							<td class="entry" valign="top" width="57.446808510638306%" headers="d102910e43 ">Global setting supplied to all replications for a cluster.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="42.5531914893617%" headers="d102910e40 ">/settings/replications/[replication-id]</td>
+
+							<td class="entry" valign="top" width="57.446808510638306%" headers="d102910e43 ">Settings for a specific replication for a bucket.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Syntax</h2>
+			<p class="p">Curl request
+			syntax:</p>
+<pre class="pre codeblock">
+curl -u [admin]:[password] -X GET http://[localhost]:8091/settings/replication
+curl -u [admin]:[password] -X GET http://[localhost]:8091/settings/replication/[replication-id]
+			</pre>
+</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Example</h2>
+			<p class="p">The following example retrieves all replication settings:</p>
+
+			<pre class="pre codeblock">GET /settings/replications</pre>
+
+			
+			<pre class="pre codeblock">
+// Curl example
+curl -u Administrator:password 10.5.2.54:8091/settings/replications
+
+// Results
+{
+    "checkpointInterval": 1800, 
+    "connectionTimeout": 180, 
+    "docBatchSizeKb": 2048, 
+    "failureRestartInterval": 30, 
+    "httpConnections": 20, 
+    "maxConcurrentReps": 16, 
+    "optimisticReplicationThreshold": 256, 
+    "pauseRequested": false, 
+    "retriesPerRequest": 2, 
+    "socketOptions": {
+        "keepalive": true, 
+        "nodelay": false
+    }, 
+    "supervisorMaxR": 25, 
+    "supervisorMaxT": 5, 
+    "workerBatchSize": 500, 
+    "workerProcesses": 4
+}
+				</pre>
+
+			
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">XDCR advanced settings</h2>
+		
+		<p class="p">The following parameters are used for setting all replications globally or setting a specific replication ID. </p>
+
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="rest-xdcr-adv-settings__table_xdcr_settings" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 2. XDCR advanced settings</span></caption>
+				
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="22.77904328018223%" id="d102910e119">Parameter</th>
+
+						<th class="entry" valign="top" width="25.056947608200453%" id="d102910e122">Value</th>
+
+						<th class="entry" valign="top" width="52.164009111617304%" id="d102910e125">Description</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="22.77904328018223%" headers="d102910e119 ">checkpointInterval</td>
+
+						<td class="entry" valign="top" width="25.056947608200453%" headers="d102910e122 ">Integer (10 to 14400).</td>
+
+						<td class="entry" valign="top" width="52.164009111617304%" headers="d102910e125 ">Default: 1800. Web console equivalent: XDCR Checkpoint
+							Interval.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="22.77904328018223%" headers="d102910e119 ">connectionTimeout</td>
+
+						<td class="entry" valign="top" width="25.056947608200453%" headers="d102910e122 ">Integer (10 to 10000)</td>
+
+						<td class="entry" valign="top" width="52.164009111617304%" headers="d102910e125 ">Default: 180.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="22.77904328018223%" headers="d102910e119 ">docBatchSizeKb</td>
+
+						<td class="entry" valign="top" width="25.056947608200453%" headers="d102910e122 ">Integer (10 to 10000)</td>
+
+						<td class="entry" valign="top" width="52.164009111617304%" headers="d102910e125 ">Default: 2048. Web console equivalent: XDCR Batch Size (KB).</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="22.77904328018223%" headers="d102910e119 ">failureRestartInterval</td>
+
+						<td class="entry" valign="top" width="25.056947608200453%" headers="d102910e122 ">Integer (1 to 300)</td>
+
+						<td class="entry" valign="top" width="52.164009111617304%" headers="d102910e125 ">Default: 30. Web console equivalent: XDCR Failure Retry
+							Interval.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="22.77904328018223%" headers="d102910e119 ">httpConnections</td>
+
+						<td class="entry" valign="top" width="25.056947608200453%" headers="d102910e122 ">Integer (1 to 100)</td>
+
+						<td class="entry" valign="top" width="52.164009111617304%" headers="d102910e125 ">Default: 20. Number of maximum simultaneous HTTP connections
+							used.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="22.77904328018223%" headers="d102910e119 ">maxConcurrentReps</td>
+
+						<td class="entry" valign="top" width="25.056947608200453%" headers="d102910e122 ">Integer (2 to 256)</td>
+
+						<td class="entry" valign="top" width="52.164009111617304%" headers="d102910e125 ">Default: 16. Web console equivalent: XDCR Max Replications per
+							Bucket.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="22.77904328018223%" headers="d102910e119 ">optimisticReplicationThreshold</td>
+
+						<td class="entry" valign="top" width="25.056947608200453%" headers="d102910e122 ">Integer (0 to (20*1024*1024))</td>
+
+						<td class="entry" valign="top" width="52.164009111617304%" headers="d102910e125 ">Default: 256. Web console equivalent: XDCR Optimistic Replication
+							Threshold.</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="22.77904328018223%" headers="d102910e119 ">pauseRequested</td>
+
+						<td class="entry" valign="top" width="25.056947608200453%" headers="d102910e122 ">Boolean (true or false)</td>
+
+						<td class="entry" valign="top" width="52.164009111617304%" headers="d102910e125 ">Initially set at false. Web console via <span class="ph uicontrol">XDCR &gt; Ongoing
+								replications &gt; Status</span>. Pauses the XDCR replication
+							stream. <strong class="ph b">Enterprise Edition only.</strong></td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="22.77904328018223%" headers="d102910e119 ">retriesPerRequest</td>
+
+						<td class="entry" valign="top" width="25.056947608200453%" headers="d102910e122 ">Integer (1 to 100)</td>
+
+						<td class="entry" valign="top" width="52.164009111617304%" headers="d102910e125 ">Default: 2</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="22.77904328018223%" headers="d102910e119 ">socketOptions</td>
+
+						<td class="entry" valign="top" width="25.056947608200453%" headers="d102910e122 ">Term. </td>
+
+						<td class="entry" valign="top" width="52.164009111617304%" headers="d102910e125 ">Additional parameters are keepalive (true or false) and nodelay
+							(false or true).</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="22.77904328018223%" headers="d102910e119 ">supervisorMaxR</td>
+
+						<td class="entry" valign="top" width="25.056947608200453%" headers="d102910e122 ">Integer (1 to 1000)</td>
+
+						<td class="entry" valign="top" width="52.164009111617304%" headers="d102910e125 ">Default: 25</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="22.77904328018223%" headers="d102910e119 ">supervisorMaxT</td>
+
+						<td class="entry" valign="top" width="25.056947608200453%" headers="d102910e122 ">Integer (1 to 1000)</td>
+
+						<td class="entry" valign="top" width="52.164009111617304%" headers="d102910e125 ">Default: 5</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="22.77904328018223%" headers="d102910e119 ">workerProcesses</td>
+
+						<td class="entry" valign="top" width="25.056947608200453%" headers="d102910e122 ">Integer (1 to 128)</td>
+
+						<td class="entry" valign="top" width="52.164009111617304%" headers="d102910e125 ">Default: 4. Web console equivalent: XDCR Workers per Replication. The
+							number of worker processes for each vbucket replicator in XDCR. This
+							setting is available with memcached or REST. </td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="22.77904328018223%" headers="d102910e119 ">workerBatchSize</td>
+
+						<td class="entry" valign="top" width="25.056947608200453%" headers="d102910e122 ">Integer (500 to 10000)</td>
+
+						<td class="entry" valign="top" width="52.164009111617304%" headers="d102910e125 ">Default: 500. Web console equivalent: XDCR Batch Count.</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		</div>
+
+
+
+	</div>
+
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-xdcr-intro.html" title="The XDCR REST API is used to manage Cross Datacenter Replication (XDCR) operations.">XDCR API</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-xdcr-delete-replication.html" title="To delete an XDCR replication, use the DELETE /controller/cancelXDCR HTTP method and URI.">Deleting XDCR replications</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-xdcr-pause-resume.html" title="XDCR replication is paused and resumed using the /settings/replications/ URI path and the pauseRequested option.">Pausing XDCR replication streams</a></div>
+</div>
+</nav>
+</body>
+</html>

@@ -5,7 +5,14 @@
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="topic">
-<meta name="description" content="The Couchbase Server can be upgraded online (using swap rebalance or the standard online upgrade), offline, or using XDCR."><meta name="DC.Relation" scheme="URI" content="../CLI/cbbackup_tool.html">
+<meta name="description" content="The Couchbase Server can be upgraded online (using swap rebalance or the standard online upgrade), offline, or using XDCR."><meta name="DC.Relation" scheme="URI" content="../install-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/post-install.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/migrating.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/supported_upgrade-paths.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/upgrade-online.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/upgrade-offline.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/upgrade-individual-nodes.html">
+<meta name="DC.Relation" scheme="URI" content="../CLI/cbbackup_tool.html">
 <meta name="DC.Relation" scheme="URI" content="../CLI/cbrestore_tool.html">
 <meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="topic19310">
@@ -38,11 +45,11 @@
         
         <thead class="thead" align="left">
           <tr class="row">
-            <th class="entry" valign="top" width="33.33333333333333%" id="d26734e35">Feature</th>
+            <th class="entry" valign="top" width="33.33333333333333%" id="d69843e35">Feature</th>
 
-            <th class="entry" valign="top" width="33.33333333333333%" id="d26734e38">Online upgrades</th>
+            <th class="entry" valign="top" width="33.33333333333333%" id="d69843e38">Online upgrades</th>
 
-            <th class="entry" valign="top" width="33.33333333333333%" id="d26734e41">Offline upgrades</th>
+            <th class="entry" valign="top" width="33.33333333333333%" id="d69843e41">Offline upgrades</th>
 
           </tr>
 
@@ -50,38 +57,38 @@
 
         <tbody class="tbody">
           <tr class="row">
-            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e35 ">Applications remain available</td>
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d69843e35 ">Applications remain available</td>
 
-            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e38 ">Yes</td>
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d69843e38 ">Yes</td>
 
-            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e41 ">No</td>
-
-          </tr>
-
-          <tr class="row">
-            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e35 ">Cluster stays in operation</td>
-
-            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e38 ">Yes</td>
-
-            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e41 ">No</td>
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d69843e41 ">No</td>
 
           </tr>
 
           <tr class="row">
-            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e35 ">Cluster must be shut down</td>
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d69843e35 ">Cluster stays in operation</td>
 
-            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e38 ">No</td>
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d69843e38 ">Yes</td>
 
-            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e41 ">Yes</td>
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d69843e41 ">No</td>
 
           </tr>
 
           <tr class="row">
-            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e35 ">Time required</td>
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d69843e35 ">Cluster must be shut down</td>
 
-            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e38 ">Requires rebalance, upgrade, rebalance per node</td>
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d69843e38 ">No</td>
 
-            <td class="entry" valign="top" width="33.33333333333333%" headers="d26734e41 ">All nodes in cluster upgraded at once</td>
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d69843e41 ">Yes</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d69843e35 ">Time required</td>
+
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d69843e38 ">Requires rebalance, upgrade, rebalance per node</td>
+
+            <td class="entry" valign="top" width="33.33333333333333%" headers="d69843e41 ">All nodes in cluster upgraded at once</td>
 
           </tr>
 
@@ -168,8 +175,25 @@
   </div>
 
   <nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../Install/supported_upgrade-paths.html">Supported upgrade paths</a><br>
+The supplied supported paths apply both to online and offline upgrades.</li>
+<li class="link olchildlink"><a href="../Install/upgrade-online.html">Online upgrade with swap rebalance</a><br>
+Online upgrade with swap rebalance is the preferred upgrade method because cluster capacity is always maintained      throughout the upgrade.</li>
+<li class="link olchildlink"><a href="../Install/upgrade-offline.html">Offline upgrade</a><br>
+During an offline upgrade, the cluster must be shut down and all applications built on it will not be     available during that time.</li>
+<li class="link olchildlink"><a href="../Install/upgrade-individual-nodes.html">Upgrading one node</a><br>
+To upgrade a single Couchbase Server node, first back it up and then install the     software.</li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../install-intro.html" title="This guide explains preinstallation, installation on various platforms, post-installation, upgrading, and migration procedures for Couchbase Server.">Installation and upgrade</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/post-install.html" title="Post-installation activities includes setting up the initial server and testing the server connections.">Post-installation</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/migrating.html" title="This section explains how to migrate from Membase or CouchDB to Couchbase Server.">Migrating</a></div>
+</div>
+
 <div class="linklist linklist">
-<div><a class="link" href="../CLI/cbbackup_tool.html" title="The cbbackup tool creates a copy of data from an entire running cluster, an entire bucket, a single node, or a single bucket on a single functioning node.">cbbackup tool</a></div>
+<div><a class="link" href="../CLI/cbbackup_tool.html" title="cbbackupツールは、稼働中の全クラスタ・全バケット・単一ノード・正常稼働中ノード上の単一バケット のコピーを作成します。">cbbackupツール</a></div>
 <div><a class="link" href="../CLI/cbrestore_tool.html" title="The cbrestore tool restores data from a file to an entire cluster or to a single bucket in the cluster.">cbrestore tool</a></div></div>
 </nav>
 

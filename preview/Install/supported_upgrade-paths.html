@@ -1,0 +1,207 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="The supplied supported paths apply both to online and offline upgrades."><meta name="DC.Relation" scheme="URI" content="../Install/upgrading.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/upgrade-online.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_pkl_vdz_bq">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Supported upgrade paths</title>
+</head>
+<body id="topic_pkl_vdz_bq">
+
+
+  <h1 class="title topictitle1">Supported upgrade paths</h1>
+ 
+  <div class="body"><p class="shortdesc">The supplied supported paths apply both to online and offline upgrades.</p>
+
+    <p class="p">There are two basic upgrade paths for the Couchbase Server:</p>
+
+    <ul class="ul">
+      <li class="li">Couchbase 2.x to a later version of Couchbase 2.x.</li>
+
+      <li class="li">Couchbase 2.x to Couchbase 3.0.</li>
+
+    </ul>
+
+    <p class="p">You must upgrade to the latest available production version before upgrading to Couchbase
+      Server 3.0.x. </p>
+
+    <p class="p">For Enterprise Edition customers, that version is Couchbase Server 2.5.1. For Community
+      Edition users, that version is Couchbase Server 2.2.0.</p>
+
+    <p class="p">Prior to upgrade, back up the files.</p>
+
+    
+    
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+        
+        
+        <thead class="thead" align="left">
+          <tr class="row">
+            <th class="entry" valign="top" width="23.640661938534276%" id="d67957e49">Platform</th>
+
+            <th class="entry" valign="top" width="76.3593380614657%" id="d67957e52">Location</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+          <tr class="row">
+            <td class="entry" valign="top" width="23.640661938534276%" headers="d67957e49 ">Linux</td>
+
+            <td class="entry" valign="top" width="76.3593380614657%" headers="d67957e52 "><span class="ph filepath">/opt/couchbase/var/lib/couchbase/config/config.dat</span></td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="23.640661938534276%" headers="d67957e49 ">Windows</td>
+
+            <td class="entry" valign="top" width="76.3593380614657%" headers="d67957e52 "><span class="ph filepath">C:\Program&nbsp;Files\Couchbase\Server\Config\var\lib\couchbase\config\config.dat</span></td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+</div>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">Upgrading from Community Edition to Enterprise Edition</h2>
+      <div class="note note"><span class="notetitle">Note:</span> Use the same
+        Couchbase Server version number when upgrading to the Enterprise Edition. Version
+        differences can result in a failed upgrade.</div>
+
+      
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Upgrading to 3.0.x</h2></div>
+
+    
+    <p class="p">With encryption access, the following port is reserved for client access to data nodes using
+      SSL.</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="22.675736961451246%" id="d67957e108">Port</th>
+
+              <th class="entry" valign="top" width="77.32426303854876%" id="d67957e111">Description</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="22.675736961451246%" headers="d67957e108 ">11207</td>
+
+              <td class="entry" valign="top" width="77.32426303854876%" headers="d67957e111 ">Internal/External Bucket Port for SSL</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">Upgrading to 2.5.x</h2>
+      
+      <p class="p">Before upgrading to 2.5.x:</p>
+
+      
+      <p class="p">If buckets are using any of
+        the following reserved ports, change the port for the bucket. Otherwise, XDCR data
+        encryption won't be available. (This applies both to offline and online upgrades.)
+      </p>
+
+      <div class="note important"><span class="importanttitle">Important:</span> Verify that the Secure Socket Layer (SSL) reserved ports are
+        available prior to using XDCR data encryption. </div>
+
+      
+      <p class="p">With XDCR data encryption, the
+        following ports are reserved:</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="22.675736961451246%" id="d67957e157">Port</th>
+
+                <th class="entry" valign="top" width="77.32426303854876%" id="d67957e160">Description</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="22.675736961451246%" headers="d67957e157 ">11214</td>
+
+                <td class="entry" valign="top" width="77.32426303854876%" headers="d67957e160 ">Incoming SSL proxy</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="22.675736961451246%" headers="d67957e157 ">11215</td>
+
+                <td class="entry" valign="top" width="77.32426303854876%" headers="d67957e160 ">Internal outgoing SSL proxy</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="22.675736961451246%" headers="d67957e157 ">18091</td>
+
+                <td class="entry" valign="top" width="77.32426303854876%" headers="d67957e160 ">Internal REST HTTPS for SSL</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="22.675736961451246%" headers="d67957e157 ">18092</td>
+
+                <td class="entry" valign="top" width="77.32426303854876%" headers="d67957e160 ">Internal CAPI HTTPS for SSL </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      
+      <div class="note note"><span class="notetitle">Note:</span> If Couchbase Server 2.5 has more than two (2) replicas, the first swap rebalance takes additional time. 
+        This behavior is expected.</div>
+
+      
+      <div class="note restriction"><span class="restrictiontitle">Restriction:</span> The RPM package manager does not support the  
+        <samp class="ph codeph">--relocate</samp> option because it cannot correctly detect which release must be kept and which must be replaced. 
+        As result, all binary files and their wrapper scripts cannot be correctly installed into the relocated bin directory 
+        during upgrade.
+      </div>
+
+    </div>
+
+  </div>
+
+
+ 
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/upgrading.html" title="The Couchbase Server can be upgraded online (using swap rebalance or the standard online upgrade), offline, or using XDCR.">Upgrading</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/upgrade-online.html" title="Online upgrade with swap rebalance is the preferred upgrade method because cluster capacity is always maintained throughout the upgrade.">Online upgrade with swap rebalance</a></div>
+</div>
+</nav>
+</body>
+</html>

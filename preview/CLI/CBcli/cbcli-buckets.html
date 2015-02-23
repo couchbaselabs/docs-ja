@@ -5,7 +5,15 @@
 <meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
 <meta name="DC.rights.owner" content="(C) Copyright 2015">
 <meta name="DC.Type" content="reference">
-<meta name="description" content="Buckets are managed with the couchbase-cli tool and the bucket-* commands."><meta name="DC.Format" content="XHTML">
+<meta name="description" content="Buckets are managed with the couchbase-cli tool and the bucket-* commands."><meta name="DC.Relation" scheme="URI" content="../../CLI/cbcli-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-rza.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-servers.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-bucket-create.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-bucket-flush.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-bucket-compact.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/cli-set-disk-priority.html">
+<meta name="DC.Relation" scheme="URI" content="../../CLI/CBcli/cbcli-bucket-metadata-ejection.html">
+<meta name="DC.Format" content="XHTML">
 <meta name="DC.Identifier" content="cbcli-buckets">
 <meta name="DC.Language" content="en-us">
 <link rel="stylesheet" type="text/css" href="../../commonltr.css">
@@ -35,9 +43,9 @@
                                         
                                         <thead class="thead" align="left">
                                                 <tr class="row">
-                                                        <th class="entry" valign="top" width="50%" id="d30e48">Parameter</th>
+                                                        <th class="entry" valign="top" width="50%" id="d1063e48">Parameter</th>
 
-                                                        <th class="entry" valign="top" width="50%" id="d30e51">Description</th>
+                                                        <th class="entry" valign="top" width="50%" id="d1063e51">Description</th>
 
                                                 </tr>
 
@@ -45,87 +53,87 @@
 
                                         <tbody class="tbody">
                                                 <tr class="row">
-                                                        <td class="entry" valign="top" width="50%" headers="d30e48 ">--bucket=BUCKETNAME</td>
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e48 ">--bucket=BUCKETNAME</td>
 
-                                                        <td class="entry" valign="top" width="50%" headers="d30e51 ">Named bucket to act on</td>
-
-                                                </tr>
-
-                                                <tr class="row">
-                                                        <td class="entry" valign="top" width="50%" headers="d30e48 ">--bucket-type=TYPE</td>
-
-                                                        <td class="entry" valign="top" width="50%" headers="d30e51 ">Bucket type, either memcached or couchbase</td>
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e51 ">Named bucket to act on</td>
 
                                                 </tr>
 
                                                 <tr class="row">
-                                                        <td class="entry" valign="top" width="50%" headers="d30e48 ">--bucket-port=PORT</td>
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e48 ">--bucket-type=TYPE</td>
 
-                                                        <td class="entry" valign="top" width="50%" headers="d30e51 ">Supports ASCII protocol and does not require
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e51 ">Bucket type, either memcached or couchbase</td>
+
+                                                </tr>
+
+                                                <tr class="row">
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e48 ">--bucket-port=PORT</td>
+
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e51 ">Supports ASCII protocol and does not require
                                                                 authentication</td>
 
                                                 </tr>
 
                                                 <tr class="row">
-                                                        <td class="entry" valign="top" width="50%" headers="d30e48 ">--bucket-password=PASSWORD</td>
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e48 ">--bucket-password=PASSWORD</td>
 
-                                                        <td class="entry" valign="top" width="50%" headers="d30e51 ">Standard port, exclusive with bucket-port</td>
-
-                                                </tr>
-
-                                                <tr class="row">
-                                                        <td class="entry" valign="top" width="50%" headers="d30e48 ">--bucket-ramsize=RAMSIZEMB</td>
-
-                                                        <td class="entry" valign="top" width="50%" headers="d30e51 ">Bucket RAM quota in MB</td>
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e51 ">Standard port, exclusive with bucket-port</td>
 
                                                 </tr>
 
                                                 <tr class="row">
-                                                        <td class="entry" valign="top" width="50%" headers="d30e48 ">--bucket-replica=COUNT</td>
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e48 ">--bucket-ramsize=RAMSIZEMB</td>
 
-                                                        <td class="entry" valign="top" width="50%" headers="d30e51 ">Replication count</td>
-
-                                                </tr>
-
-                                                <tr class="row">
-                                                        <td class="entry" valign="top" width="50%" headers="d30e48 ">--enable-flush=[0 | 1]</td>
-
-                                                        <td class="entry" valign="top" width="50%" headers="d30e51 ">Enables and disables flush</td>
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e51 ">Bucket RAM quota in MB</td>
 
                                                 </tr>
 
                                                 <tr class="row">
-                                                        <td class="entry" valign="top" width="50%" headers="d30e48 ">--enable-index-replica=[0 | 1]</td>
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e48 ">--bucket-replica=COUNT</td>
 
-                                                        <td class="entry" valign="top" width="50%" headers="d30e51 ">Enable and disables index replicas</td>
-
-                                                </tr>
-
-                                                <tr class="row">
-                                                        <td class="entry" valign="top" width="50%" headers="d30e48 ">--wait</td>
-
-                                                        <td class="entry" valign="top" width="50%" headers="d30e51 ">Wait for bucket create to be complete before returning</td>
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e51 ">Replication count</td>
 
                                                 </tr>
 
                                                 <tr class="row">
-                                                        <td class="entry" valign="top" width="50%" headers="d30e48 ">--force</td>
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e48 ">--enable-flush=[0 | 1]</td>
 
-                                                        <td class="entry" valign="top" width="50%" headers="d30e51 ">Force command execution without asking for confirmation</td>
-
-                                                </tr>
-
-                                                <tr class="row">
-                                                        <td class="entry" valign="top" width="50%" headers="d30e48 ">--data-only</td>
-
-                                                        <td class="entry" valign="top" width="50%" headers="d30e51 ">Compact database data only</td>
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e51 ">Enables and disables flush</td>
 
                                                 </tr>
 
                                                 <tr class="row">
-                                                        <td class="entry" valign="top" width="50%" headers="d30e48 ">--view-only</td>
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e48 ">--enable-index-replica=[0 | 1]</td>
 
-                                                        <td class="entry" valign="top" width="50%" headers="d30e51 ">Compact view data only </td>
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e51 ">Enable and disables index replicas</td>
+
+                                                </tr>
+
+                                                <tr class="row">
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e48 ">--wait</td>
+
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e51 ">Wait for bucket create to be complete before returning</td>
+
+                                                </tr>
+
+                                                <tr class="row">
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e48 ">--force</td>
+
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e51 ">Force command execution without asking for confirmation</td>
+
+                                                </tr>
+
+                                                <tr class="row">
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e48 ">--data-only</td>
+
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e51 ">Compact database data only</td>
+
+                                                </tr>
+
+                                                <tr class="row">
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e48 ">--view-only</td>
+
+                                                        <td class="entry" valign="top" width="50%" headers="d1063e51 ">Compact view data only </td>
 
                                                 </tr>
 
@@ -194,6 +202,25 @@ couchbase-cli bucket-delete -c 192.168.0.1:8091 -u Administrator -p password \
         </div>
 
 
+<nav class="related-links">
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-bucket-create.html">Creating buckets</a><br>
+Buckets are created with the <samp class="ph codeph">couchbase-cli bucket-create</samp> command.</li>
+<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-bucket-flush.html">Flushing buckets</a><br>
+Buckets are flushed by enable the flush option then flushing.</li>
+<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-bucket-compact.html">Compacting buckets</a><br>
+Buckets are compacted using the <samp class="ph codeph">couchbase-cli bucket-compact</samp> command.</li>
+<li class="link olchildlink"><a href="../../CLI/cli-set-disk-priority.html">Setting bucket priority</a><br>
+The disk I/O priority for a bucket can be set to either low or high.</li>
+<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-bucket-metadata-ejection.html">Setting metadata ejection policy</a><br>
+Bucket ejection from memory is set with <samp class="ph codeph">couchbase-cli</samp> tool.</li>
+</ol>
 
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/cbcli-intro.html" title="The couchbase-cli tool is used to perform operations on an entire cluster.">couchbase-cli tool</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBcli/cbcli-rza.html" title="Rack-Zone Awareness enables logical groupings of servers on a cluster where each server group physically belongs to a rack or Availability Zone. Enterprise Edition only.">Rack-zone awareness</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBcli/cbcli-servers.html" title="Managing server nodes in a cluster involve a variety of couchbase-cli tool commands.">Server nodes</a></div>
+</div>
+</nav>
 </body>
 </html>

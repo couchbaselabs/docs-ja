@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Install Couchbase Server on RHEL using the rpm command-line tool with the downloaded RPM package."><meta name="DC.Relation" scheme="URI" content="../Install/RHEL-install-intro.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/rhel-prerequisites.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/user-defined-ports.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic_ldx_gqs_g4">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Installing on RHEL</title>
+</head>
+<body id="topic_ldx_gqs_g4">
+
+
+  <h1 class="title topictitle1">Installing on RHEL</h1>
+
+  <div class="body"><p class="shortdesc">Install Couchbase Server on RHEL using the <span class="keyword cmdname">rpm</span> command-line tool with the downloaded RPM
+    package.</p>
+
+    <div class="note important"><span class="importanttitle">Important:</span> RHEL6 and other newer Linux distributions running on physical hardware are known to have transparent 
+     <dfn class="term"> huge pages</dfn> feature enabled. While this can provide a measurable performance boost, under some conditions that the Couchbase Server 
+      is known to trigger, this option may cause severe delays in page allocations. Therefore, it is strongly recommended to 
+      disable the transparent huge pages feature when installing the Couchbase Server. </div>
+
+    <p class="p"> Log in as root (superuser) to complete the installation:</p>
+
+      <pre class="pre codeblock">
+root-&gt; rpm --install couchbase-server-<var class="keyword varname">version</var>.rpm 
+     </pre>
+
+      <p class="p">where <var class="keyword varname">version</var> is the version number of the downloaded package.</p>
+
+      <p class="p">After the <span class="keyword cmdname">rpm</span> command completes, the Couchbase Server starts automatically. It 
+        is configured to automatically start during boot under the 2, 3, 4, and 5 runlevels. Refer to
+        the Red Hat RPM documentation for more information about installing packages using RPM.</p>
+
+      <p class="p">After installation is completed, the installation process displays a message similar to the following:</p>
+
+      <pre class="pre codeblock">
+Minimum RAM required : 4 GB 
+    System RAM configured : 8174464 KB
+    Minimum number of processors required :  4 cores 
+    Number of processors on the system : 4 cores
+    
+    
+Starting couchbase-server[ OK ]
+
+You have successfully installed Couchbase Server. 
+    Browse to http://host_name:8091/ to configure your server. 
+   Refer to http://couchbase.com for additional resources.
+
+   Update your firewall configuration 
+    to allow connections to the following ports: 
+   
+    11211, 11210, 11209, 4369, 8091, 8092 and from 21100 to 21299.
+
+
+By using this software you agree to the End User License Agreement. 
+See /opt/couchbase/LICENSE.txt.
+     </pre>
+
+    
+    
+    <p class="p">After the installation is completed, use the Red Hat <span class="keyword cmdname">chkconfig</span> command to
+      manage the Couchbase Server service, including checking the current status and creating the
+      links to turn on and off the automatic start-up. To perform the initial Couchbase Server
+      setup, open a web browser and access the Couchbase Web Console.</p>
+
+    
+  </div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/RHEL-install-intro.html" title="Couchbase Server supports Red Hat (RHEL) and RHEL-based operating systems such as CentOS.">Red Hat/CentOS installation</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/rhel-prerequisites.html" title="Before you install, check the supported platforms.">Prerequisites</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/user-defined-ports.html" title="You can install and run Couchbase Server with user-defined ports rather than with the default ports.">Using user-defined ports</a></div>
+</div>
+</nav>
+</body>
+</html>

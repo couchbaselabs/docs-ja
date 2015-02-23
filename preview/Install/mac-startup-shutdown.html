@@ -1,0 +1,133 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2015">
+<meta name="DC.rights.owner" content="(C) Copyright 2015">
+<meta name="DC.Type" content="topic">
+<meta name="description" content="Start-up and shutdown scripts are used to manually start up or shut down Couchbase Server."><meta name="DC.Relation" scheme="URI" content="../Install/post-install.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/windows-startup-shutdown.html">
+<meta name="DC.Relation" scheme="URI" content="../Install/testing.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="topic2706">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../commonltr.css">
+<title>Start-up and shutdown on Mac OS X</title>
+</head>
+<body id="topic2706">
+
+
+  <h1 class="title topictitle1">Start-up and shutdown on Mac OS X</h1>
+
+  <div class="body"><p class="shortdesc">Start-up and shutdown scripts are used to manually start up or shut down Couchbase Server.</p>
+
+    <p class="p">On Mac OS X, Couchbase Server is supplied as a standard application that runs in background and can be controlled with an icon installed in the menu bar.
+    </p>
+
+
+      <div class="fig fignone"><img class="image" src="../images/macosx-menubar.png" width="200"></div>
+
+    
+    <p class="p">The individual menu options perform the following actions:</p>
+
+    
+    <dl class="dl">
+      
+        <dt class="dt dlterm">About Couchbase Server</dt>
+
+        <dd class="dd">Opens a standard dialog containing the licensing and version information for the
+          installed Couchbase Server.</dd>
+
+      
+    </dl>
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">Open Admin Console</dt>
+
+        <dd class="dd">Opens the Web Administration Console in your configured default browser.</dd>
+
+      
+    </dl>
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">Visit Support Forum</dt>
+
+        <dd class="dd">Opens the Couchbase Server support forum within your default browser at the Couchbase website
+          where you can post questions to other users and Couchbase developers.</dd>
+
+      
+    </dl>
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">Check for Updates</dt>
+
+        <dd class="dd">Checks for updated versions of Couchbase Server. This checks the currently installed
+          version against the latest version available at Couchbase and offers to download and
+          install the new version. <p class="p">If a new version is available, you will be presented with a
+            dialog containing information about the new release. You can choose to skip the update,
+            receive notification at a later date, or automatically update the software to the new
+            version.</p>
+<p class="p">If you choose the automatic update, the latest available version of
+            Couchbase Server will be downloaded to your machine, and you will be prompted to allow
+            the installation to take place. Installation will shut down your existing Couchbase
+            Server process, install the update, and then restart the service after the installation
+            was completed. You will be asked whether you want to automatically update Couchbase
+            Server in the future.</p>
+<p class="p">Using the update service also sends anonymous usage data to
+            Couchbase on the current version and cluster used in your organization. This information
+            is used to improve service offerings.</p>
+<p class="p">You can also enable automated updates by
+            selecting the <span class="ph uicontrol">Automatically download and install updates in the
+              future</span> check box.</p>
+</dd>
+
+      
+    </dl>
+
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">Launch Admin Console at Start</dt>
+
+        <dd class="dd">If this menu item is checked, the Couchbase Web Console is 
+          opened whenever Couchbase Server starts.</dd>
+
+        </dl>
+      
+
+      <dl class="dl">
+   
+     <dt class="dt dlterm">Automatically Start at Login</dt>
+
+     <dd class="dd">If this menu item is checked, Couchbase Server is
+       automatically started when the Mac OS X machine starts.</dd>
+
+   
+ </dl>
+         
+  
+ <dl class="dl">
+      
+        <dt class="dt dlterm">Quit Couchbase Server</dt>
+
+        <dd class="dd">electing this menu option will shut down your running Couchbase Server and close the menu
+          bar interface. To restart, you must open the Couchbase Server application from the installation folder.</dd>
+
+      
+    </dl>
+
+    
+</div>
+
+<nav class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/post-install.html" title="Post-installation activities includes setting up the initial server and testing the server connections.">Post-installation</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/windows-startup-shutdown.html" title="Start-up and shutdown scripts are used to manually start up or shut down Couchbase Server.">Start-up and shutdown on Windows</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/testing.html" title="Testing the connection to the Couchbase Server can be performed in a number of different ways.">Testing Couchbase Server</a></div>
+</div>
+</nav>
+</body>
+</html>
