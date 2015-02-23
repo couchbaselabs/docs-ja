@@ -17,7 +17,7 @@ Contribute方法
 
 issueには[translation wanted](https://github.com/couchbaselabs/docs-ja/labels/translation%20wanted)とhelp wantedのlabelを付けています。未着手のDITAファイルを探すのに利用してください。
 
-jaディレクトリの下にある*.ditaファイルを翻訳し、Pull Requestを送ってください。
+jaディレクトリの下にある&ast;.ditaファイルを翻訳し、Pull Requestを送ってください。
 WIP (Work In Progress) ブランチをPull Requestする形で運用します。
 作業の流れは以下のようになります:
 
@@ -25,7 +25,7 @@ WIP (Work In Progress) ブランチをPull Requestする形で運用します。
 2. git clone [forkしたプロジェクト]
 3. git checkout -b 359
     * issueの番号でブランチを作成します
-4. git commit --allow-empty -m 'Work-In-Progress on #359'
+4. git commit --allow-empty -m '[WIP] on #359'
 5. git push origin 359
     * これで、空コミットが作成されて、Pull Requestできるようになります
 6. Pull Requestする
