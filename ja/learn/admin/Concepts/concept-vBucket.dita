@@ -1,62 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic2955">
+<topic xml:lang="ja" id="topic2955">
   <title>vBuckets</title>
-  <shortdesc>A vBucket is defined as the <i>owner</i> of a subset of the key space of a Couchbase
-    cluster. These vBuckets are used to distributed information effectively across a cluster. </shortdesc>
+  <shortdesc>
+	  vBucketはCouchbaseクラスタにおけるキー空間のサブセットの<i>所有者</i>を定義します。
+	  vBucketはクラスタ内で効率的に情報を分散するために利用されます。
+  </shortdesc>
   <body>
-    <p>The vBucket system is used both for distributing data and for supporting replicas (copies of
-      bucket data) on more than one node. vBuckets are not a user-accessible component, but they are
-      a critical component of Couchbase Server and are vital to the availability support and elastic
-      nature.</p>
-    <p>Clients access the information stored in a bucket by communicating directly with the node
-      responsible for the corresponding vBucket. This direct access enables clients to communicate
-      with the node storing the data, rather than using a proxy or redistribution architecture. The
-      result abstracts the physical topology from the logical partitioning of data. This
-      architecture gives Couchbase Server elasticity and flexibility </p>
-    <p>Every document ID belongs to a vBucket. A mapping function is used to calculate the vBucket
-      in which a given document belongs. In Couchbase Server, that mapping function is a hashing
-      function that takes a document ID as input and outputs a vBucket identifier. Once the vBucket
-      identifier has been computed, a table is consulted to lookup the server that “hosts” that
-      vBucket. The table contains one row per vBucket, pairing the vBucket to its hosting server. A
-      server appearing in this table can be (and usually is) responsible for multiple vBuckets.</p>
+	  <p>
+		  vBucketシステムは、1つ以上のノードによるデータの分散と、レプリカ(バケットデータのコピー)を実現するために利用されます。
+		  vBucketはユーザがアクセス可能なコンポーネントではありませんが、Couchbase Serverの重要なコンポーネントであり、
+		  可用性と伸縮性のために非常に重要です。
+      </p>
+	  <p>
+		  クライアントはvBucketを担当するノードに直接接続して、バケットに保存された情報にアクセスします。
+		  プロキシや再配布のアーキテクチャを利用せず、データを保持するノードに直接接続します。
+		  結果として、物理的なトポロジを、論理的なデータパーティションから分離します。
+		  このアーキテクチャが、Couchbase Serverに伸縮性と柔軟性をもたらしています。
+      </p>
+	  <p>
+		  すべてのドキュメントIDはvBucketに属しています。マッピング関数によって、ドキュメントがどのvBucketに属するのかを計算できます。
+		  Couchbase Serverではこのマッピング関数はハッシュ関数であり、ドキュメントIDを入力としてvBucketのIDを出力します。
+		  vBucketのIDを計算したあと、そのvBucketを"ホスト"するサーバを、テーブルから参照します。
+		  このテーブルはvBucketごとに行があり、vBucketとそのホストサーバを関連付けています。
+		  このテーブル内で定義されている各サーバは通常、複数のvBucketを担当します。
+      </p>
     
-    <p>The following diagrams shows how the Key to Server mapping (vBucket map) works.</p>
+	  <p>以下の図はキーがサーバにマッピングされている様子(vBucketマップ)を示しています。</p>
     
-    <p>In this scenario, there are three servers in the cluster and client wants to look up the value of
-      KEY using the <codeph>GET</codeph> operation.</p>
+	  <p>
+		  このシナリオでは、クラスタ内に3台のサーバがあり、クライアントがKEYのバリューを<codeph>GET</codeph>操作により参照しようとしています。
+      </p>
     
     <ol>
-      <li>The client first hashes the key to calculate the vBucket which owns KEY. In this example,
-        the hash resolves to vBucket 8 (vB8). </li>
-      <li>By examining the vBucket map, the
-        client determines Server C hosts vB8.</li>
-      <li>The client sends the <codeph>GET</codeph> operation directly to Server C.</li>
+		<li>
+			クライアントはまず、キーをハッシュ化して、KEYが所属するvBucketを計算します。
+			この例では、ハッシュの結果、vBucket 8(vB8)となります。
+        </li>
+		<li>
+			vBucketマップを参照し、クライアントはサーバCがvB8をホストしていることを知ります。
+        </li>
+		<li>
+			クライアントは<codeph>GET</codeph>操作を直接サーバCに送信します。
+		</li>
     </ol>
     
       <image href="../images/vbuckets.png" width="500"></image>
     
-    <p>In the next scenario, a server added to the original cluster of three. A new node, Server D,
-      is added to the cluster and the vBucket Map is updated (during the rebalance operation). The
-      updated map is then sent to all the cluster participants including the other nodes, any
-      connected “smart” clients, and the Moxi proxy service.</p>
+	  <p>
+		次のシナリオでは、3台のクラスタに新しくサーバを追加しています。
+		新規のサーバDがクラスタに参加すると、リバランス操作によって、vBucketマップが更新されます。
+		更新されたマップは、クラスタ内のその他のノード、すべての接続中の"スマート"クライアント、Moxiプロキシサーバといった、
+		クラスタに接続するすべてのオブジェクトに送信されます。
+		</p>
     
-    <p>Within the new four-node cluster model, when a client again wants to determine the 
-      value of KEY using the <codeph>GET</codeph> operation:</p>
+		<p>4台のクラスタとなったあと、クライアントが再度KEYのバリューを<codeph>GET</codeph>操作により取得すると:</p>
     <ul>
-      <li>The hashing algorithm still resolves to vBucket 8 (vB8).</li>
-      <li>The new vBucket Map now maps vBucket 8 to Server D.</li> 
-      <li>The client sends the <codeph>GET</codeph> operation directly to Server D.</li>
+		<li>ハッシュアルゴリズムは依然としてvBucket 8(vB8)を出力します。</li>
+		<li>更新されたvBucketマップはvBucket 8をサーバDにマッピングしています。</li>
+		<li>クライアントは<codeph>GET</codeph>操作を直接サーバDに送信します。</li>
     </ul>
     
     <image href="../images/vbuckets-after.png" width="500"></image>
     
-    <note type="note"> This architecture permits Couchbase Server to cope with changes without using
-      the typical RDBMS sharding method. In addition, the architecture differs from the method used
-      by <codeph>memcached</codeph>, which uses client-side key hashes to determine the server from
-      a defined list. The memcached method requires active management of the list of servers and
-      specific hashing algorithms such as Ketama to cope with changes to the topology. </note>
+	<note type="note">
+		このアーキテクチャによりCouchbase Serverは、典型的なRDBMSのシャーディング方式を利用せず変化に対応できます。
+		また、<codeph>memcached</codeph>が採用している、クライアント側でキーをハッシュし、定義されたリストからサーバを特定する方式とも異なります。
+		memcachedの方式は、トポロジの変化に対応するために、サーバリストの継続的管理が必要であり、Ketamaなどの特定のハッシュアルゴリズムが必要になります。
+	</note>
     
   
     
