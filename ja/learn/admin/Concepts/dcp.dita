@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
 <topic id="topic_wzx_szg_14" xml:lang="ja">
-	<title>Database Change Protocol</title>
-	<shortdesc>Database Change Protocol (DCP)はバケットのデータ更新をストリームするためのプロトコロルです。</shortdesc>
+	<title>データベース変更プロトコル(DCP)</title>
+	<shortdesc>データベース変更プロトコル(Database Change Protocol, DCP)はバケットのデータ更新をストリームするためのプロトコロルです。</shortdesc>
 
 	<body>
 		<p>The Database Change Protocol (DCP)はView更新のレイテンシを大幅に縮めることができるストリーミングプロトコルです。 
