@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbbackup-tool">
+<reference xml:lang="ja" id="cbbackup-tool">
    <title>cbbackup tool</title>
-   <shortdesc>The <codeph>cbbackup</codeph> tool creates a copy of data from an entire running cluster,
-      an entire bucket, a single node, or a single bucket on a single functioning node.</shortdesc>
+   <shortdesc><codeph>cbbackup</codeph>ツールは、稼働中の全クラスタ・全バケット・単一ノード・正常稼働中ノード上の単一バケット
+   のコピーを作成します。</shortdesc>
    
    <refbody>
-      <section><title>Description</title>
-      <p>The backup process writes a copy of data onto disk. 
-         To create a backup using <codeph>cbbackup</codeph>, the node or cluster needs to be functioning in order.</p>
+      <section><title>定義</title>
+      <p>バックアッププロセスは、ディスク上にデータのコピーを書き込みます。
+         <codeph>cbbackup</codeph>を使用してバックアップを作成するために、ノードもしくはクラスタは、正常な状態で稼働している必要があります。</p>
 
-      <p>The <codeph>cbbackup</codeph>, <codeph>cbrestore</codeph>, and <codeph>cbtransfer</codeph>
-         tools do not communicate with external IP addresses for server nodes outside of a cluster.
-         Backup, restore, or transfer operations are performed on data from a node within a
-         Couchbase cluster. They only communicate with nodes from a node list obtained within a
-         cluster. This also means that if Couchbase Server is installed with a default IP address,
-         an external hostname cannot be used to access it.</p>
+      <p><codeph>cbbackup</codeph>ツール, <codeph>cbrestore</codeph>ツール, <codeph>cbtransfer</codeph>ツール
+         は、クラスタに所属しないサーバーと外部IPアドレスでは通信しません。
+         バックアップ、リストア、転送のオペレーションは、Couchbaseクラスタ内のノード内でデータを扱います。
+         クラスタから取得したノードリスト内のノードのみと通信します。
+         そのため、CouchbaseServerがデフォルトIPアドレスでインストールされていれば、それ以外のホスト名ではアクセス出来ません。</p>
          
-         <p>This tool has several different options which you can use to:</p>
+         <p>このツールを使うときは、以下のオプションを使うことが出来ます:</p>
          <ul>
-            <li>Backup all buckets in an entire cluster</li>
-            <li>Backup one named bucket in a cluster</li>
-            <li>Backup all buckets on a node in a cluster</li>
-            <li>Backup one named buckets on a specified node</li>
+            <li>全てのクラスタの全てのバケットのバックアップを作成</li>
+            <li>クラスタ内で、名前を指定したバケットのバックアップを作成</li>
+            <li>クラスタ内のあるノードの全バケットのバックアップを作成</li>
+            <li>特定ノードの、名前を指定したバケットのバックアップを作成</li>
          </ul>
          
-         <note type="tip">We recommended that <codeph>cbbackup</codeph> output be generated on a file system 
-            local to the server. Specifically, back up to a dedicated partition. 
-            A dedicated partition prevents the backup from from filling the Couchbase data stores and operating system partitions.</note>
+         <note type="tip"><codeph>cbbackup</codeph>の結果は、サーバーのローカルファイルシステムに出力することを推奨します。
+            特に、専用パーティションにバックアップするのが良いでしょう。
+            専用パーティションにすることで、バックアップがCouchbaseのデータストアやOS領域を圧迫することが防げます。
+         </note>
          
          
-         <note type="caution">Avoid routing the  <codeph>cbbackup</codeph> output to remote share file systems (NFS). 
-            This is because  <codeph>cbbackup</codeph> files are based on sqlite format and sqlite-formatted  file have issues being written to remote file systems.</note>
-        
+         <note type="caution"><codeph>cbbackup</codeph>の結果を、共有リモートファイルシステム(NFS)に出力することは避けましょう。 
+            <codeph>cbbackup</codeph>の出力ファイルは、リモートファイルシステムへの書き込みに問題のあるsqlite formatとsqlite-formatted fileで出来ているからです。
+         </note>
          
-      <p>This tool is the following directories:</p>
+      <p>このツールは以下に存在します:</p>
 
       <table>
          <tgroup cols="2">
@@ -42,8 +42,8 @@
             <colspec colname="col2"/>
             <thead>
                <row>
-                  <entry>Operating system</entry>
-                  <entry>Location</entry>
+                  <entry>OS</entry>
+                  <entry>存在場所</entry>
                </row>
             </thead>
             <tbody>
@@ -64,93 +64,90 @@
       </table>
       </section>
       
-      <section><title>CLI commands and parameters</title>
+      <section><title>CLIコマンドとパラメータ </title>
 
-      <p>The format of the <codeph>cbbackup</codeph> command is:</p>
+      <p><codeph>cbbackup</codeph>コマンドのフォーマット:</p>
       <codeblock>cbbackup [options] [source] [backup-dir]
 </codeblock>
-      <p>Where:</p>
+      <p>詳細:</p>
       <ul>
-         <li>[options]<p>Same options available for <codeph>cbtransfer</codeph> tool.</p></li>
-         <li>[source]<p>Source for the backup. This can be either a URL of a node when backing up a single node or
-         the cluster, or a URL specifying a directory where the data for a single bucket is
-         located.</p></li>
-         <li>[backup-dir]<p>The directory for the backup files to be stored. Either the directory must
-         exist, and be empty, or the directory will be created. The parent directory must exist.</p></li>
+         <li>[options]<p><codeph>cbtransfer</codeph>ツールと同じオプションが使えます</p></li>
+         <li>[source]<p>バックアップするソース元を指定します。
+                        バックアップ元がシングルノードかクラスタであればノードのURLを、バックアップ元が単一バケットの場合はディレクトリのURLを指定することが出来ます。</p></li>
+         <li>[backup-dir]<p>バックアップファイルの保存先ディレクトリを指定します。
+                            既に存在する空のディレクトリを指定するか、指定したディレクトリを新規に作ることが出来ます。
+                            新規に作る場合は、必ず親ディレクトリは既に存在する必要があります。</p></li>
       </ul>
 
       
-      <p>The following are the command options:</p>
+      <p>コマンドのオプション:</p>
       <table>
-         <title>cbrestore options</title>
+         <title>cbrestoreのオプション</title>
          <tgroup cols="2">
             <colspec colname="col1"/>
             <colspec colname="col2"/>
             <thead>
                <row>
-                  <entry>Parameters</entry>
-                  <entry>Description</entry>
+                  <entry>パラメータ</entry>
+                  <entry>定義</entry>
                </row>
             </thead>
             <tbody>
                <row>
                   <entry>-h, –help</entry>
-                  <entry>Command line help.</entry>
+                  <entry>コマンドラインのヘルプ</entry>
                </row>
                <row>
-                  <entry>-b BUCKET_SOURCE, --bucket-source=BUCKET_SOURCE</entry>
-                  <entry>Single named bucket from source cluster to transfer. If the backup
-                        directory only contains a single bucket, then that bucket is automatically
-                        used.</entry>
+                  <entry>-b ソースバケット, --bucket-source=ソースバケット</entry>
+                  <entry>ソースクラスタから転送する、名前指定の1つのバケット。
+                         バックアップディレクトリに1つしかバケットがない場合、自動的にそのバケットが選択されます。</entry>
                </row>
                <row>
                   <entry>--single-node</entry>
-                  <entry>Use a single server node from the source only, not all server nodes from the entire cluster. 
-                     This single server node is defined by the source URL.</entry>
+                  <entry>クラスタ全体の全てのノードを使わず、1つのサーバーのみを使います。
+                         このノードは、ソースURLを指定して定義します。</entry>
                </row>
                <row>
-                  <entry>-m MODE, --mode=MODE</entry>
+                  <entry>-m モード, --mode=モード</entry>
                   <entry></entry>
                </row>
                <row>
                   <entry>-i ID, –id=ID</entry>
-                  <entry>Transfer only items that match a vbucket ID.</entry>
+                  <entry>vbucket IDにマッチしたアイテムのみを転送します。</entry>
                </row>
                <row>
                   <entry>-k KEY, –key=KEY</entry>
-                  <entry>Transfer only items with keys that match a regexp.</entry>
+                  <entry>正規表現でマッチしたキーに該当するアイテムのみを転送します。</entry>
                </row>
                <row>
                   <entry>-n, –dry-run</entry>
-                  <entry>No actual transfer. Just validate parameters, files, connectivity and
-                     configurations.</entry>
+                  <entry>実際の転送は実行しません。パラメータ・ファイル・コネクティビティ・設定のチェックだけを実施します</entry>
                </row>
                <row>
                   <entry>-u USERNAME, –username=USERNAME</entry>
-                  <entry>REST username for source cluster or server node.</entry>
+                  <entry>ソースクラスタもしくはノードのREST usernameを指定します。</entry>
                </row>
                <row>
                   <entry>-p PASSWORD, –password=PASSWORD</entry>
-                  <entry>REST password for cluster or server node.</entry>
+                  <entry>ソースクラスタもしくはノードのREST passwordを指定します。</entry>
                </row>
                <row>
-                  <entry>-t THREADS, –threads=THREADS</entry>
-                  <entry>Number of concurrent workers threads performing the transfer. </entry>
+                  <entry>-t スレッド数, –threads=スレッド数</entry>
+                  <entry>転送のためのワーカースレッド数を指定します。 </entry>
                </row>
                <row>
                   <entry>-v, –verbose</entry>
-                  <entry>Verbose logging. More v's provide more verbosity. Max: -vvv.</entry>
+                  <entry>ログレベルを上げます。vの数を増やすことでログレベルが上がります。最大は[-vvv]です。</entry>
                </row>
                <row>
                   <entry>-x EXTRA, –extra=EXTRA</entry>
-                  <entry>Provide extra, uncommon configuration parameters. Comma-separated key=val(key-val)* pairs.</entry>
+                  <entry>外部から非胸痛な設定パラメータを指定します。カンマ区切りで、key=val(key-val)*形式で指定します。</entry>
                </row>
                
             </tbody>
          </tgroup>
       </table>
-      <p>The following are extra, specialized command options with the <codeph>cbbackup -x</codeph>
-            parameter.</p>
+      <p><codeph>cbbackup -x</codeph>のコマンドオプションパラメータは以下のとおりです。</p>
       
       <table>
          <title>cbbackup -x options</title>
@@ -160,104 +157,103 @@
             <thead>
                <row>
                   <entry>-x options</entry>
-                  <entry>Description</entry>
+                  <entry>定義</entry>
                </row>
                
             </thead>
             <tbody>
                <row>
                   <entry>backoff_cap=10</entry>
-                  <entry>Maximum backoff time during the rebalance period.</entry>
+                  <entry>リバランス中の最大バックオフ時間</entry>
                </row>
                <row>
                   <entry>batch_max_bytes=400000</entry>
-                  <entry>Transfer this # of bytes per batch.</entry>
+                  <entry>指定サイズ(bytes)に分割して転送します。</entry>
                </row>
                <row>
                   <entry>batch_max_size=1000</entry>
-                  <entry>Transfer this # of documents per batch.</entry>
+                  <entry>一度の転送では、ここて定義したドキュメント数を最大とします。</entry>
                </row>
                <row>
                   <entry>cbb_max_mb=100000</entry>
-                  <entry>Split backup file on destination cluster if it exceeds the MB.</entry>
+                  <entry>指定したサイズ（MB）を超えると、宛先クラスタ上のファイルを分割します。</entry>
                </row>
                <row>
                   <entry>conflict_resolve=1</entry>
-                  <entry>By default, disable conflict resolution.</entry>
+                  <entry>デフォルトでは、コンフリクトの解決は無効となっています。</entry>
                </row>
                <row>
                   <entry>data_only=0</entry>
-                  <entry>For value 1, transfer only data from a backup file or cluster.</entry>
+                  <entry>1にすれば、ファイルもしくはクラスタからデータのみを転送します。</entry>
                </row>
                <row>
                   <entry>design_doc_only=0</entry>
-                  <entry>For value 1, transfer only design documents from a backup file or cluster. Default: 0.</entry>
+                  <entry>1にすれば、ファイルもしくはクラスタから、デザインドキュメントのみを転送します。デフォルトは0です。</entry>
                </row>
                <row>
                   <entry>max_retry=10</entry>
-                  <entry>Max number of sequential retries if the transfer fails.</entry>
+                  <entry>転送に失敗した場合、指定した回数までリトライします。</entry>
                </row>
                <row>
                   <entry>mcd_compatible=1</entry>
-                  <entry>For value 0, display extended fields for stdout output.</entry>
+                  <entry>0にすれば、標準出力に出力します。</entry>
                </row>
                <row>
                   <entry>nmv_retry=1</entry>
-                  <entry>0 or 1, where 1 retries transfer after a NOT_MY_VBUCKET message. Default: 1.</entry>
+                  <entry>1にすれば、NOT_MY_VBUCKET messageの後に転送をリトライします。デフォルトは1です。</entry>
                </row>
                <row>
                   <entry>recv_min_bytes=4096</entry>
-                  <entry>Amount of bytes for every TCP/IP batch transferred.</entry>
+                  <entry>各TCP/IPで転送する場合の容量です。</entry>
                </row>
                <row>
                   <entry>rehash=0</entry>
-                  <entry>For value 1, rehash the partition id's of each item. 
-                     This is required when transferring data between clusters with
-                     different number of partitions, such as when transferring data from an
-                     Mac OS X server to a non-Mac OS X cluster.</entry>
+                  <entry>1にすると、各アイテムのパーティションIDを作り直します。
+                     クラスタ間でデータを転送するとき、パーティションの数が異なる場合に必要になります。
+                     例えば、MAC OS Xサーバーから、それ以外のサーバーに対して転送するときなどです。
+                  </entry>
                </row>
                <row>
                   <entry>report=5</entry>
-                  <entry>Number batches transferred before updating progress bar in console.</entry>
+                  <entry>指定した数だけ、コンソールのプログレスバーがアップデートする前に転送します。</entry>
                </row>
                <row>
                   <entry>report_full=2000</entry>
-                  <entry>Number batches transferred before emitting progress information in console.</entry>
+                  <entry>指定した数だけ、コンソールの進捗状況を笑みっとする前に表示します。</entry>
                </row>
                <row>
                   <entry>seqno=0</entry>
-                  <entry>By default, start seqno from beginning.</entry>
+                  <entry>デフォルトでは、seqnoは最初から開始します。</entry>
                </row>
                <row>
                   <entry>try_xwm=1</entry>
-                  <entry>Transfer documents with metadata. Default: 1. Value of 0 is only used when transferring
-                     from 1.8.x to 1.8.x.</entry>
+                  <entry>1にすると、ドキュメントと一緒にメタデータも転送します。デフォルトは1です。
+                         0は、version 1.8.xから1.8.xに転送する場合のみ使えます。
+                  </entry>
                </row>
                <row>
                   <entry>uncompress=0</entry>
-                  <entry>For value 1, restore data in uncompressed mode.</entry>
+                  <entry>1にすると、圧縮せずにデータを保存します。</entry>
                </row>
             </tbody>
          </tgroup>
       </table>
       </section>
       
-      <section><title>Syntax</title>
-         <p>The following is the basic syntax:</p>
+      <section><title>シンタックス</title>
+         <p>以下が基本的なシンタックスです:</p>
          <codeblock>cbrestore [options] [backup-dir] [destination]</codeblock>
          
          
-         <p>The following syntax examples include a full backup and two incremental backups for a
-            cluster.:</p>
+         <p>以下に、フルバックアップ実行後、2度増分バックアップする場合の例を示します。</p>
          
          <codeblock>
 cbbackup http://HOST:8091 /backup-42
 cbbackup http://HOST:8091 /backup-42
 cbbackup http://HOST:8091 /backup-42
-			</codeblock>
+         </codeblock>
          
-         <p>The following syntax examples include a full backup, two differential backups, and one
-            accumulative backup for a single node.</p>
+         <p>以下に、フルバックアップ実行後、2度差分バックアップを実行し、シングルノードに対してaccumulative バックアップする例を示します。</p>
          <codeblock>
 cbbackup couchbase://HOST:8091 /backup-43 [-m full] --single-node
 cbbackup couchbase://HOST:8091 /backup-43 [-m diff] --single-node
@@ -265,23 +261,20 @@ cbbackup couchbase://HOST:8091 /backup-43 [-m diff] --single-node
 cbbackup couchbase://HOST:8091 /backup-43 -m accu --single-node
          </codeblock>
             
-         <note type="note">After backing up and restoring a cluster, be sure to rebuild your indexes. </note>
+         <note type="note">バックアップ・リストアした後、忘れずにインデックスをリバランスしてください。</note>
 
       </section>
       
       
-      <section><title>Example: Backing up clusters</title>
-      <p>An entire cluster can be backed up. This includes all of the data buckets and data at all
-            nodes and all design documents. To backup an entire cluster and all buckets for that
-            cluster:</p>
+      <section><title>例: クラスタのバックアップ</title>
+      <p>クラスタ全体をバックアップできます。
+      このバックアップには、全てのノードに保存された全てのバケット・データ、全てのデザインドキュメントが含まれます。
+      クラスタ全体と全バケットのバックアップは以下のとおりです。</p>
       <codeblock>cbbackup http://HOST:8091 ~/backups \
           -u Administrator -p password
 </codeblock>
-      <p>Where <codeph>~/backups</codeph> is the directory where you want to store the data. When
-            this operation is performed, be aware that cbbackup creates the following directory
-            structure and files in the <codeph>~/backups</codeph> directory assuming there two
-            buckets in the cluster named <codeph>my_name</codeph> and <codeph>sasl</codeph> and two
-            nodes <codeph>N1</codeph> and <codeph>N2</codeph> :</p>
+      <p><codeph>~/backups</codeph>は、データを保存したいディレクトリを指定します。
+      この操作がされたとき、<codeph>N1</codeph>, <codeph>N2</codeph>というノードがあり、<codeph>my_name</codeph>, <codeph>sasl</codeph>というバケットが会った場合、cbbackupは、以下のとおりのディレクトリとファイルを作成します。</p>
       <codeblock>~/backups
         bucket-my_name
             N1
@@ -290,33 +283,33 @@ cbbackup couchbase://HOST:8091 /backup-43 -m accu --single-node
             N1
             N2
 </codeblock>
-      <p>Where <codeph>bucket-my_name</codeph> and <codeph>bucket-sasl</codeph> are directories
-         containing data files and where <codeph>N1</codeph> and <codeph>N2</codeph> are two sets of
-         data files for each node in the cluster. 
-         </p>
+      <p>
+      <codeph>bucket-my_name</codeph>と<codeph>bucket-sasl</codeph> は、データファイルを含むディレクトリであり、<codeph>N1</codeph>,<codeph>N2</codeph>はクラスタ内の各ノードの2つのデータセットです。
+      </p>
+
          
          </section>
       
-      <section><title>Example: Backing up a single bucket</title>
-         <p>To backup a single bucket in a cluster:</p>
+      <section><title>例: 1つのバケットのバックアップ</title>
+         <p>クラスタ内の1つのバケットのバックアップ方法は以下です:</p>
       
       <codeblock>cbbackup http://HOST:8091 /backups/backup-20120501 \
   -u Administrator -p password \
   -b default
 </codeblock>
-      <p>In this case, the default bucket in the cluster is specified and the data from the default
-            bucket is backed up. </p>
+      <p>このケースでは、クラスタ内のdefaultバケットが指定され、defaultバケットのデータがバックアップされます。
+      </p>
          
       </section>
       
       
-      <section><title>Example: Backing up multiple buckets</title>
-         <p>To backup all data from multiple buckets on a single node:</p>
+      <section><title>例: 複数バケットのバックアップ</title>
+         <p>シングルノードの複数のバケットからデータをバックアップする場合:</p>
       <codeblock>&gt; cbbackup http://HOST:8091 /backups/ \
   -u Administrator -p password \
   --single-node
 </codeblock>
-      <p>To backup data from a single bucket on a single node:</p>
+      <p>シングルノードの1つのバケットからデータをコピーする場合:</p>
       <codeblock>cbbackup http://HOST:8091 /backups \
   -u Administrator -p password \
   --single-node \
@@ -324,9 +317,9 @@ cbbackup couchbase://HOST:8091 /backup-43 -m accu --single-node
 </codeblock>
       </section>
       
-      <section><title>Example: Backing up keys</title>
-      <p>To specify the keys that are backed up using the <codeph>- k</codeph> option. For example,
-            to backup all keys from a bucket with the prefix ‘object’:</p>
+      <section><title>例: キーのバックアップ</title>
+      <p><codeph>- k</codeph>オプションを使うことで、バックアップするキーを特定することが出来ます。例えば、
+       バケット内で‘object’というプレフィックスを持つキーを全てバックアップする場合:</p>
       
       <codeblock>&gt; cbbackup http://HOST:8091 /backups/backup-20120501 \
   -u Administrator -p password \
