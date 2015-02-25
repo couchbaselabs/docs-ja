@@ -1,42 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="rest-bucket-ejection">
-  <title>Setting metadata ejection</title>
-  <shortdesc>Bucket ejection from memory is set with <codeph>POST
-    /pools/default/buckets/default</codeph>.</shortdesc>
+<reference xml:lang="ja" id="rest-bucket-ejection">
+  <title>メタデータ除去設定</title>
+  <shortdesc>メモリからのバケットメタデータ除去設定は<codeph>POST
+    /pools/default/buckets/default</codeph>で行います。</shortdesc>
   <refbody>
-    <section><title>HTTP method and URI</title>
-      <p> To set the maximum of thread workers, use the <codeph>evictionPolicy</codeph> option. Default: valueOnly</p>
+    <section><title>HTTPメソッドとURI</title>
+		<p>
+			メモリからのバケットメタデータ除去設定は、<codeph>evictionPolicy</codeph>オプションで指定します。デフォルトはvalueOnlyです。
+		</p>
       <codeblock>POST /pools/default/buckets/default</codeblock>
       
       
-      <p>Value-only ejection (the default) removes the data from cache but keeps all keys and metadata fields for non-resident items. 
-      When the value bucket ejection occurs, the item's value is reset. 
-      Full metadata ejection removes all data including keys, metadata, and key-values from cache for non-resident items. 
-      Full metadata ejection reduces RAM requirement for large buckets.</p>
+	  <p>
+		  バリューのみの除去(デフォルト)はデータをキャッシュから削除しますが、メモリから除去したアイテムを含め、
+		  すべてのキーとメタデータフィールドは保持します。 バケットでバリューの除去が発生すると、アイテムのバリューはリセットされます
+		  完全なメタデータの除去はキー、メタデータ、そしてキーバリューをキャッシュから完全に削除します。
+		  完全なメタデータの除去はサイズの大きなバケットのメモリ要件を削減できます。
+      </p>
       
-      <note type="important">When editing bucket properties, be sure to specify all bucket
-        properties. If a bucket property is not specified (whether or not you are changing the
-        existing value), Couchbase Server may reset the property to the default. Even if you do
-        not intend to change a certain property, re-specify the existing value to avoid this
-        behavior.</note>
+	  <note type="important">
+		  バケットの属性を変更する際は、すべてのバケット属性を指定するようにしてください。
+		  バケットの属性が指定されないと(変更するしないに関わらず)、
+		  Couchbase Serverはその属性値をデフォルト値にリセットすることがあります。
+		  これを回避するために、変更する必要がない属性であっても、既存の値を再指定してください。
+        </note>
     </section> 
     
-    <section><title>Syntax</title>
-    <p>Curl request syntax:</p>
+    <section><title>シンタックス</title>
+    <p>Curlリクエストシンタックス:</p>
     <codeblock>curl -u [admin]:[password] -X POST
   http://[localhost]/pools/default/buckets/default 
   -d evictionPolicy=[valueOnly | fullEviction]</codeblock></section>
     
-    <section><title>Example</title>
-    <p>Curl request example:</p>
+    <section><title>例</title>
+    <p>Curlリクエスト例:</p>
       <codeblock>curl -u admin:password -X POST
   http://10.5.2.54/pools/default/buckets/default 
   -d evictionPolicy=fullEviction</codeblock>
     
     </section>
     
-    <section><title>Response codes</title>
+    <section><title>レスポンスコード</title>
     <codeblock>
 "errors": {
         "evictionPolicy": "Eviction policy must be either 'valueOnly' or 'fullEviction'"
