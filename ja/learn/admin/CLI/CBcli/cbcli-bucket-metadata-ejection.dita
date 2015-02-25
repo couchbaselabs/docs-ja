@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="reference_ed5_pm5_j4">
-  <title>Setting metadata ejection policy</title>
+<reference xml:lang="ja" id="reference_ed5_pm5_j4">
+  <title>メタデータ除去ポリシーの設定</title>
 
-  <shortdesc>Bucket ejection from memory is set with <codeph>couchbase-cli</codeph> tool.</shortdesc>
+  <shortdesc>バケットのメモリ上のデータ除去設定は<codeph>couchbase-cli</codeph>ツールから行います。
+	</shortdesc>
   
   <refbody>
-    <section><title>Description</title>
+    <section><title>説明</title>
     
-      <p>Bucket ejection from memory is set with <codeph>couchbase-cli</codeph> tool, either
-        <codeph>bucket-create</codeph> or <codeph>bucket-edit</codeph>, and the 
-        <codeph>--bucket-eviction-policy</codeph> parameter.</p>
+		<p>
+			バケットのメモリ上のデータ除去設定は<codeph>couchbase-cli</codeph>ツールから行います。
+			<codeph>bucket-create</codeph>もしくは<codeph>bucket-edit</codeph>実行時に、
+			<codeph>--bucket-eviction-policy</codeph>パラメータで設定します。
+        </p>
       
     </section>
     
-    <section><title>CLI command and parameter</title>
+    <section><title>CLIコマンドとパラメータ</title>
  
-      <p>The following is the tool, commands, and parameter used to set the policy for how to retain metadata in memory:</p>
+		<p>以下のコマンドとパラメータは、メモリ内のメタデータをどのように保持するかを設定します:</p>
       
       <codeblock>
 couchbase-cli bucket-create --bucket-eviction-policy=[valueOnly | fullEviction] 
@@ -25,9 +28,9 @@ couchbase-cli bucket-edit   --bucket-eviction-policy=[valueOnly | fullEviction]
     </section>
     
     
-    <section><title>Example: Creating a new bucket</title>
+    <section><title>例: 新規バケットの作成</title>
       
-      <p>To create a new sasl bucket and set the eviction policy to <codeph>valueOnly</codeph>:</p>
+		<p>新規SASLバケットを<codeph>valueOnly</codeph>の除去ポリシーで作成するには:</p>
       
       <codeblock>
 couchbase-cli bucket-create -c 192.168.0.1:8091 -u Administrator -p password 
@@ -39,9 +42,9 @@ couchbase-cli bucket-create -c 192.168.0.1:8091 -u Administrator -p password
 </codeblock>
     </section>
     
-    <section><title>Example: Modifying a bucket</title>
+    <section><title>例: バケットの変更</title>
       
-      <p>To modify a dedicated port bucket and set the eviction policy to <codeph>fullEviction</codeph>:</p>
+		<p>既存のポート指定バケットを<codeph>fullEviction</codeph>の除去ポリシーに変更するには:</p>
       
       
       <codeblock>
