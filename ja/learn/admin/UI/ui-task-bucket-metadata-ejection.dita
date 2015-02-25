@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
-<task id="task_flr_nr5_j4">
-    <title>Managing metadata in memory</title>
-    <shortdesc>Tuning memory to retain or eject meta data is set when creating or editing the bucket
-        properties.</shortdesc>
+<task xml:lang="ja" id="task_flr_nr5_j4">
+    <title>メモリ内メタデータの管理</title>
+	<shortdesc>
+		メタデータを残すか除去するかのメモリ設定は、バケット作成時および変更時に指定します。
+        </shortdesc>
     <taskbody>
         <context>
-            <p>
-                To specify the bucket memory size:</p>
+            <p>バケットのメモリサイズを指定する:</p>
         </context>
 
             <steps>
-                <step><cmd>Navigate to <uicontrol>Data Buckets > Create New Data Bucket</uicontrol> (new bucket) or 
-                    <uicontrol>Data Buckets > bucket_name link > Edit</uicontrol> (existing bucket).</cmd></step>
-                <step><cmd>In <uicontrol>Memory Size panel > Cache Metadata</uicontrol> section, specify either to retain metadata in memory or
-                    not.</cmd>
-                    <info>Retaining metadata in memory needs more RAM, however, provides better
-                    performance for reads. Not retaining metadata in memory reduces RAM
-                    requirements.</info>
+				<step><cmd>
+					<uicontrol>Data Buckets > Create New Data Bucket</uicontrol>からバケットを作成するか、
+					<uicontrol>Data Buckets > bucket_name link > Edit</uicontrol>から既存のバケットを変更します。
+				</cmd></step>
+				<step>
+					<cmd>
+						<uicontrol>Memory Size panel > Cache Metadata</uicontrol>セクションで、メモリ内にメタデータを保持するかを指定します。
+					</cmd>
+					<info>
+						メタデータをメモリ内に保持する場合、より多くのRAMが必要になりますが、より良い参照性能が得られます。
+						メタデータをメモリ内に保持しない場合、必要なRAM容量を削減できます。
+					</info>
                     <stepresult><image href="../images/ui-bucket-metadata.png" width="500"></image></stepresult>
-                    </step>
-                <step><cmd>Click <uicontrol>Save</uicontrol>.</cmd>
+				</step>
+                <step><cmd><uicontrol>Save</uicontrol>をクリックします。</cmd>
                     <stepresult><image href="../images/ui-bucket-config.png" width="720"></image></stepresult></step>
             </steps>
             
