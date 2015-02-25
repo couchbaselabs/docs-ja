@@ -28,6 +28,7 @@ WIP (Work In Progress) ブランチをPull Requestする形で運用します。
 4. git commit --allow-empty -m '[WIP] on #359'
 5. git push origin 359
     * これで、空コミットが作成されて、Pull Requestできるようになります
+    * (手順3,4,5を一気に実行するスクリプトが./bin/start-translation.shです)
 6. Pull Requestする
     * この段階でissueにプルリクエストが紐付けられ、作業開始を宣言した状態になります。他の翻訳者の方と作業の重複を防ぐため、翻訳するファイルを決めたら、まずここまで一気にやってしまいましょう
 7. 翻訳が終わったら、 以下の作業をしてください
