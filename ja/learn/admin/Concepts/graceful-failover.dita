@@ -1,47 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_gvw_zsp_yn">
- <title>Graceful failover</title>
+<concept xml:lang="ja" id="concept_gvw_zsp_yn">
+ <title>グレイスフルフェイルオーバ</title>
 	
-	<shortdesc>Graceful failover provides the time to administrators to safely fail over a node from the cluster 
-	 after all in-flight operations are completed and without data loss.</shortdesc>
+ <shortdesc>
+	グレイスフルフェイルオーバは、実行中の操作が完了した後に、データを失うことなく、管理者が安全にノードをクラスタからフェイルオーバする方法を提供します。
+ </shortdesc>
  
  <conbody>
   
-  <p>With graceful failover, all in-flight operations are completed, for example, data in the
-   process of being written to the node completes and is transferred to the replica vBuckets. 
-   The replica vBuckets are promoted to active vBuckets and the active vBuckets on the failed over node
-   are transitioned to replica vBuckets. 
-   Because failover occurs after the replica vBuckert are synchronized with the active vBuckets, 
-   graceful failover might take more time to failover the node. </p>
+	<p>
+		 グレイスフルフェイルオーバを利用すると、すべての実行中の操作が完了するまで待ちます。
+		 例えば、データをノードに書き込むプロセスや、データをレプリカvBucketに転送するプロセスの完了です。
+		 レプリカvBucketはアクティブvBucketに昇格し、フェイルオーバしたノード上のアクティブvBucketは、レプリカvBucketになります。
+		 これは、レプリカvBucketがアクティブvBucketと同期された後にフェイルオーバを実行するためで、
+		 グレイスフルフェイルオーバはノードをフェイルオーバするのに、より時間がかかることがあります。
+	</p>
   
-  <p>While the server node is being gracefully failed over (the in-flight operations are
-   completing), the failover can be stopped. Subsequently, graceful failover can be restarted. 
-   When a node is failed over, it can be added back to
-   the cluster via <codeph>delta</codeph> or <codeph>full</codeph> recovery. </p>
+	<p>
+		サーバノードがグレイスフルフェイルオーバされている間(実行中の操作が完了するまで)、
+		フェイルオーバを停止することが可能です。その後、グレイスフルフェイルオーバを再開することができます。
+		ノードをフェイルオーバした後、<codeph>デルタ</codeph>もしくは、<codeph>フル</codeph>リカバリによってノードをクラスタに再追加することができます。
+	</p>
   
    
-   <note type="note">Hard failover immediately fails over a node from the cluster which might lead
-   to data loss. Hard failover is typically used when the node is in a bad state. Auto-failover is a
-   hard failover.</note>
+	<note type="note">
+		ハードフェイルオーバは即座にノードをクラスタからフェイルオーバするため、データロスが発生することがあります。
+		ハードフェイルオーバは一般的にノードに障害が起きた場合に利用します。自動フェイルオーバはハードフェイルオーバです。
+	</note>
   
-  <p>The following conditions must be met for graceful failover, otherwise, hard failover is implemented.</p>
+	<p>
+		グレイスフルフェイルオーバの実行には、以下の条件に一致する必要があります、一致しない場合、ハードフェイルオーバとなります。
+	</p>
   
    <ul>
-    <li>The server node must be healthy.</li>
-    <li>Each active vBucket on the failed over server node must have an equivalent replica vBucket.</li>
-    <li>At least one (1) replica vBucket must be available.</li>
+    <li>サーバノードが健全な状態である必要があります。</li>
+	<li>フェイルオーバするサーバノードが保持するすべてのアクティブvBucketに対応するレプリカvBucketが必要です。</li>
+    <li>少なくとも一つのレプリカvBucketが必ず必要です。</li>
     </ul>
   
-  <p>For example:</p>
+  <p>例えば:</p>
   <ul>
-   <li>In a 7 node cluster, if a bucket is configured for one replica, only one node can be gracefully failed over.</li>
-   <li>In a 7 node cluster, if a bucket is configured for two replica, two nodes can be gracefully failed over.</li>
-   <li>In a 7 node cluster, if a bucket is configured for three replica, three nodes can be gracefully failed over.</li>
+	  <li>7ノードのクラスタでバケットのレプリカ数が1の場合、1台のノードのみ、グレイスフルフェイルオーバできます。</li>
+	  <li>7ノードのクラスタでバケットのレプリカ数が2の場合、2台のノードのみ、グレイスフルフェイルオーバできます。</li>
+	  <li>7ノードのクラスタでバケットのレプリカ数が3の場合、3台のノードのみ、グレイスフルフェイルオーバできます。</li>
   </ul>
   
-   <p>Graceful failover does not alter the number of active vBuckets (unlike hard failover). 
-   However, the number of replica vBuckets can be reduced and they can be unevenly distributed.</p>
+  <p>
+	  グレイスフルフェイルオーバでは、(ハードフェイルオーバと違って)アクティブvBucketの数が変化しません。
+	  しかし、レプリカvBucketの数は減少し、不均一に分散された状態になります。
+  </p>
    
    
    
