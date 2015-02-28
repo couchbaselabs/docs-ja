@@ -65,15 +65,15 @@
 </li>
 
       <li class="li">サーバメンテナンスの向上:<ul class="ul">
-            <li class="li"><a class="xref" href="Concepts/graceful-failover.html" title="Graceful failover provides the time to administrators to safely fail over a node from the cluster after all in-flight operations are completed and without data loss.">Graceful failover</a>
+            <li class="li"><a class="xref" href="Concepts/graceful-failover.html" title="グレイスフルフェイルオーバは、実行中の操作が完了した後に、データを失うことなく、管理者が安全にノードをクラスタからフェイルオーバする方法を提供します。">グレイスフルフェイルオーバ</a>
               <p class="p">グレイスフルフェイルオーバについて、Webコンソールは<a class="xref" href="UI/ui-task-failover-graceful.html" title="Failover is performed on a specific node via Server Nodes &gt; Failover">Failing over a node</a>、CLIは<a class="xref" href="CLI/cli-failover.html" title="Nodes are failed over either by a graceful failover or hard failover operation. Graceful failover is the default.">Failing over nodes</a>、REST APIは<a class="xref" href="REST/rest-failover-graceful.html" title="Graceful failover is initiated via the POST /controller/startGracefulFailover HTTP method and URI.">Setting graceful failover</a>をご参照ください。</p>
 </li>
 
-            <li class="li"><a class="xref" href="Concepts/delta-node-recovery.html" title="Delta node recovery permits nodes to be re-added to the cluster and incrementally caught up with the data changes.">Delta node recovery</a>
+            <li class="li"><a class="xref" href="Concepts/delta-node-recovery.html" title="デルタノードリカバリを使うと、ノードをクラスタに再追加後に、変更されたデータの差分を反映させることができます。">デルタノードリカバリ</a>
               <p class="p">デルタノードリカバリについて、Webコンソールは<a class="xref" href="UI/ui-task-node-recovery-incremental.html" title="Recovery is performed after a server node is failed over and before rebalance operations. Either Delta or Full recovery can be specified.">Recovering a node</a>、CLIは<a class="xref" href="CLI/cli-node-recovery-incremental.html" title="To re-add a server node to a cluster, use the couchbase-cli tool and the recovery command with the --recovery-type parameter.">Recovering nodes</a>、REST APIは<a class="xref" href="REST/rest-node-recovery-incremental.html" title="Node recover type is set with the POST /controller/setRecoverType HTTP method and URI.">Setting recovery type</a>をご参照ください。</p>
 </li>
 
-            <li class="li"><a class="xref" href="Tasks/tasks-backup-restore-incremental.html" title="Incremental backup and restore enables administrators to quickly back up only modified data in the database, making backup and restore more efficient for larger data sets.">Incremental backup and restore</a>
+            <li class="li"><a class="xref" href="Tasks/tasks-backup-restore-incremental.html" title="差分バックアップとリストアを利用すると、データベース内の変更されたデータのみを高速にバックアップし、 より大きなデータセットに対し、バックアップの作成とリストアをより効率的に行うことができます。">差分バックアップとリストア</a>
 				<p class="p">差分バックアップとリストアについて、CLIは<a class="xref" href="CLI/cli-increment-backup.html" title="Incremental backups are run by using the cbbackup command-line tool.">Backing up incrementally</a>、<a class="xref" href="CLI/cli-incremental-restore.html" title="Incremental restore operations are run by using the cbrestore command-line tool.">Restoring incrementally</a>をご参照ください。</p>
 </li>
 
