@@ -1,42 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic2927">
-  <title>Caching layer</title>
-  <shortdesc>Couchbase Server includes a built-in caching layer which 
-    acts as a central part of the server and provides very rapid reads and writes of data.</shortdesc>
+<topic xml:lang="ja" id="topic2927">
+  <title>キャッシュレイヤー</title>
+  <shortdesc>Couchbase Serverは、非常に高速なデータの読み書きを提供する為に、
+    サーバーの中心的な役割としてキャッシュ層を持っています。</shortdesc>
   <body>
     
-    <p>Couchbase Server automatically manages the caching layer and coordinates with
-      disk space to ensure that enough cache space exists to maintain performance. It 
-      automatically places items that come into the caching layer into disk queue so that it can
-      write these items to disk. If the server determines that a cached item is infrequently used,
-      it removes it from RAM to free space for other items. Similarly the server retrieves
-      infrequently-used items from disk and stores them into the caching layer when the items are
-      requested. In order to provide the most frequently-used
-      data while maintaining high performance, Couchbase Server manages a <i>working set</i> of your
-      entire information. The working set is the data most frequently accessed and is kept
-      in RAM for high performance.</p>
-    <p>Couchbase automatically moves data from RAM to disk asynchronously, in the background, 
-      to keep frequently used information in memory and less frequently used data on disk.
-      Couchbase constantly monitors the information accessed by clients and decides how to keep the
-      active data within the caching layer. Data is ejected to disk from memory 
-      while the server continues to service active requests. During sequences of high writes to the
-      database, clients are notified that the server is temporarily out of memory until enough
-      items have been ejected from memory to disk. The asynchronous nature and use of queues in this
-      way enables reads and writes to be handled at a very fast rate, while removing the typical
-      load and performance spikes that would otherwise cause a traditional RDBMS to produce erratic
-      performance.</p>
-    <p>When the server stores data on disk and a client requests the data, an individual
-      document ID is sent and then the server determines whether the information exists or not. Couchbase Server
-      does this with metadata structures. The metadata holds information about each
-      document in the database and this information is held in RAM. This means that the server 
-      returns a ‘document ID not found’ response for an invalid document ID, 
-      returns the data from RAM, or returns the data after being fetched from disk.</p>
+    <p>Couchbase Serverは、自動的にキャッシュ層を管理し、パフォーマンスを確保するために必要なキャッシュスペースを
+       確保します。
+       キャッシュ層に置かれたアイテムは、ディスクに書くために自動的にディスクキューに入ります。
+       キャッシュに乗ったアイテムへのアクセス頻度が低いと判断されると、そのアイテムはRAM上から削除され、他のアイテムのためにスペースを確保します。
+       同様に、アクセス頻度の低いアイテムをディスクから取得した場合は、リクエストされたときにキャッシュ層に保存します。
+       よりアクセス頻度の高いデータを高いパフォーマンスで提供するために、全体の情報の<i>working set</i>を管理します。
+       working setは、頻繁にアクセスされるデータで、パフォーマンス向上のためRAM上に保存されます。</p>
+
+    <p>アクセス頻度が高いものをRAM上に、低いものをディスク上に保存するため、CouchbaseはRAMからディスクにデータを非同期で移動させます。
+       この処理は、自動的に、バックグラウンドで非同期に行われます。
+       Couchbaseは継続的にクライアントからのアクセス情報を監視し、アクティブなデータをキャッシュ層に残すように考えています。
+       サーバーはリクエストに応え続けながら、メモリ上からディスクへとデータを移動します。
+       高頻度でのライト中は、サーバーがメモリからディスクへ十分なアイテムを書き出すまで、クライアントは一時的にアウトオブメモリの通知を受けます。
+       非同期である性質と、この方法でキューを使うことで、非常に高速なリード/ライトのパフォーマンスを実現しています。
+       そうすることで、従来のRDBMSが不安定なパフォーマンスであることの典型的な要因である、ロードやパフォーマンスのスパイクを排除しています。
+    </p>
+
+    <p>サーバーがディスクにデータを書き込んだとき・クライアントがデータをリクエストしたとき、個別のドキュメントIDが送られ、
+       サーバーは情報が存在するかどうかを判断します。
+       CouchbaseServerは、メタデータの構造をもとに、この動作をします。
+       メタデータは、データベース内の各ドキュメントの情報であり、RAM上に保存されています。
+       したがって、サーバーは、無効なドキュメントIDに対しては"document ID not found"を返し、RAM上にあればRAMからデータを返し、RAM上にない場合は、ディスクから取得したデータをクライアントに返します。</p>
     
-    <note type="note">Other database solutions read and write data from disk, which results in much slower performance.
-      One approach used by other database solutions is to install and manage a caching layer as a separate component
-      which works with a database. This approach has drawbacks because of the significant custom code and effort 
-      due to the burden of managing the caching layer and the data transfers between the caching layer and database.</note>
+    <note type="note">常にディスクにリード/ライトするDBソリューションは、非常に低速なパフォーマンスとなります。
+      それ意外のDBソリューションアプローチとして、データベースと強調して動かす別コンポーネントとしてキャッシュ層をインストールし管理する方法が有ります。
+      しかし、このアプローチの欠点は、カスタムされた重要なコード、キャッシュ層の管理やデータベースとキャッシュ層とのデータ転送を自身で管理する必要があることです。</note>
+
   </body>
 </topic>
