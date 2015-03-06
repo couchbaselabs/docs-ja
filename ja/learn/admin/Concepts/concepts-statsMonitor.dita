@@ -1,66 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic2096">
- <title>Statistics and monitoring</title>
- <shortdesc>A complete set of statistical and monitoring information is provided through the
-  Couchbase Web Console, CLI, and REST API.</shortdesc>
+<topic xml:lang="ja" id="topic2096">
+ <title>統計情報とモニタリング</title>
+ <shortdesc>
+	 すべての統計情報とモニタリング情報のセットはCouchbase Webコンソール、CLI、REST APIから利用可能です。
+	 </shortdesc>
  <body>
-  <p>In order to understand what your cluster is doing and how it is performing, the Couchbase
-   Server incorporates a complete set of statistical and monitoring information. The statistics are
-   provided through all of the administration interfaces. Within the Couchbase Web Console, a
-   complete suite of statistics is provided including the built-in real-time graphing and
-   performance data.</p>
-  <p>The statistics information is divided into a number of groups, allowing you to identify
-   different states and performance information within the cluster.</p>
+	 <p>
+		 クラスタがどのように動作しているか、どの程度の性能が出ているかを理解するために、
+		 Couchbase Serverでは完全な統計およびモニタリング情報が利用できます。統計情報はすべての管理用インタフェースで取得できます。
+		 Couchbase Webコンソールでは、ビルトインのリアルタイムグラフとパフォーマンスデータを含むさまざまな統計情報が閲覧できます。
+	 </p>
+	 <p>
+		 統計情報はいくつかのグループに分けられており、さまざまなステータスや性能に関する情報を確認することができます。
+	 </p>
   
   <dl>
    <dlentry>
-    <dt>By node</dt>
-    <dd>Node statistics show CPU, RAM and I/O numbers on each of the servers and across your cluster as
-     a whole. This information can be used to help identify performance and loading issues on a single
-     server.</dd>
+    <dt>ノード単位</dt>
+	<dd>
+		ノードの統計情報は各サーバごと、およびクラスタ全体の、CPU、RAM、I/O発生数を表示します。
+		この情報は単一のサーバでの性能や負荷の問題を特定するために利用できます。
+	</dd>
    </dlentry>
   </dl>
   
   <dl>
    <dlentry>
-    <dt>By vBucket</dt>
-    <dd>The vBucket statistics shows the usage and performance numbers for the vBuckets and are
-     useful to determine whether you need to reconfigure your buckets or add servers to improve
-     performance.</dd>
+    <dt>vBucket単位</dt>
+	<dd>
+		vBucketの統計情報は、vBucketの利用と性能に関する数値を示し、
+		バケットを再設定する必要があるかどうか、性能を向上するためにサーバを追加する必要があるかどうかなどの判断に便利です。
+</dd>
    </dlentry>
   </dl>
   
   <dl>
    <dlentry>
-    <dt>By view</dt>
-    <dd>View statistics display information about individual views in your system, including the CPU
-     usage and disk space, so that you can monitor the effects and loading of a view on the
-     Couchbase nodes. This information can indicate that your views need modification or
-     optimization, or that you need to consider defining views across multiple design
-     documents.</dd>
+    <dt>View単位</dt>
+	<dd>
+		Viewの統計情報は、CPU利用率とディスク容量を含むシステム内の個別のViewに関する情報を示し、
+		Couchbaseノード上にViewを作成する影響を監視することができます。
+		この情報はViewを変更、最適化、複数のデザインドキュメントに分割する必要があるかなどを示唆します。
+   </dd>
    </dlentry>
   </dl>
  <dl>
   <dlentry>
-   <dt>By disk queues</dt>
-   <dd>These statistics monitor the queues used to read and write information to disk and between
-     replicas. This information can be helpful in determine whether you should expand your cluster
-     to reduce disk load.</dd>
+   <dt>ディスクキュー単位</dt>
+   <dd>
+	   これらの統計情報は情報をディスクへの読み書き、レプリケーションの転送に利用するキューをモニタリングしたものです。
+	   この情報はディスクの負荷を軽減するために、クラスタを拡張する必要があるかどうかを判断するために役立ちます。
+	</dd>
   </dlentry>
  </dl>
   <dl>
    <dlentry>
-    <dt>By TAP queues</dt>
-    <dd>The TAP interface is used to monitor changes and updates to the database. TAP is used
-     internally by Couchbase Server to provide replication between the nodes, but it can be also
-     used by clients for change notifications.</dd>
+    <dt>TAPキュー単位</dt>
+	<dd>
+		TAPインタフェースはデータベースへの変更や更新を監視するために利用されます。
+		TAPはCouchbase Serverがノード間のレプリケーションを実現するために内部的に利用していますが、
+		変更通知を受信するクライアントからも利用することができます。
+	</dd>
    </dlentry>
   </dl> 
- <p>In almost all cases, the obtained statistic results can be viewed both on a cluster basis, to
-   monitor the overall RAM or disk usage for a given bucket, or an individual server basis to
-   identify issues within a single machine.</p>
+  <p>
+	  取得されたほぼすべての統計情報は、特定のバケットにおける、クラスタの全体的なRAMやディスクの利用を監視するためにクラスタ単位、
+	  また、単一マシン内の問題を特定するために個別のサーバ単位で閲覧することができます。
+  </p>
   
  </body>
 </topic>
