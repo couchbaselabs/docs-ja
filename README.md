@@ -3,7 +3,7 @@ Couchbase Server Docs Translation project
 
 Couchbase Server公式ドキュメントの翻訳プロジェクトです。ドキュメントはPDFにすると500Page近くのボリュームになります。いち早く公式に日本語ドキュメントを公開できるよう、皆さんのお力をお貸しください。
 
-現在の翻訳状況は[previewページ](http://labs.couchbase.com/docs-ja/preview/)にて確認できます。
+現在の翻訳状況は[previewページ](http://labs.couchbase.com/docs-ja/preview/contents/Couchbase-intro.html)にて確認できます。
 
 Contribute方法
 ==================
