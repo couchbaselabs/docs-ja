@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_yvq_lh3_wn">
+<concept xml:lang="ja" id="concept_yvq_lh3_wn">
  <title>ドキュメントの削除</title>
- <shortdesc>CouchbaseServerは、クライアントが明示的にアイテムの削除を実行した場合、
+ <shortdesc>Couchbase Serverは、クライアントが明示的にアイテムの削除を実行した場合、
             もしくはアイテムのexpiration valueが期限に達した場合、以外ではディスクからアイテムが削除されることはありません。
  </shortdesc>
  <conbody>
-  <p>排出メカニズムは、RAMからアイテムを削除しますが、keyのコピーとドキュメントのmetadataのみは引き続きRAM上に保存され、
-   またドキュメントのコピーはディスク上に保存されます。
+  <p>排出メカニズムは、RAMからアイテムを削除しますが、keyのコピーとドキュメントのメタデータは引き続きRAM上に保存され、
+   またドキュメントのコピーはディスク上に保持されます。
   </p>
   <note type="important">
-   CouchbaseServerでmemchacedバケットのみを使用している場合、キャッシュ層のみをストレージとして使用し、ディスクへの永続化はされません。
-   その場合、RAMのスペースがなくなると、アイテムはleast recently used basis（LRU）のルールに従い、RAMから削除されます。
-   これは、key, metadata, その他全てのそのアイテムに関するデータをRMから削除することを意味します。
+   Couchbase Serverでmemchacedバケットのみを使用している場合、キャッシュ層のみをストレージとして使用し、ディスクへの永続化はされません。
+   その場合、RAMのスペースがなくなると、アイテムはleast recently used basis(LRU)のルールに従い、RAMから削除されます。
+   これは、key, メタデータ, その他全てのそのアイテムに関するデータをRAMから削除することを意味します。
    削除後に、そのアイテムを復元することは出来ません。
   </note>
  </conbody>
