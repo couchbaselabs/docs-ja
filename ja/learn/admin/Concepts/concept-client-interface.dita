@@ -1,65 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_onr_w4j_dp">
-	<title>Client interface</title>
+<concept xml:lang="ja" id="concept_onr_w4j_dp">
+	<title>クライアントインタフェース</title>
 	<shortdesc />
 	<conbody>
 
-		<p>Within Couchbase Server, the techniques and systems used to get information into and out of
-			the database differ according to the level and volume of data that you want to access. The
-			different methods can be identified according to the base operations of create, retrieve,
-			update and delete.</p>
+		<p>
+			Couchbase Serverでは、データベースから情報を取得、あるいは格納する際に、アクセスするデータのレベルや量に応じて、異なる技術やシステムを利用します。
+            それぞれの方法は、作成・取得・更新・削除という基本的なオペレーションに分類することが出来ます。</p>
 
-		<section><title>Create</title>
-			<p>Information is stored into the database using the memcached protocol interface to store
-				a <i>value</i> against a specified <i>key</i>. Bulk operations for setting the key/value
-				pairs of a large number of documents at the same time are available, and these are more
-				efficient than multiple smaller requests.</p>
-			<p>The value stored can be any binary
-				value, including structured and unstructured strings, serialized objects (from the
-				native client language), and native binary data (for example, images or audio). For use with
-				Couchbase Server View engine, information must be stored using the JavaScript Object
-				Notation (JSON) format, which structures information as an object with nested fields,
-				arrays, and scalar data types.</p></section>
+		<section><title>作成</title>
+			<p>情報は、特定の<i>key</i>に対応する<i>value</i>として、memcachedプロトコルインターフェースを利用して、データベースに保存されます。
+			   バルクオペレーションを用いることで、同時に大量のドキュメントのkey/valueをセットすることが出来ます。
+			   これは、小さなリクエストを何度もすることに比べ、より効果的です。</p>
+			<p>valueは、構造化された、あるいは非構造な文字列、ネイティブクライアントによってシリアライズされたオブジェクト、
+               また、ネイティブなバイナリデータ（画像や音声など）、全てのバイナリバリューを取ることが出来ます。
+               ただし、Couchbase ServerのViewエンジンを使うためには、情報はネストされたフィールド・配列・スカラーデータで構成されている
+               JavaScript Object Nation(JSON)フォーマットで保存されている必要があります。
+			  </p></section>
 
 		<section>
-			<title>Retrieve</title>
-			<p>To retrieve information from the database, there are two methods available: By Key and
-				By View</p>
+			<title>取得</title>
+			<p>データベースから情報を取り出すには、「Keyで取得」もしくは「Viewで取得」の二つの方法が利用できます。</p>
 			<ul>
-				<li>By Key <p>If you know the key used to store a particular value, then you can use the
-						memcached protocol (or an appropriate memcached compatible client-library) to
-						retrieve the value stored against a specific key. You can also perform bulk
-						operations.</p></li>
-				<li>By View <p>If you do not know the key, you can use the View system to write a view
-						that outputs the information you need. The view generates one or more rows of
-						information for each JSON object stored in the database. The view definition
-						includes the keys (used to select specific or ranges of information) and values.
-						For example, you could create a view on contact information that outputs the JSON
-						record by the contact's name, and with a value containing the contacts address.
-						Each view also outputs the key used to store the original object. If the view
-						doesn't contain the information you need, you can use the returned key with the
-						memcached protocol to obtain the complete record.</p>
+				<li>Keyで取得 <p>特定のValueに対応するKeyが分かるのなら、memcachedプロトコル（もしくは、memcached互換のクライアントライブラリ）を用いて
+                                    特定のKeyからValueを取得すればいいでしょう。
+                                    同じ方法で、バルクオペレーションも利用できます。
+					</p></li>
+				<li>Viewで取得 <p>Keyが分からなければ、必要な情報を取得するためのViewを書くことで、Viewシステムを使うことも出来ます。
+						Viewはデータベースに保存された各JSONオブジェクトから、一つ以上の行を生成します。
+						Viewの定義は、（特定の情報もしくは、情報のレンジを選択するための）keyとvalueを含みます。
+						例えば、連絡先名に対して連絡先アドレスをvalueにもつ、連絡先情報のビューを作ったとします。
+						各Viewは、オリジナルのオブジェクトの保存に使われるキーも出力します。
+						Viewが必要な情報を含んでいなかった場合でも、Viewが返すkeyとmemcachedプロトコルを用いて、完全なレコードを取得することができます。
+						</p>
 				</li>
 			</ul>
 		</section>
 
 		<section>
-			<title>Update</title>
-			<p>To update information in the database, you must use the memcached protocol interface.
-				The memcached protocol includes functions to directly update the entire contents, and
-				also to perform simple operations, such as appending information to the existing record,
-				or incrementing and decrementing integer values.</p>
+			<title>更新</title>
+			<p>データベースの情報をアップデートするためにはmemcachedプロトコルのインターフェースを使う必要があります。
+			   memchacedプロトコルは、すべてのコンテンツを直接アップデートするだけでなく、
+		       既存レコードに情報を付加したりintegerで保存されているvalueをインクリメントしたりデクリメントすることも出来ます。</p>
 		</section>
 
-		<section><title>Delete</title>
-			<p>To delete information from Couchbase Server, you need to use the memcached protocol
-				which includes an explicit delete command to remove a key/value pair from the
-				server.</p><p>However, Couchbase Server also permits information to be stored in the
-				database with an expiry value. The expiry value states when a key/value pair should be
-				automatically deleted from the entire database, and can either be specified as a
-				relative time (for example, in 60 seconds), or absolute time (31st December 2012,
-				12:00pm).</p>
+		<section><title>削除</title>
+			<p>Couchbase Serverから情報を削除するには、memchachedプロトコルを利用して、
+			key/valueのペアを削除する明確なdeleteコマンドを使用する必要があります。
+			</p>
+			<p>しかしながら、Couchbase Serverは情報に有効期限(expiry value)をつけてデータベースに保存することも出来ます。
+			   expirity valueは、そのkey/valueペアが、いつ自動的にデータベース全体から削除されるべきかを示すデータで、
+			   相対時間（例：60秒間）もしくは絶対時間（例：2012年12月31日）という形式で指定します。
+			</p>
 		</section>
 
 

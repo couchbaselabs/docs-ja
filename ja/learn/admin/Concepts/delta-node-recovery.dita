@@ -1,137 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_s15_tlh_14">
-  <title>Delta node recovery</title>
-	<shortdesc>Delta node recovery permits nodes to be re-added to the cluster and incrementally caught
-    up with the data changes.</shortdesc>
+<topic xml:lang="ja" id="topic_s15_tlh_14">
+  <title>デルタノードリカバリ</title>
+  <shortdesc>
+	  デルタノードリカバリを使うと、ノードをクラスタに再追加後に、変更されたデータの差分を反映させることができます。
+  </shortdesc>
   
   <body>
   	
-    <p>Delta node recovery permits a failed over node to be recovered by re-using the data on its
-      disk and then resynchronizing the data based on the delta change. 
-      The failed over node is checked to identify the point when data
-      mutations stopped and resynchronized beginning at that point. The server node catches up on
-      data mutations for its vBuckets and starts serving data. 
-      Because the original data and data buckets are retained, the cluster starts functioning with minimal downtime. 
-      This operation improves recovery time and network resource usage. </p>
+	<p>
+		デルタノードリカバリは、フェイルオーバしたノードのディスク上にあるデータを再利用し、差分の変更を反映し再同期させることで、リカバリが可能です。
+		フェイルオーバしたノードはどの時点でデータの変化が停止したのかを特定するためにチェックされ、その時点から再同期を開始します。
+		サーバノードは保持するvBucketのデータ変化を反映した後、データの提供を開始します。
+		元々のデータとバケットを再利用することで、最小のダウンタイムでクラスタの利用を開始できます。
+		この操作により、リカバリ時間とネットワークリソース利用が向上します。
+    </p>
     
-    <p>Server nodes are removed from clusters under many circumstances. 
-      The following are circumstances (among many others) where a server node might be re-added to the cluster 
-      after being failed over.</p>
+	<p>
+		サーバノードは様々な場面でクラスタから削除されます。
+		以下の例は、サーバノードをクラスタからフェイルオーバした後に再追加する場面の一部を示しています(この他にも多くあります)。
+    </p>
     
     <ul>
-      <li>Node goes down for a short period of time</li>
-      <li>Routine maintenance is scheduled</li>
-      <li>Network connectivity is briefly disrupted</li>
+      <li>ノードが少しの間ダウンした</li>
+      <li>計画的定期メンテナンス</li>
+      <li>ネットワーク接続が少しの間切断した</li>
     </ul>
       
-    <p>When a node is failed over, data files are preserved. 
-      The data files are used either for Couchbase support, data recovery, or delta node recovery.</p>
+	<p>
+		ノードがフェイルオーバされても、データファイルは保持されます。
+		データファイルはCouchbaseサポートにも、データの復旧にも、デルタノードリカバリにも利用できます。
+	</p>
     
-    <p>In the process of failing over a node, performing maintenance, adding the node back into the
-      cluster, and rebalancing, data is recovered via either full recovery mode or delta recovery
-      mode. With delta recovery mode, Couchbase detects (with the Database Change Protocol)
-      which data files are up-to-date and which are out-of-date and then, during rebalance, the
-      existing data files on the failed over server node are retained and the out-of-date files are
-      updated.</p>
+	<p>
+		ノードをフェイルオーバし、メンテナンスを行い、ノードをクラスタへ再追加して、リバランスを実行する処理において、
+		フルリカバリモードかデルタリカバリモードでデータを復旧することができます。
+		デルタリカバリモードでは、Couchbaseが(DCPを利用し)、どのデータファイルが最新で、どのデータファイルが古くなっているかを検知し、
+		リバランス時に、フェイルオーバしたサーバノード上の既存のデータファイルを再利用し、古くなったファイルを更新します。
+	</p>
     
-    <p>From the web console, the Delta Recovery and Full Recovery options display after the server node is failed over.
-      Both recovery methods add the server node back into the cluster during the rebalance operation, however, 
-      full recovery removes the node's data prior to the rebalance and delta recovery schedules the node's existing data to be re-used.
+	<p>
+		サーバノードをフェイルオーバすると、Webコンソールに、Delta RecoveryとFull Recoveryの選択肢が表示されます。
+		いずれの復旧方法もサーバをクラスタに再追加するためにリバランスが必要ですが、
+		フルリカバリの場合、リバランス前にノードが持つ既存データを削除するのに対し、デルタリカバリではノードが持つ既存データを再利用します。
     </p>
     
     
     
-    <p>Delta recovery requirements:</p>
+    <p>デルタリカバリの条件:</p>
     <ul>
-      <li>A healthy server node and a healthy state for the cluster.</li>
-      <li>The server node is failed over. 
-        Delta recovery is not possible for a rebalance-in operation (add server) 
-        or rebalance-out operation (remove server).</li>
-      <li>Delta recovery must be possible for all buckets. For example, if delta recovery is
-        possible for a subset of buckets but not possible for another subset of buckets, then the
-        Couchbase cluster does not permit a rebalance operation.</li>
-      <li>Because delta recovery relies on the existing data files on the failed over server node's
-        disk, the exact same set of buckets must be transferred to the failed over server node.</li>
-      </ul>
+      <li>ノードとクラスタが健全な状態である必要があります。</li>
+	  <li>
+		  フェイルオーバしたサーバノードが必要です。
+		  デルタリカバリはサーバ追加時のリバランス、およびサーバ削除時のリバランスでは利用できません。
+	  </li>
+	  <li>
+		  すべてのバケットでデルタリカバリが実行できる必要があります。
+		  例えば、いくつかのバケットがデルタリカバリ可能でも、それ以外のバケットが不可能であった場合、
+		  Couchbaseクラスタはリバランス操作を許可しません。
+	  </li>
+	  <li>
+		  なぜなら、デルタリカバリはフェイルオーバしたサーバノードのディスク上にある既存のデータファイルに依存しており、
+		  それと完全に同じセットのバケットを、フェイルオーバしたサーバノードに転送する必要があるからです。
+	  </li>
+    </ul>
     
-    <p>Delta recovery characteristics:</p>
+    <p>デルタリカバリの性質:</p>
     <ul>
-      <li>Data files are "warmed up" into memory. Warmed up into memory means that data is loaded
-        into memory. As a minimum, depending on whether metadata is retained in or not, all data
-        file keys are loaded from disk prior to the rebalance operation.</li>
-      <li>Indexes must be rebuilt on the server node that is being re-added.</li>
-      <li>Use in deployments where data size is much greater than RAM size,  
-        bucket eviction is set to full eviction (metadata is not retained in memory), and 
-        indexes are not defined.</li>
+		<li>
+			データファイルはメモリ上に"ウォームアップ"されます。
+			メモリへのウォームアップとはデータをメモリ上にロードすることです。
+			どのメタデータが保持されるかによって、必要最小のすべてのデータファイルキーがリバランス操作の前にディスクからロードされます。
+		</li>
+      <li>インデックスは再追加するサーバノード上で必ず再構築されます。</li>
+	  <li>
+		  データサイズがRAMサイズよりもはるかに大きく、バケットでfull eviction(メタデータをメモリに保持しない)を設定していて、
+		  インデックスを定義していない環境で利用してください。
+		</li>
     </ul>
 
     
-    <note type="tip">An environment with a large data footprint might use delta node recovery when
-      re-adding a failed over server node. </note>
+	<note type="tip">
+		非常に大きなデータ量を保持する環境で、フェイルオーバしたサーバノードを再追加する場合に利用できます。
+	</note>
     
 
  
  
-    <section><title>Delta node recovery failure scenarios</title>
+    <section><title>デルタノードリカバリが利用できないシナリオ</title>
       
-      <p>The following are conditions where delta node recovery either defaults to full recovery or
-        is not available:</p>
+		<p>
+			以下の条件は、デルタノードリカバリが利用できず、フルリカバリとなる条件です:
+		</p>
       <ul>
-        <li>If topology changes occur while a node is pending delta recovery, delta node
-          recovery is impacted. For example,  another node is added, a node is removed, or a node is
-          swapped. </li>
-        <li>If a down node is hard failed over and is marked for removal.</li>
-        <li>If rebalance-in-out operations are performed 
-          where the number of in and out nodes do not match (swap rebalance works in this case).</li>
-        <li>If certain bucket operations are performed while a node is pending delta recovery,
-          delta node recovery is impacted. For example, a new bucket is added, a bucket's replica
-          configuration is changed, or a bucket is flushed.</li>
+		  <li>
+			ノードがデルタリカバリ待ちの間にトポロジが変わった場合、デルタノードリカバリに影響します。
+			例えば、他のノードを追加したり、ノードを削除したり、ノードをスワップするなどです。
+          </li>
+        <li>ダウンしたノードがハードフェイルオーバされ、削除待ちの場合。</li>
+		<li>
+			リバランスにより異なる数のノード追加、削除が実行された場合(スワップリバランスは実行可能です)。
+		</li>
+		<li>
+			ノードがデルタリカバリ待ちの間に、デルタノードリカバリに影響するバケット操作を行った場合。
+			例えば、新規のバケットを追加したり、バケットのレプリカ設定を変更したり、バケットをフラッシュするなどです。
+		</li>
       </ul>
       
 
-        <p>The following describes scenarios where delta node recovery either defaults to full
-        recovery or is not available. </p>
+	  <p>
+		以下は、デルタノードリカバリが利用できず、フルリカバリとなるシナリオです:
+		</p>
       
-      <p>Node 1 is in delta recovery and Node 2, an active server node, crashes.</p>
+      <p>Node 1をデルタリカバリ中にアクティブなサーバノードのNode 2がクラッシュ。</p>
       <ol>
-            <li>Node 1 is failed over and delta recovery is specified. Now, Node 1 is pending delta
-              recovery.</li>
-            <li>Node 2, an active server, goes down. <note>The rebalance operation is not
-                available.</note></li>
-            <li>Fail over Node 2. </li>
-            <li>Cancel the pending delta recovery, specify full recovery, and rebalance.</li>
-            <li>Repair Node 2, add the server to the cluster, and rebalance.</li>
+		  <li>Node 1のフェイルオーバ後、デルタリカバリを指定。Node 1はデルタリカバリ待ちの状態。</li>
+		  <li>そこでアクティブサーバのNode 2がダウン。<note>リバランスを実行することはできません。</note></li>
+            <li>Node 2をフェイルオーバ。 </li>
+            <li>ペンディング中のデルタリカバリをキャンセルし、フルリカバリを指定してリバランス。</li>
+            <li>Node 2を修復し、クラスタに追加してリバランス。</li>
           </ol>
        
-        <p>Node 1 is in delta recovery and Node 1 crashes during rebalance.</p> 
+      <p>Node 1をデルタリカバリし、リバランス中にNode 1がクラッシュ。</p>
       
       <ol>
-            <li>Node 1 is failed over, delta recovery is specified, and the rebalance operation is
-              started.</li>
-            <li>Node 1 crashes and the rebalance operation fails.</li>
-            <li>Repair Node 1, re-start the server node, and rebalance. Node1 is added back to the
-              cluster using full recovery.</li>
+            <li>Node 1のフェイルオーバ後、デルタリカバリを指定し、リバランスを開始。</li>
+			<li>Node 1がクラッシュし、リバランスが失敗。</li>
+			<li>Node 1を修復、サーバノードを再起動し、リバランス。Node 1をフルリカバリにより再追加。
+			</li>
           </ol>
         
-        <p>Node 1 is in delta recovery and a bucket operation is performed. </p>
-      <p>The bucket operations that cause rebalance to fail are adding bucket, changing replica
-        configuration, or flushing bucket</p>
+        <p>Node 1のデルタリカバリ時にバケットに対して操作を実行。</p>
+		<p>リバランスの失敗するバケットの操作は、バケットの追加、レプリカ設定の変更、バケットのフラッシュです。</p>
       <ol>
-            <li>Node 1 is failed over, delta recovery is specified, and then a bucket operation is
-              performed.</li>
-            <li>Rebalance is performed and fails. <p><image
+            <li>Node 1のフェイルオーバ後、デルタリカバリを指定、その後バケットに上記操作が行われた。</li>
+            <li>リバランスを実行すると失敗。<p><image
                   href="../images/ui-delta-rebalance-not-available.png" width="360"/></p></li>
-            <li>Cancel the pending delta recovery, specify full recovery, and rebalance.</li>
+            <li>ペンディング中のデルタリカバリをキャンセルし、フルリカバリを指定、リバランス。</li>
           </ol>
-          <note type="note">Bucket deletion does not lead to delta recovery failure.</note>
+          <note type="note">バケットの削除はデルタリカバリを継続できます。</note>
         
         
-        <p>Node 1 and Node 2 are in delta node recovery and Node 2 crashes. </p>
+        <p>Node 1とNode 2をデルタリカバリ中にNode 2がクラッシュ。</p>
           <ol>
-            <li>Both Node 1 and Node 2 are failed over, delta recovery is specified.</li>
-            <li>Node 2 crashes.</li>
-            <li>Rebalance is performed and fails. <p><image href="../images/ui-rebalance-failed.png"
+            <li>Node1とNode 2いずれもフェイルオーバ後、デルタリカバリを指定。</li>
+            <li>Node 2がクラッシュ。</li>
+            <li>リバランスを実行すると失敗。 <p><image href="../images/ui-rebalance-failed.png"
                   width="480"/></p></li>
           </ol>
       
