@@ -1,0 +1,335 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Debugging stale=false queries</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a><ul class="sub-sections"><li class="section"><a href="../Misc/Trbl-commonErrors.html"><span>Common errors</span></a></li><li class="section"><a href="../Misc/Trbl-generalTips.html"><span>General tips</span></a></li><li class="section"><a href="../Misc/Trbl-logs.html"><span>Logs and logging</span></a></li><li class="section"><a href="../Misc/Trbl-issuesReport.html"><span>Reporting issues</span></a></li><li class="section"><a href="../Misc/Trbl-beam-smp-issue.html"><span>Beam.smp</span></a></li><li class="section"><a href="../Misc/Trbl-blockedIndexer.html"><span>Blocked indexer</span></a></li><li class="section"><a href="../Misc/Trbl-common.html"><span>Server issues</span></a></li><li class="section"><a href="../Misc/Trbl-datamissing-server.html"><span>Incorrect or missing data (server issue)</span></a></li><li class="section"><a href="../Misc/Trbl-datamissing-user.html"><span>Incorrect or missing data (user issue)</span></a></li><li class="section"><a href="../Misc/Trbl-designdocs.html"><span>Design document aliases</span></a></li><li class="section"><a href="../Misc/Trbl-expireddocs.html"><span>Expired documents issue</span></a></li><li class="section"><a href="../Misc/Trbl-indexFileSystem.html"><span>Index filesystem structure</span></a></li><li class="section"><a href="../Misc/Trbl-queryResults.html"><span>Index results for a single node</span></a></li><li class="section"><a href="../Misc/Trbl-replicaIndex.html"><span>Debugging replica index</span></a></li><li class="section"><a href="../Misc/Trbl-staleFalse-debug.html" class="current"><span>Debugging stale=false queries</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Misc/Trbl-timeoutErrors.html"><span>Timeout errors</span></a></li><li class="section"><a href="../Misc/Trbl-total_row-debug.html"><span>total_rows values are too high</span></a></li></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+   <h1 class="title topictitle1">Debugging stale=false queries</h1>
+
+   
+   <div class="body"><p class="shortdesc">Debugging stale=false queries for missing/unexpected data</p>
+
+      <p class="p">The query parameter <samp class="ph codeph">debug=true</samp> can be used to debug queries with
+            <samp class="ph codeph">stale=false</samp> that are not returning all expected data or return
+         unexpected data. This is particularly useful when clients issue a
+            <samp class="ph codeph">stale=false</samp> query right after being unblocked by a memcached OBSERVE
+         command. .</p>
+
+      <p class="p">Here follows an example of how to debug this sort of issues on a simple scenario where
+         there’s only 16 vbuckets (instead of 1024) and 2 nodes. The tools
+            <samp class="ph codeph">couchdb_dump</samp> and <samp class="ph codeph">couchdb_info</samp> (from the couchstore git
+         project) are used to help analyze this type of issues (available under
+            <samp class="ph codeph">install/bin</samp> directory).</p>
+
+      <p class="p">Querying a view with <samp class="ph codeph">debug=true</samp> will add an extra field, named
+            <samp class="ph codeph">debug_info</samp> in the view response. This field has one entry per node in
+         the cluster (if no errors happened, like down/timed out nodes for example). Example:</p>
+
+      <pre class="pre codeblock"><code><samp class="ph codeph">&gt; curl -s 'http://localhost:9500/default/_design/test/_view/view1?stale=false&amp;limit=5&amp;debug=true' | json_xs
+ {
+    "debug_info" : {
+       "local" : {
+          "main_group" : {
+             "passive_partitions" : [],
+             "wanted_partitions" : [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+             ],
+             "wanted_seqs" : {
+                "0002" :00,
+                "0001" :00,
+                "0006" :00,
+                "0005" :00,
+                "0004" :00,
+                "0000" :00,
+                "0007" :00,
+                "0003" :00
+             },
+             "indexable_seqs" : {
+                "0002" :00,
+                "0001" :00,
+                "0006" :00,
+                "0005" :00,
+                "0004" :00,
+                "0000" :00,
+                "0007" :00,
+                "0003" :00
+             },
+             "cleanup_partitions" : [],
+             "stats" : {
+                "update_history" : [
+                   {
+                      "deleted_ids" : 0,
+                      "inserted_kvs" :00,
+                      "inserted_ids" :00,
+                      "deleted_kvs" : 0,
+                      "cleanup_kv_count" : 0,
+                      "blocked_time" : 0.000258,
+                      "indexing_time" : 103.222201
+                   }
+                ],
+                "updater_cleanups" : 0,
+                "compaction_history" : [],
+                "full_updates" : 1,
+                "accesses" : 1,
+                "cleanups" : 0,
+                "compactions" : 0,
+                "partial_updates" : 0,
+                "stopped_updates" : 0,
+                "cleanup_history" : [],
+                "update_errors" : 0,
+                "cleanup_stops" : 0
+             },
+             "active_partitions" : [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+             ],
+             "pending_transition" : null,
+             "unindexeable_seqs" : {},
+             "replica_partitions" : [
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+             ],
+             "original_active_partitions" : [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+             ],
+             "original_passive_partitions" : [],
+             "replicas_on_transfer" : []
+          }
+       },
+       "http://10.17.30.98:9501/_view_merge/" :   {
+          "main_group" : {
+             "passive_partitions" : [],
+             "wanted_partitions" : [
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+             ],
+             "wanted_seqs" : {
+                "0008" :00,
+                "0009" :00,
+                "0011" :00,
+                "0012" :00,
+                "0015" :00,
+                "0013" :00,
+                "0014" :00,
+                "0010" :00
+             },
+             "indexable_seqs" : {
+                "0008" :00,
+                "0009" :00,
+                "0011" :00,
+                "0012" :00,
+                "0015" :00,
+                "0013" :00,
+                "0014" :00,
+                "0010" :00
+             },
+             "cleanup_partitions" : [],
+             "stats" : {
+                "update_history" : [
+                   {
+                      "deleted_ids" : 0,
+                      "inserted_kvs" :00,
+                      "inserted_ids" :00,
+                      "deleted_kvs" : 0,
+                      "cleanup_kv_count" : 0,
+                      "blocked_time" : 0.000356,
+                      "indexing_time" : 103.651148
+                   }
+                ],
+                "updater_cleanups" : 0,
+                "compaction_history" : [],
+                "full_updates" : 1,
+                "accesses" : 1,
+                "cleanups" : 0,
+                "compactions" : 0,
+                "partial_updates" : 0,
+                "stopped_updates" : 0,
+                "cleanup_history" : [],
+                "update_errors" : 0,
+                "cleanup_stops" : 0
+             },
+             "active_partitions" : [
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+             ],
+             "pending_transition" : null,
+             "unindexeable_seqs" : {},
+             "replica_partitions" : [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+             ],
+             "original_active_partitions" : [
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+             ],
+             "original_passive_partitions" : [],
+             "replicas_on_transfer" : []
+          }
+       }
+    },
+    "total_rows" : 1000000,
+    "rows" : [
+       {
+          "value" : {
+             "ratio" : 1.8,
+             "type" : "warrior",
+             "category" : "orc"
+          },
+          "id" : "0000014",
+          "node" : "http://10.17.30.98:9501/_view_merge/",
+          "partition" : 14,
+          "key" : 1
+       },
+       {
+          "value" : {
+             "ratio" : 1.8,
+             "type" : "warrior",
+             "category" : "orc"
+          },
+          "id" : "0000017",
+          "node" : "local",
+          "partition" : 1,
+          "key" : 1
+       },
+       {
+          "value" : {
+             "ratio" : 1.8,
+             "type" : "priest",
+             "category" : "human"
+          },
+          "id" : "0000053",
+          "node" : "local",
+          "partition" : 5,
+          "key" : 1
+       },
+       {
+          "value" : {
+             "ratio" : 1.8,
+             "type" : "priest",
+             "category" : "orc"
+          },
+          "id" : "0000095",
+          "node" : "http://10.17.30.98:9501/_view_merge/",
+          "partition" : 15,
+          "key" : 1
+       },
+       {
+          "value" : {
+             "ratio" : 1.8,
+             "type" : "warrior",
+             "category" : "elf"
+          },
+          "id" : "0000151",
+          "node" : "local",
+          "partition" : 7,
+          "key" : 1
+       }
+    ]
+ }
+</samp></code></pre>
+
+      <p class="p">For each node, there are 2 particular fields of interest when debugging
+            <samp class="ph codeph">stale=false</samp> queries that apparently miss some data:</p>
+
+      <ul class="ul">
+         <li class="li"><p class="p"><samp class="ph codeph">wanted_seqs</samp> - This field has an object (dictionary) value where
+               keys are vbucket IDs and values are vbucket database sequence numbers for an
+               explanation of sequence numbers). This field tells us the sequence number of each
+               vbucket database file (at the corresponding node) at the moment the query arrived at
+               the server (all these vbuckets are <samp class="ph codeph">active vbuckets</samp> ).</p>
+</li>
+
+         <li class="li"><p class="p"><samp class="ph codeph">indexable_seqs</samp> - This field has an object (dictionary) value where
+               keys are vbucket IDs and values are vbucket database sequence numbers. This field
+               tells us, for each active vbucket database, up to which sequence the index has
+               processed/indexed documents (remember, each vbucket database sequence number is
+               associated with 1, and only 1, document).</p>
+</li>
+
+      </ul>
+
+      <p class="p">For queries with <samp class="ph codeph">stale=false</samp>, all the sequences in
+            <samp class="ph codeph">indexable_seqs</samp> must be greater or equal then the sequences in
+            <samp class="ph codeph">wanted_seqs</samp> - otherwise the <samp class="ph codeph">stale=false</samp> option can be
+         considered broken. What happens behind the scenes is, at each node, when the query request
+         arrives, the value for <samp class="ph codeph">wanted_seqs</samp> is computed (by asking each active
+         vbucket database for its current sequence number), and if any sequence is greater than the
+         corresponding entry in <samp class="ph codeph">indexable_seqs</samp> (stored in the index), the client is
+         blocked, the indexer is started to update the index, the client is unblocked when the
+         indexer finishes updating the index, and finally the server starts streaming rows to the
+         client - note that at this point, all sequences in <samp class="ph codeph">indexable_seqs</samp> are
+         necessarily greater or equal then the corresponding sequences in
+            <samp class="ph codeph">wanted_sequences</samp>, otherwise the <samp class="ph codeph">stale=false</samp>
+         implementation is broken.</p>
+
+   </div>
+
+   <nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Misc/Trbl-intro.html" title="トラブルシューティングの一般的なヒント、一般的なエラー、ログ情報、およびその他の問題について説明します。">トラブルシューティング</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Misc/Trbl-replicaIndex.html" title="Description of how to test and verify that the replica index is working.">Debugging replica index</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Misc/Trbl-timeoutErrors.html" title="Timeout errors when querying a view with stale=false.">Timeout errors</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="http://www.couchbase.com/issues/browse/MB-7161" target="_blank">MB–7161</a></div></div>
+</nav>
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

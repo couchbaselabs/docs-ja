@@ -1,0 +1,73 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Restoring from different operating systems</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections section--active"><a href="../cli-intro.html"><span>CLI reference</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../CLI/cli-overview.html"><span>CLI overview</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbcli-intro.html"><span>couchbase-cli tool</span></a></li><li class="section"><a href="../CLI/cbanalyze-core_tool.html"><span>cbanalyze-core tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbepctl-intro.html"><span>cbepctl tool</span></a></li><li class="section"><a href="../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections section--active"><a href="../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a><ul class="sub-sections"><li class="section"><a href="../CLI/cbrestore-ddocs.html"><span>Restoring design documents</span></a></li><li class="section"><a href="../CLI/cli-incremental-restore.html"><span>Restoring incrementally</span></a></li><li class="section"><a href="../CLI/cbrestore-tween-opsys.html" class="current"><span>Restoring from different operating systems</span></a><ul class="sub-sections"></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">Restoring from different operating systems</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">Data is restored to an operating system that is different from the backup operating
+    system, using the <samp class="ph codeph">cbrestore</samp> tool with the <samp class="ph codeph">restore=1</samp>
+    option.</p>
+
+    <div class="section"><h2 class="title sectiontitle">Description</h2>
+      <p class="p">Couchbase Server on Mac OS X uses a different number of configured vBuckets than Linux and
+        Windows installations. Because of this, restoring to Mac OS X from a Linux or Windows backup
+        or restoring to Linux/Windows from a Mac OS X backup requires the <samp class="ph codeph">rehash=1</samp>
+        option.</p>
+
+      
+      <p class="p">To backup the data (from any operating system), use the
+        standard <samp class="ph codeph">cbbackup</samp> tool and options.</p>
+
+      
+      <p class="p">For example, from Mac OS X:</p>
+
+      <pre class="pre codeblock"><code>cbbackup http://[Administrator]:[password]@[mac-hostname]:8091 /macbackup/today</code></pre>
+
+      
+      <p class="p">For example, from Linux:</p>
+
+      <pre class="pre codeblock"><code>cbbackup [Administrator]:[password]@[linux-hostname]:8091 /linuxbackup/today</code></pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">To restore the data to a cluster with a different operating system, connect to the 8091
+        port, and use the <samp class="ph codeph">rehash=1</samp> option to rehash the information and distribute
+        the data to the appropriate node within the cluster. <samp class="ph codeph">rehash=1</samp> rehashes the
+        partition id's of each item. This is required when transferring data between clusters with a
+        different number of partitions, such as when transferring data from a Mac OS X server to a
+        non-Mac OS X cluster.</p>
+
+      <pre class="pre codeblock"><code>cbrestore backup 
+  -u [username] -p [password] 
+  -x rehash=1
+  http://[localhost]:8091 
+  --bucket-source [my_bucket] 
+  --bucket-destination [my_bucket]</code></pre>
+
+      <div class="note note"><span class="notetitle">Note:</span> If you backed up multiple buckets from Mac OS X and are restoring to either
+        Linux or Windows, each bucket must be restored individually.</div>
+
+    </div>
+
+   
+  </div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../CLI/cbrestore_tool.html" title="The cbrestore tool restores data from a file to an entire cluster or to a single bucket in the cluster.">cbrestore tool</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../CLI/cli-incremental-restore.html" title="Incremental restore operations are run by using the cbrestore command-line tool.">Restoring incrementally</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

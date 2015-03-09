@@ -1,0 +1,129 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Swap rebalance</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-manage-serverWarmup.html"><span>Handling server warmup</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-replication.html"><span>Handling replication</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-compaction.html"><span>Compacting data files</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-maintenance.html"><span>Cluster maintenance</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/rebalance-adding-nodes.html"><span>Adding nodes</span></a></li><li class="section"><a href="../Tasks/rebalance-remove-node.html"><span>Removing nodes</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/tasks-rebalance.html"><span>Rebalancing</span></a><ul class="sub-sections"><li class="section"><a href="../Concepts/concept-rebalancing.html"><span>Rebalancing operation</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/rebalance-performing.html"><span>Performing a rebalance</span></a></li><li class="section"><a href="../Tasks/rebalance-behind-the-scenes.html"><span>Rebalance behind-the-scenes</span></a></li><li class="section"><a href="../Tasks/rebalance-bucket-types.html"><span>Rebalance effect on bucket types</span></a></li><li class="section"><a href="../Tasks/rebalance-swap-rebalance.html" class="current"><span>Swap rebalance</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Tasks/rebalance-factors.html"><span>Rebalancing factors</span></a></li><li class="section"><a href="../Tasks/rebalance-questions.html"><span>Common rebalancing questions</span></a></li></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/maintenance-server-node.html"><span>Server maintenance</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-backup-restore.html"><span>Backup and restore</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-xdcr.html"><span>Managing XDCR</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+ <h1 class="title topictitle1">Swap rebalance</h1>
+
+ 
+ <div class="body conbody"><p class="shortdesc">Swap rebalance is an automatic process that optimizes the movement of data when you are
+    adding and removing the same number of nodes within the same operation. </p>
+
+
+  <p class="p">Swap rebalance optimizes the rebalance operation by moving data directly from the nodes
+      being removed to the nodes being added. This is more efficient than standard rebalancing,
+      which normally moves data across the entire cluster.</p>
+
+  <p class="p">Swap rebalance occurs automatically if the number of nodes being added and removed is
+      identical. For example, two nodes are marked to be removed and another two nodes are added to
+      the cluster. There is no configuration or selection mechanism to force a swap rebalance. If a
+      swap rebalance cannot take place, then a normal rebalance operation is used instead. </p>
+
+    <p class="p">Swap rebalance operates as follows:</p>
+
+  <ul class="ul">
+   <li class="li"><p class="p">Data is moved directly from a node being removed to the node being added on a one-to-one
+     basis. This eliminates the need to restructure the entire vBucket map.</p>
+</li>
+
+   <li class="li"><p class="p">Active vBuckets are moved, one at a time, from the source node to the destination
+    node.</p>
+</li>
+
+   <li class="li"><p class="p">Replica vBuckets are created on the new node and populated with existing data before being
+     activated as the live replica bucket. This ensures that your replicas are still in place 
+     in case there is a failure during the rebalance operation.</p>
+</li>
+
+  </ul>
+
+  <p class="p">For example, you have a cluster with 20 nodes and configure two nodes (X and Y) to be
+   added, and two nodes to be removed (A and B):</p>
+
+  <ul class="ul">
+   <li class="li"><p class="p">vBuckets from node A are moved to node X.</p>
+</li>
+
+   <li class="li"><p class="p">vBuckets from node B are moved to node Y.</p>
+</li>
+
+  </ul>
+
+   
+   <div class="section"><h2 class="title sectiontitle">Swap rebalance benefits</h2>
+  <p class="p">The benefits of swap rebalance are:</p>
+
+  <ul class="ul">
+   <li class="li"><p class="p">Reduced rebalance duration, since the move takes place directly from the nodes being
+     removed to the nodes being added.</p>
+</li>
+
+   <li class="li"><p class="p">Reduced load on the cluster during rebalance.</p>
+</li>
+
+   <li class="li"><p class="p">Reduced network overhead during the rebalance.</p>
+</li>
+
+   <li class="li"><p class="p">Reduced chance of a rebalance failure if a failover occurs during the rebalance operation,
+     since replicas are created in tandem on the new hosts while the old host replicas still remain
+     available.</p>
+</li>
+
+   <li class="li"><p class="p">Because data on the nodes are swapped, rather than performing a full rebalance, the
+     capacity of the cluster remains unchanged during the rebalance operation, helping to ensure
+     performance and failover support.</p>
+</li>
+
+  </ul>
+</div>
+
+   
+   <div class="section"><h2 class="title sectiontitle">Rebalance failures</h2>
+<dl class="dl">
+  
+    <dt class="dt dlterm">Rebalance process failure</dt>
+
+    <dd class="dd">If rebalance fails, or has been deliberately stopped, the active and
+      replica vBuckets that have been transitioned will be part of the active vBucket map. Any
+      transfers still in progress will be canceled. Restarting the rebalance operation will continue
+      the rebalance from where it left off.</dd>
+
+  
+</dl>
+
+     <dl class="dl">
+       
+         <dt class="dt dlterm">Node failure</dt>
+
+         <dd class="dd">When a node failed, removing it and adding a replacement
+           node (or adding the node back) will be treated as swap rebalance.</dd>
+
+       
+     </dl>
+
+
+  <div class="note important"><span class="importanttitle">Important:</span> If a node fails over during a swap rebalance, either clean up and re-add
+        the failed node, or add a new node and perform the rebalance as normal. </div>
+
+
+   </div>
+
+
+ </div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Tasks/tasks-rebalance.html" title="Rebalancing is the process of redistributing information across nodes.">Rebalancing</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Tasks/rebalance-bucket-types.html" title="The rebalance operation works across the cluster both on the Couchbase and memcached buckets.">Rebalance effect on bucket types</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Tasks/rebalance-factors.html" title="Choosing when, why, and how to rebalance your cluster depends on the scenario.">Rebalancing factors</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

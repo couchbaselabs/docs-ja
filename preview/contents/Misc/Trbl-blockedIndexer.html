@@ -1,0 +1,192 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Blocked indexer</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a><ul class="sub-sections"><li class="section"><a href="../Misc/Trbl-commonErrors.html"><span>Common errors</span></a></li><li class="section"><a href="../Misc/Trbl-generalTips.html"><span>General tips</span></a></li><li class="section"><a href="../Misc/Trbl-logs.html"><span>Logs and logging</span></a></li><li class="section"><a href="../Misc/Trbl-issuesReport.html"><span>Reporting issues</span></a></li><li class="section"><a href="../Misc/Trbl-beam-smp-issue.html"><span>Beam.smp</span></a></li><li class="section"><a href="../Misc/Trbl-blockedIndexer.html" class="current"><span>Blocked indexer</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Misc/Trbl-common.html"><span>Server issues</span></a></li><li class="section"><a href="../Misc/Trbl-datamissing-server.html"><span>Incorrect or missing data (server issue)</span></a></li><li class="section"><a href="../Misc/Trbl-datamissing-user.html"><span>Incorrect or missing data (user issue)</span></a></li><li class="section"><a href="../Misc/Trbl-designdocs.html"><span>Design document aliases</span></a></li><li class="section"><a href="../Misc/Trbl-expireddocs.html"><span>Expired documents issue</span></a></li><li class="section"><a href="../Misc/Trbl-indexFileSystem.html"><span>Index filesystem structure</span></a></li><li class="section"><a href="../Misc/Trbl-queryResults.html"><span>Index results for a single node</span></a></li><li class="section"><a href="../Misc/Trbl-replicaIndex.html"><span>Debugging replica index</span></a></li><li class="section"><a href="../Misc/Trbl-staleFalse-debug.html"><span>Debugging stale=false queries</span></a></li><li class="section"><a href="../Misc/Trbl-timeoutErrors.html"><span>Timeout errors</span></a></li><li class="section"><a href="../Misc/Trbl-total_row-debug.html"><span>total_rows values are too high</span></a></li></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+   <h1 class="title topictitle1">Blocked indexer</h1>
+
+   
+   <div class="body"><p class="shortdesc">Indexer shows no progress for long periods of time.</p>
+
+      <p class="p">Each design document maps to one indexer, so when the indexer runs it updates all views
+         defined in the corresponding design document. Indexing takes resources (CPU, disk IO,
+         memory), therefore Couchbase Server limits the maximum number of indexers that can run in
+         parallel. There are 2 configuration parameters to specify the limit, one for regular
+         (main/active) indexers and other for replica indexers (more on this in a later section).
+         The default for the former is 4 and for the later is 2. They can be queried like this:</p>
+
+      <pre class="pre codeblock"><code><samp class="ph codeph">&gt; curl -s 'http://Administrator:asdasd@localhost:8091/settings/maxParallelIndexers'
+{"globalValue":4,"nodes":{"n_0@192.168.1.80":4}}
+</samp></code></pre>
+
+      <p class="p"><samp class="ph codeph">maxParallelIndexers</samp> is for main indexes and
+            <samp class="ph codeph">maxParallelReplicaIndexers</samp> is for replica indexes. When there are more
+         design documents (indexers) than maxParallelIndexers, some indexers are blocked until
+         there’s a free slot, and the rule is simple as first-come-first-served. These slots are
+         controlled by 2 barriers processes, one for main indexes, and the other for replica
+         indexes. Their current state can be seen from <samp class="ph codeph">_active_tasks</samp> (per node),
+         for example when there’s no indexing happening:</p>
+
+      <pre class="pre codeblock"><code><samp class="ph codeph">&gt; curl -s 'http://localhost:9500/_active_tasks' | json_xs
+[
+ {
+     "waiting" : 0,
+         "started_on" : 1345642656,
+         "pid" : "&lt;0.234.0&gt;",
+         "type" : "couch_main_index_barrier",
+         "running" : 0,
+         "limit" : 4,
+         "updated_on" : 1345642656
+         },
+ {
+     "waiting" : 0,
+         "started_on" : 1345642656,
+         "pid" : "&lt;0.235.0&gt;",
+         "type" : "couch_replica_index_barrier",
+         "running" : 0,
+         "limit" : 2,
+         "updated_on" : 1345642656
+         }
+ ]
+</samp></code></pre>
+
+      <p class="p">The <samp class="ph codeph">waiting</samp> fields tells us how many indexers are blocked, waiting for
+         their turn to run. Queries with <samp class="ph codeph">stale=false</samp> have to wait for the indexer
+         to be started (if not already), unblocked and to finish, which can lead to a long time when
+         there are many design documents in the system. Also take into account that the indexer for
+         a particular design document might be running for one node but it might be blocked in
+         another node - when it’s blocked it’s not necessarily blocked in all nodes of the cluster
+         nor when it’s running is necessarily running in all nodes of the cluster - you verify this
+         by querying _active_tasks for each node (this API is not meant for direct user consumption,
+         just for developers and debugging/troubleshooting).</p>
+
+      <p class="p">Through <samp class="ph codeph">_active_tasks</samp> (remember, it’s per node, so check it for every node
+         in the cluster), you can see which indexers are running and which are blocked. Here follows
+         an example where we have 5 design documents (indexers) and
+            <samp class="ph codeph">&gt;maxParallelIndexers</samp> is 4:</p>
+
+      <pre class="pre codeblock"><code><samp class="ph codeph">&gt; curl -s 'http://localhost:9500/_active_tasks' | json_xs
+[
+   {
+      "waiting" : 1,
+      "started_on" : 1345644651,
+      "pid" :  "&lt;0.234.0&gt;",
+      "type" :  "couch_main_index_barrier",
+      "running" : 4,
+      "limit" : 4,
+      "updated_on" : 1345644923
+   },
+   {
+      "waiting" : 0,
+      "started_on" : 1345644651,
+      "pid" :  "&lt;0.235.0&gt;",
+      "type" :  "couch_replica_index_barrier",
+      "running" : 0,
+      "limit" : 2,
+      "updated_on" : 1345644651
+   },
+   {
+      "indexer_type" : "main",
+      "started_on" : 1345644923,
+      "updated_on" : 1345644923,
+      "design_documents" : [
+         "_design/test"
+      ],
+      "pid" :  "&lt;0.4706.0&gt;",
+      "signature" : "4995c136d926bdaf94fbe183dbf5d5aa",
+      "type" :  "blocked_indexer",
+      "set" :  "default"
+   },
+   {
+      "indexer_type" : "main",
+      "started_on" : 1345644923,
+      "progress" : 0,
+      "initial_build" : true,
+      "updated_on" : 1345644923,
+      "total_changes" : 250000,
+      "design_documents" : [
+         "_design/test4"
+      ],
+      "pid" :  "&lt;0.4715.0&gt;",
+      "changes_done" : 0,
+      "signature" : "15e1f576bc85e3e321e28dc883c90077",
+      "type" :  "indexer",
+      "set" :  "default"
+   },
+   {
+      "indexer_type" : "main",
+      "started_on" : 1345644923,
+      "progress" : 0,
+      "initial_build" : true,
+      "updated_on" : 1345644923,
+      "total_changes" : 250000,
+      "design_documents" : [
+         "_design/test3"
+      ],
+      "pid" :  "&lt;0.4719.0&gt;",
+      "changes_done" : 0,
+      "signature" : "018b83ca22e53e14d723ea858ba97168",
+      "type" :  "indexer",
+      "set" :  "default"
+   },
+   {
+      "indexer_type" : "main",
+      "started_on" : 1345644923,
+      "progress" : 0,
+      "initial_build" : true,
+      "updated_on" : 1345644923,
+      "total_changes" : 250000,
+      "design_documents" : [
+         "_design/test2"
+      ],
+      "pid" :  "&lt;0.4722.0&gt;",
+      "changes_done" : 0,
+      "signature" : "440b0b3ded9d68abb559d58b9fda3e0a",
+      "type" :  "indexer",
+      "set" : "default"
+   },
+   {
+      "indexer_type" : "main",
+      "started_on" : 1345644923,
+      "progress" : 0,
+      "initial_build" : true,
+      "updated_on" : 1345644923,
+      "total_changes" : 250000,
+      "design_documents" : [
+         "_design/test7"
+      ],
+      "pid" :  "&lt;0.4725.0&gt;",
+      "changes_done" : 0,
+      "signature" : "fd2bdf6191e61af6e801e3137e2f1102",
+      "type" :  "indexer",
+      "set" :  "default"
+   }
+]
+</samp></code></pre>
+
+      <p class="p">The indexer for design document _design/test is represented by a task with a
+            <samp class="ph codeph">type</samp> field of <samp class="ph codeph">blocked_indexer</samp>, while other indexers
+         have a task with type <samp class="ph codeph">indexer</samp>, meaning they’re running. The task with type
+            <samp class="ph codeph">couch_main_index_barrier</samp> confirms this by telling us there are
+         currently 4 indexers running and 1 waiting for its turn. When an indexer is allowed to
+         execute, its active task with type <samp class="ph codeph">blocked_indexer</samp> is replaced by a new
+         one with type <samp class="ph codeph">indexer</samp>.</p>
+
+   </div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Misc/Trbl-intro.html" title="トラブルシューティングの一般的なヒント、一般的なエラー、ログ情報、およびその他の問題について説明します。">トラブルシューティング</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Misc/Trbl-beam-smp-issue.html" title="Beam.smp uses excessive memory on Linux">Beam.smp</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Misc/Trbl-common.html" title="Troubleshooting Couchbase Server represents a basic action associated with critical and informational issues.">Server issues</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

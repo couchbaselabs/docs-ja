@@ -1,0 +1,215 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Managing diagnostics</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections section--active"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../UI/ui-cluster-summary.html"><span>Cluster Overview</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-server-nodes.html"><span>Server Nodes</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-data-buckets.html"><span>Data Buckets</span></a></li><li class="section"><a href="../UI/ui-views-editor.html"><span>Views</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-xdcr-panel.html"><span>XDCR</span></a></li><li class="section section--has-sub-sections section--active"><a href="../UI/ui-logs.html"><span>Log</span></a><ul class="sub-sections"><li class="section"><a href="../UI/ui-cluster-wide-info.html" class="current"><span>Managing diagnostics</span></a><ul class="sub-sections"></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../UI/ui-settings.html"><span>Settings</span></a></li></ul></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+	<h1 class="title topictitle1">Managing diagnostics</h1>
+
+	<p class="shortdesc">The web console provides a graphical interface for collecting and sending system diagnostics to the Couchbase support team.</p>
+
+
+	<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../UI/ui-logs.html" title="The Log section provides a built-in event log and diagnostics collection section.">Log</a></div>
+</div>
+</nav><div class="topic task nested1" id="task_s1v_z3w_h4">
+		<h2 class="title topictitle2">Collecting and uploading log information</h2>
+
+
+		<div class="body taskbody">
+			<div class="section context">You can collect and upload logs via <span class="ph uicontrol">Log &gt; Collect Information</span>
+				panel</div>
+
+			
+			<ol class="ol steps"><li class="li step stepexpand">
+					<span class="ph cmd">Click <span class="ph uicontrol">Collect Information</span>.</span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">In the <span class="keyword wintitle">Collect Information</span> window, select the nodes you
+						want to report on.</span>
+					<div class="itemgroup info">
+						<p class="p">You can choose to report on all accessible nodes or select one or more specific
+							accessible nodes. You can collect information only from accessible nodes.
+								<dfn class="term">Accessible nodes</dfn> are nodes that are in the Up or Pending state.
+							You cannot select nodes in the Down state because they cannot respond to
+							cluster messages.</p>
+
+					</div>
+					
+<table border="1" frame="hsides" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder">
+<thead><tr><th id="d123665e64-option" valign="bottom" align="left">Option</th>
+<th id="d123665e64-desc" valign="bottom" align="left">Description</th></tr></thead>
+<tbody>
+						<tr class="strow chrow">
+							<td valign="top" headers="d123665e64-option" id="d123665e68" class="stentry choption"><strong><span class="ph uicontrol">All accessible nodes</span></strong></td>
+
+							<td valign="top" headers="d123665e64-desc d123665e68" class="stentry chdesc">Collects logs for all accessible nodes in the cluster. </td>
+
+						</tr>
+
+						<tr class="strow chrow">
+							<td valign="top" headers="d123665e64-option" id="d123665e78" class="stentry choption"><strong><span class="ph uicontrol">Selected nodes</span></strong></td>
+
+							<td valign="top" headers="d123665e64-desc d123665e78" class="stentry chdesc">Collects logs for a subset of the nodes in the cluster.</td>
+
+						</tr>
+
+					</tbody></table>
+
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">If you want to send the report to Couchbase, select the <span class="ph uicontrol">Upload to
+							Couchbase</span> check box and fill in the additional
+						fields.</span>
+					<div class="itemgroup info">
+						<p class="p">The <span class="ph uicontrol">Upload to Couchbase</span> check box is selected by default. The additional fields are:</p>
+
+						<ul class="ul">
+							<li class="li"><span class="ph uicontrol">Upload to host</span>—enter the name of the host that you
+								want the logs uploaded to. The host name can be either your own server or a
+								specific server to which Couchbase support asked you to upload the
+								files.</li>
+
+							<li class="li"><span class="ph uicontrol">Customer name</span>—enter the name of your company. This
+								field is used to create file names for the logs and the URL that the files
+								are uploaded to.</li>
+
+							<li class="li"><span class="ph uicontrol">Ticket number</span>—enter the Couchbase support ticket
+								number associated with the request for logs. This field is optional, but if
+								specified it is used as a path component of the URL that the files are
+								uploaded to.</li>
+
+						</ul>
+
+					</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Click <span class="ph uicontrol">Collect</span>.</span>
+					<div class="itemgroup info">
+						<p class="p">The <span class="keyword wintitle">Collect Results</span> window appears and begins to display
+						the status of the collection process. The status display continues to update until
+						the collection process is complete. The current status of each node is displayed.
+						The node statuses are:</p>
+ 
+						<ul class="ul">
+							<li class="li"><span class="ph uicontrol">Pending</span>—collection hasn’t started on the node.</li>
+
+							<li class="li"><span class="ph uicontrol">Collection in progress</span>—collection is currently
+								running on the node.</li>
+
+							<li class="li"><span class="ph uicontrol">Collected</span>—collection is complete. This status is
+								displayed only if the logs will not be uploaded to a server.</li>
+
+							<li class="li"><span class="ph uicontrol">Uploaded</span>—collection is complete and the logs have
+								been uploaded to a server.</li>
+
+							<li class="li"><span class="ph uicontrol">Failed to collect</span>—collection was unsuccessful. When
+								available, additional information about the failure is shown in the Details
+								column.</li>
+
+							<li class="li"><span class="ph uicontrol">Collected, failed to upload</span>—collection was
+								successful, but the logs could not be uploaded. When available, additional
+								information about the failure is shown in the Details column.</li>
+
+							<li class="li"><span class="ph uicontrol">Cancelled</span>—the user canceled collection for this
+								node.</li>
+
+						</ul>
+
+					</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">View the results.</span>
+					<div class="itemgroup info">
+						<p class="p">After the collection process finishes, the <span class="keyword wintitle">Collection
+								Results</span> window contains a summary of the collection process
+							result. The summary contains the following lists:</p>
+
+						<ul class="ul">
+							<li class="li">Logs that were successfully uploaded. The list includes the destination URL
+								for each log file. If you didn't choose to upload the files to Couchbase,
+								you can use this information to locate the files and upload them
+								manually.</li>
+
+							<li class="li">Logs that were collected but couldn't be uploaded. The list includes the
+								node and path for each log file that couldn't be uploaded.</li>
+
+							<li class="li">Nodes that could not be collected from.</li>
+
+						</ul>
+
+					</div>
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+
+	<div class="topic task nested1" id="cancel-collection">
+		<h2 class="title topictitle2">Canceling information collection</h2>
+
+		<div class="body taskbody">
+			<div class="section context">You can cancel the collection process at any time before it finishes. </div>
+
+			<ol class="ol steps"><li class="li step">
+					<span class="ph cmd">In the <span class="keyword wintitle">Collect results</span> window, click
+							<span class="ph uicontrol">Cancel</span>.</span>
+				</li>
+<li class="li step">
+					<span class="ph cmd">Verify whether you want to cancel the collection process.</span>
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+
+	<div class="topic task nested1" id="hide-collect">
+		<h2 class="title topictitle2">Hiding the collection results window</h2>
+
+		<div class="body taskbody">
+			<div class="section context">You can hide the <span class="keyword wintitle">Collection results</span> window before the
+				collection process finishes by clicking the <span class="ph uicontrol">Close</span> button in the
+				window title bar. You will receive a notification when the collection process
+				finishes.</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="topic task nested1" id="show-collect">
+		<h2 class="title topictitle2">Showing the collection results window</h2>
+
+		<div class="body taskbody">
+			<div class="section context">If you closed the <span class="keyword wintitle">Collection results</span> window before the
+				collection process finished, you can bring it back up to review the results.</div>
+
+			<ol class="ol steps"><li class="li step">
+					<span class="ph cmd">Select the <span class="ph uicontrol">Logs</span> tab.</span>
+				</li>
+<li class="li step">
+					<span class="ph cmd">Click <span class="ph uicontrol">View Log Collect Status</span>.</span>
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+
+
+			
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

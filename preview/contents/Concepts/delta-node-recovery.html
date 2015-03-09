@@ -1,0 +1,238 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>デルタノードリカバリ</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-manage-serverWarmup.html"><span>Handling server warmup</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-replication.html"><span>Handling replication</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-compaction.html"><span>Compacting data files</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-maintenance.html"><span>Cluster maintenance</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/maintenance-server-node.html"><span>Server maintenance</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Concepts/concept-nodeFailover.html"><span>Failing over nodes</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/recovery-failover-nodes.html"><span>Recovering failed over nodes</span></a><ul class="sub-sections"><li class="section"><a href="../Concepts/delta-node-recovery.html" class="current"><span>デルタノードリカバリ</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Tasks/recovery-full-recovery.html"><span>Full recovery</span></a></li></ul></li><li class="section"><a href="../Tasks/rebalance-and-failover-nodes.html"><span>Rebalancing after failover</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-backup-restore.html"><span>Backup and restore</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-xdcr.html"><span>Managing XDCR</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">デルタノードリカバリ</h1>
+
+  
+  
+  <div class="body"><p class="shortdesc">
+	  デルタノードリカバリを使うと、ノードをクラスタに再追加後に、変更されたデータの差分を反映させることができます。
+  </p>
+
+  	
+	<p class="p">
+		デルタノードリカバリは、フェイルオーバしたノードのディスク上にあるデータを再利用し、差分の変更を反映し再同期させることで、リカバリが可能です。
+		フェイルオーバしたノードはどの時点でデータの変化が停止したのかを特定するためにチェックされ、その時点から再同期を開始します。
+		サーバノードは保持するvBucketのデータ変化を反映した後、データの提供を開始します。
+		元々のデータとバケットを再利用することで、最小のダウンタイムでクラスタの利用を開始できます。
+		この操作により、リカバリ時間とネットワークリソース利用が向上します。
+    </p>
+
+    
+	<p class="p">
+		サーバノードは様々な場面でクラスタから削除されます。
+		以下の例は、サーバノードをクラスタからフェイルオーバした後に再追加する場面の一部を示しています(この他にも多くあります)。
+    </p>
+
+    
+    <ul class="ul">
+      <li class="li">ノードが少しの間ダウンした</li>
+
+      <li class="li">計画的定期メンテナンス</li>
+
+      <li class="li">ネットワーク接続が少しの間切断した</li>
+
+    </ul>
+
+      
+	<p class="p">
+		ノードがフェイルオーバされても、データファイルは保持されます。
+		データファイルはCouchbaseサポートにも、データの復旧にも、デルタノードリカバリにも利用できます。
+	</p>
+
+    
+	<p class="p">
+		ノードをフェイルオーバし、メンテナンスを行い、ノードをクラスタへ再追加して、リバランスを実行する処理において、
+		フルリカバリモードかデルタリカバリモードでデータを復旧することができます。
+		デルタリカバリモードでは、Couchbaseが(DCPを利用し)、どのデータファイルが最新で、どのデータファイルが古くなっているかを検知し、
+		リバランス時に、フェイルオーバしたサーバノード上の既存のデータファイルを再利用し、古くなったファイルを更新します。
+	</p>
+
+    
+	<p class="p">
+		サーバノードをフェイルオーバすると、Webコンソールに、Delta RecoveryとFull Recoveryの選択肢が表示されます。
+		いずれの復旧方法もサーバをクラスタに再追加するためにリバランスが必要ですが、
+		フルリカバリの場合、リバランス前にノードが持つ既存データを削除するのに対し、デルタリカバリではノードが持つ既存データを再利用します。
+    </p>
+
+    
+    
+    
+    <p class="p">デルタリカバリの条件:</p>
+
+    <ul class="ul">
+      <li class="li">ノードとクラスタが健全な状態である必要があります。</li>
+
+	  <li class="li">
+		  フェイルオーバしたサーバノードが必要です。
+		  デルタリカバリはサーバ追加時のリバランス、およびサーバ削除時のリバランスでは利用できません。
+	  </li>
+
+	  <li class="li">
+		  すべてのバケットでデルタリカバリが実行できる必要があります。
+		  例えば、いくつかのバケットがデルタリカバリ可能でも、それ以外のバケットが不可能であった場合、
+		  Couchbaseクラスタはリバランス操作を許可しません。
+	  </li>
+
+	  <li class="li">
+		  なぜなら、デルタリカバリはフェイルオーバしたサーバノードのディスク上にある既存のデータファイルに依存しており、
+		  それと完全に同じセットのバケットを、フェイルオーバしたサーバノードに転送する必要があるからです。
+	  </li>
+
+    </ul>
+
+    
+    <p class="p">デルタリカバリの性質:</p>
+
+    <ul class="ul">
+		<li class="li">
+			データファイルはメモリ上に"ウォームアップ"されます。
+			メモリへのウォームアップとはデータをメモリ上にロードすることです。
+			どのメタデータが保持されるかによって、必要最小のすべてのデータファイルキーがリバランス操作の前にディスクからロードされます。
+		</li>
+
+      <li class="li">インデックスは再追加するサーバノード上で必ず再構築されます。</li>
+
+	  <li class="li">
+		  データサイズがRAMサイズよりもはるかに大きく、バケットでfull eviction(メタデータをメモリに保持しない)を設定していて、
+		  インデックスを定義していない環境で利用してください。
+		</li>
+
+    </ul>
+
+
+    
+	<div class="note tip"><span class="tiptitle">ヒント:</span> 
+		非常に大きなデータ量を保持する環境で、フェイルオーバしたサーバノードを再追加する場合に利用できます。
+	</div>
+
+    
+
+ 
+ 
+    <div class="section"><h2 class="title sectiontitle">デルタノードリカバリが利用できないシナリオ</h2>
+      
+		<p class="p">
+			以下の条件は、デルタノードリカバリが利用できず、フルリカバリとなる条件です:
+		</p>
+
+      <ul class="ul">
+		  <li class="li">
+			ノードがデルタリカバリ待ちの間にトポロジが変わった場合、デルタノードリカバリに影響します。
+			例えば、他のノードを追加したり、ノードを削除したり、ノードをスワップするなどです。
+          </li>
+
+        <li class="li">ダウンしたノードがハードフェイルオーバされ、削除待ちの場合。</li>
+
+		<li class="li">
+			リバランスにより異なる数のノード追加、削除が実行された場合(スワップリバランスは実行可能です)。
+		</li>
+
+		<li class="li">
+			ノードがデルタリカバリ待ちの間に、デルタノードリカバリに影響するバケット操作を行った場合。
+			例えば、新規のバケットを追加したり、バケットのレプリカ設定を変更したり、バケットをフラッシュするなどです。
+		</li>
+
+      </ul>
+
+      
+
+	  <p class="p">
+		以下は、デルタノードリカバリが利用できず、フルリカバリとなるシナリオです:
+		</p>
+
+      
+      <p class="p">Node 1をデルタリカバリ中にアクティブなサーバノードのNode 2がクラッシュ。</p>
+
+      <ol class="ol">
+		  <li class="li">Node 1のフェイルオーバ後、デルタリカバリを指定。Node 1はデルタリカバリ待ちの状態。</li>
+
+		  <li class="li">そこでアクティブサーバのNode 2がダウン。<div class="note note"><span class="notetitle">注:</span> リバランスを実行することはできません。</div>
+</li>
+
+            <li class="li">Node 2をフェイルオーバ。 </li>
+
+            <li class="li">ペンディング中のデルタリカバリをキャンセルし、フルリカバリを指定してリバランス。</li>
+
+            <li class="li">Node 2を修復し、クラスタに追加してリバランス。</li>
+
+          </ol>
+
+       
+      <p class="p">Node 1をデルタリカバリし、リバランス中にNode 1がクラッシュ。</p>
+
+      
+      <ol class="ol">
+            <li class="li">Node 1のフェイルオーバ後、デルタリカバリを指定し、リバランスを開始。</li>
+
+			<li class="li">Node 1がクラッシュし、リバランスが失敗。</li>
+
+			<li class="li">Node 1を修復、サーバノードを再起動し、リバランス。Node 1をフルリカバリにより再追加。
+			</li>
+
+          </ol>
+
+        
+        <p class="p">Node 1のデルタリカバリ時にバケットに対して操作を実行。</p>
+
+		<p class="p">リバランスの失敗するバケットの操作は、バケットの追加、レプリカ設定の変更、バケットのフラッシュです。</p>
+
+      <ol class="ol">
+            <li class="li">Node 1のフェイルオーバ後、デルタリカバリを指定、その後バケットに上記操作が行われた。</li>
+
+            <li class="li">リバランスを実行すると失敗。<p class="p"><img class="image" src="../images/ui-delta-rebalance-not-available.png" width="360"></p>
+</li>
+
+            <li class="li">ペンディング中のデルタリカバリをキャンセルし、フルリカバリを指定、リバランス。</li>
+
+          </ol>
+
+          <div class="note note"><span class="notetitle">注:</span> バケットの削除はデルタリカバリを継続できます。</div>
+
+        
+        
+        <p class="p">Node 1とNode 2をデルタリカバリ中にNode 2がクラッシュ。</p>
+
+          <ol class="ol">
+            <li class="li">Node1とNode 2いずれもフェイルオーバ後、デルタリカバリを指定。</li>
+
+            <li class="li">Node 2がクラッシュ。</li>
+
+            <li class="li">リバランスを実行すると失敗。 <p class="p"><img class="image" src="../images/ui-rebalance-failed.png" width="480"></p>
+</li>
+
+          </ol>
+
+      
+     
+    </div>
+
+    
+    
+    
+  </div>
+
+  
+  <nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Tasks/recovery-failover-nodes.html" title="The options for recovering failed over nodes are delta node recovery and full recovery.">Recovering failed over nodes</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Tasks/recovery-full-recovery.html" title="With full recovery mode, the data files are removed from the failed over server node and then, during rebalance, the node is populated with new data files (active and replica vBuckets).">Full recovery</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="graceful-failover.html" title="グレイスフルフェイルオーバは、実行中の操作が完了した後に、データを失うことなく、管理者が安全にノードをクラスタからフェイルオーバする方法を提供します。">グレイスフルフェイルオーバ</a></div>
+<div><a class="link" href="../CLI/CBcli/cbcli-servers.html" title="Managing server nodes in a cluster involve a variety of couchbase-cli tool commands.">Server nodes</a></div>
+<div><a class="link" href="../REST/rest-server-nodes.html" title="The Server Nodes REST API manages nodes in a cluster.">Server nodes API</a></div></div>
+</nav>
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

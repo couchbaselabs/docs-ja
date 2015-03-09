@@ -1,0 +1,130 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Migrating from Membase</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections section--active"><a href="../install-intro.html"><span>Installation and upgrade</span></a><ul class="sub-sections"><li class="section"><a href="../Install/setup-overview.html"><span>Couchbase setup overview</span></a></li><li class="section section--has-sub-sections"><a href="../Install/pre-install.html"><span>Pre-installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/RHEL-install-intro.html"><span>Red Hat/CentOS installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Ubuntu-install.html"><span>Ubuntu/Debian installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Windows-install.html"><span>Microsoft Windows installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Mac-install.html"><span>Mac OS X installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/post-install.html"><span>Post-installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/upgrading.html"><span>Upgrading </span></a></li><li class="section section--has-sub-sections section--active"><a href="../Install/migrating.html"><span>Migrating</span></a><ul class="sub-sections"><li class="section"><a href="../Install/migrate-couchdb.html"><span>Migrating from CouchDB</span></a></li><li class="section"><a href="../Install/migrate-membase.html" class="current"><span>Migrating from Membase</span></a><ul class="sub-sections"></ul></li></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">Migrating from Membase</h1>
+
+  <div class="body"><p class="shortdesc">Migration guidelines for Membase users.</p>
+
+
+      <p class="p">For an existing Membase user, the primary methods for creating, adding, manipulating, and
+      retrieving data remain the same. In addition, the background operational elements of the
+      Couchbase Server deployment will not differ from the basic running of a Membase cluster.</p>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Term and concept differences</h2>The following terms are new or updated in
+      Couchbase Server: <dl class="dl">
+        
+          <dt class="dt dlterm">Views</dt>
+
+          <dd class="dd">Views and the associated terms of the <samp class="ph codeph">map</samp> and <samp class="ph codeph">reduce</samp>
+            functions used to define views. Views provide an alternative method for accessing and
+            querying information stored in key-value pairs within the Couchbase Server. Views allow
+            you to query and retrieve information based on the values of the contents of a key-value
+            pair, provided the information has been stored in a JSON format.</dd>
+
+        
+      </dl>
+<dl class="dl">
+        
+          <dt class="dt dlterm">JSON</dt>
+
+          <dd class="dd">JSON (JavaScript Object Notation) is a data representation format that is required to
+            store the information in a format that can be parsed by the View system.</dd>
+
+        
+      </dl>
+<dl class="dl">
+        
+          <dt class="dt dlterm">Membase Server</dt>
+
+          <dd class="dd">This is now the Couchbase Server.</dd>
+
+        
+      </dl>
+<dl class="dl">
+        
+          <dt class="dt dlterm">Membase buckets</dt>
+
+          <dd class="dd">These are now the Couchbase buckets</dd>
+
+        
+      </dl>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Consistent functionality</h2>
+      <p class="p">The core functionality of
+      Membase, including the methods for basic creation, updating, and retrieval of information
+      all remain identical within Couchbase Server. You can continue to use the same client
+      protocols for setting and retrieving information.</p>
+<p class="p">The administration, deployment,
+        and core of the Couchbase Web Console and administration interfaces are also identical. There are
+        updates and improvements to support additional functionality which is included in existing
+        tools. These include views-related statistics, and an update to the Web Administration
+        Console for building and defining views.</p>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Changed functionality</h2>
+      <p class="p">The main difference available in the Couchbase Server is that, in addition to the key-value
+        data store nature of the database, you can also use views to convert the information from
+        individual objects in your database into lists or tables of records and information. Through
+        the view system, you can also query data from the database based on the value (or fragment
+        of a value) of the information that you have stored against a key.</p>
+<p class="p">This fundamental
+        differences means that applications no longer need to manually manage the concept of lists
+        or sets of data by using other keys as a lookup or compounding
+        values.</p>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Operational and deployment differences</h2>
+      <p class="p">The main components of the operation and deployment of your Couchbase Server remain the
+        same as with the Membase Server. You can add new nodes, fail over, rebalance and otherwise
+        manage your nodes.</p>
+<p class="p">However, the introduction of views means that you need to
+        monitor and control the design documents and views that are created alongside your bucket
+        configurations. Indexes are generated for each design document (that is multiple views), and
+        for optimum reliability you might want to back up the generated index information to reduce
+        the time to bring up a node in the event of a failure, as building a view from raw data on
+        large datasets can take a significant amount of time.</p>
+<p class="p">In addition, you need to
+          understand how to recreate and rebuild view data, and how to compact and clean up view
+          information to help reduce disk space consumption and response
+          times.</p>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Client and application changes</h2>
+      <p class="p">Clients can continue to communicate with the Couchbase Server using the existing memcached
+        protocol interface for the basic create, retrieve, update and delete operations for
+        key-value pairs. However, to access the view functionality you must use a client library
+        that supports the view API (which uses HTTP REST).</p>
+
+      <p class="p">To build views that can output and query your stored data, your objects must be stored in
+        the database in the JSON format. If you have been using the native serialization of your
+        client library to convert a language specific object so that it can be stored into the
+       Membase Server, you might need to structure your data and use a native to JSON serialization
+        solution, or reformat your data so that it can be formatted as JSON.</p>
+
+    </div>
+
+  </div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/migrating.html" title="This section explains how to migrate from Membase or CouchDB to Couchbase Server.">Migrating</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/migrate-couchdb.html" title="Migration guidelines for CouchDB users">Migrating from CouchDB</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

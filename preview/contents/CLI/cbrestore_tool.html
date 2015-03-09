@@ -1,0 +1,444 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>cbrestore tool</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections section--active"><a href="../cli-intro.html"><span>CLI reference</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../CLI/cli-overview.html"><span>CLI overview</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbcli-intro.html"><span>couchbase-cli tool</span></a></li><li class="section"><a href="../CLI/cbanalyze-core_tool.html"><span>cbanalyze-core tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbepctl-intro.html"><span>cbepctl tool</span></a></li><li class="section"><a href="../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections section--active"><a href="../CLI/cbrestore_tool.html" class="current"><span>cbrestore tool</span></a><ul class="sub-sections"><li class="section"><a href="../CLI/cbrestore-ddocs.html"><span>Restoring design documents</span></a></li><li class="section"><a href="../CLI/cli-incremental-restore.html"><span>Restoring incrementally</span></a></li><li class="section"><a href="../CLI/cbrestore-tween-opsys.html"><span>Restoring from different operating systems</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">cbrestore tool</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbrestore</samp> tool restores data from a file to an entire cluster or
+    to a single bucket in the cluster. </p>
+
+    <div class="section"><h2 class="title sectiontitle">Description</h2>
+    
+    <p class="p">Items that had been written to file on disk are restored to RAM.The
+        <samp class="ph codeph">cbbackup</samp>, <samp class="ph codeph">cbrestore</samp>, and <samp class="ph codeph">cbtransfer</samp> tools
+        do not communicate with external IP addresses for server nodes outside of a cluster. Backup,
+        restore, or transfer operations are performed on data from a node within a Couchbase
+        cluster. They only communicate with nodes from a node list obtained within a cluster. This
+        also means that if Couchbase Server is installed with a default IP address, an external
+        hostname cannot be used to access it.</p>
+
+    <p class="p">The tool is in the following locations:</p>
+
+    
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+        
+        
+        <thead class="thead" align="left">
+          <tr class="row">
+            <th class="entry" valign="top" width="50%" id="d43154e49">Operating system</th>
+
+            <th class="entry" valign="top" width="50%" id="d43154e52">Location</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+          <tr class="row">
+            <td class="entry" valign="top" width="50%" headers="d43154e49 ">Linux</td>
+
+            <td class="entry" valign="top" width="50%" headers="d43154e52 "><samp class="ph codeph">/opt/couchbase/bin/cbrestore</samp></td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="50%" headers="d43154e49 ">Windows</td>
+
+            <td class="entry" valign="top" width="50%" headers="d43154e52 "><samp class="ph codeph">C:\Program&nbsp;Files\Couchbase\Server\bin\cbrestore</samp></td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="50%" headers="d43154e49 ">Mac OS X</td>
+
+            <td class="entry" valign="top" width="50%" headers="d43154e52 "><samp class="ph codeph">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbrestore</samp></td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+</div>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">CLI command and parameters</h2>
+      
+      <p class="p">Basic syntax for this command:</p>
+
+      <pre class="pre codeblock"><code>cbrestore [options] [backup-dir] [destination]</code></pre>
+
+      
+      
+      
+      <p class="p">Where:</p>
+<ul class="ul">
+        <li class="li">[options]<p class="p">Command options for <samp class="ph codeph">cbrestore</samp> are the same
+            options for <samp class="ph codeph">cbtransfer</samp>.</p>
+</li>
+
+        <li class="li">[backup-dir]<p class="p">The backup directory for the source data. This is in the
+            directory created by <samp class="ph codeph">cbbackup</samp> when performing the backup.</p>
+</li>
+
+        <li class="li">[destination]<p class="p">The destination bucket for the restored information.
+            This is a bucket in an existing cluster. If restoring data to a single node in a
+            cluster, provide the hostname and port of the node being restored to. If restoring an
+            entire data bucket, provide the URL of one of the nodes within the cluster.</p>
+</li>
+
+      </ul>
+
+      
+      <div class="note important"><span class="importanttitle">Important:</span> Be sure to create the destination bucket before restoring the data.</div>
+
+      
+      <p class="p">The following are the command options:</p>
+
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. cbrestore options</span></caption>
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="50%" id="d43154e154">Parameters</th>
+
+              <th class="entry" valign="top" width="50%" id="d43154e157">Description</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e154 ">-h, –help</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e157 ">Command line help.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e154 ">-a, –add</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e157 ">Used to not overwrite existing items in the destination. Use add instead of set.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e154 ">-b BUCKET_SOURCE, --bucket-source=BUCKET_SOURCE</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e157 ">Single named bucket from the backup directory to restore. If the backup
+                directory only contains a signle bucket, then that bucket is automatically
+                used.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e154 ">-B BUCKET_DESTINATION, –bucket-destination=BUCKET_DESTINATION</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e157 ">When --bucket-source is specified, overrides the destination bucket name. This
+                allow you to restore to a different bucket. Defaults to the same as the
+                bucket-source.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e154 ">from-date=FROM_DATE</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e157 ">Restore data from the date specified as yyyy-mm-dd. By default, all data from the very beginning is restored.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e154 ">to-date=TO_DATE</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e157 ">Restore data until the date specified as yyyy-mm-dd. By default, all data collected is restored.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e154 ">-i ID, –id=ID</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e157 ">Transfer only items that match a vbucket ID.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e154 ">-k KEY, –key=KEY</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e157 ">Transfer only items with keys that match a regexp.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e154 ">-n, –dry-run</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e157 ">No actual transfer. Just validate parameters, files, connectivity and
+                configurations.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e154 ">-u USERNAME, –username=USERNAME</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e157 ">REST username for source cluster or server node.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e154 ">-p PASSWORD, –password=PASSWORD</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e157 ">REST password for cluster or server node.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e154 ">-t THREADS, –threads=THREADS</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e157 ">Number of concurrent workers threads performing the transfer. </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e154 ">-v, –verbose</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e157 ">Verbose logging. More v's provide more verbosity. Max: -vvv.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e154 ">-x EXTRA, –extra=EXTRA</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e157 ">Provide extra, uncommon configuration parameters. Comma-separated key=val(key-val)* pairs.</td>
+
+            </tr>
+
+            
+          </tbody>
+
+        </table>
+</div>
+
+      <p class="p">The following are extra, specialized command options with the <samp class="ph codeph">cbrestore -x</samp>
+        parameter.</p>
+
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 2. cbrestore -x options</span></caption>
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="50%" id="d43154e316">-x options</th>
+
+              <th class="entry" valign="top" width="50%" id="d43154e319">Description</th>
+
+            </tr>
+
+            
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">backoff_cap=10</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">Maximum backoff time during the rebalance period.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">batch_max_bytes=400000</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">Transfer this # of bytes per batch.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">batch_max_size=1000</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">Transfer this # of documents per batch.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">cbb_max_mb=100000</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">Split backup file on destination cluster if it exceeds the MB.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">conflict_resolve=1</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">By default, disable conflict resolution.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">data_only=0</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">For value 1, transfer only data from a backup file or cluster.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">design_doc_only=0</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">For value 1, transfer only design documents from a backup file or cluster. Default: 0.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">max_retry=10</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">Max number of sequential retries if the transfer fails.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">mcd_compatible=1</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">For value 0, display extended fields for stdout output.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">nmv_retry=1</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">0 or 1, where 1 retries transfer after a NOT_MY_VBUCKET message. Default: 1.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">recv_min_bytes=4096</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">Amount of bytes for every TCP/IP batch transferred.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">rehash=0</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">For value 1, rehash the partition id's of each item. 
+                This is required when transferring data between clusters with
+                different number of partitions, such as when transferring data from an
+                Mac OS X server to a non-Mac OS X cluster.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">report=5</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">Number batches transferred before updating progress bar in console.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">report_full=2000</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">Number batches transferred before emitting progress information in console.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">seqno=0</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">By default, start seqno from beginning.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">try_xwm=1</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">Transfer documents with metadata. Default: 1. Value of 0 is only used when transferring
+                from 1.8.x to 1.8.x.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d43154e316 ">uncompress=0</td>
+
+              <td class="entry" valign="top" width="50%" headers="d43154e319 ">For value 1, restore data in uncompressed mode.</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">The following is the basic syntax:</p>
+
+      <pre class="pre codeblock"><code>cbrestore [options] [backup-dir] [destination]</code></pre>
+
+      
+      
+      <p class="p">The following are syntax examples:</p>
+
+      
+      <pre class="pre codeblock"><code>
+cbrestore /backups/backup-42 http://HOST:8091 \
+  --bucket-source=default --from-date=2014-01-20 --to-date=2014-03-31
+cbrestore /backups/backup-42 couchbase://HOST:8091 \
+  --bucket-source=default
+cbrestore /backups/backup-42 memcached://HOST:11211 \
+  --bucket-source=sessions --bucket-destination=sessions2
+			</code></pre>
+
+      
+      
+    </div>
+
+    
+    
+   
+    
+    
+    
+   
+    
+    
+   
+    
+  </div>
+
+  <nav class="related-links"><h2>Related information</h2>
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../CLI/cbrestore-ddocs.html">Restoring design documents</a><br>
+Design documents are restored using the <samp class="ph codeph">design_doc_only=1</samp> option.</li>
+<li class="link olchildlink"><a href="../CLI/cli-incremental-restore.html">Restoring incrementally</a><br>
+Incremental restore operations are run by using the <samp class="ph codeph">cbrestore</samp> 			command-line tool.</li>
+<li class="link olchildlink"><a href="../CLI/cbrestore-tween-opsys.html">Restoring from different operating systems</a><br>
+Data is restored to an operating system that is different from the backup operating     system, using the <samp class="ph codeph">cbrestore</samp> tool with the <samp class="ph codeph">restore=1</samp>     option.</li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Server command-line interface (CLI) tools are provided to manage and monitor clusters, servers, vBuckets, XDCR, and so on.">CLI reference</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../CLI/cbreset_password_tool.html" title="The cbreset_password tool is used to reset an administrative or user read-only password.">cbreset_password tool</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="https://github.com/couchbase/couchbase-cli" target="_blank">Couchbase command-line tools GitHub repository</a></div>
+<div><a class="link" href="../Install/hostnames.html" title="Each Couchbase Server's instance can have its own hostname.">Using hostnames</a></div>
+<div><a class="link" href="../UI/ui-views-editor.html" title="The Views section lets you manage your development and production views.">Views</a></div>
+<div><a class="link" href="cbbackup_tool.html" title="cbbackupツールは、稼働中の全クラスタ・全バケット・単一ノード・正常稼働中ノード上の単一バケット のコピーを作成します。">cbbackupツール</a></div>
+<div><a class="link" href="cbtransfer_tool.html" title="The cbtransfer tool is used to transfer data between clusters and to/from files.">cbtransfer tool</a></div></div>
+</nav>
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

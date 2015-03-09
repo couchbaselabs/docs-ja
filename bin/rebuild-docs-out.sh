@@ -2,7 +2,7 @@
 
 BIN_DIR=`dirname $0`
 PROJECT_HOME=$BIN_DIR/..
-OUT_DIR="$PROJECT_HOME/preview/out"
+OUT_DIR="$PROJECT_HOME/preview/contents"
 DITAMAP="$PROJECT_HOME/ja/learn/admin/Couchbase.ditamap"
 
 [ -f $BIN_DIR/env.sh ] && . $BIN_DIR/env.sh
@@ -25,5 +25,10 @@ fi
 echo "generating contents using $DITAMAP..."
 dita -f com.couchbase.docs.html -i $DITAMAP -o $OUT_DIR
 
-cd preview
-ln -s out/assets assets
+if [ ! -e $OUT_DIR/assets ]
+then
+  # Work around for missing assets link from some pages.
+  echo "Creating assets symlink..."
+  cd $PROJECT_HOME/preview
+  ln -s contents/assets assets
+fi

@@ -1,0 +1,116 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Monitoring a rebalance operation</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a><ul class="sub-sections"><li class="section"><a href="../Monitoring/monitor-underlying-processes.html"><span>Underlying server processes</span></a></li><li class="section"><a href="../Monitoring/monitor-port-access.html"><span>Port numbers and accessing different buckets</span></a></li><li class="section"><a href="../Monitoring/monitor-diskqueue.html"><span>Disk write queue</span></a></li><li class="section"><a href="../Monitoring/monitor-statistics.html"><span>Couchbase Server statistics</span></a></li><li class="section"><a href="../Monitoring/monitor-moxi-statistics.html"><span>Couchbase Server Moxi statistics</span></a></li><li class="section"><a href="../Monitoring/monitor-warmup.html"><span>Monitoring startup (warmup)</span></a></li><li class="section"><a href="../Monitoring/monitor-rebalance.html" class="current"><span>Monitoring a rebalance operation</span></a><ul class="sub-sections"></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">Monitoring a rebalance operation</h1>
+
+  
+  <div class="body"><p class="shortdesc">Monitoring of the system during and
+    immediately after rebalancing is needed until replication is completed
+    successfully.</p>
+
+    <p class="p">As Couchbase Server
+      moves vBuckets within the cluster, Couchbase Web Console provides a detailed rebalancing report. You can view the same
+        statistics via a REST API call. If you click on the drop-down list next to each node, you can view the
+        detailed rebalance status:</p>
+
+  
+          <div class="fig fignone"><img class="image" src="../images/rebalance_detail_report.png" width="720"></div>
+
+
+    
+    <p class="p">The section <span class="keyword wintitle">Data being transferred out</span> shows that a
+          node sends data to other nodes during rebalance.</p>
+
+         <p class="p">The section <span class="keyword wintitle">Data being transferred in</span> shows that a node receives data from other nodes during rebalance.</p>
+
+      <p class="p">A node can be a source, a destination, or both the source and the destination for data. The progress report
+          displays the following information:</p>
+
+    
+    <ul class="ul">
+            <li class="li"><strong class="ph b">Bucket</strong>: Name of bucket undergoing rebalance. Number of buckets transferred during
+              rebalancing out of total buckets in a cluster.</li>
+
+            <li class="li"><strong class="ph b">Total number of keys</strong>: Total number of keys to be transferred during 
+              rebalancing.</li>
+
+            <li class="li"><strong class="ph b">Estimated number of keys</strong>: Number of keys transferred during rebalancing.</li>
+
+            <li class="li"><strong class="ph b">Number of Active# vBuckets and Replica# vBuckets</strong>: Number of active vBuckets and
+              replica vBuckets to be transferred as part of rebalancing.</li>
+
+          </ul>
+
+    
+    <p class="p">You can also use <samp class="ph codeph">cbstats</samp> to see underlying rebalance statistics.</p>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Backfilling</h2>
+      <p class="p">The first stage of replication reads all data for a given active vBucket and sends it to
+        the server that is responsible for the replica. This can put increased load on the disk as
+        well as network bandwidth, but it is not designed to impact any client activity. You can
+        monitor the progress of this task by watching for ongoing TAP disk fetches. You can also
+        watch <samp class="ph codeph">cbstats tap</samp>, for example:</p>
+
+      
+      <pre class="pre codeblock"><code>cbstats &lt;node_IP&gt;:11210 -b bucket_name -p bucket_password tap | grep backfill</code></pre>
+
+      
+      <p class="p">This returns a list of TAP backfill processes and whether they are still running (<samp class="ph codeph">true</samp>) or done
+        (<samp class="ph codeph">false</samp>). During the backfill process for a particular TAP stream, the output is as
+        follows:</p>
+<pre class="pre codeblock"><code><samp class="ph codeph">eq_tapq:replication_building_485_'n_1@127.0.0.1':backfill_completed: false
+ eq_tapq:replication_building_485_'n_1@127.0.0.1':backfill_start_timestamp: 1371675343
+ eq_tapq:replication_building_485_'n_1@127.0.0.1':flags: 85 (ack,backfill,vblist,checkpoints)
+ eq_tapq:replication_building_485_'n_1@127.0.0.1':pending_backfill: true
+ eq_tapq:replication_building_485_'n_1@127.0.0.1':pending_disk_backfill: true
+ eq_tapq:replication_building_485_'n_1@127.0.0.1':queue_backfillremaining: 202</samp></code></pre>
+<p class="p">When
+   all have completed, you should see the Total Item count ( <samp class="ph codeph">curr_items_tot</samp> ) be
+   equal to the number of active items multiplied by replica count. The output you see for a TAP
+   stream after backfill completes is as
+   follows:</p>
+<pre class="pre codeblock"><code><samp class="ph codeph">eq_tapq:replication_building_485_'n_1@127.0.0.1':backfill_completed: true
+ eq_tapq:replication_building_485_'n_1@127.0.0.1':backfill_start_timestamp: 1371675343
+ eq_tapq:replication_building_485_'n_1@127.0.0.1':flags: 85 (ack,backfill,vblist,checkpoints)
+ eq_tapq:replication_building_485_'n_1@127.0.0.1':pending_backfill: false
+ eq_tapq:replication_building_485_'n_1@127.0.0.1':pending_disk_backfill: false
+ eq_tapq:replication_building_485_'n_1@127.0.0.1':queue_backfillremaining: 0</samp></code></pre>
+<p class="p">If
+   you are continuously adding data to the system, these values may not correspond exactly at a
+   given instant in time. However you should be able to determine whether there is a significant
+   difference between the two figures.</p>
+</div>
+
+   
+    <div class="section"><h2 class="title sectiontitle">Draining</h2> <p class="p">After the backfill process is complete, all nodes that had replicas materialized on them
+      have to persist these items to disk. It is important to continue monitoring the disk
+      write queue and memory usage until the rebalancing operation has been completed, to ensure that
+      the cluster is able to keep up with the write load and required disk I/O.</p>
+</div>
+
+ 
+  </div>
+
+  
+  <nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Monitoring/monitor-intro.html" title="プロセス、ポート、キューなど、Couchbase Serverをモニタリングするためのさまざまな方法があります。">モニタリング</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Monitoring/monitor-warmup.html">Monitoring startup (warmup)</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../REST/rest-cluster-rebalance.html" title="Nodes are rebalanced with the POST /controller/rebalance HTTP method and URI.">Rebalancing nodes</a></div></div>
+</nav>
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

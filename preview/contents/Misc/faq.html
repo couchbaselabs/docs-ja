@@ -1,0 +1,155 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>FAQ</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html" class="current"><span>FAQ</span></a><ul class="sub-sections"></ul></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">FAQ</h1>
+
+  
+  <div class="body"><p class="shortdesc">よくある質問をまとめています。</p>
+
+    
+    <dl class="dl">
+      
+        <dt class="dt dlterm">What clients do I use with Couchbase?</dt>
+
+        <dd class="dd">Couchbase Server is compatible with existing memcached clients. 
+          If a memcached client already exists, just point it at couchbase. 
+          Regular testing is done with spymemcached (Java client), libmemcached, and fauna (Ruby client).</dd>
+
+      
+      
+        <dt class="dt dlterm">What is a vBucket?</dt>
+
+        <dd class="dd">A vBucket is conceptually a computed subset of all possible mapping keys. vBuckets are
+          mapped to servers statically and have a consistent key through vBucket computations. The
+          number of vBuckets in a cluster remains constant regardless of server topology which means
+          that a key always maps to the same vBucket given the same hash.</dd>
+
+      
+      
+        <dt class="dt dlterm">What is a TAP stream?</dt>
+
+        <dd class="dd">A TAP stream is a when a client requests a stream of item updates from the
+          server. That is, as other clients are requesting item mutations (for example,
+          SET's and DELETE's), a TAP stream client can "wire-tap" the server to receive a
+          stream of item change notifications.
+          
+          When a TAP stream client starts its connection, it may also optionally request a
+          stream of all items stored in the server, even if no other clients are making
+          any item changes. On the TAP stream connection setup options, a TAP stream
+          client may request to receive just current items stored in the server (all items
+          until "now"), or all item changes from now onward into in the future, or both.</dd>
+
+      
+      
+        <dt class="dt dlterm">Which ports does Couchbase Server need?</dt>
+
+        <dd class="dd">See the Network ports section for up to date information.</dd>
+
+      
+      
+        <dt class="dt dlterm">What hardware and platforms does Couchbase Server support?</dt>
+
+        <dd class="dd">See the Supported platforms section for up to date information.</dd>
+
+      
+      
+        <dt class="dt dlterm">How can I get Couchbase on a different OS?</dt>
+
+        <dd class="dd">The Couchbase source code is quite portable and is known to have been built on
+          several other UNIX and Linux based OSs.</dd>
+
+      
+      
+        <dt class="dt dlterm">Can I query Couchbase by something other than the key name?</dt>
+
+        <dd class="dd">Not directly. It's possible to build these kinds of solutions atop TAP. For
+          instance, it is possible to stream out the data, process it with Cascading, then create
+          indexes in Elasticsearch.
+        </dd>
+
+      
+      
+        <dt class="dt dlterm">What is the maximum item size in Couchbase&gt;</dt>
+
+        <dd class="dd">The default item size for Couchbase buckets is 20 MBytes. 
+          The default item size for memcached buckets is 1 MByte.</dd>
+
+      
+      
+        <dt class="dt dlterm">How do I the change password?</dt>
+
+        <dd class="dd">With the command-line tool (CLI), use <samp class="ph codeph">couchbase-cli cluster-init</samp>:
+        <pre class="pre codeblock"><code>
+couchbase-cli cluster-init -c cluster_IP:8091
+  -u current_username-p current password
+  --cluster-init-username=new_username
+  --cluster-init-password=new_password         
+        </code></pre>
+
+        </dd>
+
+      
+      
+        <dt class="dt dlterm">How do I change the per-node RAM quota?</dt>
+
+        <dd class="dd">With the command-line tool (CLI), use <samp class="ph codeph">couchbase-cli</samp>:
+        <pre class="pre codeblock"><code>
+couchbase-cli cluster-init -c cluster_IP:8091 
+  -u username-p password
+  --cluster-init-ramsize=RAM_in_M          
+        </code></pre>
+
+        </dd>
+
+      
+      
+        <dt class="dt dlterm">How do I change the disk path?
+        </dt>
+
+        <dd class="dd">With the command-line tool (CLI), use <samp class="ph codeph">node-init</samp>:
+        <pre class="pre codeblock"><code>
+couchbase-cli node-init -c cluster_IP:8091 
+  -u username-p password--node-init-data-path=/tmp
+        </code></pre>
+
+        </dd>
+
+      
+      
+        <dt class="dt dlterm">Why are some clients getting different results than others for the same
+          requests?</dt>
+
+        <dd class="dd">This should never happen in a correctly configured Couchbase cluster, since
+          Couchbase ensures a consistent view of all data in a cluster. 
+          However, if some clients can't reach all the nodes in a cluster (due to firewall or routing
+          rules, for example), it is possible for the same key to end up on more than one
+          cluster node, resulting in inconsistent duplication. 
+          Always ensure that all cluster nodes are reachable from every smart client or client-side moxi host.</dd>
+
+      
+    </dl>
+
+  </div>
+
+  
+  <nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../admin-intro.html" title="Couchbase Serverの管理を行う上でさまざまなツールやシステムを利用可能です。">Couchbase Serverの管理</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../UI/ui-intro.html" title="CouchbaseのWebコンソールは、Couchbaseの環境を管理するための主要なツールです。">Webコンソール</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Misc/Trbl-intro.html" title="トラブルシューティングの一般的なヒント、一般的なエラー、ログ情報、およびその他の問題について説明します。">トラブルシューティング</a></div>
+</div>
+<linklist class="- topic/linklist " outputclass="relinfo"><title class="- topic/title ">関連情報</title><link xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" format="html" scope="external" href="http://www.couchbase.com/develop/" class="- topic/link " xtrf="/Users/koji/dev/Couchbase/projects/docs-ja/ja/learn/admin/Misc/faq.dita" xtrc="link:1;105:83"><?ditaot usertext><linktext class="- topic/linktext " xtrf="/Users/koji/dev/Couchbase/projects/docs-ja/ja/learn/admin/Misc/faq.dita" xtrc="linktext:1;106:17">Client libraries</linktext><link xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" format="html" scope="external" href="http://dustin.github.com/2010/06/29/memcached-vbuckets.html" class="- topic/link " xtrf="/Users/koji/dev/Couchbase/projects/docs-ja/ja/learn/admin/Misc/faq.dita" xtrc="link:2;108:109"><?ditaot usertext><linktext class="- topic/linktext " xtrf="/Users/koji/dev/Couchbase/projects/docs-ja/ja/learn/admin/Misc/faq.dita" xtrc="linktext:2;109:15">memcached and vBuckets (by Dustin Sallings)</linktext><link xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" format="html" scope="external" href="http://blog.couchbase.com/want-know-what-your-memcached-servers-are-doing-tap-them" class="- topic/link " xtrf="/Users/koji/dev/Couchbase/projects/docs-ja/ja/learn/admin/Misc/faq.dita" xtrc="link:3;111:132"><?ditaot usertext><linktext class="- topic/linktext " xtrf="/Users/koji/dev/Couchbase/projects/docs-ja/ja/learn/admin/Misc/faq.dita" xtrc="linktext:3;112:17">TAP interface (by Trond Norbye)</linktext><link xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" format="html" scope="external" href="http://www.couchbase.com/downloads/" class="- topic/link " xtrf="/Users/koji/dev/Couchbase/projects/docs-ja/ja/learn/admin/Misc/faq.dita" xtrc="link:4;114:85"><?ditaot usertext><linktext class="- topic/linktext " xtrf="/Users/koji/dev/Couchbase/projects/docs-ja/ja/learn/admin/Misc/faq.dita" xtrc="linktext:4;115:17">Couchbase consolidated downloads</linktext><link xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" format="html" scope="external" href="http://www.cascading.org/2010/09/memcached-membase-and-elastics.html" class="- topic/link " xtrf="/Users/koji/dev/Couchbase/projects/docs-ja/ja/learn/admin/Misc/faq.dita" xtrc="link:5;117:118"><?ditaot usertext><linktext class="- topic/linktext " xtrf="/Users/koji/dev/Couchbase/projects/docs-ja/ja/learn/admin/Misc/faq.dita" xtrc="linktext:5;118:17">Cascading</linktext></linklist></nav>
+  
+  
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

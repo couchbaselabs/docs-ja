@@ -1,0 +1,116 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>vBuckets</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Concepts/concept-clusterMgr.html"><span>クラスタマネージャ</span></a></li><li class="section"><a href="../Concepts/concept-dataStorage.html"><span>データストレージ</span></a></li><li class="section"><a href="../Concepts/concept-ramQuota.html"><span>RAM割当量</span></a></li><li class="section"><a href="../Concepts/concept-vBucket.html" class="current"><span>vBuckets</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Concepts/concept-cacheLayer.html"><span>キャッシュレイヤー</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-diskStorage.html"><span>ディスクストレージ</span></a></li><li class="section"><a href="../Concepts/global-thread-pool.html"><span>共有スレッドプール</span></a></li><li class="section"><a href="../Concepts/bucket-priority.html"><span>Disk I/O priority</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bucket-eviction.html"><span>チューナブルメモリ</span></a></li><li class="section"><a href="../Concepts/concept-docExpiration.html"><span>アイテムの有効期限</span></a></li><li class="section"><a href="../Concepts/concept-serverWarmup.html"><span>Server warmup</span></a></li><li class="section"><a href="../Concepts/concept-replication.html"><span>Replicas and replication</span></a></li><li class="section"><a href="../Concepts/concepts-TAP.html"><span>TAP</span></a></li><li class="section"><a href="../Concepts/dcp.html"><span>データベース変更プロトコル(DCP)</span></a></li><li class="section"><a href="../Concepts/concept-client-interface.html"><span>クライアントインタフェース</span></a></li><li class="section"><a href="../Concepts/concepts-statsMonitor.html"><span>統計情報とモニタリング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">vBuckets</h1>
+
+  
+  <div class="body"><p class="shortdesc">
+	  vBucketはCouchbaseクラスタにおけるキー空間のサブセットの<em class="ph i">所有者</em>を定義します。
+	  vBucketはクラスタ内で効率的に情報を分散するために利用されます。
+  </p>
+
+	  <p class="p">
+		  vBucketシステムは、1つ以上のノードによるデータの分散と、レプリカ(バケットデータのコピー)を実現するために利用されます。
+		  vBucketはユーザがアクセス可能なコンポーネントではありませんが、Couchbase Serverの重要なコンポーネントであり、
+		  可用性と伸縮性のために非常に重要です。
+      </p>
+
+	  <p class="p">
+		  クライアントはvBucketを担当するノードに直接接続して、バケットに保存された情報にアクセスします。
+		  プロキシや再配布のアーキテクチャを利用せず、データを保持するノードに直接接続します。
+		  結果として、物理的なトポロジを、論理的なデータパーティションから分離します。
+		  このアーキテクチャが、Couchbase Serverに伸縮性と柔軟性をもたらしています。
+      </p>
+
+	  <p class="p">
+		  すべてのドキュメントIDはvBucketに属しています。マッピング関数によって、ドキュメントがどのvBucketに属するのかを計算できます。
+		  Couchbase Serverではこのマッピング関数はハッシュ関数であり、ドキュメントIDを入力としてvBucketのIDを出力します。
+		  vBucketのIDを計算したあと、そのvBucketを"ホスト"するサーバを、テーブルから参照します。
+		  このテーブルはvBucketごとに行があり、vBucketとそのホストサーバを関連付けています。
+		  このテーブル内で定義されている各サーバは通常、複数のvBucketを担当します。
+      </p>
+
+    
+	  <p class="p">以下の図はキーがサーバにマッピングされている様子(vBucketマップ)を示しています。</p>
+
+    
+	  <p class="p">
+		  このシナリオでは、クラスタ内に3台のサーバがあり、クライアントがKEYのバリューを<samp class="ph codeph">GET</samp>操作により参照しようとしています。
+      </p>
+
+    
+    <ol class="ol">
+		<li class="li">
+			クライアントはまず、キーをハッシュ化して、KEYが所属するvBucketを計算します。
+			この例では、ハッシュの結果、vBucket 8(vB8)となります。
+        </li>
+
+		<li class="li">
+			vBucketマップを参照し、クライアントはサーバCがvB8をホストしていることを知ります。
+        </li>
+
+		<li class="li">
+			クライアントは<samp class="ph codeph">GET</samp>操作を直接サーバCに送信します。
+		</li>
+
+    </ol>
+
+    
+      <img class="image" src="../images/vbuckets.png" width="500">
+    
+	  <p class="p">
+		次のシナリオでは、3台のクラスタに新しくサーバを追加しています。
+		新規のサーバDがクラスタに参加すると、リバランス操作によって、vBucketマップが更新されます。
+		更新されたマップは、クラスタ内のその他のノード、すべての接続中の"スマート"クライアント、Moxiプロキシサーバといった、
+		クラスタに接続するすべてのオブジェクトに送信されます。
+		</p>
+
+    
+		<p class="p">4台のクラスタとなったあと、クライアントが再度KEYのバリューを<samp class="ph codeph">GET</samp>操作により取得すると:</p>
+
+    <ul class="ul">
+		<li class="li">ハッシュアルゴリズムは依然としてvBucket 8(vB8)を出力します。</li>
+
+		<li class="li">更新されたvBucketマップはvBucket 8をサーバDにマッピングしています。</li>
+
+		<li class="li">クライアントは<samp class="ph codeph">GET</samp>操作を直接サーバDに送信します。</li>
+
+    </ul>
+
+    
+    <img class="image" src="../images/vbuckets-after.png" width="500">
+    
+	<div class="note note"><span class="notetitle">注:</span> 
+		このアーキテクチャによりCouchbase Serverは、典型的なRDBMSのシャーディング方式を利用せず変化に対応できます。
+		また、<samp class="ph codeph">memcached</samp>が採用している、クライアント側でキーをハッシュし、定義されたリストからサーバを特定する方式とも異なります。
+		memcachedの方式は、トポロジの変化に対応するために、サーバリストの継続的管理が必要であり、Ketamaなどの特定のハッシュアルゴリズムが必要になります。
+	</div>
+
+    
+  
+    
+  </div>
+
+  
+  <nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Concepts/concept-intro.html" title="単一のCouchbase ServerインスタンスやCouchbaseクラスタを構成する、さまざまなコンポーネントやシステム、そしてCouchbase Serverデータベースの高速でエラスティックな性質、高可用性、高性能について理解するために必要となる情報や概念を含んでいます。">アーキテクチャと概念</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../Concepts/concept-ramQuota.html" title="RAMはCouchbase Serverに次の割当量として設定されます: サーバ割当量とバケット割当量">RAM割当量</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Concepts/concept-cacheLayer.html" title="Couchbase Serverは、非常に高速なデータの読み書きを提供する為に、 サーバーの中心的な役割としてキャッシュ層を持っています。">キャッシュレイヤー</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="concept-rebalancing.html" title="Rebalancing operation is performed to expand or reduce the size of a cluster, to react to fail-overs, or to temporary remove nodes for various upgrades.">Rebalancing operation</a></div></div>
+</nav>
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

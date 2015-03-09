@@ -1,0 +1,80 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Security in applications</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections section--active"><a href="../security/security-intro.html"><span>セキュリティ</span></a><ul class="sub-sections"><li class="section"><a href="../security/security-admin-access.html"><span>Encrypted administrative access</span></a></li><li class="section"><a href="../security/security-client-ssl.html"><span>Encrypted data access</span></a></li><li class="section section--has-sub-sections section--active"><a href="../security/security-best-practices.html"><span>Best security practices</span></a><ul class="sub-sections"><li class="section"><a href="../security/security-outside-server.html"><span>Security outside Couchbase Server</span></a></li><li class="section"><a href="../security/security-inside-server.html"><span>Security inside Couchbase Server</span></a></li><li class="section"><a href="../security/security-in-cloud.html"><span>Security in the cloud</span></a></li><li class="section"><a href="../security/security-in-applications.html" class="current"><span>Security in applications</span></a><ul class="sub-sections"></ul></li></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+ <h1 class="title topictitle1">Security in applications</h1>
+
+ 
+ <div class="body conbody"><p class="shortdesc">To provide for security in applications, pay attention to the client configuration cache
+  and user input validation.</p>
+
+  
+  <div class="section"><h2 class="title sectiontitle">Client configuration cache</h2>The majority of the Couchbase clusters are
+   running in a steady state most&nbsp;of the time, which means that the cluster nodes are not removed or
+   added very often. Since clients only infrequently&nbsp;receive&nbsp;an update from the cluster whose
+   topology is changing, cluster information is well suited for caching. <p class="p">When the client is
+    instantiated, it looks for a cached named file in the file system. If the file is there, the
+    client assumes that it belongs to a current cluster configuration and starts using it. If it
+    isn't there, the client starts a normal bootstrap to get the configuration from the cluster and
+    writes it to a file. Whenever you try to access an item on a node and the node tells you that
+    you tried to communicate to the wrong&nbsp;node, you invalidate the cache and request a new copy of
+    the configuration cache. </p>
+<div class="p">To use the configuration cache from PHP, add the following
+    to&nbsp;the file <samp class="ph codeph">php.ini</samp>:
+   <pre class="pre codeblock"><code>couchbase.config_cache = /tmp </code></pre>
+</div>
+</div>
+
+  
+  <div class="section"><h2 class="title sectiontitle">User input validation</h2>
+   <p class="p">User input is validated  by implementing these validation techniques:</p>
+
+   
+   <ul class="ul">
+    <li class="li">Injection of arbitrary key-value pairs. </li>
+
+    <li class="li">Changing of the user specified document type. </li>
+
+    <li class="li">Overriding of important document fields. </li>
+
+   </ul>
+
+  </div>
+
+ 
+  
+  <div class="section"><h2 class="title sectiontitle">Example</h2><pre class="pre codeblock"><code> {"user": "will","password":"<var class="keyword varname">0asd21$1%</var>", 
+  "created":"2012-06-12", "password":"<var class="keyword varname">password</var>"}</code></pre>
+In
+   this JSON document, the first password field <var class="keyword varname">0asd21$1%</var> is the intended value
+   and the application was supposed to store the hashed value for that particular password field.
+   However, the application developer built concatenation based on the user specified input. As a
+   result, the plain password <var class="keyword varname">password</var> has become the concatenated input. If you
+   try to save this document in Couchbase, you will override the first field with the last supplied
+   value. <p class="p">Be aware that an attacker might try to inject arbitrary key-value pairs, override a
+    key-value pair, or change the document type (such as from <samp class="ph codeph">Private</samp> to
+     <samp class="ph codeph">Public</samp>). You must, therefore, protect the input and ensure that field
+    overrides are explicit so that they cannot be changed implicitly by attackers. </p>
+Best
+   practices for validating user input prohibit accepting of the user input directly and require
+   that strings be concatenated and sent to the database. This requires you to use a document model
+   that includes Java POJOs or .Net POCOs. </div>
+
+ </div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../security/security-best-practices.html" title="Best practices for security consist of guidelines and tips to provide security features throughout the network.">Best security practices</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../security/security-in-cloud.html" title="There are a couple of security measures you can implement in a cloud: network ACLs and secure XDCR.">Security in the cloud</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

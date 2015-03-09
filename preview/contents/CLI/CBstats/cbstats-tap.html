@@ -1,0 +1,979 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Tap</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../../assets/stylesheets/application.css"><link rel="stylesheet" href="../../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections"><a href="../../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../cli-intro.html"><span>CLI reference</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../../CLI/cli-overview.html"><span>CLI overview</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbcli-intro.html"><span>couchbase-cli tool</span></a></li><li class="section"><a href="../../CLI/cbanalyze-core_tool.html"><span>cbanalyze-core tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbepctl-intro.html"><span>cbepctl tool</span></a></li><li class="section"><a href="../../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/cbstats-intro.html"><span>cbstats tool</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBstats/cbstats-generalform.html"><span>General form</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBstats/cbstats-all.html"><span>All</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-allocator.html"><span>Allocator</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-checkpoint.html"><span>Checkpoint</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-config.html"><span>Config</span></a></li><li class="section"><a href="../../CLI/cli-cbstats-dcp.html"><span>DCP</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-diskinfo.html"><span>Diskinfo</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-dispatcher-job.html"><span>Dispatcher</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-failovers.html"><span>Failovers</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-hash.html"><span>Hash</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-keyvkey.html"><span>Key and vkey</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-kv.html"><span>Kvstore and kvtimings</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-memory.html"><span>Memory</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-reset.html"><span>Reset</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-runtimes.html"><span>Runtimes</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-scheduler.html"><span>Scheduler</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-tap.html" class="current"><span>Tap</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../../CLI/CBstats/cbstats-timing.html"><span>Timings</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-uuid.html"><span>UUID</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-vbucket.html"><span>vBucket</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-warmup.html"><span>Warmup</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-workload.html"><span>Workload</span></a></li></ul></li><li class="section"><a href="../../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+	<h1 class="title topictitle1">Tap</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbstats tap</samp> command is used to get statistics associated with
+		tap and <samp class="ph codeph">cbstats tapagg</samp> is used to get statistics from named tap
+		connections.</p>
+
+		<div class="section"><h2 class="title sectiontitle">Description</h2>
+			<p class="p">TAP is an internal protocol that streams information about data changes between cluster nodes.
+				Couchbase Server uses the TAP protocol during rebalance and replication at other
+				cluster nodes. The <samp class="ph codeph">cbstats tapagg</samp> is used to get statistics from
+				named tap connections which are logically grouped and aggregated together by
+				prefixes.</p>
+
+			
+			<p class="p">For example, if all of your tap connections started with <samp class="ph codeph">rebalance_</samp> or
+				<samp class="ph codeph">replication_</samp>, you could call <samp class="ph codeph">cbstats tapagg _</samp> to
+				request stats grouped by the prefix starting with <samp class="ph codeph">_</samp>. This would return a
+				set of statistics for <samp class="ph codeph">rebalance</samp> and a set for
+				<samp class="ph codeph">replication</samp>.</p>
+
+			
+		</div>
+
+
+		<div class="section"><h2 class="title sectiontitle">CLI command and parameters</h2>
+			
+			<pre class="pre codeblock"><code>cbstats tap
+cbstats tap-takeover vb name
+cbstats tapagg</code></pre>
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Syntax</h2>
+			<p class="p">Request syntax:</p>
+
+			<pre class="pre codeblock"><code>
+cbstats [host]:11210 tap
+cbstats [host]:11210 tapagg
+cbstats [host]:11210 tap-takeover vb name
+			</code></pre>
+
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Example: tap</h2>
+			<p class="p">Request example for tap stats:</p>
+
+			<pre class="pre codeblock"><code>cbstats [host]:11210 tap</code></pre>
+
+			
+		</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Response: tap</h2>
+			<p class="p">Response example for tap stats:</p>
+
+			<pre class="pre codeblock"><code>
+ ep_tap_ack_grace_period:        300
+ ep_tap_ack_interval:            1000
+ ep_tap_ack_window_size:         10
+ ep_tap_backoff_period:          5
+ ep_tap_bg_fetch_requeued:       0
+ ep_tap_bg_fetched:              0
+ ep_tap_bg_max_pending:          500
+ ep_tap_count:                   0
+ ep_tap_deletes:                 0
+ ep_tap_fg_fetched:              0
+ ep_tap_noop_interval:           20
+ ep_tap_queue_backfillremaining: 0
+ ep_tap_queue_backoff:           0
+ ep_tap_queue_drain:             0
+ ep_tap_queue_fill:              0
+ ep_tap_queue_itemondisk:        0
+ ep_tap_throttle_queue_cap:      1000000
+ ep_tap_throttle_threshold:      90
+ ep_tap_throttled:               0
+ ep_tap_total_backlog_size:      0
+ ep_tap_total_fetched:           0
+ ep_tap_total_queue:             0
+			</code></pre>
+
+			
+			
+			
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. tap stats description</span></caption>
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d22591e109">Stat</th>
+
+							<th class="entry" valign="top" width="50%" id="d22591e112">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_ack_grace_period</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">The amount of time to wait for a tap acks before disconnecting</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_ack_interval</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">The amount of messages a tap producer should send before requesting an ack</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_ack_window_size</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">The maximum amount of ack requests that can be sent before the consumer sends a response ack. 
+								When the window is full the tap stream is paused</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_backoff_period</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">The number of seconds the tap connection should back off after receiving ETMPFAIL</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_bg_fetch_requeued</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Number of times a tap background fetch task is requeued</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_bg_fetched</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Number of tap disk fetches</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_bg_max_pending</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">The maximum number of background jobs a tap connection may have</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_count</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Number of tap connections</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_deletes</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Number of tap deletion messages sent</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_fg_fetched</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Number of tap memory fetches</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_noop_interval</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">The number of secs between a noop is added to an idle connection</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_queue_backfillremaining</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Number of items to be backfilled</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_queue_backoff</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Total back-off items</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_queue_drain</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Total drained items</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_queue_fill</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Total enqueued items</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_queue_itemondisk</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Number of items remaining on disk</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_throttle_queue_cap</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Disk write queue cap to throttle tap streams</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_throttle_threshold</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Percentage of memory in use before we throttle tap streams</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_throttled</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Number of tap messages refused due to throttling</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_total_backlog_size</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Number of remaining items for replication</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_total_fetched</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Sum of all tap messages sent</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e109 ">ep_tap_total_queue</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e112 ">Sum of tap queue sizes on the current tap queues</td>
+
+						</tr>
+
+						</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+
+		<div class="section"><h2 class="title sectiontitle">Per Tap client stats</h2>
+			
+			<p class="p">Each stat begins with ep_tapq followed by a unique /client_id/ and another colon. For example,
+				if your client is named, slave1, the qlen stat would be ep_tapq:slave1:qlen.</p>
+
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d22591e346">Stat</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d22591e349">Description</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d22591e352">P/C</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">type</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">The kind of tap connection (producer or</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">PC</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">consumer)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">created</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Creation time for the tap connection</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">PC</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">supports_ack</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">true if the connection use acks</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">PC</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">connected</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">true if this client is connected</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">PC</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">disconnects</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of disconnects from this client</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">PC</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">reserved</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">true if the tap stream is reserved</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">suspended</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">true if the tap stream is suspended</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">qlen</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Queue size for the given client_id</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">qlen_high_pri</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">High priority tap queue items</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">qlen_low_pri</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Low priority tap queue items</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">vb_filters</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Size of connection vbucket filter set</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">vb_filter</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">The content of the vbucket filter</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">rec_fetched</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Tap messages sent to the client</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">rec_skipped</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of messages skipped due to</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">tap reconnect with a different filter</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">idle</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">True if this connection is idle</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">has_queued_item</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">True if there are any remaining items</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">from hash table or disk</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">bg_result_size</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of ready background results</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">bg_jobs_issued</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of background jobs started</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">bg_jobs_completed</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of background jobs completed</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">flags</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Connection flags set by the client</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">pending_disconnect</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">true if we’re hanging up on this client</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">paused</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">true if this client is blocked</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">pending_backfill</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">true if we’re still backfilling keys</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">for this connection</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">pending_disk_backfill</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">true if we’re still backfilling keys</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">from disk for this connection</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">backfill_completed</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">true if all items from backfill is</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">successfully transmitted to the client</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">backfill_start_timestamp</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Timestamp of backfill start</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">reconnects</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of reconnects from this client</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">backfill_age</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">The age of the start of the backfill</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">ack_seqno</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">The current tap ACK sequence number</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">recv_ack_seqno</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Last receive tap ACK sequence number</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">ack_log_size</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Tap ACK backlog size</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">ack_window_full</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">true if our tap ACK window is full</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">seqno_ack_requested</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">The seqno of the ack message that the</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">&nbsp;</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">producer is wants to get a response for</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">expires</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">When this ACK backlog expires</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">queue_memory</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Memory used for tap queue</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">queue_fill</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Total queued items</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">queue_drain</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Total drained items</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">queue_backoff</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Total back-off items</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">queue_backfillremaining</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of backfill remaining</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">queue_itemondisk</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of items remaining on disk</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">total_backlog_size</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Num of remaining items for replication</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">total_noops</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of NOOP messages sent</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">P</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_checkpoint_end</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of chkpoint end operations</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_checkpoint_end_failed</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of chkpoint end operations failed</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_checkpoint_start</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of chkpoint end operations</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_checkpoint_start_failed</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of chkpoint end operations failed</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_delete</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of delete operations</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_delete_failed</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of failed delete operations</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_flush</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of flush operations</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_flush_failed</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of failed flush operations</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_mutation</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of mutation operations</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_mutation_failed</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of failed mutation operations</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_opaque</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of opaque operation</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_opaque_failed</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of failed opaque operations</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_vbucket_set</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of vbucket set operations</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_vbucket_set_failed</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of failed vbucket set operations</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e346 ">num_unknown</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e349 ">Number of unknown operations</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d22591e352 ">C</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+</div>
+
+		
+		
+		<div class="section"><h2 class="title sectiontitle">Tap aggregated stats</h2>
+			
+			<p class="p">Aggregated tap stats allow named tap connections to be logically grouped and aggregated together by prefixes.</p>
+
+			
+			<p class="p">For example, if all of your tap connections started with <samp class="ph codeph">rebalance_</samp> or
+					<samp class="ph codeph">replication_</samp>, you could call <samp class="ph codeph">cbstats tapagg _</samp>
+				to request stats grouped by the prefix starting with <samp class="ph codeph">_</samp>. This
+				returns a set of statistics for rebalance and a set for replication. The following
+				are possible values returned by <samp class="ph codeph">cbstats tapagg</samp> :</p>
+
+			
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d22591e1161">Stat</th>
+
+							<th class="entry" valign="top" width="50%" id="d22591e1164">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e1161 ">[prefix]:count</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e1164 ">Number of connections matching this prefix</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e1161 ">[prefix]:qlen</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e1164 ">Total length of queues with this prefix</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e1161 ">[prefix]:backfill_remaining</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e1164 ">Number of items to be backfilled</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e1161 ">[prefix]:backoff</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e1164 ">Total number of backoff events</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e1161 ">[prefix]:drain</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e1164 ">Total number of items drained</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e1161 ">[prefix]:fill</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e1164 ">Total number of items filled</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e1161 ">[prefix]:itemondisk</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e1164 ">Number of items remaining on disk</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d22591e1161 ">[prefix]:total_backlog_size</td>
+
+							<td class="entry" valign="top" width="50%" headers="d22591e1164 ">Number of remaining items for replication</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+		
+	</div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-scheduler.html" title="The cbstats scheduler command provides scheduler task statistics.">Scheduler</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-timing.html" title="The cbstats timings command provides timing statistics.">Timings</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../../';</script><script src="../../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

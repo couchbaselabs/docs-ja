@@ -1,0 +1,606 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>XDCR</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../../assets/stylesheets/application.css"><link rel="stylesheet" href="../../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections"><a href="../../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../cli-intro.html"><span>CLI reference</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../../CLI/cli-overview.html"><span>CLI overview</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/cbcli-intro.html"><span>couchbase-cli tool</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBcli/cbcli-commands.html"><span>couchbase-cli commands</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-rza.html"><span>Rack-zone awareness</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-buckets.html"><span>Buckets</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-servers.html"><span>Server nodes</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/CBcli/cbcli-xdcr.html" class="current"><span>XDCR</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBcli/cbcli-xdcr-manage-replication.html"><span>Managing XDCR replication streams</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-xdcr-pause-resume.html"><span>Pausing XDCR replication streams</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-xdcr-manage-encryption.html"><span>Managing XDCR data encryption</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-ssl.html"><span>Managing SSL certificates</span></a></li></ul></li><li class="section"><a href="../../CLI/CBcli/cbcli-cluster-wide-info.html"><span>Diagnostics with couchbase-cli</span></a></li></ul></li><li class="section"><a href="../../CLI/cbanalyze-core_tool.html"><span>cbanalyze-core tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbepctl-intro.html"><span>cbepctl tool</span></a></li><li class="section"><a href="../../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">XDCR</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">XDCR commands used with the <samp class="ph codeph">couchbase-cli</samp> tool.</p>
+
+    <div class="section"><h2 class="title sectiontitle">Description</h2>
+      <p class="p">Remote XDCR replications, connections, and operations are managed with the following XDCR
+        commands and options.</p>
+
+      
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">CLI commands and parameters</h2>
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="cbcli-xdcr__table_drj_bcn_c4" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. couchbase-cli xdcr commands</span></caption>
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="33.44481605351171%" id="d11028e45">Command</th>
+
+              <th class="entry" valign="top" width="66.5551839464883%" id="d11028e48">Description</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e45 ">xdcr-setup</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e48 ">Manage the XDCR replication configuration.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e45 ">setting-xdcr</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e48 ">Set XDCR related replication settings.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e45 ">xdcr-replicate</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e48 ">Manage the XDCR replication operations.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e45 ">ssl-manage</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e48 ">Manage cluster SSL certificate.</td>
+
+            </tr>
+
+            
+          </tbody>
+
+        </table>
+</div>
+
+      
+      
+      <p class="p">The following are <samp class="ph codeph">couchbase-cli xdcr-setup</samp> options.</p>
+
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="cbcli-xdcr__table_xdcr-setup" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 2. xdcr-setup options</span></caption>
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="33.44481605351171%" id="d11028e115">xdcr-setup options</th>
+
+              <th class="entry" valign="top" width="66.5551839464883%" id="d11028e118">Description</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e115 ">--create</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e118 ">Creates a new XDCR configuration.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e115 ">--edit</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e118 ">Modifies an existing XDCR configuration.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e115 ">--delete</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e118 ">Deletes an existing XDCR configuration.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e115 ">--list</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e118 ">Lists all XDCR configurations.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e115 ">--xdcr-cluster-name=[clustername]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e118 ">Cluster name.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e115 ">--xdcr-hostname=[hostname]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e118 ">Remote host name to connect to.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e115 ">--xdcr-username=[username]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e118 ">Remote cluster administrator username.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e115 ">--xdcr-password=[password</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e118 ">Remote cluster administrator password.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e115 ">--xdcr-demand-encryption=[0 | 1]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e118 ">Enables and disables data encrypted using ssl. True is 1 and enables data encryption. False is 0 and disables data encryption. Default: 0</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e115 ">--xdcr-certificate=[certificate]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e118 ">Pem-encoded certificate. This self-signed certificate must be present if xdcr-demand-encryption is true.</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+            
+            
+            <p class="p">The following are <samp class="ph codeph">couchbase-cli setting-xdcr</samp> options.</p>
+
+            
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="cbcli-xdcr__table_setting-xdcr" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 3. setting-xdcr options</span></caption>
+                
+                
+                <thead class="thead" align="left">
+                  <tr class="row">
+                    <th class="entry" valign="top" width="33.44481605351171%" id="d11028e240">setting-xdcr options</th>
+
+                    <th class="entry" valign="top" width="66.5551839464883%" id="d11028e243">Description</th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody class="tbody">
+                  <tr class="row">
+                    <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e240 ">--max-concurrent-reps=[32]</td>
+
+                    <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e243 ">Maximum concurrent replications per bucket, 8 to 256.</td>
+
+                  </tr>
+
+                  <tr class="row">
+                    <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e240 ">--checkpoint-interval=[1800]</td>
+
+                    <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e243 ">Intervals between checkpoints, 60 to 14400 seconds.</td>
+
+                  </tr>
+
+                  <tr class="row">
+                    <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e240 ">--worker-batch-size=[500]</td>
+
+                    <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e243 ">Document worker batch size, 500 to 10000.</td>
+
+                  </tr>
+
+                  <tr class="row">
+                    <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e240 ">--doc-batch-size=[2049]KB</td>
+
+                    <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e243 ">Document batching size, 10 to 100000 KB.</td>
+
+                  </tr>
+
+                  <tr class="row">
+                    <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e240 ">--failure-restart-interval=[30]</td>
+
+                    <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e243 ">Interval for restarting failed XDCR, 1 to 300 seconds.</td>
+
+                  </tr>
+
+                  <tr class="row">
+                    <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e240 ">--optimistic-replication-threshold=[256]</td>
+
+                    <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e243 ">Document body size threshold (bytes) to trigger optimistic replication.</td>
+
+                  </tr>
+
+                </tbody>
+
+              </table>
+</div>
+
+      
+     
+      
+      <p class="p">The following are <samp class="ph codeph">couchbase-cli xdcr-replicate</samp> options.</p>
+
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="cbcli-xdcr__table_xdcr-replicate" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 4. xdcr-replicate options</span></caption>
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="33.44481605351171%" id="d11028e330">xdcr-replicate options</th>
+
+              <th class="entry" valign="top" width="66.5551839464883%" id="d11028e333">Description</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--create</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Create and start a new replication</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--delete</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Stop and cancel a replication</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--list</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">List all XDCR replications</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--pause</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Pause the replication</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--resume</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Resume the replication</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--settings</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Update settings for the replication</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--xdcr-replicator=[replicator]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Replication ID</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--xdcr-from-bucket=[bucket-name]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Local bucket name to replicate from</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--xdcr-cluster-name=[remote-cluster]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Remote cluster to replicate to</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--xdcr-to-bucket=[remote-bucket]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Remote bucket to replicate to</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--max-concurrent-reps =[ 16 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Maximum concurrent replications per bucket, 8 to 256. Default: 16</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--checkpoint-interval =[ 1800 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Intervals between checkpoints , 60 to 14400 seconds</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--worker-batch-size =[ 500 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Document worker batch size, 500 to 10000</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--doc-batch size =[ 2048 ] KB</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Document batch size, 10 to 100000 KB</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--failure-restart-interval =[ 30 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Interval for restarting failed xdcr, 1 to 300 seconds</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--optimistic-replication-threshold =[ 256 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Document body size threshold (bytes) to trigger optimistic replication</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d11028e330 ">--xdcr-replication-mode=[xmem | capi]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d11028e333 ">Replication protocol, either capi or xmem</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+      
+      <p class="p">The following are <samp class="ph codeph">couchbase-cli ssl-manage</samp> options. This option is
+        available for Enterprise Edition only.</p>
+
+      
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="cbcli-xdcr__table_ssl-manage" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 5. ssl-manage command options</span></caption>
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="50%" id="d11028e519">ssl-manage options (Enterprise Edition only)</th>
+
+              <th class="entry" valign="top" width="50%" id="d11028e522">Description</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d11028e519 ">--retrieve-cert=[certificate]</td>
+
+              <td class="entry" valign="top" width="50%" headers="d11028e522 ">Retrieves the self-signed certificate from the destination cluster to the
+                source cluster. Specify a local location (full path) and file name for the
+                pem-encoded certificate. For example,
+                <samp class="ph codeph">--retrieve-cert=./newCert.pem</samp>.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d11028e519 ">--regenerate-cert=[certificate]</td>
+
+              <td class="entry" valign="top" width="50%" headers="d11028e522 ">Regenerates a self-signed certificate on the destination cluster. Specify the
+                full path for the location of the pem-encoded certificate file. For example,
+                <samp class="ph codeph">--regenerate-cert=./newRegen.pem</samp>.</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    
+    </div>
+
+    
+
+    <div class="section"><h2 class="title sectiontitle">Example: Creating a remote cluster reference</h2>
+      <p class="p">To create a remote cluster reference:</p>
+
+      <pre class="pre codeblock"><code>couchbase-cli xdcr-setup -c 10.3.121.121:8091 -u Administrator  -p password 
+    --create 
+    --xdcr-cluster-name=RemoteCluster  
+    --xdcr-hostname=10.3.121.123:8091  
+    --xdcr-username=Administrator  
+    --xdcr-password=password
+</code></pre>
+
+      
+      
+
+      
+      <p class="p">Upon success, the following response is returned:</p>
+
+      <pre class="pre codeblock"><code>SUCCESS: init RemoteCluster</code></pre>
+
+      
+      <p class="p">Now, you can start replication to the remote cluster using memcached protocol as the existing
+        default:</p>
+
+      
+      <pre class="pre codeblock"><code>couchbase-cli xdcr-replicate -c 10.3.121.123:8091 -u Administrator -p password 
+        --xdcr-cluster-name RemoteCluster 
+        --xdcr-from-bucket default 
+        --xdcr-to-bucket backup
+      </code></pre>
+
+      
+      <p class="p">An XDCR protocol for the mode of replication can be specified for XDCR. 
+        To explicitly set the protocol to memcached:</p>
+
+      
+      <pre class="pre codeblock"><code>couchbase-cli xdcr-replicate -c 10.3.121.123:8091 -u Administrator -p password
+    --xdcr-cluster-name RemoteCluster 
+    --xdcr-from-bucket default 
+    --xdcr-to-bucket backup 
+    --xdcr-replication-mode xmem
+      </code></pre>
+
+      
+      <p class="p">To set the protocol to CAPI:</p>
+
+      
+      <pre class="pre codeblock"><code>couchbase-cli xdcr-replicate -c 10.3.121.123:8091 -u Administrator -p password
+    --xdcr-cluster-name=RemoteCluster 
+    --xdcr-from-bucket=default 
+    --xdcr-to-bucket=backup
+    --xdcr-replication-mode=capi
+      </code></pre>
+
+      
+      <p class="p">To change a XDCR replication protocol for an existing XDCR replication:</p>
+
+      
+      <ol class="ol">
+        <li class="li">Delete the replication.</li>
+
+        <li class="li">Re-create the replication with your preference.</li>
+
+      </ol>
+
+      
+      <p class="p">If there is already an existing replication for a bucket, you get an error when starting the
+        replication again with new settings:</p>
+
+      <pre class="pre codeblock"><code>couchbase-cli xdcr-replicate -c 10.3.121.121:8091 -u Administrator -p password 
+    --xdcr-cluster-name=RemoteCluster 
+    --xdcr-from-bucket=default 
+    --xdcr-to-bucket=backup
+    --xdcr-replication-mode=capi
+      </code></pre>
+
+      
+      <p class="p">Results in the following error:</p>
+
+      <pre class="pre codeblock"><code>ERROR: unable to create replication (400) Bad Request
+        {u'errors': {u'_': u'Replication to the same remote cluster and bucket already exists'}}
+ERROR: Replication to the same remote cluster and bucket already exists
+      </code></pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Example: Listing XDCR remote clusters</h2>
+      <p class="p">In the following example, the <samp class="ph codeph">couchbase-cli xdcr-setup</samp> command is executed 
+        from the local host and the specified host is the remote host. 
+        To list all XDCR configurations:</p>
+
+      <pre class="pre codeblock"><code>
+couchbase-cli xdcr-setup 
+  -c 10.5.2.117:8091 
+  -u Administrator -p password 
+  --list        
+      </code></pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Example: Listing XDCR replication streams</h2>
+      
+      <p class="p">In the following example, the <samp class="ph codeph">couchbase-cli xdcr-replicate</samp> command is executed 
+        from the local host and the specified host is the remote host. 
+        To list all XDCR replication streams:</p>
+
+      <pre class="pre codeblock"><code>
+couchbase-cli xdcr-replicate 
+  -c 10.5.2.117:8091 
+  -u Administrator -p password 
+  --list        
+      </code></pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Response</h2>
+      <p class="p">The follow response example is for the <samp class="ph codeph">couchbase-cli xdcr-setup --list</samp>
+        command option and shows the local host, UUID, URI, and user name:</p>
+
+      <pre class="pre codeblock"><code>
+cluster name: source1
+      uuid: bfa861d3734c90559522a88b9db81606
+      host name: 10.5.2.54:8091
+      user name: Administrator
+      uri: /pools/default/remoteClusters/source1
+      </code></pre>
+
+      
+      
+      <p class="p">The follow response example is for the <samp class="ph codeph">couchbase-cli xdcr-replicate --list</samp>
+        command option and shows the replication stream from the source bucket to the remote
+        bucket:</p>
+
+      <pre class="pre codeblock"><code>
+stream id: bfa861d3734c90559522a88b9db81606/test2/test
+   status: running
+   source: test2
+   target: /remoteClusters/bfa861d3734c90559522a88b9db81606/buckets/test
+      </code></pre>
+
+    
+    
+    </div>
+
+
+
+
+  </div>
+
+  <nav class="related-links"><h2>Related information</h2>
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-xdcr-manage-replication.html">Managing XDCR replication streams</a><br>
+The XDCR CLI provides options to manage XDCR replications with     <samp class="ph codeph">couchbase-cli xdcr-replicate</samp>.</li>
+<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-xdcr-pause-resume.html">Pausing XDCR replication streams</a><br>
+The XDCR CLI provides options to pause and resume replication with       <samp class="ph codeph">couchbase-cli xdcr-replicate</samp>.</li>
+<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-xdcr-manage-encryption.html">Managing XDCR data encryption</a><br>
+XDCR data encryption with Secure Socket Layer (SSL) is enabled with the <samp class="ph codeph">couchbase-cli</samp> tool     and the <samp class="ph codeph">xdcr-setup</samp> command. Enterprise Edition only.</li>
+<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-ssl.html">Managing SSL certificates</a><br>
+Data encryption with Secure Socket Layer (SSL) authentication used Couchbase     self-signed certificates.</li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/cbcli-intro.html" title="The couchbase-cli tool is used to perform operations on an entire cluster.">couchbase-cli tool</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBcli/cbcli-servers.html" title="Managing server nodes in a cluster involve a variety of couchbase-cli tool commands.">Server nodes</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBcli/cbcli-cluster-wide-info.html" title="You can start, stop, and view status of a diagnostics collection by using the couchbase-cli tool.">Diagnostics with couchbase-cli</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../../XDCR/xdcr-intro.html" title="XDCRは、主に災害復旧のために、あるクラスタのデータを別のクラスタに複製します。">クロスデータセンターレプリケーション（XDCR）</a></div>
+<div><a class="link" href="../../Tasks/tasks-manage-xdcr-dataEncryption.html">Managing XDCR data encryption</a></div>
+<div><a class="link" href="../../Tasks/tasks-manage-xdcr.html" title="Cross datacenter replication (XDCR) provides an easy method of replicating data from one cluster to another for disaster recovery as well as better data locality (getting data closer to its users).">Managing XDCR</a></div></div>
+</nav>
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../../';</script><script src="../../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

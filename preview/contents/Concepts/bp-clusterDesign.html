@@ -1,0 +1,131 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Cluster design considerations</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a><ul class="sub-sections"><li class="section"><a href="../Concepts/swap-space.html"><span>Swap space</span></a></li><li class="section"><a href="../Concepts/bp-clusterDesign.html" class="current"><span>Cluster design considerations</span></a><ul class="sub-sections"></ul></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-sizingGuidelines.html"><span>Sizing guidelines</span></a></li><li class="section"><a href="../Concepts/bp-deployment-strategies.html"><span>Deployment strategies</span></a></li><li class="section"><a href="../Concepts/bp-maintenance.html"><span>Ongoing monitoring and maintenance</span></a></li><li class="section"><a href="../Concepts/bp-firewall.html"><span>Couchbase behind a secondary firewall</span></a></li><li class="section"><a href="../Concepts/bp-cloudDeployment.html"><span>Couchbase in the cloud</span></a></li><li class="section"><a href="../Tasks/xdcr-cloud.html"><span>XDCR in cloud deployments</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+ <h1 class="title topictitle1">Cluster design considerations</h1>
+
+ 
+ <div class="body"><p class="shortdesc">Cluster design takes into account topics such as RAM, number of nodes and cores, client
+  or server-side moxi, and so on.</p>
+
+  
+  <dl class="dl">
+   
+    <dt class="dt dlterm">RAM</dt>
+
+    <dd class="dd">Memory is a key factor for smooth cluster performance. Couchbase Server is a best
+     solution for applications that keep most of their active dataset in memory. It is very
+     important that all actively used data (the working set) lives in memory. When there is not
+     enough memory left, some data is ejected from memory and will only exist on disk. Accessing
+     data from disk is much slower than accessing data in memory. As a result, if ejected data is
+     accessed frequently the cluster performance suffers. Use the formula provided in Sizing
+     Guidelines  to verify your configuration, optimize performance, and avoid this situation.</dd>
+
+   
+  </dl>
+
+  
+  <dl class="dl">
+   
+    <dt class="dt dlterm">Number of nodes</dt>
+
+    <dd class="dd">Once you know how much memory you need, you must decide whether to have a
+     few large nodes or many small nodes.<ul class="ul">
+      <li class="li">Many small nodes: You are distributing I/O across several machines. However, there is also 
+       a higher chance of node failure (across the whole cluster).</li>
+
+      <li class="li">Few large nodes: If a node fails, it greatly impacts the application.</li>
+
+      <li class="li">Choosing between many small nodes and few large nodes presents a tradeoff between reliability and efficiency.</li>
+
+     </ul>
+</dd>
+
+   
+  </dl>
+
+  
+  <dl class="dl">
+   
+    <dt class="dt dlterm">Client or server-side moxi</dt>
+
+    <dd class="dd">Couchbase Server prefers a client-side moxi (or a smart client) over a server-side moxi. However,
+     for development environments or for faster, easier deployments, you can use server-side moxis. A
+     server-side moxi is not recommended because it produces an additional hop if a server receives a
+     client request and doesn’t have the requested data.</dd>
+
+   
+  </dl>
+
+  
+  <dl class="dl">
+   
+    <dt class="dt dlterm">Number of cores</dt>
+
+    <dd class="dd">Couchbase Server is more memory- or I/O bound than it is CPU-bound. However,
+     it is more efficient on machines that have at least two cores.</dd>
+
+   
+  </dl>
+
+ 
+  
+  <dl class="dl">
+   
+    <dt class="dt dlterm">Storage type</dt>
+
+    <dd class="dd">You can choose either SSDs (solid state drives) or spinning disks to store
+     data. SSDs are faster than rotating media but are currently more expensive. Couchbase Server needs
+     less memory if a cluster uses SSDs as their I/O queue buffer is smaller.</dd>
+
+   
+  </dl>
+
+  
+  <dl class="dl">
+   
+    <dt class="dt dlterm">WAN Deployments</dt>
+
+    <dd class="dd">Couchbase Server is not designed to have clusters or clients that span data centers. It
+     requires that intra-cluster (server to server) latency be very low, as well as between the
+     cluster and Couchbase clients. If you require the ability to be in one or more data centersgit
+     statuas, see <a class="xref" href="../XDCR/xdcr-intro.html" title="XDCRは、主に災害復旧のために、あるクラスタのデータを別のクラスタに複製します。">Cross Datacenter Replication
+     (XDCR)</a>.</dd>
+
+   
+  </dl>
+
+  
+  <dl class="dl">
+   
+    <dt class="dt dlterm">Shared storage</dt>
+
+    <dd class="dd">It is strongly recommended to avoid using centralized back-end storage system such as a SAN
+     or NAS. While they can support good performance, they present a single bottleneck or point of
+     failure that limits the distributed nature of Couchbase. </dd>
+
+   
+  </dl>
+
+ 
+ 
+ </div>
+
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/bp-deployment-considerations.html" title="アクセス制限、ノード間通信、スワップの設定、接続タイムアウトなどの考慮事項について説明します。">デプロイ構成の考慮事項</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/swap-space.html" title="On Linux, swap space is used when the physical memory (RAM) is full.">Swap space</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/bp-sizingGuidelines.html" title="The primary considerations for sizing a Couchbase Server cluster are the number of nodes and node size.">Sizing guidelines</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

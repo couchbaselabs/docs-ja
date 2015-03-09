@@ -1,0 +1,108 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Debugging replica index</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a><ul class="sub-sections"><li class="section"><a href="../Misc/Trbl-commonErrors.html"><span>Common errors</span></a></li><li class="section"><a href="../Misc/Trbl-generalTips.html"><span>General tips</span></a></li><li class="section"><a href="../Misc/Trbl-logs.html"><span>Logs and logging</span></a></li><li class="section"><a href="../Misc/Trbl-issuesReport.html"><span>Reporting issues</span></a></li><li class="section"><a href="../Misc/Trbl-beam-smp-issue.html"><span>Beam.smp</span></a></li><li class="section"><a href="../Misc/Trbl-blockedIndexer.html"><span>Blocked indexer</span></a></li><li class="section"><a href="../Misc/Trbl-common.html"><span>Server issues</span></a></li><li class="section"><a href="../Misc/Trbl-datamissing-server.html"><span>Incorrect or missing data (server issue)</span></a></li><li class="section"><a href="../Misc/Trbl-datamissing-user.html"><span>Incorrect or missing data (user issue)</span></a></li><li class="section"><a href="../Misc/Trbl-designdocs.html"><span>Design document aliases</span></a></li><li class="section"><a href="../Misc/Trbl-expireddocs.html"><span>Expired documents issue</span></a></li><li class="section"><a href="../Misc/Trbl-indexFileSystem.html"><span>Index filesystem structure</span></a></li><li class="section"><a href="../Misc/Trbl-queryResults.html"><span>Index results for a single node</span></a></li><li class="section"><a href="../Misc/Trbl-replicaIndex.html" class="current"><span>Debugging replica index</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Misc/Trbl-staleFalse-debug.html"><span>Debugging stale=false queries</span></a></li><li class="section"><a href="../Misc/Trbl-timeoutErrors.html"><span>Timeout errors</span></a></li><li class="section"><a href="../Misc/Trbl-total_row-debug.html"><span>total_rows values are too high</span></a></li></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">Debugging replica index</h1>
+
+  
+  <div class="body"><p class="shortdesc">Description of how to test and verify that the replica index is working.</p>
+
+    <p class="p">It’s not easy to test/verify from the outside that the replica index is working. Remember,
+      replica index is optional, and it’s just an optimization for faster
+        <samp class="ph codeph">stale=false</samp> queries after rebalance - it doesn’t cope with correctness of
+      the results.</p>
+
+    <p class="p">There’s a non-public query parameter named <samp class="ph codeph">_type</samp> used only for debugging and
+      testing. Its default value is <samp class="ph codeph">main</samp>, and the other possible value is
+        <samp class="ph codeph">replica</samp>. Here follows an example of querying the main (default) and replica
+      indexes on a 2 nodes cluster (for sake of simplicity), querying the main (normal) index
+      gives:</p>
+
+    <pre class="pre codeblock"><code><samp class="ph codeph">&gt; curl -s 'http://localhost:9500/default/_design/test/_view/view1?limit=20&amp;stale=false&amp;debug=true'
+{"total_rows":20000,"rows":[
+{"id":"0017131","key":2,"partition":43,"node":"http://192.168.1.80:9501/_view_merge/","value":"0017131"},
+{"id":"0000225","key":10,"partition":33,"node":"http://192.168.1.80:9501/_view_merge/","value":"0000225"},
+{"id":"0005986","key":15,"partition":34,"node":"http://192.168.1.80:9501/_view_merge/","value":"0005986"},
+{"id":"0015579","key":17,"partition":27,"node":"local","value":"0015579"},
+{"id":"0018530","key":17,"partition":34,"node":"http://192.168.1.80:9501/_view_merge/","value":"0018530"},
+{"id":"0006210","key":23,"partition":2,"node":"local","value":"0006210"},
+{"id":"0006866","key":25,"partition":18,"node":"local","value":"0006866"},
+{"id":"0019349","key":29,"partition":21,"node":"local","value":"0019349"},
+{"id":"0004415","key":39,"partition":63,"node":"http://192.168.1.80:9501/_view_merge/","value":"0004415"},
+{"id":"0018181","key":48,"partition":5,"node":"local","value":"0018181"},
+{"id":"0004737","key":49,"partition":1,"node":"local","value":"0004737"},
+{"id":"0014722","key":51,"partition":2,"node":"local","value":"0014722"},
+{"id":"0003686","key":54,"partition":38,"node":"http://192.168.1.80:9501/_view_merge/","value":"0003686"},
+{"id":"0004656","key":65,"partition":48,"node":"http://192.168.1.80:9501/_view_merge/","value":"0004656"},
+{"id":"0012234","key":65,"partition":10,"node":"local","value":"0012234"},
+{"id":"0001610","key":71,"partition":10,"node":"local","value":"0001610"},
+{"id":"0015940","key":83,"partition":4,"node":"local","value":"0015940"},
+{"id":"0010662","key":87,"partition":38,"node":"http://192.168.1.80:9501/_view_merge/","value":"0010662"},
+{"id":"0015913","key":88,"partition":41,"node":"http://192.168.1.80:9501/_view_merge/","value":"0015913"},
+{"id":"0019606","key":90,"partition":22,"node":"local","value":"0019606"}
+],
+</samp></code></pre>
+
+    <p class="p">Note that the <samp class="ph codeph">debug=true</samp> parameter, for map views, add 2 row fields,
+        <samp class="ph codeph">partition</samp> which is the vbucket ID where the document that produced this row
+      (emitted by the map function) lives, and <samp class="ph codeph">node</samp> which tells from which node in
+      the cluster the row came (value “local” for the node which received the query, an URL
+      otherwise).</p>
+
+    <p class="p">Now, doing the same query but against the replica index ( <samp class="ph codeph">_type=replica</samp> )
+      gives:</p>
+
+    <pre class="pre codeblock"><code><samp class="ph codeph">&gt; curl -s 'http://localhost:9500/default/_design/test/_view/view1?limit=20&amp;stale=false&amp;_type=replica&amp;debug=true'
+{"total_rows":20000,"rows":[
+{"id":"0017131","key":2,"partition":43,"node":"local","value":"0017131"},
+{"id":"0000225","key":10,"partition":33,"node":"local","value":"0000225"},
+{"id":"0005986","key":15,"partition":34,"node":"local","value":"0005986"},
+{"id":"0015579","key":17,"partition":27,"node":"http://192.168.1.80:9501/_view_merge/","value":"0015579"},
+{"id":"0018530","key":17,"partition":34,"node":"local","value":"0018530"},
+{"id":"0006210","key":23,"partition":2,"node":"http://192.168.1.80:9501/_view_merge/","value":"0006210"},
+{"id":"0006866","key":25,"partition":18,"node":"http://192.168.1.80:9501/_view_merge/","value":"0006866"},
+{"id":"0019349","key":29,"partition":21,"node":"http://192.168.1.80:9501/_view_merge/","value":"0019349"},
+{"id":"0004415","key":39,"partition":63,"node":"local","value":"0004415"},
+{"id":"0018181","key":48,"partition":5,"node":"http://192.168.1.80:9501/_view_merge/","value":"0018181"},
+{"id":"0004737","key":49,"partition":1,"node":"http://192.168.1.80:9501/_view_merge/","value":"0004737"},
+{"id":"0014722","key":51,"partition":2,"node":"http://192.168.1.80:9501/_view_merge/","value":"0014722"},
+{"id":"0003686","key":54,"partition":38,"node":"local","value":"0003686"},
+{"id":"0004656","key":65,"partition":48,"node":"local","value":"0004656"},
+{"id":"0012234","key":65,"partition":10,"node":"http://192.168.1.80:9501/_view_merge/","value":"0012234"},
+{"id":"0001610","key":71,"partition":10,"node":"http://192.168.1.80:9501/_view_merge/","value":"0001610"},
+{"id":"0015940","key":83,"partition":4,"node":"http://192.168.1.80:9501/_view_merge/","value":"0015940"},
+{"id":"0010662","key":87,"partition":38,"node":"local","value":"0010662"},
+{"id":"0015913","key":88,"partition":41,"node":"local","value":"0015913"},
+{"id":"0019606","key":90,"partition":22,"node":"http://192.168.1.80:9501/_view_merge/","value":"0019606"}
+],
+</samp></code></pre>
+
+    <p class="p">Note that you get exactly the same results (id, key and value for each row). Looking at the
+      row field <samp class="ph codeph">node</samp>, you can see there’s a duality when compared to the results we
+      got from the main index, which is very easy to understand for the simple case of a 2 nodes
+      cluster.</p>
+
+
+  </div>
+
+  <nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Misc/Trbl-intro.html" title="トラブルシューティングの一般的なヒント、一般的なエラー、ログ情報、およびその他の問題について説明します。">トラブルシューティング</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Misc/Trbl-queryResults.html" title="A specific URI is used to get index results for a single node.">Index results for a single node</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Misc/Trbl-staleFalse-debug.html" title="Debugging stale=false queries for missing/unexpected data">Debugging stale=false queries</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="Trbl-datamissing-server.html" title="Data missing in query response or it’s wrong (potentially due to server issues)">Incorrect or missing data (server issue)</a></div></div>
+</nav>
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

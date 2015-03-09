@@ -1,0 +1,387 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Failover considerations</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-manage-serverWarmup.html"><span>Handling server warmup</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-replication.html"><span>Handling replication</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-compaction.html"><span>Compacting data files</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-maintenance.html"><span>Cluster maintenance</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/maintenance-server-node.html"><span>Server maintenance</span></a><ul class="sub-sections"><li class="section section--has-sub-sections section--active"><a href="../Concepts/concept-nodeFailover.html"><span>Failing over nodes</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-nodeFailover.html" class="current"><span>Failover considerations</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Concepts/graceful-failover.html"><span>グレイスフルフェイルオーバ</span></a></li><li class="section"><a href="../Tasks/hard-failover.html"><span>Hard failover</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/recovery-failover-nodes.html"><span>Recovering failed over nodes</span></a></li><li class="section"><a href="../Tasks/rebalance-and-failover-nodes.html"><span>Rebalancing after failover</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-backup-restore.html"><span>Backup and restore</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-xdcr.html"><span>Managing XDCR</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">Failover considerations</h1>
+
+  
+  <div class="body"><p class="shortdesc">Failing over a node means that Couchbase Server removes the node from a cluster and
+    makes replicated data at other nodes available for client requests.</p>
+
+    <p class="p"> Because Couchbase Server provides data replication within a cluster, the cluster can handle
+      failure of one or more nodes without affecting your ability to access the stored data. In the
+      event of a node failure, you can manually initiate a <dfn class="term">failover</dfn> status for the
+      node in the Couchbase Web Console and resolve the issues.</p>
+
+    <p class="p">Alternately, you can configure Couchbase Server so it automatically removes a
+      failed node from the cluster and have the cluster operate in a degraded mode. If you choose this
+      automatic option, the workload for functioning nodes that remain in the cluster increases.
+      You still need to address the node failure, return a functioning node to the cluster, and
+      then rebalance the cluster in order for the cluster to function as it did prior to node
+      failure.</p>
+
+    <p class="p">Whether you manually fail over a node or have Couchbase Server perform automatic failover, you
+      must determine the underlying cause for the failure. Then set up functioning
+      nodes, add the nodes, and rebalance the cluster. Keep in mind the following guidelines on
+      replacing or adding nodes when you cope with node failure and failover scenarios:</p>
+
+    <ul class="ul">
+      <li class="li"><p class="p">If the node failed due to a hardware or system failure, you must add a new
+          replacement node to the cluster and rebalance.</p>
+</li>
+
+      <li class="li"><p class="p">If the node failed because of capacity problems in your cluster, you must replace the
+          node but also add additional nodes to meet the capacity needs.</p>
+</li>
+
+      <li class="li"><p class="p">If the node failure was transient in nature and the failed node functions once again,
+          you can add the node back to the cluster.</p>
+</li>
+
+    </ul>
+
+    <p class="p">Be aware that failover is a distinct operation compared to removing or rebalancing a
+      node. Typically, you remove a functioning node from a cluster for maintenance or other
+      reasons; in contrast, you perform a failover for a node that does not function.</p>
+
+    <p class="p">To remove a functioning node from a cluster, use the Couchbase Web Console to indicate the node
+      that is to be removed. Then rebalance the cluster so that data requests for the node can be
+      handled by other nodes. Since the node you want to remove still functions, it is able to
+      handle data requests until the rebalance completes. At this point, other nodes in the cluster
+      will handle data requests. Therefore, there is no disruption in data service and no loss of data
+      that can occur when you remove a node and then rebalance the cluster. If you need to remove a
+      functioning node for administration purposes, you must use the remove and rebalance
+      functionality and not failover.</p>
+
+    <p class="p">If you try to fail over a functioning node, this can result in data loss because
+      failover will immediately remove the node from the cluster. Any data that has not yet been
+      replicated to other nodes can be permanently lost if it had not been persisted to disk.</p>
+
+    <p class="p">For more information about performing failover see the following resources:</p>
+
+    <ul class="ul">
+      <li class="li">Automated failover. It will automatically mark a node as failed over if the node has
+        been identified as unresponsive or unavailable. There are some deliberate limitations to the
+        automated failover feature. </li>
+
+      <li class="li">Initiating a failover. Whether you use automatic or manual
+        failover, you need to perform additional steps to bring a cluster into a fully functioning
+        state.</li>
+
+      <li class="li">Adding nodes after failover. After you resolve the issue with the
+        failed over node, you can add the node back to the cluster. </li>
+
+    </ul>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">Choosing a failover solution</h2>
+      <p class="p">Because node failover has the potential
+        to reduce the performance of your cluster, you should consider how best to handle a failover
+        situation. Using automated failover means that a cluster can fail over a node without
+        user-intervention and without knowledge and identification of the issue that caused the node
+        failure. It still requires you to initiate a rebalance in order to return the cluster to a
+        healthy state.</p>
+<p class="p">If you choose manual failover to manage your cluster you need to
+        monitor the cluster and identify when an issue occurs. If an issues does occur you then
+        trigger a manual failover and rebalance operation. This approach requires more monitoring
+        and manual intervention, there is also still a possibility that your cluster and data access
+        may still degrade before you initiate failover and rebalance.</p>
+<p class="p">In the following
+        sections the two alternatives and their issues are described in more
+          detail.</p>
+<p class="p"><strong class="ph b">Automated failover considerations</strong></p>
+<p class="p">Automatically failing
+        components in any distributed system can cause problems. If you cannot identify the cause of
+        failure, and you do not understand the load that will be placed on the remaining system,
+        then automated failover can cause more problems than it is designed to solve. Some of the
+        situations that might lead to problems include:</p>
+
+      
+      <ul class="ul">
+        <li class="li"><strong class="ph b">Avoiding failover chain-reactions (Thundering herd)</strong></li>
+
+      </ul>
+<p class="p">Imagine a scenario where a Couchbase Server cluster of five nodes is operating at
+        80–90% aggregate capacity in terms of network load. Everything is running well but at the
+        limit of cluster capacity. Imagine a node fails and the software decides to automatically
+        failover that node. It is unlikely that all of the remaining four nodes are be able to
+        successfully handle the additional load.</p>
+<p class="p">The result is that the increased load could
+        lead to another node failing and being automatically failed over. These failures can cascade
+        and lead to the eventual loss of an entire cluster. Clearly having 1/5th of the requests not
+        being serviced due to single node failure would be more desirable than none of the requests
+        being serviced due to an entire cluster failure.</p>
+<p class="p">The solution in this case is to
+        continue cluster operations with the single node failure, add a new server to the cluster to
+        handle the missing capacity, mark the failed node for removal and then rebalance. This way
+        there is a brief partial outage rather than an entire cluster being disabled.</p>
+<p class="p">One
+        alternate preventative solution is to ensure there is excess capacity to handle unexpected
+        node failures and allow replicas to take over.</p>
+
+      
+      <ul class="ul">
+        <li class="li"><strong class="ph b">Handling failovers with network partitions</strong></li>
+
+      </ul>
+<p class="p">In case of network partition or split-brain where the failure of a network device
+        causes a network to be split, Couchbase implements automatic failover with the following
+        restrictions:</p>
+<ul class="ul">
+        <li class="li">Automatic failover requires a minimum of three (3) nodes per cluster. This prevents a
+          2-node cluster from having both nodes fail each other over in the face of a network
+          partition and protects the data integrity and consistency.</li>
+
+        <li class="li">Automatic failover occurs only if exactly one (1) node is down. This prevents a network
+          partition from causing two or more halves of a cluster from failing each other over and
+          protects the data integrity and consistency.</li>
+
+        <li class="li">Automatic failover occurs only once before requiring administrative action. This
+          prevents cascading failovers and subsequent performance and stability degradation. In many
+          cases, it is better to not have access to a small part of the dataset rather than having a
+          cluster continuously degrade itself to the point of being non-functional.</li>
+
+        <li class="li">Automatic failover implements a 30 second delay when a node fails before it performs an
+          automatic failover. This prevents transient network issues or slowness from causing a node
+          to be failed over when it shouldn’t be.</li>
+
+      </ul>
+<p class="p">If a network partition occurs, automatic failover occurs if and only if automatic
+        failover is allowed by the specified restrictions. For example, if a single node is
+        partitioned out of a cluster of five (5), it is automatically failed over. If more than one
+        (1) node is partitioned off, autofailover does not occur. After that, administrative action
+        is required for a reset. In the event that another node fails before the automatic failover
+        is reset, no automatic failover occurs. </p>
+<ul class="ul">
+        <li class="li"><strong class="ph b">Handling misbehaving nodes</strong></li>
+
+      </ul>
+<p class="p">There are cases where one node loses connectivity to the cluster or functions as if it
+        has lost connectivity to the cluster. If you enable it to automatically failover the rest of
+        the cluster, that node is able to create a cluster-of-one. The result for your cluster is a
+        similar partition situation we described previously.</p>
+<p class="p">In this case you should make sure
+        there is spare node capacity in your cluster and failover the node with network issues. If
+        you determine there is not enough capacity, add a node to handle the capacity after your
+        failover the node with issues.</p>
+<p class="p"><strong class="ph b">Manual or monitored failover</strong></p>
+<p class="p">Performing
+        manual failover through monitoring can take two forms, either by human monitoring or by
+        using a system external to the Couchbase Server cluster. An external monitoring system can
+        monitor both the cluster and the node environment and make a more information-driven
+        decision. If you choose a manual failover solution, there are also issues you should be
+        aware of. Although automated failover has potential issues, choosing to use manual or
+        monitored failover is not without potential problems.</p>
+<ul class="ul">
+        <li class="li"><strong class="ph b">Human intervention</strong></li>
+
+      </ul>
+<p class="p">One option is to have a human operator respond to alerts and make a decision on what
+        to do. Humans are uniquely capable of considering a wide range of data, observations and
+        experiences to best resolve a situation. Many organizations disallow automated failover
+        without human consideration of the implications. The drawback of using human intervention is
+        that it will be slower to respond than using a computer-based monitoring system.</p>
+<ul class="ul">
+        <li class="li"><strong class="ph b">External monitoring</strong></li>
+
+      </ul>
+<p class="p">Another option is to have a system monitoring the cluster via the Couchbase REST API.
+        Such an external system is in a good position to failover nodes because it can take into
+        account system components that are outside the scope of Couchbase Server.</p>
+<p class="p">For example
+        monitoring software can observe that a network switch is failing and that there is a
+        dependency on that switch by the Couchbase cluster. The system can determine that failing
+        Couchbase Server nodes will not help the situation and will therefore not failover the
+        node.</p>
+<p class="p">The monitoring system can also determine that components around Couchbase Server
+        are functioning and that various nodes in the cluster are healthy. If the monitoring system
+        determines the problem is only with a single node and remaining nodes in the cluster can
+        support aggregate traffic, then the system may failover the node using the REST API or
+        command-line tools.</p>
+</div>
+
+
+    <div class="section"><h2 class="title sectiontitle">Using automatic failover</h2><p class="p">There are a number of restrictions on
+        automatic failover in Couchbase Server. This is to help prevent some issues that can occur
+        when you use automatic failover. </p>
+<ul class="ul">
+        <li class="li"><p class="p"><strong class="ph b">Disabled by Default</strong> Automatic failover is disabled by default. This prevents
+            Couchbase Server from using automatic failover without you explicitly enabling
+          it.</p>
+</li>
+
+        <li class="li"><p class="p"><strong class="ph b">Minimum Nodes</strong> Automatic failover is only available on clusters of at least
+            three nodes.</p>
+</li>
+
+      </ul>
+<p class="p">If two or more nodes go down at the same time within a specified delay period, the
+        automatic failover system will not failover any nodes.</p>
+<ul class="ul">
+        <li class="li"><p class="p"><strong class="ph b">Required Intervention</strong> Automatic failover will only fail over one node before
+            requiring human intervention. This is to prevent a chain reaction failure of all nodes
+            in the cluster.</p>
+</li>
+
+        <li class="li"><p class="p"><strong class="ph b">Failover Delay</strong> There is a minimum 30 second delay before a node will be failed
+            over. This time can be raised, but the software is hard coded to perform multiple pings
+            of a node that may be down. This is to prevent failover of a functioning but slow node
+            or to prevent network connection issues from triggering failover. </p>
+</li>
+
+      </ul>
+<p class="p">You can use the REST API to configure an email notification that will be sent by
+        Couchbase Server if any node failures occur and node is automatically failed over. </p>
+
+      <p class="p">Once an automatic failover has occurred, the Couchbase Cluster is relying on other nodes to
+        serve replicated data. You should initiate a rebalance to return your cluster to a fully
+        functioning state. </p>
+
+      <p class="p"><strong class="ph b">Resetting the Automatic failover counter</strong></p>
+<p class="p">After a node has been automatically
+        failed over, Couchbase Server increments an internal counter that indicates if a node has
+        been failed over. This counter prevents the server from automatically failing over
+        additional nodes until you identify the issue that caused the failover and resolve it. If
+        the internal counter indicates a node has failed over, the server will no longer
+        automatically failover additional nodes in the cluster. You will need to re-enable automatic
+        failover in a cluster by resetting this counter.</p>
+<p class="p">Important</p>
+<p class="p">Reset the automatic
+        failover only after the node issue is resolved, rebalance occurs, and the cluster is
+        restored to a fully functioning state.</p>
+<p class="p">You can reset the counter using the REST
+        API:</p>
+<pre class="pre codeblock"><code><samp class="ph codeph">&gt; curl -i -u cluster-username:cluster-password \
+    http://localhost:8091/settings/autoFailover/resetCount
+</samp></code></pre>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Initiating a node failover</h2><p class="p">If you need to remove a node from the
+        cluster due to hardware or system failure, you need to indicate the failover status for that
+        node. This causes Couchbase Server to use replicated data from other functioning nodes in
+        the cluster.</p>
+
+      
+      <div class="note important"><span class="importanttitle">Important:</span> Do not use failover to remove a functioning node from the cluster for
+        administration or upgrade operations. This is because initiating a failover for a node
+        activates replicated data at other nodes which reduces the overall capacity of the cluster.
+        Data from the failover node that has not yet been replicated at other nodes or persisted on
+        disk will be lost. </div>
+
+        
+        <p class="p">You can provide the
+        failover status for a node with two different methods:</p>
+<ul class="ul">
+        <li class="li"><strong class="ph b">Using the Web Console</strong></li>
+
+      </ul>
+<p class="p">Go to the <samp class="ph codeph">Management -&gt; Server Nodes</samp> section of the Web Console.
+        Find the node that you want to failover, and click the <samp class="ph codeph">Fail Over</samp> button.
+        You can only failover nodes that the cluster has identified as being Down.</p>
+<p class="p">Web Console
+        will display a warning message.</p>
+<p class="p">Click <samp class="ph codeph">Fail Over</samp> to indicate the node
+        is failed over. You can also choose to <samp class="ph codeph">Cancel</samp>.</p>
+<ul class="ul">
+        <li class="li"><strong class="ph b">Using the Command-line</strong></li>
+
+      </ul>
+<p class="p">You can failover one or more nodes using the <samp class="ph codeph">failover</samp> command in
+          <samp class="ph codeph">couchbase-cli</samp>. To failover the node, you must specify the IP address and
+        port, if not the standard port for the node you want to failover. For
+        example:</p>
+<pre class="pre codeblock"><code><samp class="ph codeph">```
+&gt; ﻿couchbase-cli failover --cluster=localhost:8091\
+    -u cluster-username -p cluster-password\
+    --server-failover=192.168.0.72:8091
+```
+</samp></code></pre>
+<p class="p">If
+        successful this indicates the node is failed over.</p>
+<p class="p">After you specify that a node is
+        failed over you should handle the cause of failure and get your cluster back to a fully
+        functional state. </p>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Handling a failover situation</h2><p class="p">Any time that you automatically or
+        manually failover a node, the cluster capacity will be reduced. Once a node is failed
+        over:</p>
+<ul class="ul">
+        <li class="li"><p class="p">The number of available nodes for each data bucket in your cluster will be reduced by
+            one.</p>
+</li>
+
+        <li class="li"><p class="p">Replicated data handled by the failover node will be enabled on other nodes in the
+            cluster.</p>
+</li>
+
+        <li class="li"><p class="p">Remaining nodes will have to handle all incoming requests for data.</p>
+</li>
+
+      </ul>
+<p class="p">After a node has been failed over, you should perform a rebalance operation. The
+        rebalance operation will:</p>
+<ul class="ul">
+        <li class="li"><p class="p">Redistribute stored data across the remaining nodes within the cluster.</p>
+</li>
+
+        <li class="li"><p class="p">Recreate replicated data for all buckets at remaining nodes.</p>
+</li>
+
+        <li class="li"><p class="p">Return your cluster to the configured operational state.</p>
+</li>
+
+      </ul>
+<p class="p">You may decide to add one or more new nodes to the cluster after a failover to return
+        the cluster to a fully functional state. Better yet you may choose to replace the failed
+        node and add additional nodes to provide more capacity than before. </p>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Adding back a failed over node</h2><p class="p">You can add a failed over node back to
+        the cluster if you identify and fix the issue that caused node failure. After Couchbase
+        Server marks a node as failed over, the data on disk at the node will remain. A failed over
+        node will not longer be <em class="ph i">synchronized</em> with the rest of the cluster; this means the
+        node will no longer handle data request or receive replicated data.</p>
+<p class="p">When you add a
+        failed over node back into a cluster, the cluster will treat it as if it is a new node. This
+        means that you should rebalance after you add the node to the cluster. This also means that
+        any data stored on disk at that node will be destroyed when you perform this
+          rebalance.</p>
+<p class="p"><strong class="ph b">Copy or Delete Data Files before Rejoining
+        Cluster</strong></p>
+<p class="p">Therefore, before you add a failed over node back to the cluster, it is
+        best practice to move or delete the persisted data files before you add the node back into
+        the cluster. If you want to keep the files you can copy or move the files to another
+        location such as another disk or EBS volume. When you add a node back into the cluster and
+        then rebalance, data files will be deleted, recreated and repopulated.</p>
+</div>
+
+  </div>
+
+  <nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/concept-nodeFailover.html" title="Failover is the process in which a node in a cluster is declared as unavailable and a replica vBucket is enabled.">Failing over nodes</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/graceful-failover.html" title="グレイスフルフェイルオーバは、実行中の操作が完了した後に、データを失うことなく、管理者が安全にノードをクラスタからフェイルオーバする方法を提供します。">グレイスフルフェイルオーバ</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="tasks-rebalance.html" title="Rebalancing is the process of redistributing information across nodes.">Rebalancing</a></div>
+<div><a class="link" href="../UI/ui-settings.html" title="The Settings section provides configuration and information for the cluster, update notifications, auto failover, alerts, auto compaction, sample buckets, and account management.">Settings</a></div>
+<div><a class="link" href="../REST/rest-cluster-autofailover-intro.html" title="Auto-failover is managed with with the GET /settings/autoFailover HTTP method and URI.">Managing auto-failover</a></div>
+<div><a class="link" href="../REST/rest-cluster-email-notifications.html" title="Alert settings specify whether email alerts are sent and the events that trigger emails. This is a global setting for all clusters. Authentication is required to read this value.">Setting email notifications</a></div></div>
+</nav>
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

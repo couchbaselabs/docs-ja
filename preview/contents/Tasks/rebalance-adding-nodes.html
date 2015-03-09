@@ -1,0 +1,274 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Adding nodes</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-manage-serverWarmup.html"><span>Handling server warmup</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-replication.html"><span>Handling replication</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-compaction.html"><span>Compacting data files</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-maintenance.html"><span>Cluster maintenance</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/rebalance-adding-nodes.html" class="current"><span>Adding nodes</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Tasks/rebalance-remove-node.html"><span>Removing nodes</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-rebalance.html"><span>Rebalancing</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/maintenance-server-node.html"><span>Server maintenance</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-backup-restore.html"><span>Backup and restore</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-xdcr.html"><span>Managing XDCR</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">Adding nodes</h1>
+
+  <div class="body"><p class="shortdesc">Nodes can be added to a cluster via the UI,
+    CLI, or REST API.</p>
+
+    <p class="p">There are a several methods for adding a node to a cluster. In each
+      case a node is marked to be added to the cluster, but it doesn't becomne an active member of the cluster 
+      until the rebalancing operation is performed. </p>
+
+      
+      <p class="p">When setting up a new Couchbase Server installation, 
+        you have the option to join the new node to an existing cluster.</p>
+
+      <p class="p">During the first step, select the <span class="ph uicontrol">Join a cluster now</span>
+        radio button, as shown in the figure below:</p>
+
+      
+      <div class="fig fignone"><img class="image" src="../images/admin-tasks-rebalance-add-setup.png" width="480"></div>
+
+      
+      <p class="p">You are prompted to add the following information:</p>
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">IP Address</dt>
+
+        <dd class="dd">The IP address of any existing node within the cluster you want to join.</dd>
+
+      
+    </dl>
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">Username</dt>
+
+        <dd class="dd">The username of the administrator of the target cluster.</dd>
+
+      
+    </dl>
+
+      <dl class="dl">
+        
+          <dt class="dt dlterm">Password</dt>
+
+          <dd class="dd">The password of the administrator of the target cluster.</dd>
+
+        
+      </dl>
+
+      
+      <p class="p">The node will be created as a new cluster, but the pending status of the node within the new
+        cluster will be indicated on the <span class="keyword wintitle">Cluster Overview</span> page, as shown in the example
+        below:</p>
+
+      
+      <div class="fig fignone"><img class="image" src="../images/admin-tasks-rebalance-node-added.png" width="720"></div>
+
+    
+      
+      
+      
+        <div class="section"><h2 class="title sectiontitle">Adding nodes via UI</h2>
+      <p class="p">To add a new node to an existing cluster after installation, click on the
+        <span class="ph uicontrol">Add Server</span> button within the <span class="keyword wintitle">Manage Server Nodes</span> area of the
+        Admin Console. </p>
+
+          
+          <p class="p"><img class="image" src="../images/admin-tasks-rebalance-add-button.png" width="720"></p>
+
+          
+          <p class="p">Couchbase Server is installed and is configured as per the normal setup procedures. Using the same method, you can 
+          add a server that was previously part of this or another cluster. During this process, Couchbase Server must be running.</p>
+
+      
+      
+      <div class="fig fignone"><img class="image" src="../images/admin-tasks-rebalance-add-console.png" width="480"></div>
+
+      
+      <p class="p">Fill in the requested information:</p>
+
+          <dl class="dl">
+            
+              <dt class="dt dlterm">Server IP Address</dt>
+
+              <dd class="dd">The IP address of the server that you want to add.</dd>
+
+            
+          </dl>
+
+      <dl class="dl">
+        
+          <dt class="dt dlterm">Username</dt>
+
+          <dd class="dd">The username of the administrator of the target node.</dd>
+
+        
+      </dl>
+
+          <dl class="dl">
+            
+              <dt class="dt dlterm">Password</dt>
+
+              <dd class="dd">The password of the administrator of the target node.</dd>
+
+            
+          </dl>
+
+      
+      <p class="p">A warning will appear indicating that the operation is destructive on the
+        destination server. Any data currently stored on the server will be deleted, and if the server
+        is currently part of another cluster, it will be removed and marked as failed over in that
+        cluster.</p>
+
+      
+      <p class="p">Once the information has been entered successfully, the node will be marked as
+        ready to be added to the cluster, and the server's pending rebalance count will be updated.</p>
+
+        </div>
+
+      
+      
+      
+        <div class="section"><h2 class="title sectiontitle">Adding nodes via REST</h2>
+     
+      
+      <p class="p">With the REST API, you can add nodes to the cluster by providing the IP address,
+        administrator username, and password as part of the data payload. For example, using
+        <samp class="ph codeph">curl</samp> you could add a new
+        node:</p>
+
+      
+      
+      <pre class="pre codeblock"><code>
+&gt; curl -u cluster-username:cluster-password\
+    localhost:8091/controller/addNode \
+    -d "hostname=192.168.0.68&amp;user=node-username&amp;password=node-password"
+</code></pre>
+
+        </div>
+
+      
+      
+      
+        <div class="section"><h2 class="title sectiontitle">Adding nodes via CLI</h2>
+      <p class="p">You can use the <samp class="ph codeph">couchbase-cli</samp> command-line tool to add one or more
+        nodes to an existing cluster. The new nodes must have Couchbase Server installed, and Couchbase
+        Server must be running on each node.</p>
+
+          
+          <p class="p">To add, run the
+          command:</p>
+<pre class="pre codeblock"><code><samp class="ph codeph">```
+&gt; couchbase-cli server-add \
+      --cluster=localhost:8091 \
+      -u cluster-username -p cluster-password \
+      --server-add=192.168.0.72:8091 \
+      --server-add-username=node-username \
+      --server-add-password=node-password
+```
+</samp></code></pre>
+<p class="p">Where:</p>
+
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="50%" id="d113383e193">Parameter</th>
+
+              <th class="entry" valign="top" width="50%" id="d113383e196">Description</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d113383e193 "><samp class="ph codeph">--cluster</samp></td>
+
+              <td class="entry" valign="top" width="50%" headers="d113383e196 ">The IP address of a node in the existing cluster.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d113383e193 "><samp class="ph codeph">-u</samp></td>
+
+              <td class="entry" valign="top" width="50%" headers="d113383e196 ">The username for the existing cluster.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d113383e193 "><samp class="ph codeph">-p</samp></td>
+
+              <td class="entry" valign="top" width="50%" headers="d113383e196 ">The password for the existing cluster.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d113383e193 "><samp class="ph codeph">--server-add</samp></td>
+
+              <td class="entry" valign="top" width="50%" headers="d113383e196 ">The IP address of the node to be added to the cluster.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d113383e193 "><samp class="ph codeph">--server-add-username</samp></td>
+
+              <td class="entry" valign="top" width="50%" headers="d113383e196 ">The username of the node to be added.</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d113383e193 "><samp class="ph codeph">--server-add-password</samp></td>
+
+              <td class="entry" valign="top" width="50%" headers="d113383e196 ">The password of the node to be added.</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+          
+          <p class="p">If adding was successful, you will see the following
+        response:</p>
+
+          <pre class="pre codeblock"><code>
+SUCCESS: server-add 192.168.0.72:8091
+</code></pre>
+
+          
+          <p class="p">If you receive a failure message, you will be notified of the type of failure.</p>
+
+          <p class="p">You can add  multiple nodes in one command by supplying multiple 
+            <samp class="ph codeph">--server-add</samp> command-line options to the command.</p>
+
+      
+      
+      <div class="note note"><span class="notetitle">Note:</span> Once a server has been successfully added, the
+        Couchbase Server cluster indicates that a rebalance is required to complete the operation.
+      </div>
+
+      <p class="p">You can cancel the addition of a node to a cluster without having to perform a rebalance operation. 
+        Canceling the operation removes the server from the cluster without having transferred or exchanged any data, 
+        since no rebalance operation took place. 
+        You can cancel the operation through the web interface.</p>
+
+        </div>
+
+      
+  </div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Tasks/cluster-maintenance.html">Cluster maintenance</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Tasks/rebalance-remove-node.html" title="Removing a node marks the node for removal from the cluster and completely disables the node from serving any requests across the cluster.">Removing nodes</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

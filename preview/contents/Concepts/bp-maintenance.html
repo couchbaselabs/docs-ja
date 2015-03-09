@@ -1,0 +1,95 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Ongoing monitoring and maintenance</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a><ul class="sub-sections"><li class="section"><a href="../Concepts/swap-space.html"><span>Swap space</span></a></li><li class="section"><a href="../Concepts/bp-clusterDesign.html"><span>Cluster design considerations</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-sizingGuidelines.html"><span>Sizing guidelines</span></a></li><li class="section"><a href="../Concepts/bp-deployment-strategies.html"><span>Deployment strategies</span></a></li><li class="section"><a href="../Concepts/bp-maintenance.html" class="current"><span>Ongoing monitoring and maintenance</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Concepts/bp-firewall.html"><span>Couchbase behind a secondary firewall</span></a></li><li class="section"><a href="../Concepts/bp-cloudDeployment.html"><span>Couchbase in the cloud</span></a></li><li class="section"><a href="../Tasks/xdcr-cloud.html"><span>XDCR in cloud deployments</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+ <h1 class="title topictitle1">Ongoing monitoring and maintenance</h1>
+
+ 
+ <div class="body"><p class="shortdesc">There are a number of different statistics used to monitor a cluster and diagnose and
+    identify problems.</p>
+
+  <p class="p">To understand how the cluster is working and whether it is working effectively, use the
+   following statistics:</p>
+
+  <ul class="ul">
+   <li class="li">Memory Used ( <samp class="ph codeph">mem_used</samp> ) - The current size of memory used. If
+     <samp class="ph codeph">mem_used</samp> hits the RAM quota, you will get <samp class="ph codeph">OOM_ERROR</samp>.
+    The <samp class="ph codeph">mem_used</samp> must be less than <samp class="ph codeph">ep_mem_high_wat</samp>, which is the
+    mark where data is ejected from the disk.</li>
+
+  <li class="li">Disk Write Queue Size ( <samp class="ph codeph">ep_queue_size</samp> ) - The amount of data waiting to be
+    written to disk.</li>
+
+  <li class="li">Cache Hits ( <samp class="ph codeph">get_hits</samp> ) - As a rule of thumb, this must be at least 90% of the total requests.</li>
+
+   <li class="li">Cache Misses ( <samp class="ph codeph">ep_bg_fetched</samp> ) - Ideally this must be low, and certainly
+    lower than <samp class="ph codeph">get_hits</samp>. Increasing or high values indicate that the data your
+    application expects to be stored is not in memory.</li>
+
+   <li class="li">No document available ( <samp class="ph codeph">get_misses</samp>) - Couchbase Server does not have the
+    document.</li>
+
+  </ul>
+
+  <p class="p">Another key statistic to monitor cluster performance is a <dfn class="term">water mark</dfn>, which 
+   determines when it is necessary to start freeing up available memory. Two important statistics related to water marks include:</p>
+
+  <ul class="ul">
+   <li class="li">High Water Mark ( <samp class="ph codeph">ep_mem_high_wat</samp> ) - The system starts ejecting data out of
+    memory when this water mark is met. Ejected values need to be fetched from disk when accessed
+    before being returned to the client.</li>
+
+   <li class="li">Low Water Mark ( <samp class="ph codeph">ep_mem_low_wat</samp> ) - When the low water mark threshold is
+    reached, it indicates that memory usage is moving toward a critical point and system
+    administration action must be taken before the high water mark is reached.</li>
+
+  </ul>
+
+  
+  <div class="note tip"><span class="tiptitle">Tip:</span> Use the following command to get statistic information: <pre class="pre codeblock"><code>shell&gt; cbstats IP:11210 all | \
+    egrep "todo|ep_queue_size|_eject|mem|max_data|hits|misses"
+</code></pre>
+
+      <p class="p">The following statistic information is provided:</p>
+
+      <pre class="pre codeblock"><code>ep_flusher_todo:
+ep_max_data_size:
+ep_mem_high_wat:
+ep_mem_low_wat:
+ep_num_eject_failures:
+ep_num_value_ejects:
+ep_queue_size:
+mem_used:
+ep_bg_fetched:
+get_hits:
+</code></pre>
+
+    </div>
+
+  
+  <div class="note tip"><span class="tiptitle">Tip:</span> Monitor the disk space, CPU usage, and swapping on all nodes using the standard monitoring tools.</div>
+
+  
+ </div>
+
+ <nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/bp-deployment-considerations.html" title="アクセス制限、ノード間通信、スワップの設定、接続タイムアウトなどの考慮事項について説明します。">デプロイ構成の考慮事項</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/bp-deployment-strategies.html">Deployment strategies</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/bp-firewall.html">Couchbase behind a secondary firewall</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="concept-diskStorage.html" title="Couchbase Serverでは、クライアントからの情報の保存や取得に対しRAMを主に利用します。 同時に、Couchbase Serverは、より高い信頼性を持たせるため、全てのデータをディスク上に保存し永続化します。">ディスクストレージ</a></div></div>
+</nav>
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

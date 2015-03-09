@@ -1,0 +1,125 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Migrating from CouchDB</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections section--active"><a href="../install-intro.html"><span>Installation and upgrade</span></a><ul class="sub-sections"><li class="section"><a href="../Install/setup-overview.html"><span>Couchbase setup overview</span></a></li><li class="section section--has-sub-sections"><a href="../Install/pre-install.html"><span>Pre-installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/RHEL-install-intro.html"><span>Red Hat/CentOS installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Ubuntu-install.html"><span>Ubuntu/Debian installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Windows-install.html"><span>Microsoft Windows installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Mac-install.html"><span>Mac OS X installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/post-install.html"><span>Post-installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/upgrading.html"><span>Upgrading </span></a></li><li class="section section--has-sub-sections section--active"><a href="../Install/migrating.html"><span>Migrating</span></a><ul class="sub-sections"><li class="section"><a href="../Install/migrate-couchdb.html" class="current"><span>Migrating from CouchDB</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Install/migrate-membase.html"><span>Migrating from Membase</span></a></li></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">Migrating from CouchDB</h1>
+
+  <div class="body"><p class="shortdesc">Migration guidelines for CouchDB users</p>
+
+    <p class="p">Although Couchbase Server incorporates the
+      view engine functionality built into CouchDB, most of the remaining functionality is
+      supported through the components and systems of Membase Server.</p>
+<p class="p">This change introduces
+        a number of significant differences for CouchDB users who want to use Couchbase Server,
+        particularly when migrating existing applications. However, they also gain the scalability
+        and performance advantages of the Membase Server components.</p>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Differences in terms and concepts</h2><p class="p">CouchDB stores 
+      information using the concept of a document ID (either
+      explicit or automatically generated), against which the document (JSON) is stored. Within
+      Couchbase there is no document ID, and information is stored in the form of a
+      key-value pair instead. The key is equivalent to the document ID, the value is
+      equivalent to the document, and the format of the data is the same.</p>
+
+      <p class="p">Almost all of the
+        HTTP REST API that makes up the interface for communicating with CouchDB does not exist
+        within Couchbase Server. The basic document operations for creating, retrieving, updating
+        and deleting information are entirely supported by the memcached protocol.</p>
+
+      <p class="p">Also,
+          beyond views, many of the other operations are unsupported at the client level within
+          CouchDB. For example, you cannot create a new database as a client, store attachments, or
+          perform administration-style functions, such as view compaction.</p>
+
+      <p class="p">Couchbase Server
+            does not support the notion of databases. Instead, information is stored within logical
+            containers called <dfn class="term">Buckets</dfn>. These are logically equivalent and can be used to
+            compartmentalize information according to projects or needs. With <dfn class="term">Buckets</dfn> you get the
+            additional capability to determine the number of replicas of the information, and the port
+            and authentication required to access the information.</p>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Consistent functionality</h2><p class="p">The operation and interface
+      for querying and creating view definitions in Couchbase Server are mostly identical. Views
+      are still based on the combination of map/reduce functions, and you can 
+      port your map/reduce definitions to Couchbase Server without any issues. The main
+      difference is that the view does not output the document ID. Instead, it 
+      outputs the key against which the key-value was stored into the database.</p>
+
+      <p class="p">Querying
+        views is also the same, and you can use the same arguments to perform a query, such as a start and
+        end docIDs, returned row counts and query value specification, including the requirement
+        to express your key in the form of a JSON value if you are using compound (array or hash)
+        types in your view key specification. Stale views are also supported, and just as with
+        CouchDB, accessing a stale view prevents Couchbase Server from updating the
+        index.</p>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Changed functionality</h2><p class="p">There are many changes in the
+      functionality and operation of Couchbase Server compared to CouchDB:</p>
+
+      <pre class="pre codeblock"><code>* Basic data storage operations must use the memcached API.
+
+* Explicit replication is unsupported. Replication between nodes within a cluster
+  is automatically configured and enabled and is used to help distribute
+  information around the cluster.
+
+* You cannot replicate between a CouchDB database and Couchbase Server.
+
+* Explicit attachments are unsupported, but you can store additional files as new
+  key-value pairs into the database.
+
+* CouchApps are unsupported.
+
+* Update handlers, document validation functions, and filters are not supported.
+
+* Futon does not exist, instead there is an entire Web Administration Console
+  built into Couchbase Server that provides cluster configuration, monitoring and
+  view/document update functionality.
+</code></pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Operational and deployment differences</h2><p class="p">The major differences between CouchDB and Couchbase Server are in options
+      for clustering and distribution of information. With CouchDB, 
+      you need to handle the replication of information between multiple nodes and then
+      use a proxy service to distribute the load from clients over multiple machines.</p>
+<p class="p">With
+        Couchbase Server, the distribution of information is automatic within the cluster, and any
+        Couchbase Server client library will automatically handle and redirect queries to the
+        server that holds the information as it is distributed around the cluster. </p>
+</div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Client and application changes</h2><p class="p">As your CouchDB based
+      application already uses JSON for the document information and a document ID to identify
+      each document, the bulk of your application logic and view support remain identical.
+      However, the HTTP REST API for basic CRUD operations must be updated to use the memcached
+      protocol.</p>
+<p class="p">Additionally, because CouchApps are unsupported, you need to develop a
+        client side application to support any application logic.</p>
+</div>
+
+    
+  </div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/migrating.html" title="This section explains how to migrate from Membase or CouchDB to Couchbase Server.">Migrating</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/migrate-membase.html" title="Migration guidelines for Membase users.">Migrating from Membase</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

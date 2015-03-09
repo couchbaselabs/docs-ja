@@ -1,0 +1,752 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Deprecated items</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections section--active"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a><ul class="sub-sections"><li class="section"><a href="../Misc/deprecated.html" class="current"><span>Deprecated items</span></a><ul class="sub-sections"></ul></li></ul></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">Deprecated items</h1>
+
+  <div class="body">
+    <p class="p">The following software versions are deprecated, will be deprecated, or are unsupported.</p>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Platforms</h2>
+      <p class="p">The following operating systems have been or will be deprecated.</p>
+
+      
+    
+    </div>
+
+    
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="topic_uyj_32q_54__table_af3_2gq_54" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. Deprecated operating systems</span></caption>
+        
+        
+        
+        
+        <thead class="thead" align="left">
+          <tr class="row">
+            <th class="entry" valign="top" width="18.51851851851852%" id="d79405e42">Operating system</th>
+
+            <th class="entry" valign="top" width="54.91698595146871%" id="d79405e45">Description</th>
+
+            <th class="entry" valign="top" width="12.77139208173691%" id="d79405e48">Deprecated version</th>
+
+            <th class="entry" valign="top" width="13.793103448275861%" id="d79405e51">Unsupported version</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+          <tr class="row">
+            <td class="entry" valign="top" width="18.51851851851852%" headers="d79405e42 ">Linux</td>
+
+            <td class="entry" valign="top" width="54.91698595146871%" headers="d79405e45 ">32-bit operating systems (CentOS, Ubuntu, RHEL) will not be supported.</td>
+
+            <td class="entry" valign="top" width="12.77139208173691%" headers="d79405e48 ">2.5.x</td>
+
+            <td class="entry" valign="top" width="13.793103448275861%" headers="d79405e51 ">3.0.0</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="18.51851851851852%" headers="d79405e42 ">Windows</td>
+
+            <td class="entry" valign="top" width="54.91698595146871%" headers="d79405e45 ">32-bit operating systems will only be supported for development purposes. 32-bit
+              production systems will not be supported.</td>
+
+            <td class="entry" valign="top" width="12.77139208173691%" headers="d79405e48 ">2.5.x</td>
+
+            <td class="entry" valign="top" width="13.793103448275861%" headers="d79405e51 ">3.0.0</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="18.51851851851852%" headers="d79405e42 ">CentOS 5</td>
+
+            <td class="entry" valign="top" width="54.91698595146871%" headers="d79405e45 ">CentOS 5 will not be supported after Couchbase Server version 3.0.</td>
+
+            <td class="entry" valign="top" width="12.77139208173691%" headers="d79405e48 ">3.0.x</td>
+
+            <td class="entry" valign="top" width="13.793103448275861%" headers="d79405e51 ">3.x</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="18.51851851851852%" headers="d79405e42 ">Ubuntu 10.04</td>
+
+            <td class="entry" valign="top" width="54.91698595146871%" headers="d79405e45 ">Ubuntu 10.04 will not be supported after Couchbase Server version 3.0.</td>
+
+            <td class="entry" valign="top" width="12.77139208173691%" headers="d79405e48 ">3.0.x</td>
+
+            <td class="entry" valign="top" width="13.793103448275861%" headers="d79405e51 ">3.x</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="18.51851851851852%" headers="d79405e42 ">RHEL 5</td>
+
+            <td class="entry" valign="top" width="54.91698595146871%" headers="d79405e45 ">RHEL 5 will not be supported after Couchbase Server version 3.0.</td>
+
+            <td class="entry" valign="top" width="12.77139208173691%" headers="d79405e48 ">3.0.x</td>
+
+            <td class="entry" valign="top" width="13.793103448275861%" headers="d79405e51 ">3.x</td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+</div>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">REST API</h2>
+      <p class="p">The following REST API URI items have been or will be deprecated. </p>
+
+      
+      
+    </div>
+
+    
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="topic_uyj_32q_54__table_o5f_tgq_54" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 2. Deprecated REST API URIs or parameters</span></caption>
+        
+        
+        
+        
+        
+        <thead class="thead" align="left">
+          <tr class="row">
+            <th class="entry" valign="top" width="12.919896640826876%" id="d79405e167">REST API</th>
+
+            <th class="entry" valign="top" width="28.81136950904393%" id="d79405e170">URI</th>
+
+            <th class="entry" valign="top" width="30.749354005167962%" id="d79405e173">Description</th>
+
+            <th class="entry" valign="top" width="13.56589147286822%" id="d79405e176">Deprecated version</th>
+
+            <th class="entry" valign="top" width="13.953488372093027%" id="d79405e179">Unsupported version</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+          <tr class="row">
+            <td class="entry" valign="top" width="12.919896640826876%" headers="d79405e167 ">Server nodes</td>
+
+            <td class="entry" valign="top" width="28.81136950904393%" headers="d79405e170 ">/pools/nodes</td>
+
+            <td class="entry" valign="top" width="30.749354005167962%" headers="d79405e173 ">URI for obtaining information about nodes in a Couchbase cluster. To obtain
+              information about nodes in a Couchbase cluster, use the
+                <samp class="ph codeph">/pools/default/buckets/default</samp> URI.</td>
+
+            <td class="entry" valign="top" width="13.56589147286822%" headers="d79405e176 ">3.0.0</td>
+
+            <td class="entry" valign="top" width="13.953488372093027%" headers="d79405e179 ">3.0.x</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="12.919896640826876%" headers="d79405e167 ">XDCR</td>
+
+            <td class="entry" valign="top" width="28.81136950904393%" headers="d79405e170 ">/internalSettings</td>
+
+            <td class="entry" valign="top" width="30.749354005167962%" headers="d79405e173 ">The following internal parameters associated with XDCR replication have been 
+              deprecated.
+              <pre class="pre codeblock"><code>xdcrMaxConcurrentReps
+xdcrCheckpointInterval,
+xdcrWorkerBatchSize
+xdcrDocBatchSizeKb
+xdcrFailureRestartInterval
+xdcrOptimisticReplicationThreshold</code></pre>
+</td>
+
+            <td class="entry" valign="top" width="13.56589147286822%" headers="d79405e176 ">3.0.0</td>
+
+            <td class="entry" valign="top" width="13.953488372093027%" headers="d79405e179 ">3.x</td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+</div>
+
+    
+    
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">CLI tools and parameters</h2> The following tools parameters have been
+      deprecated, removed, or are not supported. 
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="topic_uyj_32q_54__table_t42_phq_54" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 3. Deprecated tools</span></caption>
+          
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="37.34177215189873%" id="d79405e254">Tool</th>
+
+              <th class="entry" valign="top" width="37.34177215189873%" id="d79405e257">Description</th>
+
+              <th class="entry" valign="top" width="12.658227848101264%" id="d79405e260">Deprecated version</th>
+
+              <th class="entry" valign="top" width="12.658227848101264%" id="d79405e263">Unsupported version</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">cbadm-online-restore</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Removed</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">2.0</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">2.0</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">cbadm-online-update</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Removed</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">2.0</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">2.0</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">cbadm_tap-registration</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Removed</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">2.0</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">2.0</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">cbbackup-incremental</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Removed</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">2.0</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">2.0</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">cbbackup-merge-incremental</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Removed</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">2.0</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">2.0</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">cbdbconvert</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Removed</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">2.0</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">2.0</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">cbdbmaint</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Removed</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">2.0</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">2.0</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">cbdbupgrade</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Removed</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">2.0</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">2.0</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">cbflushctl</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbepctl</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">2.0</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">2.0</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">tap.py</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">&nbsp;</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">cbclusterstats</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbstats</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">membase</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by couchbase-cli</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbadm-online-restore</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbadm-online-restore</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbadm-online-update</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbadm-online-update</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbadm-tap-registration</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbadm_tap-registration</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbbackup-incremental</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbbackup-incremental</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbbackup-merge-incremental</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbbackup-merge-incremental</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbbackup</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbbackup</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbbrowse_logs</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbbrowse_logs</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbcollect_info</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbcollect_info</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbdbconvert</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbdbconvert</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbdbmaint</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbdbmaint</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbdbupgrade</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbdbupgrade</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbdumpconfig.escript</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbdumpconfig.escript</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbenable_core_dumps.sh</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbenable_core_dumps.sh</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbflushctl</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbflushctl</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbrestore</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbrestore</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbstats</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbstats</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbupgrade</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbupgrade</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e254 ">mbvbucketctl</td>
+
+              <td class="entry" valign="top" width="37.34177215189873%" headers="d79405e257 ">Replaced by cbbucketctl</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e260 ">1.8</td>
+
+              <td class="entry" valign="top" width="12.658227848101264%" headers="d79405e263 ">1.8.1</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+      <p class="p">The following CLI parameters are deprecated.</p>
+<div class="p">
+        
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="topic_uyj_32q_54__table_sxs_zgq_54" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 4. Deprecated CLI parameters</span></caption>
+            
+            
+            
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="14.265335235378032%" id="d79405e754">Tool</th>
+
+                <th class="entry" valign="top" width="27.246790299572037%" id="d79405e757">Parameter and option</th>
+
+                <th class="entry" valign="top" width="29.95720399429387%" id="d79405e760">Description</th>
+
+                <th class="entry" valign="top" width="14.265335235378032%" id="d79405e763">Deprecated version</th>
+
+                <th class="entry" valign="top" width="14.265335235378032%" id="d79405e766">Unsupported version</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e754 ">cbepctl</td>
+
+                <td class="entry" valign="top" width="27.246790299572037%" headers="d79405e757 ">flush_param flushall_enabled</td>
+
+                <td class="entry" valign="top" width="29.95720399429387%" headers="d79405e760 ">The flushall_enabled parameter is deprecated.</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e763 ">2.2</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e766 ">3.x</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e754 ">cbepctl</td>
+
+                <td class="entry" valign="top" width="27.246790299572037%" headers="d79405e757 ">flush_param klog_compactor_queue_cap</td>
+
+                <td class="entry" valign="top" width="29.95720399429387%" headers="d79405e760 ">The klog_compactor_queue_cap parameter is removed and unsupported.</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e763 ">3.0</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e766 ">3.0</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e754 ">cbepctl</td>
+
+                <td class="entry" valign="top" width="27.246790299572037%" headers="d79405e757 ">flush_param klog_max_log_size</td>
+
+                <td class="entry" valign="top" width="29.95720399429387%" headers="d79405e760 ">The klog_max_log_size parameter is removed and unsupported.</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e763 ">3.0</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e766 ">3.0</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e754 ">cbepctl</td>
+
+                <td class="entry" valign="top" width="27.246790299572037%" headers="d79405e757 ">flush_param klog_max_entry_ratio</td>
+
+                <td class="entry" valign="top" width="29.95720399429387%" headers="d79405e760 ">The klog_max_entry_ratio parameter is removed and unsupported.</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e763 ">3.0</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e766 ">3.0</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e754 ">cbepctl</td>
+
+                <td class="entry" valign="top" width="27.246790299572037%" headers="d79405e757 ">flush_param max_txn_size</td>
+
+                <td class="entry" valign="top" width="29.95720399429387%" headers="d79405e760 ">The max_txn_size parameter is removed and unsupported.</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e763 ">3.0</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e766 ">3.0</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e754 ">cbepctl</td>
+
+                <td class="entry" valign="top" width="27.246790299572037%" headers="d79405e757 ">flush_param min_data_age</td>
+
+                <td class="entry" valign="top" width="29.95720399429387%" headers="d79405e760 ">The min_data_age parameter is removed and unsupported.</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e763 ">3.0</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e766 ">3.0</td>
+
+              </tr>
+
+              
+              <tr class="row">
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e754 ">cbepctl</td>
+
+                <td class="entry" valign="top" width="27.246790299572037%" headers="d79405e757 ">flush_param pager_unbiased_period</td>
+
+                <td class="entry" valign="top" width="29.95720399429387%" headers="d79405e760 ">The pager_unbiased_period parameter is removed and unsupported.</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e763 ">3.0</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e766 ">3.0</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e754 ">cbepctl</td>
+
+                <td class="entry" valign="top" width="27.246790299572037%" headers="d79405e757 ">flush_param queue_age_cap</td>
+
+                <td class="entry" valign="top" width="29.95720399429387%" headers="d79405e760 ">The queue_age_cap parameter is removed and unsupported.</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e763 ">3.0</td>
+
+                <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e766 ">3.0</td>
+
+              </tr>
+
+              <tr class="row">
+              <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e754 ">cbstats</td>
+
+              <td class="entry" valign="top" width="27.246790299572037%" headers="d79405e757 ">ep_max_txn_size</td>
+
+              <td class="entry" valign="top" width="29.95720399429387%" headers="d79405e760 ">The ep_max_txn_size parameter is deprecated.</td>
+
+              <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e763 ">3.0</td>
+
+              <td class="entry" valign="top" width="14.265335235378032%" headers="d79405e766 ">3.x</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+      <p class="p">The following CLI tools are visible but not supported by Couchbase Technical Support. These
+        tools are for Couchbase internal use only.</p>
+
+      <ul class="ul">
+        <li class="li">cbbrowse_logs</li>
+
+        <li class="li">cbdump-config</li>
+
+        <li class="li">cbenable_core_dumps.sh</li>
+
+        <li class="li">couch_compact</li>
+
+        <li class="li">couch_dbdump</li>
+
+        <li class="li">couch_dbinfo</li>
+
+      </ul>
+
+    </div>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">Miscellaneous</h2>
+      <p class="p">The following items are deprecated or not supported.</p>
+
+      <ul class="ul">
+        <li class="li">The <samp class="ph codeph">ep_expiry_window</samp> statistic is removed since it is no longer applicable.</li>
+
+        <li class="li">The <samp class="ph codeph">_all_docs</samp> view is not supported. To recreate the features provided
+          by <samp class="ph codeph">_all_docs</samp>, use the default view. For more information, see the Views
+          section.</li>
+
+        <li class="li">The <samp class="ph codeph">include_docs</samp> parameter is not supported for Couchbase Server 3.0,
+          however, it being used in the Couchbase SDKs.</li>
+
+        <li class="li">RightScale Server non-Chef templates are deprecated as of Couchbase Server 2.2.
+          Couchbase provides RightScale Server templates based on Chef.</li>
+
+        <li class="li">The undocumented facility for enabling legacy memcached detailed stats through "stats
+          detail on" and "stats detail dump" is deprecated. </li>
+
+      </ul>
+
+      
+    </div>
+
+    
+    
+    
+  </div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../rel-notes/rel-notes3.0.html" title="Couchbase Server 3.0 is a major release that extends Couchbase lead as the most performant and scalable NoSQL database for mission critical enterprise applications.">Release notes</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

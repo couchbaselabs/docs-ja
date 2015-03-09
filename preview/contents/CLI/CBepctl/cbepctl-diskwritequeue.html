@@ -1,0 +1,154 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Changing disk write queue quotas</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../../assets/stylesheets/application.css"><link rel="stylesheet" href="../../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections"><a href="../../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../cli-intro.html"><span>CLI reference</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../../CLI/cli-overview.html"><span>CLI overview</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbcli-intro.html"><span>couchbase-cli tool</span></a></li><li class="section"><a href="../../CLI/cbanalyze-core_tool.html"><span>cbanalyze-core tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/cbepctl-intro.html"><span>cbepctl tool</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBepctl/cbepctl-threadpool-tuning.html"><span>Changing shared thread pool settings</span></a></li><li class="section"><a href="../../CLI/CBepctl/cbepctl-thresholds.html"><span>Changing ejection thresholds</span></a></li><li class="section"><a href="../../CLI/CBepctl/cbepctl-accesslog.html"><span>Changing access log settings</span></a></li><li class="section"><a href="../../CLI/CBepctl/cbepctl-diskcleanup.html"><span>Changing disk cleanup intervals</span></a></li><li class="section"><a href="../../CLI/CBepctl/cbepctl-diskwritequeue.html" class="current"><span>Changing disk write queue quotas</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../../CLI/CBepctl/cbepctl-timeout.html"><span>Changing out-of-memory thresholds</span></a></li></ul></li><li class="section"><a href="../../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+	<h1 class="title topictitle1">Changing disk write queue quotas</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">The quota in disk write queues impact the rate of data sent from source nodes to
+		destination nodes. </p>
+
+		<div class="section"><h2 class="title sectiontitle">Description</h2>
+		<p class="p">One of the specific uses of the <samp class="ph codeph">cbepctl set tap_param</samp> command option is to the
+				change the default maximum items for a disk write queue. This impacts replication of
+				data that occurs between source and destination nodes within a cluster. Both data
+				that a node receives from client applications and replicated items that it receives
+				are placed on a disk write queue. If there are too many items waiting in the disk
+				write queue at any given destination, Couchbase Server reduces the rate of data that
+				is sent to a destination. This is process is also known as backoff.</p>
+
+			
+		<p class="p">By default, when a disk write queue contains one million items, a Couchbase node 
+			reduces the rate it sends out data to be replicated. 
+			This setting can be changed to be
+			the greater of 10% of the items at a destination node or a specific number.</p>
+
+			
+			<p class="p">The <samp class="ph codeph">tap_param</samp> parameters are:</p>
+
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. tap_param parameters</span></caption>
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d13138e49">Parameter</th>
+
+							<th class="entry" valign="top" width="50%" id="d13138e52">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13138e49 ">tap_keepalive</td>
+
+							<td class="entry" valign="top" width="50%" headers="d13138e52 ">Seconds to hold a named tap connection.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13138e49 ">tap_throttle_queue_cap</td>
+
+							<td class="entry" valign="top" width="50%" headers="d13138e52 ">Max disk write queue size when tap streams are put into a temporary,
+								5-second pause. Infinite means there is no cap.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13138e49 ">tap_throttle_cap_pcnt</td>
+
+							<td class="entry" valign="top" width="50%" headers="d13138e52 ">Maximum items in disk write queue as percentage of all items on a
+								node. At this point, tap streams are put into a temporary, 5-second
+								pause.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13138e49 ">tap_throttle_threshold</td>
+
+							<td class="entry" valign="top" width="50%" headers="d13138e52 ">Percentage of memory in use when tap streams are put into a
+								temporary, 5-second pause. </td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+			
+			<div class="section"><h2 class="title sectiontitle">Syntax</h2>
+				<p class="p">Basic syntax:</p>
+
+				<pre class="pre codeblock"><code>
+cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set tap_param [parameter] [value]
+cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set tap_param tap_throttle_queue_cap [value]
+cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set tap_param tap_throttle_cap_pcnt [value]
+				</code></pre>
+
+			</div>
+
+			
+			<div class="section"><h2 class="title sectiontitle">Example</h2>
+				
+				<p class="p">The following example changes the setting (for the default bucket) to specify that a replica
+				node send a request to backoff when it has two million items.</p>
+
+				<pre class="pre codeblock"><code>cbepctl 10.5.2.117:11210 set tap_param tap_throttle_queue_cap 2000000</code></pre>
+
+				
+				<p class="p">The following example changes (for the default bucket) the default percentage used to manage
+				the replication stream. If the items in a disk write queue reach the greater of this
+				percentage or a specified number of items, replication requests slow down.</p>
+
+				<p class="p">The threshold is set to 15% of all items at a replica node. When a disk
+					write queue on a replica node reaches this point, it requests replication backoff.</p>
+
+				<pre class="pre codeblock"><code>cbepctl 10.5.2.117:11210 set tap_param tap_throttle_cap_pcnt 15</code></pre>
+
+			
+			</div>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Response</h2>
+			<p class="p">The following example responses show a two million setting and a 15% threshold:</p>
+
+			<pre class="pre codeblock"><code>
+setting param: tap_throttle_queue_cap 2000000
+set tap_throttle_queue_cap to 2000000
+
+setting param: tap_throttle_cap_pcnt 15
+set tap_throttle_cap_pcnt to 15
+			</code></pre>
+
+
+		</div>
+
+		
+	</div>
+
+	<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/cbepctl-intro.html" title="The cbepctl tool is used to control vBucket states, configuration, and memory and disk persistence behavior.">cbepctl tool</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBepctl/cbepctl-diskcleanup.html" title="Disk cleanup is the maintenance process of erasing expired items.">Changing disk cleanup intervals</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBepctl/cbepctl-timeout.html" title="A out-of-memory error message is sent when RAM consumption threshold is at 95%.">Changing out-of-memory thresholds</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../../Concepts/concept-replication.html" title="Replicas are copies of data that are proved on another node in a cluster.">Replicas and replication</a></div></div>
+</nav>
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../../';</script><script src="../../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

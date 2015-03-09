@@ -1,0 +1,395 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Network ports</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections section--active"><a href="../install-intro.html"><span>Installation and upgrade</span></a><ul class="sub-sections"><li class="section"><a href="../Install/setup-overview.html"><span>Couchbase setup overview</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Install/pre-install.html"><span>Pre-installation</span></a><ul class="sub-sections"><li class="section"><a href="../Install/install-resourceReqs.html"><span>Resource requirements</span></a></li><li class="section"><a href="../Install/install-platforms.html"><span>Supported platforms</span></a></li><li class="section"><a href="../Install/install-networkPorts.html" class="current"><span>Network ports</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Install/install-browsers.html"><span>Supported web browsers</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Install/RHEL-install-intro.html"><span>Red Hat/CentOS installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Ubuntu-install.html"><span>Ubuntu/Debian installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Windows-install.html"><span>Microsoft Windows installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Mac-install.html"><span>Mac OS X installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/post-install.html"><span>Post-installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/upgrading.html"><span>Upgrading </span></a></li><li class="section section--has-sub-sections"><a href="../Install/migrating.html"><span>Migrating</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+	<h1 class="title topictitle1">Network ports</h1>
+
+	
+	<div class="body"><p class="shortdesc">Couchbase Server uses specific network ports for communication between server components
+		and with the clients accessing the data stored in the Couchbase cluster.</p>
+
+		<p class="p">The listed ports must be available on the host for Couchbase Server to run and operate
+			correctly. Couchbase Server configures these ports automatically, but you must verify
+			that the firewall and IP tables configuration allow communication on the specified ports
+			for each usage type. On Linux, the installer will notify you that you need to open these
+			ports.</p>
+
+		<p class="p">The following table lists the ports used for different types of communication with
+			Couchbase Server:</p>
+
+		<dl class="dl">
+			
+				<dt class="dt dlterm">Node to node</dt>
+
+				<dd class="dd">These ports are used by Couchbase Server
+					for communication between all nodes within the cluster. These ports must be open to 
+					enable nodes to communicate with each other.</dd>
+
+			
+		
+			
+				<dt class="dt dlterm">Node to client</dt>
+
+				<dd class="dd">These ports are used by Couchbase Server
+					for communication between all nodes within the cluster. These ports must be open to 
+					enable nodes to communicate with each other.</dd>
+
+			
+		</dl>
+
+		<dl class="dl">
+			
+				<dt class="dt dlterm">Cluster administration</dt>
+
+				<dd class="dd">These ports are used for Couchbase administration including the REST
+					API, command-line clients, and web browsers.</dd>
+
+			
+			
+				<dt class="dt dlterm">XDCR</dt>
+
+				<dd class="dd">These ports are used for XDCR (Cross Data Center Replication) communication between
+					all nodes in both the source and destination clusters.</dd>
+
+			
+		</dl>
+
+		
+		
+		
+		
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+				
+				
+				
+				
+				
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="14.270613107822411%" id="d64188e86">Port</th>
+
+						<th class="entry" valign="top" width="25.687103594080334%" id="d64188e89">Description</th>
+
+						<th class="entry" valign="top" width="10.570824524312895%" id="d64188e92">Node to node</th>
+
+						<th class="entry" valign="top" width="12.262156448202958%" id="d64188e95">Node to client</th>
+
+						<th class="entry" valign="top" width="14.270613107822411%" id="d64188e98">Cluster admin</th>
+
+						<th class="entry" valign="top" width="10.782241014799153%" id="d64188e102">XDCR v1</th>
+
+						<th class="entry" valign="top" width="12.156448202959828%" id="d64188e105">XDCR v2</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">8091</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Web Administration Port</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d64188e95 ">Yes</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e98 ">Yes</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d64188e102 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d64188e105 ">Yes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">8092</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Couchbase API Port</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d64188e95 ">Yes</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d64188e102 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d64188e105 ">Yes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">11207</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Internal/External Bucket Port for SSL</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">No</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d64188e95 ">Yes</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d64188e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d64188e105 ">No</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">11209</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Internal Bucket Port</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d64188e95 ">No</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d64188e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d64188e105 ">No</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">11210</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Internal/External Bucket Port</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d64188e95 ">Yes</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d64188e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d64188e105 ">Yes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">11211</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Client interface (proxy)</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">No</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d64188e95 ">Yes</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d64188e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d64188e105 ">No</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">11214</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Incoming SSL Proxy</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">No</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d64188e95 ">No</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d64188e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d64188e105 ">Yes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">11215</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Internal Outgoing SSL Proxy</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">No</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d64188e95 ">No</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d64188e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d64188e105 ">Yes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">18091</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Internal REST HTTPS for SSL</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">No</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d64188e95 ">Yes</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e98 ">Yes</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d64188e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d64188e105 ">Yes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">18092</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Internal CAPI HTTPS for SSL</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">No</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d64188e95 ">Yes</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d64188e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d64188e105 ">Yes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">4369</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Erlang Port Mapper ( <samp class="ph codeph">epmd</samp> )</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d64188e95 ">No</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d64188e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d64188e105 ">No</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">21100 to 21299 (inclusive)</td>
+
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Node data exchange</td>
+
+						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">Yes</td>
+
+						<td class="entry" valign="top" width="12.262156448202958%" headers="d64188e95 ">No</td>
+
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e98 ">No</td>
+
+						<td class="entry" valign="top" width="10.782241014799153%" headers="d64188e102 ">No</td>
+
+						<td class="entry" valign="top" width="12.156448202959828%" headers="d64188e105 ">No </td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		
+		<dl class="dl">
+				
+					<dt class="dt dlterm">Port 8091</dt>
+
+					<dd class="dd">Used by the Couchbase Web Console for REST/HTTP traffic.</dd>
+
+				
+
+
+				
+					<dt class="dt dlterm">Port 8092</dt>
+
+					<dd class="dd">Used to access views, run queries, and update design documents.</dd>
+
+				
+			
+			
+				<dt class="dt dlterm">Port 11207</dt>
+
+				<dd class="dd">Used by smart client libraries to access data nodes using SSL.</dd>
+
+			
+
+
+				
+					<dt class="dt dlterm">Port 11210</dt>
+
+					<dd class="dd">Used by smart client libraries or Moxi to directly connect to the data nodes.</dd>
+
+				
+
+
+				
+					<dt class="dt dlterm">Port 11211</dt>
+
+					<dd class="dd">Used by pre-existing Couchbase and memcached (non-smart) client libraries.</dd>
+
+				
+
+
+				
+					<dt class="dt dlterm">Ports 11214 and 11215</dt>
+
+					<dd class="dd">Used for SSL XDCR data encryption.</dd>
+
+				
+			
+				<dt class="dt dlterm">Port 18091</dt>
+
+				<dd class="dd">Used by the Couchbase Web Console for REST/HTTP traffic with SSL.</dd>
+
+			
+			
+				<dt class="dt dlterm">Port 18092</dt>
+
+				<dd class="dd">Used to access views, run queries, and update design documents with SSL.</dd>
+
+			
+
+
+				
+					<dt class="dt dlterm">All other Ports</dt>
+
+					<dd class="dd">Used for other Couchbase Server communications.</dd>
+
+				
+
+			</dl>
+
+		
+		<div class="note note"><span class="notetitle">Note:</span> Port 11213 is an internal ports used on the local host for memcached and compaction. 
+			The node is not used for communication between nodes in a cluster. For firewall purposes, 
+			you do not need to take port 11213 into consideration. 
+			However, if a service is listening on this port, Couchbase Server does not start correctly.
+		</div>
+
+
+	</div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/pre-install.html" title="Pre-installation describes requirements, supported configurations, and reserved or restricted items that have to be considered before installing Couchbase Server.">Pre-installation</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/install-platforms.html" title="System requirements for supported platforms.">Supported platforms</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/install-browsers.html" title="Supported web browsers include Mozilla Firefox, Apple Safari, Google Chrome, and Microsoft Internet Explorer.">Supported web browsers</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

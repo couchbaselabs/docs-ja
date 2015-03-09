@@ -1,0 +1,320 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Compaction API</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections section--active"><a href="../rest-intro.html"><span>REST API reference</span></a><ul class="sub-sections"><li class="section"><a href="../REST/overview-rest-api.html"><span>REST API overview</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-cluster-intro.html"><span>Cluster API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-rza.html"><span>Server groups API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-server-nodes.html"><span>Server nodes API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-bucket-intro.html"><span>Buckets API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-views-intro.html"><span>Views API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-xdcr-intro.html"><span>XDCR API</span></a></li><li class="section section--has-sub-sections section--active"><a href="../REST/compaction-rest-api.html" class="current"><span>Compaction API</span></a><ul class="sub-sections"><li class="section"><a href="../REST/rest-compact-post.html"><span>Compacting buckets</span></a></li><li class="section"><a href="../REST/rest-compact-spatialviews.html"><span>Compacting spatial views</span></a></li><li class="section"><a href="../REST/rest-autocompact-get.html"><span>Getting auto-compaction settings</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../REST/logs-rest-api.html"><span>Logs API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-users.html"><span>User API</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+	<h1 class="title topictitle1">Compaction API</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">Compaction is used to reclaim disk space and reduce disk fragmentation.</p>
+
+		
+		<div class="section"><h2 class="title sectiontitle">Description</h2>
+		<p class="p">Couchbase Server writes all data that you append, update and delete as files on disk. The
+				compaction process can eventually lead to gaps in the data file, particularly when
+				you delete data. Be aware the server also writes index files in a sequential format
+				based on appending new results in the index. You can reclaim the empty gaps in all
+				data files by performing a process called compaction. For both data files and index
+				files, perform frequent compaction of the files on disk to help reclaim disk space
+				and reduce disk fragmentation. </p>
+
+			
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. Compaction endpoints</span></caption>
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="13.477088948787062%" id="d86309e39">HTTP method</th>
+
+							<th class="entry" valign="top" width="49.73045822102426%" id="d86309e42">URI path</th>
+
+							<th class="entry" valign="top" width="36.79245283018868%" id="d86309e45">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="13.477088948787062%" headers="d86309e39 ">POST </td>
+
+							<td class="entry" valign="top" width="49.73045822102426%" headers="d86309e42 ">/pools/default/buckets/[bucket_name]/controller/compactBucket</td>
+
+							<td class="entry" valign="top" width="36.79245283018868%" headers="d86309e45 ">Compacts bucket data and indexes.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="13.477088948787062%" headers="d86309e39 ">POST</td>
+
+							<td class="entry" valign="top" width="49.73045822102426%" headers="d86309e42 ">/pools/default/buckets/[bucket_name]/controller/cancelBucketCompaction</td>
+
+							<td class="entry" valign="top" width="36.79245283018868%" headers="d86309e45 ">Cancels compaction for the specified bucket.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="13.477088948787062%" headers="d86309e39 ">POST</td>
+
+							<td class="entry" valign="top" width="49.73045822102426%" headers="d86309e42 ">/[bucket_name]/_design/[ddoc_name]/_spatial/_compact</td>
+
+							<td class="entry" valign="top" width="36.79245283018868%" headers="d86309e45 ">Compacts a spatial view.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			
+		</div>
+
+		
+		
+		
+		
+		
+		
+		<div class="section"><h2 class="title sectiontitle">Auto-compaction description</h2><p class="p">Auto-compaction parameters are configured to trigger data and view compaction. These parameters
+				can be specified for an entire cluster (cluster-wide) or for a specific bucket in a cluster.</p>
+ 
+			
+			<div class="note note"><span class="notetitle">Note:</span> Administrative credentials are required to change these settings.</div>
+			
+			
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 2. Auto-compaction endpoints</span></caption>
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="14.662756598240467%" id="d86309e118">HTTP method</th>
+
+							<th class="entry" valign="top" width="48.53372434017595%" id="d86309e121">URI path</th>
+
+							<th class="entry" valign="top" width="36.80351906158357%" id="d86309e124">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="14.662756598240467%" headers="d86309e118 ">POST </td>
+
+							<td class="entry" valign="top" width="48.53372434017595%" headers="d86309e121 ">/controller/setAutoCompaction</td>
+
+							<td class="entry" valign="top" width="36.80351906158357%" headers="d86309e124 ">Sets cluster-wide auto-compaction intervals and
+								thresholds</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="14.662756598240467%" headers="d86309e118 ">GET </td>
+
+							<td class="entry" valign="top" width="48.53372434017595%" headers="d86309e121 ">/settings/autoCompaction</td>
+
+							<td class="entry" valign="top" width="36.80351906158357%" headers="d86309e124 ">Retrieves cluster-wide settings for auto-compaction</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="14.662756598240467%" headers="d86309e118 ">GET </td>
+
+							<td class="entry" valign="top" width="48.53372434017595%" headers="d86309e121 ">/pools/default/buckets/[bucket_name]</td>
+
+							<td class="entry" valign="top" width="36.80351906158357%" headers="d86309e124 ">Retrieves auto-compaction settings for named bucket</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="14.662756598240467%" headers="d86309e118 ">POST</td>
+
+							<td class="entry" valign="top" width="48.53372434017595%" headers="d86309e121 ">/pools/default/buckets/[bucket_name]</td>
+
+							<td class="entry" valign="top" width="36.80351906158357%" headers="d86309e124 ">Sets auto-compaction interval or thresholds for named
+								bucket</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			
+			
+			
+			
+			
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 3. Auto-compaction parameters</span></caption>
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="33.33333333333333%" id="d86309e199">Parameter</th>
+
+								<th class="entry" valign="top" width="33.33333333333333%" id="d86309e202">Value</th>
+
+								<th class="entry" valign="top" width="33.33333333333333%" id="d86309e205">Notes</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e199 ">databaseFragmentationThreshold: percentage</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e202 ">Integer between 2 and 100</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e205 ">Percentage disk fragmentation for data</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e199 ">databaseFragmentationThreshold: size</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e202 ">Integer greater than 1</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e205 ">Bytes of disk fragmentation for data</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e199 ">viewFragmentationThreshold: percentage</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e202 ">Integer between 2 and 100</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e205 ">Percentage disk fragmentation for index</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e199 ">viewFragmentationThreshold: size</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e202 ">Integer greater than 1</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e205 ">Bytes of disk fragmentation for index</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e199 ">parallelDBAndViewCompaction</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e202 ">True or false. </td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e205 ">Run index and data compaction in parallel. Global setting only.</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e199 ">allowedTimePeriod: abortOutside</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e202 ">True or false</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e205 ">Terminate compaction if the process takes longer than the allowed time</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e199 ">allowedTimePeriod: fromHour</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e202 ">Integer between 0 and 23</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e205 ">Compaction can occur from this hour onward</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e199 ">allowedTimePeriod: fromMinute</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e202 ">Integer between 0 and 59</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e205 ">Compaction can occur from this minute onward</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e199 ">allowedTimePeriod: toHour</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e202 ">Integer between 0 and 23</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e205 ">Compaction can occur up to this hour</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e199 ">allowedTimePeriod: toMinute</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e202 ">Integer between 0 and 59</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e205 ">Compaction can occur up to this minute</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e199 ">purgeInterval</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e202 ">Integer between 1 and 60</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d86309e205 ">Number of days a item is deleted or expired. The key and metadata for that item is
+								purged by auto-compaction</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			
+			<div class="note note"><span class="notetitle">Note:</span> The purge interval parameter removes the key and metadata for items that have been deleted or are expired. 
+				This is known as tombstone purging.</div>
+
+			
+			
+
+		</div>
+
+		
+		
+		
+		
+	</div>
+
+	<nav class="related-links"><h2>Related information</h2>
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../REST/rest-compact-post.html">Compacting buckets</a><br>
+Bucket compaction is initiated with the <samp class="ph codeph">POST /pools/default/buckets/[bucket-name]/controller/compactBucket</samp> HTTP method and URI</li>
+<li class="link olchildlink"><a href="../REST/rest-compact-spatialviews.html">Compacting spatial views</a><br>
+Spatial views are compacted with the <samp class="ph codeph">POST /[bucket-name]/_design/[ddoc-name]/_spatial/_compact </samp> HTTP method and URI</li>
+<li class="link olchildlink"><a href="../REST/rest-autocompact-get.html">Getting auto-compaction settings</a><br>
+Auto-compaction settings can be retrieved on a cluster-wide level or bucket level.</li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../rest-intro.html" title="The Couchbase REST API enables you to manage a Couchbase Server deployment as well as perform operations such as storing design documents and querying for results.">REST API reference</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-xdcr-intro.html" title="The XDCR REST API is used to manage Cross Datacenter Replication (XDCR) operations.">XDCR API</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/logs-rest-api.html" title="The Logs REST API provides the REST API endpoints for retrieving log and diagnostic information as well as how an SDK can add entries into a log.">Logs API</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../Concepts/concept-tombstone.html" title="Tombstones are records of expired or deleted items that include item keys and metadata.">Tombstone purging</a></div>
+<div><a class="link" href="../Tasks/tasks-compaction.html" title="Database and view compaction helps to reclaim disk space and reduce fragmentation.">Compacting data files</a></div></div>
+</nav>
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

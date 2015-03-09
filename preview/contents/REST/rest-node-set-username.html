@@ -1,0 +1,117 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Setting usernames and passwords</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections section--active"><a href="../rest-intro.html"><span>REST API reference</span></a><ul class="sub-sections"><li class="section"><a href="../REST/overview-rest-api.html"><span>REST API overview</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-cluster-intro.html"><span>Cluster API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-rza.html"><span>Server groups API</span></a></li><li class="section section--has-sub-sections section--active"><a href="../REST/rest-server-nodes.html"><span>Server nodes API</span></a><ul class="sub-sections"><li class="section"><a href="../REST/rest-node-get-info.html"><span>Getting server node information</span></a></li><li class="section"><a href="../REST/rest-node-provisioning.html"><span>Provisioning nodes</span></a></li><li class="section"><a href="../REST/rest-node-failover.html"><span>Failing over nodes</span></a></li><li class="section"><a href="../REST/rest-node-recovery-incremental.html"><span>Setting recovery type</span></a></li><li class="section"><a href="../REST/rest-failover-graceful.html"><span>Setting graceful failover</span></a></li><li class="section"><a href="../REST/rest-node-hostname.html"><span>Setting host names</span></a></li><li class="section"><a href="../REST/rest-node-set-username.html" class="current"><span>Setting usernames and passwords</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../REST/rest-node-memory-quota.html"><span>Setting memory quota</span></a></li><li class="section"><a href="../REST/rest-node-index-path.html"><span>Setting index paths</span></a></li><li class="section"><a href="../REST/rest-node-retrieve-stats.html"><span>Retrieving statistics</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../REST/rest-bucket-intro.html"><span>Buckets API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-views-intro.html"><span>Views API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-xdcr-intro.html"><span>XDCR API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/compaction-rest-api.html"><span>Compaction API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/logs-rest-api.html"><span>Logs API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-users.html"><span>User API</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">Setting usernames and passwords</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">User names and password are specified with the <samp class="ph codeph">POST /settings/web</samp> HTTP method and URI.</p>
+
+
+    <div class="section"><h2 class="title sectiontitle">HTTP method and URI</h2>
+      <p class="p">Usernames and passwords can be set at any time, however, it is typically the last step when
+        adding a node into a new cluster.  Clients generally send a new request for cluster
+        information based on this response.</p>
+
+      
+    <pre class="pre codeblock"><code>POST /settings/web</code></pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">Raw HTTP request syntax:</p>
+
+      
+      <pre class="pre codeblock"><code>POST /settings/web HTTP/1.1
+Host: [localhost]:8091
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Authorization: Basic YWRtaW46YWRtaW4=
+Content-Length: xx
+username=[admin]&amp;password=[password]&amp;port=8091
+</code></pre>
+
+      
+      <p class="p">Curl request syntax:</p>
+
+      <pre class="pre codeblock"><code>curl -u [admin]:[password] -d username=[new_admin] \
+-d password=[new_password] \
+-d port=8091 \
+http://[localhost]:8091/settings/web
+</code></pre>
+
+    </div>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+    <p class="p">Raw HTTP request example:</p>
+
+    
+    <pre class="pre codeblock"><code>POST /settings/web HTTP/1.1
+Host: 127.0.0.1:8091
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Authorization: Basic YWRtaW46YWRtaW4=
+Content-Length: xx
+username=Administrator&amp;password=letmein&amp;port=8091
+</code></pre>
+
+      
+     
+        <p class="p">Curl request example:</p>
+
+        
+        <pre class="pre codeblock"><code>curl -u admin:password -d username=Administrator \
+-d password=letmein \
+-d port=8091 \
+http://127.0.0.1:8091/settings/web
+</code></pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Response</h2>
+    <p class="p">If the parameters are valid, the corresponding HTTP response data indicates the new base
+        URI.</p>
+
+    
+    <pre class="pre codeblock"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+Server: Couchbase Server 2.0
+Pragma: no-cache
+Date: Mon, 09 Aug 2010 18:50:00 GMT
+Content-Type: application/json
+Content-Length: 39
+Cache-Control: no-cache no-store max-age=0
+{"newBaseUri":"http://127.0.0.1:8091/"}
+</code></pre>
+
+      
+      <div class="note note"><span class="notetitle">Note:</span> The port number must be specified when username/password is updated.
+      </div>
+
+    </div>
+
+      
+      
+    
+    
+  </div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-server-nodes.html" title="The Server Nodes REST API manages nodes in a cluster.">Server nodes API</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-node-hostname.html" title="Host names are set during setup of the server.">Setting host names</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-node-memory-quota.html" title="Memory quota is set with the POST /pools/default HTTP method and URI.">Setting memory quota</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

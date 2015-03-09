@@ -1,0 +1,72 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>total_rows values are too high</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a><ul class="sub-sections"><li class="section"><a href="../Misc/Trbl-commonErrors.html"><span>Common errors</span></a></li><li class="section"><a href="../Misc/Trbl-generalTips.html"><span>General tips</span></a></li><li class="section"><a href="../Misc/Trbl-logs.html"><span>Logs and logging</span></a></li><li class="section"><a href="../Misc/Trbl-issuesReport.html"><span>Reporting issues</span></a></li><li class="section"><a href="../Misc/Trbl-beam-smp-issue.html"><span>Beam.smp</span></a></li><li class="section"><a href="../Misc/Trbl-blockedIndexer.html"><span>Blocked indexer</span></a></li><li class="section"><a href="../Misc/Trbl-common.html"><span>Server issues</span></a></li><li class="section"><a href="../Misc/Trbl-datamissing-server.html"><span>Incorrect or missing data (server issue)</span></a></li><li class="section"><a href="../Misc/Trbl-datamissing-user.html"><span>Incorrect or missing data (user issue)</span></a></li><li class="section"><a href="../Misc/Trbl-designdocs.html"><span>Design document aliases</span></a></li><li class="section"><a href="../Misc/Trbl-expireddocs.html"><span>Expired documents issue</span></a></li><li class="section"><a href="../Misc/Trbl-indexFileSystem.html"><span>Index filesystem structure</span></a></li><li class="section"><a href="../Misc/Trbl-queryResults.html"><span>Index results for a single node</span></a></li><li class="section"><a href="../Misc/Trbl-replicaIndex.html"><span>Debugging replica index</span></a></li><li class="section"><a href="../Misc/Trbl-staleFalse-debug.html"><span>Debugging stale=false queries</span></a></li><li class="section"><a href="../Misc/Trbl-timeoutErrors.html"><span>Timeout errors</span></a></li><li class="section"><a href="../Misc/Trbl-total_row-debug.html" class="current"><span>total_rows values are too high</span></a><ul class="sub-sections"></ul></li></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">total_rows values are too high</h1>
+
+  
+  <div class="body"><p class="shortdesc">There are cases where the <samp class="ph codeph">total_rows</samp> value is higher than expected.</p>
+
+    <p class="p">In some scenarios, it’s expected to see queries returning a <samp class="ph codeph">total_rows</samp> field
+      with a value higher than the maximum rows they can return (map view queries without an
+      explicit <samp class="ph codeph">limit</samp>, <samp class="ph codeph">skip</samp>, <samp class="ph codeph">startkey</samp> or
+        <samp class="ph codeph">endkey</samp> ).</p>
+
+    <p class="p">The expected scenarios are during rebalance, and immediately after a failover for a finite
+      period of time.</p>
+
+    <p class="p">This happens because in these scenarios some vbuckets are marked for cleanup in the indexes,
+      temporarily marked as passive, or data is being transferred from the replica index to the main
+      index (after a failover). While the rows originated from those vbuckets are never returned to
+      queries, they contribute to the reduction value of every view btree, and this value is what is
+      used for the <samp class="ph codeph">total_rows</samp> field in map view query responses (it’s simply a
+      counter with total number of Key-Value pairs per view).</p>
+
+    <p class="p">Ensuring that <samp class="ph codeph">total_rows</samp> always reflected the number of rows originated from
+      documents in active vbuckets would be very expensive, severely impacting performance. For
+      example, we would need to maintain a different value in the btree reductions which would map
+      vbucket IDs to row counts:</p>
+
+    <pre class="pre codeblock"><code><samp class="ph codeph">{"0":56, "1": 2452435, ..., "1023": 432236}
+</samp></code></pre>
+
+    <p class="p">This would significantly reduce the btrees branching factor, making them much more deep,
+      using more disk space and taking more time to compute reductions on
+      inserts/updates/deletes.</p>
+
+    <p class="p">To know if there are vbuckets under cleanup, vbuckets in passive state or vbuckets being
+      transferred from the replica index to main index (on failover), one can query the following
+      URL:</p>
+
+    <pre class="pre codeblock"><code><samp class="ph codeph">&gt; curl -s 'http://localhost:9500/_set_view/default/_design/dev_test2/_info' | json_xs
+{
+   "passive_partitions" : [1, 2, 3],
+   "cleanup_partitions" : [],
+   "replicas_on_transfer" : [1, 2, 3],
+   (....)
+}
+</samp></code></pre>
+
+    <p class="p">Note that the example above intentionally hides all non-relevant fields. If any of the fields
+      above is a non-empty list, than <samp class="ph codeph">total_rows</samp> for a view may be higher than
+      expected, that is, we’re under one of those expected scenarios mentioned above. In steady
+      state all of the above fields are empty lists.</p>
+
+  </div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Misc/Trbl-intro.html" title="トラブルシューティングの一般的なヒント、一般的なエラー、ログ情報、およびその他の問題について説明します。">トラブルシューティング</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Misc/Trbl-timeoutErrors.html" title="Timeout errors when querying a view with stale=false.">Timeout errors</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

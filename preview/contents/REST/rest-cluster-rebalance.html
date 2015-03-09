@@ -1,0 +1,344 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Rebalancing nodes</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections section--active"><a href="../rest-intro.html"><span>REST API reference</span></a><ul class="sub-sections"><li class="section"><a href="../REST/overview-rest-api.html"><span>REST API overview</span></a></li><li class="section section--has-sub-sections section--active"><a href="../REST/rest-cluster-intro.html"><span>Cluster API</span></a><ul class="sub-sections"><li class="section"><a href="../REST/rest-cluster-get.html"><span>Retrieving cluster information</span></a></li><li class="section"><a href="../REST/rest-cluster-details.html"><span>Viewing cluster details</span></a></li><li class="section"><a href="../REST/rest-cluster-addnodes.html"><span>Adding nodes to clusters</span></a></li><li class="section"><a href="../REST/rest-cluster-joinnode.html"><span>Joining nodes into clusters</span></a></li><li class="section"><a href="../REST/rest-cluster-removenode.html"><span>Removing nodes from clusters</span></a></li><li class="section"><a href="../REST/rest-cluster-rebalance.html" class="current"><span>Rebalancing nodes</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../REST/rest-get-internal-setting.html"><span>Viewing internal settings</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-cluster-autofailover-intro.html"><span>Managing auto-failover</span></a></li><li class="section"><a href="../REST/rest-cluster-disable-query.html"><span>Disabling consistent query results on rebalance</span></a></li><li class="section"><a href="../REST/rest-cluster-email-notifications.html"><span>Setting email notifications</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../REST/rest-rza.html"><span>Server groups API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-server-nodes.html"><span>Server nodes API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-bucket-intro.html"><span>Buckets API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-views-intro.html"><span>Views API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-xdcr-intro.html"><span>XDCR API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/compaction-rest-api.html"><span>Compaction API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/logs-rest-api.html"><span>Logs API</span></a></li><li class="section section--has-sub-sections"><a href="../REST/rest-users.html"><span>User API</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">Rebalancing nodes</h1>
+
+  <p class="shortdesc">Nodes are rebalanced with the <samp class="ph codeph">POST /controller/rebalance</samp> HTTP method and URI.</p>
+
+  
+  <nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../REST/rest-cluster-intro.html" title="The Cluster REST API manages cluster operations.">Cluster API</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../REST/rest-cluster-removenode.html" title="Nodes are removed from clusters with the POST /controller/ejectNode HTTP method and URI.">Removing nodes from clusters</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../REST/rest-get-internal-setting.html" title="Internal settings change cluster behavior. Internal settings are for Couchbase use only.">Viewing internal settings</a></div>
+</div>
+</nav><div class="topic reference nested1" id="rest-cluster-rebalance-description">
+    <h2 class="title topictitle2">Description</h2>
+
+  <div class="body refbody">
+    <div class="section">
+      <p class="p">To start a rebalance process, provide the <samp class="ph codeph">ejectedNodes</samp> and
+          <samp class="ph codeph">knownNodes</samp> parameters. These parameters contain the list of nodes that
+        have been marked to be ejected and the list of nodes that are known within the cluster. </p>
+
+      
+      <p class="p">Retrieve information about ejected and known
+        nodes by getting the current node configuration. This ensures that the client making the
+        REST API request is aware of the current cluster configuration. Nodes should have been
+        previously added or marked for removal as appropriate.</p>
+
+      
+    </div>
+
+
+    <div class="section"><h3 class="title sectiontitle">HTTP method and URI</h3>
+      
+      <p class="p">The information must be
+        supplied via the <samp class="ph codeph">ejectedNodes</samp> and <samp class="ph codeph">knownNodes</samp> parameters as
+        a <samp class="ph codeph">POST</samp> operation to the <samp class="ph codeph">/controller/rebalance</samp> endpoint.</p>
+
+      
+      <pre class="pre codeblock"><code>
+POST /controller/rebalance
+      </code></pre>
+
+    </div>
+
+    
+    <div class="section"><h3 class="title sectiontitle">Syntax</h3>
+      <pre class="pre codeblock"><code>
+curl -v -X -u [admin]:[password] POST
+  http://[localhost]:8091/controller/rebalance
+  -d ejectedNodes
+  -d knownNodes
+        
+      </code></pre>
+
+    </div>
+
+    
+    <div class="section"><h3 class="title sectiontitle">Example</h3>
+      <p class="p">Curl request example:</p>
+
+      <pre class="pre codeblock"><code>curl -v -X -u admin:password POST 'http://192.168.0.77:8091/controller/rebalance' \
+  -d 'ejectedNodes=&amp;knownNodes=ns_1%40192.168.0.77%2Cns_1%40192.168.0.56'
+</code></pre>
+
+      
+      <p class="p">Raw HTTP request example:</p>
+
+      <pre class="pre codeblock"><code>POST /controller/rebalance HTTP/1.1
+Authorization: Basic QWRtaW5pc3RyYXRvcjpUYW1zaW4=
+User-Agent: curl/7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8r zlib/1.2.5
+Host: 192.168.0.77:8091
+Accept: */*
+Content-Length: 63
+Content-Type: application/x-www-form-urlencoded
+</code></pre>
+
+    </div>
+
+    
+    <div class="section"><h3 class="title sectiontitle">Response codes</h3>
+    <p class="p">The
+        response is 200 (OK) if the operation was successfully submitted.</p>
+<p class="p">If the wrong node
+        information has been submitted, JSON with the mismatch error is
+      returned:</p>
+
+      <pre class="pre codeblock"><code>{"mismatch":1}</code></pre>
+
+    </div>
+
+  </div>
+
+  </div>
+
+  
+  <div class="topic reference nested1" id="rest-cluster-rebalance-getprogress">
+    <h2 class="title topictitle2">Getting rebalance progress</h2>
+
+    <div class="body refbody">
+
+
+    <div class="section"><h3 class="title sectiontitle">HTTP method and URI</h3>
+      
+      <p class="p">There are two endpoints for rebalance
+        progress. One is a general request which outputs high-level percentage completion at
+          <samp class="ph codeph">/pools/default/rebalanceProgress</samp>. The second possible endpoint is one
+        corresponds to the detailed rebalance report available in the web console.</p>
+
+      
+      <pre class="pre codeblock"><code>
+GET /pools/default/rebalanceProgress
+      </code></pre>
+
+    </div>
+
+      
+      <div class="section"><h3 class="title sectiontitle">Syntax</h3>
+        <pre class="pre codeblock"><code>curl -u [admin]:[password] 
+'[localhost]:8091/pools/default/rebalanceProgress'
+        </code></pre>
+
+      </div>
+
+        
+      <div class="section"><h3 class="title sectiontitle">Example</h3> 
+      
+      <p class="p">Curl request example that returns a JSON structure containing the current progress information:</p>
+
+        
+        <pre class="pre codeblock"><code>curl -u admin:password 
+'192.168.0.77:8091/pools/default/rebalanceProgress'
+        </code></pre>
+
+        
+        <p class="p">Raw HTTP request example:</p>
+
+        
+        <pre class="pre codeblock"><code>GET /pools/default/rebalanceProgress HTTP/1.1
+Authorization: Basic QWRtaW5pc3RyYXRvcjpUYW1zaW4=
+User-Agent: curl/7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8r zlib/1.2.5
+Host: 192.168.0.77:8091
+Accept: */*
+</code></pre>
+
+      </div>
+
+      
+      <div class="section"><h3 class="title sectiontitle">Response</h3>
+        
+        <p class="p">The
+        response data packet contains a JSON structure showing the rebalance progress for each node.
+        The progress figure is provided as a percentage (shown as a floating point value between 0
+        and
+        1).</p>
+
+        
+        <pre class="pre codeblock"><code>{
+    "status":"running",
+    "ns_1@192.168.0.56":{"progress":0.2734375},
+    "ns_1@192.168.0.77":{"progress":0.09114583333333337}
+}
+</code></pre>
+
+      </div>
+
+      
+      <div class="section"><h3 class="title sectiontitle">Example: detailed</h3>
+        
+        <p class="p">Curl request example with more details about the rebalance:</p>
+
+        
+        <pre class="pre codeblock"><code>curl -u admin:password
+  'http://192.168.0.77:8091/pools/default/tasks'
+        </code></pre>
+
+        
+        <p class="p">Raw HTTP request example:</p>
+
+        
+        <pre class="pre codeblock"><code>GET /pools/default/rebalanceProgress HTTP/1.1
+Authorization: Basic QWRtaW5pc3RyYXRvcjpUYW1zaW4=
+User-Agent: curl/7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8r zlib/1.2.5
+Host: 192.168.0.77:8091
+Accept: */*
+        </code></pre>
+
+      </div>
+
+      
+      <div class="section"><h3 class="title sectiontitle">Response: detailed</h3>
+        <p class="p">The response data packet contains a JSON structure showing detailed
+        progress:</p>
+
+        
+        <pre class="pre codeblock"><code>
+{
+  type: "rebalance",
+  recommendedRefreshPeriod: 0.25,
+  status: "running",
+  progress: 9.049479166666668,
+  perNode: {
+    ns_1@10.3.3.61: {
+      progress: 13.4765625
+    },
+    ns_1@10.3.2.55: {
+      progress: 4.6223958333333375
+    }
+  },
+  detailedProgress: {
+    bucket: "default",
+    bucketNumber: 1,
+    bucketsCount: 1,
+    perNode: {
+      ns_1@10.3.3.61: {
+        ingoing: {
+          docsTotal: 0,
+          docsTransferred: 0,
+          activeVBucketsLeft: 0,
+          replicaVBucketsLeft: 0
+        },
+        outgoing: {
+          docsTotal: 512,
+          docsTransferred: 69,
+          activeVBucketsLeft: 443,
+          replicaVBucketsLeft: 511
+        }
+      },
+      ns_1@10.3.2.55: {
+        ingoing: {
+          docsTotal: 512,
+          docsTransferred: 69,
+          activeVBucketsLeft: 443,
+          replicaVBucketsLeft: 0
+        },
+        outgoing: {
+          docsTotal: 0,
+          docsTransferred: 0,
+          activeVBucketsLeft: 0,
+          replicaVBucketsLeft: 443
+        }
+      }
+    }
+  }
+}
+</code></pre>
+
+        
+        <p class="p">This reponse shows percentage complete for each individual node undergoing rebalance. For each specific
+        node, it provides the current number of docs transferred and other items. For details and
+        definitions of these items.</p>
+<p class="p">If rebalance fails, the following response error occurs:</p>
+
+        
+        <pre class="pre codeblock"><code>[
+  {
+    "type": "rebalance",
+    "status": "notRunning",
+    "errorMessage": "Rebalance failed. See logs for detailed reason. You can try rebalance again."
+  }
+]
+        </code></pre>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  
+  <div class="topic reference nested1" id="rest-cluster-rebalance-adjustduringcompaction">
+    <h2 class="title topictitle2">Adjusting rebalance during compaction</h2>
+
+    <div class="body refbody">
+      
+      <div class="section"><h3 class="title sectiontitle">Description</h3>
+        
+        <p class="p">If a rebalance is performed
+          while a node is undergoing index compaction, rebalance delays may be experienced. The
+          parameter, <samp class="ph codeph">rebalanceMovesBeforeCompaction</samp>, is used to improve rebalance
+          performance. If this selection is made, index compaction performance is reduced which can
+          result in larger index file size.</p>
+
+        
+        <p class="p">This needs to be made as POST request to the <samp class="ph codeph">/internalSettings</samp> endpoint.
+          By default, this setting is 64 which specifies the number of vBuckets which are moved per
+          node until all vBucket movements pauses. After this pause, the system triggers index
+          compaction. Index compaction is not performed while vBuckets are being moved, 
+          so if a larger value is specified, it means that the server spends less time compacting the index,
+          which results in larger index files that take up more disk space.</p>
+
+      </div>
+
+
+      <div class="section"><h3 class="title sectiontitle">HTTP method and URI</h3>
+        
+        <pre class="pre codeblock"><code>
+POST /internalSettings rebalanceMovesBeforeCompaction
+        </code></pre>
+</div>
+
+        
+        <div class="section"><h3 class="title sectiontitle">Syntax</h3>
+          <p class="p">Curl request syntax:</p>
+
+          <pre class="pre codeblock"><code>curl -X POST -u admin:password 'http://[localhost]:8091/internalSettings' 
+    -d 'rebalanceMovesBeforeCompaction=[value]'
+</code></pre>
+
+          
+        </div>
+
+      
+      <div class="section"><h3 class="title sectiontitle">Example</h3>
+      <p class="p">Curl request example:</p>
+
+      <pre class="pre codeblock"><code>curl -X POST -u admin:password 'http://10.5.2.54:8091/internalSettings' 
+    -d 'rebalanceMovesBeforeCompaction=256'
+</code></pre>
+
+     
+      
+    </div>
+
+  </div>
+
+  </div>
+
+
+
+
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

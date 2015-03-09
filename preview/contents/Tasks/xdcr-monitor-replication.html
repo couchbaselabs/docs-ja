@@ -1,0 +1,54 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Monitoring replication status</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections section--active"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../UI/ui-cluster-summary.html"><span>Cluster Overview</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-server-nodes.html"><span>Server Nodes</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-data-buckets.html"><span>Data Buckets</span></a></li><li class="section"><a href="../UI/ui-views-editor.html"><span>Views</span></a></li><li class="section section--has-sub-sections section--active"><a href="../UI/ui-xdcr-panel.html"><span>XDCR</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/xdcr-create-replications.html"><span>Creating replications</span></a></li><li class="section"><a href="../Tasks/xdcr-specify-dest-cluster.html"><span>Specifying a destination cluster</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/xdcr-specify-adv-settings.html"><span>Specifying XDCR settings</span></a></li><li class="section"><a href="../Tasks/tasks-manage-xdcr-dataEncryption.html"><span>Managing XDCR data encryption</span></a></li><li class="section"><a href="../Tasks/xdcr-monitor-replication.html" class="current"><span>Monitoring replication status</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../UI/ui-xdcr-pause-resume.html"><span>Pausing XDCR replication</span></a></li><li class="section"><a href="../Tasks/xdcr-cancel-replication.html"><span>Canceling replication</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../UI/ui-logs.html"><span>Log</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-settings.html"><span>Settings</span></a></li></ul></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">Monitoring replication status</h1>
+
+  
+  <div class="body"><p class="shortdesc">Replication status is monitored via the <span class="ph uicontrol">XDCR</span> and <span class="ph uicontrol">Data Buckets</span> tabs.</p>
+
+    <p class="p">The following Couchbase Web Console areas contains information about replication via XDCR: </p>
+
+      
+      <ul class="ul">
+        <li class="li">The XDCR tab.</li>
+
+        <li class="li">The outgoing XDCR section under the Data Buckets tab.</li>
+
+      </ul>
+
+      
+      <p class="p">The Couchbase Web Console displays replication from the cluster it belongs to. Therefore,
+        when you view the console from a particular cluster, it will display any replications
+        configured, or replications in progress for that particular source cluster. If you want to view
+        information about replications at a destination cluster, you need to open the console at that
+        cluster. Therefore, when configuring bidirectional, use the web consoles that belong
+        to the source and destination clusters to monitor both clusters.</p>
+
+      
+      <p class="p">Any errors that occur during replication appear in the XDCR errors panel. The following example
+        shows the errors that occur if replication streams from XDCR fail due to the
+        missing vBuckets:</p>
+
+      
+      <img class="image" src="../images/xdcr-errors-missing-vbuckets.png">
+      
+  </div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../UI/ui-xdcr-panel.html" title="The XDCR panel is used to create a remote cluster reference and specify replication.">XDCR</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Tasks/tasks-manage-xdcr-dataEncryption.html">Managing XDCR data encryption</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../UI/ui-xdcr-pause-resume.html" title="XDCR replication can be paused and resumed via the web console under the XDCR section.">Pausing XDCR replication</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

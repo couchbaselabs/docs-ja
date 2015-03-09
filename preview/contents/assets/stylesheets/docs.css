@@ -1,0 +1,302 @@
+/* DITA overrides */
+
+.developer-portal-content__wrapper table th {
+  background-color: #006784;
+  border: 0px;
+  color: #f9f9f9
+}
+
+.developer-portal-content__wrapper {
+  position: relative;
+}
+
+.developer-portal-sidebar__navigation__wrapper .sub-sections ul ul span {
+  padding-left: 5.5em;
+}
+
+.developer-portal-sidebar__navigation__wrapper .sub-sections ul ul ul span {
+  padding-left: 7.0em;
+}
+
+.product-action {
+  position: absolute;
+  top: 0.8em;
+  right: 12em;
+  text-align: right;
+}
+
+/*
+.related-links {
+    border-top: 1px solid black;
+    margin-bottom: 0.5em;
+}
+*/
+
+.olchildlinks:before {
+	content: "Subtopics:";
+	font-weight: bold;
+	margin-left: -40px;
+}
+
+.linklist {
+	padding-top: 1em;
+}
+
+.linklist:before {
+	content: "Related topics:";
+	font-weight: bold;
+}
+
+.product-action a {
+  display: block;
+}
+
+.ghforkme {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
+.filepath {
+	font-weight:bold;
+}
+
+.msgph {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 85%;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+  background-color: #777777;
+  position: relative;
+  top: -0.3em;
+  margin-left: 0.3em;
+}
+.msgph.current {
+  background-color: #46A746;
+}
+.msgph.stable {
+  background-color: #777777;
+}
+.msgph.snapshot {
+  background-color: #C63F3B;
+}
+.msgph.preview {
+  background-color: #F0AD4E;
+}
+
+.note {
+  border: 1px solid #0081a5;
+  border-radius: 0.4em;
+  border-left: 0.7em solid #0081a5;
+  padding: 0.2em 0.4em;
+  margin: 1em 0px;
+}
+
+.attentiontitle,
+.cautiontitle,
+.dangertitle,
+.fastpathtitle,
+.importanttitle,
+.notetitle,
+.remembertitle,
+.restrictiontitle,
+.tiptitle,
+.warningtitle {
+  display:block;
+	font-weight:bold;
+}
+
+pre {
+  background: #f4f4f4;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+}
+
+.codeph,
+.cmdname,
+.apiname {
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+}
+
+.menucascade, .uicontrol {
+	font-weight: bold;
+}
+
+.tablecap {
+	font-weight: bold;
+}
+
+.varname {
+	font-style: italic;
+}
+
+.parmname {
+	font-style: italic;
+	font-weight: bold;
+}
+
+wintitle {
+	font-weight: bold;
+}
+
+h2 {
+	border-bottom: thin solid;
+	line-height: 1.2;
+	margin-botton: 0;
+}
+
+dt {
+	font-weight: bold;
+	margin-top: 0.5em;
+}
+
+
+/* GCSE Template Overrides */
+div.gsc-control-cse {
+  padding: 0 !important;
+  border: 0 !important;
+}
+input.gsc-search-button {
+  width: 4em !important;
+  height: 4em !important;
+  border: 0 !important;
+  background: #e6e6e6 url("../images/icons/search.png") no-repeat 50% 50% !important;
+  background-size: contain !important;
+  border-radius: 0.25em !important;
+  overflow: hidden !important;
+  text-indent: 200% !important;
+  text-shadow: none !important;
+  white-space: nowrap !important;
+}
+input.gsc-search-button:focus, input.gsc-search-button:hover {
+  background-color: #d9d9d9 !important;
+}
+.gsc-input input.gsc-input {
+  border: 0 !important;
+  font-family: "Kievit OT", sans-serif !important;
+  font-size: 120% !important;
+  position: relative !important;
+  left: 0.5em !important;
+}
+@media (min-width: 58em) {
+  .gsc-input input.gsc-input {
+    left: 0 !important;
+  }
+}
+.gsc-search-box {
+  background: #f2f2f2 !important;
+}
+@media (min-width: 58em) {
+  .gsc-search-box {
+    background: #ffffff !important;
+  }
+}
+
+
+/* Bretts Template Overrides */
+.textblock__content ul {
+  padding-left: 2.5em;
+}
+.developer-porta-header__navigation__back {
+  display: none;
+}
+@media (min-width: 78em) {
+  .developer-porta-header__navigation__back {
+    display: inline-block;
+  }
+}
+.developer-portal-content__wrapper {
+  padding: 1.8em 2.4em;
+}
+.developer-portal-content__wrapper h1 {
+  margin: 0em 0em 0.2em 0em;
+}
+.developer-portal-header__search {
+  width: 100%;
+  padding-top: 0;
+}
+@media (min-width: 58em) {
+  .developer-portal-header__search {
+    padding: 1.0em;
+    width: 40%;
+  }
+}
+.developer-portal-global-content {
+  max-width: initial;
+}
+.layout-wrapper {
+  max-width: initial;
+}
+.developer-portal-sidebar__navigation__wrapper a span {
+  max-width: initial;
+}
+.developer-portal-sidebar__navigation__wrapper a.current span {
+  color: #848380;
+}
+.developer-portal-footer .legal,
+.developer-portal-footer .license,
+.developer-portal-footer a {
+  color: #848380;
+}
+
+/* New Prism Enhancements */
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+pre.line-numbers > code {
+	position: relative;
+}
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+.line-numbers-rows > span {
+	pointer-events: none;
+	display: block;
+	counter-increment: linenumber;
+}
+.line-numbers-rows > span:before {
+	content: counter(linenumber);
+	color: #999;
+	display: block;
+	padding-right: 0.8em;
+	text-align: right;
+}
+pre[class*='language-'] {
+	position: relative;
+}
+pre[class*='language-'] > code[data-language] {
+	display: block;
+}
+pre[class*='language-'] > code[data-language]::before {
+	content: attr(data-language);
+	color: black;
+	background-color: #CFCFCF;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 0.9em;
+	border-radius: 0 0 0 5px;
+	padding: 0 0.5em;
+	text-shadow: none;
+}

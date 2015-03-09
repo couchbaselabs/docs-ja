@@ -1,0 +1,151 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Allocator</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../../assets/stylesheets/application.css"><link rel="stylesheet" href="../../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections"><a href="../../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../cli-intro.html"><span>CLI reference</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../../CLI/cli-overview.html"><span>CLI overview</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbcli-intro.html"><span>couchbase-cli tool</span></a></li><li class="section"><a href="../../CLI/cbanalyze-core_tool.html"><span>cbanalyze-core tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbepctl-intro.html"><span>cbepctl tool</span></a></li><li class="section"><a href="../../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/cbstats-intro.html"><span>cbstats tool</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBstats/cbstats-generalform.html"><span>General form</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBstats/cbstats-all.html"><span>All</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-allocator.html" class="current"><span>Allocator</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../../CLI/CBstats/cbstats-checkpoint.html"><span>Checkpoint</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-config.html"><span>Config</span></a></li><li class="section"><a href="../../CLI/cli-cbstats-dcp.html"><span>DCP</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-diskinfo.html"><span>Diskinfo</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-dispatcher-job.html"><span>Dispatcher</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-failovers.html"><span>Failovers</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-hash.html"><span>Hash</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-keyvkey.html"><span>Key and vkey</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-kv.html"><span>Kvstore and kvtimings</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-memory.html"><span>Memory</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-reset.html"><span>Reset</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-runtimes.html"><span>Runtimes</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-scheduler.html"><span>Scheduler</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-tap.html"><span>Tap</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-timing.html"><span>Timings</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-uuid.html"><span>UUID</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-vbucket.html"><span>vBucket</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-warmup.html"><span>Warmup</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-workload.html"><span>Workload</span></a></li></ul></li><li class="section"><a href="../../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">Allocator</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbstats allocator</samp> command provides information on memory management.</p>
+
+    <div class="section"><h2 class="title sectiontitle">CLI command and parameters</h2>
+      <pre class="pre codeblock"><code>cbstats allocator</code></pre>
+
+      
+      
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">Request syntax:</p>
+
+      <pre class="pre codeblock"><code>cbstats [localhost]:11210 allocator</code></pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+      <p class="p">Example request:</p>
+
+      <pre class="pre codeblock"><code>cbstats 10.5.2.54:11210 allocator</code></pre>
+
+      
+      </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Response</h2>
+      <p class="p">Example response:</p>
+
+      <pre class="pre codeblock"><code>
+------------------------------------------------
+MALLOC:      211296632 (  201.5 MiB) Bytes in use by application
+MALLOC: +     11730944 (   11.2 MiB) Bytes in page heap freelist
+MALLOC: +     10833696 (   10.3 MiB) Bytes in central cache freelist
+MALLOC: +      3404400 (    3.2 MiB) Bytes in transfer cache freelist
+MALLOC: +     18832632 (   18.0 MiB) Bytes in thread cache freelists
+MALLOC: +      1781920 (    1.7 MiB) Bytes in malloc metadata
+MALLOC:   ------------
+MALLOC: =    257880224 (  245.9 MiB) Actual memory used (physical + swap)
+MALLOC: +      1236992 (    1.2 MiB) Bytes released to OS (aka unmapped)
+MALLOC:   ------------
+MALLOC: =    259117216 (  247.1 MiB) Virtual address space used
+MALLOC:
+MALLOC:           8855              Spans in use
+MALLOC:             16              Thread heaps in use
+MALLOC:           8192              Tcmalloc page size
+------------------------------------------------
+Call ReleaseFreeMemory() to release freelist memory to the OS (via madvise()).
+Bytes released to the OS take up virtual address space but no physical memory.
+------------------------------------------------
+Total size of freelists for per-thread caches,
+transfer cache, and central cache, by size class
+------------------------------------------------
+class   1 [        8 bytes ] :     7825 objs;   0.1 MiB;   0.1 cum MiB
+class   2 [       16 bytes ] :     1149 objs;   0.0 MiB;   0.1 cum MiB
+class   3 [       32 bytes ] :    47076 objs;   1.4 MiB;   1.5 cum MiB
+class   4 [       48 bytes ] :    51137 objs;   2.3 MiB;   3.9 cum MiB
+class   5 [       64 bytes ] :     3987 objs;   0.2 MiB;   4.1 cum MiB
+class   6 [       80 bytes ] :     5528 objs;   0.4 MiB;   4.5 cum MiB
+class   7 [       96 bytes ] :    18530 objs;   1.7 MiB;   6.2 cum MiB
+class   8 [      112 bytes ] :    39207 objs;   4.2 MiB;  10.4 cum MiB
+class   9 [      128 bytes ] :    25812 objs;   3.2 MiB;  13.6 cum MiB
+class  10 [      144 bytes ] :      399 objs;   0.1 MiB;  13.6 cum MiB
+class  11 [      160 bytes ] :      321 objs;   0.0 MiB;  13.7 cum MiB
+class  12 [      176 bytes ] :      201 objs;   0.0 MiB;  13.7 cum MiB
+class  13 [      192 bytes ] :      162 objs;   0.0 MiB;  13.7 cum MiB
+class  14 [      208 bytes ] :       70 objs;   0.0 MiB;  13.7 cum MiB
+class  15 [      224 bytes ] :       77 objs;   0.0 MiB;  13.8 cum MiB
+class  16 [      240 bytes ] :       72 objs;   0.0 MiB;  13.8 cum MiB
+class  17 [      256 bytes ] :       81 objs;   0.0 MiB;  13.8 cum MiB
+class  18 [      288 bytes ] :       38 objs;   0.0 MiB;  13.8 cum MiB
+class  19 [      320 bytes ] :       52 objs;   0.0 MiB;  13.8 cum MiB
+class  20 [      352 bytes ] :      112 objs;   0.0 MiB;  13.9 cum MiB
+class  21 [      384 bytes ] :       44 objs;   0.0 MiB;  13.9 cum MiB
+class  22 [      416 bytes ] :       18 objs;   0.0 MiB;  13.9 cum MiB
+class  23 [      448 bytes ] :       60 objs;   0.0 MiB;  13.9 cum MiB
+class  24 [      480 bytes ] :       77 objs;   0.0 MiB;  13.9 cum MiB
+class  25 [      512 bytes ] :     2726 objs;   1.3 MiB;  15.3 cum MiB
+class  26 [      576 bytes ] :      114 objs;   0.1 MiB;  15.3 cum MiB
+class  27 [      640 bytes ] :       84 objs;   0.1 MiB;  15.4 cum MiB
+class  28 [      704 bytes ] :       99 objs;   0.1 MiB;  15.4 cum MiB
+class  29 [      768 bytes ] :      125 objs;   0.1 MiB;  15.5 cum MiB
+class  30 [      832 bytes ] :      124 objs;   0.1 MiB;  15.6 cum MiB
+class  31 [      896 bytes ] :       43 objs;   0.0 MiB;  15.7 cum MiB
+class  32 [      960 bytes ] :       24 objs;   0.0 MiB;  15.7 cum MiB
+class  33 [     1024 bytes ] :       45 objs;   0.0 MiB;  15.7 cum MiB
+class  34 [     1152 bytes ] :       29 objs;   0.0 MiB;  15.8 cum MiB
+class  35 [     1280 bytes ] :       42 objs;   0.1 MiB;  15.8 cum MiB
+class  36 [     1408 bytes ] :       29 objs;   0.0 MiB;  15.9 cum MiB
+class  37 [     1536 bytes ] :       30 objs;   0.0 MiB;  15.9 cum MiB
+class  38 [     1792 bytes ] :      213 objs;   0.4 MiB;  16.3 cum MiB
+class  39 [     2048 bytes ] :      523 objs;   1.0 MiB;  17.3 cum MiB
+class  40 [     2304 bytes ] :       14 objs;   0.0 MiB;  17.3 cum MiB
+class  41 [     2560 bytes ] :        7 objs;   0.0 MiB;  17.3 cum MiB
+class  45 [     4096 bytes ] :       31 objs;   0.1 MiB;  17.5 cum MiB
+class  46 [     4608 bytes ] :        5 objs;   0.0 MiB;  17.5 cum MiB
+class  47 [     5120 bytes ] :        1 objs;   0.0 MiB;  17.5 cum MiB
+class  49 [     6656 bytes ] :        4 objs;   0.0 MiB;  17.5 cum MiB
+class  50 [     8192 bytes ] :       36 objs;   0.3 MiB;  17.8 cum MiB
+class  51 [     9216 bytes ] :       38 objs;   0.3 MiB;  18.1 cum MiB
+class  55 [    16384 bytes ] :       11 objs;   0.2 MiB;  18.3 cum MiB
+class  56 [    20480 bytes ] :        4 objs;   0.1 MiB;  18.4 cum MiB
+class  58 [    26624 bytes ] :        2 objs;   0.1 MiB;  18.4 cum MiB
+class  59 [    32768 bytes ] :        9 objs;   0.3 MiB;  18.7 cum MiB
+class  60 [    40960 bytes ] :        4 objs;   0.2 MiB;  18.9 cum MiB
+class  63 [    65536 bytes ] :        9 objs;   0.6 MiB;  19.4 cum MiB
+class  71 [   131072 bytes ] :        9 objs;   1.1 MiB;  20.6 cum MiB
+class  72 [   139264 bytes ] :        4 objs;   0.5 MiB;  21.1 cum MiB
+class  87 [   262144 bytes ] :        9 objs;   2.2 MiB;  23.3 cum MiB
+------------------------------------------------
+PageHeap: 3 sizes;   11.2 MiB free;    1.2 MiB unmapped
+------------------------------------------------
+     1 pages *     84 spans ~    0.7 MiB;    0.7 MiB cum; unmapped:    0.7 MiB;    0.7 MiB cum
+    14 pages *      1 spans ~    0.1 MiB;    0.8 MiB cum; unmapped:    0.1 MiB;    0.8 MiB cum
+    53 pages *      1 spans ~    0.4 MiB;    1.2 MiB cum; unmapped:    0.4 MiB;    1.2 MiB cum
+&gt;255   large *      1 spans ~   11.2 MiB;   12.4 MiB cum; unmapped:    0.0 MiB;    1.2 MiB cum
+
+
+      </code></pre>
+
+    </div>
+
+    
+    
+  </div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-all.html" title="The cbstats all command lists the information used for statistics.">All</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-checkpoint.html" title="Checkpoint stats provide detailed information on per-vbucket checkpoint data structure.">Checkpoint</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../../';</script><script src="../../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

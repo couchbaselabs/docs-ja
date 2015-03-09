@@ -1,0 +1,89 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Online upgrade with swap rebalance</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections section--active"><a href="../install-intro.html"><span>Installation and upgrade</span></a><ul class="sub-sections"><li class="section"><a href="../Install/setup-overview.html"><span>Couchbase setup overview</span></a></li><li class="section section--has-sub-sections"><a href="../Install/pre-install.html"><span>Pre-installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/RHEL-install-intro.html"><span>Red Hat/CentOS installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Ubuntu-install.html"><span>Ubuntu/Debian installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Windows-install.html"><span>Microsoft Windows installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Mac-install.html"><span>Mac OS X installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/post-install.html"><span>Post-installation</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Install/upgrading.html"><span>Upgrading </span></a><ul class="sub-sections"><li class="section"><a href="../Install/supported_upgrade-paths.html"><span>Supported upgrade paths</span></a></li><li class="section"><a href="../Install/upgrade-online.html" class="current"><span>Online upgrade with swap rebalance</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Install/upgrade-offline.html"><span>Offline upgrade</span></a></li><li class="section"><a href="../Install/upgrade-individual-nodes.html"><span>Upgrading one node</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Install/migrating.html"><span>Migrating</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">Online upgrade with swap rebalance</h1>
+
+  
+  
+  <div class="body"><p class="shortdesc">Online upgrade with swap rebalance is the preferred upgrade method because cluster capacity is always maintained 
+    throughout the upgrade.</p>
+
+    <p class="p">You can perform a swap rebalance to upgrade your nodes to Couchbase Server without reducing
+      the performance of your cluster. If you are unable to perform an upgrade via swap rebalance,
+      perform a standard online upgrade as explained in <a class="xref" href="upgrading.html" title="The Couchbase Server can be upgraded online (using swap rebalance or the standard online upgrade), offline, or using XDCR.">Upgrading</a>. </p>
+
+    <p class="p">You will need at least one extra node to perform a swap rebalance:</p>
+
+    <ol class="ol">
+      <li class="li">Install Couchbase Server on one extra machine that is not yet in the cluster. For instructions see <a class="xref" href="upgrade-individual-nodes.html" title="To upgrade a single Couchbase Server node, first back it up and then install the software.">Upgrading one node</a>.</li>
+
+      <li class="li">Create a backup of your cluster data using <span class="keyword cmdname">cbbackup</span>. See <a class="xref" href="../CLI/cbbackup_tool.html" title="cbbackupツールは、稼働中の全クラスタ・全バケット・単一ノード・正常稼働中ノード上の単一バケット のコピーを作成します。">cbbackup tool</a>.</li>
+
+      <li class="li">Open the Couchbase web console at an existing node in the cluster.</li>
+
+      <li class="li">Go to <span class="ph menucascade"><span class="ph uicontrol">Manage</span> &gt; <span class="ph uicontrol">Server Nodes</span></span>. <div class="p">In the Server panel you can view and managing servers in the cluster:
+        <div class="fig fignone"><img class="image" src="../images/manage-nodes.png" width="600"></div>
+  
+      
+      </div>
+</li>
+
+      <li class="li">Click <span class="ph uicontrol">Add Server</span>. </li>
+
+        <li class="li">In the <span class="keyword wintitle">Add Server</span> dialog, provide either a host name or IP address for the new node (At this point, you can provide a hostname for the node you add). 
+          Enter your username and password.
+          <div class="fig fignone"><img class="image" src="../images/add-server.png" width="400"></div>
+ </li>
+
+      <li class="li">Remove one of your existing old nodes from the cluster. 
+        <p class="p">Under <span class="ph menucascade"><span class="ph uicontrol">Server Nodes </span> &gt; <span class="ph uicontrol">Server panel</span></span>, click <span class="ph uicontrol">Remove Server</span> for the node you want to remove. This will flag this server for removal.</p>
+</li>
+
+    
+      <li class="li">In the <span class="keyword wintitle">Server</span> panel, click <span class="ph uicontrol">Rebalance</span>.
+        <p class="p">This automatically takes all data from the node flagged for removal and moves it to your new node.</p>
+</li>
+
+      
+      
+    </ol>
+
+    <p class="p">Repeat these steps for all the remaining old nodes in the cluster. You can add and remove multiple nodes from a cluster. 
+      However, always add the same number of nodes from the cluster as you remove. 
+      For example, if you add one node, remove one node and if you add two nodes, you can remove two.</p>
+
+    <p class="p">Until all nodes in a cluster are upgraded from 1.8.1 or earlier, features in the new Couchbase Server release are disabled. 
+      This means views or XDCR do not function until all nodes in your cluster are migrated. 
+      After all nodes are upgraded, the features are enabled.</p>
+
+    
+  </div>
+
+  <nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/upgrading.html" title="The Couchbase Server can be upgraded online (using swap rebalance or the standard online upgrade), offline, or using XDCR.">Upgrading</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/supported_upgrade-paths.html" title="The supplied supported paths apply both to online and offline upgrades.">Supported upgrade paths</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/upgrade-offline.html" title="During an offline upgrade, the cluster must be shut down and all applications built on it will not be available during that time.">Offline upgrade</a></div>
+</div>
+
+<div class="linklist linklist">
+<div><a class="link" href="../Tasks/tasks-rebalance.html" title="Rebalancing is the process of redistributing information across nodes.">Rebalancing</a></div>
+<div><a class="link" href="../Tasks/tasks-backup-restore.html" title="Back up your entire cluster periodically to minimize data inconsistency when a restore is required.">Backup and restore</a></div>
+<div><a class="link" href="../Concepts/concept-serverWarmup.html" title="Whenever Couchbase server is restarted or data is restored to a server instance, the server undergoes a warmup process before data requests can be handled.">Server warmup</a></div>
+<div><a class="link" href="../Monitoring/monitor-warmup.html">Monitoring startup (warmup)</a></div>
+<div><a class="link" href="../Monitoring/monitor-diskqueue.html" title="Disk writing is implemented as a 2-queue system: commit to DRAM and then queued to be written to disk">Disk write queue</a></div>
+<div><a class="link" href="../CLI/cbbackup_tool.html" title="cbbackupツールは、稼働中の全クラスタ・全バケット・単一ノード・正常稼働中ノード上の単一バケット のコピーを作成します。">cbbackupツール</a></div>
+<div><a class="link" href="../UI/ui-settings-autofailover.html">Auto-Failover tab</a></div></div>
+</nav>
+</div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

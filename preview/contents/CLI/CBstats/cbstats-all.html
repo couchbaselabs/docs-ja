@@ -1,0 +1,350 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>All</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../../assets/stylesheets/application.css"><link rel="stylesheet" href="../../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections"><a href="../../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../cli-intro.html"><span>CLI reference</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../../CLI/cli-overview.html"><span>CLI overview</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbcli-intro.html"><span>couchbase-cli tool</span></a></li><li class="section"><a href="../../CLI/cbanalyze-core_tool.html"><span>cbanalyze-core tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbepctl-intro.html"><span>cbepctl tool</span></a></li><li class="section"><a href="../../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/cbstats-intro.html"><span>cbstats tool</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBstats/cbstats-generalform.html"><span>General form</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/CBstats/cbstats-all.html" class="current"><span>All</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBstats/cbstats-toplevelstats.html"><span>Toplevel stats</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-totalvbucket.html"><span>vBucket stats</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-replicavbucket.html"><span>Replica vBucket stats</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-pendingvbucket.html"><span>Pending vBucket stats</span></a></li></ul></li><li class="section"><a href="../../CLI/CBstats/cbstats-allocator.html"><span>Allocator</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-checkpoint.html"><span>Checkpoint</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-config.html"><span>Config</span></a></li><li class="section"><a href="../../CLI/cli-cbstats-dcp.html"><span>DCP</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-diskinfo.html"><span>Diskinfo</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-dispatcher-job.html"><span>Dispatcher</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-failovers.html"><span>Failovers</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-hash.html"><span>Hash</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-keyvkey.html"><span>Key and vkey</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-kv.html"><span>Kvstore and kvtimings</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-memory.html"><span>Memory</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-reset.html"><span>Reset</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-runtimes.html"><span>Runtimes</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-scheduler.html"><span>Scheduler</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-tap.html"><span>Tap</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-timing.html"><span>Timings</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-uuid.html"><span>UUID</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-vbucket.html"><span>vBucket</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-warmup.html"><span>Warmup</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-workload.html"><span>Workload</span></a></li></ul></li><li class="section"><a href="../../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">All</h1>
+
+  
+  <div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbstats all</samp> command lists the information used for statistics.</p>
+
+    <div class="section"><h2 class="title sectiontitle">CLI command and parameter</h2>
+      <pre class="pre codeblock"><code>cbstats all</code></pre>
+
+    </div>
+
+    
+    
+    <div class="section"><h2 class="title sectiontitle">Syntax</h2>
+      <p class="p">Request syntax:</p>
+
+      <pre class="pre codeblock"><code>cbstats [localhost]:11210 all</code></pre>
+
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Example</h2>
+      <p class="p">Example request:</p>
+
+      <pre class="pre codeblock"><code>cbstats 10.5.2.54:11210 all</code></pre>
+
+      
+      </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Response</h2>
+      <p class="p">Example response:</p>
+
+      <pre class="pre codeblock"><code>
+ accepting_conns:                    1
+ auth_cmds:                          0
+ auth_errors:                        0
+ bucket_active_conns:                1
+ bucket_conns:                       16
+ bytes:                              23716376
+ bytes_read:                         267183940
+ bytes_written:                      44482127693
+ cas_badval:                         0
+ cas_hits:                           0
+ cas_misses:                         0
+ cmd_flush:                          0
+ cmd_get:                            0
+ cmd_set:                            0
+ conn_yields:                        0
+ connection_structures:              5000
+ curr_connections:                   59
+ curr_conns_on_port_11207:           2
+ curr_conns_on_port_11209:           54
+ curr_conns_on_port_11210:           3
+ curr_items:                         0
+ curr_items_tot:                     0
+ curr_temp_items:                    0
+ daemon_connections:                 6
+ decr_hits:                          0
+ decr_misses:                        0
+ delete_hits:                        0
+ delete_misses:                      0
+ ep_access_scanner_enabled:          1
+ ep_access_scanner_last_runtime:     0
+ ep_access_scanner_num_items:        0
+ ep_access_scanner_task_time:        2015-01-16 21:26:19
+ ep_allow_data_loss_during_shutdown: 1
+ ep_alog_block_size:                 4096
+ ep_alog_path:                       /opt/couchbase/var/lib/couchbase/data/default/access.log
+ ep_alog_sleep_time:                 1440
+ ep_alog_task_time:                  10
+ ep_backend:                         couchdb
+ ep_backfill_mem_threshold:          95
+ ep_bg_fetch_delay:                  0
+ ep_bg_fetched:                      0
+ ep_bg_meta_fetched:                 0
+ ep_bg_remaining_jobs:               0
+ ep_blob_num:                        0
+ ep_blob_overhead:                   0
+ ep_bucket_priority:                 LOW
+ ep_chk_max_items:                   500
+ ep_chk_period:                      5
+ ep_chk_persistence_remains:         0
+ ep_chk_persistence_timeout:         10
+ ep_chk_remover_stime:               5
+ ep_commit_num:                      682
+ ep_commit_time:                     0
+ ep_commit_time_total:               0
+ ep_config_file:                     
+ ep_conflict_resolution_type:        seqno
+ ep_couch_bucket:                    default
+ ep_data_traffic_enabled:            0
+ ep_db_data_size:                    121104
+ ep_db_file_size:                    19036812
+ ep_dbname:                          /opt/couchbase/var/lib/couchbase/data/default
+ ep_dcp_conn_buffer_size:            10485760
+ ep_dcp_enable_flow_control:         1
+ ep_dcp_enable_noop:                 1
+ ep_dcp_max_unacked_bytes:           524288
+ ep_dcp_noop_interval:               180
+ ep_degraded_mode:                   0
+ ep_diskqueue_drain:                 0
+ ep_diskqueue_fill:                  0
+ ep_diskqueue_items:                 0
+ ep_diskqueue_memory:                0
+ ep_diskqueue_pending:               0
+ ep_enable_chk_merge:                0
+ ep_exp_pager_stime:                 3600
+ ep_expired_access:                  0
+ ep_expired_pager:                   0
+ ep_failpartialwarmup:               0
+ ep_flush_all:                       false
+ ep_flush_duration_total:            0
+ ep_flushall_enabled:                0
+ ep_flusher_state:                   running
+ ep_flusher_todo:                    0
+ ep_getl_default_timeout:            15
+ ep_getl_max_timeout:                30
+ ep_ht_locks:                        5
+ ep_ht_size:                         3079
+ ep_initfile:                        
+ ep_io_num_read:                     0
+ ep_io_num_write:                    0
+ ep_io_read_bytes:                   0
+ ep_io_write_bytes:                  0
+ ep_item_begin_failed:               0
+ ep_item_commit_failed:              0
+ ep_item_eviction_policy:            value_only
+ ep_item_flush_expired:              0
+ ep_item_flush_failed:               0
+ ep_item_num:                        1364
+ ep_item_num_based_new_chk:          1
+ ep_items_rm_from_checkpoints:       0
+ ep_keep_closed_chks:                0
+ ep_kv_size:                         0
+ ep_max_bg_remaining_jobs:           0
+ ep_max_checkpoints:                 2
+ ep_max_failover_entries:            25
+ ep_max_item_size:                   20971520
+ ep_max_num_auxio:                   0
+ ep_max_num_nonio:                   0
+ ep_max_num_readers:                 0
+ ep_max_num_shards:                  4
+ ep_max_num_workers:                 3
+ ep_max_num_writers:                 0
+ ep_max_size:                        524288000
+ ep_max_threads:                     0
+ ep_max_vbuckets:                    1024
+ ep_mem_high_wat:                    445644800
+ ep_mem_low_wat:                     393216000
+ ep_mem_tracker_enabled:             true
+ ep_meta_data_disk:                  0
+ ep_meta_data_memory:                0
+ ep_mlog_compactor_runs:             0
+ ep_mutation_mem_threshold:          98
+ ep_num_access_scanner_runs:         92
+ ep_num_eject_failures:              0
+ ep_num_expiry_pager_runs:           675
+ ep_num_non_resident:                0
+ ep_num_not_my_vbuckets:             0
+ ep_num_ops_del_meta:                0
+ ep_num_ops_del_meta_res_fail:       0
+ ep_num_ops_del_ret_meta:            0
+ ep_num_ops_get_meta:                0
+ ep_num_ops_get_meta_on_set_meta:    0
+ ep_num_ops_set_meta:                0
+ ep_num_ops_set_meta_res_fail:       0
+ ep_num_ops_set_ret_meta:            0
+ ep_num_pager_runs:                  0
+ ep_num_value_ejects:                0
+ ep_num_workers:                     10
+ ep_oom_errors:                      0
+ ep_overhead:                        18344996
+ ep_pager_active_vb_pcnt:            40
+ ep_pending_compactions:             0
+ ep_pending_ops:                     0
+ ep_pending_ops_max:                 0
+ ep_pending_ops_max_duration:        0
+ ep_pending_ops_total:               0
+ ep_postInitfile:                    
+ ep_queue_size:                      0
+ ep_rollback_count:                  0
+ ep_startup_time:                    1418937974
+ ep_storage_age:                     0
+ ep_storage_age_highwat:             0
+ ep_storedval_num:                   0
+ ep_storedval_overhead:              0
+ ep_storedval_size:                  0
+ ep_tap_ack_grace_period:            300
+ ep_tap_ack_initial_sequence_number: 1
+ ep_tap_ack_interval:                1000
+ ep_tap_ack_window_size:             10
+ ep_tap_backfill_resident:           0.9
+ ep_tap_backlog_limit:               5000
+ ep_tap_backoff_period:              5
+ ep_tap_bg_fetch_requeued:           0
+ ep_tap_bg_fetched:                  0
+ ep_tap_bg_max_pending:              500
+ ep_tap_keepalive:                   300
+ ep_tap_noop_interval:               20
+ ep_tap_requeue_sleep_time:          0.1
+ ep_tap_throttle_cap_pcnt:           10
+ ep_tap_throttle_queue_cap:          1000000
+ ep_tap_throttle_threshold:          90
+ ep_tmp_oom_errors:                  0
+ ep_total_cache_size:                0
+ ep_total_del_items:                 0
+ ep_total_enqueued:                  0
+ ep_total_new_items:                 0
+ ep_total_persisted:                 0
+ ep_uncommitted_items:               0
+ ep_uuid:                            4fec4bc6cd57d1b9a1b509e2b20f4350
+ ep_value_size:                      0
+ ep_vb0:                             0
+ ep_vb_snapshot_total:               33810
+ ep_vb_total:                        682
+ ep_vbucket_del:                     0
+ ep_vbucket_del_fail:                0
+ ep_version:                         2.1.1r-1027-gfb165a6
+ ep_waitforwarmup:                   0
+ ep_warmup:                          1
+ ep_warmup_batch_size:               1000
+ ep_warmup_dups:                     0
+ ep_warmup_min_items_threshold:      100
+ ep_warmup_min_memory_threshold:     100
+ ep_warmup_oom:                      0
+ ep_warmup_thread:                   complete
+ ep_warmup_time:                     4063516
+ ep_workload_pattern:                read_heavy
+ get_hits:                           0
+ get_misses:                         0
+ incr_hits:                          0
+ incr_misses:                        0
+ libevent:                           2.0.11-stable
+ listen_disabled_num:                0
+ max_conns_on_port_11207:            30000
+ max_conns_on_port_11209:            5000
+ max_conns_on_port_11210:            30000
+ mem_used:                           23716376
+ memcached_version:                  be691c3b78a68e441d58c249e02121df7e9f8556
+ pid:                                27483
+ pointer_size:                       64
+ rejected_conns:                     0
+ rusage_system:                      9346.955046
+ rusage_user:                        87110.364211
+ threads:                            4
+ time:                               1421371024
+ total_connections:                  18
+ uptime:                             2433050
+ vb_active_curr_items:               0
+ vb_active_eject:                    0
+ vb_active_expired:                  0
+ vb_active_ht_memory:                8557736
+ vb_active_itm_memory:               0
+ vb_active_meta_data_disk:           0
+ vb_active_meta_data_memory:         0
+ vb_active_num:                      341
+ vb_active_num_non_resident:         0
+ vb_active_ops_create:               0
+ vb_active_ops_delete:               0
+ vb_active_ops_reject:               0
+ vb_active_ops_update:               0
+ vb_active_perc_mem_resident:        100
+ vb_active_queue_age:                0
+ vb_active_queue_drain:              0
+ vb_active_queue_fill:               0
+ vb_active_queue_memory:             0
+ vb_active_queue_pending:            0
+ vb_active_queue_size:               0
+ vb_dead_num:                        0
+ vb_pending_curr_items:              0
+ vb_pending_eject:                   0
+ vb_pending_expired:                 0
+ vb_pending_ht_memory:               0
+ vb_pending_itm_memory:              0
+ vb_pending_meta_data_disk:          0
+ vb_pending_meta_data_memory:        0
+ vb_pending_num:                     0
+ vb_pending_num_non_resident:        0
+ vb_pending_ops_create:              0
+ vb_pending_ops_delete:              0
+ vb_pending_ops_reject:              0
+ vb_pending_ops_update:              0
+ vb_pending_perc_mem_resident:       100
+ vb_pending_queue_age:               0
+ vb_pending_queue_drain:             0
+ vb_pending_queue_fill:              0
+ vb_pending_queue_memory:            0
+ vb_pending_queue_pending:           0
+ vb_pending_queue_size:              0
+ vb_replica_curr_items:              0
+ vb_replica_eject:                   0
+ vb_replica_expired:                 0
+ vb_replica_ht_memory:               8557736
+ vb_replica_itm_memory:              0
+ vb_replica_meta_data_disk:          0
+ vb_replica_meta_data_memory:        0
+ vb_replica_num:                     341
+ vb_replica_num_non_resident:        0
+ vb_replica_ops_create:              0
+ vb_replica_ops_delete:              0
+ vb_replica_ops_reject:              0
+ vb_replica_ops_update:              0
+ vb_replica_perc_mem_resident:       100
+ vb_replica_queue_age:               0
+ vb_replica_queue_drain:             0
+ vb_replica_queue_fill:              0
+ vb_replica_queue_memory:            0
+ vb_replica_queue_pending:           0
+ vb_replica_queue_size:              0
+ version:                            3.0.2-1605-rel
+      </code></pre>
+
+    </div>
+
+    
+    
+  </div>
+
+<nav class="related-links"><h2>Related information</h2>
+<ol class="olchildlinks">
+<li class="link olchildlink"><a href="../../CLI/CBstats/cbstats-toplevelstats.html">Toplevel stats</a><br>
+Description of top-level statistics.</li>
+<li class="link olchildlink"><a href="../../CLI/CBstats/cbstats-totalvbucket.html">vBucket stats</a><br>
+Description of vBucket total statistics.</li>
+<li class="link olchildlink"><a href="../../CLI/CBstats/cbstats-replicavbucket.html">Replica vBucket stats</a><br>
+Description of replica vBucket satistics.</li>
+<li class="link olchildlink"><a href="../../CLI/CBstats/cbstats-pendingvbucket.html">Pending vBucket stats</a><br>
+Description of pending vBucket statistics.</li>
+</ol>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-generalform.html" title="This section describes the general form of statistics.">General form</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-allocator.html" title="The cbstats allocator command provides information on memory management.">Allocator</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../../';</script><script src="../../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

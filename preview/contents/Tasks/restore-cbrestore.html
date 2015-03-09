@@ -1,0 +1,248 @@
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Restoring with cbrestore</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+							Return to Learn
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
+					  (function() {
+					    var cx = '018016427239405524608:fkg1v30apnm';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>Introduction</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-manage-serverWarmup.html"><span>Handling server warmup</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-replication.html"><span>Handling replication</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-compaction.html"><span>Compacting data files</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-maintenance.html"><span>Cluster maintenance</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/maintenance-server-node.html"><span>Server maintenance</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/tasks-backup-restore.html"><span>Backup and restore</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/backup-cbbackup.html"><span>Backing up with cbbackup</span></a></li><li class="section"><a href="../Tasks/restore-cbrestore.html" class="current"><span>Restoring with cbrestore</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Tasks/tasks-backup-restore-incremental.html"><span>差分バックアップとリストア</span></a></li><li class="section"><a href="../Tasks/backup-restore-tween-opsys.html"><span>Backing up and restoring between platforms</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-xdcr.html"><span>Managing XDCR</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">Restoring with <samp class="ph codeph">cbrestore</samp></h1>
+
+  
+  <div class="body"><p class="shortdesc">To restore bucket data that was backed up using the command <span class="keyword cmdname">cbbackup</span>, 
+    use the command <span class="keyword cmdname">cbrestore</span> to restore information into a bucket on a new cluster. </p>
+
+
+    
+    <p class="p"> When restoring a backup, you have to select the appropriate restore sequence
+    based on the type of restore you are performing. The available methods 
+    when restoring a cluster depend on the method you used when backing up
+    the cluster. </p>
+
+    
+    <p class="p">If <span class="keyword cmdname">cbbackup</span> was used to backup the bucket data, you can restore
+    back to a cluster with the same or different configuration. This is because
+      <span class="keyword cmdname">cbbackup</span> stores information about the stored bucket data in a format that
+    enables it to be restored back into a bucket on a new cluster. </p>
+
+    
+    <div class="note note"><span class="notetitle">Note:</span> If the information was backed up using a direct file copy, then you must restore
+    the information back to an identical cluster.</div>
+
+
+    
+    <p class="p">The <span class="keyword cmdname">cbrestore</span> command takes the information that has been backed up via the
+      <span class="keyword cmdname">cbbackup</span>&gt; command and streams the stored data into a cluster. The configuration
+    of the cluster does not have to match the cluster configuration when the data
+    was backed up, allowing it to be used when transferring information to a new
+    cluster or updated or expanded version of the existing cluster in the event of
+    disaster recovery.</p>
+
+    
+    <p class="p">Because the data can be restored flexibly, it provides for a number of different
+    scenarios to be executed on the data that has been backed up:</p>
+
+    
+    <ul class="ul">
+      <li class="li">Restoring data into a cluster of a different size and configuration.</li>
+
+      <li class="li">Transferring or restoring data into a different bucket on the same or
+        different cluster.</li>
+
+      <li class="li">Restoring a selected portion of the data into a new or different
+        cluster, or the same cluster but a different bucket.</li>
+
+    </ul>
+
+
+    
+    <p class="p">The basic format of the <span class="keyword cmdname">cbrestore</span> command is as follows:</p>
+
+
+<pre class="pre codeblock"><code>cbrestore [options] [source] [destination]
+</code></pre>
+
+    
+    <p class="p">Where:</p>
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">[options]</dt>
+
+        <dd class="dd">Options specifying how the information should be restored into the cluster. Common options include:
+          <ul class="ul">
+            <li class="li">--bucket-source
+              <p class="p">Specify the name of the bucket data to be read from the backup data that will be
+                restored.</p>
+</li>
+
+            <li class="li">--bucket-destination
+              <p class="p">Specify the name of the bucket the data will be written to. If this option is
+                not specified, the data will be written to a bucket with the same name as the
+                source bucket.</p>
+</li>
+
+            <li class="li">--add
+              <p class="p">Use <samp class="ph codeph">--add</samp> instead of <samp class="ph codeph">--set</samp> in order to not overwrite existing items in the destination.</p>
+</li>
+
+          </ul>
+</dd>
+
+      
+    </dl>
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">[source]</dt>
+
+        <dd class="dd">The backup directory specified to <samp class="ph codeph">cbbackup</samp> where the backup data was stored.</dd>
+
+      
+    </dl>
+
+    <dl class="dl">
+      
+        <dt class="dt dlterm">[destination]</dt>
+
+        <dd class="dd">The REST API URL of a node within the cluster where the information will be
+          restored.</dd>
+
+      
+    </dl>
+
+   
+    
+    <p class="p">The <span class="keyword cmdname">cbrestore</span> command restores only a single bucket of data at a time. If you
+    have created a backup of an entire cluster (such as all buckets), then you must
+    restore each bucket individually back to the cluster. All destination buckets
+    must already exist since <span class="keyword cmdname">cbrestore</span> does not create or configure destination buckets
+    for you.</p>
+
+    
+    <p class="p">For example, to restore a single bucket of data to a cluster:</p>
+
+    
+    
+<pre class="pre codeblock"><code>cbrestore \
+    /backups/backup-2012-05-10 \
+    http://Administrator:password@HOST:8091 \
+    --bucket-source=XXX
+    [####################] 100.0% (231726/231726 msgs)
+    bucket: default, msgs transferred...
+    :                total |       last |    per sec
+    batch :                  232 |        232 |       33.1
+    byte  :             10247683 |   10247683 |  1462020.7
+    msg   :               231726 |     231726 |    33060.0
+    done
+</code></pre>
+
+    
+    <p class="p">To restore the bucket data to a different bucket on the cluster:</p>
+
+    
+    
+<pre class="pre codeblock"><code>cbrestore \
+    /backups/backup-2012-05-10 \
+    http://Administrator:password@HOST:8091 \
+    --bucket-source=XXX \
+    --bucket-destination=YYY
+    [####################] 100.0% (231726/231726 msgs)
+    bucket: default, msgs transferred...
+    :                total |       last |    per sec
+    batch :                  232 |        232 |       33.1
+    byte  :             10247683 |   10247683 |  1462020.7
+    msg   :               231726 |     231726 |    33060.0
+    done
+</code></pre>
+
+    
+    <p class="p">The <samp class="ph codeph">msg</samp> count in this case is the number of documents restored back to the
+    bucket in the cluster.</p>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Filtering keys during restore</h2>
+    The <span class="keyword cmdname">cbrestore</span> command includes support for filtering the keys that are
+    restored to the database from the files that were created during backup. This is
+    in addition to the filtering support available during backup).
+      <p class="p">The specification is in the form of a regular expression supplied as an option
+    to the <span class="keyword cmdname">cbrestore</span> command. For example, to restore information to a bucket only
+    where the keys have an object prefix:</p>
+
+    
+    
+<pre class="pre codeblock"><code>cbrestore /backups/backup-20120501 http://HOST:8091 \
+    -u Administrator -p password \
+    -b default \
+    -k '^object.*'
+    2013-02-18 10:39:09,476: w0 skipping msg with key: sales_7597_3783_6
+    ...
+    2013-02-18 10:39:09,476: w0 skipping msg with key: sales_5575_3699_6
+    2013-02-18 10:39:09,476: w0 skipping msg with key: sales_7597_3840_6
+    [                    ] 0.0% (0/231726 msgs)
+    bucket: default, msgs transferred...
+    :                total |       last |    per sec
+    batch :                    1 |          1 |        0.1
+    byte  :                    0 |          0 |        0.0
+    msg   :                    0 |          0 |        0.0
+    done
+  </code></pre>
+
+    
+    <p class="p">This copies only the keys matching the specified prefix into the
+    <var class="keyword varname">default</var> bucket. For each key skipped, an information message is provided.
+    The remaining output shows the records transferred and summary as normal.</p>
+
+      
+    </div>
+
+    
+    <div class="section"><h2 class="title sectiontitle">Restoring using file copies</h2> To restore the information to the same
+      cluster with the same configuration, shut down your entire cluster while you restore the data
+      and then restart the cluster again. In this case, you are replacing the entire cluster data
+      and configuration with the backed up version of the data files, and then restarting the
+      cluster with the saved version of the cluster files. <div class="note important"><span class="importanttitle">Important:</span> Make sure that any
+        restoration of files also sets the proper ownership of those files to the Couchbase
+        user.</div>
+
+      <div class="p">When restoring data back in the same cluster, verify the following: <ul class="ul">
+          <li class="li">Backup and restore must use the same version of Couchbase Server.</li>
+
+          <li class="li">The cluster must contain the same number of nodes.</li>
+
+          <li class="li">Each node must have the same IP address or hostname it was configured with when the
+            cluster was backed up.</li>
+
+          <li class="li">All <samp class="ph codeph">config.dat</samp> configuration files as well as all database files must
+            be restored to their original locations.</li>
+
+        </ul>
+</div>
+<p class="p">The steps required to complete the restore process are: </p>
+<ol class="ol">
+        <li class="li">Stop the Couchbase Server service on all nodes.</li>
+
+        <li class="li">On each node, restore the database, <samp class="ph codeph">stats.json</samp>, and configuration file
+            <samp class="ph codeph">config.dat </samp>from your backup copies for each node.</li>
+
+        <li class="li">Restart the service on each node.</li>
+
+      </ol>
+
+    </div>
+      
+  </div>
+
+<nav class="related-links"><h2>Related information</h2>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Tasks/tasks-backup-restore.html" title="Back up your entire cluster periodically to minimize data inconsistency when a restore is required.">Backup and restore</a></div>
+<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Tasks/backup-cbbackup.html">Backing up with cbbackup</a></div>
+<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Tasks/tasks-backup-restore-incremental.html" title="差分バックアップとリストアを利用すると、データベース内の変更されたデータのみを高速にバックアップし、 より大きなデータセットに対し、バックアップの作成とリストアをより効率的に行うことができます。">差分バックアップとリストア</a></div>
+</div>
+</nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>
