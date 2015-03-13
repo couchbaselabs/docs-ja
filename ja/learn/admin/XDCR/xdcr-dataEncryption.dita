@@ -1,46 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic1666">
-  <title>XDCR data encryption</title>
-  <shortdesc>The cross data center (XDCR) data security feature provides secure cross data center
-    replication using Secure Socket Layer (SSL) data encryption.</shortdesc>
+<topic xml:lang="ja" id="topic1666">
+  <title>XDCRのデータ暗号化</title>
+  <shortdesc>
+	  クロスデータセンタレプリケーション(XDCR)のデータセキュリティ機能は、
+	  Secure Socket Layer (SSL)を利用したデータ暗号化によるセキュアなクロスデータセンタレプリケーションを利用できます。
+	</shortdesc>
   <body>
-    <note type="attention">This feature is available only in the Enterprise edition.</note>
-    <p>The data replicated between
-      clusters can be encrypted in both uni-directional and bi-directional topologies.</p>
-    <p>By default, XDCR traffic to a destination cluster is sent in clear text that is unencrypted.
-      In this case, when XDCR traffic occurs across multiple clusters over public networks, it is
-      recommended that a VPN gateway be configured between the two data centers to encrypt the data
-      between each route.</p>
-    <p>With the XDCR data encryption feature, the XDCR traffic from the source cluster is secured by
-      enabling the XDCR encryption option, providing the destination cluster’s certificate, and then
-      replicating. The certificate is a self-signed certificate used by SSL to initiate secure
-      sessions.</p>
+	  <note type="attention">
+		  この機能はエンタープライズエディションでのみ利用可能です。
+	</note>
+	<p>
+		クラスタ間でレプリケートされるデータは、単一方向でも双方向のレプリケーショントポロジでも暗号化が可能です。
+	</p>
+	<p>
+		デフォルトでは、XDCRで宛先クラスタへ送信されるデータは、暗号化されていない平文です。
+		暗号化を行わない場合で、XDCRトラフィックがパブリックなネットワークを経由して転送される場合、
+		VPNゲートウェイを二つのデータセンタ間に設定してデータを各ルート間で暗号することを推奨します。
+	</p>
+	<p>
+		XDCRデータ暗号化機能を利用すると、ソースクラスタからのXDCRトラフィックは、
+		宛先クラスタの証明書を設定してXDCR暗号化オプションを有効にすることで、セキュアにレプリケーションできます。
+		証明書は自己署名の証明書で、SSLがセキュアなセッションを確立するために利用します。
+	</p>
     
-    <note type="note">XDCR data encryption is supported only with Couchbase 
-      self-signed certificates. It does not support importing your own certificate files nor does it
-      support signed certificates from a Certificate Authority (CA).</note>
+	<note type="note">
+		XDCRデータの暗号化はCouchbaseの自己署名証明書のみサポートしています。
+		その他の証明書ファイルをインポートすることはできず、認証局(CA)によりサインされた証明書を利用することもできません。
+	</note>
     
-    <p>Data encryption is established between the source and destination clusters. Since data
-      encryption is established at the cluster level, all buckets that are selected for replicated
-      on the destination cluster are data encrypted. For buckets that need to be replicated without
-      data encryption, establish a second XDCR destination cluster without XDCR data encryption
-      enabled.</p>
+	<p>
+		データ暗号化はソースと宛先クラスタの間で実施されます。
+		データ暗号化はクラスタレベルで実行されるため、宛先クラスタにレプリケートされるすべてのバケットでデータが暗号化されます。
+		データの暗号化を利用せずバケットをレプリケートする必要がある場合、もうひとつXDCRデータ暗号化を無効にしたXDCR宛先クラスタを作成します。
+	</p>
     <p><image href="../images/xdcr-ssl.png" width="400"/></p>
-        <note type="important">Both data encrypted and non-encrypted replication can not occur between the same XDCR source
-      and destination cluster. For example, if Cluster A (source) has data encryption enabled to
-      Cluster B (destination), then Cluster A (source) cannot also have non-encryption (data
-      encryption is not enabled) to Cluster B (destination). </note>
+	<note type="important">
+		データを暗号化したレプリケーションと、しないレプリケーションを同一のXDCRソースクラスタと宛先クラスタで混在させることはできません。
+		例えば、クラスタA(ソース)がクラスタB(宛先)へのデータ暗号化を有効にしていた場合、
+		クラスタA(ソース)はクラスタB(宛先)に対し、暗号化しないレプリケーションを設定することはできません。
+	</note>
     
-    <p>For XDCR data encryption, the supported SSL/TLS-versions are SSL-3.0 and TLS-1.0. By default,
-      XDCR uses the <codeph>rc4-128</codeph> cipher suite, however, 
-      <codeph>aes128</codeph> is used if <codeph>rc4-128</codeph> isn't available. 
-      XDCR can be forced to only use <codeph>rc4-128</codeph> by setting the COUCHBASE_WANT_ARCFOUR environmental
-      variable. OpenSSL is not used for the TLS/SSL handshake logic. Instead, the TLS/SSL logic is
-      implemented in Erlang. If
-      specific ciphers/protocol/certificates are required, an alternative option is to connect to
-      the clusters over an encrypted VPN connection.</p>
+	<p>
+		XDCRデータ暗号化でサポートしているSSL/TLSバージョンは、SSL-3.0とTLS-1.0です。
+		デフォルトではXDCRは<codeph>rc4-128</codeph>Cipherスイートを利用します、しかし、
+		<codeph>rc4-128</codeph>が利用できない場合、<codeph>aes128</codeph>を利用します。
+		COUCHBASE_WANT_ARCFOUR環境変数を設定し、XDCRで<codeph>rc4-128</codeph>のみを利用するように設定することができます。
+		TLS/SSLハンドシェイクロジックではOpenSSLを利用していません。
+		代わりに、TLS/SSLロジックがErlangで実装されています。
+		特定のCipher/プロトコル/証明書が必須の場合、代替策として、クラスタ間を暗号化したVPN接続でつなぐ方法があります。
+	</p>
     
    
    
@@ -50,7 +60,7 @@
     <linklist>
       <link href="../Tasks/tasks-manage-xdcr-dataEncryption.dita"></link>
       <link href="http://blog.couchbase.com/heartbleed-bug-and-couchbase-server" format="html">
-        <linktext>Heartbleed Bug and Couchbase Server</linktext>
+        <linktext>HeartbleedバグとCouchbase Server</linktext>
       </link>
     </linklist>
   </related-links>

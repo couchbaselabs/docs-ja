@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_ix4_hkh_14">
-  <title>XDCR pause and resume replication</title>
-  <shortdesc>During XDCR replication, the process can be paused and resumed.</shortdesc>
+<topic xml:lang="ja" id="topic_ix4_hkh_14">
+  <title>XDCRレプリケーションの一時停止と再開</title>
+  <shortdesc>XDCRレプリケーション実行中に、レプリケーションを一時停止し、再開することができます。</shortdesc>
   
   <body>
-    <p>XDCR streams between the source and destination cluster can be paused and later resumed. 
-      After XDCR is resumed, data continues to replicate between the source and destination clusters
-      starting from where it previously left off.
+	  <p>
+		  ソースと宛先クラスタ間のXDCRストリームは、一時停止し、その後再開することができます。
+		  XDCRを再開すると、前回停止した時点からソースと宛先クラスタの間でデータのレプリケーションを開始し、継続します。
     </p>
     
-    <p>For more information, see the Couchbase <xref href="../UI/ui-xdcr-pause-resume.dita">Web console</xref>, 
-      <xref href="../CLI/CBcli/cbcli-xdcr-pause-resume.dita">CLI</xref>, 
-      and <xref href="../REST/rest-xdcr-pause-resume.dita">REST API</xref>.</p>
+	<p>詳細は、Couchbase <xref href="../UI/ui-xdcr-pause-resume.dita">Webコンソール</xref>、
+      <xref href="../CLI/CBcli/cbcli-xdcr-pause-resume.dita">CLI</xref>、
+      <xref href="../REST/rest-xdcr-pause-resume.dita">REST API</xref>をご参照ください。</p>
     
 
     
