@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Encrypted data access</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>データアクセスの暗号化</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
 						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
 					  (function() {
@@ -11,42 +11,49 @@
 					    var s = document.getElementsByTagName('script')[0];
 					    s.parentNode.insertBefore(gcse, s);
 					  })();
-					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections section--active"><a href="../security/security-intro.html"><span>セキュリティ</span></a><ul class="sub-sections"><li class="section"><a href="../security/security-admin-access.html"><span>Encrypted administrative access</span></a></li><li class="section"><a href="../security/security-client-ssl.html" class="current"><span>Encrypted data access</span></a><ul class="sub-sections"></ul></li><li class="section section--has-sub-sections"><a href="../security/security-best-practices.html"><span>Best security practices</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-	<h1 class="title topictitle1">Encrypted data access</h1>
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections section--active"><a href="../security/security-intro.html"><span>セキュリティ</span></a><ul class="sub-sections"><li class="section"><a href="../security/security-admin-access.html"><span>管理用アクセスの暗号化</span></a></li><li class="section"><a href="../security/security-client-ssl.html" class="current"><span>データアクセスの暗号化</span></a><ul class="sub-sections"></ul></li><li class="section section--has-sub-sections"><a href="../security/security-best-practices.html"><span>Best security practices</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+	<h1 class="title topictitle1">データアクセスの暗号化</h1>
 
 	
 	
 		
-	<div class="body conbody"><p class="shortdesc">Couchbase Server client libraries support client-side encryption using the Secure
-		Sockets Layer (SSL) protocol.</p>
+	<div class="body conbody"><p class="shortdesc">
+		Couchbase ServerクライアントライブラリはSecure Socket Layer (SSL)を利用した、クライアントサイドの暗号化をサポートしています。
+	</p>
 
 		
-		<div class="note attention"><span class="attentiontitle">Attention:</span> This feature is available only in the Enterprise edition.</div>
+		<div class="note attention"><span class="attentiontitle">重要:</span> 本機能はエンタープライズエディションでのみ利用できます。</div>
 
-		<p class="p">Encryption for data access is performed through client-server communication and view
-			access.</p>
+		<p class="p">
+			データアクセスの暗号化はクライアントサーバ間の通信と、Viewアクセスで実行されます。
+		</p>
 
 		
 
-		<div class="section"><h2 class="title sectiontitle">SSL based client-server communication</h2>
-			<p class="p">Couchbase Server client libraries support client-side encryption using the SSL protocol by
-				encrypting data in-flight between the client and the server. Secure client-server
-				communication is provided with Couchbase clients released after version 2.0, and
-				does not require configuration.</p>
+		<div class="section"><h2 class="title sectiontitle">SSLベースのクライアントサーバ通信</h2>
+			<p class="p">
+				Couchbase Serverクライアントライブラリは、SSLプロトコルを使用したクライアントサイドの暗号化により、
+				クライアントとサーバ間で転送されるデータの暗号化をサポートしています。
+				セキュアなクライアントサーバ間の通信は、Couchbaseクライアントのバージョン2.0以降で利用可能です。
+			</p>
 
-			<p class="p">Client-server communication also allows for the cases where some of the clients communicate with the server using SSL, while the other clients do not.</p>
+			<p class="p">
+				一部のクライアントでSSLを利用した通信を行い、その他のクライアントはSSLを利用しない構成もできます。
+			</p>
 
-			<p class="p">To enable SSL on the client side, you need to get an SSL certificate from Couchbase Server
-				and then follow the steps specific to the client you are using. </p>
+			<p class="p">
+				SSLをクライアント側で有効にするには、SSL証明書をCouchbase Serverから取得し、お使いのクライアントごとの手順に従ってください。
+			</p>
 
-			<p class="p">To obtain the certificate, access the Couchbase Web Console, 
-				navigate to <span class="ph menucascade"><span class="ph uicontrol">Settings</span> &gt; <span class="ph uicontrol">Certificate</span> &gt; <span class="ph uicontrol">Show certificate</span></span> and copy the certificate.</p>
+			<p class="p">
+				証明書を取得するには、Couchbase Webコンソールから、
+				<span class="ph menucascade"><span class="ph uicontrol">Settings</span> &gt; <span class="ph uicontrol">Certificate</span> &gt; <span class="ph uicontrol">Show certificate</span></span>にアクセスし、証明書をコピーします。</p>
 
 			
-			<div class="note note"><span class="notetitle">Note:</span> If the Couchbase Server SSL certificate is regenerated, you must obtain a new certificate.</div>
+			<div class="note note"><span class="notetitle">注:</span> Couchbase ServerでSSL証明書を再生成した場合、新しい証明書を取得しなおす必要があります。</div>
 
 			
-			<p class="p">The following clients support SSL:</p>
+			<p class="p">以下のクライアントがSSLに対応しています:</p>
 
 			<ul class="ul">
 				<li class="li">Java</li>
@@ -62,13 +69,16 @@
 			</ul>
 
 			
-			<div class="note note"><span class="notetitle">Note:</span> The Couchbase network port <samp class="ph codeph">11207</samp> is used for data communication between the client and the data nodes using SSL.</div>
+			<div class="note note"><span class="notetitle">注:</span> 
+				SSLを利用したクライアントとデータノード間の通信には、<samp class="ph codeph">11207</samp>Couchbaseネットワークポートを利用します。
+			</div>
 
 			
 		</div>
 
-		<div class="section"><h2 class="title sectiontitle">SSL based view access</h2>
-			<p class="p">A new port <samp class="ph codeph">18092</samp> is established for view access: <samp class="ph codeph">https://couchbase_server:18092</samp></p>
+		<div class="section"><h2 class="title sectiontitle">SSLベースのViewアクセス</h2>
+			<p class="p">
+				Viewアクセスには、<samp class="ph codeph">18092</samp>ポートを利用します: <samp class="ph codeph">https://couchbase_server:18092</samp></p>
 </div>
 
 		
@@ -76,8 +86,8 @@
 
 <nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../security/security-intro.html" title="Couchbase Server 3.0は、アプリケーションや管理者向けに安全なネットワーク経由のデータアクセスをサポートしています。">セキュリティ</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../security/security-admin-access.html" title="Encrypted administrative access enables HTTPS access for Couchbase Web Console and REST API using the Secure Socket Layer (SSL) authentication.">Encrypted administrative access</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../security/security-best-practices.html" title="Best practices for security consist of guidelines and tips to provide security features throughout the network.">Best security practices</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../security/security-intro.html" title="Couchbase Server 3.0は、アプリケーションや管理者向けに安全なネットワーク経由のデータアクセスをサポートしています。">セキュリティ</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../security/security-admin-access.html" title="Secure Socket Layer (SSL) 認証によるHTTPSアクセスを利用して、Couchbase WebコンソールとREST APIを利用した管理用アクセスを暗号化できます。">管理用アクセスの暗号化</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../security/security-best-practices.html" title="Best practices for security consist of guidelines and tips to provide security features throughout the network.">Best security practices</a></div>
 </div>
 </nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>
