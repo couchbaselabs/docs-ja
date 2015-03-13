@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_uyc_ldv_yn">
- <title>Stream-based XDCR</title>
- <shortdesc>Stream-based XDCR collects data changes from memory on the source cluster and streams the data changes directly 
-  to memory on the destination cluster.</shortdesc>
+<concept xml:lang="ja" id="concept_uyc_ldv_yn">
+ <title>ストリームベースのXDCR</title>
+ <shortdesc>
+	ストリームベースのXDCRはソースクラスタ上のデータ変更をメモリから収集し、データ変更を直接宛先クラスタのメモリへとストリームします。
+ </shortdesc>
  <conbody>
   
   
-  <p>Stream-based XDCR replication is available due to the Database Change Protocol (DCP), a stream-based protocol. 
-  Once the data changes are detected and streamed to the destination cluster's memory, 
-  each cluster persists the data to disk. 
-  On the source cluster, the data changes (in memory) are queued and then persisted to disk.
-  Correspondingly, on the destination cluster, the data changes (stream to memory) are queued and then persisted to disk.</p>
+	 <p>
+		 ストリームベースのXDCRレプリケーションは、ストリームベースのプロトコルである、データベース変更プロトコル(DCP)により実現しました。
+		 データ変更が検知されると、宛先クラスタのメモリへストリームされ、各クラスタはデータをディスクに永続化します。
+		 ソースクラスタでは、(メモリ内の)データの変更はキューに登録され、ディスクに永続化されます。
+		 これと関連して、宛先クラスタでは、(メモリにストリームされた)データ変更がキューに登録され、ディスクへと永続化されます。
+	</p>
   
 
   
-  <p>Stream-based XDCR replication provides:</p>
+  <p>ストリームベースのXDCRレプリケーションは以下を提供します:</p>
   <ul>
-   <li>Lower latency, that is, the time gap between data replication</li>
-   <li>High availability and disaster recovery</li>
-   <li>Improves recovery point objective (RPO)</li>
-   <li>Smaller data loss window</li>
+   <li>より小さなデータレプリケーションレイテンシ</li>
+   <li>高可用性とディザスタリカバリ</li>
+   <li>リカバリポイントオブジェクティブ(RPO)の向上</li>
+   <li>より小さなデータロスウィンドウ</li>
   </ul>
   
   <image href="../images/streambased_XDCR.png" width="800"></image>
   
   <draft-comment author="Ruth">Need GRAPHIC - see PPT slide</draft-comment>
   
-  <section><title>Backward compatibility</title>
+  <section><title>後方互換性</title>
    <ul>
-    <li>Changes are made automatically through the upgrade.</li>
-    <li>Only the source cluster has to be upgraded. The destination cluster accepts the data changes
-     into memory.</li>
+	   <li>アップグレードの際、自動的に変更が行わます。</li>
+	   <li>アップグレードが必要なのはソースクラスタのみです。宛先クラスタはデータ変更をメモリへと反映します。</li>
    </ul>
   </section>
   
