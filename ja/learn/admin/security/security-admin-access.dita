@@ -1,36 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="security-admin-access">
-  <title>Encrypted administrative access</title>
-  <shortdesc>Encrypted administrative access enables HTTPS access for Couchbase Web Console and REST
-    API using the Secure Socket Layer (SSL) authentication.</shortdesc>
+<concept xml:lang="ja" id="security-admin-access">
+  <title>管理用アクセスの暗号化</title>
+  <shortdesc>
+	  Secure Socket Layer (SSL) 認証によるHTTPSアクセスを利用して、Couchbase WebコンソールとREST APIを利用した管理用アクセスを暗号化できます。
+	</shortdesc>
   <conbody>
-    <note type="attention">This feature is available only in the Enterprise edition.</note>
-    <p>Couchbase Server client libraries support client-side encryption using  the Secure Sockets Layer (SSL) 
-      protocol by encrypting data in-flight between the client and the server. 
-      A secure channel is established between the remote machine and the server.</p>
+    <note type="attention">本機能はエンタープライズエディションのみで利用可能です。</note>
+	<p>
+		Couchbase Serverのクライアントライブラリは、Secure Socket Layer (SSL)を利用したクライアントサイドの暗号化により、
+		クライアントとサーバ間で転送されるデータの暗号化をサポートしています。
+		リモートマシンとサーバ間でセキュアな接続を確立することができます。
+	</p>
     
-    <p>Couchbase Server generates a self-signed certificate for the initial node, which is
-      propagated throughout the server nodes in the cluster. If the self-signed certificate is
-      regenerated or updated, it must be obtained again before secure server communication is
-      re-established. The secure connection is on the cluster level (rather than bucket level) and
-      is established through the dedicated HTTPS REST port <codeph>18091</codeph>, or the HTTPS CAPI
-      port <codeph>18092</codeph>. </p>
-    <section><title>Configuring a secure administrative access for your web browser</title>    
+	<p>
+		Couchbase Serverは最初のノードで自己署名の証明書を生成します、これはクラスタ内の各サーバに転送されます。
+		自己署名の証明書を再生成、更新した場合、セキュアなサーバ通信を再度確立する前に、これを再取得する必要があります。
+		セキュアな接続はバケット単位ではなく、クラスタレベルで行われ、
+		HTTPS REST専用のポート<codeph>18091</codeph>と、HTTPS CAPIポート<codeph>18092</codeph>を利用します。
+	</p>
+    <section><title>セキュアな管理用アクセスを利用するWebブラウザの設定</title>    
       <ol>
-        <li>Connect to Couchbase Server through an encrypted port to communicate on a secure
-          channel (<codeph>18091</codeph> for REST HTTP or <codeph>18092</codeph> for CAPI HTTP). </li>
-        <li>Log in with the administrator name and password. </li>
-          <li>Once you are logged in, the URL shows a secure
-          connection. 
-          <p>The following is an example URL of a secure connection using the
-            Safari web browser:</p>                
+		  <li>
+			  セキュアなチャネル(REST HTTPは<codeph>18091</codeph>、CAPI HTTPは<codeph>18092</codeph>)を経由してCouchbase Serverに接続します。
+		  </li>
+        <li>管理者のユーザ名とパスワードでログインします。</li>
+		<li>ログインすると、URLはセキュアな接続であることを示します。
+			<p>
+				次のURLはSafari Webブラウザでセキュアな接続を利用した場合の例です:
+			</p>                
           <p><image href="../images/ui-ssl-ip.png" width="420" id="image_tp1_2r1_mp"/>
           </p>          
         </li>
       </ol>  
     </section>
-    <example><title>SSL certificate</title>
+    <example><title>SSL証明書</title>
       <codeblock>-----BEGIN CERTIFICATE-----
 MIIC/jCCAeigAwIBAgIIE3jc9BofgigwCwYJKoZIhvcNAQEFMCQxIjAgBgNVBAMT
 GUNvdWNoYmFzZSBTZXJ2ZXIgOTRmYTE3YTUwHhcNMTMwMTAxMDAwMDAwWhcNNDkx
@@ -51,17 +55,20 @@ klUAb8eu4e2XxcLJ++geYoum0VIKa3ygjpZ800PupwZZetjD8/6tfbYFuoBTXL+r
 rqw=
 -----END CERTIFICATE-----</codeblock></example>
     
-    <section><title>Using REST for encrypted access</title>
-      <p>GET filepath <filepath>/pools/default/certificate</filepath> REST API HTTP method and URI retrieves the SSL self-signed certificate from the cluster.</p>
+    <section><title>RESTアクセスを暗号化</title>
+		<p>
+			REST APIの、<filepath>/pools/default/certificate</filepath>にHTTP GETメソッドを利用してアクセスすると、
+			SSLの自己署名証明書がクラスタから取得できます。
+		</p>
   
-    <p>The following shows REST syntax with <cmdname>curl</cmdname> for retrieving the certificate:</p>
+		<p><cmdname>curl</cmdname>を利用して証明書を取得する場合、以下のシンタックスを利用します:</p>
       <codeblock>curl –X GET  -u adminName:adminPassword
     http://localHost:Port/pools/default/certificate > ./&lt;certificate_name></codeblock>
-      <p>The following examples use <cmdname>curl</cmdname> and <cmdname>wget</cmdname> to retrieve the certificate</p>
+		<p>以下は、<cmdname>curl</cmdname>と、<cmdname>wget</cmdname>を利用して証明書を取得する例です:</p>
       <codeblock>curl http://10.5.2.54:8091/pools/default/certificate > clusterCertificate</codeblock>
       <codeblock>wget http://10.5.2.54:8091/pools/default/certificate -O clusterCertificate</codeblock>
-      <p>The following examples use <cmdname>curl</cmdname> and <cmdname>wget</cmdname> with the SSL certificate to retrieve cluster information over an encrypted connection. 
-      The port used is the encrypted REST port <codeph>18091</codeph>.</p>
+	  <p>以下は、<cmdname>curl</cmdname>と、<cmdname>wget</cmdname>でSSL証明書を利用して、
+		  暗号化したコネクション経由でクラスタの情報を取得する例です。RESTアクセスを暗号化する場合、ポートは<codeph>18091</codeph>を利用します:</p>
     
     <codeblock>curl --cacert clusterCertificate https://10.5.2.54:18091/pools/default</codeblock>
     <codeblock>wget --ca-certificate clusterCertificate  https://10.5.2.54:18091/pools/default -O output</codeblock>        
