@@ -1,63 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_ggp_tqp_yn">
+<concept xml:lang="ja" id="concept_ggp_tqp_yn">
 
-	<title>Stream-based views</title>
+	<title>ストリームベースのView</title>
 	<abstract>
-		<shortdesc>Stream-based views reduce latency for view updates, providing faster view
-			consistency and fresher data.</shortdesc>This feature uses the new streaming protocol,
-		Database Change Protocol (DCP). </abstract>
+		<shortdesc>
+			ストリームベースのViewはViewの更新レイテンシを削減し、より高速にViewの一貫性を保ち、最新のデータを提供します。
+		</shortdesc>
+		この章では新しいストリーミングプロトコル、データベース変更プロトコル(Database Change Protocol, DCP)について解説します。
+	</abstract>
 
 
 	<conbody>
 
-		<p>With DCP, data does not need to be persisted to disk before retrieving it with a view query.
-			DCP offers the following benefits for views: </p>
+		<p>
+			DCPを利用すると、Viewクエリを利用してデータを取得する前に、データがディスクに永続化される必要がなくなります。
+			DCPはViewに対し、以下の利点があります:
+		</p>
 		<ul>
-			<li>Views are updated with key-value data sooner.</li>
-			<li>Latency for view updates is reduced.</li>
-			<li>Views are more closely synchronized with the data.</li>
+			<li>Key-Valueの更新がより速くViewに反映されます。</li>
+			<li>View更新のレイテンシが削減されます。</li>
+			<li>Viewとデータがより短時間に同期されます。</li>
 		</ul>
 		
-		<p>The following diagram gives an overview of how stream-based views operate.</p>
+		<p>以下の図は、ストリームベースのViewがどのように動作するのかを示しています。</p>
 		
 		<image href="../images/stream-based-views.png" width="600px"></image>
 
-		<p>When submitting a view query, you can include a parameter that specifies your data freshness
-			requirements. The name of the parameter is <codeph>stale</codeph> and it takes the
-			following values:</p>
+		<p>
+			Viewクエリを実行する際、データの鮮度をパラメータとして指定することができます。
+			そのパラメータの名前は<codeph>stale</codeph>で、以下の値を指定できます:
+		</p>
 
 		<ul>
-			<li><codeph>ok</codeph>—The server returns the current entries from the index file.</li>
-			<li><codeph>update_after</codeph>—The server returns the current entries from the index,
-				and then initiates an index update.</li>
-			<li><codeph>false</codeph>—The server waits for the indexer to finish the changes that
-				correspond to the current key-value document set and then returns the latest entries
-				from the view index.</li>
+			<li><codeph>ok</codeph>—サーバは現在のインデックスファイルに含まれるエントリを返します。</li>
+			<li><codeph>update_after</codeph>—サーバは現在のインデックスファイルからエントリを返し、インデックスの更新を開始します。</li>
+			<li><codeph>false</codeph>—サーバは現在のKey-Valueドキュメントセットのインデックス作成の完了を待ち、
+				最新のViewインデックスからエントリを返します。</li>
 		</ul>
 
-		<p>Every 5 seconds the automatic update process checks whether 5000 changes have occurred. If
-			a minimum of 5000 changes occurred, an index update is triggered. Otherwise, no update is
-			triggered. When triggered, the indexer requests from DCP all changes since it was last run.
-			The default number of changes to check for is 5000, but that number can be configured by
-			setting the <codeph>updateMinChanges</codeph> option. The update interval can also be
-			configured by setting the <codeph>updateInterval</codeph> option. </p>
+		<p>
+			更新プロセスは5秒ごとに自動的に、5000の変更が発生したかをチェックします。
+			もし、少なくとも5000の変更が発生していたら、インデックスの更新を開始します。
+			そうでない場合、インデックス更新は行いません。
+			インデックス更新が実行されると、インデクサは、最後に実行してから発生したすべての変更をDCPに問い合わせます。
+			チェックを行うデフォルトの変更数は5000ですが、<codeph>updateMinChanges</codeph>オプションを設定することで変更できます。
+			更新感覚についても、<codeph>updateInterval</codeph>オプションを設定することで変更可能です。
+		</p>
 
-		<p>The <codeph>stale=false</codeph> view query argument has been enhanced. When an application
-			sends a query that has the <codeph>stale</codeph> parameter set to false, the application
-			receives all recent changes to the documents, including changes that haven't yet been
-			persisted to disk. It considers all document changes that have been received at the time
-			the query was received. This means that using the durability requirements or observe
-			feature to block for persistence in application code before issuing the
-				<codeph>stale=false</codeph> query is no longer needed. It is recommended that you
-			remove all such application level checks after upgrading.</p>
+		<p>
+			Viewクエリ引数の<codeph>stale=false</codeph>が改善されました。
+			アプリケーションが<codeph>stale</codeph>パラメータをfalseでクエリを送信すると、
+			ディスクにまだ永続化されていない変更を含む、ドキュメントに対する直近のすべての変更を受信できます。
+			クエリを受信した時点までのすべてのドキュメントの変更が対象となります。
+			これにより、<codeph>stale=false</codeph>を指定したクエリを実行する前に、
+			永続性要件やobserve機能を利用し、永続化をブロックするアプリケーションコードが不要になりました。
+			データ更新後のこのようなアプリケーションレベルでのチェック実装は、削除していただくことを推奨します。
+		</p>
 
 
-		<note type="other" othertype="Best practice">For better scalability and throughput, we
-			recommend that you set the value of the <codeph>stale</codeph> parameter to
-				<codeph>ok</codeph>. With the stream-based views feature, data returned when
-				<codeph>stale</codeph> is set to <codeph>ok</codeph> is closer to the key-value data,
-			even though it might not include all of it.</note>
+		<note type="other" othertype="ベストプラクティス">
+			より良いスケーラビリティとスループットを実現するためには、
+			<codeph>stale</codeph>パラメータに<codeph>ok</codeph>を指定することを推奨します。
+			ストリームベースのViewでは、<codeph>stale</codeph>パラメータに<codeph>ok</codeph>を指定しても、
+			すべての変更を含んでいない可能性はありますが、以前に比べKey-Valueデータの状態に近くなります。
+		</note>
 
 	</conbody>
 
