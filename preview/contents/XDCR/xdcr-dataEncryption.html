@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>XDCR data encryption</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>XDCRのデータ暗号化</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
 						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
 					  (function() {
@@ -11,56 +11,66 @@
 					    var s = document.getElementsByTagName('script')[0];
 					    s.parentNode.insertBefore(gcse, s);
 					  })();
-					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections section--active"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a><ul class="sub-sections"><li class="section"><a href="../XDCR/xdcr-usecases.html"><span>XDCR use cases</span></a></li><li class="section"><a href="../XDCR/xdcr-architecture.html"><span>XDCR architecture</span></a></li><li class="section"><a href="../XDCR/xdcr-memory-replication.html"><span>ストリームベースのXDCR</span></a></li><li class="section"><a href="../XDCR/xdcr-topologies.html"><span>XDCR basic topologies</span></a></li><li class="section"><a href="../XDCR/xdcr-topologies-adv.html"><span>XDCR advanced topologies</span></a></li><li class="section"><a href="../XDCR/xdcr-memcachedReplication.html"><span>XDCR replication via memcached protocol</span></a></li><li class="section"><a href="../XDCR/xdcr-systemOutage.html"><span>XDCR and network or system outages</span></a></li><li class="section"><a href="../XDCR/xdcr-docs.html"><span>XDCR document handling</span></a></li><li class="section"><a href="../XDCR/xdcr-flushRequests.html"><span>XDCR flush requests</span></a></li><li class="section"><a href="../XDCR/xdcr-streamMgmt.html"><span>XDCR stream management</span></a></li><li class="section"><a href="../XDCR/xdcr-pause-resume.html"><span>XDCR pause and resume replication</span></a></li><li class="section"><a href="../XDCR/xdcr-dataEncryption.html" class="current"><span>XDCR data encryption</span></a><ul class="sub-sections"></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-  <h1 class="title topictitle1">XDCR data encryption</h1>
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>Installation and upgrade</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections section--active"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a><ul class="sub-sections"><li class="section"><a href="../XDCR/xdcr-usecases.html"><span>XDCR use cases</span></a></li><li class="section"><a href="../XDCR/xdcr-architecture.html"><span>XDCR architecture</span></a></li><li class="section"><a href="../XDCR/xdcr-memory-replication.html"><span>ストリームベースのXDCR</span></a></li><li class="section"><a href="../XDCR/xdcr-topologies.html"><span>XDCR basic topologies</span></a></li><li class="section"><a href="../XDCR/xdcr-topologies-adv.html"><span>XDCR advanced topologies</span></a></li><li class="section"><a href="../XDCR/xdcr-memcachedReplication.html"><span>XDCR replication via memcached protocol</span></a></li><li class="section"><a href="../XDCR/xdcr-systemOutage.html"><span>XDCR and network or system outages</span></a></li><li class="section"><a href="../XDCR/xdcr-docs.html"><span>XDCR document handling</span></a></li><li class="section"><a href="../XDCR/xdcr-flushRequests.html"><span>XDCR flush requests</span></a></li><li class="section"><a href="../XDCR/xdcr-streamMgmt.html"><span>XDCR stream management</span></a></li><li class="section"><a href="../XDCR/xdcr-pause-resume.html"><span>XDCRレプリケーションの一時停止と再開</span></a></li><li class="section"><a href="../XDCR/xdcr-dataEncryption.html" class="current"><span>XDCRのデータ暗号化</span></a><ul class="sub-sections"></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">XDCRのデータ暗号化</h1>
 
   
-  <div class="body"><p class="shortdesc">The cross data center (XDCR) data security feature provides secure cross data center
-    replication using Secure Socket Layer (SSL) data encryption.</p>
+  <div class="body"><p class="shortdesc">
+	  クロスデータセンタレプリケーション(XDCR)のデータセキュリティ機能は、
+	  Secure Socket Layer (SSL)を利用したデータ暗号化によるセキュアなクロスデータセンタレプリケーションを利用できます。
+	</p>
 
-    <div class="note attention"><span class="attentiontitle">Attention:</span> This feature is available only in the Enterprise edition.</div>
+	  <div class="note attention"><span class="attentiontitle">重要:</span> 
+		  この機能はエンタープライズエディションでのみ利用可能です。
+	</div>
 
-    <p class="p">The data replicated between
-      clusters can be encrypted in both uni-directional and bi-directional topologies.</p>
+	<p class="p">
+		クラスタ間でレプリケートされるデータは、単一方向でも双方向のレプリケーショントポロジでも暗号化が可能です。
+	</p>
 
-    <p class="p">By default, XDCR traffic to a destination cluster is sent in clear text that is unencrypted.
-      In this case, when XDCR traffic occurs across multiple clusters over public networks, it is
-      recommended that a VPN gateway be configured between the two data centers to encrypt the data
-      between each route.</p>
+	<p class="p">
+		デフォルトでは、XDCRで宛先クラスタへ送信されるデータは、暗号化されていない平文です。
+		暗号化を行わない場合で、XDCRトラフィックがパブリックなネットワークを経由して転送される場合、
+		VPNゲートウェイを二つのデータセンタ間に設定してデータを各ルート間で暗号することを推奨します。
+	</p>
 
-    <p class="p">With the XDCR data encryption feature, the XDCR traffic from the source cluster is secured by
-      enabling the XDCR encryption option, providing the destination cluster’s certificate, and then
-      replicating. The certificate is a self-signed certificate used by SSL to initiate secure
-      sessions.</p>
+	<p class="p">
+		XDCRデータ暗号化機能を利用すると、ソースクラスタからのXDCRトラフィックは、
+		宛先クラスタの証明書を設定してXDCR暗号化オプションを有効にすることで、セキュアにレプリケーションできます。
+		証明書は自己署名の証明書で、SSLがセキュアなセッションを確立するために利用します。
+	</p>
 
     
-    <div class="note note"><span class="notetitle">Note:</span> XDCR data encryption is supported only with Couchbase 
-      self-signed certificates. It does not support importing your own certificate files nor does it
-      support signed certificates from a Certificate Authority (CA).</div>
+	<div class="note note"><span class="notetitle">注:</span> 
+		XDCRデータの暗号化はCouchbaseの自己署名証明書のみサポートしています。
+		その他の証明書ファイルをインポートすることはできず、認証局(CA)によりサインされた証明書を利用することもできません。
+	</div>
 
     
-    <p class="p">Data encryption is established between the source and destination clusters. Since data
-      encryption is established at the cluster level, all buckets that are selected for replicated
-      on the destination cluster are data encrypted. For buckets that need to be replicated without
-      data encryption, establish a second XDCR destination cluster without XDCR data encryption
-      enabled.</p>
+	<p class="p">
+		データ暗号化はソースと宛先クラスタの間で実施されます。
+		データ暗号化はクラスタレベルで実行されるため、宛先クラスタにレプリケートされるすべてのバケットでデータが暗号化されます。
+		データの暗号化を利用せずバケットをレプリケートする必要がある場合、もうひとつXDCRデータ暗号化を無効にしたXDCR宛先クラスタを作成します。
+	</p>
 
     <p class="p"><img class="image" src="../images/xdcr-ssl.png" width="400"></p>
 
-        <div class="note important"><span class="importanttitle">Important:</span> Both data encrypted and non-encrypted replication can not occur between the same XDCR source
-      and destination cluster. For example, if Cluster A (source) has data encryption enabled to
-      Cluster B (destination), then Cluster A (source) cannot also have non-encryption (data
-      encryption is not enabled) to Cluster B (destination). </div>
+	<div class="note important"><span class="importanttitle">重要:</span> 
+		データを暗号化したレプリケーションと、しないレプリケーションを同一のXDCRソースクラスタと宛先クラスタで混在させることはできません。
+		例えば、クラスタA(ソース)がクラスタB(宛先)へのデータ暗号化を有効にしていた場合、
+		クラスタA(ソース)はクラスタB(宛先)に対し、暗号化しないレプリケーションを設定することはできません。
+	</div>
 
     
-    <p class="p">For XDCR data encryption, the supported SSL/TLS-versions are SSL-3.0 and TLS-1.0. By default,
-      XDCR uses the <samp class="ph codeph">rc4-128</samp> cipher suite, however, 
-      <samp class="ph codeph">aes128</samp> is used if <samp class="ph codeph">rc4-128</samp> isn't available. 
-      XDCR can be forced to only use <samp class="ph codeph">rc4-128</samp> by setting the COUCHBASE_WANT_ARCFOUR environmental
-      variable. OpenSSL is not used for the TLS/SSL handshake logic. Instead, the TLS/SSL logic is
-      implemented in Erlang. If
-      specific ciphers/protocol/certificates are required, an alternative option is to connect to
-      the clusters over an encrypted VPN connection.</p>
+	<p class="p">
+		XDCRデータ暗号化でサポートしているSSL/TLSバージョンは、SSL-3.0とTLS-1.0です。
+		デフォルトではXDCRは<samp class="ph codeph">rc4-128</samp>Cipherスイートを利用します、しかし、
+		<samp class="ph codeph">rc4-128</samp>が利用できない場合、<samp class="ph codeph">aes128</samp>を利用します。
+		COUCHBASE_WANT_ARCFOUR環境変数を設定し、XDCRで<samp class="ph codeph">rc4-128</samp>のみを利用するように設定することができます。
+		TLS/SSLハンドシェイクロジックではOpenSSLを利用していません。
+		代わりに、TLS/SSLロジックがErlangで実装されています。
+		特定のCipher/プロトコル/証明書が必須の場合、代替策として、クラスタ間を暗号化したVPN接続でつなぐ方法があります。
+	</p>
 
     
    
@@ -70,12 +80,12 @@
 
   <nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../XDCR/xdcr-intro.html" title="XDCRは、主に災害復旧のために、あるクラスタのデータを別のクラスタに複製します。">クロスデータセンターレプリケーション（XDCR）</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../XDCR/xdcr-pause-resume.html" title="During XDCR replication, the process can be paused and resumed.">XDCR pause and resume replication</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../XDCR/xdcr-intro.html" title="XDCRは、主に災害復旧のために、あるクラスタのデータを別のクラスタに複製します。">クロスデータセンターレプリケーション（XDCR）</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../XDCR/xdcr-pause-resume.html" title="XDCRレプリケーション実行中に、レプリケーションを一時停止し、再開することができます。">XDCRレプリケーションの一時停止と再開</a></div>
 </div>
 
 <div class="linklist linklist">
 <div><a class="link" href="../Tasks/tasks-manage-xdcr-dataEncryption.html">Managing XDCR data encryption</a></div>
-<div><a class="link" href="http://blog.couchbase.com/heartbleed-bug-and-couchbase-server">Heartbleed Bug and Couchbase Server</a></div></div>
+<div><a class="link" href="http://blog.couchbase.com/heartbleed-bug-and-couchbase-server">HeartbleedバグとCouchbase Server</a></div></div>
 </nav>
 </div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>
