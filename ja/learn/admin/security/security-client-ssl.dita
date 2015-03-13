@@ -1,34 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="security-client-ssl">
-	<title>Encrypted data access</title>
-	<shortdesc>Couchbase Server client libraries support client-side encryption using the Secure
-		Sockets Layer (SSL) protocol.</shortdesc>
+<concept xml:lang="ja" id="security-client-ssl">
+	<title>データアクセスの暗号化</title>
+	<shortdesc>
+		Couchbase ServerクライアントライブラリはSecure Socket Layer (SSL)を利用した、クライアントサイドの暗号化をサポートしています。
+	</shortdesc>
 	
 		
 	<conbody>
 		
-		<note type="attention">This feature is available only in the Enterprise edition.</note>
-		<p>Encryption for data access is performed through client-server communication and view
-			access.</p>
+		<note type="attention">本機能はエンタープライズエディションでのみ利用できます。</note>
+		<p>
+			データアクセスの暗号化はクライアントサーバ間の通信と、Viewアクセスで実行されます。
+		</p>
 		
 
-		<section><title>SSL based client-server communication</title>
-			<p>Couchbase Server client libraries support client-side encryption using the SSL protocol by
-				encrypting data in-flight between the client and the server. Secure client-server
-				communication is provided with Couchbase clients released after version 2.0, and
-				does not require configuration.</p>
-			<p>Client-server communication also allows for the cases where some of the clients communicate with the server using SSL, while the other clients do not.</p>
-			<p>To enable SSL on the client side, you need to get an SSL certificate from Couchbase Server
-				and then follow the steps specific to the client you are using. </p>
-			<p>To obtain the certificate, access the Couchbase Web Console, 
-				navigate to <menucascade>
+		<section><title>SSLベースのクライアントサーバ通信</title>
+			<p>
+				Couchbase Serverクライアントライブラリは、SSLプロトコルを使用したクライアントサイドの暗号化により、
+				クライアントとサーバ間で転送されるデータの暗号化をサポートしています。
+				セキュアなクライアントサーバ間の通信は、Couchbaseクライアントのバージョン2.0以降で利用可能です。
+			</p>
+			<p>
+				一部のクライアントでSSLを利用した通信を行い、その他のクライアントはSSLを利用しない構成もできます。
+			</p>
+			<p>
+				SSLをクライアント側で有効にするには、SSL証明書をCouchbase Serverから取得し、お使いのクライアントごとの手順に従ってください。
+			</p>
+			<p>
+				証明書を取得するには、Couchbase Webコンソールから、
+				<menucascade>
 					<uicontrol>Settings</uicontrol><uicontrol>Certificate</uicontrol><uicontrol>Show certificate</uicontrol>
-				</menucascade> and copy the certificate.</p>
+				</menucascade>にアクセスし、証明書をコピーします。</p>
 			
-			<note type="note">If the Couchbase Server SSL certificate is regenerated, you must obtain a new certificate.</note>
+			<note type="note">Couchbase ServerでSSL証明書を再生成した場合、新しい証明書を取得しなおす必要があります。</note>
 			
-			<p>The following clients support SSL:</p>
+			<p>以下のクライアントがSSLに対応しています:</p>
 			<ul>
 				<li>Java</li>
 				<li>.NET</li>
@@ -37,11 +44,14 @@
 				<li>C</li>
 			</ul>
 			
-			<note type="note">The Couchbase network port <codeph>11207</codeph> is used for data communication between the client and the data nodes using SSL.</note>
+			<note type="note">
+				SSLを利用したクライアントとデータノード間の通信には、<codeph>11207</codeph>Couchbaseネットワークポートを利用します。
+			</note>
 			
 		</section>
-		<section><title>SSL based view access</title>
-			<p>A new port <codeph>18092</codeph> is established for view access: <codeph>https://couchbase_server:18092</codeph></p></section>
+		<section><title>SSLベースのViewアクセス</title>
+			<p>
+				Viewアクセスには、<codeph>18092</codeph>ポートを利用します: <codeph>https://couchbase_server:18092</codeph></p></section>
 		
 	</conbody>
 </concept>
