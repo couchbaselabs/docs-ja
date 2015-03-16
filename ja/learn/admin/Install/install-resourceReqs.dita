@@ -1,48 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic1723">
-  <title>Resource requirements</title><shortdesc>Specifications for installing Couchbase Server.</shortdesc>
+<topic xml:lang="ja" id="topic1723">
+  <title>リソース要件</title><shortdesc>Couchbase Serverインストールのリソース要件。</shortdesc>
   <body>
-    <section><title>Recommended specification</title>
-    <p>To install Couchbase Server, follow these guidelines:</p>
+    <section><title>推奨スペック</title>
+    <p>Couchbase Serverのインストールには、次のガイドラインに従ってください:</p>
     <ul>
-      <li><p>Quad-core for key-value store, 64-bit CPU running at 3GHz.</p></li>
-      <li><p>Six cores if XDCR (Cross Data Center Replication) and views are used.</p></li>
-      <li><p>16GB RAM (physical).</p></li>
-      <li><p>Block-based storage device (hard disk, SSD, EBS, iSCSI). Network filesystems such as 
-          CIFS and  NFS are not supported.</p></li>
+      <li><p>Key-Valueストア用に、クアッドコア、64bit 3GHzのCPU。</p></li>
+      <li><p>XDCR(クロスデータセンタレプリケーション)とViewを利用する場合、6コア。</p></li>
+      <li><p>16GBのRAM (物理)。</p></li>
+      <li><p>ブロックベースのストレージデバイス(ハードディスク、SSD、EBS、iSCSI)。CIFSやNFSなどのネットワークファイルシステムはサポートされません。</p></li>
     </ul></section>
-    <section><title>Minimum specification</title>
-    <p>A machine with minimum specifications must have:</p>
+    <section><title>最小構成</title>
+    <p>最小構成のマシンは以下を満たす必要があります:</p>
     <ul>
-      <li>Dual-core CPU running at 2GHz for key-value store.</li>
-      <li>4GB RAM (physical).</li>
+      <li>Key-Valueストア用にデュアルコア 2GHzのCPU。</li>
+      <li>4GBのRAM (物理)。</li>
     </ul>
-        <note type="note">For development and testing purposes, you can use reduced CPU and RAM
-      resources compared to the specified minimum. This can be as low as 1GB of free RAM beyond operating
-      system requirements and a single CPU core. For production, however, the minumum specification
-      must be implemented. </note>
-    <note type="note">Performance on machines configured with specifications lower than the minimum is
-      significantly lower and cannot be used as an indication of the performance on a production
-      machine. View performance on machines with less than 2 CPU cores is significantly
-      reduced.</note></section>
-   <section><title>Memory requirements</title></section>
-    <p>Your machine must have enough memory to run the operating system and Couchbase Server. 
-      For example, if 8GB of RAM is dedicated to Couchbase Server, there must be also 
-      enough RAM to host the operating system. If additional applications and servers are running,
-      additional RAM is required. For smaller systems, such as those with less than 16GB, allocate
-      at least 40% of RAM to the operating system.</p>
-    <section><title>Storage requirements</title>
-    <p>The following amount of storage must be available:</p>
+	<note type="note">
+		開発やテスト用途には、CPUとRAMのリソースを最小推奨よりも少ないものにすることもできます。
+		この場合、オペレーティングシステムが利用する領域を除いた、1GBの空きRAM、シングルCPUコアでも動作します。
+		プロダクション環境では、必ず最小構成以上としてください。
+	</note>
+	<note type="note">
+		推奨構成よりも低いスペックで構成されるマシンでのパフォーマンスは著しく劣化し、
+		プロダクション環境のマシンでの性能を測定することはできません。
+		CPUが2つより少ないマシンでは、Viewのパフォーマンスも著しく劣化します。
+	</note></section>
+   <section><title>メモリ要件</title></section>
+   <p>
+	   お使いのマシンではオペレーティングシステムとCouchbase Serverを動作させるための、十分なメモリを搭載する必要があります。
+	   例えば、Couchbase Serverに8GBのRAMを割り当てる場合、それ以外にオペレーティングシステム用に十分なRAMも必要になります。
+	   もし、これ以外のアプリケーションやサーバを稼働させる場合、追加のRAMが必要になります。
+	   16GB未満の小規模のシステムでは、少なくともRAMの40%をオペレーティングシステムに割り当ててください。
+	</p>
+    <section><title>ストレージ要件</title>
+    <p>以下のストレージ容量が必要です:</p>
     <ul>
-      <li>1GB for application logging.</li>
-      <li>At least twice the disk space to match the physical RAM for persistence of
-          information.</li>
+		<li>アプリケーションログ用に、1GB。</li>
+		<li>データの永続化用に、少なくとも物理RAMの2倍のディスク容量。</li>
     </ul>
     </section>
-  <section><title>CLI utilities requirements </title>
-    Couchbase command line utilities require that Python version 2.6 or greater be installed on the system so that they can function properly. 
+	<section><title>CLIユーティリティ要件</title>
+		Couchbaseコマンドラインユーティリティが正しく動作するためには、バージョン2.6以降のPythonがシステムにインストールされている必要があります。
   </section>  
     
   </body>
