@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_edn_wtd_54">
-  <title>Installation and upgrade</title>
-  <shortdesc>This guide explains preinstallation, installation on various platforms, post-installation,
-    upgrading, and migration procedures for Couchbase Server.</shortdesc>
+<topic xml:lang="ja" id="topic_edn_wtd_54">
+  <title>インストールとアップグレード</title>
+  <shortdesc>
+	  このガイドはCouchbase Serverのインストール要件、各種プラットフォームでのインストール、インストール後の設定、
+	  アップグレード、移行手順について解説します。
+	</shortdesc>
   <body>
 
   </body>
