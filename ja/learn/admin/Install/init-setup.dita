@@ -1,90 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic12527">
-  <title>Initial server setup</title><shortdesc>After installation is completed, Couchbase Server has to be set up. </shortdesc>
+<topic xml:lang="ja" id="topic12527">
+	<title>サーバの初期セットアップ</title><shortdesc>
+		インストール完了後に、Couchbase Serverをセットアップする必要があります。
+	</shortdesc>
   <body>
     
     <ol>
-      <li>Open Couchbase Web Console.</li>
-      <li>Set up the disk storage and cluster configuration.
+      <li>Couchbase Webコンソールを開きます。</li>
+      <li>ディスクストレージとクラスタ設定をセットアップします。
         <ul>
-        <li>The <wintitle>Configure Disk Storage</wintitle> option specifies the location of the
-            persistent storage used by the Couchbase Server. The setting affects only this node and
-            sets the directory where all the data is stored on disk. It also sets the location where
-            the indexes created by views are stored. <p>If you are not indexing data with views, you
-              can accept the default setting. For the best performance, you can configure different
-              disks for the server, for storing your document and for index data.</p></li>
-         <li>The <wintitle>Configure Server Memory</wintitle> section sets the amount of physical RAM that will be allocated by
-          the Couchbase Server for storage. <p>If you are creating a new cluster, this is the amount
-          of memory that is allocated on each node within your Couchbase cluster. Same amount
-          of memory is allocated to each node in the cluster. Since the same setting applies to the whole cluster, 
-          specify a value that can be supported by all nodes. The default value is 60% of your total free RAM and is 
-          calculated to provide a RAM capacity for use by the operating system caching layer when accessing and using
-          views.</p></li></ul></li>
-      <li>Provide a node IP or host name under <wintitle>Configure Server Hostname</wintitle>. 
+			<li><wintitle>Configure Disk Storage</wintitle>オプションは、Couchbase Serverが利用する永続化ストレージの場所を指定します。
+				この設定は、このノードのみに影響し、ディスク上に保存されるすべてのデータのディレクトリを設定します。
+				また、Viewにより生成されるインデックスの保存場所も指定します。
+				<p>
+					Viewを利用してインデックスを生成しない場合、デフォルトの設定のまま利用することも可能です。
+					最大のパフォーマンスを得るには、ドキュメントとインデックスデータをサーバ上の異なるディスクに設定してください。
+				</p></li>
+			<li><wintitle>Configure Server Memory</wintitle>セクションは、Couchbase Serverストレージに割り当てる物理RAMの容量を指定します。
+				<p>
+					新規のクラスタを作成する場合、このメモリ容量はCouchbaseクラスタ内の各ノード上で割り当てられる容量となります。
+					同一の容量がクラスタ内の各ノード上で割り当てられます。
+					クラスタ全体で同一の設定が有効となるため、すべてのノードで利用可能な値を設定してください。
+					デフォルトでは、Viewを利用しアクセスする際のオペレーティングシステムのキャッシュ層に提供するためのRAM容量を加味し、
+					総空きRAMの60%が設定されています。
+				</p></li></ul></li>
+      <li><wintitle>Configure Server Hostname</wintitle>で、ノードのIPアドレスもしくはホスト名を指定します。 
             <fig><image href="../images/configure_server1.png" width="600"></image></fig>
-          </li>
-      <li>Provide the IP address or host name of an existing node and administrative credentials for
-        that existing cluster.</li>
-      <li>To join an existing cluster, check the radio button <uicontrol>Join a cluster now</uicontrol>.</li>
-      <li>Click <uicontrol>Next</uicontrol>.<p>The <wintitle>Sample Buckets</wintitle> panel appears where you can select the sample data
-          buckets you want to load.</p></li>
-      <li>Click the names of sample buckets to load to the Couchbase Server. These data sets
-        demonstrate Couchbase Server's features and help you understand and develop views. If you
-        decide to install sample data, the installer creates one Couchbase bucket for each set of
-        sample data you choose. <fig>
+      </li>
+	  <li>
+		  既存ノードのIPアドレスもしくはホスト名と、既存クラスタの管理者の認証情報を指定してください。
+		</li>
+		<li>
+			既存クラスタに参加するには、<uicontrol>Join a cluster now</uicontrol>ラジオボタンをチェックします。
+		</li>
+		<li>
+			<uicontrol>Next</uicontrol>をクリックします。
+			<p><wintitle>Sample Buckets</wintitle>パネルが表示され、ロードするサンプルデータバケットを選択できます。</p></li>
+		<li>
+			Couchbase Serverにロードするサンプルバケットの名前をクリックします。
+			これらのデータセットはCouchbase Serverの機能をデモンストレーションし、
+			Viewの利用方法を理解し、開発に役立てることができます。
+			サンプルデータをインストールすると、インストーラは選択したサンプルデータセットごとにCouchbaseバケットを作成します。
+		<fig>
           <image href="../images/web-console-startup-3.png" width="600"/>
         </fig>
-        <p>After you create sample data buckets, the <wintitle>Create Bucket</wintitle> panel
-          appears where you create new data buckets</p></li>
-      <li>Set up a test bucket for Couchbase Server. You can change all bucket settings later, except
-        for the bucket name.<p>Enter <userinput>default</userinput> as the bucket name and accept all other defaults in
-          this panel. </p><p>Couchbase Server will create a new data bucket named <codeph>default</codeph>. You can
-          use this test bucket to learn more about Couchbase Server and use it in a test
-          environment.</p></li>
-      <li>Select <uicontrol>Update Notifications</uicontrol>.Couchbase Web Console communicates with
-        Couchbase nodes and confirms the version numbers of each node. <p>As long as you have
-          Internet access this information will be sent anonymously to Couchbase corporate, which
-          uses this information only to provide you with updates and information to help improve
-          Couchbase Server and related products. When you provide an email address, it is added to
-          the Couchbase community mailing list for news and update information about Couchbase and
-          related products. You can unsubscribe from the mailing list at any time using the
-            <codeph>Unsubscribe</codeph> link provided in each newsletter.</p><p> Couchbase Web
-          Console communicates the following information:</p><ul>
-          <li>The current version. When a new version of Couchbase Server exists, you get
-            information about where you can download the new version.</li>
-          <li>Information about the size and configuration of your Couchbase cluster to Couchbase
-            corporate. This information helps prioritize the development efforts. </li>
+		<p>
+			サンプルデータバケットを作成した後、<wintitle>Create Bucket</wintitle>パネルが表示され新しいデータバケットを作成できます。
+		</p></li>
+		<li>
+			Couchbase Serverにテスト用のバケットを作成します。
+			セットアップ後にバケット名の変更を除く、すべてのバケットの設定変更が可能です。
+			<p>
+				バケット名に<userinput>default</userinput>を入力し、パネル内のその他項目はすべてデフォルト設定とします。
+			</p>
+			<p>
+				Couchbase Serverは<codeph>default</codeph>という名前の新しいデータバケットを作成します。
+				このテスト用バケットをテスト環境で、Couchbase Serverを理解し利用するために利用してください。
+			</p></li>
+			<li>
+				<uicontrol>Update Notifications</uicontrol>を選択します。
+				Couchbase WebコンソールはCouchbaseノードと通信し、各ノードのバージョン番号を確認します。
+				<p>
+					インターネットアクセスが利用可能である間、Couchbase社にこの情報が匿名情報として送信され、
+					アップデートの通知とCouchbase Serverと関連する製品の工場に役立てるためだけに利用されます。
+					Eメールアドレスを入力すると、Couchbaseコミュニティメーリングリストに登録され、
+					Couchbaseや関連製品のニュースやアップデート情報を受信できます。
+					メーリングリストは各ニュースレター内の<codeph>Unsubscribe</codeph>リンクから、いつでも購読の解除が可能です。
+				</p>
+				<p>
+					Couchbase Webコンソールは次の情報を送信します:
+				</p><ul>
+				<li>
+					現在のバージョン。新しいバージョンのCouchbase Serverが存在する場合、
+					新バージョンのダウンロード先を知ることができます。
+				</li>
+				<li>
+					お使いのCouchbaseクラスタのサイズと設定をCouchbase社に送信します。
+					この情報はデプロイの優先度を決定するために利用されます。
+				</li>
         </ul></li>
-      <li>Enter a username and password. Your username must have up to 24 characters, and
-        your password must have 6 to 24 characters. Use these credentials each time you add a
-        new server into the cluster. These are the same credentials you use for Couchbase REST API.
+		<li>
+			ユーザ名とパスワードを入力します。ユーザ名は24文字まで、パスワードは6文字から24文字までです。
+			クラスタに新しいサーバを追加する際は、この認証情報を利用します。
+			Couchbase REST APIでも同じ認証情報を利用します。
      </li>
     
-   <li>After you finish this setup, you see the Couchbase Web Console with the <wintitle>Cluster
-          Overview</wintitle> page: <fig>
+	 <li>
+		 このセットアップが完了すると、Couchbase Webコンソールに<wintitle>Cluster
+		   Overview</wintitle>ページが表示されます:
+	  <fig>
           <image href="../images/web-console-startup-7.png" width="600"/>
         </fig>
-        <p>Couchbase Server is now running and ready to use. </p><p>After you complete the
-          installation and the initial server setup, you can also optionally configure other
-          settings, such as the port and RAM, using any of the following methods:</p></li></ol>
+		<p>
+			Couchbase Serverを利用する準備が整いました。
+		</p>
+		<p>
+			インストールが完了し、初期サーバのセットアップが完了すると、
+			ポートやRAMなどのその他の設定が次の方法を利用し、任意に設定可能となります:
+		</p></li></ol>
     
     <dl>
       <dlentry>
-        <dt>Command-line tools</dt>
-        <dd>The command line-tools included in your
-          Couchbase Server installation includes <codeph>couchbase-cli</codeph>, which allows   
-          access to the core functionality of the Couchbase Server by providing a wrapper to the REST
-          API. For more information, see <codeph>couchbase-cli</codeph> tool.</dd>
+        <dt>コマンドラインツール</dt>
+		<dd>
+			Couchbase Serverのインストールには、REST APIをラップし、Couchbase Serverの主要な機能にアクセスできる、
+			<codeph>couchbase-cli</codeph>などのコマンドラインツールが含まれています。
+		</dd>
       </dlentry>
     </dl>
     <dl>
       <dlentry>
         <dt>REST API</dt>
-        <dd>Couchbase Server can be configured and controlled using the REST API
-          on which both the command-line tools and Web interface to Couchbase Server are
-          based.For more information see REST API.</dd>
+		<dd>
+			Couchbase Serverは、コマンドラインツールとCouchbase ServerのWebインタフェースがベースとしている、
+			REST APIを利用して設定や制御が可能です。
+		</dd>
       </dlentry>
     </dl>
    
