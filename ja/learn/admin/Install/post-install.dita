@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_spx_crr_g4">
-  <title>Post-installation</title>
-  <shortdesc>Post-installation activities includes setting up the initial server and testing the
-    server connections.</shortdesc>
+<topic xml:lang="ja" id="topic_spx_crr_g4">
+  <title>インストール後の設定</title>
+  <shortdesc>
+	  初期サーバのセットアップとサーバ接続のテストなどのインストール後の設定について解説します。
+	</shortdesc>
  <body>
-  <note type="tip">Clear your browser's cache before starting the setup process. You can find notes and
-    tips on how to do this for different browsers and platforms on www.wikihow.com.</note>
+	 <note type="tip">
+		 セットアップ手順を開始する前にブラウザのキャッシュをクリアしてください。
+		 さまざまなブラウザやプラットフォームでキャッシュをクリアする方法はwww.wikihow.comで確認できます。
+	</note>
   
-  <p>On all platforms you can access the Couchbase Web Console by connecting to the embedded web server on
-    port 8091. For example, if your server can be identified on your network as
-    <codeph>servera</codeph>, you can access the Couchbase Web Console by opening
-    <codeph>http://servera:8091/</codeph>. You can also use an IP address or, if you are on the
-    same machine, <codeph>http://localhost:8091</codeph>. If you set up Couchbase Server on
-    a port other than <codeph>8091</codeph>, go to that specified port.</p>
+	<p>
+		すべてのプラットフォームから、8091ポートでリスンしているWebサーバに接続することで、Couchbase Webコンソールにアクセスできます。
+		例えば、<codeph>servera</codeph>でサーバが特定できる場合、Couchbase Webコンソールには<codeph>http://servera:8091/</codeph>でアクセスできます。
+		IPアドレスを指定するか、もしくは同一のマシン上からは<codeph>http://localhost:8091/</codeph>でもアクセスできます。
+		Couchbase Serverを<codeph>8091</codeph>ポート以外で設定している場合、そのポートを指定してください。
+	</p>
  </body>
 </topic>
