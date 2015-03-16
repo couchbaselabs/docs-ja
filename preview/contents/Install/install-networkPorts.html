@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Network ports</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>ネットワークポート</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
 						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
 					  (function() {
@@ -11,55 +11,63 @@
 					    var s = document.getElementsByTagName('script')[0];
 					    s.parentNode.insertBefore(gcse, s);
 					  })();
-					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections section--active"><a href="../install-intro.html"><span>Installation and upgrade</span></a><ul class="sub-sections"><li class="section"><a href="../Install/setup-overview.html"><span>Couchbase setup overview</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Install/pre-install.html"><span>Pre-installation</span></a><ul class="sub-sections"><li class="section"><a href="../Install/install-resourceReqs.html"><span>Resource requirements</span></a></li><li class="section"><a href="../Install/install-platforms.html"><span>Supported platforms</span></a></li><li class="section"><a href="../Install/install-networkPorts.html" class="current"><span>Network ports</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Install/install-browsers.html"><span>Supported web browsers</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Install/RHEL-install-intro.html"><span>Red Hat/CentOS installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Ubuntu-install.html"><span>Ubuntu/Debian installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Windows-install.html"><span>Microsoft Windows installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Mac-install.html"><span>Mac OS X installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/post-install.html"><span>Post-installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/upgrading.html"><span>Upgrading </span></a></li><li class="section section--has-sub-sections"><a href="../Install/migrating.html"><span>Migrating</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-	<h1 class="title topictitle1">Network ports</h1>
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections section--active"><a href="../install-intro.html"><span>インストールとアップグレード</span></a><ul class="sub-sections"><li class="section"><a href="../Install/setup-overview.html"><span>Couchbaseセットアップの概要</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Install/pre-install.html"><span>インストール要件</span></a><ul class="sub-sections"><li class="section"><a href="../Install/install-resourceReqs.html"><span>リソース要件</span></a></li><li class="section"><a href="../Install/install-platforms.html"><span>サポート対象のプラットフォーム</span></a></li><li class="section"><a href="../Install/install-networkPorts.html" class="current"><span>ネットワークポート</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Install/install-browsers.html"><span>サポート対象のWebブラウザ</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Install/RHEL-install-intro.html"><span>Red Hat/CentOS installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Ubuntu-install.html"><span>Ubuntu/Debian installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Windows-install.html"><span>Microsoft Windows installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Mac-install.html"><span>Mac OS X installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/post-install.html"><span>Post-installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/upgrading.html"><span>Upgrading </span></a></li><li class="section section--has-sub-sections"><a href="../Install/migrating.html"><span>Migrating</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+	<h1 class="title topictitle1">ネットワークポート</h1>
 
 	
-	<div class="body"><p class="shortdesc">Couchbase Server uses specific network ports for communication between server components
-		and with the clients accessing the data stored in the Couchbase cluster.</p>
+	<div class="body"><p class="shortdesc">
+		Couchbase Serverはサーバコンポーネント間、およびCouchbaseクラスタに保存されたデータにアクセスするクライアントとの間で、
+		特定のネットワークポートを利用します。
+	</p>
 
-		<p class="p">The listed ports must be available on the host for Couchbase Server to run and operate
-			correctly. Couchbase Server configures these ports automatically, but you must verify
-			that the firewall and IP tables configuration allow communication on the specified ports
-			for each usage type. On Linux, the installer will notify you that you need to open these
-			ports.</p>
+		<p class="p">
+			以下の表に示すポートはCouchbase Serverを稼働し、正常に動作するために、ホスト上で利用可能とする必要があります。
+			Couchbase Serverはこれらのポートを自動的に利用するので、各利用種別において、
+			ファイヤウォールとiptablesの設定が、特定のポートで通信を許可するように設定されているかご確認ください。
+			Linuxの場合、インストーラがこれらのポートをオープンするように通知します。
+		</p>
 
-		<p class="p">The following table lists the ports used for different types of communication with
-			Couchbase Server:</p>
+		<p class="p">
+			以下の表はさまざまな通信種別にCouchbase Serverが利用するポートの一覧です:
+		</p>
 
 		<dl class="dl">
 			
-				<dt class="dt dlterm">Node to node</dt>
+				<dt class="dt dlterm">ノード間</dt>
 
-				<dd class="dd">These ports are used by Couchbase Server
-					for communication between all nodes within the cluster. These ports must be open to 
-					enable nodes to communicate with each other.</dd>
+				<dd class="dd">
+					これらのポートはCouchbase Serverがクラスタ内のすべてのノード間で通信するために利用します。
+					これらのポートは各ノード間で通信を可能とするためにオープンされている必要があります。
+				</dd>
 
 			
 		
 			
-				<dt class="dt dlterm">Node to client</dt>
+				<dt class="dt dlterm">ノードとクライアント</dt>
 
-				<dd class="dd">These ports are used by Couchbase Server
-					for communication between all nodes within the cluster. These ports must be open to 
-					enable nodes to communicate with each other.</dd>
+				<dd class="dd">
+					これらのポートはクラスタ内のすべてのノードと、クライアントが通信するためにCouchbase Serverが利用します。
+					これらのポートは各ノードがクライアントと通信できるようにオープンされている必要があります。
+				</dd>
 
 			
 		</dl>
 
 		<dl class="dl">
 			
-				<dt class="dt dlterm">Cluster administration</dt>
+				<dt class="dt dlterm">クラスタ管理用</dt>
 
-				<dd class="dd">These ports are used for Couchbase administration including the REST
-					API, command-line clients, and web browsers.</dd>
+				<dd class="dd">
+					これらのポートはREST API、コマンドラインクライアント、WebブラウザといったCouchbaseの運用管理に利用します。
+				</dd>
 
 			
 			
 				<dt class="dt dlterm">XDCR</dt>
 
-				<dd class="dd">These ports are used for XDCR (Cross Data Center Replication) communication between
-					all nodes in both the source and destination clusters.</dd>
+				<dd class="dd">
+					これらのポートはXDCR(クロスデータセンタレプリケーション)でソースクラスタと宛先クラスタ内のすべてのノード間で通信するために利用します。
+				</dd>
 
 			
 		</dl>
@@ -78,15 +86,15 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="14.270613107822411%" id="d64188e86">Port</th>
+						<th class="entry" valign="top" width="14.270613107822411%" id="d64188e86">ポート</th>
 
-						<th class="entry" valign="top" width="25.687103594080334%" id="d64188e89">Description</th>
+						<th class="entry" valign="top" width="25.687103594080334%" id="d64188e89">説明</th>
 
-						<th class="entry" valign="top" width="10.570824524312895%" id="d64188e92">Node to node</th>
+						<th class="entry" valign="top" width="10.570824524312895%" id="d64188e92">ノード間</th>
 
-						<th class="entry" valign="top" width="12.262156448202958%" id="d64188e95">Node to client</th>
+						<th class="entry" valign="top" width="12.262156448202958%" id="d64188e95">ノードとクライアント間</th>
 
-						<th class="entry" valign="top" width="14.270613107822411%" id="d64188e98">Cluster admin</th>
+						<th class="entry" valign="top" width="14.270613107822411%" id="d64188e98">クラスタ管理用</th>
 
 						<th class="entry" valign="top" width="10.782241014799153%" id="d64188e102">XDCR v1</th>
 
@@ -100,7 +108,7 @@
 					<tr class="row">
 						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">8091</td>
 
-						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Web Administration Port</td>
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Web管理用ポート</td>
 
 						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">Yes</td>
 
@@ -117,7 +125,7 @@
 					<tr class="row">
 						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">8092</td>
 
-						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Couchbase API Port</td>
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Couchbase APIポート</td>
 
 						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">Yes</td>
 
@@ -134,7 +142,7 @@
 					<tr class="row">
 						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">11207</td>
 
-						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Internal/External Bucket Port for SSL</td>
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">内部/外部用SSLバケットポート</td>
 
 						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">No</td>
 
@@ -151,7 +159,7 @@
 					<tr class="row">
 						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">11209</td>
 
-						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Internal Bucket Port</td>
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">内部バケットポート</td>
 
 						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">Yes</td>
 
@@ -168,7 +176,7 @@
 					<tr class="row">
 						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">11210</td>
 
-						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Internal/External Bucket Port</td>
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">内部/外部用バケットポート</td>
 
 						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">Yes</td>
 
@@ -185,7 +193,7 @@
 					<tr class="row">
 						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">11211</td>
 
-						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Client interface (proxy)</td>
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">クライアントインタフェース(プロキシ)</td>
 
 						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">No</td>
 
@@ -202,7 +210,7 @@
 					<tr class="row">
 						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">11214</td>
 
-						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Incoming SSL Proxy</td>
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">SSLプロキシ受信用</td>
 
 						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">No</td>
 
@@ -219,7 +227,7 @@
 					<tr class="row">
 						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">11215</td>
 
-						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Internal Outgoing SSL Proxy</td>
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">内部SSLプロキシ送信用</td>
 
 						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">No</td>
 
@@ -236,7 +244,7 @@
 					<tr class="row">
 						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">18091</td>
 
-						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Internal REST HTTPS for SSL</td>
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">内部REST HTTPS、SSL用</td>
 
 						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">No</td>
 
@@ -253,7 +261,7 @@
 					<tr class="row">
 						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">18092</td>
 
-						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Internal CAPI HTTPS for SSL</td>
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">内部CAPI HTTPS、SSL用</td>
 
 						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">No</td>
 
@@ -285,9 +293,9 @@
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">21100 to 21299 (inclusive)</td>
+						<td class="entry" valign="top" width="14.270613107822411%" headers="d64188e86 ">21100 から 21299 まで</td>
 
-						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">Node data exchange</td>
+						<td class="entry" valign="top" width="25.687103594080334%" headers="d64188e89 ">ノード間データ転送</td>
 
 						<td class="entry" valign="top" width="10.570824524312895%" headers="d64188e92 ">Yes</td>
 
@@ -309,78 +317,79 @@
 		
 		<dl class="dl">
 				
-					<dt class="dt dlterm">Port 8091</dt>
+					<dt class="dt dlterm">ポート8091</dt>
 
-					<dd class="dd">Used by the Couchbase Web Console for REST/HTTP traffic.</dd>
-
-				
-
-
-				
-					<dt class="dt dlterm">Port 8092</dt>
-
-					<dd class="dd">Used to access views, run queries, and update design documents.</dd>
-
-				
-			
-			
-				<dt class="dt dlterm">Port 11207</dt>
-
-				<dd class="dd">Used by smart client libraries to access data nodes using SSL.</dd>
-
-			
-
-
-				
-					<dt class="dt dlterm">Port 11210</dt>
-
-					<dd class="dd">Used by smart client libraries or Moxi to directly connect to the data nodes.</dd>
+					<dd class="dd">Couchbase WebコンソールのREST/HTTPトラフィックに利用。</dd>
 
 				
 
 
 				
-					<dt class="dt dlterm">Port 11211</dt>
+					<dt class="dt dlterm">ポート8092</dt>
 
-					<dd class="dd">Used by pre-existing Couchbase and memcached (non-smart) client libraries.</dd>
-
-				
-
-
-				
-					<dt class="dt dlterm">Ports 11214 and 11215</dt>
-
-					<dd class="dd">Used for SSL XDCR data encryption.</dd>
+					<dd class="dd">Viewへのアクセス、クエリの実行、デザインドキュメントの更新に利用。</dd>
 
 				
 			
-				<dt class="dt dlterm">Port 18091</dt>
-
-				<dd class="dd">Used by the Couchbase Web Console for REST/HTTP traffic with SSL.</dd>
-
 			
-			
-				<dt class="dt dlterm">Port 18092</dt>
+				<dt class="dt dlterm">ポート11207</dt>
 
-				<dd class="dd">Used to access views, run queries, and update design documents with SSL.</dd>
+				<dd class="dd">スマートクライアントライブラリからSSLでのデータノードアクセスに利用。</dd>
 
 			
 
 
 				
-					<dt class="dt dlterm">All other Ports</dt>
+					<dt class="dt dlterm">ポート11210</dt>
 
-					<dd class="dd">Used for other Couchbase Server communications.</dd>
+					<dd class="dd">スマートクライアントおよびMoxiからデータノードへ直接アクセスする場合に利用。</dd>
+
+				
+
+
+				
+					<dt class="dt dlterm">ポート11211</dt>
+
+					<dd class="dd">既存のCouchbaseとmemcached(スマートではない)クライアントライブラリから利用。</dd>
+
+				
+
+
+				
+					<dt class="dt dlterm">ポート11214、11215</dt>
+
+					<dd class="dd">SSLを利用したXDCRのデータ暗号化で利用。</dd>
+
+				
+			
+				<dt class="dt dlterm">ポート18091</dt>
+
+				<dd class="dd">Couchbase WebコンソールのREST/HTTP SSLトラフィックで利用。</dd>
+
+			
+			
+				<dt class="dt dlterm">ポート18092</dt>
+
+				<dd class="dd">SSLを利用した、Viewアクセス、クエリの実行、デザインドキュメントの更新に利用。</dd>
+
+			
+
+
+				
+					<dt class="dt dlterm">上記以外のポート</dt>
+
+					<dd class="dd">その他のCouchbase Server通信に利用。</dd>
 
 				
 
 			</dl>
 
 		
-		<div class="note note"><span class="notetitle">Note:</span> Port 11213 is an internal ports used on the local host for memcached and compaction. 
-			The node is not used for communication between nodes in a cluster. For firewall purposes, 
-			you do not need to take port 11213 into consideration. 
-			However, if a service is listening on this port, Couchbase Server does not start correctly.
+			<div class="note note"><span class="notetitle">注:</span> 
+				ポート11213は、memcachedとコンパクション用にローカルホスト上で内部的に利用されるポートです。
+				クラスタ内のノード間で通信を行うためには利用しません。
+				ファイヤウォールの設定では、11213ポートを意識する必要はありません。
+				しかしながら、他のサービスがこのポートでリスンしている場合、Couchbase Serverは正常に起動しません。
 		</div>
 
 
@@ -388,8 +397,8 @@
 
 <nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/pre-install.html" title="Pre-installation describes requirements, supported configurations, and reserved or restricted items that have to be considered before installing Couchbase Server.">Pre-installation</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/install-platforms.html" title="System requirements for supported platforms.">Supported platforms</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/install-browsers.html" title="Supported web browsers include Mozilla Firefox, Apple Safari, Google Chrome, and Microsoft Internet Explorer.">Supported web browsers</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Install/pre-install.html" title="インストール要件では、システム要件、サポートされる設定、 Couchbase Serverインストールの前に考慮すべき、予約事項、もしくは制限事項について説明します。">インストール要件</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../Install/install-platforms.html" title="サポート対象のプラットフォームシステム要件。">サポート対象のプラットフォーム</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Install/install-browsers.html" title="サポートされるブラウザは、Mozilla Firefox、Apple Safari、Google Chrome、そしてMicrosoft Internet Explorerです。">サポート対象のWebブラウザ</a></div>
 </div>
 </nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>
