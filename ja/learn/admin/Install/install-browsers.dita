@@ -1,46 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic765">
- <title>Supported web browsers</title>
- <shortdesc>Supported web browsers include Mozilla Firefox, Apple Safari, Google Chrome, and Microsoft Internet Explorer.</shortdesc>
+<topic xml:lang="ja" id="topic765">
+ <title>サポート対象のWebブラウザ</title>
+ <shortdesc>
+	 サポートされるブラウザは、Mozilla Firefox、Apple Safari、Google Chrome、そしてMicrosoft Internet Explorerです。
+ </shortdesc>
  <body>
-  <p>Couchbase Web Console runs on the following web browser versions and with JavaScript enabled:</p>
+  <p>Couchbase Webコンソールは以下のWebブラウザとバージョンでJavaScriptを有効にした状態で動作します:</p>
   
  <dl>
    <dlentry>
-     <dt>Mozilla Firefox 3.6 or later </dt>
-     <dd>To enable JavaScript, select the <uicontrol>Enable
-       JavaScript</uicontrol> option in the <codeph>Content</codeph> panel of the application
-       preferences.</dd>
+     <dt>Mozilla Firefox 3.6 以降</dt>
+	 <dd>JavaScriptを有効にするには、アプリケーション設定から
+		<codeph>Content</codeph>パネルの<uicontrol>Enable JavaScript</uicontrol>を選択してください。
+	</dd>
    </dlentry>
  </dl>  
    
    <dl>
      <dlentry>
-       <dt>Apple Safari 5 or later</dt>
-       <dd>To enable JavaScript, use the check box on the security tab of the
-         application preferences.</dd>
+       <dt>Apple Safari 5以降</dt>
+	   <dd>
+		   JavaScriptを有効にするには、アプリケーション設定のセキュリティタブのチェックボックスを利用してください。
+		</dd>
      </dlentry>
    </dl>  
    
    <dl>
      <dlentry>
-       <dt>Google Chrome 11 or later</dt>
-       <dd>To enable JavaScript, go to the Chrome menu and select <uicontrol>Preferences</uicontrol>.
-         Under <menucascade>
+       <dt>Google Chrome 11以降</dt>
+	   <dd>
+		   JavaScriptを有効にするには、Chromeのメニューから、<uicontrol>Preferences</uicontrol>を選択してください。
+		<menucascade>
            <uicontrol>Advanced Settings</uicontrol><uicontrol>Privacy</uicontrol>
-         </menucascade>, click <uicontrol>Content Settings</uicontrol>. In the <codeph>JavaScript</codeph> section 
-         select the radio button <uicontrol>Allow all sites to run JavaScript (recommended)</uicontrol>.</dd>
+	   </menucascade>
+	   の<uicontrol>Content Settings</uicontrol>をクリックします。
+	   <codeph>JavaScript</codeph>セクションにある、<uicontrol>Allow all sites to run JavaScript (recommended)</uicontrol>ラジオボタンを選択します。</dd>
      </dlentry>
    </dl>  
    
    <dl>
      <dlentry>
-       <dt>Microsoft Internet Explorer 8 or later</dt>
-       <dd>To enable JavaScript, select 
+       <dt>Microsoft Internet Explorer 8以降</dt>
+	   <dd>JavaScriptを有効にするには、
          <menucascade><uicontrol>Tools</uicontrol> <uicontrol>Internet Options</uicontrol> <uicontrol>Security</uicontrol><uicontrol>Custom Level</uicontrol> 
-           <uicontrol>Active Scripting</uicontrol></menucascade>.</dd>
+           <uicontrol>Active Scripting</uicontrol></menucascade>を選択してください。</dd>
      </dlentry>
    </dl>  
 
