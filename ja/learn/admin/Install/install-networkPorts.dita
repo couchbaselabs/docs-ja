@@ -1,43 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic2659">
-	<title>Network ports</title>
-	<shortdesc>Couchbase Server uses specific network ports for communication between server components
-		and with the clients accessing the data stored in the Couchbase cluster.</shortdesc>
+<topic xml:lang="ja" id="topic2659">
+	<title>ネットワークポート</title>
+	<shortdesc>
+		Couchbase Serverはサーバコンポーネント間、およびCouchbaseクラスタに保存されたデータにアクセスするクライアントとの間で、
+		特定のネットワークポートを利用します。
+	</shortdesc>
 	<body>
-		<p>The listed ports must be available on the host for Couchbase Server to run and operate
-			correctly. Couchbase Server configures these ports automatically, but you must verify
-			that the firewall and IP tables configuration allow communication on the specified ports
-			for each usage type. On Linux, the installer will notify you that you need to open these
-			ports.</p>
-		<p>The following table lists the ports used for different types of communication with
-			Couchbase Server:</p>
+		<p>
+			以下の表に示すポートはCouchbase Serverを稼働し、正常に動作するために、ホスト上で利用可能とする必要があります。
+			Couchbase Serverはこれらのポートを自動的に利用するので、各利用種別において、
+			ファイヤウォールとiptablesの設定が、特定のポートで通信を許可するように設定されているかご確認ください。
+			Linuxの場合、インストーラがこれらのポートをオープンするように通知します。
+		</p>
+		<p>
+			以下の表はさまざまな通信種別にCouchbase Serverが利用するポートの一覧です:
+		</p>
 		<dl>
 			<dlentry>
-				<dt>Node to node</dt>
-				<dd>These ports are used by Couchbase Server
-					for communication between all nodes within the cluster. These ports must be open to 
-					enable nodes to communicate with each other.</dd>
+				<dt>ノード間</dt>
+				<dd>
+					これらのポートはCouchbase Serverがクラスタ内のすべてのノード間で通信するために利用します。
+					これらのポートは各ノード間で通信を可能とするためにオープンされている必要があります。
+				</dd>
 			</dlentry>
 		
 			<dlentry>
-				<dt>Node to client</dt>
-				<dd>These ports are used by Couchbase Server
-					for communication between all nodes within the cluster. These ports must be open to 
-					enable nodes to communicate with each other.</dd>
+				<dt>ノードとクライアント</dt>
+				<dd>
+					これらのポートはクラスタ内のすべてのノードと、クライアントが通信するためにCouchbase Serverが利用します。
+					これらのポートは各ノードがクライアントと通信できるようにオープンされている必要があります。
+				</dd>
 			</dlentry>
 		</dl>
 		<dl>
 			<dlentry>
-				<dt>Cluster administration</dt>
-				<dd>These ports are used for Couchbase administration including the REST
-					API, command-line clients, and web browsers.</dd>
+				<dt>クラスタ管理用</dt>
+				<dd>
+					これらのポートはREST API、コマンドラインクライアント、WebブラウザといったCouchbaseの運用管理に利用します。
+				</dd>
 			</dlentry>
 			<dlentry>
 				<dt>XDCR</dt>
-				<dd>These ports are used for XDCR (Cross Data Center Replication) communication between
-					all nodes in both the source and destination clusters.</dd>
+				<dd>
+					これらのポートはXDCR(クロスデータセンタレプリケーション)でソースクラスタと宛先クラスタ内のすべてのノード間で通信するために利用します。
+				</dd>
 			</dlentry>
 		</dl>
 		
@@ -54,11 +62,11 @@
 				<colspec colname="col7" colwidth="1.15*"/>
 				<thead>
 					<row>
-						<entry>Port</entry>
-						<entry>Description</entry>
-						<entry>Node to node</entry>
-						<entry>Node to client</entry>
-						<entry>Cluster admin</entry>
+						<entry>ポート</entry>
+						<entry>説明</entry>
+						<entry>ノード間</entry>
+						<entry>ノードとクライアント間</entry>
+						<entry>クラスタ管理用</entry>
 						<entry>XDCR v1</entry>
 						<entry>XDCR v2</entry>
 					</row>
@@ -66,7 +74,7 @@
 				<tbody>
 					<row>
 						<entry>8091</entry>
-						<entry>Web Administration Port</entry>
+						<entry>Web管理用ポート</entry>
 						<entry>Yes</entry>
 						<entry>Yes</entry>
 						<entry>Yes</entry>
@@ -75,7 +83,7 @@
 					</row>
 					<row>
 						<entry>8092</entry>
-						<entry>Couchbase API Port</entry>
+						<entry>Couchbase APIポート</entry>
 						<entry>Yes</entry>
 						<entry>Yes</entry>
 						<entry>No</entry>
@@ -84,7 +92,7 @@
 					</row>
 					<row>
 						<entry>11207</entry>
-						<entry>Internal/External Bucket Port for SSL</entry>
+						<entry>内部/外部用SSLバケットポート</entry>
 						<entry>No</entry>
 						<entry>Yes</entry>
 						<entry>No</entry>
@@ -93,7 +101,7 @@
 					</row>
 					<row>
 						<entry>11209</entry>
-						<entry>Internal Bucket Port</entry>
+						<entry>内部バケットポート</entry>
 						<entry>Yes</entry>
 						<entry>No</entry>
 						<entry>No</entry>
@@ -102,7 +110,7 @@
 					</row>
 					<row>
 						<entry>11210</entry>
-						<entry>Internal/External Bucket Port</entry>
+						<entry>内部/外部用バケットポート</entry>
 						<entry>Yes</entry>
 						<entry>Yes</entry>
 						<entry>No</entry>
@@ -111,7 +119,7 @@
 					</row>
 					<row>
 						<entry>11211</entry>
-						<entry>Client interface (proxy)</entry>
+						<entry>クライアントインタフェース(プロキシ)</entry>
 						<entry>No</entry>
 						<entry>Yes</entry>
 						<entry>No</entry>
@@ -120,7 +128,7 @@
 					</row>
 					<row>
 						<entry>11214</entry>
-						<entry>Incoming SSL Proxy</entry>
+						<entry>SSLプロキシ受信用</entry>
 						<entry>No</entry>
 						<entry>No</entry>
 						<entry>No</entry>
@@ -129,7 +137,7 @@
 					</row>
 					<row>
 						<entry>11215</entry>
-						<entry>Internal Outgoing SSL Proxy</entry>
+						<entry>内部SSLプロキシ送信用</entry>
 						<entry>No</entry>
 						<entry>No</entry>
 						<entry>No</entry>
@@ -138,7 +146,7 @@
 					</row>
 					<row>
 						<entry>18091</entry>
-						<entry>Internal REST HTTPS for SSL</entry>
+						<entry>内部REST HTTPS、SSL用</entry>
 						<entry>No</entry>
 						<entry>Yes</entry>
 						<entry>Yes</entry>
@@ -147,7 +155,7 @@
 					</row>
 					<row>
 						<entry>18092</entry>
-						<entry>Internal CAPI HTTPS for SSL</entry>
+						<entry>内部CAPI HTTPS、SSL用</entry>
 						<entry>No</entry>
 						<entry>Yes</entry>
 						<entry>No</entry>
@@ -164,8 +172,8 @@
 						<entry>No</entry>
 					</row>
 					<row>
-						<entry>21100 to 21299 (inclusive)</entry>
-						<entry>Node data exchange</entry>
+						<entry>21100 から 21299 まで</entry>
+						<entry>ノード間データ転送</entry>
 						<entry>Yes</entry>
 						<entry>No</entry>
 						<entry>No</entry>
@@ -178,59 +186,60 @@
 		
 		<dl>
 				<dlentry>
-					<dt>Port 8091</dt>
-					<dd>Used by the Couchbase Web Console for REST/HTTP traffic.</dd>
+					<dt>ポート8091</dt>
+					<dd>Couchbase WebコンソールのREST/HTTPトラフィックに利用。</dd>
 				</dlentry>
 
 
 				<dlentry>
-					<dt>Port 8092</dt>
-					<dd>Used to access views, run queries, and update design documents.</dd>
+					<dt>ポート8092</dt>
+					<dd>Viewへのアクセス、クエリの実行、デザインドキュメントの更新に利用。</dd>
 				</dlentry>
 			
 			<dlentry>
-				<dt>Port 11207</dt>
-				<dd>Used by smart client libraries to access data nodes using SSL.</dd>
+				<dt>ポート11207</dt>
+				<dd>スマートクライアントライブラリからSSLでのデータノードアクセスに利用。</dd>
 			</dlentry>
 
 
 				<dlentry>
-					<dt>Port 11210</dt>
-					<dd>Used by smart client libraries or Moxi to directly connect to the data nodes.</dd>
+					<dt>ポート11210</dt>
+					<dd>スマートクライアントおよびMoxiからデータノードへ直接アクセスする場合に利用。</dd>
 				</dlentry>
 
 
 				<dlentry>
-					<dt>Port 11211</dt>
-					<dd>Used by pre-existing Couchbase and memcached (non-smart) client libraries.</dd>
+					<dt>ポート11211</dt>
+					<dd>既存のCouchbaseとmemcached(スマートではない)クライアントライブラリから利用。</dd>
 				</dlentry>
 
 
 				<dlentry>
-					<dt>Ports 11214 and 11215</dt>
-					<dd>Used for SSL XDCR data encryption.</dd>
+					<dt>ポート11214、11215</dt>
+					<dd>SSLを利用したXDCRのデータ暗号化で利用。</dd>
 				</dlentry>
 			<dlentry>
-				<dt>Port 18091</dt>
-				<dd>Used by the Couchbase Web Console for REST/HTTP traffic with SSL.</dd>
+				<dt>ポート18091</dt>
+				<dd>Couchbase WebコンソールのREST/HTTP SSLトラフィックで利用。</dd>
 			</dlentry>
 			<dlentry>
-				<dt>Port 18092</dt>
-				<dd>Used to access views, run queries, and update design documents with SSL.</dd>
+				<dt>ポート18092</dt>
+				<dd>SSLを利用した、Viewアクセス、クエリの実行、デザインドキュメントの更新に利用。</dd>
 			</dlentry>
 
 
 				<dlentry>
-					<dt>All other Ports</dt>
-					<dd>Used for other Couchbase Server communications.</dd>
+					<dt>上記以外のポート</dt>
+					<dd>その他のCouchbase Server通信に利用。</dd>
 				</dlentry>
 
 			</dl>
 		
-		<note type="note">Port 11213 is an internal ports used on the local host for memcached and compaction. 
-			The node is not used for communication between nodes in a cluster. For firewall purposes, 
-			you do not need to take port 11213 into consideration. 
-			However, if a service is listening on this port, Couchbase Server does not start correctly.
+			<note type="note">
+				ポート11213は、memcachedとコンパクション用にローカルホスト上で内部的に利用されるポートです。
+				クラスタ内のノード間で通信を行うためには利用しません。
+				ファイヤウォールの設定では、11213ポートを意識する必要はありません。
+				しかしながら、他のサービスがこのポートでリスンしている場合、Couchbase Serverは正常に起動しません。
 		</note>
 
 	</body>
