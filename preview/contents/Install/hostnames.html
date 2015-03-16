@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Using hostnames</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>ホスト名の利用</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
 						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
 					  (function() {
@@ -11,53 +11,58 @@
 					    var s = document.getElementsByTagName('script')[0];
 					    s.parentNode.insertBefore(gcse, s);
 					  })();
-					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections section--active"><a href="../install-intro.html"><span>インストールとアップグレード</span></a><ul class="sub-sections"><li class="section"><a href="../Install/setup-overview.html"><span>Couchbaseセットアップの概要</span></a></li><li class="section section--has-sub-sections"><a href="../Install/pre-install.html"><span>インストール要件</span></a></li><li class="section section--has-sub-sections"><a href="../Install/RHEL-install-intro.html"><span>Red Hat/CentOS installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Ubuntu-install.html"><span>Ubuntu/Debian installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Windows-install.html"><span>Microsoft Windows installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Mac-install.html"><span>Mac OS X installation</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Install/post-install.html"><span>Post-installation</span></a><ul class="sub-sections"><li class="section"><a href="../Install/init-setup.html"><span>Initial server setup</span></a></li><li class="section"><a href="../Install/hostnames.html" class="current"><span>Using hostnames</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Install/linux-startup-shutdown.html"><span>Start-up and shutdown on Linux</span></a></li><li class="section"><a href="../Install/windows-startup-shutdown.html"><span>Start-up and shutdown on Windows</span></a></li><li class="section"><a href="../Install/mac-startup-shutdown.html"><span>Start-up and shutdown on Mac OS X</span></a></li><li class="section section--has-sub-sections"><a href="../Install/testing.html"><span>Testing Couchbase Server</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Install/upgrading.html"><span>Upgrading </span></a></li><li class="section section--has-sub-sections"><a href="../Install/migrating.html"><span>Migrating</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-  <h1 class="title topictitle1">Using hostnames</h1>
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections section--active"><a href="../install-intro.html"><span>インストールとアップグレード</span></a><ul class="sub-sections"><li class="section"><a href="../Install/setup-overview.html"><span>Couchbaseセットアップの概要</span></a></li><li class="section section--has-sub-sections"><a href="../Install/pre-install.html"><span>インストール要件</span></a></li><li class="section section--has-sub-sections"><a href="../Install/RHEL-install-intro.html"><span>Red Hat/CentOS installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Ubuntu-install.html"><span>Ubuntu/Debian installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Windows-install.html"><span>Microsoft Windows installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Mac-install.html"><span>Mac OS X installation</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Install/post-install.html"><span>インストール後の設定</span></a><ul class="sub-sections"><li class="section"><a href="../Install/init-setup.html"><span>サーバの初期セットアップ</span></a></li><li class="section"><a href="../Install/hostnames.html" class="current"><span>ホスト名の利用</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Install/linux-startup-shutdown.html"><span>Start-up and shutdown on Linux</span></a></li><li class="section"><a href="../Install/windows-startup-shutdown.html"><span>Start-up and shutdown on Windows</span></a></li><li class="section"><a href="../Install/mac-startup-shutdown.html"><span>Start-up and shutdown on Mac OS X</span></a></li><li class="section section--has-sub-sections"><a href="../Install/testing.html"><span>Testing Couchbase Server</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Install/upgrading.html"><span>Upgrading </span></a></li><li class="section section--has-sub-sections"><a href="../Install/migrating.html"><span>Migrating</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">ホスト名の利用</h1>
 
-  <div class="body"><p class="shortdesc">Each Couchbase Server's instance can have its own hostname.</p>
+  <div class="body"><p class="shortdesc">各Couchbase Serverのインスタンスはそのホスト名を利用できます。</p>
 
-    <p class="p">When you first install Couchbase Server, you can access it 
-      using a default IP address. There are cases, however, when you want to provide a hostname for each
-      instance of a server. Each hostname you provide must be a valid one and will ultimately
-      resolve to a valid IP Address. If you restart a node, it will use
-      the hostname once again. If you fail over or remove a node from a cluster, the node needs to
-      be configured with the hostname once again.</p>
+	  <p class="p">
+		  初めてCouchbase Serverをインストールする際、デフォルトIPアドレスを利用してアクセスできます。
+		  しかし各サーバインスタンスのホスト名を指定したい場合もあります。
+		  各ホスト名を指定する場合、有効で、IPアドレスを解決できるものである必要があります。
+		  ノードをリスタートすると、ホスト名を再度使用します。
+		  クラスタからノードをフェイルオーバもしくは削除する場合、そのノードは再度ホスト名を指定して設定する必要があります。
+	</p>
 
       
-      <p class="p">There are several ways you can provide hostnames: when installing a Couchbase Server on a
-      machine, when adding a node to an existing cluster for online upgrade, or via a REST API call.
-      Couchbase Server stores the hostnames in a config file on the disk.</p>
+	<p class="p">
+		ホスト名を指定する方法はいくつかあります: Couchbase Serverをマシンにインストールするとき、
+		オンラインアップグレードとしてノードを既存クラスタに追加するとき、
+		もしくはREST APIを利用する場合です。
+		Couchbase Serverはホスト名をディスク上の設定ファイルに保存します。
+	</p>
 
-    <div class="section"><h2 class="title sectiontitle">Provide hostname on initial setup</h2>
-      
-         In the first screen, provide either a hostname or IP address under <span class="keyword wintitle">Configure
-            Server Hostname</span>. The provided hostname survives node restart.
+    <div class="section"><h2 class="title sectiontitle">初期セットアップ時にホスト名を指定する</h2>
+
+		最初の画面で、ホスト名かIPアドレスを<span class="keyword wintitle">Server Hostname</span>で指定します。
+		指定したホスト名はノードを再起動しても有効です。
           <div class="fig fignone"><img class="image" src="../images/configure_server1.png" width="720"></div>
 
    
         
     </div>
  
-    <div class="section"><h2 class="title sectiontitle">Provide hostname while adding a node</h2>
-     
-          If a new node is being added to an existing 2.0.1 or earlier
-            Couchbase cluster, first set up the hostname for the new node in the setup
-            wizard. Add a new node to a cluster by providing either a hostname or
-            IP address under <span class="ph menucascade"><span class="ph uicontrol">Add Server</span> &gt; <span class="ph uicontrol">Server IP Address
-              </span></span>.
+    <div class="section"><h2 class="title sectiontitle">ノード追加時にホスト名を指定する</h2>
+
+		既存の2.0.1以降のCouchbaseクラスタにノードを追加する際、
+		まず、セットアップウィザートから新規ノードのホスト名を設定します。
+		<span class="ph menucascade"><span class="ph uicontrol">Add Server</span> &gt; <span class="ph uicontrol">Server IP Address</span></span>から、
+		ホスト名またはIPアドレスを指定して、クラスタに新規ノードを追加します。
           <div class="fig fignone"><img class="image" src="../images/hostname_add_node.png" width="720"></div>
 
       
     </div>
 
-    <div class="section"><h2 class="title sectiontitle">Provide hostname via REST API</h2>
-   
-       Provide a host name for a node a host name with the REST request at the <span class="ph filepath">/node/controller/rename endpoint</span>. 
-          <div class="p">If this method is used, provide the hostname before adding a node to a cluster. 
-            If a hostname is provided for a node that is already part of a Couchbase cluster, 
-            the server rejects the request and returns 
-            <pre class="pre codeblock"><code>error 400 reason: unknown ["Renaming is disallowed for nodes that are already part of a cluster"]</code></pre>
+    <div class="section"><h2 class="title sectiontitle">REST APIでホスト名を指定する</h2>
 
+		<span class="ph filepath">/node/controller/rename endpoint</span>に対してRESTリクエストを送信し、ノードのホスト名を指定します。	
+		<div class="p">
+			この方法を利用する場合、ノードをクラスタに追加する前にホスト名を指定する必要があります。
+			もしすでにCouchbaseクラスタの一部であるノードにホスト名を指定した場合、
+			サーバはリクエストを拒否し、
+			<pre class="pre codeblock"><code>error 400 reason: unknown ["Renaming is disallowed for nodes that are already part of a cluster"]</code></pre>
+
+			を返します。
           <pre class="pre codeblock"><code>curl -v -X POST -u Administrator:asdasd \
 http://127.0.0.1:8091/node/controller/rename -d hostname=shz.localdomain</code></pre>
 </div>
@@ -65,10 +70,12 @@ http://127.0.0.1:8091/node/controller/rename -d hostname=shz.localdomain</code><
     </div>
 
       
-      <div class="section"><h2 class="title sectiontitle">Hostname errors</h2>
-      <p class="p">Provide the IP address and port for the node and administrative credentials for the
-        cluster. The value you provide for <samp class="ph codeph">hostname</samp> must be a valid hostname for
-        the node. Possible errors that can occur:</p>
+      <div class="section"><h2 class="title sectiontitle">ホスト名のエラー</h2>
+		  <p class="p">
+			  ノードのIPアドレスとポート、クラスタの管理者の認証情報を指定します。
+			  <samp class="ph codeph">hostname</samp>で指定する値は、そのノードの有効なホスト名でなければなりません。
+			  以下のエラーが発生する可能性があります:
+        	</p>
 
       <ul class="ul">
         <li class="li"><samp class="ph systemoutput">Could not resolve the host name. The host name you provide as a parameter does not
@@ -97,9 +104,9 @@ http://127.0.0.1:8091/node/controller/rename -d hostname=shz.localdomain</code><
 
   <nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/post-install.html" title="Post-installation activities includes setting up the initial server and testing the server connections.">Post-installation</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/init-setup.html" title="After installation is completed, Couchbase Server has to be set up.">Initial server setup</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/linux-startup-shutdown.html" title="Start-up and shutdown scripts are used to manually start up or shut down Couchbase Server.">Start-up and shutdown on Linux</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Install/post-install.html" title="初期サーバのセットアップとサーバ接続のテストなどのインストール後の設定について解説します。">インストール後の設定</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../Install/init-setup.html" title="インストール完了後に、Couchbase Serverをセットアップする必要があります。">サーバの初期セットアップ</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Install/linux-startup-shutdown.html" title="Start-up and shutdown scripts are used to manually start up or shut down Couchbase Server.">Start-up and shutdown on Linux</a></div>
 </div>
 
 <div class="linklist linklist">
