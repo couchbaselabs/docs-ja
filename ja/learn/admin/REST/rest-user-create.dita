@@ -3,7 +3,7 @@
 <reference xml:lang="ja" id="rest-user-create">
   <title>参照専用ユーザの作成</title>
 	<shortdesc>
-		参照専用ユーザは次のURIとHTTPメソッドで作成できます。<codeph>POST /settings/readOnlyUser</codeph>
+		参照専用ユーザは<codeph>POST /settings/readOnlyUser</codeph>のHTTPメソッドとURIで作成できます。
 	</shortdesc>
   <refbody>
     

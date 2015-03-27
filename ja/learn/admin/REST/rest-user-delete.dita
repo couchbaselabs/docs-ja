@@ -3,7 +3,7 @@
 <reference xml:lang="ja" id="rest-user-delete">
   <title>参照専用ユーザの削除</title>
 	<shortdesc>
-		参照専用ユーザは次のURIとHTTPメソッドで削除できます。<codeph>DELETE /settings/readOnlyUser</codeph>
+		参照専用ユーザは<codeph>DELETE /settings/readOnlyUser</codeph>のHTTPメソッドとURIで削除できます。
 	</shortdesc>
   <refbody>
     <section><title>HTTPメソッドとURI</title>
