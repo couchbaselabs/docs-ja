@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="rest-user-delete">
-  <title>Deleting the read-only user</title>
-  <shortdesc>The read-only user is removed with the <codeph>DELETE /settings/readOnlyUser</codeph> HTTP method and URI.</shortdesc>
+<reference xml:lang="ja" id="rest-user-delete">
+  <title>参照専用ユーザの削除</title>
+	<shortdesc>
+		参照専用ユーザは次のURIとHTTPメソッドで削除できます。<codeph>DELETE /settings/readOnlyUser</codeph>
+	</shortdesc>
   <refbody>
-    <section><title>HTTP method and URI</title>
+    <section><title>HTTPメソッドとURI</title>
       
-      <p>To delete the user, specify the URI:</p>
+      <p>ユーザを削除するには、URIを指定します:</p>
       <codeblock>DELETE /settings/readOnlyUser</codeblock>
       
     </section>
     
-    <section><title>Syntax</title>
+    <section><title>シンタックス</title>
       
-      <p>Curl request syntax:</p>
+      <p>Curlリクエストシンタックス:</p>
       <codeblock>curl -X DELETE -u [admin]:[password] 
   http://[localhost]:8091/settings/readOnlyUser 
 </codeblock>
       
     </section>
     
-    <section><title>Example</title>
+    <section><title>例</title>
       
-      <p>Curl request example:</p>
+      <p>Curlリクエスト例:</p>
       <codeblock>curl -X DELETE -u Administrator:password 
   http://10.5.2.117:8091/settings/readOnlyUser 
 </codeblock>
      
     </section>
     
-    <section><title>Response</title>
-      <p>If successful, no response displays:</p>
+    <section><title>レスポンス</title>
+      <p>成功した場合、何も結果は表示されません:</p>
       <codeblock>[]</codeblock>
     </section>
     
