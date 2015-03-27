@@ -68,7 +68,7 @@
     </section>
     
     <section><title>レスポンス</title>
-      <p>成功した場合、何も結果は表示されません。</p>
+      <p>成功した場合、何も結果は表示されません:</p>
       <codeblock>[]</codeblock>
       
 			<p>
