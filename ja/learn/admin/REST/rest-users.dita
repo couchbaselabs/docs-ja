@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="reference_rest_user">
-	<title>User API</title>
-	<shortdesc>A read-only user is created with the <codeph>/settings/readOnlyUser</codeph> URI endpont. Only
-		one read-only user can be created.</shortdesc>
+<reference xml:lang="ja" id="reference_rest_user">
+	<title>ユーザAPI</title>
+	<shortdesc>
+		参照専用ユーザは<codeph>/settings/readOnlyUser</codeph>のURIエンドポイントで作成できます。
+		参照専用ユーザはひとつしか作成できません。
+	</shortdesc>
 	<refbody>
 		
-		<section><title>Description</title>
+		<section><title>説明</title>
 		
 		
 		<table >
-			<title>User endpoints</title>
+			<title>ユーザエンドポイント</title>
 			<tgroup cols="4">
 					<colspec colname="col1" colwidth="1*"/>
 					<colspec colname="col2" colwidth="1.72*"/>
@@ -18,36 +20,36 @@
 					<colspec colname="col4" colwidth="4.38*"/>
 					<thead>
 						<row>
-							<entry>HTTP method</entry>
-							<entry>URI path</entry>
-							<entry>Description</entry>
-							<entry>Parameters</entry>
+							<entry>HTTPメソッド</entry>
+							<entry>URIパス</entry>
+							<entry>説明</entry>
+							<entry>パラメータ</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>POST </entry>
 							<entry>/settings/readOnlyUser</entry>
-							<entry>Creates the read-only user</entry>
+							<entry>参照専用ユーザの作成</entry>
 							<entry>username, password, just_validate</entry>
 						</row>
 						<row>
 							<entry>PUT </entry>
 							<entry>/settings/readOnlyUser</entry>
-							<entry>Changes the read-only user password</entry>
+							<entry>参照専用ユーザのパスワード変更</entry>
 							<entry>password</entry>
 						</row>
 						<row>
 							<entry>DELETE </entry>
 							<entry>/settings/readOnlyUser</entry>
-							<entry>Deletes the user</entry>
-							<entry>none</entry>
+							<entry>参照専用ユーザの削除</entry>
+							<entry>なし</entry>
 						</row>
 						<row>
 							<entry>GET </entry>
 							<entry>/settings/readOnlyAdminName</entry>
-							<entry>Retrieves the read-only username</entry>
-							<entry>none</entry>
+							<entry>参照専用ユーザ名の取得</entry>
+							<entry>なし</entry>
 						</row>
 					</tbody>
 				</tgroup>
