@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="rest-user-get-admin-name">
-  <title>Getting the read-only user name</title>
-  <shortdesc>The read-only user name is retrieved with the <codeph>GET /settings/readOnlyAdminName</codeph> HTTP method and URI.</shortdesc>
+<reference xml:lang="ja" id="rest-user-get-admin-name">
+  <title>参照専用ユーザ名の取得</title>
+	<shortdesc>参照専用ユーザの名前は<codeph>GET /settings/readOnlyAdminName</codeph>のHTTPメソッドとURIで取得できます。</shortdesc>
   <refbody>
     
-    <section><title>HTTP method and URI</title>
-      <p>To retrieve the read-only username, administrative or read-only permissions are required:</p>
+    <section><title>HTTPメソッドとURI</title>
+      <p>参照専用ユーザ名の取得には、管理者もしくは参照専用の権限が必要です:</p>
       <codeblock>GET /settings/readOnlyAdminName</codeblock>
     </section>
     
     
     
-    <section><title>Syntax</title>
-      <p>Curl request syntax:</p>
+    <section><title>シンタックス</title>
+      <p>Curlリクエストシンタックス:</p>
       <codeblock>curl -u [admin]:[password] 
   http://[localhost]:8091/settings/readOnlyAdminName
 </codeblock>
     </section>
     
     
-    <section><title>Example</title>
-      <p>Curl request example:</p>
+    <section><title>例</title>
+      <p>Curlリクエスト例</p>
       <codeblock>curl -u Administrator:password
   http://10.5.2.117:8091/settings/readOnlyAdminName
 </codeblock>
     </section>
     
     
-    <section><title>Response</title>
-      <p>If successful, a response is returned with the read-only user name as payload:</p>
+    <section><title>レスポンス</title>
+      <p>成功すると、参照専用ユーザの名前がペイロードとして返却されます:</p>
       <codeblock>"a_user"</codeblock>
         
         
-        <p>If there is no read-only user, the following error is returned:</p>
+        <p>参照専用ユーザが存在しない場合、以下のエラーが返却されます:</p>
       <codeblock>Requested resource not found.</codeblock>
     </section>
     

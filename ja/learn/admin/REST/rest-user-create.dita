@@ -1,46 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="rest-user-create">
-  <title>Creating a read-only user</title>
-  <shortdesc>A read-only user is create with the <codeph>POST /settings/readOnlyUser</codeph> HTTP method and URI.</shortdesc>
+<reference xml:lang="ja" id="rest-user-create">
+  <title>参照専用ユーザの作成</title>
+	<shortdesc>
+		参照専用ユーザは次のURIとHTTPメソッドで作成できます。<codeph>POST /settings/readOnlyUser</codeph>
+	</shortdesc>
   <refbody>
     
-    <section><title>Description</title>
-      <p>To create a read-only user, specify the username and password. 
-        Administrative access is required to create a read-only user.</p>
+    <section><title>説明</title>
+			<p>
+				参照専用ユーザを作成するには、ユーザ名とパスワードを指定します。
+				参照専用ユーザを作成するには、管理者権限が必要です。
+			</p>
       
-      <note type="note">A <codeph>username</codeph> is a UTF–8 string that does not contain spaces, control
-        characters or any of these characters: ()&lt;&gt;@,;:\"/[]?={} characters. 
-        Passwords must be UTF–8 with no control characters and must be at least six characters long. </note>  
+			<note type="note">
+				<codeph>username</codeph>はUTF-8の文字列で、スペース、制御文字、あるいは次の文字、
+				()&lt;&gt;@,;:\"/[]?={} を含めることはできません。
+				パスワードは制御文字を含まない、6文字以上のUTF-8文字列です。
+			</note>  
     </section>
     
     
-    <section><title>HTTP method and URI</title>
-      <p>The read-only user is created using the <codeph>username</codeph> and
-          <codeph>password</codeph> parameters (mandatory). The <codeph>just_validate=1</codeph>
-        parameter validates the username and password for the read-only user.</p>
+    <section><title>HTTPメソッドとURI</title>
+			<p>
+				参照専用ユーザは<codeph>username</codeph>と<codeph>password</codeph>パラメータを指定して作成します(必須)。
+				<codeph>just_validate=1</codeph>パラメータは参照専用ユーザのユーザ名とパスワードの検証のみ行います。
+			</p>
       
       <codeblock>POST /settings/readOnlyUser</codeblock>
       
-      <p>Parameters:</p>
+      <p>パラメータ:</p>
       <ul>
         <li>username</li>
         <li>password</li>
-        <li>just_validate (optional)</li>
+        <li>just_validate (任意)</li>
       </ul>
       
-      <p>The endpoint has one additional, optional parameter <codeph>just_validate=1</codeph>. 
-        If the <codeph>just_validate=1</codeph> parameter is specified, the server does not create the user.  
-        Instead the username and password for the read-only user is validated.</p>
+			<p>
+				このエンドポイントには、もう一つの任意項目、<codeph>just_validate=1</codeph>があります。
+				<codeph>just_validate=1</codeph>パラメータを指定した場合、サーバはユーザの作成を行いません。
+				代わりに、参照専用ユーザのユーザ名とパスワードを検証します。
+			</p>
     </section>
     
-    <section><title>Syntax</title>
-      <p>Basic syntax:</p>
+    <section><title>シンタックス</title>
+      <p>基本シンタックス:</p>
       <codeblock>POST /settings/readOnlyUser 
 	-d username=[username] 
 	-d password=[password] </codeblock>
       
-      <p>Curl request syntax:</p>
+      <p>Curlリクエストシンタックス:</p>
       <codeblock>curl -X POST -u [admin]:[password] 
   http://[localhost]:8091/settings/readOnlyUser 
   -d username=[username] 
@@ -48,8 +57,8 @@
 </codeblock>
       </section>
     
-    <section><title>Example</title>
-      <p>Curl request example:</p>
+    <section><title>例</title>
+      <p>Curlリクエスト例:</p>
       <codeblock>curl -X POST -u Administrator:password 
   http://10.5.2.117:8091/settings/readOnlyUser 
   -d username=a_user 
@@ -58,12 +67,13 @@
       
     </section>
     
-    <section><title>Response</title>
-      <p>If successful, no response displays. </p>
+    <section><title>レスポンス</title>
+      <p>成功した場合、何も結果は表示されません:</p>
       <codeblock>[]</codeblock>
       
-      <p>To verify that you created a read-only, 
-        retrieve the user name with <codeph>GET /settings/readOnlyAdminName</codeph> HTTP method and URI.</p>
+			<p>
+				参照専用ユーザが作成されたか確認するには、<codeph>GET /settings/readOnlyAdminName</codeph>のHTTPメソッドとURIを利用してください。
+			</p>
     </section>
     
     
