@@ -24,7 +24,7 @@
     
     <section><title>例</title>
       
-      <p>Curlリクエスト例</p>
+      <p>Curlリクエスト例:</p>
       <codeblock>curl -X DELETE -u Administrator:password 
   http://10.5.2.117:8091/settings/readOnlyUser 
 </codeblock>
