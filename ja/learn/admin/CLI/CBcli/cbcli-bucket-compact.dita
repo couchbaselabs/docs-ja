@@ -1,35 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="reference_bjl_4sv_sq">
-  <title>Compacting buckets</title>
-  <shortdesc>Buckets are compacted using the <codeph>couchbase-cli bucket-compact</codeph> command.</shortdesc>
+<reference xml:lang="ja" id="reference_bjl_4sv_sq">
+  <title>バケットのコンパクション</title>
+	<shortdesc>バケットは<codeph>couchbase-cli bucket-compact</codeph>コマンドでコンパクションできます。</shortdesc>
   <refbody>
-    <section><title>Description</title>
-      <p>The <codeph>bucket-compact</codeph> command has the same options available as the other bucket-* commands. 
-      This section describes a small subset of options.</p>
+    <section><title>説明</title>
+			<p><codeph>bucket-compact</codeph>コマンドはbucket-*コマンドと同じオプションを利用可能です。このセクションではオプションの一部を説明します。</p>
       
     </section>
     
-    <section><title>Syntax</title>
-      <p>Request syntax:</p>
+    <section><title>シンタックス</title>
+      <p>リクエストシンタックス:</p>
       <codeblock>couchbase-cli bucket-compact -c [localhost]:8091 -u [admin] -p [password] 
     --bucket=[bucket-name]
     [additional options]
       </codeblock>
     </section>
     
-    <section><title>Example</title>
-      <p>To compact a bucket for both data and view:</p>
+    <section><title>例</title>
+      <p>バケットのデータとViewをコンパクションするには:</p>
       
       <codeblock>
 couchbase-cli bucket-compact -c 192.168.0.1:8091 -u Administrator -p password 
         --bucket=test_bucket
-</codeblock><p>To compact a bucket for data only:</p>
+</codeblock><p>バケットのデータのみをコンパクションするには:</p>
       <codeblock>
 couchbase-cli bucket-compact -c 192.168.0.1:8091 -u Administrator -p password 
         --bucket=test_bucket \
         --data-only
-</codeblock><p>To compact a bucket for view only:</p>
+</codeblock><p>バケットのViewのみをコンパクションするには:</p>
       <codeblock>
 couchbase-cli bucket-compact -c 192.168.0.1:8091 -u Administrator -p password 
         --bucket=test_bucket \
