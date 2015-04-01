@@ -1,82 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="reference_llp_znv_sq">
-  <title>Creating buckets</title>
-  <shortdesc>Buckets are created with the <codeph>couchbase-cli bucket-create</codeph> command.</shortdesc>
+<reference xml:lang="ja" id="reference_llp_znv_sq">
+  <title>バケットの作成</title>
+	<shortdesc>バケットは<codeph>couchbase-cli bucket-create</codeph>コマンドで作成することができます。</shortdesc>
   <refbody>
-    <section><title>CLI command and parameter</title>
+    <section><title>CLIコマンドとパラメータ</title>
       
-      <p>Buckets are created with the <codeph>couchbase-cli bucket-create</codeph> command with the following parameters. 
-      <codeph>bucket-create</codeph> adds new buckets to clusters.</p>
-      
+			<p>バケットは<codeph>couchbase-cli bucket-create</codeph>コマンドで作成でき、次のオプションが指定できます。<codeph>bucket-create</codeph>はクラスタに新しいバケットを追加します。</p>
+
       <table>
         <tgroup cols="2">
           <colspec colname="col1"/>
           <colspec colname="col2"/>
           <thead>
             <row>
-              <entry>Parameter</entry>
-              <entry>Description</entry>
+              <entry>パラメータ</entry>
+              <entry>説明</entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>--bucket=BUCKETNAME</entry>
-              <entry>Named bucket to act on</entry>
+              <entry>操作対象のバケット</entry>
             </row>
             <row>
               <entry>--bucket-type=TYPE</entry>
-              <entry>Bucket type, either memcached or couchbase</entry>
+              <entry>memcachedもしくはcouchbaseのバケット種別</entry>
             </row>
             <row>
               <entry>--bucket-port=PORT</entry>
-              <entry>Supports ASCII protocol and does not require
-                authentication</entry>
+              <entry>ASCIIプロトコル対応、認証なし</entry>
             </row>
             <row>
               <entry>--bucket-password=PASSWORD</entry>
-              <entry>Standard port, exclusive with bucket-port</entry>
+              <entry>バケットポートではなく、標準ポートを利用</entry>
             </row>
             <row>
               <entry>--bucket-ramsize=RAMSIZEMB</entry>
-              <entry>Bucket RAM quota in MB</entry>
+              <entry>バケットのRAM割当量(MB)</entry>
             </row>
             <row>
               <entry>--bucket-replica=COUNT</entry>
-              <entry>Replication count</entry>
+              <entry>レプリカの数</entry>
             </row>
             <row>
               <entry>--enable-flush=[0 | 1]</entry>
-              <entry>Enables and disables flush</entry>
+              <entry>フラッシュの有効、無効化</entry>
             </row>
             <row>
               <entry>--enable-index-replica=[0 | 1]</entry>
-              <entry>Enable and disables index replicas</entry>
+              <entry>レプリカインデックスの有効、無効化</entry>
             </row>
             <row>
               <entry>--wait</entry>
-              <entry>Wait for bucket create to be complete before returning</entry>
+              <entry>バケット作成が完了するまで待ちます</entry>
             </row>
             <row>
               <entry>--force</entry>
-              <entry>Force command execution without asking for confirmation</entry>
+              <entry>確認をせずに強制的にコマンドを実行します</entry>
             </row>
             <row>
               <entry>--data-only</entry>
-              <entry>Compact database data only</entry>
+              <entry>データベースデータのみをコンパクションします</entry>
             </row>
             <row>
               <entry>--view-only</entry>
-              <entry>Compact view data only </entry>
+              <entry>Viewデータのみをコンパクションします</entry>
             </row>
           </tbody>
         </tgroup>
-      </table>
+			</table>
       
     </section>
     
-    <section><title>Syntax</title>
-      <p>Request syntax:</p>
+    <section><title>シンタックス</title>
+      <p>リクエストシンタックス:</p>
       <codeblock>
 couchbase-cli bucket-create -c [localhost]:8091 -u [Administrator] -p [password] 
        --bucket=[bucket-name]
@@ -87,8 +85,8 @@ couchbase-cli bucket-create -c [localhost]:8091 -u [Administrator] -p [password]
 </codeblock>
     </section>
     
-    <section><title>Example</title>
-      <p>To create a new dedicated port couchbase bucket:</p>
+    <section><title>例</title>
+      <p>専用ポートのcouchbaseバケットを作成するには:</p>
       <codeblock>
 couchbase-cli bucket-create -c 192.168.0.1:8091 -u Administrator -p password 
        --bucket=test_bucket 
@@ -98,8 +96,7 @@ couchbase-cli bucket-create -c 192.168.0.1:8091 -u Administrator -p password
        --bucket-replica=1
 </codeblock>
       
-      <p>To create a couchbase bucket and wait for bucket
-        ready:</p>
+      <p>couchbaseバケットを作成し、利用可能になるまで待つには:</p>
       <codeblock>
 couchbase-cli bucket-create -c 192.168.0.1:8091 -u Administrator -p password 
        --bucket=test_bucket 
@@ -111,7 +108,7 @@ couchbase-cli bucket-create -c 192.168.0.1:8091 -u Administrator -p password
 </codeblock>
       
       
-      <p>To create a new sasl memcached bucket:</p>
+      <p>SASL memcachedバケットを作成するには:</p>
       <codeblock>
 couchbase-cli bucket-create -c 192.168.0.1:8091 -u Administrator -p password 
        --bucket=test_bucket 
