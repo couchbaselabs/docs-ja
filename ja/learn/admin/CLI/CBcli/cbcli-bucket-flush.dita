@@ -1,45 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbcli-bucket-flush">
-  <title>Flushing buckets</title>
-  <shortdesc>Buckets are flushed by enable the flush option then flushing.</shortdesc>
+<reference xml:lang="ja" id="cbcli-bucket-flush">
+  <title>バケットのフラッシュ</title>
+  <shortdesc>バケットはフラッシュオプションを有効にすると、フラッシュを実行できるようになります。</shortdesc>
   <refbody>
-    <section><title>Description</title> Flushing buckets involves: <ol>
-        <li>Enable the flush buckets option.</li>
-        <li>Flush the bucket.</li>
+    <section><title>説明</title> バケットをフラッシュするには: <ol>
+        <li>バケットのフラッシュオプションを有効にします。</li>
+        <li>バケットをフラッシュします。</li>
       </ol>
-      <p>When you want to flush a data bucket, first enable this option and then actually issue the
-        command to flush the data bucket. The <codeph>--enable-flush</codeph> option is either true
-        or false. False is 0, meaning, do not enable flush (default). True is 1, meaning enable
-        flush.</p>
-      <p>You can enable this option when you create the data bucket or edit bucket properties.</p>
-      <note type="important">After you explicitly enable data bucket flush, flush the data from the
-        bucket. Flushing a bucket is data destructive. Client applications using this are advised to
-        double check with the end user before sending such a request. You can control and limit the
-        ability to flush individual buckets by setting the <codeph>flushEnabled</codeph> parameter
-        on a bucket in Couchbase web console.</note>
-      <note type="warning">We do not advise that you enable this option if your data bucket is in a
-        production environment. </note>
+			<p>データバケットをフラッシュする場合、このオプションを有効にしてから、データバケットのフラッシュコマンドを実行します。<codeph>--enable-flush</codeph>オプションにはtrueかfalseを指定します。Falseは0で、フラッシュは無効です (デフォルト)。Trueは1で、フラッシュは有効です。</p>
+      <p>データバケット作成時、あるいはバケット属性の変更時にこのオプションを有効にできます。</p>
+			<note type="important">明示的にデータバケットのフラッシュを有効化すると、バケットのデータをフラッシュできるようになります。バケットのフラッシュは危険な操作です。フラッシュを利用するクライアントアプリケーションは、リクエストの実行前にエンドユーザに再確認することを推奨します。Couchbase Webコンソールのバケットにある<codeph>flushEnabled</codeph>パラメータを設定し、個々のバケットのフラッシュ可否を制限することができます。</note>
+      <note type="warning">プロダクション環境のデータバケットでは、このオプションを有効にすることは推奨しません。</note>
     </section>
     
-    <section><title>CLI command and parameter</title>
-      <p>Flush can be enable when either creating or editing a bucket with the 
-        <codeph>bucket-create</codeph> and <codeph>bucket-edit</codeph> commands.</p>
+    <section><title>CLIコマンドとパラメータ</title>
+			<p><codeph>bucket-create</codeph> もしくは <codeph>bucket-edit</codeph>コマンドを利用してバケットの作成および変更を実行する際にフラッシュを有効にできます。</p>
       
-      <p>To enable bucket flush when creating a bucket, set the 
-          <codeph>--enable-flush</codeph> parameter to 1:</p>
+			<p>バケット作成時にフラッシュを有効にするには、<codeph>--enable-flush</codeph>パラメータに1を指定します:</p>
       
-      <p>To flush the bucket, use <codeph>couchbase-cli bucket-flush</codeph> command.</p>
+			<p>バケットをフラッシュするには、<codeph>couchbase-cli bucket-flush</codeph>コマンドを利用します。</p>
       
     </section>
 
       
-    <section><title>Syntax</title>
-      <p>By default, the <codeph>bucket-flush</codeph> command confirms whether or not you truly want to
-        flush the data bucket. You can optionally call this command with the
-        <codeph>--force</codeph> option to flush data without
-        confirmation.</p>
-      <p>Request syntax:</p>
+    <section><title>シンタックス</title>
+			<p>デフォルトでは、<codeph>bucket-flush</codeph>コマンドを実行すると、本当にデータバケットをフラッシュするのかを確認されます。オプションの<codeph>--force</codeph>を指定すると、この確認なしにデータをフラッシュすることができます。</p>
+      <p>リクエストシンタックス:</p>
       <codeblock>
 couchbase-cli bucket-flush -c [localhost]:8091 -u [admin] -p [password] 
     --bucket=[bucket-name] 
@@ -50,20 +37,19 @@ couchbase-cli bucket-flush -c [localhost]:8091 -u [admin] -p [password]
     </section>
 
       
-  <section><title>Example</title>
-    <p>Example request:</p>
+  <section><title>例</title>
+    <p>リクエスト例:</p>
       <codeblock>
 couchbase-cli bucket-flush -c 192.168.0.1:8091 -u Administrator -p password 
        --bucket=testBucket
        --enable-flush=1
 </codeblock></section>
     
-    <section><title>Response</title>
-    <p>Example request response where you need to verify whether you want to flush the bucket. In
-        this case, you need to specify either Yes or No.</p>
+    <section><title>レスポンス</title>
+    <p>バケットのフラッシュ実行確認と応答の例です。この確認に対し、YesかNoを回答してください。</p>
       <codeblock>Running this command will totally PURGE database data from disk. Do you really want to do it? (Yes/No)</codeblock>
       
-      <p>Example request error response where the bucket that you want to flush is set up with XDCR replication:</p>
+      <p>フラッシュを実行しようとしたバケットで、XDCRレプリケーションが設定されている場合、次のエラーが返されます:</p>
       <codeblock>
 ERROR: unable to bucket-flush; please check if the bucket exists or not; (503) Service Unavailable
 {u'_': u'Cannot flush buckets with outgoing XDCR'}
