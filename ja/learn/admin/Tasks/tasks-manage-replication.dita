@@ -1,66 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic6877">
-	<title>Handling replication</title>
-	<shortdesc>Data replication is distributed throughout the Couchbase cluster to prevent a single
-		point of failure. Data replication is configurable on a bucket-level and
-		node-basis.</shortdesc>
+<topic xml:lang="ja" id="topic6877">
+	<title>レプリケーションの設定</title>
+	<shortdesc>レプリカデータはCouchbaseクラスタ内で分散され、単一障害点を回避します。
+	データのレプリケーションはバケットごとに、ノード単位で構成されます。</shortdesc>
 	<body>
-		<p>Within a Couchbase cluster, you have <term>active data</term> and <term>replica data</term> on
-			each node. Active data is data that was written by a client on that node. Replica data
-			is a copy of an item from another node. </p>
-		<p>After writing an item to Couchbase Server, it makes a copy of this data from the RAM of
-			one node to another node. Distribution of replica data is handled in the same way as
-			active data: portions of replica data is distributed around the Couchbase cluster to
-			different nodes to prevent a single point of failure.</p>
+		<p>Couchbaseクラスタ内には、<term>アクティブデータ</term>と<term>レプリカデータ</term>
+			が各ノード上にあります。アクティブデータはクライアントからそのノードに書き込まれたデータです。
+			レプリカデータは他のノードにあるアイテムのコピーです。
+		</p>
+		<p>Couchbase Serverにアイテムを書き込むと、そのデータのコピーをそのノードのRAMから他のノードへとコピーします。
+		レプリカデータの分散はアクティブデータの分散と同様に処理されます。レプリカデータの一部分がクラスタ内で分散され、単一障害点を回避します。</p>
 
-		<p>Replication of data between nodes is entirely peer-to-peer based so that information is
-			replicated directly between nodes in the cluster. There is no topology, hierarchy, or
-			master-slave relationship between nodes in a cluster. When a client writes to a node in
-			the cluster, Couchbase Server stores the data on that node and then distributes the data
-			to one or more nodes within a cluster. </p>
-		<p>The following diagram shows two different nodes in a Couchbase cluster and illustrates
-			how two nodes can store replica data for one another:</p>
+	<p>ノード間のデータレプリケーションは完全にピアツーピアで、直接クラスタ内のノード間で情報がレプリケートされます。
+		クラスタ内のノード間にトポロジ、階層、マスタ - スレーブの関係はありません。
+	クライアントがクラスタ内のノードに書き込みを行うと、Couchbase Serverはそのノード上にデータを保存し、データをクラスタ内の一つ以上の他のノードに分配します。</p>
+		<p>以下の図はCouchbaseクラスタ内の2つのノードがどのようにお互いのレプリカデータを保存しているのかを示しています:</p>
 
 		<image href="../images/replica_backoff.png" width="720" />
 
 
-		<p>When a client application writes data to a node, that data is placed in a replication queue and
-			then a copy is sent to another node. The replicated data is then available in RAM on the
-			second node and placed in a disk write queue to be stored on disk at the second
-			node.</p>
-		<p>The second node also simultaneously handles both replica data and incoming writes from a
-			client. It puts both replica data and incoming writes into a disk write queue. If there
-			are too many items in the disk write queue, this second node can send a <term>backoff
-				message</term> to the first node. The first node will then reduce the rate at which
-			it sends items to the second node for replication. This is sometimes necessary if
-			the second node is already handling a large volume of writes from a client
-			application.</p>
-		<p>If multiple changes occur to the same document waiting to be replicated, Couchbase Server can
-			<term>deduplicate</term> the item. This means that, for the sake of efficiency, it only sends the latest
-			version of a document to the second node.</p>
-		<p>If the first node fails in the system, the replicated data is still available at the second
-			node. Couchbase can serve replica data from the second node nearly instantaneously because
-			the second node already has a copy of the data in RAM. There is no need for the data to be
-			copied over from the failed node or to be fetched from disk. Once replica data is enabled
-			at the second node, Couchbase Server updates a map indicating where the data should be
-			retrieved, and the server shares this information with client applications. Client
-			applications can then get the replica data from the functioning node.</p>
+		<p>クライアントアプリケーションがデータをノードに書き込むと、そのデータはレプリケーションキューに追加され、コピーが他のノードに送信されます。
+		レプリケートされたデータは二つ目のノードのRAM上に保存され、二つ目のノード上のディスクに書き込むために、ディスク書き込みキューに配置されます。</p>
+	<p>二つ目のノードはまた、レプリカデータとクライアントからの書き込みを同時に処理しています。
+		レプリカデータと送信された書き込みデータを同一のディスクキューに追加します。
+		ディスク書き込みキュー内のアイテム数が多くなり過ぎると、二つ目のノードは
+		<term>backoff message</term>
+		を一つ目のノードに返すことがあります。
+		すると一つ目のノードは、二つ目のノードにレプリケーションするアイテムの送信頻度を低くします。
+		これは二つ目のノードがすでに大量の書き込み要求をクライアントアプリケーションから受け付けている場合に必要となります。
+	 </p>
+	 <p>レプリケーション対象の同一のドキュメントに複数の変更が発生した場合、Couchbase Serverはアイテムを
+		 <term>deduplicate</term>します。
+		 これは効率化のため、ドキュメントの最新のバージョンのみを二つ目のノードに送るということです。
+	</p>
+	<p>もしシステム内の一つ目のノードがダウンしても、レプリケートされたデータは二つ目のノードで利用できます。
+		二つ目のノードのRAM内にデータのコピーが存在するため、Couchbaseは二つ目のノードにあるレプリカデータを即座に提供することができます。
+		ダウンしたノードからデータをコピーしたり、ディスクからデータを読み込む必要はありません。
+		レプリカデータが二つ目のノードで有効になると、Couchbase Serverはデータとサーバのマッピング情報を更新し、
+		クライアントアプリケーションにこの情報を共有します。
+		そしてクライアントアプリケーションは動作しているノードからレプリカデータを取得できるようになります。
+	</p>
 		
-		<section><title>Providing data replication</title>
-		<p>You can configure
-			different buckets to have different levels of data replication, depending how many
-			copies of your data you need. For the highest level of data redundancy and availability,
-			you can specify that a data bucket will be replicated three times within the
-			cluster.</p>
-		<p>Replication is enabled once the number of nodes in your cluster meets the number of
-			replicas you specify. For example, if you configure three replicas for a data bucket,
-			replication will only be enabled once you have four nodes in the cluster.</p>
+		<section><title>データレプリケーションの適用</title>
+			<p>必要なデータのコピー数に応じて、各バケットで異なるデータレプリケーションを設定することができます。
+				データを冗長化させ可用性を高めるために、各データバケットでは最大3つのレプリカをクラスタ内に作成することができます。
+			</p>
+			<p>レプリケーションはクラスタ内のノード数が設定したレプリカ数を満たす場合に有効となります。
+				例えば、バケットのレプリカ数を3に設定した場合、クラスタ内に4つ以上のノードが存在する場合のみレプリケーションが有効となります。
+				</p>
 		
-		<p>After you specify the number of replicas you want for a bucket and then create the
-			bucket, you cannot change the value. Therefore be certain you specify the number of
-			replicas you truly want.</p></section>
+				<p>バケットに対してレプリカ数を設定し、バケットを作成した後、レプリカ数を変更することはできません。
+			このため、必要なレプリカ数を確実に指定するように注意してください。</p></section>
 	
 	</body>
 	<related-links>

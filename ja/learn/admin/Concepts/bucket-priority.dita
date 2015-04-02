@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_eg2_454_yn">
- <title>Disk I/O priority</title>
+<concept xml:lang="ja" id="concept_eg2_454_yn">
+	<title>ディスクI/O優先度</title>
 
- <shortdesc>Disk I/O priority enables workload priorities to be set at the bucket level.</shortdesc>
+	<shortdesc>ディスクI/O優先度はワークロードの優先度をバケット単位に指定できます。</shortdesc>
  
  <conbody>
 
-   <p>Bucket priority settings can be specified at the bucket-level. 
-    The bucket disk I/O priority can be set as either high or low, whereas, low is the default. 
-    Bucket priority settings determine whether I/O tasks for a bucket are enqueued in either low or high priority task queues. 
-    Threads in the global pool poll the high priority task queues more often compared to the low priority task queues. 
-    Bucket latency and I/O operations are impacted by the setting value. 
-    When a bucket has a high priority, its I/O tasks are picked up at a high frequency and, thus, are able to processed faster compared to 
-    tasks belonging to a low priority bucket.</p>
+	 <p>バケットの優先度はバケット単位で設定します。バケットのディスクI/O優先度は high もしくは low を選択でき、デフォルトは low です。バケット優先度の設定はバケットのI/Oタスクが優先低、高のいずれかのタスクキューに登録されるかを決定します。グローバルプールにあるスレッドは優先度高のタスクキューを、優先度低のタスクキューよりも頻繁にポールします。バケットのレイテンシとI/O操作はこの設定値に影響されます。優先度高に設定されたバケットのI/Oタスクはより頻繁に選択されるため、優先度の低いバケットのタスクよりも高速に処理されます。</p>
    
   
-  <p>The default buckets settings can be configured during the initial setup and then edited after the setup. 
-   However, changing bucket priority after the setup results in a restart of the bucket and resetting of the client connections.</p>
+  <p>デフォルトバケットの設定は初期セットアップ時と、セットアップ後の変更で指定できます。しかし、バケット優先度の設定をセットアップ後に変更すると、バケットが再起動され、クライアントの接続がリセットされます。</p>
   <fig><image href="../images/init-default-bucket-settings.png" width="600"></image></fig>
    
     
@@ -26,14 +19,13 @@
    since the initial number of threads allocated depends on the number of CPU cores?</draft-comment>
     
   
-  <section><title>Backward compatibility</title>
-   <p>When upgrading from a 2.x release to a 3.x release, 
-    Couchbase converts an existing thread value to either a low or a high priority based on the following:
+  <section><title>後方互換性</title>
+   <p>バージョン2.xから3.xにアップグレードする際、Couchbaseは既存のスレッド設定値を次のように low または high に変換します:
    </p>
    
    <ul>
-    <li>Buckets allocated six to eight (6-8) threads are high priority. </li>
-    <li>Buckets allocated three to five (3-5) threads are low priority. </li>
+    <li>6-8のスレッドが設定されているバケットは、優先度高となります。</li>
+    <li>3-5のスレッドが設定されているバケットは、優先度低となります。</li>
    </ul>
   </section>
   
