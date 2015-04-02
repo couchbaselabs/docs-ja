@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="reference_xcc_31b_k4">
-  <title>Setting bucket priority</title>
-  <shortdesc>The disk I/O priority for a bucket can be set to either low or high.</shortdesc>
+<reference xml:lang="ja" id="reference_xcc_31b_k4">
+  <title>バケット優先度の設定</title>
+	<shortdesc>バケットのディスクI/O優先度は
+	 low あるいは high が選択できます。</shortdesc>
   <refbody>
     
-    <section><title>Description</title>
-      <p>To set the disk I/O priority for a bucket, use the <codeph>couchbase-cli</codeph> tool, <codeph>bucket-create</codeph> or 
-        <codeph>bucket-edit</codeph> command, and the <codeph>--bucket-priority=[low | high]</codeph> option.</p>
+    <section><title>説明</title>
+			<p>バケットのディスクI/O優先度を設定するには、<codeph>couchbase-cli</codeph> ツールの<codeph>bucket-create</codeph>、<codeph>bucket-edit</codeph>コマンドで、<codeph>--bucket-priority=[low | high]</codeph>オプションを指定します。</p>
     </section>
     
-    <section><title>CLI command and parameter</title>
-      <p>Disk I/O priority can be changed when either creating or editing a bucket. 
-        Use either the <codeph>bucket-create</codeph> or <codeph>bucket-edit</codeph> command with
-      the <codeph>--bucket-priority</codeph> parameter</p>
+    <section><title>CLIコマンドとパラメータ</title>
+			<p>ディスクI/O優先度はバケットの作成および変更時に設定できます。<codeph>bucket-create</codeph>、<codeph>bucket-edit</codeph>コマンドで、<codeph>--bucket-priority</codeph>パラメータを指定します。</p>
 
     </section>
     
     
-    <section><title>Syntax</title>
-      <p>Basic syntax:</p>
-      <p>To set bucket bucket priority when creating a bucket, set
-        the <codeph>--enable-priority</codeph> parameter.</p>
+    <section><title>シンタックス</title>
+      <p>基本シンタックス:</p>
+			<p>バケットの作成時にバケット優先度を設定するには、<codeph>--enable-priority</codeph>パラメータを指定します。</p>
       
       <codeblock>couchbase-cli bucket-create -c [localhost]:8091 -u [admin] -p [password] 
     --bucket=[bucket-name]
@@ -29,7 +26,7 @@
     [options]
       </codeblock>
       
-      <p>To enable bucket flush when editing the bucket properties:</p>
+      <p>バケット属性の変更時にバケット優先度を変更するには:</p>
       <codeblock>couchbase-cli bucket-edit -c [localhost]:8091 -u [admin] -p [password] 
     --bucket=[bucket-name]
     --enable-priority=[low | high]
@@ -39,8 +36,8 @@
     </section>
     
 
-      <section><title>Example: Creating a bucket and setting high priority</title>
-      <p>To create a new couchbase bucket with high priority:</p>
+      <section><title>例: バケットを優先度高で作成する</title>
+      <p>couchbaseバケットを優先度高で作成する</p>
       <codeblock>
 couchbase-cli bucket-create -c 192.168.0.1:8091 -u Administrator -p password
     --bucket=test_bucket 	
@@ -52,9 +49,9 @@ couchbase-cli bucket-create -c 192.168.0.1:8091 -u Administrator -p password
    </codeblock>
       </section>
     
-    <section><title>Example: Setting high priority</title>
+    <section><title>例: 優先度高を設定する</title>
       
-      <p>To modify a bucket to high priority:</p>
+      <p>バケットを優先度高に変更する</p>
       <codeblock>
 couchbase-cli bucket-edit -c 192.168.0.1:8091 -u Administrator -p password
     --bucket=test_bucket 
