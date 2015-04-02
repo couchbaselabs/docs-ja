@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic3500">
+<topic xml:lang="ja" id="topic3500">
   <title>TAP</title>
-  <shortdesc>The TAP protocol is an internal part of the Couchbase Server system that is used to
-		exchange data throughout the system. </shortdesc>
+  <shortdesc>TAPプロトコルはCouchbase Serverシステム内部で利用される、システム内でデータを転送するためのプロトコルです。</shortdesc>
   <body>
-    <p>TAP provides a stream of data of the changes that are occurring within the system. TAP is
-			used during replication to copy data between vBuckets used for replicas. It is also used
-			during the rebalance procedure to move data between vBuckets and redistribute the
-			information across the system.</p>
+    <p>TAPはシステム内で発生しているデータ変更のストリームを提供します。TAPはレプリカを作成するために、vBucket間のデータコピーに利用されます。また、リバランス中にvBucket間でデータを移動し、システム内の情報を再分散するためにも使われます。</p>
 
 
 
