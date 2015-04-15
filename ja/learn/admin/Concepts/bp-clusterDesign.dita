@@ -1,83 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic2131">
- <title>Cluster design considerations</title>
- <shortdesc>Cluster design takes into account topics such as RAM, number of nodes and cores, client
-  or server-side moxi, and so on.</shortdesc>
+<topic xml:lang="ja" id="topic2131">
+ <title>クラスタ設計の考慮事項</title>
+ <shortdesc>クラスタ設計はRAM、ノード数、コア数クライアントサイドおよびサーバサイドのmoxiなどを検討する必要があります</shortdesc>
  <body>
   
   <dl>
    <dlentry>
     <dt>RAM</dt>
-    <dd>Memory is a key factor for smooth cluster performance. Couchbase Server is a best
-     solution for applications that keep most of their active dataset in memory. It is very
-     important that all actively used data (the working set) lives in memory. When there is not
-     enough memory left, some data is ejected from memory and will only exist on disk. Accessing
-     data from disk is much slower than accessing data in memory. As a result, if ejected data is
-     accessed frequently the cluster performance suffers. Use the formula provided in Sizing
-     Guidelines  to verify your configuration, optimize performance, and avoid this situation.</dd>
+    <dd>メモリはクラスタのスムーズな動作に係る重要な要素のひとつです。Couchbase Serverはアクティブなデータセットのほとんどをメモリ上に配するようなアプリケーションに最適です。盛んに利用されるデータ（ワーキングセット）が全て収まるように十分なメモリを割り当てることが非常に重要です。十分な空きメモリがない場合、一部のドキュメントがメモリから排出され、ディスク上にのみ存在するようになります。ディスクへのアクセスはメモリ内のデータに比べはるかに遅くなります。その結果、排出されたデータが頻繁にアクセスされる場合、クラスタのパフォーマンスが低下します。設定を確認し、パフォーマンスを最適化し、このような状況を回避するためにサイジングガイドラインで提供されている式を使用してください。</dd>
    </dlentry>
   </dl>
   
   <dl>
    <dlentry>
-    <dt>Number of nodes</dt>
-    <dd>Once you know how much memory you need, you must decide whether to have a
-     few large nodes or many small nodes.<ul>
-      <li>Many small nodes: You are distributing I/O across several machines. However, there is also 
-       a higher chance of node failure (across the whole cluster).</li>
-      <li>Few large nodes: If a node fails, it greatly impacts the application.</li>
-      <li>Choosing between many small nodes and few large nodes presents a tradeoff between reliability and efficiency.</li>
+    <dt>ノード数</dt>
+    <dd>必要なメモリサイズが分かったら、次に少数の大きなノードか、多数の小さなノードにするかを決める必要があります。<ul>
+      <li>多数の小さなノード: I/O アクセスを複数のマシンに分散できますが、（クラスタ全体において）ノードが故障する可能性も高くなります。</li>
+      <li>少数の大きなノード: ノード故障が発生した場合、アプリケーションへの影響は大きくなります。</li>
+      <li>この選択は信頼性と効率のトレードオフです。</li>
      </ul></dd>
    </dlentry>
   </dl>
   
   <dl>
    <dlentry>
-    <dt>Client or server-side moxi</dt>
-    <dd>Couchbase Server prefers a client-side moxi (or a smart client) over a server-side moxi. However,
-     for development environments or for faster, easier deployments, you can use server-side moxis. A
-     server-side moxi is not recommended because it produces an additional hop if a server receives a
-     client request and doesn’t have the requested data.</dd>
+    <dt>クライアントサイドもしくはサーバサイドのmoxi</dt>
+    <dd>Couchbase Serverはクライアントサイドのmoxi（もしくはスマートクライアント）の方がサーバサイドのmoxiよりも効率的です。しかし、開発環境やより早く、容易なデプロイのために、サーバサイドのmoxiを利用することが出来ます。クライアントの要求を受信し、要求されたデータがない場合、余分なホップが生成されるためサーバサイドのmoxiは推奨されません。</dd>
    </dlentry>
   </dl>
   
   <dl>
    <dlentry>
-    <dt>Number of cores</dt>
-    <dd>Couchbase Server is more memory- or I/O bound than it is CPU-bound. However,
-     it is more efficient on machines that have at least two cores.</dd>
+    <dt>コア数</dt>
+    <dd>Couchbase ServerはCPU性能より、メモリやI/O性能に影響されます。しかし、少なくとも2つのコアを持つマシンで利用するのが効率的です。</dd>
    </dlentry>
   </dl>
  
   
   <dl>
    <dlentry>
-    <dt>Storage type</dt>
-    <dd>You can choose either SSDs (solid state drives) or spinning disks to store
-     data. SSDs are faster than rotating media but are currently more expensive. Couchbase Server needs
-     less memory if a cluster uses SSDs as their I/O queue buffer is smaller.</dd>
+    <dt>ストレージの種類</dt>
+    <dd>データ格納先として、SSD（ソリッドステートドライブ）か回転式ディスクドライブが選択できます。SSDは回転式メディアよりも高速ですが、現在は高コストです。SSDの場合、I/Oのキューバッファがより小さくなるため、Couchbase Serverで必要となるメモリも少なくなります。</dd>
    </dlentry>
   </dl>
   
   <dl>
    <dlentry>
-    <dt>WAN Deployments</dt>
-    <dd>Couchbase Server is not designed to have clusters or clients that span data centers. It
-     requires that intra-cluster (server to server) latency be very low, as well as between the
-     cluster and Couchbase clients. If you require the ability to be in one or more data centersgit
-     statuas, see <xref href="../XDCR/xdcr-intro.dita">Cross Datacenter Replication
-     (XDCR)</xref>.</dd>
+    <dt>WANデプロイメント</dt>
+    <dd>Couchbase Serverはクラスタやクライアントが複数のデータセンターにまたがるようには設計されていません。クラスタ内（サーバ間）だけでなく、クラスタとCouchbaseクライアント間のレイテンシも非常に低い必要があります。もし1箇所以上のデータセンターをまたぐ必要がある場合は、<xref href="../XDCR/xdcr-intro.dita">クロスデータセンターレプリケーション(XDCR)</xref>を参照してください。</dd>
    </dlentry>
   </dl>
   
   <dl>
    <dlentry>
-    <dt>Shared storage</dt>
-    <dd>It is strongly recommended to avoid using centralized back-end storage system such as a SAN
-     or NAS. While they can support good performance, they present a single bottleneck or point of
-     failure that limits the distributed nature of Couchbase. </dd>
+    <dt>共有ストレージ</dt>
+    <dd>SANやNASのような集中化したバックエンドストレージシステムは使用しないことを強く推奨します。それらはよいパフォーマンスを提供しますが、Couchbaseの分散性を制限し、単一のボトルネックや障害原因となります。</dd>
    </dlentry>
   </dl>
  
