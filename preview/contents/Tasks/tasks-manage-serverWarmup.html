@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Handling server warmup</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>サーバウォームアップの対処</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
 						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
 					  (function() {
@@ -11,82 +11,67 @@
 					    var s = document.getElementsByTagName('script')[0];
 					    s.parentNode.insertBefore(gcse, s);
 					  })();
-					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-manage-serverWarmup.html" class="current"><span>Handling server warmup</span></a><ul class="sub-sections"></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-replication.html"><span>Handling replication</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-compaction.html"><span>Compacting data files</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-maintenance.html"><span>Cluster maintenance</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/maintenance-server-node.html"><span>Server maintenance</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-backup-restore.html"><span>Backup and restore</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-xdcr.html"><span>Managing XDCR</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
- <h1 class="title topictitle1">Handling server warmup</h1>
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-manage-serverWarmup.html" class="current"><span>サーバウォームアップの対処</span></a><ul class="sub-sections"></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-replication.html"><span>レプリケーションの設定</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-compaction.html"><span>Compacting data files</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-maintenance.html"><span>Cluster maintenance</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/maintenance-server-node.html"><span>Server maintenance</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-backup-restore.html"><span>Backup and restore</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-xdcr.html"><span>Managing XDCR</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+ <h1 class="title topictitle1">サーバウォームアップの対処</h1>
 
  
  
  
- <div class="body"><p class="shortdesc">Couchbase server warmup behavior can be modified by changing the access scanner and warmup
-  threshold settings via the <samp class="ph codeph">cbepctl</samp> tool.</p>
+ <div class="body"><p class="shortdesc">Couchbase Serverのウォームアップ動作は、<samp class="ph codeph">cbepctl</samp>ツールからアクセススキャナとウォームアップ閾値を設定することで変更できます。</p>
 
 
- <p class="p"> In order to adjust warmup behavior, it is important to understand the access log
-  and scanning process in Couchbase Server. </p>
+ <p class="p">ウォームアップ動作を変更するには、Couchbase Serverのアクセスログとスキャンプロセスを理解することが重要です。</p>
 
-  <p class="p">The server uses the access log to determine which
-  documents are most frequently used, and therefore which documents to load first. 
-  It has a process that periodically scans every key in RAM and compiles them into a log 
-   named <samp class="ph codeph">access.log</samp>. It also maintains a backup of this access log, named
-    <samp class="ph codeph">access.old</samp>.</p>
+ <p class="p">サーバはアクセスログを利用して、どのドキュメントが最も利用されていて、どのドキュメントを優先してロードするのかを決定します。
+	 RAMの各キーを定期的にスキャンし、<samp class="ph codeph">access.log</samp>という名前のログファイルを作成します。
+	 また、<samp class="ph codeph">access.old</samp>という名前でアクセスログのバックアップを作成します。</p>
  
-   <p class="p">The server can use this backup file during warmup if the most
-   recent access log has been corrupted during warmup or node failure. By default, this process runs
-   initially at 2:00 GMT and then again each 24 hour time periods. You can configure
-   this process to run at a different initial time and at a different fixed interval.</p>
+ <p class="p">ノード障害やウォームアップで最新のアクセスログが壊れていた場合、サーバはこのバックアップファイルをウォームアップに利用します。
+	 デフォルトでは、このプロセスは2:00 GMTに起動し、その後24時間間隔で実行されます。別の時間に起動し、異なる間隔で実行するように設定することができます。</p>
 
   
-  <p class="p">If a client tries to contact Couchbase Server during warmup, the server produces a
-    <samp class="ph codeph">ENGINE_TMPFAIL (0x0d)</samp> error code. This error indicates that data access is
-   still not available because warmup has not yet finished. </p>
+ <p class="p">Couchbase Serverがウォームアップ中にクライアントが接続を試みると、サーバは<samp class="ph codeph">ENGINE_TMPFAIL (0x0d)</samp> のエラーコードを返します。
+ このエラーはウォームアップが完了していないため、まだデータへアクセスできないという意味です。</p>
 
    
-   <div class="note note"><span class="notetitle">Note:</span> If you are creating your
-   own Couchbase SDK, you need to handle this error in your library. This may mean that the
-   client waits and retries, performs a backoff of requests, or produces an error
-   and does not retry the request. </div>
+	 <div class="note note"><span class="notetitle">注:</span> もしご自身でCouchbase SDKを開発している場合、このエラーをライブラリ内で適切に処理してください。
+	 例えば、クライアントを待たせ、リトライしたり、リクエストを滞留させたり、リトライせずにエラーを返すなどです。</div>
 
    
-   <div class="note note"><span class="notetitle">Note:</span> If you are building an application with a Couchbase
-   SDK, be aware that delivery and handling of this error depends on the individual SDKs.
-   </div>
+   <div class="note note"><span class="notetitle">注:</span> Couchbase SDKを利用してアプリケーションを開発している場合、このエラー処理については各々のSDKを参照してください。</div>
 
    
-<p class="p">These are the actions to take during Couchbase Server warmup:</p>
+<p class="p">Couchbase Serverウォームアップ中にすべき次のタスクがあります:</p>
 
   
   <dl class="dl">
    
-    <dt class="dt dlterm">Getting warmup information</dt>
+    <dt class="dt dlterm">ウォームアップの情報を収集する</dt>
 
-    <dd class="dd">The <samp class="ph codeph">cbstats</samp> tool is used to
-     get information about server warmup, including the warmup status and whether warmup is enabled.</dd>
+		<dd class="dd"><samp class="ph codeph">cbstats</samp>ツールを利用して、ウォームアップ状態や、ウォームアップが有効となっていかなど、サーバウォームアップの情報を取得できます。</dd>
 
    
   </dl>
 
 <dl class="dl">
  
-  <dt class="dt dlterm">Changing the warmup threshold</dt>
+  <dt class="dt dlterm">ウォームアップ閾値の変更</dt>
 
-  <dd class="dd">Modify warmup behavior by changing the
-   <samp class="ph codeph">cbepctl ep_warmup_min_items_threshold</samp> parameter. This indicates the percentage
-   of items loaded in RAM that must be reached for Couchbase Server to begin serving data. The
-   lower this number, the sooner your server can begin serving data. Be aware, however that if you
-   set this value to be too low, once requests come in for items, the item may not be in memory and
-   Couchbase Server will experience cache-miss errors.</dd>
+	<dd class="dd"><samp class="ph codeph">cbepctl ep_warmup_min_items_threshold</samp>パラメータで、ウォームアップの動作を変更できます。
+		これはCouchbase Serverがデータの提供を開始する前に到達する必要があるRAMにロードされるアイテム数の割合を指定します。
+		より低い値を設定すると、より早くサーバに対するデータアクセスが可能になります。
+		ただし、低すぎる値を設定すると、アイテムをリクエストした際に、そのアイテムはメモリ上に存在しない可能性があり、Couchbase Serverではキャッシュミスエラーとなります。
+	</dd>
 
  
 </dl>
 
   <dl class="dl">
    
-    <dt class="dt dlterm">Changing access scanner settings</dt>
+    <dt class="dt dlterm">アクセススキャナ設定の変更</dt>
 
-    <dd class="dd">The server runs a periodic scanner process which determines which keys are most frequently-used, and therefore, which documents
-     should be loaded first during server warmup. The settings, <samp class="ph codeph">cbepctl flush_param</samp>
-     <samp class="ph codeph">alog_sleep_ time</samp> and <samp class="ph codeph">alog_task_ time</samp>parameters are used to
-     change the initial time and the interval for the process.</dd>
+		<dd class="dd">サーバは定期的にスキャナプロセスを実行し、どのキーが最も利用されていて、どのドキュメントを優先してロードするのかを判定します。
+			<samp class="ph codeph">cbepctl flush_param</samp>、<samp class="ph codeph">alog_sleep_time</samp>、<samp class="ph codeph">alog_task_time</samp>パラメータを設定し、初回起動時刻と実行間隔を変更できます。</dd>
 
    
   </dl>
@@ -98,8 +83,8 @@
  
  <nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Tasks/cluster-management.html" title="運用で重要となるCouchbase Serverクラスタ管理について説明します。">クラスタ管理</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Tasks/tasks-manage-replication.html" title="Data replication is distributed throughout the Couchbase cluster to prevent a single point of failure. Data replication is configurable on a bucket-level and node-basis.">Handling replication</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Tasks/cluster-management.html" title="運用で重要となるCouchbase Serverクラスタ管理について説明します。">クラスタ管理</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Tasks/tasks-manage-replication.html" title="レプリカデータはCouchbaseクラスタ内で分散され、単一障害点を回避します。 データのレプリケーションはバケットごとに、ノード単位で構成されます。">レプリケーションの設定</a></div>
 </div>
 
 <div class="linklist linklist">
