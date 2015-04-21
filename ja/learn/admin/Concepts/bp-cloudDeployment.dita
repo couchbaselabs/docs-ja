@@ -1,244 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic13930">
-  <title>Couchbase in the cloud</title>
-  <shortdesc>Couchbase Server is extremely easy to deploy in the cloud.</shortdesc>
+<topic xml:lang="ja" id="topic13930">
+  <title>クラウドでCouchbaseを利用する</title>
+  <shortdesc>Couchbase Serverは、非常に簡単にクラウド上にデプロイすることが出来ます。</shortdesc>
   
   <body>
-    <p>From the software’s perspective, there is really no difference between being installed on
-      bare-metal or virtualized operating systems. On the other hand, the management and deployment
-      characteristics of the cloud warrant a separate discussion on the best ways to use 
-      Couchbase Server.</p>
-    <p>For the purposes of this discussion, “the cloud” is referred to as Amazon’s EC2 environment
-      since that is by far the most common cloud-based environment. However, the same considerations
-      apply to any environment that acts like EC2 (an organization’s private cloud, for example). In
-      terms of the software itself, extensive testing has been done within EC2 and a variety of
-      issues, exposed by sometimes unpredictable characteristics of this environment, have been
-      encountered and resolved.</p>
+    <p>ソフトウェアの観点からすると、インストールする先がベアメタルでも仮想OSでも違いはありません。
+       一方、クラウド上での管理、デプロイの観点では、Couchbase Serverを使う最適な方法の検討が必要です。</p>
+    <p>この検討では、クラウドベースの環境として、最も一般的であるAmazonのEC2環境を例として取り上げます。
+       しかし、（例えば組織独自のプライベートクラウドなど）EC2以外の環境でも同様の考慮が必要になります。
+       ソフトウェア自身の観点では、EC2上で多方面に渡るテストを終えており、
+       クラウド環境特有の予測できない性質にも直面し解決しました。</p>
 
-    <p>A number of RightScale templates are supplied to help you deploy within Amazon and to try
-      them out sign up for a free RightScale account. These templates handle almost all of the
-      special configuration aspects needed to make your experience within EC2 successful. Direct
-      integration with RightScale enables Couchbase to achieve new results in auto-scaling and
-      prepackaged deployment.</p>
-    <p>There is also an AMI for use within EC2 that is independent from RightScale. However, if you
-      decide to use it you will have to handle the specific complexities yourself. You can find this
-      AMI by searching for "couchbase" in the Amazon’s EC2 portal.</p>
-    <p>When deploying within the cloud, consider the following areas:</p>
+    <p>RightScaleではAmazon上へのデプロイを簡潔にするためテンプレートがたくさん用意されており、
+       無料のRightScaleアカウントをサインアップすることで試すことが出来ます。
+       これらのテンプレートは、EC2上での動作を成功させるために必要な特殊な設定項目のほぼ全部を含んでいます。
+       RightScaleを使って構築すると、オートスケールのやパッケージ化されたデプロイを容易に成功させることが出来ます。</p>
+    <p>EC2ではRightScaleとは独立したAMIを用いることも出来ます。
+       しかしながら、AMIを使う場合は、自分自身で解決すべき問題も増えます。
+       このAMIは、EC2のポータルから"couchbase"と検索することで見つかります。</p>
+    <p>クラウド上へのデプロイ時は、以下の項目に考慮する必要があります:</p>
     <ul>
-      <li>Local storage being ephemeral</li>
-      <li>IP addresses of a server changing from run time to run time</li>
-      <li>Security groups and firewall settings</li>
-   
+      <li>エフェメラルなローカルストレージ</li>
+      <li>サーバーのIPアドレスが稼働時間中に変わること</li>
+      <li>セキュリティグループとファイアウォールの設定</li>
+
     </ul>
-    <section><title>Handling instance reboot in the cloud</title>
-    <p>Many cloud providers warn users that they need to reboot certain instances for maintenance.
-        Couchbase Server ensures these reboots won’t disrupt your application. Take the
-        following steps to make that happen:</p>
+    <section><title>クラウド上におけるインスタンスリブートの対策</title>
+    <p>多くのクラウド事業者が、メンテナンスのためインスタンスをリブートする可能性があることをユーザーに警告していいます。
+       Couchbase Serverはこれらのリブートにより、アプリケーションが停止しないことを保証しています。
+       その場合には、以下のステップを踏んでください：</p>
     <ol>
-      <li>Install Couchbase Server on the new node.</li>
-      <li>From Couchbase Web Console, add the new node to the cluster.</li>
-      <li>From Couchbase Web Console, remove the node that you wish to reboot.</li>
-      <li>Rebalance the cluster.</li>
-      <li>Shut down the instance.</li>
+      <li>新しいノードにCouchbase Serverをインストールします。</li>
+      <li>Couchbase Web Consoleから、新しいノードをクラスタに追加します。</li>
+      <li>Couchbase Web Consoleから、リブートしたいノードを削除します。</li>
+      <li>クラスタをリバランスします。</li>
+      <li>インスタンスをシャットダウンします。</li>
     </ol>
     </section>
     
-    <section><title>Local storage</title><p>Dealing with local storage is not very much different than a data center deployment. However, EC2
-        provides an interesting solution: using the EBS storage you can prevent data loss when an
-        instance fails. Writing Couchbase data and configuration to EBS creates a reliable medium of
-        storage. There is direct support for using EBS within RightScale that you can set it up
-        manually.</p><p>Using EBS is
-        definitely not required, but you should make sure to follow the best practices around
-        performing backups.</p><p>Keep in mind that you will have to update the per-node disk path when configuring the Couchbase
-        Server to the point you have mounted an external volume.</p></section>
+    <section><title>ローカルストレージ</title><p>ローカルストレージを扱うことは、データセンターへのデプロイと大きな違いはありません。
+        しかしながら、EC2ではEBSストレージを使うことで、インスタンスがダウンした際にもデータを失わないというソリューションがあります。
+        Couchbaseのデータと設定をEBSに保存することで、信頼できるストレージ構築できます。
+        RightScaleでは、EBSを使う設定をサポートしています。</p>
+        <p>EBSを使うことは必須ではないですが、バックアップをベストプラクティスにそって実施するようにしてください。</p>
+        <p>外部ボリュームをマウントポイントをCouchbase Serverで設定する際に、
+        ノードごとのディスクのパスを更新することを忘れないようにしましょう。</p></section>
+
+    <section><title>IPアドレス変更への対処</title>
+         <p>クラウド上でCouchbase Serverを使う場合、サーバーのノードは、private/public IPアドレスのどちらでも使うことが出来ます。
+         クラウド上でのIPアドレスは頻繁に変わる可能性があるため、IPアドレスの代わりにhost名を用いて設定することも出来ます。</p>
+         <p>Amazon EC2を使う場合、Amazonが自動的に生成するhost名は、private/pulic IPアドレス両方の名前解決が出来るため、これを使うことをおすすめします。</p>
+
+        <p>デフォルトでは、Couchbase Serverはノードの識別にIPアドレスを用います。
+           IPアドレスが変わった場合、個別のノードは自身のアドレスを特定することができなくなり、また同一クラスタ内の他のサーバーもアクセスすることができなくなります。
+           クラウド上のCouchbase Serverをhost名を用いて設定するには、このセクションの後半の手順を実行してください。
+           Couchbaseによって提供されているRightScaleサーバーテンプレートでは、自動的にhost名でノードが設定できます。
+        </p>
+        <p>host名は常にノードのIPアドレスに名前解決できるようにしてください。
+           IPアドレスの変更時に自動的にhost名がアップデートされる<codeph>DNSMadeEasy</codeph>のような動的DNSサービスを使うことで実現できます。
+        </p>
+        <p>以下のステップはノード上のデータも設定も完全に破壊するため、Couchbaseの新規インストール時に行ってください。
+           既に稼働中のクラスタがあれば、対象ノードをクラスタから削除し、リバランス後、変更を加え、クラスタに戻してリバランスします。
+        </p>
+        <p>クラスタ内に、IPとhost名を利用したノードを混在させることも出来ます。
+           この方法でIPアドレスを設定するとき、<codeph>localhost</codeph>もしくは<codeph>127.0.0.1</codeph> としてアドレスを設定すべきではありません。
+           クラスタ内の複数ノードを特定することが出来なくなるからです。
+           代わりに、ホストごとに正しいIPアドレスを使いましょう。
+        </p>
+        <p><b>Couchbase Server 2.1以降 Linux、Windows</b></p>
+        <p>ルールとして、クラスタにノードを追加する前に、host名を設定すべきです。
+           Couchbase Serverをインストールしたときや、ノードがクラスタに追加する前にREST APIをコールしたときにもhost名を設定可能です。
+           オンラインアップデートで、既存クラスタにhost名を追加することも出来ます。
+           再起動する場合は、これらの方法のいずれかで設定したhost名を使います。
+        </p>
+
+      <p><b>Couchbase Server 2.0.1以前 Linux and Windows</b></p>
+        <p>Couchbase Server 2.0.1以前では、クラウド上でCouchbaseを使う場合、各ノードの設定ファイルを自分自身で設定する必要があります。
+        </p></section>
     
+    <section><title>セキュリティグループ/ファイアウォールの設定</title>
+        <p>Couhbaseのデプロイにあたり、適切なポートを許可/拒否することは非常に大切です。
+        ノードは様々なポートを使って通信しており、外部, 内部の両方で、許可された通信のみに制限することが大切です。
+        典型的なデータセンタでのデプロイと違い、クラウドシステムはデフォルトで世界に対してオープンされており、アクセスを制限するステップは必須です。</p></section>
     
-    <section><title>Handling changes in the IP addresses</title><p>When you use Couchbase Server in the cloud, server nodes can use internal or public IP
-        addresses. Because IP addresses in the cloud can change quite frequently, you can configure
-        Couchbase Server to use a hostname instead of an IP address.</p><p>For Amazon EC2,Amazon-generated hostnames are recommended that will automatically resolve to
-        either an internal or external address.</p><p>By default, Couchbase Server uses specific IP addresses as a unique identifier. If the IP
-        changes, an individual node will not be able to identify its own address, and other servers
-        in the same cluster will not be able to access it. To configure Couchbase Server
-        instances in the cloud to use hostnames, follow the steps later in this section. Note that
-        RightScale server templates provided by Couchbase can automatically configure a node with a
-        provided hostname.</p><p>Make sure that your hostname always resolves to the IP address of the node. This can be
-        accomplished by using a dynamic DNS service such as <codeph>DNSMadeEasy</codeph> which will
-        allow you to automatically update the hostname when an underlying IP address changes.</p><p>The following steps completely destroys any data and configuration from the node, so you should
-        start with a fresh Couchbase installation. If you already have a running cluster, you can
-        rebalance a node out of the cluster, make the change, and then rebalance it back into the
-        cluster. </p><p>Nodes with both IPs and hostnames can exist in the same
-        cluster. When you set the IP address using this method, you should not specify the address
-        as <codeph>localhost</codeph> or <codeph>127.0.0.1</codeph> as this will be invalid when
-        used as the identifier for multiple nodes within the cluster. Instead, use the correct IP
-        address for your host.</p><p><b>Linux and Windows 2.1 and above</b></p><p>As a rule, you
-        should set the hostname before you add a node to a cluster. You can also provide a hostname
-        in these ways: when you install a Couchbase Server node or when you do a REST API call
-        before the node is part of a cluster. You can also add a hostname to an existing cluster for
-        an online upgrade. If you restart, any hostname you establish with one of these methods will
-        be used. </p>
-      <p><b>Linux and Windows 2.0.1 and earlier</b></p><p>For Couchbase Server 2.0.1 and earlier you must follow a manual process where you edit
-        configuration files for each node, as described for Couchbase in the cloud. </p></section>
-    
-    
-    <section><title>Security groups/firewall settings</title><p>It’s important to make sure you have
-        both allowed AND restricted access to the appropriate ports in a Couchbase deployment. Nodes
-        must be able to talk to one another on various ports, and it is important to restrict
-        both external and internal access to only authorized individuals. Unlike a typical data center
-        deployment, cloud systems are open to the world by default, and steps must be taken to
-        restrict
-      access.</p></section>
-  
-    
-    <section><title>Using Couchbase Server on RightScale</title><p>Couchbase partners with RightScale to provide preconfigured RightScale
-          ServerTemplates that you can use to create an individual or array of
-        servers and start them as a cluster.  RightScale ServerTemplates enable you
-        to quickly set up Couchbase Server on Amazon Elastic Compute Cloud (Amazon EC2) servers
-        in the Amazon Web Services (AWS) cloud through RightScale. </p><p>The templates also provide support
-        for Amazon Elastic
-          Block Store (Amazon EBS) standard volumes and Provisioned IOPS volumes. (IOPS is an
-        acronym for input/output operations per second.) For more information about Amazon EBS
-        volumes and their capabilities and limitations, see Amazon EBS Volume Types. </p><p>RightScale ServerTemplates are provided based on Chef and, for compatibility with existing
-        systems, non-Chef-based ServerTemplates. </p>
-      
-      <note type="note">Beginning with Couchbase Server 2.2, non-Chef
-        templates are deprecated. Do not choose non-Chef templates for new installations.
+    <section><title>RightScaleでのCouchbaseの利用</title>
+    <p>CouchbaseはRightScaleと恊働し、複数台のサーバをクラスタとして動かすことの出来る、RightScaleのサーバテンプレートを公開しています。
+       RightScaleのサーバテンプレートによって、Amazon Web Services内のAmazon Elastic Compute Cloud (Amazon EC2)サーバ上にCouchbaseサーバを容易にセットアップすることが出来ます。</p>
+        <p>テンプレートは、Amazon Elastic Block Store(Amazon EBS)のスタンダードボリュームと、プロビジョンドIOPSボリューム両方をサポートします。
+        (IOPSとは、Input/output Operations Per Secondの略称です)
+        AmazonEBSボリュームとその性能や制限についての詳細情報は、Amazon EBS Volume Typesを御覧ください。</p>
+        <p>RightScale サーバーテンプレートはChefをベースとしています。既存システムとの互換性を保つため、Chefを利用しないテンプレート(non-Chef)も提供されています。</p>
+
+      <note type="note">Couchbase Server2.2をnon-Chefテンプレートから始めることは非推奨です。
+                        新規にインストールする場合は、non-Chefテンプレートを選ばないでください。
         </note>
-      
-      <p>Before you can set up Couchbase Server on RightScale, you need a RightScale account and
-        an AWS account that is connected to your RightScale account. </p><p>At a minimum, you need RightScale user role privileges to work with the Couchbase RightScale
-          ServerTemplates: actor, designer, library, observer, and server_login. To
-        add privileges: from the RightScale menu bar, click <b>Settings &gt; Account Settings &gt;
-          Users</b> and modify the permission list.</p><p>To set up Couchbase Server on RightScale, you need to import and customize a
-          ServerTemplate. After the template is customized, you can launch server
-        and cluster instances. The following figure illustrates the workflow:</p>
+    
+      <p>RighatScaleのCouchbase Serverをセットアップする前に、RightScaleアカウントと、RightScaleアカウントと連携したAWSアカウントが必要です。</p>
+      <p>CouchbaseのRightScaleサーバテンプレートを利用するには、最低限、actor, designer, library, observer, and server_loginの権限がRightScaleユーザーロールとして必要となります。
+         権限を追加するには、RighatScaleメニューバーから、<b>Settings &gt; Account Settings &gt;
+          Users</b> をクリックし、permission listを修正します。</p>
+
+       <p>RightScaleでCouchbase Serverをセットアップするには、Serverテンプレートをインポートしカスタマイズする必要があります。
+          テンプレートをカスタマイズすると、サーバとクラスタのインスタンスを起動することが出来ます。
+          以下はワークフローのイメージ図です。</p>
       <p><image href="../images/rightscale-workflow.png" width="480"/></p>
-      
-      <p>The following
-        procedures do not describe every parameter that you can modify when working with the
-        RightScale ServerTemplates. If you need more information about a parameter, click the info
-        button located near the parameter name.</p><p><b>To import Couchbase Server RightScale
-          ServerTemplate:</b></p><ol>
-        <li>From the RightScale menu bar, select <b>Design &gt; MultiCloud Marketplace &gt;
-            ServerTemplates</b>.</li>
-        <li>In the <b>Keywords</b> box on the left under Search, type <b>couchbase</b>, and then
-          click <b>Go</b>.</li>
-        <li>In the search results list, click on the latest version of Couchbase Server
-          ServerTemplate. <p>The name of each Couchbase template in the list contains the Couchbase
-            Server version number.</p></li>
-        <li>Click <b>Import</b>.</li>
-        <li>Review each page of the end user license agreement, and then click <b>Finish</b> to
-          accept the agreement.</li>
+    
+      <p>以下の手順では、RightScaleのサーバーテンプレートで指定できるパラメータの全ては説明していません。
+         パラメータについての詳しい情報が必要なときは、パラメータ名のそばのinfoボタンをクリックしてください。</p>
+      <p><b>Couchbase Server RightScaleテンプレートをインポートする:</b></p>
+      <ol>
+        <li>RightScaleメニューバーから、 <b>Design &gt; MultiCloud Marketplace &gt;ServerTemplates</b>を選択します。</li>
+        <li>Searchの左下にある<b>Keywords</b> boxの中に, <b>couchbase</b>と入力し, <b>Go</b>をクリックします。</li>
+        <li>検索結果リストの中から、Couchbase Serverのサーバーテンプレートの最新バージョンをクリックします。
+            <p>各Couchbase Serverテンプレート名には、Couchbase Serverのバージョンが含まれています。</p>
+        </li>
+        <li><b>Import</b>をクリック。</li>
+        <li>エンドユーザライセンス利用許諾書を確認し、同意する場合は<b>Finish</b> をクリックします。</li>
       </ol>
       
-      <p><b>To create a new deployment:</b></p><ol>
-        <li>From the RightScale menu bar, select <b>Manage &gt; Deployments &gt; New</b>.</li>
-        <li>Enter a Nickname and Description for the new deployment.</li>
-        <li>Click <b>Save</b>.</li>
-      </ol><p><b>To add a server or cluster to a deployment:</b></p><ol>
-        <li>From the RightScale menu bar, select <b>Manage &gt; Deployments</b>.</li>
-        <li>Click the nickname of the deployment that you want to place the server or cluster
-          in.</li>
-        <li>From the deployment page menu bar, add the server or cluster: <ul>
-            <li>To add a server, click <b>Add Server</b>.</li>
-            <li>To add a cluster, click <b>Add Array</b>.</li>
+      <p><b>新しいDeploymentを作成する:</b></p><ol>
+        <li>RightScaleのメニューバーから<b>Manage &gt; Deployments &gt; New</b>を選択します。</li>
+        <li>新しいdeploymentに対して、ニックネームとディスクリプションを入力します。</li>
+        <li><b>Save</b>をクリックします。</li>
+      </ol><p><b>deploymentにサーバとクラスタを追加する:</b></p><ol>
+        <li>RightScaleのメニューバーから<b>Manage &gt; Deployments</b>を選択します。</li>
+        <li>対象のサーバもしくはクラスタのニックネームをクリックします。</li>
+        <li>deploymentページのメニューバーから、サーバーもしくはクラスタを追加します:<ul>
+            <li>サーバーを追加するには<b>Add Server</b>をクリックします。</li>
+            <li>クラスタを追加するには<b>Add Array</b>をクリックします。</li>
           </ul></li>
-        <li>In the Add to Deployment window, select a cloud and click <b>Continue</b>.</li>
-        <li>On the Server Template page, select a template from the list.<p>If you have many server
-            templates in your account, you can reduce the number of entries in the list by typing a
-            keyword from the template name into the Server Template Name box under Filter
-            Options.</p></li>
-        <li>Click <b>Server Details</b>.</li>
-        <li>On the <b>Server Details</b> page, choose settings for Hardware:<p><b>Server Name</b> or
-              <b>Array Name</b>—Enter a name for the new server or array.</p><p><b>Instance
-            Type</b>—The default is extra large. The template supports only large or extra large
-            instances and requires a minimum of 4 cores.</p><p><b>EBS Optimized</b>—Select the check
-            box to enable EBS-optimized volumes for Provisioned IOPS.</p></li>
-        <li>Choose settings for Networking:<ul>
+        <li>Add to Deploymentウインドウで、cloudを選択し<b>Continue</b>をクリックします。</li>
+        <li>サーバテンプレートページで、リストからテンプレートを選択します。
+            <p>アカウント内で複数のテンプレートを持っていた場合、フィルターオプション下でテンプレート名ボックスにキーワードを入力することでリストに表示される数を減らすことが出来ます。</p>
+        </li>
+        <li><b>Server Details</b>をクリックします。</li>
+        <li><b>Server Details</b>ページで、ハードウェアの設定を選びます。
+            <p><b>Server Name</b> もしくは<b>Array Name</b>に新しいサーバーもしくはクラスタの名前を入力します。</p>
+            <p><b>Instance Type</b>—デフォルトはextra largeです。テンプレートはlargeとextra largeのみをサポートし、最低4コアを必要とします。</p>
+            <p><b>EBS Optimized</b>—Provisioned IOPSのためにEBS-optimized volumesを有効化するには、チェックボックスをクリックします。</p></li>
+        <li>ネットワーク設定を選択します。<ul>
             <li>
-              <p><b>SSH Key</b>—Choose an SSH key.</p>
+              <p><b>SSH Key</b>—SSH keyを選択します。</p>
             </li>
             <li>
-              <p><b>Security Groups</b>—Choose one or more security groups.</p>
+              <p><b>Security Groups</b>—1つ以上のセキュリティグループを選択します。</p>
             </li>
           </ul></li>
-        <li>If you are adding a cluster, click <b>Array Details</b>, and then choose settings for
-          Autoscaling Policy and Array Type Details.<p>Under Autoscaling Policy, you can set the
-            minimum and maximum number of active servers in the cluster by modifying the <b>Min
-              Count</b> and <b>Max Count</b> parameters. If you want a specific number of servers,
-            set both parameters to the same value.</p></li>
-        <li>Click <b>Finish</b>.</li>
-      </ol><p><b>To customize the template for a server or a cluster:</b></p><ol>
-        <li>From the RightScale menu bar, select <b>Manage &gt; Deployments</b>.</li>
-        <li>Click the nickname of the deployment that the server or cluster is in.</li>
-        <li>Click the nickname of the server or cluster.</li>
-        <li>On the Server or Server Array page, click the <b>Inputs</b> tab, and then click
-            <b>edit</b>.</li>
-        <li>Expand the <b>BLOCK_DEVICE</b> category and modify inputs as needed.<p>The BLOCK_DEVICE
-            category contains input parameters that are specific to storage. Here’s a list of some
-            advanced inputs that you might want to modify:</p><ul>
-            <li><b>I/O Operations per Second</b>—Number of input/output operations per second (IOPS)
-              that the volume can support</li>
-            <li><b>Volume Type</b>—Type of storage device</li>
+        <li>クラスタを追加する場合は、<b>Array Details</b>をクリックし、オートスケーリングポリシーとArrayTypeDetailのための設定を選択します。
+          <p>Autoscaling Policy配下で、 <b>Min Count</b>と<b>Max Count</b>パラメータを修正することで、クラスタ内のアクティブなサーバーの最小／最大数を設定できます。サーバー数を特定の数にするには、これら2つの値を同じにします。</p>
+        </li>
+        <li><b>Finish</b>をクリックします。</li>
+      </ol><p><b>サーバもしくはクラスタのテンプレートをカスタマイズする:</b></p><ol>
+        <li>RightScaleメニューバーから、<b>Manage &gt; Deployments</b>を選択します。</li>
+        <li>サーバーもしくはクラスタが所属するdeploymentのニックネームをクリックします。</li>
+        <li>サーバーもしくはクラスタのニックネームをクリックします。</li>
+        <li>サーバーもしくはサーバアレイページで、<b>Inputs</b> タブをクリックし、<b>edit</b>をクリックします。</li>
+        <li><b>BLOCK_DEVICE</b>を展開し、必要に応じてインプットも修正します。
+            <p>BLOCK_DEVICEカテゴリはストレージを特定するためのインプットパラメータも含んでいます。
+               以下に、修正可能なインプットを挙げます:</p><ul>
+            <li><b>I/O Operations per Second</b>—そのボリュームがサポートする秒間のinput/outputオペレーション数(IOPS)</li>
+            <li><b>Volume Type</b>—ストレージデバイスタイプ</li>
           </ul></li>
-        <li>Expand the <b>DB_COUCHBASE</b> category and modify inputs as needed.<p>The DB_COUCHBASE
-            category contains input parameters that are specific to Couchbase Server. In
-            general, the default values are suitable for one server. If you want to create a
-            cluster, you need to modify the input parameter values. Here’s a list of the advanced
-            inputs that you can modify:</p><ul>
+        <li><b>DB_COUCHBASE</b>カテゴリを展開し、必要に応じてインプットも修正します。
+            <p>DB_COUCHBASEカテゴリはCouchbase Server特有のインプットパラメータを含んでいます。
+               一般的に、デフォルト値は1台のサーバの最適値になっています。
+               クラスタを作成する場合、インプットパラメータを変える必要があります。
+               以下に修正可能なインプットを挙げます:</p><ul>
             <li>
-              <p><b>Bucket Name</b>—Name of the bucket. The default bucket name is
-                  <codeph>default</codeph>.</p>
+              <p><b>Bucket Name</b>—バケット名。デフォルトは <codeph>default</codeph>。</p>
             </li>
             <li>
-              <p><b>Bucket Password</b>—Password for the bucket.</p>
+              <p><b>Bucket Password</b>—バケットのパスワード。</p>
             </li>
             <li>
-              <p><b>Bucket RAM Quota</b>—RAM quota for the bucket in MB.</p>
+              <p><b>Bucket RAM Quota</b>—バケットのRAM割当量(MB)。</p>
             </li>
             <li>
-              <p><b>Bucket Replica Count</b>—Bucket replica count.</p>
+              <p><b>Bucket Replica Count</b>—バケットのレプリカ数。</p>
             </li>
             <li>
-              <p><b>Cluster REST/Web Password</b>—Password for the administrator account. The
-                default is <codeph>password</codeph>.</p>
+              <p><b>Cluster REST/Web Password</b>—管理者アカウントのパスワード。
+                デフォルトは<codeph>password</codeph></p>
             </li>
             <li>
-              <p><b>Cluster REST/Web Username</b>—Administrator account user name for access to the
-                cluster via the REST or web interface. The default is
-                <codeph>Administrator</codeph>.</p>
+							<p><b>Cluster REST/Web Username</b>—RESTもしくはwebでクラスタへアクセスするときの管理者アカウントユーザー名。デフォルトは   <codeph>Administrator</codeph>。</p>
             </li>
             <li>
-              <p><b>Cluster Tag</b>—Tag for nodes in the cluster that are automatically joined.</p>
+              <p><b>Cluster Tag</b>—自動的にジョインするクラスタ内でのノードのタグ。</p>
             </li>
             <li>
-              <p><b>Couchbase Server Edition</b>—Edition of Couchbase Server. The default is
-                  <codeph>enterprise</codeph>.</p>
+              <p><b>Couchbase Server Edition</b>—Couchbase Serverのエディション。
+                  デフォルトは<codeph>enterprise</codeph>。</p>
             </li>
             <li>
-              <p><b>Rebalance Count</b>—The number of servers to launch before doing a rebalance.
-                Set this value to the total number of target servers you plan to have in the
-                cluster. If you set the value to 0, Couchbase Server does a rebalance after each
-                server joins the cluster.</p>
+              <p><b>Rebalance Count</b>—リバランス前に起動するサーバ数。
+                クラスタに追加する予定の対象サーバの合計数をセットしてください。
+                0にした場合、Couchbase Serverは各サーバがクラスタに参加する度にリバランスします。</p>
             </li>
           </ul></li>
-        <li>Click <b>Save</b>.</li>
-        <li>If you are ready to launch the server or cluster right now, click <b>Launch</b>.</li>
+        <li><b>Save</b>をクリックします。</li>
+        <li>サーバもしくはクラスタを起動する準備ができれば<b>Launch</b>をクリックします。</li>
       </ol>
       
-      <p><b>To launch servers or clusters:</b></p><ol>
-        <li>From the RightScale menu bar, select <b>Manage &gt; Deployments</b>.</li>
-        <li>Click the nickname of the deployment that the server or cluster is in.</li>
-        <li>Click the nickname of the server or cluster.</li>
-        <li>On the Server or Server Array page, click <b>Launch</b>.</li>
+      <p><b>サーバもしくはクラスタを起動する:</b></p><ol>
+        <li>RightScaleメニューバーから<b>Manage &gt; Deployments</b>を選択します。</li>
+        <li>サーバもしくはクラスタが含まれるdeploymentのニックネームをクリックします。</li>
+        <li>サーバーもしくはクラスタのニックネームをクリックします。</li>
+        <li>Server or Server Arrayページで<b>Launch</b>をクリックします。</li>
       </ol>
       
-      <p><b>To log in to the Couchbase Web Console:</b></p><p>You can log in to the Couchbase
-        Web Console by using your web browser to connect to the public IP address on port 8091. The
-        general format is <codeph>http://&lt;server:port&gt;</codeph>. For example: if the public IP
-        address is 192.236.176.4, enter <codeph>http://192.236.176.4:8091/</codeph> in the web
-        browser location bar.</p></section>
+      <p><b>Couchbase Web Consoleにログインする:</b></p>
+      <p>パブリックIPの8091ポートにブラウザから接続することで、Couchbase ServerのWeb Consoleにログインすることが出来ます。
+       一般的なフォーマットは<codeph>http://&lt;server:port&gt;</codeph>となります。
+        例えば、パブリックIPアドレスが192.236.176.4である場合、 <codeph>http://192.236.176.4:8091/</codeph> とブラウザで入力してください。</p></section>
     
     
   </body>
