@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic13930">
-  <title>Couchbase in the cloud</title>
+<topic xml:lang="ja" id="topic13930">
+  <title>クラウドでCouchbaseを利用する</title>
   <shortdesc>Couchbase Serverは、非常に簡単にクラウド上にデプロイすることが出来ます。</shortdesc>
   
   <body>
     <p>ソフトウェアの観点からすると、インストールする先がベアメタルでも仮想OSでも違いはありません。
-       一方、クラウド上での管理・デプロイの観点では、CouchbaseServerを使う最適な方法の検討は必要です。</p>
+       一方、クラウド上での管理、デプロイの観点では、Couchbase Serverを使う最適な方法の検討が必要です。</p>
     <p>この検討では、クラウドベースの環境として、最も一般的であるAmazonのEC2環境を例として取り上げます。
        しかし、（例えば組織独自のプライベートクラウドなど）EC2以外の環境でも同様の考慮が必要になります。
        ソフトウェア自身の観点では、EC2上で多方面に渡るテストを終えており、
        クラウド環境特有の予測できない性質にも直面し解決しました。</p>
 
-    <p>RightScaleよりAmazon上へのデプロイを簡潔にするためテンプレートがたくさん用意されており、
+    <p>RightScaleではAmazon上へのデプロイを簡潔にするためテンプレートがたくさん用意されており、
        無料のRightScaleアカウントをサインアップすることで試すことが出来ます。
        これらのテンプレートは、EC2上での動作を成功させるために必要な特殊な設定項目のほぼ全部を含んでいます。
        RightScaleを使って構築すると、オートスケールのやパッケージ化されたデプロイを容易に成功させることが出来ます。</p>
-    <p>EC2にはRightScaleとは独立したAMIを用いることも出来ます。
+    <p>EC2ではRightScaleとは独立したAMIを用いることも出来ます。
        しかしながら、AMIを使う場合は、自分自身で解決すべき問題も増えます。
        このAMIは、EC2のポータルから"couchbase"と検索することで見つかります。</p>
     <p>クラウド上へのデプロイ時は、以下の項目に考慮する必要があります:</p>
@@ -29,10 +29,10 @@
     </ul>
     <section><title>クラウド上におけるインスタンスリブートの対策</title>
     <p>多くのクラウド事業者が、メンテナンスのためインスタンスをリブートする可能性があることをユーザーに警告していいます。
-       CouchbaseServerはこれらのリブートにより、アプリケーションが停止しないことを保証しています。
+       Couchbase Serverはこれらのリブートにより、アプリケーションが停止しないことを保証しています。
        その場合には、以下のステップを踏んでください：</p>
     <ol>
-      <li>新しいノードにCouchbaseServerをインストールします。</li>
+      <li>新しいノードにCouchbase Serverをインストールします。</li>
       <li>Couchbase Web Consoleから、新しいノードをクラスタに追加します。</li>
       <li>Couchbase Web Consoleから、リブートしたいノードを削除します。</li>
       <li>クラスタをリバランスします。</li>
@@ -42,105 +42,105 @@
     
     <section><title>ローカルストレージ</title><p>ローカルストレージを扱うことは、データセンターへのデプロイと大きな違いはありません。
         しかしながら、EC2ではEBSストレージを使うことで、インスタンスがダウンした際にもデータを失わないというソリューションがあります。
-        Couchbaseのデータと設定をEBSに保存することで、ストレージの信頼性を挙げることが出来ます。
+        Couchbaseのデータと設定をEBSに保存することで、信頼できるストレージ構築できます。
         RightScaleでは、EBSを使う設定をサポートしています。</p>
-        <p>EBSを使うことは必須ではないですが、バックアップを実現するためのベストプラクティスです。</p>
-        <p>外部ボリュームをマウントポイントをCouchbaseServerで設定する際に、
+        <p>EBSを使うことは必須ではないですが、バックアップをベストプラクティスにそって実施するようにしてください。</p>
+        <p>外部ボリュームをマウントポイントをCouchbase Serverで設定する際に、
         ノードごとのディスクのパスを更新することを忘れないようにしましょう。</p></section>
-    
-    <section><title>IPアドレスが変わることへの対処</title>
-         <p>クラウド上でCouchbaseServerを使う場合、サーバーのノードは、private/public IPアドレスのどちらでも使うことが出来ます。
-         クラウド上でのIPアドレスは頻繁に変わる可能性があるため、IPアドレスの代わりにhost名を用いて設定することも出来ます。</p>
-         <p>Amazon EC2を使う場合、Amazonが自動的に生成するhost名だと、private/pulic IPアドレス両方の名前解決が出来るため、これを使うことをおすすめします。</p>
 
-        <p>デフォルトでは、CouchbaseServerはノードの識別にIPアドレスを用います。
+    <section><title>IPアドレス変更への対処</title>
+         <p>クラウド上でCouchbase Serverを使う場合、サーバーのノードは、private/public IPアドレスのどちらでも使うことが出来ます。
+         クラウド上でのIPアドレスは頻繁に変わる可能性があるため、IPアドレスの代わりにhost名を用いて設定することも出来ます。</p>
+         <p>Amazon EC2を使う場合、Amazonが自動的に生成するhost名は、private/pulic IPアドレス両方の名前解決が出来るため、これを使うことをおすすめします。</p>
+
+        <p>デフォルトでは、Couchbase Serverはノードの識別にIPアドレスを用います。
            IPアドレスが変わった場合、個別のノードは自身のアドレスを特定することができなくなり、また同一クラスタ内の他のサーバーもアクセスすることができなくなります。
-           クラウド上のCouchbaseServerをhost名を用いて設定するには、このセクションの後半のステップを踏んでください。
-           Couchbaseによって提供されているRightScale サーバーのテンプレートでは、自動的にhost名でノードが設定できることを覚えておいてください。
+           クラウド上のCouchbase Serverをhost名を用いて設定するには、このセクションの後半の手順を実行してください。
+           Couchbaseによって提供されているRightScaleサーバーテンプレートでは、自動的にhost名でノードが設定できます。
         </p>
         <p>host名は常にノードのIPアドレスに名前解決できるようにしてください。
            IPアドレスの変更時に自動的にhost名がアップデートされる<codeph>DNSMadeEasy</codeph>のような動的DNSサービスを使うことで実現できます。
         </p>
-        <p>以下のステップはノード上のデータも設定も完全に破壊するため、空っぽのCouchbaseのインストールも合わせてする方がいいでしょう。
-           既に稼働中のクラスタがあれば、対象ノードをクラスタから削除・リバランス後、変更を加え、クラスタに戻してリバランスします。
+        <p>以下のステップはノード上のデータも設定も完全に破壊するため、Couchbaseの新規インストール時に行ってください。
+           既に稼働中のクラスタがあれば、対象ノードをクラスタから削除し、リバランス後、変更を加え、クラスタに戻してリバランスします。
         </p>
-        <p>クラスタ内に、IPとhost名両方のノードを存在させることも出来ます。
+        <p>クラスタ内に、IPとhost名を利用したノードを混在させることも出来ます。
            この方法でIPアドレスを設定するとき、<codeph>localhost</codeph>もしくは<codeph>127.0.0.1</codeph> としてアドレスを設定すべきではありません。
            クラスタ内の複数ノードを特定することが出来なくなるからです。
-           代わりに、ホストに正しいIPアドレスを使いましょう。
+           代わりに、ホストごとに正しいIPアドレスを使いましょう。
         </p>
-        <p><b>Linux and Windows 2.1 and above</b></p>
+        <p><b>Couchbase Server 2.1以降 Linux、Windows</b></p>
         <p>ルールとして、クラスタにノードを追加する前に、host名を設定すべきです。
-           この方法でもhost名をつけることが出来ます。CouchbaseServerをインストールしたときや、ノードがクラスタに追加する前にREST APIをコールしたとき。
-           オンラインアップデートのために、既存クラスタにhost名を追加することも出来ます。
+           Couchbase Serverをインストールしたときや、ノードがクラスタに追加する前にREST APIをコールしたときにもhost名を設定可能です。
+           オンラインアップデートで、既存クラスタにhost名を追加することも出来ます。
            再起動する場合は、これらの方法のいずれかで設定したhost名を使います。
         </p>
 
-      <p><b>Linux and Windows 2.0.1 and earlier</b></p>
-        <p>Couchbase Server 2.0.1以下では、クラウド上でCouchbaseを使う場合、各ノードの設定ファイルを自分自身で設定する必要があります。
+      <p><b>Couchbase Server 2.0.1以前 Linux and Windows</b></p>
+        <p>Couchbase Server 2.0.1以前では、クラウド上でCouchbaseを使う場合、各ノードの設定ファイルを自分自身で設定する必要があります。
         </p></section>
     
     <section><title>セキュリティグループ/ファイアウォールの設定</title>
         <p>Couhbaseのデプロイにあたり、適切なポートを許可/拒否することは非常に大切です。
-        ノードは様々なポートを使って通信し、external, internal両方について許可された通信のみに制限することが大切です。
+        ノードは様々なポートを使って通信しており、外部, 内部の両方で、許可された通信のみに制限することが大切です。
         典型的なデータセンタでのデプロイと違い、クラウドシステムはデフォルトで世界に対してオープンされており、アクセスを制限するステップは必須です。</p></section>
     
     <section><title>RightScaleでのCouchbaseの利用</title>
-    <p>CouchbaseのパートナーであるRightScaleは、個別もしくは複数サーバーをクラスタとして動かすことの出来るプリコンフィグの入ったRightScaleのサーバーテンプレートを公開しています。
-       RightScaleのサーバーテンプレートによって、Amazon Web Services内のAmazon EC2サバー上にCouchbaseサーバーを容易にセットアップすることが出来ます。</p>
+    <p>CouchbaseはRightScaleと恊働し、複数台のサーバをクラスタとして動かすことの出来る、RightScaleのサーバテンプレートを公開しています。
+       RightScaleのサーバテンプレートによって、Amazon Web Services内のAmazon Elastic Compute Cloud (Amazon EC2)サーバ上にCouchbaseサーバを容易にセットアップすることが出来ます。</p>
         <p>テンプレートは、Amazon Elastic Block Store(Amazon EBS)のスタンダードボリュームと、プロビジョンドIOPSボリューム両方をサポートします。
         (IOPSとは、Input/output Operations Per Secondの略称です)
         AmazonEBSボリュームとその性能や制限についての詳細情報は、Amazon EBS Volume Typesを御覧ください。</p>
-        <p>RightScale サーバーテンプレートはChefベースで提供されます。既存システムとの両立を考慮する場合は、non-Chefベースのテンプレートも提供されています。</p>
+        <p>RightScale サーバーテンプレートはChefをベースとしています。既存システムとの互換性を保つため、Chefを利用しないテンプレート(non-Chef)も提供されています。</p>
 
       <note type="note">Couchbase Server2.2をnon-Chefテンプレートから始めることは非推奨です。
                         新規にインストールする場合は、non-Chefテンプレートを選ばないでください。
         </note>
     
-      <p>RighatScaleのCouchbase Serverをセットアップする前に、RightScaleアカウントとAWSアカウントが必要です。</p>
-      <p>最低限、actor, designer, library, observer, and server_loginの権限が、RightScaleユーザーロールとして必要となります。
-         権限を作るためには、RighatScaleメニューバーから、<b>Settings &gt; Account Settings &gt;
+      <p>RighatScaleのCouchbase Serverをセットアップする前に、RightScaleアカウントと、RightScaleアカウントと連携したAWSアカウントが必要です。</p>
+      <p>CouchbaseのRightScaleサーバテンプレートを利用するには、最低限、actor, designer, library, observer, and server_loginの権限がRightScaleユーザーロールとして必要となります。
+         権限を追加するには、RighatScaleメニューバーから、<b>Settings &gt; Account Settings &gt;
           Users</b> をクリックし、permission listを修正します。</p>
 
-       <p>RightScaleのCouchbaseServerをセットアップするために、Serverテンプレートをインポートしカスタマイズする必要があります。
-          テンプレートをカスタマイズすると、サーバーとクラスタのインスタンスをローンチすることが出来ます。
+       <p>RightScaleでCouchbase Serverをセットアップするには、Serverテンプレートをインポートしカスタマイズする必要があります。
+          テンプレートをカスタマイズすると、サーバとクラスタのインスタンスを起動することが出来ます。
           以下はワークフローのイメージ図です。</p>
       <p><image href="../images/rightscale-workflow.png" width="480"/></p>
     
-      <p>以下の手順はRightScaleのサーバーテンプレートによって実行されるときに修正できる全てのパラメータを定義していません。
-         パラメータについて詳しい情報が必要なら、パラメータ名のそばのinfoボタンをクリックしてください。</p>
+      <p>以下の手順では、RightScaleのサーバーテンプレートで指定できるパラメータの全ては説明していません。
+         パラメータについての詳しい情報が必要なときは、パラメータ名のそばのinfoボタンをクリックしてください。</p>
       <p><b>Couchbase Server RightScaleテンプレートをインポートする:</b></p>
       <ol>
         <li>RightScaleメニューバーから、 <b>Design &gt; MultiCloud Marketplace &gt;ServerTemplates</b>を選択します。</li>
-        <li>Searchの左下にある<b>Keywords</b> boxの中に, <b>couchbase</b>と入力し, <b>Go</b>をクリックします</li>
+        <li>Searchの左下にある<b>Keywords</b> boxの中に, <b>couchbase</b>と入力し, <b>Go</b>をクリックします。</li>
         <li>検索結果リストの中から、Couchbase Serverのサーバーテンプレートの最新バージョンをクリックします。
-            <p>各CouchbaseServerテンプレート名には、CouchbaseServerのバージョンが含まれています</p>
+            <p>各Couchbase Serverテンプレート名には、Couchbase Serverのバージョンが含まれています。</p>
         </li>
-        <li><b>Import</b>をクリックします</li>
-        <li>licenseAgreementを確認し、同意した場合は<b>Finish</b> をクリックします。</li>
+        <li><b>Import</b>をクリック。</li>
+        <li>エンドユーザライセンス利用許諾書を確認し、同意する場合は<b>Finish</b> をクリックします。</li>
       </ol>
       
-      <p><b>新しいDeploymentを作成する</b></p><ol>
-        <li>RightScaleのメニューバーから<b>Manage &gt; Deployments &gt; New</b>を選択します</li>
-        <li>新しいdeploymentに対して、ニックネームとディスクリプションを入力します</li>
-        <li><b>Save</b>をクリックします</li>
-      </ol><p><b>deploymentにサーバーとクラスタを追加する</b></p><ol>
-        <li>RightScaleのメニューバーから<b>Manage &gt; Deployments</b>を選択します</li>
-        <li>対象のサーバーもしくはクラスタのニックネームをクリックします。</li>
-        <li>deploymentページのメニューバーから、サーバーもしくはクラスタを追加します <ul>
-            <li>サーバーを追加するには<b>Add Server</b>をクリックします</li>
-            <li>クラスタを追加するには<b>Add Array</b>をクリックします</li>
+      <p><b>新しいDeploymentを作成する:</b></p><ol>
+        <li>RightScaleのメニューバーから<b>Manage &gt; Deployments &gt; New</b>を選択します。</li>
+        <li>新しいdeploymentに対して、ニックネームとディスクリプションを入力します。</li>
+        <li><b>Save</b>をクリックします。</li>
+      </ol><p><b>deploymentにサーバとクラスタを追加する:</b></p><ol>
+        <li>RightScaleのメニューバーから<b>Manage &gt; Deployments</b>を選択します。</li>
+        <li>対象のサーバもしくはクラスタのニックネームをクリックします。</li>
+        <li>deploymentページのメニューバーから、サーバーもしくはクラスタを追加します:<ul>
+            <li>サーバーを追加するには<b>Add Server</b>をクリックします。</li>
+            <li>クラスタを追加するには<b>Add Array</b>をクリックします。</li>
           </ul></li>
         <li>Add to Deploymentウインドウで、cloudを選択し<b>Continue</b>をクリックします。</li>
-        <li>サーバーテンプレートページで、リストからテンプレートを選択します。
-            <p>アカウント内で複数のテンプレートを持っていた場合、フィルターオプション下でテンプレート名ボックスにキーワードを入力することでリストに表示される数を減らすことが出来ます</p>
+        <li>サーバテンプレートページで、リストからテンプレートを選択します。
+            <p>アカウント内で複数のテンプレートを持っていた場合、フィルターオプション下でテンプレート名ボックスにキーワードを入力することでリストに表示される数を減らすことが出来ます。</p>
         </li>
-        <li><b>Server Details</b>をクリックします</li>
+        <li><b>Server Details</b>をクリックします。</li>
         <li><b>Server Details</b>ページで、ハードウェアの設定を選びます。
             <p><b>Server Name</b> もしくは<b>Array Name</b>に新しいサーバーもしくはクラスタの名前を入力します。</p>
             <p><b>Instance Type</b>—デフォルトはextra largeです。テンプレートはlargeとextra largeのみをサポートし、最低4コアを必要とします。</p>
             <p><b>EBS Optimized</b>—Provisioned IOPSのためにEBS-optimized volumesを有効化するには、チェックボックスをクリックします。</p></li>
-        <li>ネットワーキングのための設定を選択します。<ul>
+        <li>ネットワーク設定を選択します。<ul>
             <li>
               <p><b>SSH Key</b>—SSH keyを選択します。</p>
             </li>
@@ -149,72 +149,70 @@
             </li>
           </ul></li>
         <li>クラスタを追加する場合は、<b>Array Details</b>をクリックし、オートスケーリングポリシーとArrayTypeDetailのための設定を選択します。
-          <p>Autoscaling Policy配下で、 <b>Min Count</b>と<b>Max Count</b>パラメータを修正することで、クラスタ内のアクティブなサーバーの最小／最大数を設定できます。サーバー数を任意の数にするには、これら2つの値を同じにすることで実現できます。</p>
+          <p>Autoscaling Policy配下で、 <b>Min Count</b>と<b>Max Count</b>パラメータを修正することで、クラスタ内のアクティブなサーバーの最小／最大数を設定できます。サーバー数を特定の数にするには、これら2つの値を同じにします。</p>
         </li>
-        <li><b>Finish</b>をクリックします</li>
-      </ol><p><b>サーバーもしくはクラスタのためのテンプレートをカスタマイズする</b></p><ol>
-        <li>RightScaleメニューバーから、<b>Manage &gt; Deployments</b>を選択します</li>
-        <li>サーバーもしくはクラスタが所属するdeploymentのニックネームをクリックします</li>
-        <li>サーバーもしくはクラスタのニックネームをクリックします</li>
-        <li>サーバーもしくはサーバーアレイページで、<b>Inputs</b> タブをクリックし、<b>edit</b>をクリックします</li>
+        <li><b>Finish</b>をクリックします。</li>
+      </ol><p><b>サーバもしくはクラスタのテンプレートをカスタマイズする:</b></p><ol>
+        <li>RightScaleメニューバーから、<b>Manage &gt; Deployments</b>を選択します。</li>
+        <li>サーバーもしくはクラスタが所属するdeploymentのニックネームをクリックします。</li>
+        <li>サーバーもしくはクラスタのニックネームをクリックします。</li>
+        <li>サーバーもしくはサーバアレイページで、<b>Inputs</b> タブをクリックし、<b>edit</b>をクリックします。</li>
         <li><b>BLOCK_DEVICE</b>を展開し、必要に応じてインプットも修正します。
             <p>BLOCK_DEVICEカテゴリはストレージを特定するためのインプットパラメータも含んでいます。
-               以下に、修正可能なインプットを挙げます</p><ul>
+               以下に、修正可能なインプットを挙げます:</p><ul>
             <li><b>I/O Operations per Second</b>—そのボリュームがサポートする秒間のinput/outputオペレーション数(IOPS)</li>
             <li><b>Volume Type</b>—ストレージデバイスタイプ</li>
           </ul></li>
-        <li><b>DB_COUCHBASE</b>を展開し、必要に応じてインプットも修正します。
-            <p>DB_COUCHBASEカテゴリはCouchbaseServerを特定するためのインプットパラメータを含んでいます。
-               一般的に、デフォルト値が1台のサーバーの最適値になっています。
-               クラスタを作成したい場合、インプットパラメータを変える必要があります。
-               以下に修正可能なインプットを挙げます</p><ul>
+        <li><b>DB_COUCHBASE</b>カテゴリを展開し、必要に応じてインプットも修正します。
+            <p>DB_COUCHBASEカテゴリはCouchbase Server特有のインプットパラメータを含んでいます。
+               一般的に、デフォルト値は1台のサーバの最適値になっています。
+               クラスタを作成する場合、インプットパラメータを変える必要があります。
+               以下に修正可能なインプットを挙げます:</p><ul>
             <li>
-              <p><b>Bucket Name</b>—バケット名。デフォルトは <codeph>default</codeph>.</p>
+              <p><b>Bucket Name</b>—バケット名。デフォルトは <codeph>default</codeph>。</p>
             </li>
             <li>
-              <p><b>Bucket Password</b>—バケットのパスワード</p>
+              <p><b>Bucket Password</b>—バケットのパスワード。</p>
             </li>
             <li>
-              <p><b>Bucket RAM Quota</b>—バケットのRAMクウォータ（MB)</p>
+              <p><b>Bucket RAM Quota</b>—バケットのRAM割当量(MB)。</p>
             </li>
             <li>
-              <p><b>Bucket Replica Count</b>—バケットのレプリカ数</p>
+              <p><b>Bucket Replica Count</b>—バケットのレプリカ数。</p>
             </li>
             <li>
-              <p><b>Cluster REST/Web Password</b>—administratorアカウントのパスワード。
+              <p><b>Cluster REST/Web Password</b>—管理者アカウントのパスワード。
                 デフォルトは<codeph>password</codeph></p>
             </li>
             <li>
-              <p><b>Cluster REST/Web Username</b>—RESTもしくはwebでクラスタへアクセスするときのAdministratorアカウントユーザー名。デフォルトは   <codeph>Administrator</codeph>.</p>
+							<p><b>Cluster REST/Web Username</b>—RESTもしくはwebでクラスタへアクセスするときの管理者アカウントユーザー名。デフォルトは   <codeph>Administrator</codeph>。</p>
             </li>
             <li>
-              <p><b>Cluster Tag</b>—自動的にジョインするクラスタ内でのノードのタグ</p>
+              <p><b>Cluster Tag</b>—自動的にジョインするクラスタ内でのノードのタグ。</p>
             </li>
             <li>
               <p><b>Couchbase Server Edition</b>—Couchbase Serverのエディション。
-                  デフォルトは<codeph>enterprise</codeph>.</p>
+                  デフォルトは<codeph>enterprise</codeph>。</p>
             </li>
             <li>
-              <p><b>Rebalance Count</b>—リバランスする前のローンチされたサーバー数。
-                クラスタに追加する予定の対象サーバーの合計数をセットしてください。
-                Set this value to the total number of target servers you plan to have in the
-                cluster. 
-                0にした場合、CouchbaseServerは全てのサーバーがクラスタにジョインした後にリバランスします。</p>
+              <p><b>Rebalance Count</b>—リバランス前に起動するサーバ数。
+                クラスタに追加する予定の対象サーバの合計数をセットしてください。
+                0にした場合、Couchbase Serverは各サーバがクラスタに参加する度にリバランスします。</p>
             </li>
           </ul></li>
         <li><b>Save</b>をクリックします。</li>
-        <li>サーバーもしくはクラスタをローンチする準備ができれば<b>Launch</b>をクリックします。</li>
+        <li>サーバもしくはクラスタを起動する準備ができれば<b>Launch</b>をクリックします。</li>
       </ol>
       
-      <p><b>サーバーもしくはクラスタをローンチする</b></p><ol>
+      <p><b>サーバもしくはクラスタを起動する:</b></p><ol>
         <li>RightScaleメニューバーから<b>Manage &gt; Deployments</b>を選択します。</li>
-        <li>サーバーもしくはクラスタが含まれるdeploymentのニックネームをクリックします</li>
-        <li>サーバーもしくはクラスタのニックネームをクリックします</li>
-        <li>Server or Server Arrayページで<b>Launch</b>をクリックします</li>
+        <li>サーバもしくはクラスタが含まれるdeploymentのニックネームをクリックします。</li>
+        <li>サーバーもしくはクラスタのニックネームをクリックします。</li>
+        <li>Server or Server Arrayページで<b>Launch</b>をクリックします。</li>
       </ol>
       
-      <p><b>Couchbase Web Consoleにログインする</b></p>
-      <p>パブリックIPの8091ポートにブラウザから接続することで、CouchbaseServerのWeb Consoleにログインすることが出来ます。
+      <p><b>Couchbase Web Consoleにログインする:</b></p>
+      <p>パブリックIPの8091ポートにブラウザから接続することで、Couchbase ServerのWeb Consoleにログインすることが出来ます。
        一般的なフォーマットは<codeph>http://&lt;server:port&gt;</codeph>となります。
         例えば、パブリックIPアドレスが192.236.176.4である場合、 <codeph>http://192.236.176.4:8091/</codeph> とブラウザで入力してください。</p></section>
     
