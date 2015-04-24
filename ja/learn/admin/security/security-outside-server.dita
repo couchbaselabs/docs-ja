@@ -1,36 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_h5v_5jc_bq">
- <title>Security outside Couchbase Server</title>
- <shortdesc>Security outside Couchbase Server involves configuration of IP tables and ports. </shortdesc>
+<concept xml:lang="ja" id="concept_h5v_5jc_bq">
+ <title>Couchbase Serve外部のセキュリティ</title>
+ <shortdesc>Couchbase Server外部のセキュリティではIPテーブルとポートの設定を実施します。</shortdesc>
  <conbody>
-  <p>To secure the host machine where Couchbase Server is installed, the best practices include
-   encrypting certain data locations using transparent data encryption technologies such as <xref
-    href="http://www.vormetric.com/data-security-solutions/use-cases/big-data-security"
-    format="html">Vormetric</xref>:</p>
+	 <p>Couchbase Serverをインストールするホストマシンをセキュアにするには、ベストプラクティスとして、<xref format="html" href="http://www.vormetric.com/data-security-solutions/use-cases/big-data-security">Vormetric</xref>のような透過的なデータ暗号化技術の導入があります:</p>
   <ul>
-   <li>Data and index file path (the default data path on Linux) at
-     <filepath>/opt/couchbase/var/lib/couchbase/data</filepath>.</li>
-   <li>Tools path at <filepath>/opt/couchbase/bin/</filepath>.</li>
-   <li>Password files at <filepath>/opt/couchbase/var/lib/couchbase/isasl.pw</filepath> and <filepath>/opt/couchbase/var/lib/config/</filepath>.</li>
+		<li>データとインデックスのファイルパス (Linuxでのデフォルトのデータパス)は<filepath>/opt/couchbase/var/lib/couchbase/data</filepath>です。</li>
+		<li>ツールのパスは<filepath>/opt/couchbase/bin/</filepath>です。</li>
+		<li>パスワードファイルは、<filepath>/opt/couchbase/var/lib/couchbase/isasl.pw</filepath> and <filepath>/opt/couchbase/var/lib/config/</filepath>にあります。</li>
   
   </ul>
-  <p>For additional security:</p>
+  <p>さらにセキュリティを高めるには:</p>
   <ul>
-   <li>Allow administrative access to Couchbase Server only through specific machines. To allow
-    access, turn on OS auditing on these machines.</li>
-   <li>Use IPSec on your local network.</li>
+		<li>特定のマシンからのみ、Couchbase Serverの管理アクセスを許可します。
+		アクセスを許容するマシンでは、OSの監査ログを有効にします。</li>
+   <li>IPSecをローカルネットワークで使用します。</li>
   </ul>
-  <section><title>How to configure IP tables and ports</title>
+  <section><title>IPテーブルとポートの設定方法</title>
    
-   <p>To configure IP tables for Linux, you have to edit the file located in
-     <filepath>/etc/sysconfig/iptables</filepath> as follows:
+		<p>LinuxでIPテーブルを設定するには、<filepath>/etc/sysconfig/iptables</filepath>にあるファイルを以下の手順で変更してください:
     <codeblock>##allow everyone to access port 80 and 443##
    -A INPUT -m state --state NEW -p tcp --dport 80 -j ACCEPT
    -A INPUT -m state --state NEW -p tsp --dport 443 -j ACCEPT</codeblock></p>
-   <p>Also keep in mind that certain Couchbase ports are used for node-to-node and some for node-to-client communication.</p>
+   <p>また、特定のCouchbaseポートはノード間、およびノード、クライアント間の通信に利用されることに注意してください。</p>
   <table>
-   <title>Important Couchbase ports</title>
+   <title>重要なCouchbaseポート</title>
    <tgroup cols="4">
     <colspec colname="col1" colwidth="1*"/>
     <colspec colname="col2" colwidth="2*"/>
@@ -38,92 +33,88 @@
     <colspec colname="col4" colwidth="0.5*"/>
     <thead>
      <row>
-      <entry>Port</entry>
-      <entry>Description</entry>
-      <entry>Node to node</entry>
-      <entry>Node to client</entry>
+      <entry>ポート</entry>
+      <entry>説明</entry>
+      <entry>ノード間</entry>
+      <entry>ノード、クライアント間</entry>
      </row>
     </thead>
     <tbody>
      <row>
       <entry>8091</entry>
-      <entry>Web administration port</entry>
+      <entry>Web管理ポート</entry>
       <entry>Yes</entry>
       <entry>Yes</entry>
      </row>
      <row>
       <entry>8092</entry>
-      <entry>Couchbase API port</entry>
+      <entry>Couchbase APIポート</entry>
       <entry>Yes</entry>
       <entry>Yes</entry>
      </row>
      <row>
       <entry>11207</entry>
-      <entry>Internal/external bucket port for SSL</entry>
+			<entry>内部/外部 SSL用バケットポート</entry>
       <entry>No</entry>
       <entry>Yes</entry>
      </row>
      <row>
       <entry>11209</entry>
-      <entry>Internal bucket port</entry>
+      <entry>内部バケットポート</entry>
       <entry>Yes</entry>
       <entry>No</entry>
      </row>
      <row>
       <entry>11210</entry>
-      <entry>Internal/external bucket port</entry>
+			<entry>内部/外部 バケットポート</entry>
       <entry>Yes</entry>
       <entry>Yes</entry>
      </row>
      <row>
       <entry>11211</entry>
-      <entry>Client interface (proxy)</entry>
+      <entry>クライアントインタフェース (プロキシ)</entry>
       <entry>No</entry>
       <entry>Yes</entry>
      </row>
      <row>
       <entry>11214</entry>
-      <entry>Incoming SSL proxy</entry>
+      <entry>SSLプロキシ入力</entry>
       <entry>No</entry>
       <entry>No</entry>
      </row>
      <row>
       <entry>11215</entry>
-      <entry>Internal outgoing SSL proxy</entry>
+      <entry>内部SSLプロキシ出力</entry>
       <entry>No</entry>
       <entry>No</entry>
      </row>
      <row>
       <entry>18091</entry>
-      <entry>Internal REST HTTPS for SSL</entry>
+      <entry>内部REST HTTPS SSL用</entry>
       <entry>No</entry>
       <entry>Yes</entry>
      </row>
      <row>
       <entry>18092</entry>
-      <entry>Internal CAPI HTTPS for SSL</entry>
+      <entry>内部 CAPI HTTPS SSL用</entry>
       <entry>No</entry>
       <entry>Yes</entry>
      </row>
      <row>
       <entry>4369</entry>
-      <entry>Erlang port mapper (epmd)</entry>
+      <entry>Erlangポートマッパー (epmd)</entry>
       <entry>Yes</entry>
       <entry>No</entry>
      </row>
      <row>
-      <entry>21100 to 21199 (inclusive)</entry>
-      <entry>Node data exchange</entry>
+      <entry>21100 から 21199 まで</entry>
+      <entry>ノード間データ送信</entry>
       <entry>Yes</entry>
       <entry>No</entry>
      </row>
     </tbody></tgroup>
   </table>
-   <note type="note">A sample script for configuring the IP tables firewall settings is also
-    provided in the following blog posting: <xref
-     href="http://blog.couchbase.com/iptables-firewall-settings-couchbase-db-and-couchbase-mobile-syncgateway"
-     format="html">IPTables Firewall Settings for Couchbase DB and Couchbase Mobile
-    Sync_gateway</xref></note>
+	<note type="note">IPテーブルファイアウォールを設定するサンプルスクリプトは、次のブログ記事でも紹介しています: <xref format="html" href="http://blog.couchbase.com/iptables-firewall-settings-couchbase-db-and-couchbase-mobile-syncgateway">IPTables Firewall Settings for Couchbase DB and Couchbase Mobile Sync_gateway</xref></note>
   </section>
  </conbody>
 </concept>
