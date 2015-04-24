@@ -5,10 +5,10 @@
   <shortdesc>内部設定でクラスタの挙動を変更します。内部設定はCouchbaseにだけ使用されます。</shortdesc>
   
   <reference id="rest-internal-settings-description">
-    <title>概要</title>
+    <title>説明</title>
   <refbody>
     <section>
-    <p>内部設定はクラスタの挙動やパフォーマンスおよびタイミングを変更し、REST APIを使用した場合にのみ公開されます。<codeph>/internalSettings</codeph> パラメータはサーバレベルで実装されています。</p>
+    <p>内部設定はクラスタの挙動やパフォーマンスおよびタイミングを変更し、REST APIでのみアクセスできます。<codeph>/internalSettings</codeph> パラメータはサーバレベルで実装されています。</p>
     
     <note type="warning">これらの設定はCouchbase内でのみ使用され、その他の目的で利用することを考慮していません。</note>
     
@@ -48,7 +48,7 @@
       </table>
     </section>
     
-    <section><title>Response codes</title>
+    <section><title>レスポンスコード</title>
       
       <codeblock>
 HTTP/1.1 200 OK
@@ -71,7 +71,7 @@ HTTP/1.1 500 Internal Server Error
       <codeblock>GET /internalSettings</codeblock>
     </section>
     
-    <section><title>構文</title>
+    <section><title>シンタックス</title>
       
       <codeblock>curl --username=ADMIN --password=PASSWORD HOST:PORT/internalSettings</codeblock>
     </section>
@@ -124,7 +124,7 @@ xdcrWorkerBatchSize      </codeblock></note>
 <section><title>HTTPメソッドとURI</title>
   <codeblock>POST /internalSettings</codeblock>
 </section>
-      <section><title>構文</title>
+      <section><title>シンタックス</title>
         <codeblock>
 curl -v -X POST 
   http://[admin]:[password]@[localhost]:8091/internalSettings -d [parameter]          
@@ -169,7 +169,7 @@ curl -v -X POST http://Administrator:password@10.5.2.117:8091/internalSettings -
   
   <reference id="rest-internal-settings-set-maxparallelindexers">
     <title>最大並列インデクサの設定</title>
-    <shortdesc>Couchbaseの内部設定の最大並列インデクサは<codeph>GET</codeph>や<codeph>POST</codeph>メソッドと<codeph>/settings/maxParallelIndexers</codeph>というURIで取得したり設定したり出来ます。</shortdesc>
+    <shortdesc>Couchbaseの内部設定の最大並列インデクサは<codeph>GET</codeph>や<codeph>POST</codeph>メソッドと<codeph>/settings/maxParallelIndexers</codeph>というURIで取得および設定できます。</shortdesc>
     <refbody>
     
     <section><title>HTTPメソッドとURI</title>
@@ -182,7 +182,7 @@ POST /settings/maxParallelIndexers globalValue
       
     </section>
       
-      <section><title>構文</title>
+      <section><title>シンタックス</title>
         
         <codeblock>
 // Example via browser
@@ -224,7 +224,7 @@ curl  -X POST -u Administrator:password http://10.5.2.117:8091/settings/maxParal
 </codeblock>
       </section>
       
-      <section><title>Response</title>
+      <section><title>レスポンス</title>
         
       <codeblock>
 {
