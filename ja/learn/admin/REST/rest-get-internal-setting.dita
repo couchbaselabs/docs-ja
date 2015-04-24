@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="rest-get-internal-settings">
-  <title>Viewing internal settings</title>
-  <shortdesc>Internal settings change cluster behavior. Internal settings are for Couchbase use
-    only.</shortdesc>
+<reference xml:lang="ja" id="rest-get-internal-settings">
+  <title>内部設定の表示</title>
+  <shortdesc>内部設定でクラスタの挙動を変更します。内部設定はCouchbaseにだけ使用されます。</shortdesc>
   
   <reference id="rest-internal-settings-description">
-    <title>Description</title>
+    <title>説明</title>
   <refbody>
     <section>
-    <p>These internal settings change cluster behavior, performance, and timing and are exposed only
-      via the REST API. The <codeph>/internalSettings</codeph> parameters are implemented on the server level. </p>
+    <p>内部設定はクラスタの挙動やパフォーマンスおよびタイミングを変更し、REST APIでのみアクセスできます。<codeph>/internalSettings</codeph> パラメータはサーバレベルで実装されています。</p>
     
-    <note type="warning">These settings are for internal Couchbase use only and are not supported
-      for public consumption.</note>
+    <note type="warning">これらの設定はCouchbase内でのみ使用され、その他の目的で利用することを考慮していません。</note>
     
-    <note type="note">The Maximum Parallel Indexer setting can also be implemented on the global level via 
-      <codeph>/settings/maxParallelIndexers globalValue</codeph>.</note>
+    <note type="note">最大並列インデクサの設定は、<codeph>/settings/maxParallelIndexers globalValue</codeph>を使用してグローバルレベルで実装することも出来ます。</note>
     
     
       <table>
-        <tgroup cols="2">
+        <tgroup cols="3">
           <colspec colname="col1" colwidth="1*"/>
           <colspec colname="col2" colwidth="2.9*"/>
           <colspec colnum="3" colname="c3" colwidth="3.73*"/>
@@ -28,32 +24,31 @@
             <row>
               <entry>HTTP</entry>
               <entry>URI</entry>
-              <entry>Description</entry>
+              <entry>概要</entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>GET</entry>
               <entry>/internalSettings</entry>
-              <entry>Retrieves Couchbase internal settings.</entry>
+              <entry>Couchbaseの内部設定を取得します。</entry>
             </row>
             <row>
               <entry>GET</entry>
               <entry>/settings/maxParallelIndexers</entry>
-              <entry>Retrieves the global and node-specific parallel indexer configuration.</entry>
+              <entry>グローバルおよびノード固有の並列インデクサ設定を取得します。</entry>
             </row>
             <row>
               <entry>POST</entry>
               <entry>/settings/maxParallelIndexers globalValue</entry>
-              <entry>Sets and retrieves the new global and node-specific parallel indexer
-                configuration. Value range: 1 to 1024. Default: 4</entry>
+              <entry>新しいグローバルおよびノード固有の並列インデクサを設定し取得します。設定範囲: 1〜1024。 デフォルト値: 4</entry>
             </row>
           </tbody>
         </tgroup>
       </table>
     </section>
     
-    <section><title>Response codes</title>
+    <section><title>レスポンスコード</title>
       
       <codeblock>
 HTTP/1.1 200 OK
@@ -65,27 +60,27 @@ HTTP/1.1 500 Internal Server Error
   </reference>
   
   
-  <reference id="rest-internal-settings-get"><title>Getting internal settings</title>
-    <shortdesc>Couchbase internal settings are retrieved with the <codeph>GET /internalSettings</codeph> HTTP method and URI.</shortdesc>
+  <reference id="rest-internal-settings-get"><title>内部設定を取得</title>
+    <shortdesc>Couchbaseの内部設定は次のHTTPメソッドとURIで取得できます。<codeph>GET /internalSettings</codeph> </shortdesc>
     
     <refbody>
      
     
-    <section><title>HTTP method and URI</title>
+    <section><title>HTTPメソッドとURI</title>
       
       <codeblock>GET /internalSettings</codeblock>
     </section>
     
-    <section><title>Syntax</title>
+    <section><title>シンタックス</title>
       
       <codeblock>curl --username=ADMIN --password=PASSWORD HOST:PORT/internalSettings</codeblock>
     </section>
-    <section><title>Example</title>
+    <section><title>例</title>
       
       <codeblock>curl -u admin:password1 http://10.4.2.4:8091/internalSettings</codeblock>
     </section>
     
-    <section><title>Response</title>
+    <section><title>レスポンス</title>
       
       <codeblock>
 {
@@ -110,9 +105,7 @@ HTTP/1.1 500 Internal Server Error
     "xdcrWorkerBatchSize": 500
 }    </codeblock>
       
-      <note type="note">The following internal parameters are deprecated. Use the equivalent
-        parameter in <codeph>/settings/replications</codeph>
-        instead.<codeblock>xdcrCheckpointInterval
+      <note type="note">以下の内部パラメータは推奨されません。代わりに<codeph>/settings/replications</codeph>で同等のパラメータを使います。<codeblock>xdcrCheckpointInterval
 xdcrDocBatchSizeKb
 xdcrFailureRestartInterval
 xdcrMaxConcurrentReps
@@ -125,28 +118,28 @@ xdcrWorkerBatchSize      </codeblock></note>
   </reference>
   
   <reference id="rest-internal-settings-post">
-    <title>Changing internal settings</title>
-    <shortdesc>Couchbase internal settings are changed with the <codeph>POST /internalSettings</codeph> HTTP method and URI.</shortdesc>
+    <title>内部設定の変更</title>
+    <shortdesc>Couchbaseの内部設定は次のHTTPメソッドとURIで変更できます。<codeph>POST /internalSettings</codeph></shortdesc>
     <refbody>
-<section><title>HTTP method and URI</title>
+<section><title>HTTPメソッドとURI</title>
   <codeblock>POST /internalSettings</codeblock>
 </section>
-      <section><title>Syntax</title>
+      <section><title>シンタックス</title>
         <codeblock>
 curl -v -X POST 
   http://[admin]:[password]@[localhost]:8091/internalSettings -d [parameter]          
         </codeblock>
       </section>
       
-      <section><title>Example</title>
-      <p>For example, to update the maximum number of buckets:</p>
+      <section><title>例</title>
+      <p>例えば、バケットの最大数を更新する場合:</p>
       
     <codeblock>
 curl -v -X POST http://Administrator:password@10.5.2.117:8091/internalSettings -d maxBucketCount=15
     </codeblock>
       </section>
       
-      <section><title>Response</title>
+      <section><title>レスポンス</title>
         <codeblock>
 * About to connect() to 10.5.2.117 port 8091 (#0)
 *   Trying 10.5.2.117... connected
@@ -175,16 +168,12 @@ curl -v -X POST http://Administrator:password@10.5.2.117:8091/internalSettings -
   </reference>
   
   <reference id="rest-internal-settings-set-maxparallelindexers">
-    <title>Setting maximum parallel indexers</title>
-    <shortdesc>Couchbase internal settings for the maximum parallel indexers are retrieved and changed with the 
-      <codeph>GET</codeph> and <codeph>POST</codeph> <codeph>/settings/maxParallelIndexers</codeph> HTTP methods and URI.</shortdesc>
+    <title>最大並列インデクサの設定</title>
+    <shortdesc>Couchbaseの内部設定の最大並列インデクサは<codeph>GET</codeph>や<codeph>POST</codeph>メソッドと<codeph>/settings/maxParallelIndexers</codeph>というURIで取得および設定できます。</shortdesc>
     <refbody>
     
-    <section><title>HTTP method and URI</title>
-      <p>To set the Maximum Parallel Indexer parameter on the global level, use the
-        <codeph>/settings/maxParallelIndexers</codeph> URI and <codeph>globalValue</codeph>
-        parameter. The value range is 1 to 1024. Default: 4. The results provide the global and
-        node-specific parallel indexer configuration.</p> 
+    <section><title>HTTPメソッドとURI</title>
+      <p>最大並列インデクサのパラメータをグローバルレベルで設定するとき、<codeph>/settings/maxParallelIndexers</codeph>というURIと<codeph>globalValue</codeph>パラメータを使用します。この設定値は1〜1024の範囲で、デフォルト値は4です。結果はグローバルおよびノード固有の並列インデクサ設定に反映されます。</p> 
       
       <codeblock>
 GET /settings/maxParallelIndexers
@@ -193,7 +182,7 @@ POST /settings/maxParallelIndexers globalValue
       
     </section>
       
-      <section><title>Syntax</title>
+      <section><title>シンタックス</title>
         
         <codeblock>
 // Example via browser
@@ -204,17 +193,17 @@ curl -u [admin]:[password] http://[localhost]:8091/settings/maxParallelIndexers
         </codeblock>
       </section>
       
-      <section><title>Example: GET</title>
+      <section><title>例: GETの場合</title>
       
       
-      <p>To view the current setting:</p>
+      <p>現在の設定の閲覧:</p>
       
       <codeblock>
 curl -u Administrator:password http://10.5.2.117:8091/settings/maxParallelIndexers
       </codeblock>
       </section>
         
-        <section><title>Response</title>
+        <section><title>レスポンス</title>
           <codeblock>
 {
     "globalValue": 4, 
@@ -225,19 +214,17 @@ curl -u Administrator:password http://10.5.2.117:8091/settings/maxParallelIndexe
       </codeblock>
         </section>
       
-      <section><title>Example: POST</title>
+      <section><title>例: POSTの場合</title>
       
       
-      <p>To change the setting, use the POST method with the
-          <codeph>/settings/maxParallelIndexers</codeph> URI and <codeph>globalValue</codeph>
-        parameter. Value range: 1 to 1024. Default: 4.</p>
+      <p>POSTメソッドで<codeph>/settings/maxParallelIndexers</codeph>というURIと<codeph>globalValue</codeph>パラメータを使用して設定を変更します。 設定範囲: 1〜1024。 デフォルト値: 4</p>
         
       <codeblock>
 curl  -X POST -u Administrator:password http://10.5.2.117:8091/settings/maxParallelIndexers -d globalValue=8
 </codeblock>
       </section>
       
-      <section><title>Response</title>
+      <section><title>レスポンス</title>
         
       <codeblock>
 {
