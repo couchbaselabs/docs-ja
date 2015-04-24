@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Security outside Couchbase Server</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Couchbase Serve外部のセキュリティ</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
 						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
 					  (function() {
@@ -11,62 +11,59 @@
 					    var s = document.getElementsByTagName('script')[0];
 					    s.parentNode.insertBefore(gcse, s);
 					  })();
-					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections section--active"><a href="../security/security-intro.html"><span>セキュリティ</span></a><ul class="sub-sections"><li class="section"><a href="../security/security-admin-access.html"><span>管理用アクセスの暗号化</span></a></li><li class="section"><a href="../security/security-client-ssl.html"><span>データアクセスの暗号化</span></a></li><li class="section section--has-sub-sections section--active"><a href="../security/security-best-practices.html"><span>Best security practices</span></a><ul class="sub-sections"><li class="section"><a href="../security/security-outside-server.html" class="current"><span>Security outside Couchbase Server</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../security/security-inside-server.html"><span>Security inside Couchbase Server</span></a></li><li class="section"><a href="../security/security-in-cloud.html"><span>Security in the cloud</span></a></li><li class="section"><a href="../security/security-in-applications.html"><span>Security in applications</span></a></li></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
- <h1 class="title topictitle1">Security outside Couchbase Server</h1>
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections section--active"><a href="../security/security-intro.html"><span>セキュリティ</span></a><ul class="sub-sections"><li class="section"><a href="../security/security-admin-access.html"><span>管理用アクセスの暗号化</span></a></li><li class="section"><a href="../security/security-client-ssl.html"><span>データアクセスの暗号化</span></a></li><li class="section section--has-sub-sections section--active"><a href="../security/security-best-practices.html"><span>セキュリティのベストプラクティス</span></a><ul class="sub-sections"><li class="section"><a href="../security/security-outside-server.html" class="current"><span>Couchbase Serve外部のセキュリティ</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../security/security-inside-server.html"><span>Security inside Couchbase Server</span></a></li><li class="section"><a href="../security/security-in-cloud.html"><span>Security in the cloud</span></a></li><li class="section"><a href="../security/security-in-applications.html"><span>Security in applications</span></a></li></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLI reference</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+ <h1 class="title topictitle1">Couchbase Serve外部のセキュリティ</h1>
 
  
- <div class="body conbody"><p class="shortdesc">Security outside Couchbase Server involves configuration of IP tables and ports. </p>
+ <div class="body conbody"><p class="shortdesc">Couchbase Server外部のセキュリティではIPテーブルとポートの設定を実施します。</p>
 
-  <p class="p">To secure the host machine where Couchbase Server is installed, the best practices include
-   encrypting certain data locations using transparent data encryption technologies such as <a class="xref" href="http://www.vormetric.com/data-security-solutions/use-cases/big-data-security">Vormetric</a>:</p>
+	 <p class="p">Couchbase Serverをインストールするホストマシンをセキュアにするには、ベストプラクティスとして、<a class="xref" href="http://www.vormetric.com/data-security-solutions/use-cases/big-data-security">Vormetric</a>のような透過的なデータ暗号化技術の導入があります:</p>
 
   <ul class="ul">
-   <li class="li">Data and index file path (the default data path on Linux) at
-     <span class="ph filepath">/opt/couchbase/var/lib/couchbase/data</span>.</li>
+		<li class="li">データとインデックスのファイルパス (Linuxでのデフォルトのデータパス)は<span class="ph filepath">/opt/couchbase/var/lib/couchbase/data</span>です。</li>
 
-   <li class="li">Tools path at <span class="ph filepath">/opt/couchbase/bin/</span>.</li>
+		<li class="li">ツールのパスは<span class="ph filepath">/opt/couchbase/bin/</span>です。</li>
 
-   <li class="li">Password files at <span class="ph filepath">/opt/couchbase/var/lib/couchbase/isasl.pw</span> and <span class="ph filepath">/opt/couchbase/var/lib/config/</span>.</li>
+		<li class="li">パスワードファイルは、<span class="ph filepath">/opt/couchbase/var/lib/couchbase/isasl.pw</span> and <span class="ph filepath">/opt/couchbase/var/lib/config/</span>にあります。</li>
 
   
   </ul>
 
-  <p class="p">For additional security:</p>
+  <p class="p">さらにセキュリティを高めるには:</p>
 
   <ul class="ul">
-   <li class="li">Allow administrative access to Couchbase Server only through specific machines. To allow
-    access, turn on OS auditing on these machines.</li>
+		<li class="li">特定のマシンからのみ、Couchbase Serverの管理アクセスを許可します。
+		アクセスを許容するマシンでは、OSの監査ログを有効にします。</li>
 
-   <li class="li">Use IPSec on your local network.</li>
+   <li class="li">IPSecをローカルネットワークで使用します。</li>
 
   </ul>
 
-  <div class="section"><h2 class="title sectiontitle">How to configure IP tables and ports</h2>
+  <div class="section"><h2 class="title sectiontitle">IPテーブルとポートの設定方法</h2>
    
-   <div class="p">To configure IP tables for Linux, you have to edit the file located in
-     <span class="ph filepath">/etc/sysconfig/iptables</span> as follows:
+		<div class="p">LinuxでIPテーブルを設定するには、<span class="ph filepath">/etc/sysconfig/iptables</span>にあるファイルを以下の手順で変更してください:
     <pre class="pre codeblock"><code>##allow everyone to access port 80 and 443##
    -A INPUT -m state --state NEW -p tcp --dport 80 -j ACCEPT
    -A INPUT -m state --state NEW -p tsp --dport 443 -j ACCEPT</code></pre>
 </div>
 
-   <p class="p">Also keep in mind that certain Couchbase ports are used for node-to-node and some for node-to-client communication.</p>
+   <p class="p">また、特定のCouchbaseポートはノード間、およびノード、クライアント間の通信に利用されることに注意してください。</p>
 
   
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. Important Couchbase ports</span></caption>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">表 1. 重要なCouchbaseポート</span></caption>
     
     
     
     
     <thead class="thead" align="left">
      <tr class="row">
-      <th class="entry" valign="top" width="25%" id="d150973e92">Port</th>
+      <th class="entry" valign="top" width="25%" id="d150969e92">ポート</th>
 
-      <th class="entry" valign="top" width="50%" id="d150973e95">Description</th>
+      <th class="entry" valign="top" width="50%" id="d150969e95">説明</th>
 
-      <th class="entry" valign="top" width="12.5%" id="d150973e98">Node to node</th>
+      <th class="entry" valign="top" width="12.5%" id="d150969e98">ノード間</th>
 
-      <th class="entry" valign="top" width="12.5%" id="d150973e101">Node to client</th>
+      <th class="entry" valign="top" width="12.5%" id="d150969e101">ノード、クライアント間</th>
 
      </tr>
 
@@ -74,134 +71,134 @@
 
     <tbody class="tbody">
      <tr class="row">
-      <td class="entry" valign="top" width="25%" headers="d150973e92 ">8091</td>
+      <td class="entry" valign="top" width="25%" headers="d150969e92 ">8091</td>
 
-      <td class="entry" valign="top" width="50%" headers="d150973e95 ">Web administration port</td>
+      <td class="entry" valign="top" width="50%" headers="d150969e95 ">Web管理ポート</td>
 
-      <td class="entry" valign="top" width="12.5%" headers="d150973e98 ">Yes</td>
+      <td class="entry" valign="top" width="12.5%" headers="d150969e98 ">Yes</td>
 
-      <td class="entry" valign="top" width="12.5%" headers="d150973e101 ">Yes</td>
-
-     </tr>
-
-     <tr class="row">
-      <td class="entry" valign="top" width="25%" headers="d150973e92 ">8092</td>
-
-      <td class="entry" valign="top" width="50%" headers="d150973e95 ">Couchbase API port</td>
-
-      <td class="entry" valign="top" width="12.5%" headers="d150973e98 ">Yes</td>
-
-      <td class="entry" valign="top" width="12.5%" headers="d150973e101 ">Yes</td>
+      <td class="entry" valign="top" width="12.5%" headers="d150969e101 ">Yes</td>
 
      </tr>
 
      <tr class="row">
-      <td class="entry" valign="top" width="25%" headers="d150973e92 ">11207</td>
+      <td class="entry" valign="top" width="25%" headers="d150969e92 ">8092</td>
 
-      <td class="entry" valign="top" width="50%" headers="d150973e95 ">Internal/external bucket port for SSL</td>
+      <td class="entry" valign="top" width="50%" headers="d150969e95 ">Couchbase APIポート</td>
 
-      <td class="entry" valign="top" width="12.5%" headers="d150973e98 ">No</td>
+      <td class="entry" valign="top" width="12.5%" headers="d150969e98 ">Yes</td>
 
-      <td class="entry" valign="top" width="12.5%" headers="d150973e101 ">Yes</td>
-
-     </tr>
-
-     <tr class="row">
-      <td class="entry" valign="top" width="25%" headers="d150973e92 ">11209</td>
-
-      <td class="entry" valign="top" width="50%" headers="d150973e95 ">Internal bucket port</td>
-
-      <td class="entry" valign="top" width="12.5%" headers="d150973e98 ">Yes</td>
-
-      <td class="entry" valign="top" width="12.5%" headers="d150973e101 ">No</td>
+      <td class="entry" valign="top" width="12.5%" headers="d150969e101 ">Yes</td>
 
      </tr>
 
      <tr class="row">
-      <td class="entry" valign="top" width="25%" headers="d150973e92 ">11210</td>
+      <td class="entry" valign="top" width="25%" headers="d150969e92 ">11207</td>
 
-      <td class="entry" valign="top" width="50%" headers="d150973e95 ">Internal/external bucket port</td>
+			<td class="entry" valign="top" width="50%" headers="d150969e95 ">内部/外部 SSL用バケットポート</td>
 
-      <td class="entry" valign="top" width="12.5%" headers="d150973e98 ">Yes</td>
+      <td class="entry" valign="top" width="12.5%" headers="d150969e98 ">No</td>
 
-      <td class="entry" valign="top" width="12.5%" headers="d150973e101 ">Yes</td>
-
-     </tr>
-
-     <tr class="row">
-      <td class="entry" valign="top" width="25%" headers="d150973e92 ">11211</td>
-
-      <td class="entry" valign="top" width="50%" headers="d150973e95 ">Client interface (proxy)</td>
-
-      <td class="entry" valign="top" width="12.5%" headers="d150973e98 ">No</td>
-
-      <td class="entry" valign="top" width="12.5%" headers="d150973e101 ">Yes</td>
+      <td class="entry" valign="top" width="12.5%" headers="d150969e101 ">Yes</td>
 
      </tr>
 
      <tr class="row">
-      <td class="entry" valign="top" width="25%" headers="d150973e92 ">11214</td>
+      <td class="entry" valign="top" width="25%" headers="d150969e92 ">11209</td>
 
-      <td class="entry" valign="top" width="50%" headers="d150973e95 ">Incoming SSL proxy</td>
+      <td class="entry" valign="top" width="50%" headers="d150969e95 ">内部バケットポート</td>
 
-      <td class="entry" valign="top" width="12.5%" headers="d150973e98 ">No</td>
+      <td class="entry" valign="top" width="12.5%" headers="d150969e98 ">Yes</td>
 
-      <td class="entry" valign="top" width="12.5%" headers="d150973e101 ">No</td>
-
-     </tr>
-
-     <tr class="row">
-      <td class="entry" valign="top" width="25%" headers="d150973e92 ">11215</td>
-
-      <td class="entry" valign="top" width="50%" headers="d150973e95 ">Internal outgoing SSL proxy</td>
-
-      <td class="entry" valign="top" width="12.5%" headers="d150973e98 ">No</td>
-
-      <td class="entry" valign="top" width="12.5%" headers="d150973e101 ">No</td>
+      <td class="entry" valign="top" width="12.5%" headers="d150969e101 ">No</td>
 
      </tr>
 
      <tr class="row">
-      <td class="entry" valign="top" width="25%" headers="d150973e92 ">18091</td>
+      <td class="entry" valign="top" width="25%" headers="d150969e92 ">11210</td>
 
-      <td class="entry" valign="top" width="50%" headers="d150973e95 ">Internal REST HTTPS for SSL</td>
+			<td class="entry" valign="top" width="50%" headers="d150969e95 ">内部/外部 バケットポート</td>
 
-      <td class="entry" valign="top" width="12.5%" headers="d150973e98 ">No</td>
+      <td class="entry" valign="top" width="12.5%" headers="d150969e98 ">Yes</td>
 
-      <td class="entry" valign="top" width="12.5%" headers="d150973e101 ">Yes</td>
-
-     </tr>
-
-     <tr class="row">
-      <td class="entry" valign="top" width="25%" headers="d150973e92 ">18092</td>
-
-      <td class="entry" valign="top" width="50%" headers="d150973e95 ">Internal CAPI HTTPS for SSL</td>
-
-      <td class="entry" valign="top" width="12.5%" headers="d150973e98 ">No</td>
-
-      <td class="entry" valign="top" width="12.5%" headers="d150973e101 ">Yes</td>
+      <td class="entry" valign="top" width="12.5%" headers="d150969e101 ">Yes</td>
 
      </tr>
 
      <tr class="row">
-      <td class="entry" valign="top" width="25%" headers="d150973e92 ">4369</td>
+      <td class="entry" valign="top" width="25%" headers="d150969e92 ">11211</td>
 
-      <td class="entry" valign="top" width="50%" headers="d150973e95 ">Erlang port mapper (epmd)</td>
+      <td class="entry" valign="top" width="50%" headers="d150969e95 ">クライアントインタフェース (プロキシ)</td>
 
-      <td class="entry" valign="top" width="12.5%" headers="d150973e98 ">Yes</td>
+      <td class="entry" valign="top" width="12.5%" headers="d150969e98 ">No</td>
 
-      <td class="entry" valign="top" width="12.5%" headers="d150973e101 ">No</td>
+      <td class="entry" valign="top" width="12.5%" headers="d150969e101 ">Yes</td>
 
      </tr>
 
      <tr class="row">
-      <td class="entry" valign="top" width="25%" headers="d150973e92 ">21100 to 21199 (inclusive)</td>
+      <td class="entry" valign="top" width="25%" headers="d150969e92 ">11214</td>
 
-      <td class="entry" valign="top" width="50%" headers="d150973e95 ">Node data exchange</td>
+      <td class="entry" valign="top" width="50%" headers="d150969e95 ">SSLプロキシ入力</td>
 
-      <td class="entry" valign="top" width="12.5%" headers="d150973e98 ">Yes</td>
+      <td class="entry" valign="top" width="12.5%" headers="d150969e98 ">No</td>
 
-      <td class="entry" valign="top" width="12.5%" headers="d150973e101 ">No</td>
+      <td class="entry" valign="top" width="12.5%" headers="d150969e101 ">No</td>
+
+     </tr>
+
+     <tr class="row">
+      <td class="entry" valign="top" width="25%" headers="d150969e92 ">11215</td>
+
+      <td class="entry" valign="top" width="50%" headers="d150969e95 ">内部SSLプロキシ出力</td>
+
+      <td class="entry" valign="top" width="12.5%" headers="d150969e98 ">No</td>
+
+      <td class="entry" valign="top" width="12.5%" headers="d150969e101 ">No</td>
+
+     </tr>
+
+     <tr class="row">
+      <td class="entry" valign="top" width="25%" headers="d150969e92 ">18091</td>
+
+      <td class="entry" valign="top" width="50%" headers="d150969e95 ">内部REST HTTPS SSL用</td>
+
+      <td class="entry" valign="top" width="12.5%" headers="d150969e98 ">No</td>
+
+      <td class="entry" valign="top" width="12.5%" headers="d150969e101 ">Yes</td>
+
+     </tr>
+
+     <tr class="row">
+      <td class="entry" valign="top" width="25%" headers="d150969e92 ">18092</td>
+
+      <td class="entry" valign="top" width="50%" headers="d150969e95 ">内部 CAPI HTTPS SSL用</td>
+
+      <td class="entry" valign="top" width="12.5%" headers="d150969e98 ">No</td>
+
+      <td class="entry" valign="top" width="12.5%" headers="d150969e101 ">Yes</td>
+
+     </tr>
+
+     <tr class="row">
+      <td class="entry" valign="top" width="25%" headers="d150969e92 ">4369</td>
+
+      <td class="entry" valign="top" width="50%" headers="d150969e95 ">Erlangポートマッパー (epmd)</td>
+
+      <td class="entry" valign="top" width="12.5%" headers="d150969e98 ">Yes</td>
+
+      <td class="entry" valign="top" width="12.5%" headers="d150969e101 ">No</td>
+
+     </tr>
+
+     <tr class="row">
+      <td class="entry" valign="top" width="25%" headers="d150969e92 ">21100 から 21199 まで</td>
+
+      <td class="entry" valign="top" width="50%" headers="d150969e95 ">ノード間データ送信</td>
+
+      <td class="entry" valign="top" width="12.5%" headers="d150969e98 ">Yes</td>
+
+      <td class="entry" valign="top" width="12.5%" headers="d150969e101 ">No</td>
 
      </tr>
 
@@ -209,9 +206,7 @@
 </table>
 </div>
 
-   <div class="note note"><span class="notetitle">Note:</span> A sample script for configuring the IP tables firewall settings is also
-    provided in the following blog posting: <a class="xref" href="http://blog.couchbase.com/iptables-firewall-settings-couchbase-db-and-couchbase-mobile-syncgateway">IPTables Firewall Settings for Couchbase DB and Couchbase Mobile
-    Sync_gateway</a></div>
+	<div class="note note"><span class="notetitle">注:</span> IPテーブルファイアウォールを設定するサンプルスクリプトは、次のブログ記事でも紹介しています: <a class="xref" href="http://blog.couchbase.com/iptables-firewall-settings-couchbase-db-and-couchbase-mobile-syncgateway">IPTables Firewall Settings for Couchbase DB and Couchbase Mobile Sync_gateway</a></div>
 
   </div>
 
@@ -219,7 +214,7 @@
 
 <nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../security/security-best-practices.html" title="Best practices for security consist of guidelines and tips to provide security features throughout the network.">Best security practices</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../security/security-inside-server.html" title="Best security practices inside the Couchbase Server cover passwords, bucket authentication, read-only administrators, access logs, and encrypted administrative access.">Security inside Couchbase Server</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../security/security-best-practices.html" title="セキュリティのベストプラクティスはガイドラインとセキュリティ機能をネットワーク全般に適用するためのヒントで構成されています。">セキュリティのベストプラクティス</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../security/security-inside-server.html" title="Best security practices inside the Couchbase Server cover passwords, bucket authentication, read-only administrators, access logs, and encrypted administrative access.">Security inside Couchbase Server</a></div>
 </div>
 </nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>
