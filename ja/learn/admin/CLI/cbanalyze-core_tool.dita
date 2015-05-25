@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbanalyze-core_tool">
-	<title>cbanalyze-core tool</title>
-	<shortdesc>The <codeph>cbanalyze-core</codeph> tool is used to parse and analyze core dump
-		data.</shortdesc>
+<reference xml:lang="ja" id="cbanalyze-core_tool">
+	<title>cbanalyze-coreツール</title>
+	<shortdesc><codeph>cbanalyze-core</codeph>ツールはコアダンプデータの解析や分析に使用します。</shortdesc>
 	<refbody>
-		<section><title>Description</title>
-		<p>Helper script to parse and analyze core dump from a Couchbase node. </p>
+		<section><title>説明</title>
+		<p>Couchbaseノードのコアダンプを解析や分析するヘルパースクリプト</p>
 			
 			<table>
 				<tgroup cols="2">
@@ -14,18 +13,18 @@
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>Options</entry>
-							<entry>Description</entry>
+							<entry>オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>-r [root]</entry>
-							<entry>Search for the binary in root.</entry>
+							<entry>ルート内のバイナリを検索します。</entry>
 						</row>
 						<row>
 							<entry>-f [reportfile]</entry>
-							<entry>Use the specified file for output.</entry>
+							<entry>指定されたファイルを出力するために使用します。</entry>
 						</row>
 					</tbody>
 				</tgroup>
@@ -33,15 +32,15 @@
 			
 			
 			
-			<p>Depending upon your platform, this tool is at the following locations:</p>
+			<p>お使いのプラットフォームに応じて、このツールは以下の場所に存在します:</p>
 		<table>
 			<tgroup cols="2">
 				<colspec colname="col1"/>
 				<colspec colname="col2"/>
 				<thead>
 					<row>
-						<entry>Operating system</entry>
-						<entry>Location</entry>
+						<entry>オペレーションシステム</entry>
+						<entry>場所</entry>
 					</row>
 				</thead>
 				<tbody>
@@ -51,7 +50,7 @@
 					</row>
 					<row>
 						<entry>Windows</entry>
-						<entry>Not Available on this platform.</entry>
+						<entry>このプラットフォームでは利用できません。</entry>
 					</row>
 					<row>
 						<entry>Mac OS X</entry>
@@ -63,8 +62,8 @@
 		</section>
 		
 		
-		<section><title>Syntax</title>
-			<p>Basic syntax:</p>
+		<section><title>シンタックス</title>
+			<p>基本的なシンタックス:</p>
 			<codeblock>cbanalyze-core -r [root] -f [reportfile] [corefile]</codeblock>
 		</section>
 		
