@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic3637">
- <title>Mac OS X installation</title>
- <shortdesc>Mac OS 10.7 and 10.8 are supported, but for development purposes only.</shortdesc>
+<topic xml:lang="ja" id="topic3637">
+ <title>Mac OS X へのインストール</title>
+ <shortdesc>Mac OS 10.7と10.8での利用については、開発目的に限りサポートされています。</shortdesc>
  <body>
   
-  <p>Before you install, verify the list of supported platforms. </p>
-   <p>Mac OS X installation uses a Zip
-   file with a stand-alone application that can be copied to the
-    <codeph>Applications</codeph> folder or to any other location you choose. The installation
-   location is not the same as the location of the Couchbase data files.</p>
+  <p>インストールを行う前に、サポートプラットフォームをあらかじめ確認してください。</p>
+   <p>Mac OS Xへのインストールは、<codeph>Applications</codeph> フォルダ、または任意の場所へコピーすることができるスタンドアロンのアプリケーションを含むZipファイルを使用します。インストール場所はCouchbaseのデータファイルの場所には影響しません。</p>
   
-  <p>The following Mac operating systems are supported:</p>
+  <p>Couchbase Serverは以下のMacオペレーティングシステムをサポートしています:</p>
   
   <table>
    <tgroup cols="5">
@@ -23,11 +20,11 @@
     <colspec colname="col5"/>
     <thead>
      <row>
-      <entry><b>Platform</b></entry>
-      <entry><b>Version</b></entry>
+      <entry><b>プラットフォーム</b></entry>
+      <entry><b>バージョン</b></entry>
       <entry><b>32 / 64 bit</b></entry>
-      <entry><b>Supported</b></entry>
-      <entry><b>Recommended Version</b></entry>
+      <entry><b>サポート</b></entry>
+      <entry><b>推奨バージョン</b></entry>
      </row>
     </thead>
     <tbody>
@@ -35,33 +32,26 @@
       <entry>Mac OS</entry>
       <entry>10.7</entry>
       <entry>64 bit</entry>
-      <entry>Developer only</entry>
+      <entry>開発目的のみ</entry>
       <entry>Mac OS 10.7 </entry>
      </row>
      <row>
       <entry>Mac OS</entry>
       <entry>10.8</entry>
       <entry>64 bit</entry>
-      <entry>Developer only</entry>
+      <entry>開発目的のみ</entry>
       <entry>Mac OS 10.8 </entry>
      </row>
     </tbody>
    </tgroup>
   </table>
     
-  <p>Use Archive Utility, the default archive file handler in Mac OS X, to unpack the
-   Couchbase Server distribution. It is more difficult to diagnose non-functioning or damaged
-   installations after extraction by other third party archive extraction tools.</p>
+  <p>Couchbase Serverディストリビューションを解凍するには、Mac OS Xのデフォルトアーカイブハンドラであるアーカイブユーティリティーを使用してください。他のサードパーティ製のアーカイブ解凍ツールを使用して解凍した場合、インストール時の不具合やダメージを受けたときの原因診断がより困難になります。</p>
   
-  <note type="warning">Due to limitations within the Mac OS X operating system, the Mac OS X implementation is
-   incompatible with other operating systems. It is not possible either to mix operating systems
-   within the same cluster, or to configure XDCR between a Mac OS X and Windows or Linux cluster. If
-   you need to move data between a Mac OS X cluster and a cluster hosted on another platform, use
-   <cmdname>cbbackup</cmdname> and <cmdname>cbrestore</cmdname>. For more information, see 
-   <xref href="../Tasks/backup-restore-tween-opsys.dita" format="dita" /></note>
+  <note type="warning">Mac OS Xオペレーティングシステムの制限により、Mac OS Xの実装は、他のオペレーティングシステムと互換性がありません。同じクラスタ内にオペレーティングシステムを混在させたり、Mac OS XとWindowsやLinuxクラスタとのXDCRを構成することはできません。
+Mac OS Xクラスタと、別のプラットフォームで構成されたクラスタ間でデータを移動させる必要がある場合は、<cmdname>cbbackup</cmdname> と <cmdname>cbrestore</cmdname> コマンドを使用して下さい。詳細については、<xref href="../Tasks/backup-restore-tween-opsys.dita" format="dita" />を参照して下さい。</note>
   
-  <p>To perform the installation, follow the steps in <xref href="mac-install-osx.dita">Installing
-    on Mac OSX</xref>.</p>
+  <p>インストールの実施にあたっては<xref href="mac-install-osx.dita">Mac OSXインストール手順</xref>に記述された手順に従ってください。</p>
  
   
  </body>

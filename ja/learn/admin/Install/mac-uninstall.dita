@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_ezm_5hf_2p">
-  <title>Uninstalling on Mac OS X</title>
-  <shortdesc>To uninstall Couchbase Server follow these steps.</shortdesc>
+<topic xml:lang="ja" id="topic_ezm_5hf_2p">
+  <title>Mac OS X からのアンインストール</title>
+  <shortdesc>Couchbase Serverをアンインストールするには以下の手順を実行します。</shortdesc>
   <body>
     
-    <section><title>Before removing the Couchbase Server</title> 
+    <section><title>Couchbase Serverを削除する前に</title> 
       <ol>
-        <li>Shut down Couchbase Server. </li>
-        <li>If your machine is a part of an active cluster, rebalance the cluster to take
-          the node out of the configuration. </li>
-        <li>Update clients to point to an available node within the Couchbase Server cluster.</li>
+        <li>Couchbase Serverをシャットダウンします。</li>
+        <li>もしもあなたのマシーンが(Couchbase)クラスタの一部である場合は、これを(クラスタ)から外しリバランスを実行します。</li>
+        <li>Couchbase Serverクラスタ内のノードに正しく接続できるようクライアントを更新します。</li>
       </ol></section>
     
-    <section><title>To uninstall Couchbase Server</title>
+    <section><title>Couchbase Serverのアンインストール</title>
     
     <ol>
-      <li>Open the <codeph>Applications</codeph> folder and drag the <codeph>Couchbase
-          Server</codeph> icon to the trash. 
-        Alternatively, delete the previous installation from the command line. 
-        If required, provide administrator credentials to complete the deletion.</li>
-      <li>Delete the <codeph>Couchbase</codeph> and <codeph>Membase</codeph> folders from the
-          <filepath>~/Library/Application Support</filepath> folder for the user that was running Couchbase
-        Server. This operation removes the application data.
-        <codeblock>&gt; rm -rf ~/Library/Application Support/Couchbase
-&gt; rm -rf ~/Library/Application Support/Membase</codeblock>
+      <li><codeph>Applications</codeph>フォルダを開き、<codeph>Couchbase
+          Server</codeph>をドラッグしてゴミ箱に入れます。 
+        この操作の代わりに、コマンドラインから削除することもできます。 
+        管理者権限が要求される場合には適切に認証を行って削除処理を完了させてください。</li>
+      <li>Couchbase Serverを稼働させていたユーザの<codeph>Couchbase</codeph>フォルダ及び<codeph>Membase</codeph>フォルダを
+          <filepath>~/Library/Application Support</filepath>フォルダから削除します。
+         このオペレーションは、アプリケーションデータを削除します。
+        <codeblock>&gt; rm -rf ~/Library/Application\ Support/Couchbase
+&gt; rm -rf ~/Library/Application\ Support/Membase</codeblock>
       </li>
     </ol></section>
 
