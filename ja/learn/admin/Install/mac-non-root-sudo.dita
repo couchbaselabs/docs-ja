@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_pgq_ghf_2p">
-  <title>Installing as non-root, non-sudo</title>
-  <shortdesc>Installation on Mac OS X as non-root, non-sudo user is used only for development
-    purposes.</shortdesc>
+<topic xml:lang="ja" id="topic_pgq_ghf_2p">
+  <title>非ルート権限によるインストール</title>
+  <shortdesc>Mac OS X環境上で非ルート権限ユーザ(非root、非sudo)によるインストールを行う場合は、開発を目的とした場合にのみ使用してください。</shortdesc>
   <body>
     
-    <p>If you perform a non-sudo, non-root installation, you can run Couchbase Server and all
-      Couchbase command-line tools. </p>
-      <p>To install as non-root, non-sudo:</p>
+    <p>非root、非sudoによるインストールを実施する場合でも、Couchbase Serverを実行させることができ、またCouchbaseコマンドラインツールをすべて使用することができます。 </p>
+      <p>非root、非sudoによるインストールを行うには：</p>
       <ol>
-        <li>After  downloading Couchbase Server, open terminal and go to the Downloads
-              directory:<codeblock>cd ~/Downloads/</codeblock></li>
-        <li>Unzip the package containing Couchbase Server: <codeblock>open couchbase-server-enterprise_x86_64_2.1.0.zip</codeblock></li>
-        <li>Move Couchbase App to your <filepath>/Applications</filepath> folder: 
-          <codeblock>mv couchbase-server-enterprise_x86_64_2.1.0/Couchbase/Server.app/Applications/</codeblock></li>
-        <li>Start Couchbase Server from the terminal:<codeblock>open /Applications/Couchbase/Server.app</codeblock>    
-        This enables you to use Couchbase Server as a non-sudo, non-root user.</li>
-        <li>To stop the Couchbase Server, click on its icon in the menu bar and select <uicontrol>Quit
-          Couchbase Server</uicontrol>.</li>
+        <li>Couchbase Serverをダウンロードした後、ターミナルを起動してDownloadsディレクトリに移動します：<codeblock>cd ~/Downloads/</codeblock></li>
+        <li>ダウンロードしたパッケージファイルをUnzipします： <codeblock>open couchbase-server-enterprise_x86_64_2.1.0.zip</codeblock></li>
+        <li>Couchbase Appを <filepath>/Applications</filepath> フォルダに移動します： 
+          <codeblock>mv couchbase-server-enterprise_x86_64_2.1.0/Couchbase\ Server.app /Applications/</codeblock></li>
+        <li>Couchbase Serverをターミナルからスタートさせます：<codeblock>open /Applications/Couchbase\ Server.app</codeblock>    
+        これでCouchbase Serverを非rootユーザ、非sudoにより実行することができます：</li>
+        <li>Couchbase Serverを停止するには、メニューバーのアイコンメニューをクリックし、<uicontrol>Quit
+          Couchbase Server</uicontrol>を選択してください。</li>
       </ol>
   </body>
 </topic>
