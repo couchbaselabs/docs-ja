@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_d3j_g5d_54">
-  <title>REST API reference</title>
-  <shortdesc>The Couchbase REST API enables you to manage a Couchbase Server deployment 
-    as well as perform operations such as storing design documents and querying for results.</shortdesc>
+<topic xml:lang="ja" id="topic_d3j_g5d_54">
+  <title>REST APIリファレンス</title>
+  <shortdesc>Couchbase REST APIを使用するとCouchbaseサーバのデプロイメントの管理だけでなく設計したドキュメントを格納したり結果を参照する操作を実行できるようになります。</shortdesc>
   <body>
     <p></p>
   </body>
