@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
 <topic xml:lang="ja" id="topic_c4y_k5d_54">
   <title>CLIリファレンス</title>
-  <shortdesc>Couchbaseサーバコマンドラインインタフェース（CLI） ツールはクラスタ、サーバ、vBuckets、XDCRなどを管理や監視を提供します。</shortdesc>
+  <shortdesc>Couchbase Serverコマンドラインインタフェース（CLI） ツールはクラスタ、サーバ、vBuckets、XDCRなどの管理や監視を提供します。</shortdesc>
   <body>
     <p></p>
   </body>
