@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="cbbackup-ddocs">
-  <title>Backing up design documents</title>
-  <shortdesc>Design documents are backed up with the <codeph>design_doc_only=1</codeph> option.</shortdesc>
+  <title>設計ドキュメントのバックアップ</title>
+  <shortdesc>設計ドキュメントは<codeph>design_doc_only=1</codeph>というオプションをつけることでバックアップできます。</shortdesc>
   <refbody>
-     <section><title>Description</title>
+     <section><title>説明</title>
 
-    <p>Backup only design documents from a cluster or bucket with the option,
-               <codeph>design_doc_only=1</codeph>. Restore only design documents with
-               <codeph>cbrestore design_doc_only=1</codeph>.</p>
+    <p><codeph>design_doc_only=1</codeph>をつけるとクラスタやバケットから設計ドキュメントのみバックアップします。<codeph>cbrestore design_doc_only=1</codeph>をつけると設計ドキュメントのみ復元されます。</p>
      </section>
      
-     <section><title>Syntax</title>
-        <p>Basic syntax:</p>
+     <section><title>シンタックス</title>
+        <p>基本シンタックス:</p>
         <codeblock>cbbackup http://[host]:8091 [backup-location] -x design_doc_only=1 -b [bucket-name]</codeblock>
      </section>
      
-     <section><title>Example</title>
-        <p>The following example creates a backup copy
-           of all design documents from <codeph>foo-bucket</codeph> and store this as
-           <codeph>design.json</codeph> in the directory <codeph>~/backup/foo-bucket</codeph>.
-           If a bucket is not specified, design documents for all buckets in the cluster are backed
-           up. </p>
+     <section><title>例</title>
+        <p>次の例では、<codeph>foo-bucket</codeph>から全ての設計ドキュメントのバックアップコピーが生成され、<codeph>~/backup/foo-bucket</codeph>というディレクトリの<codeph>design.json</codeph>にこれらが格納されます。もしバケットが指定されていな場合、クラスタ内にある全てのバケットの設計ドキュメントがバックアップされます。</p>
 
     <codeblock>cbbackup http://10.5.2.117:8091 ~/backup -x design_doc_only=1</codeblock>
     
@@ -30,16 +24,15 @@
     
         </section>
      
-     <section><title>Response</title>
-        <p>The following example response shows only design documents for all buckets being backed up. 
-        In this case, the source node had two (2) buckets including the default bucket.</p>
+     <section><title>レスポンス</title>
+        <p>次の例では、レスポンスが全てのバケットのための設計ドキュメントのみがバックアップされていることを示しています。この場合、ソースノードはデフォルトのバケットを含む2つのバケットを持っています。</p>
         <codeblock>
 transfer design doc only. bucket msgs will be skipped.
 transfer design doc only. bucket msgs will be skipped.
 done
         </codeblock>
         
-     <p>In the following output, two design documents were backed up.</p>
+     <p>次の出力では、2つの設計ドキュメントがバックアップされました。</p>
     
     <codeblock>[
    {
