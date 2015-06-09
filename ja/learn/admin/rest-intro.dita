@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
 <topic xml:lang="ja" id="topic_d3j_g5d_54">
   <title>REST APIリファレンス</title>
-  <shortdesc>Couchbase REST APIを使用するとCouchbaseサーバのデプロイメントの管理だけでなく設計したドキュメントを格納したり結果を参照する操作を実行できるようになります。</shortdesc>
+  <shortdesc>Couchbase REST APIを使用するとCouchbaseサーバのデプロイメントの管理だけでなくデザインドキュメントの格納や、結果を参照する操作を実行できます。</shortdesc>
   <body>
     <p></p>
   </body>
