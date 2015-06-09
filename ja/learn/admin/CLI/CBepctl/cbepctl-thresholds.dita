@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbepctl-thresholds">
-  <title>Changing ejection thresholds</title>
-  <shortdesc>The item pager process ejects items from RAM when too much space is being taken up in
-    RAM.</shortdesc>
+<reference xml:lang="ja" id="cbepctl-thresholds">
+  <title>アイテム除去閾値の変更</title>
+  <shortdesc>RAM領域が枯渇すると、アイテムページャプロセスはRAMからアイテムを除去します。</shortdesc>
   <refbody>
-    <section><title>Description</title>
-      <p>Ejection means that documents are removed from RAM but the key and metadata remain. If the
-        amount of RAM used by items reaches the high water mark (upper threshold), both active and
-        replica data are ejected until the memory usage (amount of RAM consumed) reaches the low
-        water mark (lower threshold). The server determines that items are not frequently used based
-        on a not-recently-used (NRU) value.</p>
+    <section><title>説明</title>
+			<p>
+				アイテムの除去はRAMからドキュメントを削除しますが、キーとメタデータは残ります。
+				アイテムが利用するRAM容量が高水位(上位の閾値)に到達すると、メモリ使用量が低水位(下位の閾値)に到達するまで、アクティブとレプリカデータの両方がメモリから除去されます。
+				サーバはnot-recently-used (NRU)の値に基づき、頻繁に利用されていないアイテムを判定します。
+			</p>
       
-      <p>Use the <codeph>mem_low_wat</codeph>, <codeph>mem_high_wat</codeph>, and
-          <codeph>pager_active_vb_pcnt</codeph> settings to change the server thresholds for
-        ejection.</p>
+			<p><codeph>mem_low_wat</codeph>と<codeph>mem_high_wat</codeph>、<codeph>pager_active_vb_pcnt</codeph>設定を利用してサーバでのアイテム除去閾値を変更できます。</p>
       
-      <note type="warning">We do not recommend that you change the ejection defaults unless
-        required by Couchbase Support.</note>
+      <note type="warning">Couchbaseサポートから要求されるまでは、除去設定のデフォルト値を変更することは推奨しません。</note>
     </section>
     
-    <section><title>Syntax</title>
-      <p>Basic syntax:</p>
+    <section><title>シンタックス</title>
+      <p>基本シンタックス:</p>
       <codeblock>cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set flush_param [parameter] [value]</codeblock>
       
-      <p>Parameters used for changing ejection thresholds:</p>
+      <p>アイテム除去閾値の変更に利用するパラメータ:</p>
       <ul>
         <li>mem_low_wat</li>
         <li>mem_high_wat</li>
@@ -33,41 +29,40 @@
     
     </section>
 
-    <section><title>Example: Setting the low water mark</title>
-      <p>The low water mark sets the lower threshold of RAM for a specific data bucket on
-        a node. The item pager stops ejecting items once the low water mark is reached. </p>
-      <p>The following example sets the low water mark percentage to 70% of RAM.</p>
+    <section><title>例: 低水位の設定</title>
+      <p>低水位はノード上の指定したデータバケットの下位閾値を設定します。アイテムページャは低水位に到達するとアイテムの除去を停止します。</p>
+      <p>以下の例は、低水位の割合をRAMの70%に設定します。</p>
       <codeblock>cbepctl 10.5.2.117:11210 -b foo-bucket -p foo-password set flush_param mem_low_wat 70
 </codeblock></section>
     
-    <section><title>Example: Setting the high water mark</title>
-      <p>The high water mark set the amount of RAM consumed by items that must be breached before
-        infrequently used active and replica items are ejected.</p>
-      <p>The following example sets the high water mark percentage to 80% of RAM for a specific data bucket on
-        a node. This means that items in RAM on this node can consume up to 80% of RAM before
-        the item pager begins ejecting items. </p>
+    <section><title>例: 高水位の設定</title>
+			<p>高水位は、頻繁に利用されないアクティブとレプリカのアイテムの除去を開始する際の、アイテムにより利用されるRAM容量を指定します。</p>
+			<p>
+				以下の例はノード上の指定したデータバケットで、RAMの80%を高水位として設定します。
+				これは、このノード上のRAM内のアイテムは、アイテムページャがアイテムの除去を開始するまで、RAMの80%が利用可能ということです。
+			</p>
       <codeblock>cbepctl 10.5.2.117:11210 -b foo-bucket -p foo-password set flush_param mem_high_wat 80
 </codeblock></section>
     
-    <section><title>Example: Setting percentage of ejected items</title>
-      <p>Based on the NRU algorithm, the server ejects active and replica data from a node. By default, the server is configured to
-        40% active items and 60% replica data from a node.</p>
-      <p>The following example increases the percentage of active items that can be ejected from a
-        node to 50%.</p>
-      <codeblock>cbepctl 10.5.2.117:11210 -b foo-bucket -p foo-password set flush_param pager_active_vb_pcnt 50
-</codeblock>
+    <section><title>例: 除去アイテムの割合を設定</title>
+			<p>
+				NRUアルゴリズムに基づき、サーバはノードからアクティブとレプリカのデータを除去します。
+				デフォルトでは、サーバはノード上の40%のアクティブアイテム、60%のレプリカアイテムとして設定されています。
+			</p>
+      <p>以下の例はノードから除去できるアクティブアイテムの割合を50%に増やします。</p>
+      <codeblock>cbepctl 10.5.2.117:11210 -b foo-bucket -p foo-password set flush_param pager_active_vb_pcnt 50</codeblock>
       
-      <p>Be aware of potential performance implications when changing the percentage of ejected items. It may be more
-        desirable to eject as many replica items as possible and limit the amount of active data
-        that can be ejected. By doing so, active data from a source node is maximized while
-        maintaining incoming requests to that node. However, if the server is ejecting a very large
-        percentage of replica data and a node fails, the replica data is not immediately available.
-        In this case, the items are retrieved from disk and put back into RAM before the request is
-        fulfilled. </p>
+			<p>
+				除去アイテムの割合を変更する場合は、性能へ影響する可能性があることに留意してください。
+				可能な限り多くのレプリカアイテムを除去し、アクティブデータが除去される量を制限することが理想的です。
+				そうすることで、対象のノードへのリクエストを維持しつつ、そのノードのアクティブデータを最大化できます。
+				しかしながら、そのサーバがレプリカデータの大部分を除去している状態でノード障害が発生すると、レプリカデータは即座に利用可能にはなりません。
+				この場合、リクエストが完了するために、アイテムをディスクから読み出し、RAMに配置します。
+			</p>
     </section>
     
-    <section><title>Response</title>
-      <p>The following example response shows the low water mark, high water mark, and percentage of ejected items being set.</p>
+    <section><title>レスポンス</title>
+      <p>以下のレスポンス例は低水位、高水位、除去アイテムの割合を設定する様子を示しています。</p>
       <codeblock>
 setting param: mem_low_wat 70
 set mem_low_wat to 70

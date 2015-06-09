@@ -1,54 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbepctl-accesslog">
-  <title>Changing access log settings</title>
-  <shortdesc>Access log settings determine when the access scanner process initially runs and how
-    often.</shortdesc>
+<reference xml:lang="ja" id="cbepctl-accesslog">
+  <title>アクセスログ設定の変更</title>
+  <shortdesc>アクセスログ設定はいつ初回のアクセススキャナプロセスを実行するか、またどの程度の頻度で実行するかを決定します。</shortdesc>
   <refbody>
-    <section><title>Description</title>
-    <p>Couchbase Server has an optimized disk warmup. Couchbase Server pre-fetches a list of
-        most-frequently accessed keys and fetches these documents first. The server runs a periodic
-        scanner process which determines which keys are most frequently used. The <codeph>cbepctl
-          flush_param</codeph> command is used to change the initial time and the interval for the
-        process. For example, the initial time and interval might be changed to accommodate a peak
-        time when an application needs these keys to be quickly available.</p>
+    <section><title>説明</title>
+			<p>
+				Couchbase Serverはディスクウォームアップを最適化しています。
+				Couchbase Serverは事前に最も頻繁にアクセスされたキーをフェッチし、それらのドキュメントをまずフェッチします。
+				サーバは定期的にスキャナプロセスを実行し、どのキーが最も頻繁に利用されているかを特定します。
+				<codeph>cbepctl flush_param</codeph>コマンドを利用し、この処理の初回実行時刻と実行間隔を変更することができます。
+				例えば、アプリケーションがこれらのキーを高速に利用する必要のあるピーク時間帯を避けるために、初回実行時刻と実行間隔を変更します。
+			</p>
 
-    <p>By default, the scanner process runs once every 24 hours with a default initial start time of
-        2:00 AM UTC. This means after installing a new Couchbase Server instance or restarting the
-        server, the scanner runs every 24 hour time period at 2:00 AM GMT and then 2:00 PM GMT by
-        default. </p>
+			<p>
+				デフォルトでは、スキャナプロセスは2:00 AM UTCを初回実行時刻とし、その後24時間ごとに実行されます。
+				これは、新規にCouchbase Serverインスタンスをインストールした後、あるいはサーバを再起動した後に、スキャナが2:00 AM GMT、そして2:00 PM GMTと、24時間ごとに起動するということです。
+			</p>
     </section>
     
-    <section><title>Syntax</title>
-      <p>Basic syntax:</p>
+    <section><title>シンタックス</title>
+      <p>基本シンタックス:</p>
       <codeblock>
 cbepctl [hostname]:11210 -b [bucket-name] -p [bucket-password] set flush_param alog_sleep_time [value]
 cbepctl [hostname]:11210 -b [bucket-name] -p [bucket-password] set flush_param alog_task_time [value]
 </codeblock>
     </section>
     
-    <section><title>Example</title>
-      <p>The following example changes the time interval when the access scanner process runs to
-        every 20 minutes.</p>
+    <section><title>例</title>
+      <p>以下の例はアクセススキャナプロセスの実行間隔を20分ごとに変更します。</p>
     <codeblock>cbepctl 10.5.2.117:11210 -b foo-bucket -p foo-password set flush_param alog_sleep_time 20
 </codeblock>
-    <p>The following example changes the initial time that the access scanner process runs from the 2:00 AM
-      UTC default to 11:00 PM UTC.</p>
+    <p>以下の例はアクセススキャナプロセスの初回実行時刻をデフォルトの2:00 AM UTCから11:00 PM UTCに変更します。</p>
     <codeblock>cbepctl 10.5.2.117:11210 foo-bucket -p foo-password set flush_param alog_task_time 23
 </codeblock>
 
     </section>
     
-    <section><title>Response</title>
-      <p>The following example response shows the time interval changed to 20 minutes.</p>
+    <section><title>レスポンス</title>
+      <p>以下のレスポンス例は実行間隔が20分に変更された様子を示しています。</p>
       <codeblock>
 setting param: alog_sleep_time 20
 set alog_sleep_time to 20
       </codeblock>
       
       
-      <p>The following example response shows the initial access scanner run time changed to 11:00
-        PM UTC.</p>
+      <p>以下のレスポンス例はアクセススキャナの初回実行時刻が11:00 PM UTCに変更されたことを示しています。</p>
       <codeblock>
 setting param: alog_task_time 23
 set alog_task_time to 23

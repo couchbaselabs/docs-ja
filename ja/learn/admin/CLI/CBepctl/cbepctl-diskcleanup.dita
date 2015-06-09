@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="topic1303">
-  <title>Changing disk cleanup intervals</title>
-  <shortdesc>Disk cleanup is the maintenance process of erasing expired items.</shortdesc>
+<reference xml:lang="ja" id="topic1303">
+  <title>ディスククリーンアップ間隔の変更</title>
+  <shortdesc>ディスククリーンアップは期限切れアイテムを削除するメンテナンスプロセスです。</shortdesc>
   <refbody>
-    <section><title>Description</title>
-    <p>The <codeph>cbepctl flush_param exp_pager_stime</codeph> command sets the time interval for
-        disk cleanup. Couchbase Server does lazy expiration, that is, expired items are flagged as
-        deleted rather than being immediately erased. Couchbase Server has a maintenance process
-        that periodically look through all information and erase expired items. By default, this
-        maintenance process runs every 60 minutes, but it can be configured to run at a different
-        interval. </p>
+    <section><title>説明</title>
+			<p>
+				<codeph>cbepctl flush_param exp_pager_stime</codeph>コマンドはディスククリーンアップの実行間隔を設定します。
+				Couchbase Serverは期限切れアイテムの削除を遅延処理として行い、期限切れアイテムを直ちに削除する代わりに削除フラグを付与します。
+				Couchbase Serverにはすべての情報を定期的に走査し、期限切れアイテムを削除するメンテナンスプロセスがあります。
+				デフォルトでは、このメンテナンスプロセスは60分ごとに実行されますが、異なる実行間隔に変更することもできます。
+			</p>
     </section>
     
-    <section><title>Syntax</title>
-      <p>Basic syntax:</p>
+    <section><title>シンタックス</title>
+      <p>基本シンタックス:</p>
       <codeblock>cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set flush_param exp_pager_stime [value]
 </codeblock>
       
     </section>
     
-    <section><title>Example</title>
+    <section><title>例</title>
       
-      <p>The following example sets the cleanup process to run every 600 seconds (10 minutes). 
-        This is the interval that Couchbase Server waits before it tries to remove expired items from disk.</p>
+			<p>
+				以下の例はクリーンアッププロセスを600秒(10分)ごとに実行するように変更します。
+				これはCouchbase Serverがディスクから期限切れアイテムの削除を試みる前の待ち時間です。
+			</p>
       
     <codeblock>cbepctl 10.5.2.117:11210 set flush_param exp_pager_stime 600
 </codeblock>
     </section>
     
-    <section><title>Response</title>
-    <p>The following example response shows the cleanup process set to 600 seconds.</p>
+    <section><title>レスポンス</title>
+    <p>以下の例はクリーンアッププロセスを600秒に設定した様子を示しています。</p>
       <codeblock>
 setting param: exp_pager_stime 600
 set exp_pager_stime to 600

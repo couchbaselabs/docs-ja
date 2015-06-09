@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbepctl-threadpool-tuning">
-  <title>Changing shared thread pool settings</title>
-  <shortdesc>Dynamic shared thread pool performance is tunable via <codeph>cbepctl set flush_param</codeph> command options.</shortdesc>
+<reference xml:lang="ja" id="cbepctl-threadpool-tuning">
+  <title>共有スレッドプール設定の変更</title>
+	<shortdesc>動的共有スレッドプールの性能は<codeph>cbepctl set flush_param</codeph>コマンドオプションでチューニングできます。</shortdesc>
   <refbody>
-    <section><title>Description</title>
-      <p>The dynamic shared thread pool performance is tunable by changing the thread types inside
-        the ep-engine and memcached at run time. <codeph>cbepctl set flush_param</codeph> command
-        options adjust the number of threads that prioritize read, write, non-i/o and auxiliary-i/o
-        operations. These settings take effect immediately and do not require that the bucket be
-        restarted. </p>
+    <section><title>説明</title>
+			<p>
+				動的共有スレッドプールの性能は、実行時のep-engineとmemcached内のスレッド種別を変更することでチューニングできます。
+				<codeph>cbepctl set flush_param</codeph>コマンドオプションは参照、更新、non-i/o、auxiliary-i/oオペレーションを優先するスレッド数を調整します。
+				これらの設定は即座に反映され、バケットの再起動は必要ありません。
+			</p>
         
-      <note type="note">These settings only take effect if the underlying operating system has a
-        sufficient number of CPU cores. The minimum number of CPU cores is four (4), however,  
-        three (3) additional cores are required for each additional writer thread. 
-        For example, five (5) writer threads is a valid setting if the underlying hardware has at least 
-        sixteen (16) cores.</note>
+			<note type="note">
+				これらの設定は実行環境が十分なCPUコア数を有している場合のみ効果があります。
+				最小CPUコア数は4ですが、更新用スレッドを1つ追加するには3つのコアがさらに必要です。
+				例えば、5つの更新用スレッドを利用するには、少なくとも16コアのハードウェアが必要になります。
+			</note>
     
       
-      <p>The following are the command option parameters used for performance tuning:</p>
+      <p>以下のコマンドオプションパラメータを利用して性能をチューニングします:</p>
       <table>
-        <title>Performance tuning parameters</title>
+        <title>パフォーマンスチューニングパラメータ</title>
         <tgroup cols="2">
           <colspec colname="col1"/>
           <colspec colname="col2"/>
           <thead>
             <row>
-              <entry>Parameter</entry>
-              <entry>Description</entry>
+              <entry>パラメータ</entry>
+              <entry>説明</entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>max_num_readers</entry>
-              <entry>Overrides the default number of global threads that prioritize read operations.</entry>
+              <entry>デフォルトの参照オペレーション用グローバルスレッド数をオーバーライドする。</entry>
             </row>
             <row>
               <entry>max_num_writers</entry>
-              <entry>Overrides the default number of global threads that prioritize write operations.</entry>
+              <entry>デフォルトの更新オペレーション用グローバルスレッド数をオーバーライドする。</entry>
             </row>
             <row>
               <entry>max_num_auxio</entry>
-              <entry>Overrides the default number of global threads that prioritize auxio operations.</entry>
+              <entry>デフォルトのauxioオペレーション用グローバルスレッド数をオーバーライドする。</entry>
             </row>
             <row>
               <entry>max_num_nonio</entry>
-              <entry>Overrides the default number of global threads that prioritize nonio operations.</entry>
+              <entry>デフォルトのnonioオペレーション用グローバルスレッド数をオーバーライドする。</entry>
             </row>
           </tbody>
         </tgroup>
@@ -53,37 +53,37 @@
       
     </section>
     
-    <section><title>Syntax</title>
-      <p>The following is the basic syntax:</p>
+    <section><title>シンタックス</title>
+      <p>基本シンタックス:</p>
       <codeblock>cbepctl [localhost]:11210 -b [bucket-name] set flush_param [parameter] [value]</codeblock>
 
     </section>
     
-    <section><title>Example</title>
-      <p>To set the maximum number of writers, use <codeph>max_num_writers</codeph> parameter. 
-        In the following example, <codeph>max_num_writers</codeph> sets the number of writer threads to five (5).</p>
+    <section><title>例</title>
+			<p>最大更新スレッド数を設定するには、<codeph>max_num_writers</codeph>パラメータを利用します。
+				以下の例では、<codeph>max_num_writers</codeph>で更新用スレッドを5に設定します。</p>
       <codeblock>cbepctl 10.5.2.117:11210 -b foo_bucket set flush_param max_num_writers 5 </codeblock>
       
       
       
     </section>
     
-    <section><title>Response</title>
-      <p>The following is an example response when setting the maximum number of writer threads.</p>
+    <section><title>レスポンス</title>
+      <p>次に最大更新用スレッド数を設定した際のレスポンス例を示します。</p>
       <codeblock>
 setting param: max_num_writers 5
 set max_num_writers to 5
       </codeblock>
       
       
-      <p>To check how many threads of various types are currently running, use <codeph>cbstats workload</codeph>. 
-        For example:</p>
+			<p>それぞれのスレッド種別で現在どれだけのスレッドが起動しているかは、<codeph>cbstats workload</codeph>で確認できます。
+			例:</p>
       <codeblock>cbstats [localhost]:11210 -b [bucket-name] workload </codeblock>
       
-      <p>For example, the following shows an example request and response for <codeph>cbstats
-          workload</codeph>, in this case, for the default bucket. The setting change,
-          <codeph>ep_workload:max_writers: 5</codeph>, is displayed via the <codeph>cbstats
-          workload</codeph> response: </p>
+			<p>
+				例えば、以下の<codeph>cbstats workload</codeph>リクエストとレスポンスの例は、defaultバケットに対して実行しています。
+				変更した設定が、<codeph>ep_workload:max_writers: 5</codeph>として、<codeph>cbstats workload</codeph>の結果に表示されます。
+			</p>
       
       <codeblock>
 cbstats 10.5.2.117:11210 workload
