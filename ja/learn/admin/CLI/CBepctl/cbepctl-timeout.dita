@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbepctl-timeout">
-  <title>Changing out-of-memory thresholds</title>
-  <shortdesc>A out-of-memory error message is sent when RAM consumption threshold is at
-    95%.</shortdesc>
+<reference xml:lang="ja" id="cbepctl-timeout">
+  <title>out-of-memory閾値の変更</title>
+  <shortdesc>RAM利用率が閾値の95%を超えると、out-of-memoryエラーメッセージが送信されます。</shortdesc>
   <refbody>
-    <section><title>Description</title>
+    <section><title>説明</title>
     
-    <p>By default, Couchbase Server sends clients a temporary out-of-memory error message if RAM is 95%
-      consumed and only 5% RAM remains for overhead. 
-      Use the <codeph>cbepctl set flush_param mutation_mem-threshold</codeph> command parameter to change this threshold value.</p> 
+			<p>
+				デフォルトでは、Couchbase ServerはRAMの95%が消費され、5%のRAMしかオーバヘッドとして残らなくなると、クライアントにout-of-memoryエラーメッセージを送信します。
+				<codeph>cbepctl set flush_param mutation_mem-threshold</codeph>コマンドパラメータを利用し、この閾値を変更できます。
+			</p> 
       
-      <note type="note">We do not recommend that you change this default to a higher value. However,
-        this value might be reduced if you need more RAM for system overhead such as disk queue or
-        for server data structures.</note>
+			<note type="note">
+				このデフォルト値をより高い値に変更することは推奨しません。
+				しかしながら、ディスクキューやサーバデータ構造といったシステムオーバヘッドにより多くのRAMが必要な場合にこの値を減らすことがあります。
+			</note>
     </section>
     
-    <section><title>Syntax</title>
-      <p>Basic syntax:</p>
+    <section><title>シンタックス</title>
+      <p>基本シンタックス:</p>
       <codeblock>cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set flush_param mutation_mem_threshold [value]
 </codeblock>
     </section>
     
-    <section><title>Example</title>
-      <p>In this example, the threshold is reduced to 65% of RAM.</p>
+    <section><title>例</title>
+      <p>この例では、閾値をRAMの65%に減らします。</p>
     
     <codeblock>cbepctl 10.5.2.117:11210 -b foo-bucket -p foo-password set flush_param mutation_mem_threshold 65
 </codeblock>
@@ -31,8 +32,8 @@
     
     </section>
     
-    <section><title>Response</title>
-      <p>The following example response shows the RAM threshold set to 65%.</p>
+    <section><title>レスポンス</title>
+      <p>以下のレスポンス例は、RAM閾値が65%に設定されている様子を示します。</p>
       <codeblock>
 setting param: mutation_mem_threshold 65
 set mutation_mem_threshold to 65
