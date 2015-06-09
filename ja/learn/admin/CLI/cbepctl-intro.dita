@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbepctl-intro">
-	<title>cbepctl tool</title>
-	<shortdesc>The <codeph>cbepctl</codeph> tool is used to control vBucket states, configuration, and 
-		memory and disk persistence behavior.</shortdesc>
+<reference xml:lang="ja" id="cbepctl-intro">
+	<title>cbepctlツール</title>
+	<shortdesc><codeph>cbepctl</codeph>ツールはvBucketのステータス、設定、メモリとディスク永続化の挙動をコントロールするために利用します。</shortdesc>
 	<refbody>
 		
-		<section><title>Description</title>
-			<p>This tool is a per-node, per-bucket operation. 
-				That means that the IP address of a node in the cluster and a named bucket must be specified. 
-				If a named bucket is not provided, the server applies the setting to any default bucket that exists at the specified node. 
-				To perform this operation for an entire cluster, perform the command for every node/bucket combination that exists 
-				for that cluster.</p>
+		<section><title>説明</title>
+			<p>このツールはノード単位、バケット単位のオペレーションです。
+				すなわち、クラスタ内のノードのIPアドレスと、バケット名を指定する必要があります。
+				バケット名を指定しない場合、指定したノード上に存在するdefaultバケットに設定を反映します。
+				クラスタ全体にこの操作を実行するには、コマンドをクラスタに存在する全てのノードとバケットの組み合わせに対して実行します。
+			</p>
 			
-			<p>For example, when a data bucket is shared by two nodes, 
-				issue this command twice and provide the different host names and ports
-				for each node along with the bucket name. Similarly, when two data buckets are on the same node, 
-				issue the command twice for each data bucket. If a bucket is not
-				specified, the command applies to the default bucket or returns an error if a default bucket does not
-				exist.</p>
+			<p>例えば、データバケットが二つのノードに分散しているなら、このコマンドをバケット名と、それぞれのホスト名とポートを指定して、二度実行します。
+				同様に、同一ノード上に二つのデータバケットが存在するなら、各データバケットにつき、計二回実行します。
+				ノードを指定しない場合、このコマンドはデフォルトバケットに対して実行され、デフォルトバケットが存在しない場合エラーを返します。
+			</p>
 			
-			<note type="important">Changes to the cluster configuration using <codeph>cbepctl</codeph> are not persisted
-				over a cluster restart.</note>
+			<note type="important"><codeph>cbepctl</codeph>を利用して変更したクラスタの設定は永続化されず、クラスタを再起動すると元に戻ります。</note>
 				
-				<p>The tool is found in the following locations:</p>
+				<p>ツールは以下の場所にあります:</p>
 		
 		<table>
 			<tgroup cols="2">
@@ -31,8 +27,8 @@
 				<colspec colname="col2"/>
 				<thead>
 					<row>
-						<entry>Operating system</entry>
-						<entry>Location</entry>
+						<entry>オペレーティングシステム</entry>
+						<entry>ロケーション</entry>
 					</row>
 				</thead>
 				<tbody>
@@ -54,95 +50,90 @@
 		
 	</section>
 		
-		<section><title>CLI command and parameters</title>
-			<p>Basic syntax for this command:</p>
+		<section><title>CLIコマンドとパラメータ</title>
+			<p>コマンドの基本シンタックス:</p>
 		<codeblock>cbepctl [localhost]:11210 -b [bucket_name] -p [bucket-password] start
 cbepctl [localhost]:11210 -b [bucket_name] -p [bucket-password] stop
 cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-type] [parameter] [value]
-</codeblock>
-		<p>For this command, <codeph>host</codeph> is the IP address for the Couchbase cluster or node in
-				the cluster. The port is always the standard port used for cluster-wide stats and is
-				at <codeph>11210</codeph>. The bucket name and password is provided first and then
-				the command option and authentication.</p>
-		<p>Use the following command options to manage persistence:</p>
+		</codeblock>
+		<p>
+			<codeph>host</codeph>には、Couchbaseクラスタもしくはクラスタ内のノードのIPアドレスです。
+			ポートは常にクラスタ全体の統計情報に利用される標準ポートで、<codeph>11210</codeph>となります。
+			バケット名とパスワードに続き、コマンドオプションを指定します。
+		</p>
+		<p>以下のコマンドオプションを利用し永続性の制御を行います:</p>
 		<table>
-			<title>cbepctl command options</title>
+			<title>cbepctlコマンドオプション</title>
 			<tgroup cols="2">
 				<colspec colname="col1" colwidth="1*"/>
 				<colspec colname="col2" colwidth="4.41*"/>
 				<thead>
 					<row>
-						<entry>Command option</entry>
-						<entry>Description</entry>
+						<entry>コマンドオプション</entry>
+						<entry>説明</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
 						<entry>stop</entry>
-						<entry>Stop persistence</entry>
+						<entry>永続化を停止</entry>
 					</row>
 					<row>
 						<entry>start</entry>
-						<entry>Start persistence</entry>
+						<entry>永続化を開始</entry>
 					</row>
 					<row>
 						<entry>drain</entry>
-						<entry>Wait until queues are drained</entry>
+						<entry>キューが空になるまで待機</entry>
 					</row>
 					<row>
 						<entry>set</entry>
-						<entry>Set <codeph>checkpoint_param</codeph>, <codeph>flush_param</codeph>, and
-									<codeph>tap_param</codeph> command types. This changes how or
-								when persistence occurs.</entry>
+						<entry><codeph>checkpoint_param</codeph>、<codeph>flush_param</codeph>、<codeph>tap_param</codeph>コマンド種別を設定。この変更は永続化がいつどのように実行されるのかを変更します。</entry>
 					</row>
 				</tbody>
 			</tgroup>
 		</table>
 			
-		<p>The <codeph>set</codeph> command option along with the <codeph>checkpoint_param</codeph>,
-					<codeph>flush_param</codeph>, and <codeph>tap_param</codeph> command types
-				change the behavior of persistence in Couchbase Server.</p>
+		<p><codeph>set</codeph>コマンドオプションでは、<codeph>checkpoint_param</codeph>、<codeph>flush_param</codeph>、<codeph>tap_param</codeph>のコマンド種別を指定し、Couchbase Serverの永続化に関する挙動を変更します。</p>
 			
 		</section>
 		
-		<section><title>cbepctl set checkpoint_param</title>
-		<p>The parameters for <codeph>set checkpoint_param</codeph> are:</p>
+		<section><title>cbepctlでcheckpoint_paramを設定する</title>
+			<p><codeph>set checkpoint_param</codeph>で利用可能なパラメータ:</p>
 		<table>
 			<tgroup cols="2">
 				<colspec colname="col1"/>
 				<colspec colname="col2"/>
 				<thead>
 					<row>
-						<entry>Parameter</entry>
-						<entry>Description</entry>
+						<entry>パラメータ</entry>
+						<entry>説明</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
 						<entry>chk_max_items</entry>
-						<entry>Max number of items allowed in a checkpoint.</entry>
+						<entry>ひとつのチェックポイントで許容する最大アイテム数。</entry>
 					</row>
 					<row>
 						<entry>chk_period</entry>
-						<entry>Time bound (in sec.) on a checkpoint.</entry>
+						<entry>チェックポイントのタイムバウンド(秒)。</entry>
 					</row>
 					<row>
 						<entry>item_num_based_new_chk</entry>
-						<entry>True if a new checkpoint can be created based on. the number of items
-							in the open checkpoint.</entry>
+						<entry>オープンなチェックポイント中のアイテム数を元に新規のチェックポイントを作成する場合True。</entry>
 					</row>
 					<row>
 						<entry>keep_closed_chks</entry>
-						<entry>True if we want to keep closed checkpoints in memory, as long as the
-							current memory usage is below high water mark.</entry>
+						<entry>現在のメモリ使用量が高水位を下回る場合にクローズしたチェックポイントをメモリ内に保持する場合True。</entry>
 					</row>
 					<row>
 						<entry>max_checkpoints</entry>
-						<entry>Max number of checkpoints allowed per vbucket. </entry>
+						<entry>vBucket単位の最大チェックポイント数。</entry>
 					</row>
 					<row>
 						<entry>enable_chk_merge</entry>
-						<entry>True, if merging closed checkpoints is enabled.</entry>
+						<entry>チェックポイントをマージする場合True。</entry>
 					</row>
 				</tbody>
 			</tgroup>
@@ -150,101 +141,95 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 		</section>
 	
 		
-		<section><title>cbepctl set flush_param</title>
+		<section><title>cbepctlでflush_paramを設定する</title>
 			
-			<p>The parameters for <codeph>set flush_param</codeph> are:</p>
+			<p><codeph>set flush_param</codeph>で利用可能なパラメータ:</p>
 			<table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>Parameter</entry>
-							<entry>Description</entry>
+							<entry>パラメータ</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>alog_sleep_time</entry>
-							<entry>Access scanner interval (minute)</entry>
+							<entry>アクセススキャナ間隔(分)</entry>
 						</row>
 						<row>
 							<entry>alog_task_time</entry>
-							<entry>Access scanner next task time (UTC)</entry>
+							<entry>アクセススキャナ次回実行時刻(UTC)</entry>
 						</row>
 						<row>
 							<entry>backfile_mem_threshold</entry>
-							<entry>Memory threshold (%) on the current bucket quota before backfill task is made to back off.</entry>
+							<entry>該当バケットでバックフィルタスクをバックオフするまでのメモリ閾値(%)。</entry>
 						</row>
 						<row>
 							<entry>bg_fetch_delay</entry>
-							<entry>Delay before executing a bg fetch (test feature).</entry>
+							<entry>バックグラウンドでのフェッチ実行を遅延する(テスト用途)。</entry>
 						</row>
 						<row>
 							<entry>couch_response_timeout</entry>
-							<entry>timeout in receiving a response from CouchDB.</entry>
+							<entry>CouchDBからのレスポンス受信のタイムアウト。</entry>
 						</row>
 						<row>
 							<entry>exp_pager_stime</entry>
-							<entry>Expiry Pager interval. Time interval that Couchbase Server waits
-								before it performs cleanup and removal of expired items from
-								disk.</entry>
+							<entry>有効期限切れページャの間隔。Couchbase Serverがディスクから期限切れアイテムのクリーンアップと削除を実行するまで待つ間隔。</entry>
 						</row>
 						<row>
 							<entry>flushall_enabled</entry>
-							<entry>Deprecated. Enable flush operation.</entry>
+							<entry>非推奨。フラッシュを有効化。</entry>
 						</row>
 						<row>
 							<entry>pager_active_vb_pcnt</entry>
-							<entry>Percentage of active vBuckets items among all ejected items by item pager.</entry>
+							<entry>アイテムページャが除去する全てのアイテム中のアクティブvBucket内アイテムの割合。</entry>
 						</row>
 						<row>
 							<entry>max_size</entry>
-							<entry>Maximum memory used by the server.</entry>
+							<entry>サーバで利用するメモリの最大量。</entry>
 						</row>
 						<row>
 							<entry>mem_high_wat</entry>
-							<entry>Low water mark by percentage.</entry>
+							<entry>高水位をパーセンテージで指定。</entry>
 						</row>
 						<row>
 							<entry>mem_low_wat</entry>
-							<entry>High water mark by percentage.</entry>
+							<entry>低水位をパーセンテージで指定。</entry>
 						</row>
 						<row>
 							<entry>mutation_mem_threshold</entry>
-							<entry>Amount of RAM that can be consumed in that caching layer before
-								clients start receiving temporary out of memory messages.</entry>
+							<entry>クライアントが一時的なメモリ不足メッセージを受信し始めるまでのキャッシュレイヤで利用可能なRAM容量。</entry>
 						</row>
 						<row>
 							<entry>timing_log</entry>
-							<entry>Path to log detailed timing stats. </entry>
+							<entry>詳細なタイミング統計情報ログの出力先。</entry>
 						</row>
 						<row>
 							<entry>warmup_min_memory_threshold</entry>
-							<entry>Memory threshold (%) during warmup to enable traffic.</entry>
+							<entry>ウォームアップにおいてトラフィックを受け付けるまでのメモリ閾値(%)。</entry>
 						</row>
 						<row>
 							<entry>warmup_min_item_threshold</entry>
-							<entry>Item number threshold (%) during warmup to enable traffic.</entry>
+							<entry>ウォームアップにおいてトラフィックを受け付けるまでのアイテム数閾値(%)。</entry>
 						</row>
 						<row>
 							<entry>max_num_readers</entry>
-							<entry>Override the default number of global threads that prioritize read operations.</entry>
+							<entry>デフォルトの参照オペレーション用グローバルスレッド数をオーバーライドする。</entry>
 						</row>
 						<row>
 							<entry>max_num_writers</entry>
-							<entry>Override the default number of global threads that prioritize write
-								operations.</entry>
+							<entry>デフォルトの更新オペレーション用グローバルスレッド数をオーバーライドする。</entry>
 						</row>
 						<row>
 							<entry>max_num_auxio</entry>
-							<entry>Override the default number of global threads that prioritize auxio
-								operations.</entry>
+							<entry>デフォルトのauxioオペレーション用グローバルスレッド数をオーバーライドする。</entry>
 						</row>
 						<row>
 							<entry>max_num_nonio</entry>
-							<entry>Override the default number of global threads that prioritize nonio
-								operations.</entry>
+							<entry>デフォルトのnonioオペレーション用グローバルスレッド数をオーバーライドする。</entry>
 						</row>
 					</tbody>
 				</tgroup>
@@ -252,8 +237,8 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 
 		</section>
 		
-		<section><title>cbepctl set tap_param</title>
-			<p>The parameters for <codeph>set tap_param</codeph> are:</p>
+		<section><title>cbepctlでtap_paramを設定する</title>
+			<p><codeph>set tap_param</codeph>で利用可能なパラメータ:</p>
 		
 			<table>
 				<tgroup cols="2">
@@ -261,26 +246,26 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>Parameter</entry>
-							<entry>Description</entry>
+							<entry>パラメータ</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>tap_keepalive</entry>
-							<entry>Seconds to hold a named tap connection.</entry>
+							<entry>指定のtapコネクションを保持する秒数。</entry>
 						</row>
 						<row>
 							<entry>tap_throttle_queue_cap</entry>
-							<entry>Maximum disk write queue size to throttle tap streams (infinite means no cap).</entry>
+							<entry>tapストリームを絞るまでの最大ディスク書込みキューサイズ (infiniteは絞り込みなし)。</entry>
 						</row>
 						<row>
 							<entry>tap_throttle_cap_pcnt</entry>
-							<entry>Percentage of total items in write queue at which we throttle tap input.</entry>
+							<entry>tapインプットを絞る際の書込みキュー内総アイテム数の割合。</entry>
 						</row>
 						<row>
 							<entry>tap_throttle_threshold</entry>
-							<entry>Percentage of memory in use to throttle tap streams</entry>
+							<entry>tapストリームを絞る際に利用するメモリの割合。</entry>
 						</row>
 						
 					</tbody>
