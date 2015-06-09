@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="cbbackup-ddocs">
-  <title>設計ドキュメントのバックアップ</title>
-  <shortdesc>設計ドキュメントは<codeph>design_doc_only=1</codeph>というオプションをつけることでバックアップできます。</shortdesc>
+  <title>デザインドキュメントのバックアップ</title>
+  <shortdesc>デザインドキュメントは<codeph>design_doc_only=1</codeph>というオプションをつけることでバックアップできます。</shortdesc>
   <refbody>
      <section><title>説明</title>
 
-    <p><codeph>design_doc_only=1</codeph>をつけるとクラスタやバケットから設計ドキュメントのみバックアップします。<codeph>cbrestore design_doc_only=1</codeph>をつけると設計ドキュメントのみ復元されます。</p>
+    <p><codeph>design_doc_only=1</codeph>をつけるとクラスタやバケットからデザインドキュメントのみバックアップします。<codeph>cbrestore design_doc_only=1</codeph>をつけるとデザインドキュメントのみ復元されます。</p>
      </section>
      
      <section><title>シンタックス</title>
@@ -15,7 +15,7 @@
      </section>
      
      <section><title>例</title>
-        <p>次の例では、<codeph>foo-bucket</codeph>から全ての設計ドキュメントのバックアップコピーが生成され、<codeph>~/backup/foo-bucket</codeph>というディレクトリの<codeph>design.json</codeph>にこれらが格納されます。もしバケットが指定されていな場合、クラスタ内にある全てのバケットの設計ドキュメントがバックアップされます。</p>
+        <p>次の例では、<codeph>foo-bucket</codeph>から全てのデザインドキュメントのバックアップコピーが生成され、<codeph>~/backup/foo-bucket</codeph>というディレクトリの<codeph>design.json</codeph>にこれらが格納されます。もしバケットが指定されていない場合、クラスタ内にある全てのバケットのデザインドキュメントがバックアップされます。</p>
 
     <codeblock>cbbackup http://10.5.2.117:8091 ~/backup -x design_doc_only=1</codeblock>
     
@@ -25,14 +25,14 @@
         </section>
      
      <section><title>レスポンス</title>
-        <p>次の例では、レスポンスが全てのバケットのための設計ドキュメントのみがバックアップされていることを示しています。この場合、ソースノードはデフォルトのバケットを含む2つのバケットを持っています。</p>
+        <p>次のレスポンス例では、全てのバケットでデザインドキュメントのみがバックアップされていることを示しています。この場合、ソースノードはデフォルトのバケットを含む2つのバケットを持っています。</p>
         <codeblock>
 transfer design doc only. bucket msgs will be skipped.
 transfer design doc only. bucket msgs will be skipped.
 done
         </codeblock>
         
-     <p>次の出力では、2つの設計ドキュメントがバックアップされました。</p>
+     <p>次の出力では、2つのデザインドキュメントがバックアップされました。</p>
     
     <codeblock>[
    {
