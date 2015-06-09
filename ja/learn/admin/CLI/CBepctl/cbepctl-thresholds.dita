@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference xml:lang="ja" id="cbepctl-thresholds">
-  <title>アイテム除去閾値を変更する</title>
+  <title>アイテム除去閾値の変更</title>
   <shortdesc>RAM領域が枯渇すると、アイテムページャプロセスはRAMからアイテムを除去します。</shortdesc>
   <refbody>
     <section><title>説明</title>

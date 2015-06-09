@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference xml:lang="ja" id="topic1303">
-  <title>ディスククリーンアップ間隔を変更する</title>
+  <title>ディスククリーンアップ間隔の変更</title>
   <shortdesc>ディスククリーンアップは期限切れアイテムを削除するメンテナンスプロセスです。</shortdesc>
   <refbody>
     <section><title>説明</title>
