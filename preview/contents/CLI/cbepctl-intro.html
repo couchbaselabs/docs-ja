@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>cbepctl tool</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>cbepctlツール</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
 						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"><script>
 					  (function() {
@@ -11,35 +11,31 @@
 					    var s = document.getElementsByTagName('script')[0];
 					    s.parentNode.insertBefore(gcse, s);
 					  })();
-					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections section--active"><a href="../cli-intro.html"><span>CLI reference</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../CLI/cli-overview.html"><span>CLI overview</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbcli-intro.html"><span>couchbase-cli tool</span></a></li><li class="section"><a href="../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections section--active"><a href="../CLI/cbepctl-intro.html" class="current"><span>cbepctl tool</span></a><ul class="sub-sections"><li class="section"><a href="../CLI/CBepctl/cbepctl-threadpool-tuning.html"><span>Changing shared thread pool settings</span></a></li><li class="section"><a href="../CLI/CBepctl/cbepctl-thresholds.html"><span>Changing ejection thresholds</span></a></li><li class="section"><a href="../CLI/CBepctl/cbepctl-accesslog.html"><span>Changing access log settings</span></a></li><li class="section"><a href="../CLI/CBepctl/cbepctl-diskcleanup.html"><span>Changing disk cleanup intervals</span></a></li><li class="section"><a href="../CLI/CBepctl/cbepctl-diskwritequeue.html"><span>Changing disk write queue quotas</span></a></li><li class="section"><a href="../CLI/CBepctl/cbepctl-timeout.html"><span>Changing out-of-memory thresholds</span></a></li></ul></li><li class="section"><a href="../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST API reference</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-	<h1 class="title topictitle1">cbepctl tool</h1>
+					</script><gcse:search></gcse:search></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections section--active"><a href="../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../CLI/cli-overview.html"><span>CLI overview</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbcli-intro.html"><span>couchbase-cli tool</span></a></li><li class="section"><a href="../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections section--active"><a href="../CLI/cbepctl-intro.html" class="current"><span>cbepctlツール</span></a><ul class="sub-sections"><li class="section"><a href="../CLI/CBepctl/cbepctl-threadpool-tuning.html"><span>共有スレッドプール設定の変更</span></a></li><li class="section"><a href="../CLI/CBepctl/cbepctl-thresholds.html"><span>アイテム除去閾値の変更</span></a></li><li class="section"><a href="../CLI/CBepctl/cbepctl-accesslog.html"><span>アクセスログ設定の変更</span></a></li><li class="section"><a href="../CLI/CBepctl/cbepctl-diskcleanup.html"><span>ディスククリーンアップ間隔の変更</span></a></li><li class="section"><a href="../CLI/CBepctl/cbepctl-diskwritequeue.html"><span>ディスク書込みキュー割り当ての変更</span></a></li><li class="section"><a href="../CLI/CBepctl/cbepctl-timeout.html"><span>out-of-memory閾値の変更</span></a></li></ul></li><li class="section"><a href="../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+	<h1 class="title topictitle1">cbepctlツール</h1>
 
 	
-	<div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbepctl</samp> tool is used to control vBucket states, configuration, and 
-		memory and disk persistence behavior.</p>
+	<div class="body refbody"><p class="shortdesc"><samp class="ph codeph">cbepctl</samp>ツールはvBucketのステータス、設定、メモリとディスク永続化の挙動をコントロールするために利用します。</p>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Description</h2>
-			<p class="p">This tool is a per-node, per-bucket operation. 
-				That means that the IP address of a node in the cluster and a named bucket must be specified. 
-				If a named bucket is not provided, the server applies the setting to any default bucket that exists at the specified node. 
-				To perform this operation for an entire cluster, perform the command for every node/bucket combination that exists 
-				for that cluster.</p>
+		<div class="section"><h2 class="title sectiontitle">説明</h2>
+			<p class="p">このツールはノード単位、バケット単位のオペレーションです。
+				すなわち、クラスタ内のノードのIPアドレスと、バケット名を指定する必要があります。
+				バケット名を指定しない場合、指定したノード上に存在するdefaultバケットに設定を反映します。
+				クラスタ全体にこの操作を実行するには、コマンドをクラスタに存在する全てのノードとバケットの組み合わせに対して実行します。
+			</p>
 
 			
-			<p class="p">For example, when a data bucket is shared by two nodes, 
-				issue this command twice and provide the different host names and ports
-				for each node along with the bucket name. Similarly, when two data buckets are on the same node, 
-				issue the command twice for each data bucket. If a bucket is not
-				specified, the command applies to the default bucket or returns an error if a default bucket does not
-				exist.</p>
+			<p class="p">例えば、データバケットが二つのノードに分散しているなら、このコマンドをバケット名と、それぞれのホスト名とポートを指定して、二度実行します。
+				同様に、同一ノード上に二つのデータバケットが存在するなら、各データバケットにつき、計二回実行します。
+				ノードを指定しない場合、このコマンドはデフォルトバケットに対して実行され、デフォルトバケットが存在しない場合エラーを返します。
+			</p>
 
 			
-			<div class="note important"><span class="importanttitle">Important:</span> Changes to the cluster configuration using <samp class="ph codeph">cbepctl</samp> are not persisted
-				over a cluster restart.</div>
+			<div class="note important"><span class="importanttitle">重要:</span> <samp class="ph codeph">cbepctl</samp>を利用して変更したクラスタの設定は永続化されず、クラスタを再起動すると元に戻ります。</div>
 
 				
-				<p class="p">The tool is found in the following locations:</p>
+				<p class="p">ツールは以下の場所にあります:</p>
 
 		
 		
@@ -48,9 +44,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d39808e49">Operating system</th>
+						<th class="entry" valign="top" width="50%" id="d39808e47">オペレーティングシステム</th>
 
-						<th class="entry" valign="top" width="50%" id="d39808e52">Location</th>
+						<th class="entry" valign="top" width="50%" id="d39808e50">ロケーション</th>
 
 					</tr>
 
@@ -58,23 +54,23 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d39808e49 ">Linux</td>
+						<td class="entry" valign="top" width="50%" headers="d39808e47 ">Linux</td>
 
-						<td class="entry" valign="top" width="50%" headers="d39808e52 ">/opt/couchbase/bin/cbepctl</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d39808e49 ">Windows</td>
-
-						<td class="entry" valign="top" width="50%" headers="d39808e52 ">C:\Program&nbsp;Files\Couchbase\Server\bin\cbepctl.exe</td>
+						<td class="entry" valign="top" width="50%" headers="d39808e50 ">/opt/couchbase/bin/cbepctl</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d39808e49 ">Mac OS X</td>
+						<td class="entry" valign="top" width="50%" headers="d39808e47 ">Windows</td>
 
-						<td class="entry" valign="top" width="50%" headers="d39808e52 ">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbepctl</td>
+						<td class="entry" valign="top" width="50%" headers="d39808e50 ">C:\Program&nbsp;Files\Couchbase\Server\bin\cbepctl.exe</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d39808e47 ">Mac OS X</td>
+
+						<td class="entry" valign="top" width="50%" headers="d39808e50 ">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbepctl</td>
 
 					</tr>
 
@@ -87,30 +83,31 @@
 	</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">CLI command and parameters</h2>
-			<p class="p">Basic syntax for this command:</p>
+		<div class="section"><h2 class="title sectiontitle">CLIコマンドとパラメータ</h2>
+			<p class="p">コマンドの基本シンタックス:</p>
 
 		<pre class="pre codeblock"><code>cbepctl [localhost]:11210 -b [bucket_name] -p [bucket-password] start
 cbepctl [localhost]:11210 -b [bucket_name] -p [bucket-password] stop
 cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-type] [parameter] [value]
-</code></pre>
+		</code></pre>
 
-		<p class="p">For this command, <samp class="ph codeph">host</samp> is the IP address for the Couchbase cluster or node in
-				the cluster. The port is always the standard port used for cluster-wide stats and is
-				at <samp class="ph codeph">11210</samp>. The bucket name and password is provided first and then
-				the command option and authentication.</p>
+		<p class="p">
+			<samp class="ph codeph">host</samp>には、Couchbaseクラスタもしくはクラスタ内のノードのIPアドレスです。
+			ポートは常にクラスタ全体の統計情報に利用される標準ポートで、<samp class="ph codeph">11210</samp>となります。
+			バケット名とパスワードに続き、コマンドオプションを指定します。
+		</p>
 
-		<p class="p">Use the following command options to manage persistence:</p>
+		<p class="p">以下のコマンドオプションを利用し永続性の制御を行います:</p>
 
 		
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. cbepctl command options</span></caption>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">表 1. cbepctlコマンドオプション</span></caption>
 				
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="18.484288354898336%" id="d39808e127">Command option</th>
+						<th class="entry" valign="top" width="18.484288354898336%" id="d39808e125">コマンドオプション</th>
 
-						<th class="entry" valign="top" width="81.51571164510166%" id="d39808e130">Description</th>
+						<th class="entry" valign="top" width="81.51571164510166%" id="d39808e128">説明</th>
 
 					</tr>
 
@@ -118,32 +115,30 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="18.484288354898336%" headers="d39808e127 ">stop</td>
+						<td class="entry" valign="top" width="18.484288354898336%" headers="d39808e125 ">stop</td>
 
-						<td class="entry" valign="top" width="81.51571164510166%" headers="d39808e130 ">Stop persistence</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="18.484288354898336%" headers="d39808e127 ">start</td>
-
-						<td class="entry" valign="top" width="81.51571164510166%" headers="d39808e130 ">Start persistence</td>
+						<td class="entry" valign="top" width="81.51571164510166%" headers="d39808e128 ">永続化を停止</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="18.484288354898336%" headers="d39808e127 ">drain</td>
+						<td class="entry" valign="top" width="18.484288354898336%" headers="d39808e125 ">start</td>
 
-						<td class="entry" valign="top" width="81.51571164510166%" headers="d39808e130 ">Wait until queues are drained</td>
+						<td class="entry" valign="top" width="81.51571164510166%" headers="d39808e128 ">永続化を開始</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="18.484288354898336%" headers="d39808e127 ">set</td>
+						<td class="entry" valign="top" width="18.484288354898336%" headers="d39808e125 ">drain</td>
 
-						<td class="entry" valign="top" width="81.51571164510166%" headers="d39808e130 ">Set <samp class="ph codeph">checkpoint_param</samp>, <samp class="ph codeph">flush_param</samp>, and
-									<samp class="ph codeph">tap_param</samp> command types. This changes how or
-								when persistence occurs.</td>
+						<td class="entry" valign="top" width="81.51571164510166%" headers="d39808e128 ">キューが空になるまで待機</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="18.484288354898336%" headers="d39808e125 ">set</td>
+
+						<td class="entry" valign="top" width="81.51571164510166%" headers="d39808e128 "><samp class="ph codeph">checkpoint_param</samp>、<samp class="ph codeph">flush_param</samp>、<samp class="ph codeph">tap_param</samp>コマンド種別を設定。この変更は永続化がいつどのように実行されるのかを変更します。</td>
 
 					</tr>
 
@@ -153,16 +148,14 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 </div>
 
 			
-		<p class="p">The <samp class="ph codeph">set</samp> command option along with the <samp class="ph codeph">checkpoint_param</samp>,
-					<samp class="ph codeph">flush_param</samp>, and <samp class="ph codeph">tap_param</samp> command types
-				change the behavior of persistence in Couchbase Server.</p>
+		<p class="p"><samp class="ph codeph">set</samp>コマンドオプションでは、<samp class="ph codeph">checkpoint_param</samp>、<samp class="ph codeph">flush_param</samp>、<samp class="ph codeph">tap_param</samp>のコマンド種別を指定し、Couchbase Serverの永続化に関する挙動を変更します。</p>
 
 			
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">cbepctl set checkpoint_param</h2>
-		<p class="p">The parameters for <samp class="ph codeph">set checkpoint_param</samp> are:</p>
+		<div class="section"><h2 class="title sectiontitle">cbepctlでcheckpoint_paramを設定する</h2>
+			<p class="p"><samp class="ph codeph">set checkpoint_param</samp>で利用可能なパラメータ:</p>
 
 		
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
@@ -170,9 +163,9 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d39808e224">Parameter</th>
+						<th class="entry" valign="top" width="50%" id="d39808e219">パラメータ</th>
 
-						<th class="entry" valign="top" width="50%" id="d39808e227">Description</th>
+						<th class="entry" valign="top" width="50%" id="d39808e222">説明</th>
 
 					</tr>
 
@@ -180,46 +173,44 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d39808e224 ">chk_max_items</td>
+						<td class="entry" valign="top" width="50%" headers="d39808e219 ">chk_max_items</td>
 
-						<td class="entry" valign="top" width="50%" headers="d39808e227 ">Max number of items allowed in a checkpoint.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d39808e224 ">chk_period</td>
-
-						<td class="entry" valign="top" width="50%" headers="d39808e227 ">Time bound (in sec.) on a checkpoint.</td>
+						<td class="entry" valign="top" width="50%" headers="d39808e222 ">ひとつのチェックポイントで許容する最大アイテム数。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d39808e224 ">item_num_based_new_chk</td>
+						<td class="entry" valign="top" width="50%" headers="d39808e219 ">chk_period</td>
 
-						<td class="entry" valign="top" width="50%" headers="d39808e227 ">True if a new checkpoint can be created based on. the number of items
-							in the open checkpoint.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d39808e224 ">keep_closed_chks</td>
-
-						<td class="entry" valign="top" width="50%" headers="d39808e227 ">True if we want to keep closed checkpoints in memory, as long as the
-							current memory usage is below high water mark.</td>
+						<td class="entry" valign="top" width="50%" headers="d39808e222 ">チェックポイントのタイムバウンド(秒)。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d39808e224 ">max_checkpoints</td>
+						<td class="entry" valign="top" width="50%" headers="d39808e219 ">item_num_based_new_chk</td>
 
-						<td class="entry" valign="top" width="50%" headers="d39808e227 ">Max number of checkpoints allowed per vbucket. </td>
+						<td class="entry" valign="top" width="50%" headers="d39808e222 ">オープンなチェックポイント中のアイテム数を元に新規のチェックポイントを作成する場合True。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d39808e224 ">enable_chk_merge</td>
+						<td class="entry" valign="top" width="50%" headers="d39808e219 ">keep_closed_chks</td>
 
-						<td class="entry" valign="top" width="50%" headers="d39808e227 ">True, if merging closed checkpoints is enabled.</td>
+						<td class="entry" valign="top" width="50%" headers="d39808e222 ">現在のメモリ使用量が高水位を下回る場合にクローズしたチェックポイントをメモリ内に保持する場合True。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d39808e219 ">max_checkpoints</td>
+
+						<td class="entry" valign="top" width="50%" headers="d39808e222 ">vBucket単位の最大チェックポイント数。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d39808e219 ">enable_chk_merge</td>
+
+						<td class="entry" valign="top" width="50%" headers="d39808e222 ">チェックポイントをマージする場合True。</td>
 
 					</tr>
 
@@ -232,9 +223,9 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 
 	
 		
-		<div class="section"><h2 class="title sectiontitle">cbepctl set flush_param</h2>
+		<div class="section"><h2 class="title sectiontitle">cbepctlでflush_paramを設定する</h2>
 			
-			<p class="p">The parameters for <samp class="ph codeph">set flush_param</samp> are:</p>
+			<p class="p"><samp class="ph codeph">set flush_param</samp>で利用可能なパラメータ:</p>
 
 			
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
@@ -242,9 +233,9 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d39808e315">Parameter</th>
+							<th class="entry" valign="top" width="50%" id="d39808e309">パラメータ</th>
 
-							<th class="entry" valign="top" width="50%" id="d39808e318">Description</th>
+							<th class="entry" valign="top" width="50%" id="d39808e312">説明</th>
 
 						</tr>
 
@@ -252,141 +243,135 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">alog_sleep_time</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">alog_sleep_time</td>
 
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Access scanner interval (minute)</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">alog_task_time</td>
-
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Access scanner next task time (UTC)</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">アクセススキャナ間隔(分)</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">backfile_mem_threshold</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">alog_task_time</td>
 
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Memory threshold (%) on the current bucket quota before backfill task is made to back off.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">bg_fetch_delay</td>
-
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Delay before executing a bg fetch (test feature).</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">アクセススキャナ次回実行時刻(UTC)</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">couch_response_timeout</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">backfile_mem_threshold</td>
 
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">timeout in receiving a response from CouchDB.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">exp_pager_stime</td>
-
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Expiry Pager interval. Time interval that Couchbase Server waits
-								before it performs cleanup and removal of expired items from
-								disk.</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">該当バケットでバックフィルタスクをバックオフするまでのメモリ閾値(%)。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">flushall_enabled</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">bg_fetch_delay</td>
 
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Deprecated. Enable flush operation.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">pager_active_vb_pcnt</td>
-
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Percentage of active vBuckets items among all ejected items by item pager.</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">バックグラウンドでのフェッチ実行を遅延する(テスト用途)。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">max_size</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">couch_response_timeout</td>
 
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Maximum memory used by the server.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">mem_high_wat</td>
-
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Low water mark by percentage.</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">CouchDBからのレスポンス受信のタイムアウト。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">mem_low_wat</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">exp_pager_stime</td>
 
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">High water mark by percentage.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">mutation_mem_threshold</td>
-
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Amount of RAM that can be consumed in that caching layer before
-								clients start receiving temporary out of memory messages.</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">有効期限切れページャの間隔。Couchbase Serverがディスクから期限切れアイテムのクリーンアップと削除を実行するまで待つ間隔。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">timing_log</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">flushall_enabled</td>
 
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Path to log detailed timing stats. </td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">warmup_min_memory_threshold</td>
-
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Memory threshold (%) during warmup to enable traffic.</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">非推奨。フラッシュを有効化。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">warmup_min_item_threshold</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">pager_active_vb_pcnt</td>
 
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Item number threshold (%) during warmup to enable traffic.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">max_num_readers</td>
-
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Override the default number of global threads that prioritize read operations.</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">アイテムページャが除去する全てのアイテム中のアクティブvBucket内アイテムの割合。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">max_num_writers</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">max_size</td>
 
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Override the default number of global threads that prioritize write
-								operations.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">max_num_auxio</td>
-
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Override the default number of global threads that prioritize auxio
-								operations.</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">サーバで利用するメモリの最大量。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e315 ">max_num_nonio</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">mem_high_wat</td>
 
-							<td class="entry" valign="top" width="50%" headers="d39808e318 ">Override the default number of global threads that prioritize nonio
-								operations.</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">高水位をパーセンテージで指定。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">mem_low_wat</td>
+
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">低水位をパーセンテージで指定。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">mutation_mem_threshold</td>
+
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">クライアントが一時的なメモリ不足メッセージを受信し始めるまでのキャッシュレイヤで利用可能なRAM容量。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">timing_log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">詳細なタイミング統計情報ログの出力先。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">warmup_min_memory_threshold</td>
+
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">ウォームアップにおいてトラフィックを受け付けるまでのメモリ閾値(%)。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">warmup_min_item_threshold</td>
+
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">ウォームアップにおいてトラフィックを受け付けるまでのアイテム数閾値(%)。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">max_num_readers</td>
+
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">デフォルトの参照オペレーション用グローバルスレッド数をオーバーライドする。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">max_num_writers</td>
+
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">デフォルトの更新オペレーション用グローバルスレッド数をオーバーライドする。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">max_num_auxio</td>
+
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">デフォルトのauxioオペレーション用グローバルスレッド数をオーバーライドする。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d39808e309 ">max_num_nonio</td>
+
+							<td class="entry" valign="top" width="50%" headers="d39808e312 ">デフォルトのnonioオペレーション用グローバルスレッド数をオーバーライドする。</td>
 
 						</tr>
 
@@ -399,8 +384,8 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">cbepctl set tap_param</h2>
-			<p class="p">The parameters for <samp class="ph codeph">set tap_param</samp> are:</p>
+		<div class="section"><h2 class="title sectiontitle">cbepctlでtap_paramを設定する</h2>
+			<p class="p"><samp class="ph codeph">set tap_param</samp>で利用可能なパラメータ:</p>
 
 		
 			
@@ -409,9 +394,9 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d39808e525">Parameter</th>
+							<th class="entry" valign="top" width="50%" id="d39808e518">パラメータ</th>
 
-							<th class="entry" valign="top" width="50%" id="d39808e528">Description</th>
+							<th class="entry" valign="top" width="50%" id="d39808e521">説明</th>
 
 						</tr>
 
@@ -419,30 +404,30 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e525 ">tap_keepalive</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e518 ">tap_keepalive</td>
 
-							<td class="entry" valign="top" width="50%" headers="d39808e528 ">Seconds to hold a named tap connection.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e525 ">tap_throttle_queue_cap</td>
-
-							<td class="entry" valign="top" width="50%" headers="d39808e528 ">Maximum disk write queue size to throttle tap streams (infinite means no cap).</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e521 ">指定のtapコネクションを保持する秒数。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e525 ">tap_throttle_cap_pcnt</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e518 ">tap_throttle_queue_cap</td>
 
-							<td class="entry" valign="top" width="50%" headers="d39808e528 ">Percentage of total items in write queue at which we throttle tap input.</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e521 ">tapストリームを絞るまでの最大ディスク書込みキューサイズ (infiniteは絞り込みなし)。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d39808e525 ">tap_throttle_threshold</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e518 ">tap_throttle_cap_pcnt</td>
 
-							<td class="entry" valign="top" width="50%" headers="d39808e528 ">Percentage of memory in use to throttle tap streams</td>
+							<td class="entry" valign="top" width="50%" headers="d39808e521 ">tapインプットを絞る際の書込みキュー内総アイテム数の割合。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d39808e518 ">tap_throttle_threshold</td>
+
+							<td class="entry" valign="top" width="50%" headers="d39808e521 ">tapストリームを絞る際に利用するメモリの割合。</td>
 
 						</tr>
 
@@ -460,24 +445,24 @@ cbepctl [localhost[:11210 -b [bucket_name] -p [bucket-password] set [command-typ
 
 	<nav class="related-links"><h2>Related information</h2>
 <ol class="olchildlinks">
-<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-threadpool-tuning.html">Changing shared thread pool settings</a><br>
-Dynamic shared thread pool performance is tunable via <samp class="ph codeph">cbepctl set flush_param</samp> command options.</li>
-<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-thresholds.html">Changing ejection thresholds</a><br>
-The item pager process ejects items from RAM when too much space is being taken up in     RAM.</li>
-<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-accesslog.html">Changing access log settings</a><br>
-Access log settings determine when the access scanner process initially runs and how     often.</li>
-<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-diskcleanup.html">Changing disk cleanup intervals</a><br>
-Disk cleanup is the maintenance process of erasing expired items.</li>
-<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-diskwritequeue.html">Changing disk write queue quotas</a><br>
-The quota in disk write queues impact the rate of data sent from source nodes to 		destination nodes. </li>
-<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-timeout.html">Changing out-of-memory thresholds</a><br>
-A out-of-memory error message is sent when RAM consumption threshold is at     95%.</li>
+<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-threadpool-tuning.html">共有スレッドプール設定の変更</a><br>
+動的共有スレッドプールの性能は<samp class="ph codeph">cbepctl set flush_param</samp>コマンドオプションでチューニングできます。</li>
+<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-thresholds.html">アイテム除去閾値の変更</a><br>
+RAM領域が枯渇すると、アイテムページャプロセスはRAMからアイテムを除去します。</li>
+<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-accesslog.html">アクセスログ設定の変更</a><br>
+アクセスログ設定はいつ初回のアクセススキャナプロセスを実行するか、またどの程度の頻度で実行するかを決定します。</li>
+<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-diskcleanup.html">ディスククリーンアップ間隔の変更</a><br>
+ディスククリーンアップは期限切れアイテムを削除するメンテナンスプロセスです。</li>
+<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-diskwritequeue.html">ディスク書込みキュー割り当ての変更</a><br>
+ディスク書込みキュー割り当てはソースノードから宛先ノードへと送信されるデータの度合いに影響します。</li>
+<li class="link olchildlink"><a href="../CLI/CBepctl/cbepctl-timeout.html">out-of-memory閾値の変更</a><br>
+RAM利用率が閾値の95%を超えると、out-of-memoryエラーメッセージが送信されます。</li>
 </ol>
 
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Server command-line interface (CLI) tools are provided to manage and monitor clusters, servers, vBuckets, XDCR, and so on.">CLI reference</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../CLI/cbdocloader_tool.html" title="The cbdocloader tool is used to load a group of JSON documents in a given directory or in a single .zip file.">cbdocloader tool</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../CLI/cbhealthchecker_tool.html" title="The cbhealthchecker tool generates a health report named Cluster Health Check Report for a cluster.">cbhealthchecker tool</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Serverコマンドラインインタフェース（CLI） ツールはクラスタ、サーバ、vBuckets、XDCRなどの管理や監視を提供します。">CLIリファレンス</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../CLI/cbdocloader_tool.html" title="The cbdocloader tool is used to load a group of JSON documents in a given directory or in a single .zip file.">cbdocloader tool</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../CLI/cbhealthchecker_tool.html" title="The cbhealthchecker tool generates a health report named Cluster Health Check Report for a cluster.">cbhealthchecker tool</a></div>
 </div>
 
 <div class="linklist linklist">
