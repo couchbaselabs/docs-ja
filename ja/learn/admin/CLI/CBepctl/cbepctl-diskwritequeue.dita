@@ -1,64 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbepctl-diskwritequeue">
-	<title>Changing disk write queue quotas</title>
-	<shortdesc>The quota in disk write queues impact the rate of data sent from source nodes to
-		destination nodes. </shortdesc>
+<reference xml:lang="ja" id="cbepctl-diskwritequeue">
+	<title>ディスク書込みキュー割り当ての変更</title>
+	<shortdesc>ディスク書込みキュー割り当てはソースノードから宛先ノードへと送信されるデータの度合いに影響します。</shortdesc>
 	<refbody>
-		<section><title>Description</title>
-		<p>One of the specific uses of the <codeph>cbepctl set tap_param</codeph> command option is to the
-				change the default maximum items for a disk write queue. This impacts replication of
-				data that occurs between source and destination nodes within a cluster. Both data
-				that a node receives from client applications and replicated items that it receives
-				are placed on a disk write queue. If there are too many items waiting in the disk
-				write queue at any given destination, Couchbase Server reduces the rate of data that
-				is sent to a destination. This is process is also known as backoff.</p>
+		<section><title>説明</title>
+			<p>
+				<codeph>cbepctl set tap_param</codeph>コマンドオプションの最も典型的な利用用途は、ディスク書込みキュー内の最大アイテム数を変更することです。
+				これはクラスタ内のソースと宛先ノード間で発生するデータのレプリケーションに影響します。
+				あるノードがクライアントアプリケーションとレプリカのアイテムとして受信する両データはディスク書込みキューに配置されます。
+				あるノードのディスク書込みキュー内で非常に多くのアイテムが待たされていると、Couchbase Serverはそのノードへのデータ送信頻度を抑えます。
+				この処理はバックオフと呼ばれます。
+			</p>
 			
-		<p>By default, when a disk write queue contains one million items, a Couchbase node 
-			reduces the rate it sends out data to be replicated. 
-			This setting can be changed to be
-			the greater of 10% of the items at a destination node or a specific number.</p>
+			<p>
+				デフォルトでは、ディスク書込みキューが百万アイテムを保持すると、Couchbaseノードはレプリケーション用データの送信頻度を減らします。
+				この設定は宛先ノードにおけるアイテムの10%以上、もしくは特定の数に変更することができます。
+			</p>
 			
-			<p>The <codeph>tap_param</codeph> parameters are:</p>
+			<p><codeph>tap_param</codeph>で利用可能なパラメータ:</p>
 			<table>
-				<title>tap_param parameters</title>
+				<title>tap_paramのパラメータ</title>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>Parameter</entry>
-							<entry>Description</entry>
+							<entry>パラメータ</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>tap_keepalive</entry>
-							<entry>Seconds to hold a named tap connection.</entry>
+							<entry>指定のtapコネクションを保持する秒数。</entry>
 						</row>
 						<row>
 							<entry>tap_throttle_queue_cap</entry>
-							<entry>Max disk write queue size when tap streams are put into a temporary,
-								5-second pause. Infinite means there is no cap.</entry>
+							<entry>Tapストリームが一時的に、5秒間停止する際の最大ディスク書込みキューサイズ。</entry>
 						</row>
 						<row>
 							<entry>tap_throttle_cap_pcnt</entry>
-							<entry>Maximum items in disk write queue as percentage of all items on a
-								node. At this point, tap streams are put into a temporary, 5-second
-								pause.</entry>
+							<entry>ディスク書込みキュー内の最大アイテム数を、そのノード上の全アイテムに対する割合で指定。
+							これに到達すると、tapストリームは一時的に、5秒間停止する。</entry>
 						</row>
 						<row>
 							<entry>tap_throttle_threshold</entry>
-							<entry>Percentage of memory in use when tap streams are put into a
-								temporary, 5-second pause. </entry>
+							<entry>Tapストリームが一時的に、5秒間停止する際のメモリ利用率、パーセンテージ。</entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table>
 		</section>
 			
-			<section><title>Syntax</title>
-				<p>Basic syntax:</p>
+			<section><title>シンタックス</title>
+				<p>基本シンタックス:</p>
 				<codeblock>
 cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set tap_param [parameter] [value]
 cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set tap_param tap_throttle_queue_cap [value]
@@ -66,23 +62,25 @@ cbepctl [localhost]:11210 -b [bucket-name] -p [bucket-password] set tap_param ta
 				</codeblock>
 			</section>
 			
-			<section><title>Example</title>
+			<section><title>例</title>
 				
-				<p>The following example changes the setting (for the default bucket) to specify that a replica
-				node send a request to backoff when it has two million items.</p>
+				<p>以下の例は、レプリカノードが(defaultバケットにおいて)アイテム数が2百万になった時にバックオフのリクエストを送信するように設定を変更します。</p>
 				<codeblock>cbepctl 10.5.2.117:11210 set tap_param tap_throttle_queue_cap 2000000</codeblock>
 				
-				<p>The following example changes (for the default bucket) the default percentage used to manage
-				the replication stream. If the items in a disk write queue reach the greater of this
-				percentage or a specified number of items, replication requests slow down.</p>
-				<p>The threshold is set to 15% of all items at a replica node. When a disk
-					write queue on a replica node reaches this point, it requests replication backoff.</p>
+				<p>
+					以下の例は、(defaultバケットにおいて)レプリケーションストリームの制御に利用されるデフォルトの割合を変更します。
+					ディスク書込みキュー内のアイテムがこの割合、もしくは特定のアイテム数を超えると、レプリケーションリクエストは減速します。
+				</p>
+				<p>
+					ここではレプリカノードの全アイテムの15%を設定しています。
+					レプリカノード上のディスク書込みキューがこの割合に到達すると、レプリケーションバックオフをリクエストします。
+				</p>
 				<codeblock>cbepctl 10.5.2.117:11210 set tap_param tap_throttle_cap_pcnt 15</codeblock>
 			
 			</section>
 		
-		<section><title>Response</title>
-			<p>The following example responses show a two million setting and a 15% threshold:</p>
+		<section><title>レスポンス</title>
+			<p>以下のレスポンス例は2百万と15%の閾値を設定した様子を示します:</p>
 			<codeblock>
 setting param: tap_throttle_queue_cap 2000000
 set tap_throttle_queue_cap to 2000000
