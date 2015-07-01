@@ -1,371 +1,344 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic22896">
- <title>Views operations</title>
-  <shortdesc>This section describes how Views operate and how various functions impact views and
-    data.</shortdesc>
+<topic xml:lang="ja" id="topic22896">
+ <title>Viewの動作</title>
+  <shortdesc>このセクションではView動作や様々なViewやデータに関連する機能を説明します。</shortdesc>
  <body>
-  <p>All views within Couchbase operate as follows:</p>
+  <p>Couchbase内の全てのViewは以下の様に動作します:</p>
   <ul>
-    <li>View are updated as the document data is updated in memory. 
-      There may be a delay between the document being created or updated and the document being updated within the view 
-      depending on the client-side query parameters.</li>
-   <li>Documents that are stored with an expiry are not automatically removed until the
-     background expiry process removes them from the database. This means that expired documents may
-     still exist within the index.</li>
-   <li>Views are scoped within a design document, with each design document part of a single
-     bucket. A view can only access the information within the corresponding bucket.</li>
-   <li>View names must be specified using one or more UTF–8 characters. You cannot have a blank
-     view name. View names cannot have leading or trailing whitespace characters (space, tab,
-     newline, or carriage-return).</li>
-   <li>Document IDs that are not UTF–8 encodable are automatically filtered and not included in any
-    view. The filtered documents are logged so that they can be identified.</li>
-   <li>If you have a long view request, use POST instead of GET.</li>
-   <li>Views can only access documents defined within their corresponding bucket. You cannot
-     access or aggregate data from multiple buckets within a given view.</li>
-   <li>Views are created as part of a design document and each design document exists within the
-        corresponding named bucket. <ul>
-          <li>Each design document can have 0-n views.</li>
-          <li>Each bucket can contain 0-n design documents.</li>
+		<li>ドキュメントデータがメモリ上で更新される際にViewが更新されます。
+			ドキュメントが作成、更新されるタイミングと、ドキュメントがView内で更新されるタイミングの間には、
+			クライアント側でのクエリパラメータに依存して遅延が発生します。</li>
+		<li>有効期限を指定して保存したドキュメントはバックグラウンドの期限切れドキュメント削除プロセスがデータベースからそれらを削除するまで、
+			自動的に削除されません。
+			このため、インデックス内に期限切れのドキュメントが残る場合があります。
+		</li>
+		<li>Viewはデザインドキュメント内で定義され、各デザインドキュメントは単一のバケットの一部です。
+		Viewは対応するバケット内の情報にのみアクセスできます。</li>
+	<li>View名は一つ以上のUTF-8文字で指定する必要があります。
+		View名を空白にすることはできません。
+		View名の前後には空白文字(スペース、タブ、改行)を含めることはできません。
+	</li>
+	<li>UTF-8でエンコードできないドキュメントIDは自動的にフィルタリングされ、いかなるViewにも含まれません。
+	フィルタリングされたドキュメントはログに出力されます。</li>
+   <li>複雑なViewリクエストを送信する場合、GETではなくPOSTを利用します。</li>
+	 <li>Viewを定義した、対応するバケット内のドキュメントにのみアクセス可能です。
+	 複数のバケットのデータへアクセスしたり、集約することはできません。</li>
+ <li>Viewはデザインドキュメントの一部として作成し、デザインドキュメントは対応するバケットの内部に存在します。
+	 <ul>
+          <li>各デザインドキュメントは0からn個のViewを持ちます。</li>
+          <li>各バケットは0からn個のデザインドキュメントを持ちます。</li>
         </ul></li>
-   <li>All the views within a single design document are updated when the update to a single view is
-        triggered. For example, a design document with three views updates all three views
-        simultaneously when one view is updated.</li>
-   <li>Updates can be triggered in two ways: <ul>
+				<li>単一のデザインドキュメント内にある全てのViewは、単一のViewの更新が発動した時に同時に更新されます。
+				例えば、3つのViewを持つデザインドキュメントは、1つのViewが更新されると同時に3つ全てのViewを更新します。</li>
+   <li>更新は二つの方法で実行できます:<ul>
      <li>
-      <p>At the point of access or query by using the <codeph>stale</codeph> parameter..</p>
+			 <p><codeph>stale</codeph>パラメータを指定してアクセス、クエリを実行した時。</p>
      </li>
      <li>
-      <p>Automatically by Couchbase Server based on the number of updated documents, or the period
-       since the last update. Automatic updates can be controlled either globally, or individually
-       on each design document.</p>
+			 <p>更新されたドキュメントの数、および最終更新時からの経過時間に応じてCouchbase Serverが自動的に実施。
+			 自動更新はグローバルに、あるいは個々のデザインドキュメント単位に制御できます。</p>
      </li>
     </ul></li>
-   <li><p>Views are updated incrementally. The first time the view is accessed, all the documents
-     within the bucket are processed through the map/reduce functions. Each new access to the view
-     only processes the documents that have been added, updated, or deleted, since the last time the
-     view index was updated.</p></li>
+		<li><p>Viewはインクリメンタルに更新されます。
+				初めてViewにアクセスすると、バケット内の全てのドキュメントがmap/reduce関数で処理されます。
+		その後のViewに対する各アクセスでは、最後にViewインデックスを更新してから、追加、更新、削除されたドキュメントのみを処理します。</p></li>
   </ul>
-  <p>In practice, this means that views are entirely incremental in nature. Updates to views are
-      typically quick as they only update changed documents. Ensure that views are updated by using
-      either the built-in automatic update system, through client-side triggering, or explicit
-      updates within your application framework.</p>
+	<p>このため、Viewは完全にインクリメンタルな性質を持ちます。
+		Viewの更新は変更したドキュメントのみを更新するため、通常高速です。
+	ビルトインの自動更新システム、クライアントからの実行、アプリケーションフレームワークでの明示的な更新などで、Viewが更新されていることを確実にしてください。</p>
   <ul>
-   <li><p>Because of the incremental nature of the view update process, information is only ever
-     appended to the index stored on disk. This helps ensure that the index is updated efficiently.
-     Compaction (including auto-compaction) will optimize the index size on disk and optimize the
-     index structure. An optimized index is more efficient to update and query.</p></li>
-   <li><p>The entire view is recreated if the view definition has changed. Because this would have a
-     detrimental effect on live data, only development views can be modified.</p></li>
+		<li><p>Viewの更新処理はインクリメンタルな性質を持つため、情報はディスクに保存されたインデックスに追記されるだけです。
+				このため、インデックスの更新は効率的に行われます。
+				コンパクション(自動コンパクションを含む)はディスク上のインデックスサイズ、インデックス構造を最適化します。
+		最適化したインデックスはより効率的に更新、クエリが可能です。</p></li>
+	  <li><p>View定義を変更すると、View全体が再作成されます。
+	  これは利用中のデータに害をもたらす可能性があるため、開発Viewのみが変更可能です。</p></li>
   </ul>
-  <p>Views are organized by design document, and indexes are created according to the design
-   document. Changing a single view in a design document with multiple views invalidates all the
-   views (and stored indexes) within the design document, and all the corresponding views defined in
-   that design document will need to be rebuilt. This will increase the I/O across the cluster while
-   the index is rebuilt, in addition to the I/O required for any active production views.</p>
+	<p>
+		Viewはデザインドキュメントで組織され、インデックスはデザインドキュメントに基づき作成されます。
+		複数のViewを持つデザインドキュメント内のあるViewを変更すると、そのデザインドキュメント内の全てのView(および保存されたインデックス)が無効化され、そのデザインドキュメント内に定義された関連する全てのViewを再構築しなければなりません。
+		これは、アクティブなプロダクションViewで必要なI/Oに加え、インデックスの再構築のI/Oを増加させます。
+	</p>
   <ul>
-   <li><p>You can choose to update the result set from a view before you query it or after you
-     query. Or you can choose to retrieve the existing result set from a view when you query the
-     view. In this case the results are possibly out of date, or stale. </p></li>
-   <li><p>The views engine creates an index is for each design document; this index contains the
-     results for all the views within that design document.</p></li>
-   <li><p>The index information stored on disk consists of the combination of both the key and value
-     information defined within your view. The key and value data is stored in the index so that the
-     information can be returned as quickly as possible, and so that views that include a reduce
-     function can return the reduced information by extracting that data from the index.</p></li>
+		<li><p>
+				Viewの結果の更新方法はクエリ実行前かクエリ実行後から選択できます。
+				もしくは、クエリ実行時に、Viewが持つ現在の結果セットを取得することも可能です。
+				この場合、結果が最新でない可能性があります。
+		</p></li>
+   <li><p>Viewエンジンはインデックスをデザインドキュメントごとに作成します; このインデックスはそのデザインドキュメント内の全てのViewの結果を保持します。</p></li>
+	 <li><p>
+			 このインデックス情報はディスクに保存され、Viewで定義したkeyとvalueの両情報から構成されます。
+			 可能な限り高速に情報を返却できるようにkeyとvalueの値はインデックス内に保存され、同時にreduce関数を持つViewがインデックスからデータを抽出し集約できるようにしています。
+	 </p></li>
   </ul>
-  <p>Because the value and key information from the defined map function are stored in the index,
-   the overall size of the index can be larger than the stored data if the emitted key/value
-   information is larger than the original source document data.</p>
+	<p>map関数で定義したkeyとvalueの情報はインデックス内に保存されているため、出力したkey/value情報がオリジナルのドキュメントデータよりも大きい場合、インデックスの総データサイズは保存データの総サイズよりも大きくなる場合があります。</p>
    
-  <section><title>How expiration impacts views</title><p>Be aware that Couchbase Server does lazy expiration, that is, expired items are flagged as
-        deleted rather than being immediately erased. Couchbase Server has a maintenance process,
-        called <i>expiry pager</i> that periodically looks through all information and erase expired
-        items. This maintenance process runs every 60 minutes, by default, unless configured to run
-        at a different interval. When an item is requested, Couchbase Server removes the item
-        flagged for deletion and provides a response that the item does not exist.</p><p>The result set from a
-    view <i>will contain</i> any items stored on disk that meet the requirements of your views
-    function. Therefore information that has not yet been removed from disk may appear as part of a
-    result set when you query a view.</p><p>Using Couchbase views, you can also perform <i>reduce functions</i> on data, which perform
-        calculations or other aggregations of data. For instance, if you want to count the instances
-        of a type of object, use a reduce function. Once again, if an item is on disk, it will be
-        included in any calculation performed by your reduce functions. Based on this behavior due
-        to disk persistence, here are guidelines on handling expiration with views:</p>
+	<section><title>有効期限がViewに与える影響</title>
+		<p>
+			Couchbase Serverは有効期限を遅延判定していることに注意してください、これは、期限切れのアイテムは即座に削除されるのではなく、削除状態でフラグ付けされるということです。
+			Couchbase Serverは<i>expiry pager</i>というメンテナンスプロセスを定期的に実行し、全ての情報を参照して期限切れのアイテムを削除します。
+			このメンテナンスプロセスは実行間隔を変更していない場合、デフォルトでは60分ごとに実行されます。
+			アイテムがリクエストされると、Couchbase Serverは削除用にフラグ付けされたアイテムを削除し、そのアイテムは存在しないというレスポンスを返します。
+		</p>
+		<p>
+			Viewの結果はViewに定義された条件に一致するいかなるアイテムも<i>含みます</i>。
+			このため、ディスクから削除されていない情報はViewクエリの結果内に現れることがあります。
+			CouchbaseのViewを使うと、<i>reduce関数</i>をデータに適用し、計算やデータの集約を実行することもできます。
+			例えば、ある種別のオブジェクトインスタンスの数をカウントしたい場合、reduce関数を利用します。
+			繰り返しになりますが、ディスク上に存在するアイテムはreduce関数で実行される全ての計算に含まれることになります。
+			ディスク永続化に起因する挙動に対して、Viewで有効期限を処理するガイドラインを以下に記載します:
+		</p>
     
     <ul>
-    <li><p><b>Detecting Expired Documents in Result Sets</b> : If you are using views for indexing items
-            from Couchbase Server, items that have not yet been removed as part of the expiry pager
-            maintenance process are part of a result set returned by querying the view. </p></li>
-      <li><b>Reduces and Expired Documents</b> : In some cases, you may want to perform a <i>reduce
-      function</i> to perform aggregations and calculations on data in Couchbase Server. In this
-     case, Couchbase Server takes pre-calculated values which are stored for an index and derives a
-     final result. This also means that any expired items still on disk will be part of the
-     reduction. This may not be an issue for your final result if the ratio of expired items is
-     proportionately low compared to other items. For instance, if you have 10 expired scores still
-     on disk for an average performed over 1 million players, there may be only a minimal level of
-     difference in the final result. However, if you have 10 expired scores on disk for an average
-     performed over 20 players, you would get very different result than the average you would
-     expect.</li>
+    <li><p><b>結果セット内の期限切れドキュメントを検知する</b>: Couchbase Server内のアイテムをインデクシングするためにViewを利用している場合、まだ期限切れページャメンテナンスプロセスにより削除されていないアイテムは、Viewクエリの結果セット内に含まれます。</p></li>
+		<li><b>Reduceと期限切れアイテム</b>
+			: 時として、<i>reduce関数</i>を実行し、Couchbase Server内のデータの集約や計算を行いたい場合があるでしょう。
+			この場合、Couchbase Serverはインデックス用に保存されている、事前に計算された値を利用して、最終的な結果を導きます。
+			これはまた、ディスク上にまだ存在する期限切れアイテムが計算の一部に含まれることを意味します。
+			期限切れアイテムの割合がそうでないアイテムに比べて比較的低い場合、これが最終結果に影響を与えることはないかもしれません。
+			例えば、100万人のプレイヤーにおける平均スコアを計算する際に、ディスク上に10の期限切れスコアが残っていたとしても、最終結果での違いはごくわずかでしょう。
+			しかし、20人のプレイヤーにおける平均スコアを計算する際に、ディスク上に10の期限切れスコアが残っている場合、期待する平均値よりも大きく異なる結果となるでしょう。
+		</li>
    </ul>
     
-    <p>In this case, you may want to run the expiry pager process more frequently to ensure that
-    items that have expired are not included in calculations used in the reduce function. We
-    recommend an interval of 10 minutes for the expiry pager on each node of a cluster. Do note that
-    this interval will have some slight impact on node performance as it will be performing cleanup
-    more frequently on the node.</p><p>For more information about setting intervals for the
-    maintenance process, refer to the Couchbase command line tool and review the examples on
-     <codeph>exp_pager_stime</codeph>.</p>
+	 <p>
+		 この場合、より頻繁に期限切れページャプロセスを実行し、すでに期限切れとなっているアイテムがreduce関数内の計算に含まれないようにすることもできます。
+		 クラスタ内の各ノード上の期限切れページャを10分ごとに実行することをお勧めします。
+		 この間隔はノード上でクリーンアップをより頻繁に実行するので、ノード上の性能に僅かながら影響を与えることに留意してください。
+	 </p>
+	 <p>
+		 メンテナンスプロセスの実行感覚設定に関する詳細情報は、Couchbaseコマンドラインツールを参照し、<codeph>exp_pager_stime</codeph>の例を確認してください。
+	 </p>
   </section>
   
   
-  <section><title>How views function in a cluster</title><p><b>Distributing data</b>. If you
-    familiar working with Couchbase Server you know that the server distributes data across
-    different nodes in a cluster. This means that if you have four nodes in a cluster, on average
-    each node will contain about 25% of active data. If you use views with Couchbase Server, the
-    indexing process runs on all four nodes and the four nodes will contain roughly 25% of the
-    results from indexing on disk. We refer to this index as a <i>partial index</i>, since it is an
-    index based on a subset of data within a cluster. We show this in this partial index in the
-    illustration below.</p><p><b>Replicating data and Indexes</b>. Couchbase Server also provides
-    data replication; this means that the server will replicate data from one node onto another
-    node. In case the first node fails the second node can still handle requests for the data. To
-    handle possible node failure, you can specify that Couchbase Server also replicate a partial
-    index for replicated data. By default each node in a cluster will have a copy of each design
-    document and view functions. If you make any changes to a views function, Couchbase Server will
-    replicate this change to all nodes in the cluster. The sever will generate indexes from views
-    within a single design document and store the indexes in a single file on each node in the
-    cluster:</p>
+	<section><title>クラスタ内Viewの挙動</title><p><b>データの分散</b>。
+			Couchbase Serverをすでに利用しているなら、サーバがデータをクラスタ内の異なるサーバ間で分散していることをご存知でしょう。
+			クラスタ内にノードが4台ある場合、平均して各ノードはアクティブデータの25%を保持します。
+			Couchbase ServerのViewを利用すると、インデクシング処理は4つ全てのノード上で実行され、ディスク上のインデックスは結果の約25%を含みます。
+			クラスタ内のデータの一部分を元にしているので、これらのインデックスを<i>部分インデックス</i>とします。
+			以下の図でこの部分インデックスを示します。
+			</p>
+			<p><b>データのレプリケーションとインデックス</b>。
+				Couchbase Serverはまた、データのレプリケーションを提供します; このため、サーバはあるノードから他のノードへとデータをレプリケートします。
+				一つ目のノードがダウンしても、二つ目のノードが継続してそのデータに対するリクエストを処理できます。
+				ノード障害に対応するため、Couchbase Serverにレプリカデータ用の部分インデックスもレプリケートするように指定できます。
+				デフォルトではクラスタ内の各ノードは各デザインドキュメントとView関数のコピーを保持しています。
+				View関数を変更すると、Couchbase Serverはその変更をクラスタ内の全てのノードにレプリケートします。
+				サーバは単一のデザインドキュメント内のViewからインデックスを生成し、そのインデックスをクラスタ内各ノード上に単一のファイルとして保存します:
+			</p>
    
    <fig><image href="../images/views_replica.png" width="720"></image></fig>
    
-   <p>Couchbase Server can optionally create replica indexes on nodes that
-    are contain replicated data; this is to prepare your cluster for a failover scenario. The server
-    does not replicate index information from another node, instead each node creates an index for
-    the replicated data it stores. The server recreates indexes using the replicated data on a node
-    for each defined design document and view. By providing replica indexes the server enables you
-    to still perform queries even in the event of node failure. You can specify whether Couchbase
-    Server creates replica indexes or not when you create a data bucket.</p>
+	 <p>
+		 Couchbase Serverはまた、レプリカデータを含むレプリカインデックスをノード上に作成することも可能です; これはクラスタでのフェイルオーバシナリオに対する準備のためです。
+		 サーバは他のサーバからインデックス情報をレプリケートしません、代わりに、各ノードは保持するレプリカデータのインデックスを作成します。
+		 サーバはノード上のレプリカデータを利用して、定義された各デザインドキュメントとViewのインデックスを再作成します。
+		 レプリカインデックスにより、ノード障害が発生したとしてもクエリの実行が可能になります。
+		 バケットの作成時にCouchbase Serverがレプリカインデックスを作成するか否かを指定できます。
+	 </p>
    
-   <p><b>Query Time within a Cluster</b></p>
+   <p><b>クラスタでのクエリ実行</b></p>
    
-   <p>When you query a
-    view and thereby trigger the indexing process, you send that request to a single node in the
-    cluster. This node then distributes the request to all other nodes in the cluster. Depending on
-    the parameter you send in your query, each node will either send the most current partial index
-    at that node, will update the partial index and send it, or send the partial index and update it
-    on disk. Couchbase Server will collect and collate these partial indexes and sent this aggregate
-    result to a client.</p><p>To handle errors when you perform a query, you can configure how the
-    cluster behaves when errors occur.</p>
+	 <p>
+		 Viewをクエリしインデクシング処理を実行するには、リクエストをクラスタ内にある一つのノードに送信します。
+		 そのノードはリクエストをクラスタ内の全てのノードへと分配します。
+		 クエリに設定するパラメータに応じて、各ノードはノードにおける現在の部分インデックスか、部分インデックスを更新して送信するか、部分インデックスを送信後にディスク上の部分インデックスを更新します。
+		 Couchbase Serverはこれらの部分インデックスを収集し照合して、集約した結果をクライアントに送信します。
+	 </p>
+	 <p>クエリ実行時のエラー処理として、エラー発生時のクラスタの挙動を設定できます。</p>
    
-   <p><b>Queries During Rebalance or Failover</b></p><p>You can query an index
-    during cluster rebalance and node failover operations. If you perform queries during rebalance
-    or node failure, Couchbase Server will ensure that you receive the query results that you would
-    expect from a node as if there were no rebalance or node failure.</p><p>During node rebalance,
-    you will get the same results you would get as if the data were active data on a node and as if
-    data were not being moved from one node to another. In other words, this feature ensures you get
-    query results from a node during rebalance that are consistent with the query results you would
-    have received from the node before rebalance started. This functionality operates by default in
-    Couchbase Server, however you can optionally choose to disable it. Be aware that while this
-    functionality, when enabled, will cause cluster rebalance to take more time; however we do not
-    recommend you disable this functionality in production without thorough testing otherwise you
-    may observe inconsistent query
-    results.</p></section>
+	 <p><b>リバランスおよびフェイルオーバ中のクエリ</b></p>
+	 <p>クラスタのリバランスおよびノードのフェイルオーバ中でもインデックスをクエリできます。
+		 リバランスやノード障害中にクエリを実行すると、Couchbase Serverはリバランスやノード障害が発生していない場合に期待されるようなクエリ結果を返すようにします。
+	 </p>
+	 <p>リバランス中は、データがあるノードから他のノードへと移動していないかのように、ノード上のデータがアクティブである場合に期待される結果と同様の結果を返します。
+		 言い換えると、この機能はリバランス中にも、あるノードからのクエリ結果と、リバランスを開始する前のノードから返されるクエリ結果との一貫性を保証するということです。
+		 Couchbase Serverのデフォルトとしてこの機能は動作しますが、無効化することもできます。
+		 この機能が有効な場合、クラスタのリバランスにはより長い時間がかかることに注意してください; しかし、一貫性のないクエリ結果となるため、この機能をテストすることなくプロダクション環境で無効化することは推奨しません。
+ 	 </p></section>
   
-  <section><title>View performance</title><p>View performance includes the time taken to update the
-    view, the time required for the view update to be accessed, and the time for the updated
-    information to be returned, depend on different factors. Your file system cache, frequency of
-    updates, and the time between updating document data and accessing (or updating) a view will all
-    impact performance.</p>
-   <p>Some key notes and points are provided below:</p>
+	 <section><title>Viewの性能</title><p>
+			 Viewの更新に必要な時間、Viewの更新へアクセスするための時間、そして更新された情報が返却されるまでの時間などのView性能はさまざまな要素に依存します。
+			 ファイルシステムキャッシュ、更新頻度、ドキュメントデータ更新からViewへアクセス(もしくは更新)するまでの時間などはすべて性能に影響します。
+		 </p>
+   <p>いくつかの重要な点を以下に記載します:</p>
    <ul>
-    <li>Index queries are always accessed from disk; indexes are not kept in RAM by Couchbase
-     Server. However, frequently used indexes are likely to be stored in the filesystem cache used
-     for caching information on disk. Increasing your filesystem cache, and reducing the RAM
-     allocated to Couchbase Server from the total RAM available will increase the RAM available for
-     the OS.</li>
-    <li>The filesystem cache will play a role in the update of the index information process.
-     Recently updated documents are likely to be stored in the filesystem cache. Requesting a view
-     update immediately after an update operation will likely use information from the filesystem
-     cache. The eventual persistence nature implies a small delay between updating a document, it
-     being persisted, and then being updated within the index.</li>
-   </ul>Keeping some RAM reserved for your operating system to allocate filesystem cache, or
-   increasing the RAM allocated to filesystem cache, will help keep space available for index file caching.<ul>
-    <li>View indexes are stored, accessed, and updated, entirely independently of the document
-     updating system. This means that index updates and retrieval is not dependent on having
-     documents in memory to build the index information. Separate systems also mean that the
-     performance when retrieving and accessing the cluster is not dependent on the document
-     store.</li>
+		 <li>
+			 インデックスのクエリは常にディスクへとアクセスします; インデックスはCouchbase ServerによってRAM上に保持されていません。
+			 しかし、頻繁に利用するインデックスは、ディスク上の情報をキャッシュするためのファイルシステムキャッシュに保存される場合があります。
+			 利用可能な総RAM容量からCouchbase Serverに割り当てるRAMを削減し、ファイルシステムキャッシュを増加させると、OSで利用可能なRAMが増加します。
+		 </li>
+		 <li>
+			 ファイルシステムキャッシュはインデックス情報の更新処理においても重要な役割を担います。
+			 最近更新されたドキュメントはファイルシステムキャッシュ内に保存されているでしょう。
+			 更新操作の直後にViewの更新をリクエストすると、ファイルシステムキャッシュからの情報を使うことになるでしょう。
+			 結果永続性の性質によりドキュメントの更新、永続化、インデックス内への反映までに若干の遅延があります。
+		 </li>
+   </ul>オペレーティングシステム用のある程度のRAMを確保しておくことで、ファイルシステムキャッシュとして割り当てられるRAMを増加させ、インデックスファイルキャッシュに利用できる領域を確保するのに役立ちます。<ul>
+	 <li>
+		 Viewインデックスはドキュメント更新システムとは完全に独立して保存、アクセス、更新されます。
+		 このため、インデックス更新と参照はインデックス情報を構築するためにドキュメントがメモリに存在するかどうかに依存しません。
+		 独立したシステムは、クラスタへアクセスし取得する性能が、ドキュメントストアに依存しないことも意味します。
+	 </li>
    </ul>
   </section>
   
   
-  <section id="index-stale"><title>Index updates and the stale parameter</title>
+  <section id="index-stale"><title>インデックスの更新とstaleパラメータ</title>
    
-   <p>Indexes are created by Couchbase
-    Server based on the view definition, but updating of these indexes can be controlled at the
-    point of data querying, rather than each time data is inserted. Whether the index is updated
-    when queried can be controlled through the <codeph>stale</codeph> parameter.</p><p>Irrespective
-    of the <codeph>stale</codeph> parameter, documents can only be indexed by the system once the
-    document has been persisted to disk. If the document has not been persisted to disk, use of the
-     <codeph>stale</codeph> will not force this process. You can use the <codeph>observe</codeph>
-    operation to monitor when documents are persisted to disk and/or updated in the
-    index.</p><p>Views can also be updated automatically according to a document change, or interval
-    count.</p>
+		<p>
+			インデックスはView定義に基づき、Couchbase Serverによって作成されますが、インデックスの更新はデータが挿入されるたびに実行するのではなく、データのクエリ時に制御できます。
+			クエリ実行時にインデックスを更新するか否かは<codeph>stale</codeph>パラメータで制御します。
+			<codeph>stale</codeph>パラメータに関わらず、ドキュメントはディスクに永続化された後にのみシステムでインデクシング可能となります。
+			ドキュメントがまだディスクに永続化されていない場合、<codeph>stale</codeph>を使用してもこの処理を強制することはできません。
+			インデックスに反映されるように、<codeph>observe</codeph>オペレーションを利用しドキュメントがディスクに永続化されることを監視できます。
+			Viewはまた、ドキュメントの変更と更新間隔に応じて自動的に更新することもできます。
+		</p>
    
-   <p>Three values for <codeph>stale</codeph> are supported:</p><ul>
+		<p><codeph>stale</codeph>では3つの値をサポートしています:</p><ul>
     <li><b>stale=ok</b></li>
-   </ul><p>The index is not updated. If an index exists for the given view, then the information in
-    the current index is used as the basis for the query and the results are returned
-    accordingly.</p>
+	</ul><p>インデックスは更新されません。
+	もしインデックスがViewに存在している場合、クエリ発行時点でのインデックス内の現在の情報が利用され、それに応じて結果を返します。</p>
    
    <fig><image href="../images/views-stale-sequence-stale.png" width="720"></image></fig>
    
-   <p>This setting results in the fastest response times to a given query, since the
-    existing index will be used without being updated. However, this risks returning incomplete
-    information if changes have been made to the database and these documents would otherwise be
-    included in the given view.</p><ul>
+	 <p>この設定は既存のインデックスを更新せずに利用するため、最も高速にクエリのレスポンスを返します。
+		 しかし、データベース内のドキュメントが変更されていても、Viewに含まれていない場合、不完全な情報を返すリスクがあります。</p><ul>
     <li><b>stale=false</b></li>
    </ul>
    
-   <p>The index is updated before the query is executed. This ensures that any documents
-    updated (and persisted to disk) are included in the view. The client will wait until the index
-    has been updated before the query has executed, and therefore the response will be delayed until
-    the updated index is available.</p>
+	 <p>
+		 クエリ実行前にインデックスを更新します。
+		 これは更新されたすべてのドキュメント(ディスクに永続化済み)がViewに含まれることを保証します。
+		 クライアントはインデックスの更新が完了するまでクエリの実行を待つことになり、更新されたインデックスが利用可能になるまでレスポンスが遅延します。
+	 </p>
    
    <fig><image
     href="../images/views-stale-sequence-updatebefore.png" width="720"></image></fig>
    
    <ul>
     <li><b>stale=update_after</b></li>
-   </ul><p>This is the default setting if no <codeph>stale</codeph> parameter is specified. The
-    existing index is used as the basis of the query, but the index is marked for updating once the
-    results have been returned to the client.</p>
+	</ul><p><codeph>stale</codeph>パラメータをしていしない場合のデフォルト設定です。
+	クエリ時点の既存のインデックスが利用されますが、インデックスはクライアントに結果を返却した後に更新されるようにマークされます。</p>
    
    
    <fig><image href="../images/views-stale-sequence-updateafter.png" width="720"></image></fig>
    
    
-   <p>The indexing engine is an asynchronous process; this means querying an index may
-    produce results you may not expect. For example, if you update a document, and then immediately
-    run a query on that document you may not get the new information in the emitted view data. This
-    is because the document updates have not yet been committed to disk, which is the point when the
-    updates are indexed.</p><p>This also means that deleted documents may still appear in the index
-    even after deletion because the deleted document has not yet been removed from the
-    index.</p><p>For both scenarios, you should use an <codeph>observe</codeph> command from a
-    client with the <codeph>persistto</codeph> argument to verify the persistent state for the
-    document, then force an update of the view using <codeph>stale=false</codeph>. This will ensure
-    that the document is correctly updated in the view index. </p><p>When you have multiple clients
-    accessing an index, the index update process and results returned to clients depend on the
-    parameters passed by each client and the sequence that the clients interact with the server.</p><ul>
-    <li><p>Situation 1</p>
+	 <p>
+		 インデクシングエンジンは非同期なプロセスです; このため、インデックをクエリすると予期せぬ結果を返す可能性があります。
+		 例えば、ドキュメントを更新した直後に、そのドキュメントを含むクエリを実行すると、更新後の情報が出力されたViewデータ内に含まれない可能性があります。
+		 これはドキュメントの更新がインデックスの更新を実施した時点でまだディスクにコミットされていないためです。
+		 削除したドキュメントがまだインデックスから削除されていないために、インデックス内に削除したドキュメントが出現する可能性もあります。
+	 </p>
+	 <p>
+		 どちらのシナリオでも、<codeph>observe</codeph> コマンドを<codeph>persistto</codeph>引数とともにクライアントで利用し、ドキュメントの永続化状態を確認してから、<codeph>stale=false</codeph>を利用してViewの更新を強制的に行うべきです。
+		 そうすればViewインデックス内に正しくそのドキュメントが反映されたことを保証できます。
+	 </p>
+	 <p>
+		 一つのインデックスに複数のクライアントがアクセスする場合、インデックス更新処理とクライアントに返却される結果は各クライアントがしていしたパラメータとクライアントがサーバとやりとりする順序に依存します。
+	 </p><ul>
+    <li><p>シナリオ1</p>
      
      
+		<ol>
+			<li>クライアント1が<codeph>stale=false</codeph>でクエリを実行</li>
+      <li>クライアント1はサーバがインデックスを更新するのを待つ</li>
+			<li>クライアント1の処理中に、クライアント2が<codeph>stale=false</codeph>でViewをクエリ</li>
+      <li>クライアント2はクライアント1によって開始された既存のインデックス処理完了を待つ。</li>
+      <li>クライアント2は更新されたインデックスを得る。</li>
+    </ol></li>
+    <li><p>シナリオ2</p>
      <ol>
-      <li>Client 1 queries view with <codeph>stale=false</codeph></li>
-      <li>Client 1 waits until server updates the index</li>
-      <li>Client 2 queries view with <codeph>stale=false</codeph> while re-indexing from Client 1
-        still in progress</li>
-      <li>Client 2 will wait until existing index process triggered by Client 1 completes. Client
-        2 gets updated index.</li>
+			<li>クライアント1が<codeph>stale=false</codeph>でViewをクエリ</li>
+      <li>クライアント1はサーバがインデックスを更新するのを待つ</li>
+			<li>クライアント1のインデックス更新が処理中に、クライアント2が<codeph>stale=ok</codeph>でViewをクエリ</li>
+      <li>クライアント2は既存のインデックスを得る</li>
      </ol></li>
-    <li><p>Situation 2</p>
+    <li><p>シナリオ3</p>
      <ol>
-      <li>Client 1 queries view with <codeph>stale=false</codeph></li>
-      <li>Client 1 waits until server updates the index</li>
-      <li>Client 2 queries view with <codeph>stale=ok</codeph> while re-indexing from Client 1 in
-       progress</li>
-      <li>Client 2 will get the existing index</li>
-     </ol></li>
-    <li><p>Situation 3</p>
-     <ol>
-      <li>Client 1 queries view with <codeph>stale=false</codeph></li>
-      <li>Client 1 waits until server updates the index</li>
-      <li>Client 2 queries view with <codeph>stale=update_after</codeph></li>
-      <li>If re-indexing from Client 1 not done, Client 2 gets the existing index. If re-indexing
-       from Client 1 done, Client 2 gets this updated index and triggers re-indexing.</li>
+			<li>クライアント1が<codeph>stale=false</codeph>でViewをクエリ</li>
+      <li>クライアント1はサーバのインデックスを更新を待つ</li>
+			<li>クライアント2が<codeph>stale=update_after</codeph>でViewをクエリ</li>
+      <li>クライアント1のインデックス更新が完了していない場合、クライアント2は既存のインデックスを得る。</li>
+      <li>クライアント1のインデックス更新が完了している場合、クライアント2は更新されたインデックスを得て、さらにインデックス更新が開始される。</li>
      </ol></li>
    </ul>
    
-   <p>Index updates may be stacked if multiple clients request that the view is updated before
-    the information is returned ( <codeph>stale=false</codeph> ). This ensures that multiple clients
-    updating and querying the index data get the updated document and version of the view each time.
-    For <codeph>stale=update_after</codeph> queries, no stacking is performed, since all updates
-    occur after the query has been accessed.</p>
+	 <p>
+		 複数のクライアントがViewの更新を情報の返却前にリクエストすると(<codeph>stale=false</codeph>)、インデックス更新はスタックすることがあります。
+		 よって複数のクライアントがインデックスを更新およびインデックスデータのクエリを行うと更新されたドキュメントと各時点のViewを返すことを保証しています。
+		 <codeph>stale=update_after</codeph>のクエリでは、クエリがアクセスした後にすべての更新が発生するため、インデックスの更新はスタックされません。
+	 </p>
    
-   <p>Sequential accesses</p>
+   <p>シーケンシャルなアクセス</p>
    
    <ol>
-    <li>Client 1 queries view with stale=ok</li>
-    <li>Client 2 queries view with stale=false</li>
-    <li>View gets updated</li>
-    <li>Client 1 queries a second time view with stale=ok</li>
-    <li>Client 1 gets the updated view version</li>
-   </ol><p>The above scenario can cause problems when paginating over a number of records as the
-    record sequence may change between individual
-    queries.</p>
+    <li>クライアント1がstale=okでViewをクエリ</li>
+    <li>クライアント2がstale=falseでViewをクエリ</li>
+    <li>Viewが更新される</li>
+    <li>クライアント1が再びstale=okでViewをクエリ</li>
+    <li>クライアント1は更新されたViewを得る</li>
+   </ol><p>上記のシナリオはそれぞれのクエリ間でレコードの順序が変わる可能性があるため、複数のレコードをページ制御している場合に問題が起こる場合があります。</p>
   
   </section>
   
   
-  <section><title>Automated index updates</title>
+  <section><title>インデックス更新の自動化</title>
    
-   <p>In addition to a configurable update interval,
-    you can also update all indexes automatically in the background. You configure automated update
-    through two parameters, the update time interval in seconds and the number of document changes
-    that occur before the views engine updates an index. These two parameters are
-     <codeph>updateInterval</codeph> and <codeph>updateMinChanges</codeph>:</p>
-   
-   <ul>
-    <li><p><codeph>updateInterval</codeph>: the time interval in milliseconds, default is 5000
-      milliseconds. At every <codeph>updateInterval</codeph> the views engine checks if the number
-      of document mutations on disk is greater than <codeph>updateMinChanges</codeph>. If true, it
-      triggers view update. The documents stored on disk potentially lag documents that are
-      in-memory for tens of seconds.</p></li>
-    <li><p><codeph>updateMinChanges</codeph>: the number of document changes that occur before
-      re-indexing occurs, default is 5000 changes.</p></li>
-   </ul>
-   
-   <p>The auto-update process only operates on full-set development and production indexes.
-    Auto-update does not operate on partial set development indexes.</p><p>Irrespective of the
-    automated update process, documents can only be indexed by the system once the document has been
-    persisted to disk. If the document has not been persisted to disk, the automated update process
-    will not force the unwritten data to be written to disk. You can use the
-     <codeph>observe</codeph> operation to monitor when documents have been persisted to disk and/or
-    updated in the index.</p>
-   
-   <p>The updates are applied as follows:</p><ul>
-    <li>Active indexes, Production views</li>
-   </ul>
-   
-   <p>For all active, production views, indexes are automatically updated according to the
-    update interval <codeph>updateInterval</codeph> and the number of document changes
-     <codeph>updateMinChanges</codeph>.</p>
-   
-   <p>If <codeph>updateMinChanges</codeph> is set to 0
-    (zero), then automatic updates are disabled for main indexes.</p>
-   
+		<p>
+			更新間隔の設定に加え、すべてのインデックスをバックグラウンドで自動的に更新することもできます。
+			自動更新はViewエンジンがインデックスを更新するまでの、更新間隔(ミリ秒)と変更されたドキュメントの数の二つのパラメータで制御できます。
+			これら二つのパラメータは<codeph>updateInterval</codeph>と <codeph>updateMinChanges</codeph>です: 	</p>
    
    <ul>
-    <li>Replica indexes</li>
+		 <li><p><codeph>updateInterval</codeph> : インターバルをミリ秒で指定、デフォルトは5000ミリ秒。
+				 <codeph>updateInterval</codeph>ごとにViewエンジンはディスク上のドキュメントの変更数が<codeph>updateMinChanges</codeph>より多いかをチェックします。
+				 そうであれば、Viewの更新を開始します。
+				 ディスクに保存されたドキュメントはメモリ内のドキュメントと比べて数十秒遅れている可能性もあります。
+		</p></li>
+		<li><p>
+				<codeph>updateMinChanges</codeph> : 再インデックス実施までに発生したドキュメント変更数で、デフォルトは5000です。
+		</p></li>
    </ul>
    
-   <p>If replica indexes have been configured for a bucket, the index is automatically updated
-    according to the document changes ( <codeph>replicaUpdateMinChanges</codeph> ; default 5000)
-    settings.</p>
+	 <p>
+		 自動更新処理はフルセットの開発用およびプロダクション用インデックスでのみ実行されます。
+		 自動更新は部分的な開発用インデックスでは実施されません。
+	 </p>
+	 <p>
+		 自動更新プロセスに関わらず、ドキュメントはディスクに永続化された後にのみシステムでインデックス可能となります。
+		 ドキュメントがディスクに永続化されていなくても、自動更新処理は未書き込みのデータをディスクに強制的に書き込むことはしません。
+		 <codeph>observe</codeph>オペレーションを利用してドキュメントがディスクに永続化され、インデックスに反映されることを監視できます。
+	 </p>
    
-   <p>If <codeph>replicaUpdateMinChanges</codeph> is set to 0 (zero), then automatic
-    updates are disabled for replica indexes.</p><p>The trigger level can be configured both
-    globally and for individual design documents for all indexes using the REST API.</p>
+   <p>更新は以下のように適用されます:</p><ul>
+    <li>アクティブインデックス、プロダクションView</li>
+   </ul>
    
-   <p>To obtain
-    the current view update daemon settings, access a node within the cluster on the administration
-    port using the URL <codeph>http://nodename:8091/settings/viewUpdateDaemon</codeph>
-    :</p>
+	 <p>
+		 すべてのアクティブ、プロダクションViewのインデックスは自動的に更新間隔<codeph>updateInterval</codeph>と、ドキュメント変更数<codeph>updateMinChanges</codeph>に応じて更新されます。
+	 </p>
+   
+	 <p><codeph>updateMinChanges</codeph>を0に設定すると、自動更新は無効化されます。</p>
+   
+   
+   <ul>
+    <li>レプリカインデックス</li>
+   </ul>
+   
+	 <p>バケットでレプリカインデックスを有効にすると、ドキュメントの変更数設定(<codeph>replicaUpdateMinChanges</codeph>; デフォルトは5000)に応じて自動的にインデックスを更新します。</p>
+   
+	 <p><codeph>replicaUpdateMinChanges</codeph>を0に設定すると、レプリカインデックスの自動更新は無効化されます。</p>
+	 <p>これらの設定はグローバルに、あるいはREST APIを利用して各デザインドキュメント単位で設定することができます。</p>
+   
+	 <p>現在のView更新デーモン設定を取得するには、クラスタ内のノードの管理用ポートに次のURLでアクセスします、<codeph>http://nodename:8091/settings/viewUpdateDaemon</codeph> :</p>
    
    <codeblock>GET http://Administrator:Password@nodename:8091/settings/viewUpdateDaemon
-</codeblock><p>The
-    request returns the JSON of the current update
-    settings:</p>
+</codeblock><p>現在の更新設定がJSONで返却されます:</p>
    
    <codeblock>{
     "updateInterval":5000,
@@ -374,21 +347,17 @@
 }
 </codeblock>
    
-   <p>To
-    update the settings, use <codeph>POST</codeph> with a data payload that includes the updated
-    values. For example, to update the time interval to 10 seconds, and document changes to 7000
-    each:</p>
+<p>
+	設定を更新するには、変更する値を含むペイロードデータを<codeph>POST</codeph>で渡します。
+	例えば、更新間隔を10秒に、ドキュメントの変更数を7000に変更する場合:
+</p>
    
    <codeblock>POST http://nodename:8091/settings/viewUpdateDaemon
 updateInterval=10000&amp;updateMinChanges=7000
 </codeblock>
    
-   <p>If
-    successful, the return value is the JSON of the updated configuration.</p>
-   <p>To configure the <codeph>updateMinChanges</codeph> or <codeph>replicaUpdateMinChanges</codeph>
-    values explicitly on individual design documents, specify the parameters within the
-     <codeph>options</codeph> section of the design document. For
-    example:</p>
+   <p>成功すると、変更後の設定がJSONで返却されます。</p>
+	 <p><codeph>updateMinChanges</codeph>と<codeph>replicaUpdateMinChanges</codeph>の設定を個別のデザインドキュメントで明示的に変更するには、デザインドキュメントの<codeph>options</codeph>セクションにこれらのパラメータを指定します。例えば:</p>
    
    <codeblock>{
    "_id": "_design/myddoc",
@@ -402,20 +371,17 @@ updateInterval=10000&amp;updateMinChanges=7000
        "replicaUpdateMinChanges": 20000
    }
 }
-</codeblock><p>You
-    can set this information when creating and updating design documents through the design document
-    REST API. To perform this operation using the
-     <codeph>curl</codeph>
-    tool:</p>
+</codeblock><p>デザインドキュメントのREST APIを利用し、作成時や更新時にこれらの情報を設定できます。
+<codeph>curl</codeph>コマンドを利用してこの操作を実行するには:</p>
    
    <codeblock>&gt; curl -X POST -v -d 'updateInterval=7000&amp;updateMinChanges=7000' \
     'http://Administrator:Password@192.168.0.72:8091/settings/viewUpdateDaemon'
 </codeblock>
    
-   <p>Partial-set development views are not automatically rebuilt, and during a rebalance operation,
-				development views are not updated, even when consistent views are enabled, as this
-				relies on the automated update mechanism. Updating development views in this way would
-				waste system resources.</p>
+<p>
+	部分的な開発用Viewは自動的に再構築されず、Viewの一貫性を有効にしていても、Viewの一貫性は自動更新の仕組みに依存するため、リバランス実行中には開発用Viewは更新されません。
+	開発用Viewをこの様に更新するのはシステムリソースの無駄遣いになるからです。
+</p>
   
   </section>
   

@@ -1,43 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic2490">
- <title>Development views</title>
- <shortdesc>Views are created in a development environment in order to control the impact of views prior to deployment.</shortdesc>
+<topic xml:lang="ja" id="topic2490">
+ <title>開発View</title>
+ <shortdesc>Viewはデプロイ前のViewの影響を制御するために、開発環境で作成されます。</shortdesc>
  <body>
-  <p>Due to the nature of the Couchbase cluster and because of the size of the datasets that can be
-   stored across a cluster, the impact of view development needs to be controlled. Creating a view
-   implies the creation of the index which could slow down the performance of your server while the
-   index is being generated. However, views also need to be built and developed using the actively
-   stored information.</p>
-  <p>To support both the creation and testing of views, and the deployment of views in production,
-   Couchbase Server supports two different view types, Development views and Production views. The two
-   view types work identically, but have different purposes and restrictions placed upon their
-   operation.</p>
-  <p>Development views are designed to be used while you are still selecting and designing your view
-   definitions. While a view is in development mode, views operate with the following
-   attributes:</p>
+	 <p>
+		 Couchbaseクラスタの性質と、クラスタにわたって保存されているデータセットのサイズによっては、View開発の影響を制御する必要があります。
+		 Viewの作成はインデックスを作成するため、インデックスの生成中はサーバの性能を低下させることがあります。
+		 しかしながら、Viewはまたアクティブに保存された情報に対して開発、構築される必要もあります。
+	 </p>
+	 <p>
+		 Viewの生成とテスト、およびプロダクションでのViewの開発の両方をサポートするため、Couchbase Serverは、「開発」Viewと「プロダクション」Viewという2つの異なるViewタイプをサポートしています。
+		 二つのViewタイプは同じように動作しますが、操作において異なる目的と制約があります。
+	 </p>
+	 <p>
+		 開発ビューはビューの定義を選択、設計している間に利用されるように設計されています。
+		 ビューが開発モードの場合、ビューは次のように動作します:
+	 </p>
   <ul>
-   <li>By default the development view works on only a subset of the stored information. You can,
-    however, force the generation of a development view information on the full dataset.</li>
-   <li>Development views use live data from the selected Couchbase bucket, enabling you to develop
-    and refine your view in real-time on your production data.</li>
-   <li>Development views are not automatically rebuilt, and during a rebalance operation,
-    development views are not updated, even when when consistent views are enabled, as this relies
-    on the automated update mechanism. Updating development views in this way would waste system
-    resources.</li>
-   <li>Development views are fully editable and modifiable during their lifetime. You can change and
-    update the view definition for a development view at any time. During development of the view,
-    you can view and edit stored document to help develop the view definition.</li>
-   <li>Development views are accessed from client libraries through a different URL than production
-    views, making it easy to determine the view type and information during development of your
-    application.</li>
+		<li>
+			デフォルトでは、開発ビューは保存された情報のサブセットのみで動作します。
+			完全なデータセットに対して開発ビューを生成することもできます。
+		</li>
+		<li>
+			選択したCouchbaseバケット内の生データを利用することで、プロダクション環境のデータに対してリアルタイムにビューを開発、改良することができます。
+		</li>
+		<li>
+			開発モードのビューは自動的に再構築されません。また、一貫したビューであっても、自動更新メカニズムに依存しているので、リバランス処理中は開発モードのビューは更新されません。
+			このように開発モードのビューを更新するとシステムリソースが無駄になるからです。
+		</li>
+		<li>
+			開発ビューは編集、変更が可能です。
+			開発ビューの定義はいつでも変更、更新することができます。
+			ビューの開発中に、ビュー定義の開発を支援するために、保存されたドキュメントを参照および編集できます。
+		</li>
+		<li>
+			開発ビューは、プロダクションビューとは異なるURLでクライアントライブラリからアクセスでき、アプリケーション開発中にビューの種別と情報の特定を容易にします。
+		</li>
   </ul>
-  <p>Within the Web Console, the execution of a view by default occurs only over a subset of the
-   full set of documents stored in the bucket. You can elect to run the View over the full set using
-   the Web Console.</p>
-  <p>Because of the selection process, the reduced set of documents may not be fully representative
-   of all the documents in the bucket. You should always check the view execution over the full
-   set.</p>
+	<p>
+		Webコンソールからビューを実行すると、デフォルトではバケットに保存されたドキュメント内のサブセットに対して処理を行います。
+		Webコンソールから、全てのドキュメントに対してビューを実行することもできます。
+	</p>
+	<p>
+		対象ドキュメントがサブセットの場合、reduceした結果はバケット内のすべてのドキュメントに対するものではありません。
+		全てのドキュメントに対するビュー実行結果をチェックするべきです。
+	</p>
  </body>
 </topic>
