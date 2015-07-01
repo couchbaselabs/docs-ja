@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic4669">
-  <title>Microsoft Windows installation</title>
-  <shortdesc>Couchbase Server can be installed on machines running Windows operating systems.</shortdesc>
+<topic xml:lang="ja" id="topic4669">
+  <title>Microsoft Windows へのインストール</title>
+  <shortdesc>Couchbase ServerはWindowsオペレーションシステムが動いているマシンにインストールすることが出来ます。</shortdesc>
   <body>
    
-   <p>Couchbase Server supports the following Windows operating systems.</p>
-    <note type="note">Before installing, verify the list of supported operating systems.</note>
+   <p>Couchbase Serverは次のWindowsオペレーションシステムをサポートしています。</p>
+    <note type="note">インストールする前にサポートされているオペレーションシステムを確認してください。</note>
     <table>
       <tgroup cols="5">
         <colspec colname="col1"/>
@@ -17,11 +17,11 @@
         <colspec colname="col5"/>
         <thead>
           <row>
-            <entry><b>Platform</b></entry>
-            <entry><b>Version</b></entry>
+            <entry><b>プラットフォーム</b></entry>
+            <entry><b>バージョン</b></entry>
             <entry><b>32 / 64 bit</b></entry>
-            <entry><b>Supported</b></entry>
-            <entry><b>Recommended Version</b></entry>
+            <entry><b>サポート</b></entry>
+            <entry><b>推奨バージョン</b></entry>
           </row>
         </thead>
         <tbody>
@@ -29,66 +29,54 @@
             <entry>Windows 2012</entry>
             <entry>R2 SP1</entry>
             <entry>64 bit</entry>
-            <entry>Developer and Production</entry>
+            <entry>開発目的、商用目的</entry>
             <entry/>
           </row>
           <row>
             <entry>Windows 2008</entry>
             <entry>R2 with SP1</entry>
             <entry>64 bit</entry>
-            <entry>Developer and Production</entry>
+            <entry>開発目的、商用目的</entry>
             <entry>Windows 2008</entry>
           </row>
           <row>
             <entry>Windows 8</entry>
             <entry/>
             <entry>32 and 64 bit</entry>
-            <entry>Developer only</entry>
+            <entry>開発目的のみ</entry>
             <entry/>
           </row>
           <row>
             <entry>Windows 7</entry>
             <entry/>
             <entry>32 and 64 bit</entry>
-            <entry>Developer only</entry>
+            <entry>開発目的のみ</entry>
             <entry/>
           </row>
         </tbody>
       </tgroup>
     </table>
   
-      <p>To install Couchbase Server on Windows, first download the Windows installer package
-      supplied as a Windows executable. </p>
-    <p>You can install the package either <xref href="windows-install-wizard.dita">using the wizard</xref>, 
-      or by performing an <xref href="windows-install-unattended.dita">unattended installation</xref>
-      process. </p>
-    <p>In either case, make sure that you have no anti-virus software running on the machine before
-      you start the installation process. Verify also that you have administrator privileges on the
-      machine where you are performing the installation.</p>
+    <p>Windows上でCouchbase Serverをインストールするには、最初にWindows実行ファイルとして提供されているWindowsインストーラパッケージをダウンロードします。</p>
+    <p>このパッケージは<xref href="windows-install-wizard.dita">ウィザード</xref>を使用するか、<xref href="windows-install-unattended.dita">無人インストール</xref>プロセスを実行することでインストールできます。</p>
+    <p>どちらの場合でも、インストールプロセスを実行する前にマシン上でアンチウイルスソフトウェアが動いていないことを確認して下さい。インストールを実行するマシン上で管理者権限を持っていることも確認して下さい。</p>
     
     
-    <p>The TCP/IP port allocation on Windows by default includes a restricted number of ports
-      available for client communication. For more information about this issue, including
-      information on how to adjust the configuration and increase the number of available ports, see
-        <xref href="http://msdn.microsoft.com/en-us/library/aa560610(v=bts.20).aspx"
-        scope="external" format="html"> MSDN: Avoiding TCP/IP Port Exhaustion</xref>
+    <p>デフォルトではWindowsのTCP/IP ポートの割り当てがクライアント通信に使用できるポートも制限されている番号に含まれています。設定を調整し、使用可能はポートの数を増やす方法を含むこの問題に関する詳細については、<xref href="http://msdn.microsoft.com/en-us/library/aa560610(v=bts.20).aspx" scope="external" format="html"> MSDN: Avoiding TCP/IP Port Exhaustion</xref>をご覧ください。
     </p>
     
    
-    <note type="important">Couchbase Server uses the Microsoft C++ redistributable package, which
-      is automatically downloaded during installation. However, if another application on your machine
-      is already using the package, your installation process can fail. To make sure that your
-      installation process completes successfully, shut down all other running applications during
-      installation. For Windows 2008, you must upgrade your Windows Server 2008 R2 installation
-        with Service Pack 1 installed before running Couchbase Server. You can obtain Service Pack 1
-        from <xref href="http://technet.microsoft.com/en-us/library/ff817647(v=ws.10).aspx" format="html" scope="external">Microsoft TechNet</xref>.</note>
+    <note type="important">
+      Couchbase ServerはMicrosoft C++ 再頒布可能パッケージをインストール中に自動でダウンロードして使用します。けれども、もしマシン上で他のアプリケーションが既にそのパッケージを使用している場合、インストールプロセスは失敗します。インストレーションプロセスの正常完了を確実にするには、インストール中に他で実行中の全てのアプリケーションをシャットダウンします。
+      Windows 2008の場合、Couchbase Serverを起動する前にService Pack 1と一緒にWindows Server 2008 R2のインストールを行い、アップグレードしなければいけません。Service Pack 1は<xref href="http://technet.microsoft.com/en-us/library/ff817647(v=ws.10).aspx" format="html" scope="external">Microsoft TechNet</xref>から取得できます。
+    </note>
       
-    <p>The standard Microsoft Server installation does not provide an adequate number of
-        ephemeral ports for Couchbase clusters. Without the correct number of open ephemeral ports,
-        you can experience errors during rebalance, timeouts on clients, and failed backups. The
-        Couchbase Server installer will check for your current port setting and adjust it if needed.
-        See <xref href="http://support.microsoft.com/kb/196271" format="html" scope="external">Microsoft KB-196271</xref>.
-        </p>
+    <p>
+      通常のMicrosoft ServerインストールではCouchbaseクラスタに十分な数のエフェメラルポートを提供されません。
+      正しい数のエフェメラルポートがなければ、リバランス中にエラーが発生したり、クライアントのタイムアウトが起きたり、バックアップに失敗する可能性があります。
+      Couchbase Serverのインストーラは現在のポート設定のチェックや必要に応じて調整を行います。
+      <xref href="http://support.microsoft.com/kb/196271" format="html" scope="external">Microsoft KB-196271</xref>を参照してください。
+    </p>
    
       
   
