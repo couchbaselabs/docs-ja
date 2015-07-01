@@ -1,63 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic2809">
- <title>Production views</title>
- <shortdesc>Production views are used in a deployed environment.</shortdesc>
+<topic xml:lang="ja" id="topic2809">
+ <title>プロダクションView</title>
+ <shortdesc>プロダクションViewはデプロイされた環境で利用されます。</shortdesc>
  <body>
-  <p>Due to the nature of the Couchbase cluster and because of the size of the datasets that can be
-   stored across a cluster, the impact of view development needs to be controlled. Creating a view
-   implies the creation of the index which could slow down the performance of your server while the
-   index is being generated. However, views also need to be built and developed using the actively
-   stored information.</p>
-  <p>To support both the creation and testing of views, and the deployment of views in production,
-   Couchbase Server supports two different view types, Development views and Production views. The two
-   view types work identically, but have different purposes and restrictions placed upon their
-   operation.</p>
+	 <p>
+		 Couchbaseクラスタの性質と、クラスタにわたって保存されているデータセットのサイズによっては、View開発の影響を制御する必要があります。
+		 Viewの作成はインデックスを作成するため、インデックスの生成中はサーバの性能を低下させることがあります。
+		 しかしながら、Viewはまたアクティブに保存された情報に対して開発、構築される必要もあります。
+	 </p>
+	 <p>
+		 Viewの生成とテスト、およびプロダクションでのViewの開発の両方をサポートするため、Couchbase Serverは、「開発」Viewと「プロダクション」Viewという2つの異なるViewタイプをサポートしています。
+		 二つのViewタイプは同じように動作しますが、操作において異なる目的と制約があります。
+	 </p>
   <ul>
-   <li><b>Production views</b></li>
+   <li><b>プロダクションView</b></li>
   </ul>
-  <p>Production views are optimized for production use. A production view has the following
-   attributes:</p>
+	<p>プロダクションビューは本番環境での利用に最適化されています。
+	プロダクションビューには次の特性があります:</p>
   <ul>
-   <li>Production views always operate on the full dataset for their respective bucket.</li>
-   <li>Production views can either be created from the Web Console or through REST API. From the Web
-    Console, you first create development views and then publish them as production views. Through
-    REST API, you directly create the production views (and skip the initial development
-    views).</li>
-   <li>Production views cannot be modified through the UI. You can only access the information
-    exposed through a production view. To make changes to a production view, it must be copied to a
-    development view, edited, and re-published.</li>
+   <li>プロダクションビューは、常にそれぞれのバケットの完全なデータセット上で動作します。</li>
+	 <li>プロダクションビューはWebコンソールもしくはREST APIで作成できます。
+		 Webコンソールからは、まず開発Viewを作成し、それらをプロダクションViewとしてパブリッシュします。
+	 REST APIを利用すると、直接プロダクションViewの作成が可能です(開発Viewの作成をスキップします)。</li>
+ <li>プロダクションビューはUIで変更することはできません。
+	 プロダクションビューの処理結果にのみアクセス可能です。
+ プロダクションビューに変更を加えるには、開発ビューにコピーしてから変更し、再度パブリッシュする必要があります。</li>
   </ul>
-  <p>Views can be updated by the REST API, but updating a production design document immediately
-   invalidates all of the views defined within it.</p>
+  <p>REST APIを利用してビューを更新することもできますが、プロダクションのデザインドキュメントを更新すると、含まれる全てのビューが即座に無効になります。</p>
   <ul>
-   <li>Production views are accessed through a different URL to development views.</li>
+   <li>プロダクションビューは開発ビューとは異なるURLでアクセスします。</li>
   </ul>
-  <p>The support for the two different view types means that there is a typical work flow for view
-   development, as shown in the figure below:</p>
+  <p>二つの異なるビュータイプは、以下の図に示すビュー開発における典型的なワークフローのために存在します:</p>
 
   <fig>
    <image href="../images/view-types-workflow.png" width="480"/>
   </fig>
 
-  <p>The above diagram features the following steps:</p>
+  <p>上記の図は次の手順を示しています:</p>
   <ol>
-   <li>Create a development view and view the sample view output.</li>
-   <li>Refine and update your view definition to suit your needs, repeating the process until your
-    view is complete. During this phase you can access your view from your client library and
-    application to ensure it suits your needs.</li>
-   <li>Once the view definition is complete, apply your view to your entire Cluster dataset.</li>
-   <li>Push your development view into production. This moves the view from development into
-    production, and renames the index (so that the index does not need to be rebuilt).</li>
-   <li>Start using your production view.</li>
+   <li>開発ビューを作成し、サンプルのビュー出力を確認します。</li>
+	 <li>目的の結果となるようビュー定義を更新し、ビューが完成するまでこのプロセスを繰り返します。
+	 この段階で、クライアントアプリケーションからライブラリを利用してビューにアクセスし、ニーズに合うか確認できます。</li>
+   <li>ビュー定義が完了したら、クラスタ全体のデータセットにビューを適用します。</li>
+	 <li>開発ビューをプロダクションビューにプッシュします。
+	 開発ビューをプロダクションビューに移動し、インデックス名を変更します（インデックスの再作成は必要ありません）。</li>
+   <li>プロダクションビューの利用を開始します。</li>
   </ol>
-  <p>Individual views are created as part of a design document. Each design document can have
-   multiple views, and each Couchbase bucket can have multiple design documents. You can therefore
-   have both development and production views within the same bucket while you development different
-   indexes on your data.</p>
+	<p>個々のビューは、デザインドキュメントの一部として作成されます。
+		各デザインドキュメントは、複数のビューを持つことができ、各Couchbaseのバケットは複数のデザインドキュメントを持つことができます。
+	データに対するさまざまなインデックスを作成する際に、開発用とプロダクション用のビューの両方を保持することができます。</p>
 
-  <p>For information on publishing a view from development to production state.</p>
+	<!-- Incomplete sentence.
+	<p>For information on publishing a view from development to production state.</p>
+	-->
 
  </body>
  <related-links>
