@@ -1,69 +1,73 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Views and indexes</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Viewとインデックス</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Views/views-intro.html" class="current"><span>Views and indexes</span></a><ul class="sub-sections"><li class="section"><a href="../Views/views-basics.html"><span>View basics</span></a></li><li class="section"><a href="../Views/views-index-updates.html"><span>ストリームベースのView</span></a></li><li class="section"><a href="../Views/views-operation.html"><span>Views operations</span></a></li><li class="section"><a href="../Views/views-storedData.html"><span>Views and stored data</span></a></li><li class="section"><a href="../Views/views-development.html"><span>Development views</span></a></li><li class="section"><a href="../Views/views-production.html"><span>Production views</span></a></li><li class="section"><a href="../Views/views-writing.html"><span>Writing views</span></a></li><li class="section"><a href="../Views/views-geospatial.html"><span>Writing geospatial views</span></a></li><li class="section"><a href="../Views/views-schemaless.html"><span>Views in a schema-less database</span></a></li><li class="section"><a href="../Views/views-translateSQL.html"><span>Translating SQL to map/reduce</span></a></li><li class="section"><a href="../Views/views-querying.html"><span>Querying views</span></a></li><li class="section"><a href="../Views/views-querySample.html"><span>View and query examples</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/sample-bucket-intro.html"><span>Sample buckets</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
- <h1 class="title topictitle1">Views and indexes</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Views/views-intro.html" class="current"><span>Viewとインデックス</span></a><ul class="sub-sections"><li class="section"><a href="../Views/views-basics.html"><span>Viewの基本</span></a></li><li class="section"><a href="../Views/views-index-updates.html"><span>ストリームベースのView</span></a></li><li class="section"><a href="../Views/views-operation.html"><span>Viewの動作</span></a></li><li class="section"><a href="../Views/views-storedData.html"><span>Viewと保存データ</span></a></li><li class="section"><a href="../Views/views-development.html"><span>開発View</span></a></li><li class="section"><a href="../Views/views-production.html"><span>プロダクションView</span></a></li><li class="section"><a href="../Views/views-writing.html"><span>Writing views</span></a></li><li class="section"><a href="../Views/views-geospatial.html"><span>Writing geospatial views</span></a></li><li class="section"><a href="../Views/views-schemaless.html"><span>Views in a schema-less database</span></a></li><li class="section"><a href="../Views/views-translateSQL.html"><span>Translating SQL to map/reduce</span></a></li><li class="section"><a href="../Views/views-querying.html"><span>Querying views</span></a></li><li class="section"><a href="../Views/views-querySample.html"><span>View and query examples</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/sample-bucket-intro.html"><span>Sample buckets</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+ <h1 class="title topictitle1">Viewとインデックス</h1>
 
  
- <div class="body"><p class="shortdesc">Couchbase views enable indexing and querying of data.</p>
+ <div class="body"><p class="shortdesc">CouchbaseのViewはデータをインデクシングしクエリを可能とします。</p>
 
-  <p class="p">A view creates an index on the data according to the defined format and structure. The view consists of specific fields
-   and information extracted from the objects in Couchbase. Views create indexes on your
-   information that enables search and select operations on the data. </p>
+	 <p class="p">
+		 Viewは定義したフォーマットと構造に基づき、データのインデックスを作成します。
+		 ViewはCouchbase内のオブジェクトから抽出した特定のフィールドと情報で構成されます。
+		 Viewは保存した情報のインデックスを作成し、データの検索と選択の操作を可能とします。
+	 </p>
 
-  <p class="p">Views are eventually consistent compared to the underlying stored documents. Documents are
-   included in views when the document data is persisted to disk. Documents with expiry times are
-   removed from indexes when the expiration pager operates to remove the document from the
-   database.</p>
+	 <p class="p">
+		 Viewは内部で保存されたドキュメントと比較すると結果整合性となります。
+		 ドキュメントデータがディスクに永続化されるとそのドキュメントはViewに反映されます。
+		 有効期限付きのドキュメントは期限切れページャがデータベースからドキュメントを削除するときに、インデックスからも削除されます。
+	 </p>
 
-  <p class="p">Views are used for a number of reasons, including:</p>
+  <p class="p">Viewを利用する理由は様々な理由があります、例えば:</p>
 
   <ul class="ul">
-   <li class="li">Indexing and querying data from stored objects</li>
+   <li class="li">保存したオブジェクトのデータをインデクシングしデータをクエリする</li>
 
-   <li class="li">Producing lists of data on specific object types</li>
+   <li class="li">特定のオブジェクトタイプのデータリストを生成する</li>
 
-   <li class="li">Producing tables and lists of information based on your stored data</li>
+   <li class="li">保存データを元に情報のテーブルとリストを生成する</li>
 
-   <li class="li">Extracting or filtering information from the database</li>
+   <li class="li">データベースから情報を抽出、フィルタリングする</li>
 
-   <li class="li">Calculating, summarizing or reducing the information on a collection of stored
-    data</li>
+   <li class="li">保存データの集合が持つ情報を計算し、集約、要約する</li>
 
   </ul>
 
-  <div class="p">Multiple views can be created which provides multiple indexes and routes into the stored data. 
-   By exposing specific fields from the stored information, views enable the following:
+	<div class="p">複数のViewを作成し、保存データに対する複数のインデックスを作成できます。
+		保存した情報の特定のフィールドを公開することで、Viewは以下を可能とします:
    <ul class="ul">
-    <li class="li">Creating and querying stored data</li>
+    <li class="li">インデックスの作成と保存データのクエリ</li>
 
-    <li class="li">Performing queries and selection on the data</li>
+    <li class="li">データのクエリや選択の実行</li>
 
-    <li class="li">Paginating through the view output</li>
+    <li class="li">View実行結果のページ操作</li>
 
    </ul>
 
   </div>
 
   
-  <p class="p">The View Builder provides an interface for creating views within the web console. Views can be
-   accessed by using a Couchbase client library to retrieve matching records.</p>
+	<p class="p">
+		ViewビルダはWebコンソール上でViewを作成するインタフェースを提供します。
+		ViewはCouchbaseクライアントライブラリを利用しアクセスし、マッチするレコードを取得します。
+	</p>
 
  </div>
 
  <nav class="related-links"><h2>Related information</h2>
 <ol class="olchildlinks">
-<li class="link olchildlink"><a href="../Views/views-basics.html">View basics</a><br>
-Views allow you to extract specific fields and information from data and create an index.</li>
+<li class="link olchildlink"><a href="../Views/views-basics.html">Viewの基本</a><br>
+Viewはデータから特定のフィールドや情報を抽出して、インデックスの作成を可能とします。</li>
 <li class="link olchildlink"><a href="../Views/views-index-updates.html">ストリームベースのView</a><br>
  			ストリームベースのViewはViewの更新レイテンシを削減し、より高速にViewの一貫性を保ち、最新のデータを提供します。 		</li>
-<li class="link olchildlink"><a href="../Views/views-operation.html">Views operations</a><br>
-This section describes how Views operate and how various functions impact views and     data.</li>
-<li class="link olchildlink"><a href="../Views/views-storedData.html">Views and stored data</a><br>
-This section describes how the views system relates to stored data.</li>
-<li class="link olchildlink"><a href="../Views/views-development.html">Development views</a><br>
-Views are created in a development environment in order to control the impact of views prior to deployment.</li>
-<li class="link olchildlink"><a href="../Views/views-production.html">Production views</a><br>
-Production views are used in a deployed environment.</li>
+<li class="link olchildlink"><a href="../Views/views-operation.html">Viewの動作</a><br>
+このセクションではView動作や様々なViewやデータに関連する機能を説明します。</li>
+<li class="link olchildlink"><a href="../Views/views-storedData.html">Viewと保存データ</a><br>
+このセクションはViewシステムが保存データと関連してどのように動作するのかを解説します。</li>
+<li class="link olchildlink"><a href="../Views/views-development.html">開発View</a><br>
+Viewはデプロイ前のViewの影響を制御するために、開発環境で作成されます。</li>
+<li class="link olchildlink"><a href="../Views/views-production.html">プロダクションView</a><br>
+プロダクションViewはデプロイされた環境で利用されます。</li>
 <li class="link olchildlink"><a href="../Views/views-writing.html">Writing views</a><br>
 During the view creation process,       the output structure, field order, content, and any summary or grouping       information desired in the view is defined.</li>
 <li class="link olchildlink"><a href="../Views/views-geospatial.html">Writing geospatial views</a><br>

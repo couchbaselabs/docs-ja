@@ -1,13 +1,13 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Ubuntu/Debian installation</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>UbuntuまたはDebianへのインストール方法</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections section--active"><a href="../install-intro.html"><span>インストールとアップグレード</span></a><ul class="sub-sections"><li class="section"><a href="../Install/setup-overview.html"><span>Couchbaseセットアップの概要</span></a></li><li class="section section--has-sub-sections"><a href="../Install/pre-install.html"><span>インストール要件</span></a></li><li class="section section--has-sub-sections"><a href="../Install/RHEL-install-intro.html"><span>Red Hat/CentOS installation</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Install/Ubuntu-install.html" class="current"><span>Ubuntu/Debian installation</span></a><ul class="sub-sections"><li class="section"><a href="../Install/ubuntu-non-root-sudo.html"><span>Installing as non-root, non-sudo</span></a></li><li class="section"><a href="../Install/ubuntu-uninstall.html"><span>Uninstalling on Ubuntu Linux</span></a></li><li class="section"><a href="../Install/upgrade-ubuntu.html"><span>Upgrading on Ubuntu Linux</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Install/Windows-install.html"><span>Microsoft Windows installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Mac-install.html"><span>Mac OS X へのインストール</span></a></li><li class="section section--has-sub-sections"><a href="../Install/post-install.html"><span>インストール後の設定</span></a></li><li class="section section--has-sub-sections"><a href="../Install/upgrading.html"><span>Upgrading </span></a></li><li class="section section--has-sub-sections"><a href="../Install/migrating.html"><span>Migrating</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Views and indexes</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
- <h1 class="title topictitle1">Ubuntu/Debian installation</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections section--active"><a href="../install-intro.html"><span>インストールとアップグレード</span></a><ul class="sub-sections"><li class="section"><a href="../Install/setup-overview.html"><span>Couchbaseセットアップの概要</span></a></li><li class="section section--has-sub-sections"><a href="../Install/pre-install.html"><span>インストール要件</span></a></li><li class="section section--has-sub-sections"><a href="../Install/RHEL-install-intro.html"><span>Red Hat/CentOS installation</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Install/Ubuntu-install.html" class="current"><span>UbuntuまたはDebianへのインストール方法</span></a><ul class="sub-sections"><li class="section"><a href="../Install/ubuntu-non-root-sudo.html"><span>Installing as non-root, non-sudo</span></a></li><li class="section"><a href="../Install/ubuntu-uninstall.html"><span>Uninstalling on Ubuntu Linux</span></a></li><li class="section"><a href="../Install/upgrade-ubuntu.html"><span>Upgrading on Ubuntu Linux</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Install/Windows-install.html"><span>Microsoft Windows へのインストール</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Mac-install.html"><span>Mac OS X へのインストール</span></a></li><li class="section section--has-sub-sections"><a href="../Install/post-install.html"><span>インストール後の設定</span></a></li><li class="section section--has-sub-sections"><a href="../Install/upgrading.html"><span>Upgrading </span></a></li><li class="section section--has-sub-sections"><a href="../Install/migrating.html"><span>Migrating</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+ <h1 class="title topictitle1">UbuntuまたはDebianへのインストール方法</h1>
 
   
- <div class="body"><p class="shortdesc">This installation information applies both to Ubuntu and Debian platforms.</p>
+ <div class="body"><p class="shortdesc">このインストールに関する情報はUbuntuとDebianプラットフォームの両方に適用されます。</p>
 
    
-   <p class="p">The following Ubuntu and Ubuntu-based operating systems such as Debian platforms are supported:</p>
+   <p class="p">次のUbuntuとDebianプラットフォームのようなUbuntuベースのをサポートしています:</p>
 
    
    
@@ -19,15 +19,15 @@
        
        <thead class="thead" align="left">
          <tr class="row">
-           <th class="entry" valign="top" width="20%" id="d62249e37"><strong class="ph b">Platform</strong></th>
+           <th class="entry" valign="top" width="20%" id="d62249e37"><strong class="ph b">プラットフォーム</strong></th>
 
-           <th class="entry" valign="top" width="20%" id="d62249e41"><strong class="ph b">Version</strong></th>
+           <th class="entry" valign="top" width="20%" id="d62249e41"><strong class="ph b">バージョン</strong></th>
 
            <th class="entry" valign="top" width="20%" id="d62249e45"><strong class="ph b">32 / 64 bit</strong></th>
 
-           <th class="entry" valign="top" width="20%" id="d62249e49"><strong class="ph b">Supported</strong></th>
+           <th class="entry" valign="top" width="20%" id="d62249e49"><strong class="ph b">サポート</strong></th>
 
-           <th class="entry" valign="top" width="20%" id="d62249e53"><strong class="ph b">Recommended Version</strong></th>
+           <th class="entry" valign="top" width="20%" id="d62249e53"><strong class="ph b">推奨バージョン</strong></th>
 
          </tr>
 
@@ -41,7 +41,7 @@
 
            <td class="entry" valign="top" width="20%" headers="d62249e45 ">64 bit</td>
 
-           <td class="entry" valign="top" width="20%" headers="d62249e49 ">Developer and Production</td>
+           <td class="entry" valign="top" width="20%" headers="d62249e49 ">開発目的、商用目的</td>
 
            <td class="entry" valign="top" width="20%" headers="d62249e53 ">&nbsp;</td>
 
@@ -54,7 +54,7 @@
 
            <td class="entry" valign="top" width="20%" headers="d62249e45 ">64 bit</td>
 
-           <td class="entry" valign="top" width="20%" headers="d62249e49 ">Developer and Production</td>
+           <td class="entry" valign="top" width="20%" headers="d62249e49 ">開発目的、商用目的</td>
 
            <td class="entry" valign="top" width="20%" headers="d62249e53 ">Ubuntu 12.04</td>
 
@@ -67,7 +67,7 @@
 
            <td class="entry" valign="top" width="20%" headers="d62249e45 ">64 bit</td>
 
-           <td class="entry" valign="top" width="20%" headers="d62249e49 ">Developer and Production</td>
+           <td class="entry" valign="top" width="20%" headers="d62249e49 ">開発目的、商用目的</td>
 
            <td class="entry" valign="top" width="20%" headers="d62249e53 ">Debian 7.0</td>
 
@@ -80,28 +80,23 @@
 
    
   
-  <div class="section"><h2 class="title sectiontitle">Installing on Ubuntu or Debian</h2><p class="p">To install:</p>
+  <div class="section"><h2 class="title sectiontitle">UbuntuまたはDebian上でのインストール方法</h2><p class="p">インストールするには:</p>
 <ol class="ol">
-    <li class="li">For Ubuntu version 12.04 and Debian 7, you need OpenSSL 1.x. Install a specific OpenSSL
-          dependency by running:<p class="p"><samp class="ph codeph"> root-&gt; apt-get install libssl&lt;version&gt;
-            </samp></p>
-</li>
+    <li class="li">Ubuntu version 12.04 と Debian 7の場合、特定のOpenSSLと依存関係のあるものを実行するためにOpenSSL 1.x.をインストールする必要があります。:
+      <p class="p"><samp class="ph codeph"> root-&gt; apt-get install libssl&lt;version&gt;</samp></p>
 
-    <li class="li">The Ubuntu Couchbase installation uses the DEB package. To install, use the
-            <samp class="ph codeph">dpkg</samp> command-line tool using the DEB file that you downloaded. The
-          following example uses <samp class="ph codeph">sudo</samp> which will require root-access to allow
-          installation: <pre class="pre codeblock"><code>dpkg -i couchbase-server version.deb</code></pre>
-<p class="p">where
-              <samp class="ph codeph">version</samp> is the version number of the downloaded package.</p>
-<p class="p">After
-            the <span class="keyword cmdname">dpkg</span> command is executed, Couchbase Server starts automatically
-            and is configured to automatically start during boot under the 2, 3, 4, and 5 run
-            levels. Refer to the Ubuntu documentation for more information about installing packages
-            using the Debian package manager.</p>
-<p class="p">After installation is completed, the
-            installation process displays a message similar to the following:
-          </p>
-<pre class="pre codeblock"><code>
+    </li>
+
+    <li class="li">UbuntuのCouchbaseのインストールではDEBパッケージを使用します。インストールするには、ダウンロードしたDEBファイルを用いて<samp class="ph codeph">dpkg</samp>コマンドラインツールを使用します。次の例ではインストールを許可するためにルートアクセスを必要とするので<samp class="ph codeph">sudo</samp>を使用します:
+      <pre class="pre codeblock"><code>dpkg -i couchbase-server version.deb</code></pre>
+
+      <p class="p"><samp class="ph codeph">version</samp>にはダウンロードしたパッケージのバージョンナンバーが記載されています。</p>
+
+      <p class="p"><span class="keyword cmdname">dpkg</span>コマンド実行後にCouchbase Serverは自動的に起動し、ブート時にランレベルが2、3、4、5で起動するように自動的に設定されます。Debianパッケージマネージャを使用したパッケージのインストールに関する詳細については、Ubuntuドキュメントを参照してください。</p>
+
+      <p class="p">インストール完了後、インストールプロセスは次のようなメッセージを表示します:</p>
+
+      <pre class="pre codeblock"><code>
 Selecting previously deselected package couchbase-server. 
 (Reading database … 73755 files and directories currently installed.)
 Unpacking couchbase-server (from couchbase-server_x86_64_2.1.0-xxx-rel.deb) … 
@@ -127,18 +122,15 @@ allow connections to the following ports: 11211, 11210, 11209, 4369,
 By using this software you agree to the End User License Agreement.
 See /opt/couchbase/LICENSE.txt.
 
-     </code></pre>
+      </code></pre>
 </li>
 
-  </ol>
+    </ol>
 
 
-   <p class="p">After successful installation, use the <span class="keyword cmdname">service</span> command to manage the
-        Couchbase Server service, including checking the current status. Refer to the Ubuntu
-        documentation for instructions. </p>
+    <p class="p">インストール成功後、現在のステータス確認を含むCouchbase Serverサービスの管理のため<span class="keyword cmdname">service</span>コマンドを使用します。手順についてはUbuntuドキュメントを参照してください。</p>
 
-      <p class="p">To provide initial setup for Couchbase, open a web browser and access the Couchbase Web
-        Console. </p>
+    <p class="p">Couchbaseの初期セットアップを行うには、Webブラウザを開きCouchbase Webコンソールにアクセスします。</p>
 
   </div>
 
@@ -157,9 +149,9 @@ Perform an upgrade for Ubuntu/Debian Linux by installing the updated <samp class
 </ol>
 
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../install-intro.html" title="このガイドはCouchbase Serverのインストール要件、各種プラットフォームでのインストール、インストール後の設定、 アップグレード、移行手順について解説します。">インストールとアップグレード</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Install/RHEL-install-intro.html" title="Couchbase Server supports Red Hat (RHEL) and RHEL-based operating systems such as CentOS.">Red Hat/CentOS installation</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/Windows-install.html" title="Couchbase Server can be installed on machines running Windows operating systems.">Microsoft Windows installation</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../install-intro.html" title="このガイドはCouchbase Serverのインストール要件、各種プラットフォームでのインストール、インストール後の設定、 アップグレード、移行手順について解説します。">インストールとアップグレード</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../Install/RHEL-install-intro.html" title="Couchbase Server supports Red Hat (RHEL) and RHEL-based operating systems such as CentOS.">Red Hat/CentOS installation</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Install/Windows-install.html" title="Couchbase ServerはWindowsオペレーションシステムが動いているマシンにインストールすることが出来ます。">Microsoft Windows へのインストール</a></div>
 </div>
 
 <div class="linklist linklist">
