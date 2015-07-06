@@ -1,98 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbcli-xdcr-manage-replications">
-  <title>Managing XDCR replication streams</title>
-  <shortdesc>The XDCR CLI provides options to manage XDCR replications with
-    <codeph>couchbase-cli xdcr-replicate</codeph>.</shortdesc>
+<reference xml:lang="ja" id="cbcli-xdcr-manage-replications">
+  <title>XDCRレプリケーションストリームの管理</title>
+  <shortdesc>XDCR CLIは、<codeph>couchbase-cli xdcr-replicate</codeph>でXDCRレプリケーションを管理するためのオプションを提供します。</shortdesc>
   <refbody>
-    <section><title>Description</title>
-      <p>The following are <codeph>couchbase-cli xdcr-replicate</codeph> parameters.</p>
+    <section><title>説明</title>
+      <p><codeph>couchbase-cli xdcr-replicate</codeph>のパラメータを以下に示します。</p>
       <table frame="all" id="table_drj_bcn_c4">
-        <title>xdcr-replicate options</title>
+        <title>xdcr-replicate オプション</title>
         <tgroup cols="2">
           <colspec colname="c1" colnum="1" colwidth="1*"/>
           <colspec colname="c2" colnum="2" colwidth="1.99*"/>
           <thead>
             <row>
-              <entry>Option</entry>
-              <entry>Description</entry>
+              <entry>オプション</entry>
+              <entry>説明</entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>--create</entry>
-              <entry>Create and start a new replication</entry>
+              <entry>新しいレプリケーションを作成し開始する</entry>
             </row>
             <row>
               <entry>--delete</entry>
-              <entry>Stop and cancel a replication</entry>
+              <entry>レプリケーションを停止しキャンセルする</entry>
             </row>
             <row>
               <entry>--list</entry>
-              <entry>List all XDCR replications</entry>
+              <entry>すべてのXDCRレプリケーションを表示</entry>
             </row>
             <row>
               <entry>--pause</entry>
-              <entry>Pause the replication</entry>
+              <entry>レプリケーションを一時停止</entry>
             </row>
             <row>
               <entry>--resume</entry>
-              <entry>Resume the replication</entry>
+              <entry>レプリケーションを再開</entry>
             </row>
             <row>
               <entry>--settings</entry>
-              <entry>Update settings for the replication</entry>
+              <entry>レプリケーションの設定を更新</entry>
             </row>
             <row>
               <entry>--xdcr-replicator=REPLICATOR</entry>
-              <entry>Replication ID</entry>
+              <entry>レプリケーションID</entry>
             </row>
             <row>
               <entry>--xdcr-from-bucket=BUCKET</entry>
-              <entry>Local bucket name to replicate from</entry>
+              <entry>レプリケーション元のローカルのバケット名</entry>
             </row>
             <row>
               <entry>--xdcr-cluster-name=CLUSTERNAME</entry>
-              <entry>Remote cluster to replicate to</entry>
+              <entry>レプリケーション先のリモートクラスタ</entry>
             </row>
             <row>
               <entry>--xdcr-to-bucket=BUCKETNAME</entry>
-              <entry>Remote bucket to replicate to</entry>
+              <entry>レプリケーション先のリモートバケット名</entry>
             </row>
             <row>
               <entry>--max-concurrent-reps =[ 16 ]</entry>
-              <entry>Maximum concurrent replications per bucket, 8 to 256. Default: 16</entry>
+              <entry>バケットごとの最大並列レプリケーション、8から256。 Default: 16</entry>
             </row>
             <row>
               <entry>--checkpoint-interval =[ 1800 ]</entry>
-              <entry>Intervals between checkpoints , 60 to 14400 seconds</entry>
+              <entry>チェックポイント間隔、60から14400秒</entry>
             </row>
             <row>
               <entry>--worker-batch-size =[ 500 ]</entry>
-              <entry>Document batch size,  500 to 10000</entry>
+              <entry>ドキュメントバッチサイズ、500から10000</entry>
             </row>
             <row>
               <entry>--doc-batch size =[ 2048 ] KB</entry>
-              <entry>Document batch size, 10 to 100000 KB</entry>
+              <entry>ドキュメントのバッチサイズ、10から100000KB</entry>
             </row>
             <row>
               <entry>--failure-restart-interval =[ 30 ]</entry>
-              <entry>Interval for restarting failed XDCR, 1 to 300 seconds</entry>
+              <entry>失敗したXDCRのリスタート間隔、1から300秒</entry>
             </row>
             <row>
               <entry>--optimistic-replication-threshold =[ 256 ]</entry>
-              <entry>Document body size threshold (bytes) to trigger optimistic replication</entry>
+              <entry>楽観的レプリケーション実行のドキュメントボディサイズ閾値(bytes)</entry>
             </row>
             <row>
               <entry>--xdcr-replication-mode=[xmem | capi]</entry>
-              <entry>Replication protocol, either capi or xmem</entry>
+              <entry>レプリケーションプロトコル、capiあるいはxmem</entry>
             </row>
           </tbody>
         </tgroup>
       </table>
     </section>
     
-    <section><title>Syntax</title>
+    <section><title>シンタックス</title>
       <codeblock>
 couchbase-cli xdcr-replicate -c [host]:[port]
     [option]
@@ -102,8 +101,8 @@ couchbase-cli xdcr-replicate -c [host]:[port]
       
     </section>
     
-    <section><title>Example: Starting a replication stream</title>
-      <p>To start a replication stream:</p>
+    <section><title>例: レプリケーションストリームの開始</title>
+      <p>レプリケーションストリームを開始するには:</p>
       <codeblock>couchbase-cli xdcr-replicate -c 192.168.0.1:8091 
         --create 
         --xdcr-cluster-name=test 
@@ -113,8 +112,8 @@ couchbase-cli xdcr-replicate -c [host]:[port]
       
     </section>
     
-    <section><title>Example: Deleting a replication stream</title>
-      <p>To delete a replication stream:</p>
+    <section><title>例: レプリケーションストリームの削除</title>
+      <p>レプリケーションストリームを削除するには:</p>
       <codeblock>couchbase-cli xdcr-replicate -c 192.168.0.1:8091 
         --delete 
         --xdcr-replicator=f4eb540d74c43fd3ac6d4b7910c8c92f/default/default
@@ -122,8 +121,8 @@ couchbase-cli xdcr-replicate -c [host]:[port]
       
     </section>
     
-    <section><title>Response</title>
-      <p>Example response:</p>
+    <section><title>レスポンス</title>
+      <p>レスポンス例:</p>
       <codeblock></codeblock>
     </section>
   </refbody>
