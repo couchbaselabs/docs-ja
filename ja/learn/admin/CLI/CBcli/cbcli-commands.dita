@@ -1,560 +1,549 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbcli-commands">
-	<title>couchbase-cli commands</title>
-	<shortdesc>Commands used with the CLI <codeph>couchbase-cli</codeph> tool.</shortdesc>
+<reference xml:lang="ja" id="cbcli-commands">
+	<title>couchbase-cliコマンド</title>
+	<shortdesc><codeph>couchbase-cli</codeph>ツールで利用可能なコマンドの一覧です。</shortdesc>
 	<refbody>
 		<table>
-			<title>couchbase-cli commands</title>
+			<title>couchbase-cliコマンド</title>
 			<tgroup cols="2">
 				<colspec colname="col1"/>
 				<colspec colname="col2"/>
 				<thead>
 					<row>
-						<entry>Command</entry>
-						<entry>Description</entry>
+						<entry>コマンド</entry>
+						<entry>説明</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
 						<entry>server-list</entry>
-						<entry>List all servers in a cluster.</entry>
+						<entry>クラスタ内のすべてのサーバを一覧表示。</entry>
 					</row>
 					<row>
 						<entry>server-info</entry>
-						<entry>Show details on one server.</entry>
+						<entry>単一のサーバの詳細を表示。</entry>
 					</row>
 					<row>
 						<entry>server-add</entry>
-						<entry>Add one or more servers to the cluster.</entry>
+						<entry>一つまたは複数のサーバをクラスタに追加。</entry>
 					</row>
 					<row>
 						<entry>server-readd</entry>
-						<entry>Readds a server that was failed over.</entry>
+						<entry>フェイルオーバしたサーバを再追加。</entry>
 					</row>
 					<row>
 						<entry>group-manage</entry>
-						<entry>Manages server groups (Enterprise Edition only).</entry>
+						<entry>サーバグループを管理する(エンタープライズエディションのみ)。</entry>
 					</row>
 					<row>
 						<entry>rebalance</entry>
-						<entry>Start a cluster rebalancing.</entry>
+						<entry>クラスタのリバランスを開始。</entry>
 					</row>
 					<row>
 						<entry>rebalance-stop</entry>
-						<entry>Stop current cluster rebalancing.</entry>
+						<entry>クラスタのリバランスを停止。</entry>
 					</row>
 					<row>
 						<entry>rebalance-status</entry>
-						<entry>Show status of current cluster rebalancing.</entry>
+						<entry>現在のクラスタリバランス状態を表示。</entry>
 					</row>
 					<row>
 						<entry>failover</entry>
-						<entry>Failover one or more servers. Default: Graceful failover
-						<p>Hard failover is implemented with the <codeph>--force</codeph> option.</p></entry>
+						<entry>一つまたは複数のサーバをフェイルオーバ。 デフォルト: グレイスフルフェイルオーバ
+						<p>ハードフェイルオーバは<codeph>--force</codeph>オプションを指定。</p></entry>
 					</row>
 					<row>
 						<entry>cluster-init</entry>
-						<entry>Set the username,password and port of the cluster.</entry>
+						<entry>クラスタのユーザ名、パスワード、ポートを設定。</entry>
 					</row>
 					<row>
 						<entry>cluster-edit</entry>
-						<entry>Modify cluster settings.</entry>
+						<entry>クラスタ設定の変更。</entry>
 					</row>
 					<row>
 						<entry>node-init</entry>
-						<entry>Set node specific parameters.</entry>
+						<entry>ノード個別のパラメータを設定。</entry>
 					</row>
 					<row>
 						<entry>bucket-list</entry>
-						<entry>List all buckets in a cluster.</entry>
+						<entry>クラスタ内のバケットを一覧表示。</entry>
 					</row>
 					<row>
 						<entry>bucket-create</entry>
-						<entry>Add a new bucket to the cluster.</entry>
+						<entry>クラスタに新規バケットを追加。</entry>
 					</row>
 					<row>
 						<entry>bucket-edit</entry>
-						<entry>Modify an existing bucket.</entry>
+						<entry>既存のバケットを変更。</entry>
 					</row>
 					<row>
 						<entry>bucket-delete</entry>
-						<entry>Delete an existing bucket.</entry>
+						<entry>既存バケットを削除。</entry>
 					</row>
 					<row>
 						<entry>bucket-flush</entry>
-						<entry>Flush all data from disk for a given bucket.</entry>
+						<entry>指定バケットのすべてのデータをディスクから削除する。</entry>
 					</row>
 					<row>
 						<entry>bucket-compact</entry>
-						<entry>Compact database and index data.</entry>
+						<entry>データベースとインデックスデータをコンパクションする。</entry>
 					</row>
 					<row>
 						<entry>setting-compaction</entry>
-						<entry>Set auto compaction settings.</entry>
+						<entry>自動コンパクションを設定する。</entry>
 					</row>
 					<row>
 						<entry>setting-notification</entry>
-						<entry>Set notifications.</entry>
+						<entry>通知を設定する。</entry>
 					</row>
 					<row>
 						<entry>setting-alert</entry>
-						<entry>Email alert settings.</entry>
+						<entry>eメール通知設定。</entry>
 					</row>
 					<row>
 						<entry>setting-autofailover</entry>
-						<entry>Set auto failover settings.</entry>
+						<entry>自動フェイルオーバを設定する。</entry>
 					</row>
 					<row>
 						<entry>setting-xdcr</entry>
-						<entry>Set XDCR-related configuration which affect behavior.</entry>
+						<entry>XDCRの挙動に関わるXDCR関連の設定を行う。</entry>
 					</row>
 					<row>
 						<entry>ssl-manage</entry>
-						<entry>Manage cluster SSL certificate.</entry>
+						<entry>クラスタのSSL証明書を管理する。</entry>
 					</row>
 					<row>
 						<entry>xdcr-setup</entry>
-						<entry>Set up XDCR replication.</entry>
+						<entry>XDCRレプリケーションを設定する。</entry>
 					</row>
 					<row>
 						<entry>xdcr-replicate</entry>
-						<entry>Create and run replication via XDCR.</entry>
+						<entry>XDCRでのレプリケーションを作成し実行する。</entry>
 					</row>
 					<row>
-						<entry>help show longer</entry>
-						<entry>Syntax, usage, and examples.</entry>
+						<entry>help</entry>
+						<entry>より詳細なシンタックス、利用方法、利用例を表示する。</entry>
 					</row>
 				</tbody>
 			</tgroup>
 		</table>
-		<section><title>couchbase-cli command options</title><p>The following are options which can be used with their respective commands.</p></section>
-		<section><title>server-list options</title><table>
+		<section><title>couchbase-cliコマンドオプション</title><p>以下のコマンドは特定のコマンドで利用できるオプションです。</p></section>
+		<section><title>server-list オプション</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>server-list options</entry>
-							<entry>Description</entry>
+							<entry>server-list オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>–-group-name=GROUPNAME</entry>
-							<entry>Displays all server in a server group (Enterprise Edition
-								only)</entry>
+							<entry>サーバグループ内のすべてのサーバを表示 (エンタープライズエディションのみ)</entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
-		<section><title>server-add options</title><table>
+		<section><title>server-add オプション</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>server-add options</entry>
-							<entry>Description</entry>
+							<entry>server-add オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--server-add=HOST[:PORT]</entry>
-							<entry>Server to add to cluster</entry>
+							<entry>クラスタに追加するサーバ</entry>
 						</row>
 						<row>
 							<entry>--server-add-username=USERNAME</entry>
-							<entry>Admin username for the server to be added</entry>
+							<entry>追加するサーバの管理者ユーザ名</entry>
 						</row>
 						<row>
 							<entry>--server-add-password=PASSWORD</entry>
-							<entry>Admin password for the server to be added</entry>
+							<entry>追加するサーバの管理者パスワード</entry>
 						</row>
 						<row>
 							<entry>--group-name=GROUPNAME</entry>
-							<entry>Server group where the server is to be added (Enterprise Edition
-								only) </entry>
+							<entry>サーバを追加するサーバグループ (エンタープライズエディションのみ) </entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
-		<section><title>server-readd options</title><table>
+		<section><title>server-readd オプション</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>server-readd options</entry>
-							<entry>Description</entry>
+							<entry>server-readd オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--server-add=HOST[:PORT]</entry>
-							<entry>Server to re-add to cluster</entry>
+							<entry>クラスタに再追加するサーバ</entry>
 						</row>
 						<row>
 							<entry>--server-add-username=USERNAME</entry>
-							<entry>Administrator username for the server to be added</entry>
+							<entry>追加するサーバの管理者ユーザ名</entry>
 						</row>
 						<row>
 							<entry>--server-add-password=PASSWORD</entry>
-							<entry>Administrator password for the server to be added</entry>
+							<entry>追加するサーバの管理者パスワード</entry>
 						</row>
 						<row>
 							<entry>--group-name=GROUPNAME</entry>
-							<entry>Server group where the server is to be added (Enterprise Edition
-								only)</entry>
+							<entry>サーバを追加するサーバグループ (エンタープライズエディションのみ)</entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
-		<section><title>group-manage options (Enterprise Edition only)</title><table>
+		<section><title>group-manage オプション (エンタープライズエディションのみ)</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>group-manage options</entry>
-							<entry>Description</entry>
+							<entry>group-manage オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--group-name=GROUPNAME</entry>
-							<entry>Server group name</entry>
+							<entry>サーバグループ名</entry>
 						</row>
 						<row>
 							<entry>--list</entry>
-							<entry>Shows the server groups and the server assigned to each server
-								group</entry>
+							<entry>サーバグループと各サーバグループに所属するサーバを表示</entry>
 						</row>
 						<row>
 							<entry>--create</entry>
-							<entry>Creates a server group.</entry>
+							<entry>サーバグループの作成</entry>
 						</row>
 						<row>
 							<entry>--delete</entry>
-							<entry>Removes an empty server group.</entry>
+							<entry>空のサーバグループを削除</entry>
 						</row>
 						<row>
 							<entry>--rename=NEWGROUPNAME</entry>
-							<entry>Renames an existing server group.</entry>
+							<entry>既存のサーバグループの名前を変更する。</entry>
 						</row>
 						<row>
 							<entry><codeph>--add-servers="HOST:PORT;HOST:PORT"</codeph></entry>
-							<entry>Adds servers to a group</entry>
+							<entry>サーバをグループに追加</entry>
 						</row>
 						<row>
 							<entry>--move-servers="HOST:PORT;HOST:PORT"</entry>
-							<entry>Moves a list of server from a group</entry>
+							<entry>グループからサーバのリストを移動</entry>
 						</row>
 						<row>
 							<entry>--from-group=GROUPNAME</entry>
-							<entry>Moves one or more servers from a group.</entry>
+							<entry>グループから一つまたは複数のサーバを移動。</entry>
 						</row>
 						<row>
 							<entry>--to-group=GROUPNAME</entry>
-							<entry>Moves one or more server to a group</entry>
+							<entry>一つまたは複数のサーバをグループへ移動</entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
-		<section><title>rebalance options</title><table>
+		<section><title>rebalance オプション</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>rebalance options</entry>
-							<entry>Description</entry>
+							<entry>rebalance オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--server-add*</entry>
-							<entry>See server-add OPTIONS</entry>
+							<entry>server-addオプションを参照</entry>
 						</row>
 						<row>
 							<entry>--server-remove=[host]:[port]</entry>
-							<entry>The server to remove from cluster </entry>
+							<entry>クラスタから削除するサーバ </entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
-		<section><title>failover option</title><table>
+		<section><title>failover オプション</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>failover option</entry>
-							<entry>Description</entry>
+							<entry>failover オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--server-failover=[host]:[port]</entry>
-							<entry>Server to failover.</entry>
+							<entry>フェイルオーバするサーバ。</entry>
 						</row>
 						<row>
 							<entry>--force</entry>
-							<entry>Force a hard failover.</entry>
+							<entry>ハードフェイルオーバを強制する。</entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
-		<section><title>cluster-* options</title>
+		<section><title>cluster-* オプション</title>
 			<table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>cluster-* options</entry>
-							<entry>Description</entry>
+							<entry>cluster-* オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--cluster-username=USER</entry>
-							<entry>New admin username</entry>
+							<entry>新しい管理者ユーザ名</entry>
 						</row>
 						<row>
 							<entry>--cluster-password=PASSWORD</entry>
-							<entry>New admin password</entry>
+							<entry>新しい管理者パスワード</entry>
 						</row>
 						<row>
 							<entry>--cluster-port=PORT</entry>
-							<entry>New cluster REST/http port</entry>
+							<entry>新しいクラスタのREST/httpポート</entry>
 						</row>
 						<row>
 							<entry>--cluster-ramsize=RAMSIZEMB</entry>
-							<entry>Per node RAM quota in MB </entry>
+							<entry>ノード単位のRAM割当量、MB </entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
-		<section><title>node-init options</title><table>
+		<section><title>node-init オプション</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>node-init options</entry>
-							<entry>Description</entry>
+							<entry>node-init オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--node-init-data-path=PATH</entry>
-							<entry>Per node path to store data</entry>
+							<entry>ノードごとのデータ保存パス</entry>
 						</row>
 						<row>
 							<entry>--node-init-index-path=PATH</entry>
-							<entry>Per node path to store index </entry>
+							<entry>ノードごとのインデックス保存パス </entry>
 						</row>
 						<row>
 							<entry>--node-init-hostname=NAME</entry>
-							<entry>Host name for the node. Default: 127.0.0.1</entry>
+							<entry>ノードのホスト名 デフォルト: 127.0.0.1</entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
-		<section><title>bucket-* options</title><table>
+		<section><title>bucket-* オプション</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>bucket-* options</entry>
-							<entry>Description</entry>
+							<entry>bucket-* オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--bucket=BUCKETNAME</entry>
-							<entry>Named bucket to act on</entry>
+							<entry>対象の名前付きバケット</entry>
 						</row>
 						<row>
 							<entry>--bucket-type=TYPE</entry>
-							<entry>Bucket type, either memcached or couchbase</entry>
+							<entry>バケット種別、memcachedあるいはcouchbase</entry>
 						</row>
 						<row>
 							<entry>--bucket-port=PORT</entry>
-							<entry>Supports ASCII protocol and does not require
-								authentication</entry>
+							<entry>ASCIIプロトコルをサポートし、認証を不要とする</entry>
 						</row>
 						<row>
 							<entry>--bucket-password=PASSWORD</entry>
-							<entry>Standard port, exclusive with bucket-port</entry>
+							<entry>標準ポート、バケットポートとは排他</entry>
 						</row>
 						<row>
 							<entry>--bucket-ramsize=RAMSIZEMB</entry>
-							<entry>Bucket RAM quota in MB</entry>
+							<entry>バケットのRAM割当量、MB</entry>
 						</row>
 						<row>
 							<entry>--bucket-replica=COUNT</entry>
-							<entry>Replication count</entry>
+							<entry>レプリケーション数</entry>
 						</row>
 						<row>
 							<entry>--enable-flush=[0\|1]</entry>
-							<entry>Enable/disable flush</entry>
+							<entry>フラッシュの有効/無効化</entry>
 						</row>
 						<row>
 							<entry>--enable-index-replica=[0\|1]</entry>
-							<entry>Enable/disable index replicas</entry>
+							<entry>インデックスレプリカの有効/無効化</entry>
 						</row>
 						<row>
 							<entry>--wait</entry>
-							<entry>Wait for bucket create to be complete before returning</entry>
+							<entry>バケットの作成完了を待つ</entry>
 						</row>
 						<row>
 							<entry>--force</entry>
-							<entry>Force command execution without asking for confirmation</entry>
+							<entry>確認を行わずに強制的にコマンドを実行する</entry>
 						</row>
 						<row>
 							<entry>--data-only</entry>
-							<entry>Compact database data only</entry>
+							<entry>データベースデータのみをコンパクション</entry>
 						</row>
 						<row>
 							<entry>--view-only</entry>
-							<entry>Compact view data only </entry>
+							<entry>Viewデータのみをコンパクション </entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
-		<section><title>setting-compaction options</title><table>
+		<section><title>setting-compaction オプション</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>setting-compaction options</entry>
-							<entry>Description</entry>
+							<entry>setting-compaction オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--compaction-db-percentage=PERCENTAGE</entry>
-							<entry>Percentage of disk fragmentation when database compaction is
-								triggered</entry>
+							<entry>コンパクション実行条件のディスクフラグメント率</entry>
 						</row>
 						<row>
 							<entry>--compaction-db-size=SIZE[MB]</entry>
-							<entry>Size of disk fragmentation when database compaction is
-								triggered</entry>
+							<entry>コンパクション実行条件のディスクフラグメントサイズ</entry>
 						</row>
 						<row>
 							<entry>--compaction-view-percentage=PERCENTAGE</entry>
-							<entry>Percentage of disk fragmentation when views compaction is
-								triggered</entry>
+							<entry>Viewコンパクション実行条件のディスクフラグメント率</entry>
 						</row>
 						<row>
 							<entry>--compaction-view-size=SIZE[MB]</entry>
-							<entry>Size of disk fragmentation when views compaction is
-								triggered</entry>
+							<entry>Viewコンパクション実行条件のディスクフラグメントサイズ</entry>
 						</row>
 						<row>
 							<entry>--compaction-period-from=HH:MM</entry>
-							<entry>Enable compaction from this time onwards</entry>
+							<entry>コンパクション実行開始時刻</entry>
 						</row>
 						<row>
 							<entry>--compaction-period-to=HH:MM</entry>
-							<entry>Stop enabling compaction at this time</entry>
+							<entry>コンパクション実行終了時刻</entry>
 						</row>
 						<row>
 							<entry>--enable-compaction-abort=[0\|1]</entry>
-							<entry>Allow compaction to abort when time expires</entry>
+							<entry>時刻を過ぎた際にコンパクションの強制終了を許可する</entry>
 						</row>
 						<row>
 							<entry>--enable-compaction-parallel=[0\|1]</entry>
-							<entry>Allow parallel compaction processes for database and view
+							<entry>データベースとViewの並列コンパクションを許可する
 							</entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
-		<section><title>setting-alert and notification options</title><table>
+		<section><title>setting-alertとnotificationオプション</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>setting-alert options</entry>
-							<entry>Description</entry>
+							<entry>setting-alert オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--enable-email-alert=[0\|1]</entry>
-							<entry>Allow email alert</entry>
+							<entry>eメール通知を許可する</entry>
 						</row>
 						<row>
 							<entry>--email-recipients=RECIPIENT</entry>
-							<entry>Email recipents, separate addresses with, or ;</entry>
+							<entry>eメール受信者のアドレスを , あるいは ; 区切りで指定</entry>
 						</row>
 						<row>
 							<entry>--email-sender=SENDER</entry>
-							<entry>Sender email address</entry>
+							<entry>送信者のeメールアドレス</entry>
 						</row>
 						<row>
 							<entry>--email-user=USER</entry>
-							<entry>Email server username</entry>
+							<entry>eメールサーバのユーザ名</entry>
 						</row>
 						<row>
 							<entry>--email-password=PWD</entry>
-							<entry>Email server password</entry>
+							<entry>eメールサーバのパスワード</entry>
 						</row>
 						<row>
 							<entry>--email-host=HOST</entry>
-							<entry>Email server hostname</entry>
+							<entry>eメールサーバのホスト名</entry>
 						</row>
 						<row>
 							<entry>--email-port=PORT</entry>
-							<entry>Email server port</entry>
+							<entry>eメールサーバのポート番号</entry>
 						</row>
 						<row>
 							<entry>--enable-email-encrypt=[0\|1]</entry>
-							<entry>Email encryption with 0 the default for no encryption</entry>
+							<entry>eメールの暗号化、デフォルトは0で暗号化しない</entry>
 						</row>
 						<row>
 							<entry>--alert-auto-failover-node</entry>
-							<entry>Node was failed over via autofailover</entry>
+							<entry>ノードが自動フェイルオーバによってフェイルオーバされた</entry>
 						</row>
 						<row>
 							<entry>--alert-auto-failover-max-reached</entry>
-							<entry>Maximum number of auto failover nodes reached</entry>
+							<entry>最大自動フェイルオーバノード数に達した</entry>
 						</row>
 						<row>
 							<entry>--alert-auto-failover-node-down</entry>
-							<entry>Node not auto failed-over as other nodes are down at the same
-								time</entry>
+							<entry>同時に他のノードもダウンしたため、ノードがフェイルオーバされなかった</entry>
 						</row>
 						<row>
 							<entry>--alert-auto-failover-cluster-small</entry>
-							<entry>Node not auto failed-over as cluster was too small</entry>
+							<entry>クラスタが小さすぎるため、ノードがフェイルオーバされなかった</entry>
 						</row>
 						<row>
 							<entry>--alert-ip-changed</entry>
-							<entry>Node ip address changed unexpectedly</entry>
+							<entry>ノードのIPアドレスが予期せず変わった</entry>
 						</row>
 						<row>
 							<entry>--alert-disk-space</entry>
-							<entry>Disk space used for persistent storage has reached at least 90%
-								capacity</entry>
+							<entry>永続化ストレージのディスクスペースが容量の90%に達した</entry>
 						</row>
 						<row>
 							<entry>--alert-meta-overhead</entry>
-							<entry>Metadata overhead is more than 50% of RAM for node</entry>
+							<entry>メタデータオーバヘッドがノードのRAMの50%を超えた</entry>
 						</row>
 						<row>
 							<entry>--alert-meta-oom</entry>
-							<entry>Bucket memory on a node is entirely used for metadata</entry>
+							<entry>ノード上のバケットメモリがすべてメタデータで利用されている</entry>
 						</row>
 						<row>
 							<entry>--alert-write-failed</entry>
-							<entry>Writing data to disk for a specific bucket has failed </entry>
+							<entry>特定のバケットにおいてディスクへのデータ書き込みが失敗した </entry>
 						</row>
 					</tbody>
 				</tgroup>
@@ -564,251 +553,237 @@
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>setting-notification option</entry>
-							<entry>Description</entry>
+							<entry>setting-notification オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--enable-notification=[0\|1]</entry>
-							<entry>Allow notifications </entry>
+							<entry>通知を許可する </entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
 		
-		<section><title>setting-autofailover options</title><table>
+		<section><title>setting-autofailover オプション</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>setting-autofailover options</entry>
-							<entry>Description</entry>
+							<entry>setting-autofailover オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--enable-auto-failover=[0\|1]</entry>
-							<entry>Allow auto failover</entry>
+							<entry>フェイルオーバを有効にする</entry>
 						</row>
 						<row>
-							<entry>--auto-failover-timeout=TIMEOUT
-								(&gt;=30)</entry>
-							<entry>Specify amount of node timeout that triggers auto failover
+							<entry>--auto-failover-timeout=TIMEOUT (&gt;=30)</entry>
+							<entry>自動フェイルオーバを実行するまでのノードタイムアウト時間を指定
 							</entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
 		
-		<section><title>setting-xdcr options</title><table>
+		<section><title>setting-xdcr オプション</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>setting-xdcr options</entry>
-							<entry>Description</entry>
+							<entry>setting-xdcr オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--max-concurrent-reps=[32]</entry>
-							<entry>Maximum concurrent replicators per bucket, 8 to 256.</entry>
+							<entry>バケット単位の最大並列レプリケーターを指定、8から256。</entry>
 						</row>
 						<row>
 							<entry>--checkpoint-interval=[1800]</entry>
-							<entry>Intervals between checkpoints, 60 to 14400 seconds.</entry>
+							<entry>チェックポイント間隔、60から14400秒。</entry>
 						</row>
 						<row>
 							<entry>--worker-batch-size=[500]</entry>
-							<entry>Doc batch size, 500 to 10000.</entry>
+							<entry>ドキュメントのバッチサイズ、500から10000。</entry>
 						</row>
 						<row>
 							<entry>--doc-batch-size=[2048]KB</entry>
-							<entry>Document batching size, 10 to 100000 KB</entry>
+							<entry>ドキュメントのバッチサイズ、10から100000KB</entry>
 						</row>
 						<row>
 							<entry>--failure-restart-interval=[30]</entry>
-							<entry>Interval for restarting failed xdcr, 1 to 300 seconds</entry>
+							<entry>失敗したXDCRのリスタート間隔、1から300秒</entry>
 						</row>
 						<row>
 							<entry>--optimistic-replication-threshold=[256]</entry>
-							<entry>Document body size threshold (bytes) to trigger optimistic
-								replication </entry>
+							<entry>楽観的レプリケーション実行のドキュメントボディサイズ閾値(bytes) </entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
-		<section><title>xdcr-setup options</title><table>
+		<section><title>xdcr-setup オプション</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>xdcr-setup options</entry>
-							<entry>Description</entry>
+							<entry>xdcr-setup オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody><row>
 						<entry>--create</entry>
-						<entry>Creates a new XDCR configuration.</entry>
+						<entry>新しいXDCR設定を作成する。</entry>
 					</row>
 						<row>
 							<entry>--edit</entry>
-							<entry>Modifies an existing XDCR configuration.</entry>
+							<entry>既存のXDCR設定を変更する。</entry>
 						</row>
 						<row>
 							<entry>--delete</entry>
-							<entry>Deletes an existing XDCR configuration.</entry>
+							<entry>既存のXDCR設定を削除する。</entry>
 						</row>
 						<row>
 							<entry>--list</entry>
-							<entry>Lists all XDCR configurations.</entry>
+							<entry>すべてのXDCR設定をリスト表示する。</entry>
 						</row>
 						<row>
 							<entry>--xdcr-cluster-name=[clustername]</entry>
-							<entry>Cluster name.</entry>
+							<entry>クラスタ名</entry>
 						</row>
 						<row>
 							<entry>--xdcr-hostname=[hostname]</entry>
-							<entry>Remote host name to connect to.</entry>
+							<entry>接続するリモートホスト名。</entry>
 						</row>
 						<row>
 							<entry>--xdcr-username=[username]</entry>
-							<entry>Remote cluster administrator username.</entry>
+							<entry>リモートクラスタの管理者ユーザ名。</entry>
 						</row>
 						<row>
 							<entry>--xdcr-password=[password</entry>
-							<entry>Remote cluster administrator password.</entry>
+							<entry>リモートクラスタの管理者パスワード。</entry>
 						</row>
 						<row>
 							<entry>--xdcr-demand-encryption=[0 | 1]</entry>
-							<entry>Enables and disables data encrypted using ssl. True is 1 and enables data encryption.
-								False is 0 and disables data encryption. Default: 0 (Enterprise
-								Edition only)</entry>
+							<entry>SSLによるデータ暗号化の有効/無効化。 Trueが1で、暗号化を有効に。
+								Falseが0で、暗号化を無効に。 デフォルト: 0 (エンタープライズエディションのみ)</entry>
 						</row>
 						<row>
 							<entry>--xdcr-certificate=[certificate]</entry>
-							<entry>Specifies the pem-encoded certificate. The certificate is required for XDCR data
-								encryption. Specify the full path for the location of the
-								pem-encoded certificate file on the source cluster. (Enterprise
-								Edition only)</entry>
+							<entry>pemエンコードの証明書を指定。 XDCRデータ暗号化には証明書が必要。 ソースクラスタ上のpemエンコードされた証明書の絶対パスを指定。 (エンタープライズエディションのみ)</entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
-		<section><title>xdcr-replicate options</title><table>
+		<section><title>xdcr-replicate オプション</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>xdcr-replicate options</entry>
-							<entry>Description</entry>
+							<entry>xdcr-replicate オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--create</entry>
-							<entry>Create and start a new replication</entry>
+							<entry>新しいレプリケーションを作成し開始する。</entry>
 						</row>
 						<row>
 							<entry>--delete</entry>
-							<entry>Stop and cancel a replication</entry>
+							<entry>レプリケーションを停止しキャンセルする。</entry>
 						</row>
 						<row>
 							<entry>--list</entry>
-							<entry>List all XDCR replications</entry>
+							<entry>すべてのXDCRレプリケーションを表示</entry>
 						</row>
 						<row>
 							<entry>--pause</entry>
-							<entry>Pause the replication</entry>
+							<entry>レプリケーションを一時停止</entry>
 						</row>
 						<row>
 							<entry>--resume</entry>
-							<entry>Resume the replication</entry>
+							<entry>レプリケーションを再開</entry>
 						</row>
 						<row>
 							<entry>--settings</entry>
-							<entry>Update settings for the replication</entry>
+							<entry>レプリケーションの設定を更新</entry>
 						</row>
 						<row>
 							<entry>--xdcr-replicator=REPLICATOR</entry>
-							<entry>Replication ID</entry>
+							<entry>レプリケーションID</entry>
 						</row>
 						<row>
 							<entry>--xdcr-from-bucket=BUCKET</entry>
-							<entry>Local bucket name to replicate from</entry>
+							<entry>レプリケーション元のローカルのバケット名</entry>
 						</row>
 						<row>
 							<entry>--xdcr-cluster-name=CLUSTERNAME</entry>
-							<entry>Remote cluster to replicate to</entry>
+							<entry>レプリケーション先のリモートクラスタ</entry>
 						</row>
 						<row>
 							<entry>--xdcr-to-bucket=BUCKETNAME</entry>
-							<entry>Remote bucket to replicate to</entry>
+							<entry>レプリケーション先のリモートバケット名</entry>
 						</row>
 						<row>
 							<entry>--max-concurrent-reps =[ 16 ]</entry>
-							<entry>Maximum concurrent replications per bucket, 8 to 256. Default: 16</entry>
+							<entry>バケットごとの最大並列レプリケーション、8から256。 デフォルト: 16</entry>
 						</row>
 						<row>
 							<entry>--checkpoint-interval =[ 1800 ]</entry>
-							<entry>Intervals between checkpoints , 60 to 14400 seconds</entry>
+							<entry>チェックポイント間隔、60から14400秒</entry>
 						</row>
 						<row>
 							<entry>--worker-batch-size =[ 500 ]</entry>
-							<entry>Document batch size,  500 to 10000</entry>
+							<entry>ドキュメントバッチサイズ、500から10000</entry>
 						</row>
 						<row>
 							<entry>--doc-batch size =[ 2048 ] KB</entry>
-							<entry>Document batch size, 10 to 100000 KB</entry>
+							<entry>ドキュメントバッチサイズ、10から100000KB</entry>
 						</row>
 						<row>
 							<entry>--failure-restart-interval =[ 30 ]</entry>
-							<entry>Interval for restarting failed XDCR, 1 to 300 seconds</entry>
+							<entry>失敗したXDCRのリスタート間隔、1から300秒</entry>
 						</row>
 						<row>
 							<entry>--optimistic-replication-threshold =[ 256 ]</entry>
-							<entry>Document body size threshold (bytes) to trigger optimistic replication</entry>
+							<entry>楽観的レプリケーション実行のドキュメントボディサイズ閾値(bytes)</entry>
 						</row>
 						<row>
 							<entry>--xdcr-replication-mode=[xmem | capi]</entry>
-							<entry>Replication protocol, either capi or xmem.
-								<codeph>xmem</codeph> indicates memcached while
-								<codeph>capi</codeph> indicates REST protocol. </entry>
+							<entry>レプリケーションプロトコル、capiあるいはxmem、
+								<codeph>xmem</codeph>はmemcached、<codeph>capi</codeph>はRESTプロトコルを意味する. </entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table></section>
-		<section><title>ssl-manage options (Enterprise Edition only)</title><table>
+		<section><title>ssl-manage オプション (エンタープライズエディションのみ)</title><table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>ssl-manage options</entry>
-							<entry>Description</entry>
+							<entry>ssl-manage オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>--regenerate-cert=[certificate]</entry>
-							<entry>Regenerates a self-signed certificate on the destination cluster.
-								Specify the full path for the location of the pem-encoded
-								certificate file. For example,
-									<codeph>--regenerate-cert=./new.pem</codeph>. (Enterprise
-								Edition only)</entry>
+							<entry>対象のクラスタ上で自己署名の証明書を再生成する。
+								pemエンコードの証明書ファイルの絶対パスを指定。例、<codeph>--regenerate-cert=./new.pem</codeph>. (エンタープライズエディションのみ)</entry>
 						</row>
 						<row>
 							<entry>--retrieve-cert=[certificate]</entry>
-							<entry>Retrieves the self-signed certificate from the destination
-								cluster to the source cluster. Specify a local location (full path)
-								and file name for the pem-encoded certificate. For example,
-									<codeph>--retrieve-cert=./newCert.pem</codeph>. (Enterprise
-								Edition only)</entry>
+							<entry>自己署名証明書を宛先クラスタからソースクラスタへと保存する。 pemエンコード証明書のローカル保存先(絶対パス)とファイル名を指定する。例、<codeph>--retrieve-cert=./newCert.pem</codeph> (エンタープライズエディションのみ)</entry>
 						</row>
 					</tbody>
 				</tgroup>
