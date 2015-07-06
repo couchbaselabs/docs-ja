@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbcli-intro">
-	<title>couchbase-cli tool</title>
-	<shortdesc>The <codeph>couchbase-cli</codeph> tool is used to perform operations on an entire cluster.</shortdesc>
+<reference xml:lang="ja" id="cbcli-intro">
+	<title>couchbase-cliツール</title>
+	<shortdesc><codeph>couchbase-cli</codeph>ツールはクラスタ規模の操作を実行する際に利用します。</shortdesc>
 	<refbody>
-		<section><title>Description</title>
-			<p>The  <codeph>couchbase-cli</codeph> tool is located in the following paths, depending upon the
-				platform. This tool can perform operations on an entire cluster, on a bucket shared
-				across an entire cluster, or on a single node in a cluster. For instance, if this
-				tool is used to create a data bucket, all nodes in the cluster have access the
-				bucket.</p>
+		<section><title>説明</title>
+			<p><codeph>couchbase-cli</codeph>ツールはプラットフォームごとに以下のパスに配置されています。 このツールはクラスタ全体に対して、クラスタ内で分散されているバケットに対して、もしくはクラスタ内の単一ノードに対して操作を実行できます。 例えば、このツールを使ってデータバケットを作成すると、クラスタ内のすべてのノードでそのバケットへアクセスできます。</p>
 			
-			<p>This tool provides access to various management operations for Couchbase Server clusters,
-				nodes and buckets. </p>
-		<note type="note">Many of these settings can be performed using the REST API.</note>
+			<p>このツールはCouchbase Serverクラスタ、ノード、バケットに対する様々な管理操作へのアクセスを提供します。 </p>
+		<note type="note">これらの設定の多くはREST APIを利用して実行できます。</note>
 
 		<table>
 			<tgroup cols="2">
@@ -21,8 +16,8 @@
 				<colspec colname="col2"/>
 				<thead>
 					<row>
-						<entry>Operating System</entry>
-						<entry>Directory Locations</entry>
+						<entry>オペレーティングシステム</entry>
+						<entry>ディレクトリの場所</entry>
 					</row>
 				</thead>
 				<tbody>
@@ -45,57 +40,55 @@
 			
 		</section>
 		
-		<section><title>couchbase-cli options</title>
-			<p>The <codeph>couchbase-cli</codeph> tool has the following generic options:</p>
+		<section><title>couchbase-cliのオプション</title>
+			<p><codeph>couchbase-cli</codeph>ツールには以下の共通オプションがあります:</p>
 			<table>
-				<title>couchbase-cli command options</title>
+				<title>couchbase-cliコマンドオプション</title>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>Option</entry>
-							<entry>Description</entry>
+							<entry>オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>-u USERNAME, --user=USERNAME</entry>
-							<entry>Admin username of the cluster</entry>
+							<entry>クラスタの管理者ユーザ名</entry>
 						</row>
 						<row>
 							<entry>-p PASSWORD, --password=PASSWORD</entry>
-							<entry>Admin password of the cluster</entry>
+							<entry>クラスタの管理者ユーザパスワード</entry>
 						</row>
 						<row>
 							<entry>-o KIND, --output=KIND</entry>
-							<entry>Type of document: JSON or standard</entry>
+							<entry>ドキュメント種別: JSON あるいは standard</entry>
 						</row>
 						<row>
 							<entry>-d, --debug</entry>
-							<entry>Output debug information</entry>
+							<entry>デバッグ情報の出力</entry>
 						</row>
 						<row>
 							<entry>-h, --help</entry>
-							<entry>Help information</entry>
+							<entry>ヘルプ情報</entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table>
 			
-			<note type="note">The user name can be in the environment variable CB_REST_USERNAME and 
-			the password can be set in the environment variable CB_REST_PASSWORD.</note>
+			<note type="note">ユーザ名は環境変数のCB_REST_USERNAME、パスワードは環境変数のCB_REST_PASSWORDで指定することもできます。</note>
 		</section>
 		
-		<section><title>Syntax</title>
-			<p>The basic usage format is:</p>
+		<section><title>シンタックス</title>
+			<p>基本となるフォーマット:</p>
 		<codeblock>couchbase-cli COMMAND [bucket-name] CLUSTER [OPTIONS]
 		</codeblock>
-		<p>Where:</p>
+		<p>ここで:</p>
 		<ul>
-			<li><codeph>COMMAND</codeph> is a CLI command. </li>
-			<li><codeph>CLUSTER</codeph> is a cluster specification. The following shows both
-					short and long form syntax:</li>
+			<li><codeph>COMMAND</codeph>にCLIコマンドを指定します。</li>
+			<li><codeph>CLUSTER</codeph>にはクラスタの情報を指定します。 以下の例は短縮系と非短縮系のシンタックスを示しています:</li>
 		</ul>
 		<codeblock><codeph>// Short form
     -c [host]:[port]
