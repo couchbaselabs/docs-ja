@@ -1,41 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbcli-xdcr-manage-encryption">
-  <title>Managing XDCR data encryption</title>
-  <shortdesc>XDCR data encryption with Secure Socket Layer (SSL) is enabled with the <codeph>couchbase-cli</codeph> tool
-    and the <codeph>xdcr-setup</codeph> command. Enterprise Edition only.</shortdesc>
+<reference xml:lang="ja" id="cbcli-xdcr-manage-encryption">
+  <title>XDCRデータの暗号化管理</title>
+  <shortdesc>Secure Socket Layer (SSL)を利用したXDCRデータの暗号化は、<codeph>couchbase-cli</codeph>ツールの<codeph>xdcr-setup</codeph>コマンドで有効化できます。 エンタープライズエディションでのみ利用できます。</shortdesc>
   <refbody>
     
-    <section><title>Description</title><p>The Couchbase Server command line
-      interface (CLI) enables XDCR data encryption (Enterprise Edition only) when an XDCR cluster
-      reference is created or modified.</p>
+    <section><title>説明</title><p>Couchbase Serverコマンドラインインタフェース(CLI)は、XDCRクラスタ参照を作成、変更する際に、XDCRデータの暗号化(エンタープライズエディションのみ)を有効化できます。</p>
       
-      <p>To setup XDCR with SSL data encryption:</p>
+      <p>XDCRでSSLデータ暗号化を設定するには:</p>
       <ol>
-        <li>Retrieve the certificate from the destination cluster.</li>
-        <li>Create or modify the XDCR configuration to allow data encryption and provide the SSL
-          certificate.</li>
-        <li>Define the replication.</li>
+        <li>宛先クラスタから証明書を取得する。</li>
+        <li>XDCR設定を作成、あるいは変更し、データ暗号化を有効化するためのSSL証明書を指定する。</li>
+        <li>レプリケーションを定義する。</li>
       </ol>
     </section>
       
       
-      <section><title>CLI command and parameters</title>
+      <section><title>CLIコマンドとパラメータ</title>
       
       
-      <p>The CLI provides the <codeph>couchbase-cli</codeph> tool and the
-          <codeph>xdcr-setup</codeph> command. The <codeph>--xdcr-demand-encryption</codeph> option
-        enables and disables XDCR data encryption. The
-          <codeph>-xdcr-certificate=CERTIFICATE</codeph> option provides the SSL certificate for
-        data security.</p>
+      <p>CLIは<codeph>couchbase-cli</codeph>ツールと、<codeph>xdcr-setup</codeph>コマンドを提供します。 <codeph>--xdcr-demand-encryption</codeph>オプションでXDCRデータ暗号化を有効/無効化します。 
+					<codeph>-xdcr-certificate=CERTIFICATE</codeph>でデータセキュリティ用のSSL証明書を指定します。</p>
       
       </section>
       
-      <section><title>Syntax</title>
-        <p>To configure XDCR with SSL data encryption, the <codeph>xdcr-setup</codeph> command is
-          used.
-          The option <codeph>--xdcr-demand-encryption</codeph> enables and disables data encryption. 
-        To enable, specify 1. To disable, specify 2 (default).</p>
+      <section><title>シンタックス</title>
+        <p>XDCRでSSLデータ暗号化を設定するには、<codeph>xdcr-setup</codeph>コマンドを利用します。
+          <codeph>--xdcr-demand-encryption</codeph>オプションでデータ暗号化を有効/無効化します。 
+        有効化するには、1を指定します。 無効化するには、0を指定します。</p>
         <codeblock>couchbase-cli xdcr-setup -c localHost:port -u [localAdmin] -p [localPassword]
   --create --xdcr-cluster-name=[remoteClustername] 
   --xdcr-hostname=[remoteHost]:[port] 
@@ -45,9 +37,8 @@
     </codeblock>
       </section>
       
-      <section><title>Example: Enabling data encryption</title>
-        <p>To enable XDCR data encryption, execute <codeph>couchbase-cli xdcr-setup</codeph> with
-          <codeph>--xdcr-demand-encryption=1</codeph>. </p>
+      <section><title>例: データ暗号化を有効化する</title>
+        <p>XDCRのデータ暗号化を有効にするには、<codeph>couchbase-cli xdcr-setup</codeph>で<codeph>--xdcr-demand-encryption=1</codeph>を指定します。 </p>
         <codeblock>couchbase-cli xdcr-setup -c 10.3.4.186:8091 -u localAdmin -p localPassword
   --create --xdcr-cluster-name=Omaha 
   --xdcr-hostname=10.3.4.187:8091 
@@ -57,9 +48,8 @@
         </codeblock>
       </section>
     
-    <section><title>Example: Disabling data encryption</title>
-      <p>To disable XDCR data encryption, execute <codeph>couchbase-cli xdcr-setup</codeph> with
-        <codeph>--xdcr-demand-encryption=0</codeph>. </p>
+    <section><title>例: データ暗号化を無効化する</title>
+      <p>XDCRのデータ暗号化を無効にするには、<codeph>couchbase-cli xdcr-setup</codeph>で<codeph>--xdcr-demand-encryption=0</codeph>を指定します。 </p>
       
       
       <codeblock>couchbase-cli xdcr-setup -c 10.3.4.186:8091 -u localAdmin -p localPassword
@@ -75,8 +65,8 @@
         
         
     
-    <section><title>Response</title>
-    <p>The following is an example of results for a successful XDCR configuration.</p>
+    <section><title>レスポンス</title>
+    <p>XDCRの設定が成功すると、以下のレスポンスが返されます。</p>
     <codeblock>SUCCESS: init/edit test 
 &lt;&lt;replication reference created&gt;&gt; 
 </codeblock>
