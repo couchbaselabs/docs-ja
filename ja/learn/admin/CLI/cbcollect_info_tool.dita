@@ -1,40 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbcollect-info-tool">
-	<title>cbcollect_info tool</title>
-	<shortdesc>The <codeph>cbcollect_info</codeph> tool provides detailed statistics for a specific node.</shortdesc>
+<reference xml:lang="ja" id="cbcollect-info-tool">
+	<title>cbcollect_info ツール</title>
+	<shortdesc><codeph>cbcollect_info</codeph>ツールは特定ノードの詳細な統計情報を提供します。</shortdesc>
 	<refbody>
-		<section><title>Description</title>
+		<section><title>説明</title>
 			
-			<p>This tool is a per-node operation. 
-				This command collects information from an individual Couchbase Server node.
-				To collect diagnostic information for an entire cluster, perform the command for every node that exists for that
-				cluster.
-				If you are experiencing problems with multiple nodes in a cluster, you may need to run it on
-				all nodes in a cluster.
+			<p>このツールはノード単位のオペレーションです。 
+				このコマンドは個別のCouchbase Serverノードから情報を収集します。
+				クラスタ全体の診断情報を収集するには、クラスタ内の各ノードに対してコマンドを実行します。
+				クラスタ内の複数のノードで問題が発生している場合、クラスタ内のすべてのノードでこれを実行する必要があるでしょう。
 			</p>
-			<p>A root account is required to run this command and collect all the server information
-				needed. There are internal server files and directories that this tool accesses which
-				require root privileges.</p>
-			<p>To use this command, remotely connect to the machine which contains the Couchbase
-				Server then issue the command with options. This command is typically run under the
-				direction of technical support at Couchbase and generates a large .zip file. This
-				archive contains files which contain performance statistics and
-				extracts from server logs.
+			<p>このコマンドの実行および必要なすべてのサーバ情報を収集するにはrootアカウントが必要です。
+			 	このツールでアクセスする際にroot権限が必要な、内部のサーバファイルやディレクトリがあります。</p>
+			<p>このコマンドを利用するには、Couchbase Serverが稼働するマシンにリモート接続し、コマンドにオプションを指定して実行します。
+				このコマンドは一般的にCouchbaseのテクニカルサポートの指示のもとに実行し、大きな.zipファイルを生成します。
+				このアーカイブは性能の統計情報やサーバログから抽出した情報を保持するファイルを含んでいます。
 			</p>
 			
 			
-		<note type="attention"><codeph>cbcollect_info</codeph> is one of the most important diagnostic tools used by Couchbase technical support.</note>
+		<note type="attention"><codeph>cbcollect_info</codeph>はCouchbaseテクニカルサポートによって利用される最も重要な診断ツールの一つです。</note>
 		
-		<p>This tool is at the following locations</p>
+		<p>このツールは以下の場所にあります</p>
 		<table>
 			<tgroup cols="2">
 				<colspec colname="col1"/>
 				<colspec colname="col2"/>
 				<thead>
 					<row>
-						<entry>Operating System</entry>
-						<entry>Location</entry>
+						<entry>オペレーティングシステム</entry>
+						<entry>ロケーション</entry>
 					</row>
 				</thead>
 				<tbody>
@@ -54,174 +49,165 @@
 			</tgroup>
 		</table>
 		
-			<p>The tool creates the following log files in the output file:</p>
+			<p>このツールは以下のログファイルを出力ファイル内に作成します:</p>
 			<table>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>Log file</entry>
-							<entry>Description</entry>
+							<entry>ログファイル</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>couchbase.log</entry>
-							<entry>OS-level information about a node.</entry>
+							<entry>ノードに関するOSレベルの情報。</entry>
 						</row>
 						<row>
 							<entry>ddocs.log</entry>
-							<entry>Contains diagnostic dumps design documents and replication documents from this node.</entry>
+							<entry>このノードでのデザインドキュメントとレプリケーションドキュメントの診断情報。</entry>
 						</row>
 						<row>
 							<entry>diag.log</entry>
-							<entry>Contains all kinds of internal diagnostics (list and states of processes, user-visible logs, in-memory stats, etc) 
-								from within live node.</entry>
+							<entry>稼働中のノードに関するあらゆる内部診断結果(プロセスのリストとステータス、ユーザが閲覧可能なログ、インメモリのステータス, etc)。</entry>
 						</row>
 						<row>
 							<entry>ini.log</entry>
-							<entry>Contains dumps of couchdb .ini files.</entry>
+							<entry>couchdb .ini ファイルのダンプ。</entry>
 						</row>
 						<row>
 							<entry>memcached.log</entry>
-							<entry>Contains logs from memcached.</entry>
+							<entry>memcachedのログ。</entry>
 						</row>
 						<row>
 							<entry>ns_server.babysitter.log</entry>
-							<entry>Logs of babysitter.</entry>
+							<entry>babysitterのログ。</entry>
 						</row>
 						<row>
 							<entry>ns_server.couchdb.log</entry>
-							<entry>Information about the persistence layer for a node.</entry>
+							<entry>ノードの永続化層に関する情報。</entry>
 						</row>
 						<row>
 							<entry>ns_server.debug.log</entry>
-							<entry>Debug-level information for the cluster management component of this
-								node.</entry>
+							<entry>このノードのクラスタ管理コンポーネントに関するデベッグ情報。</entry>
 						</row>
 						<row>
 							<entry>ns_server.error.log</entry>
-							<entry>Error-level information for the cluster management component of this
-								node.</entry>
+							<entry>このノードのクラスタ管理コンポーネントに関するエラー情報。</entry>
 						</row>
 						<row>
 							<entry>ns_server.http_access.log</entry>
-							<entry>Contains log of http requests to port 8091.</entry>
+							<entry>8091ポートに対するHTTPリクエストのログ。</entry>
 						</row>
 						<row>
 							<entry>ns_server.info.log</entry>
-							<entry>Info-level entries for the cluster management component of this
-								node.</entry>
+							<entry>このノードのクラスタ管理コンポーネントに関するINFOレベルの情報。</entry>
 						</row>
 						<row>
 							<entry>ns_server.mapreduce_errors.log</entry>
-							<entry>Contains logs of errors from map/reduce functions.</entry>
+							<entry>map/reduce関数のエラーログ。</entry>
 						</row>
 						<row>
 							<entry>ns_server.reports.log</entry>
-							<entry>Contains crash reports of erlang services.</entry>
+							<entry>Erlangサービスのクラッシュレポート。</entry>
 						</row>
 						<row>
 							<entry>ns_server.ssl_proxy.log</entry>
-							<entry>Los of the ssl proxy component.</entry>
+							<entry>SSLプロキシコンポーネント群。</entry>
 						</row><row>
 							<entry>ns_server.stats.log</entry>
-							<entry>Logs of statistic related components of ns_server.</entry>
+							<entry>ns_serverの統計情報関連コンポーネントのログ。</entry>
 						</row>
 						<row>
 							<entry>ns_server.views.log</entry>
-							<entry>Includes information about indexing, time taken for indexing, queries
-								which have been run, and other statistics about views.</entry>
+							<entry>インデクシングに関わる情報、インデクシングにかかった時間、実行されたクエリ、その他のViewに関する統計情報。</entry>
 						</row>
 						<row>
 							<entry>ns_server.xdcr_errors.log</entry>
-							<entry>Error-level messages of the ns_server.</entry>
+							<entry>ns_serverのエラーレベルメッセージ。</entry>
 						</row>
 						<row>
 							<entry>ns_server.xdcr.log</entry>
-							<entry>XDCR logs.</entry>
+							<entry>XDCRのログ。</entry>
 						</row>
 						<row>
 							<entry>stats.log</entry>
-							<entry>The results from multiple <codeph>cbstats</codeph> options run for
-								the node.</entry>
+							<entry>ノードでの<codeph>cbstats</codeph>オプションを複数回実行した結果。</entry>
 						</row>
 						<row>
 							<entry>syslog.tar.gz</entry>
-							<entry>Archive of the operating system logs.</entry>
+							<entry>オペレーティングシステムログのアーカイブ。</entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table>
 		</section>
 		
-		<section><title>CLI command and parameters</title>
-			<p>The following describes usage, where <codeph>output-file</codeph> is the name of the .zip file 
-				to create and send to Couchbase technical support.</p>
+		<section><title>CLIコマンドとパラメータ</title>
+			<p>以下に利用方法を記載します、<codeph>output-file</codeph>に作成およびCouchbaseテクニカルサポートに送信する.zipファイルの名称を指定します。</p>
 		<codeblock>cbcollect_info [options] [output-file]</codeblock>
 			
-		<p>The<codeph>cbcollect_info</codeph> command gathers statistics  from an
-				individual node in the cluster.</p>
+		<p><codeph>cbcollect_info</codeph>コマンドはクラスタ内の個々のノードから統計情報を収集します。</p>
 			
 			<table>
-				<title>cbcollect_info options</title>
+				<title>cbcollect_info オプション</title>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>Parameter</entry>
-							<entry>Description</entry>
+							<entry>パラメータ</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>-h, --help</entry>
-							<entry>Shows help information.</entry>
+							<entry>このヘルプ情報を表示します。</entry>
 						</row>
 						<row>
 							<entry>-r ROOT</entry>
-							<entry>Root directory. Default to <codeph>/opt/couchbase/bin/..</codeph></entry>
+							<entry>ルートディレクトリ。 デフォルトは<codeph>/opt/couchbase/bin/..</codeph></entry>
 						</row>
 						<row>
 							<entry>-v</entry>
-							<entry>Increases verbosity level. If specified, debugging information for
-								<codeph>cbcollect_info</codeph> is also displayed on your console.
+							<entry>冗長性レベルを増加させます。 指定すると、<codeph>cbcollect_info</codeph>のデバッグ情報が利用中のコンソールにも出力されます。
 							</entry>
 						</row>
 						<row>
 							<entry>-p</entry>
-							<entry>Gathers only product-related information.</entry>
+							<entry>プロダクトに関連する情報のみ収集します。</entry>
 						</row>
 						<row>
 							<entry>-d</entry>
-							<entry>Dumps a list of commands that <codeph>cbcollect_info</codeph> needs.</entry>
+							<entry><codeph>cbcollect_info</codeph>が必要とするコマンドのリストをダンプします。</entry>
 						</row>
 						<row>
 							<entry>--initargs-INITARG</entry>
-							<entry>Ther server <codeph>initargs</codeph> path.</entry>
+							<entry>サーバの<codeph>initargs</codeph>パス。</entry>
 						</row>
 						<row>
 							<entry>--single-node-diag</entry>
-							<entry>Collects on aper node basis, diagnostics on just this node. The default is all reachable nodes.</entry>
+							<entry>このノード上でのノード単位の診断結果を収集する。 デフォルトは接続可能なすべてのノード。</entry>
 						</row>
 						<row>
 							<entry>--upload-host=UPLOAD_HOST</entry>
-							<entry>Fully-qualified domain name of the host you want the logs uploaded to. 
-								The protocol prefix of the domain name, <codeph>https://</codeph>, is optional. 
-								It is the default only supported protocol.</entry>
+							<entry>ログのアップロード先となるホストのFQDN(Fully-Qualified Domain Name)。 
+								ドメイン名のプロトコルプリフィクス、<codeph>https://</codeph>が指定可能。 
+								これはデフォルトで唯一指定できるプロトコル。</entry>
 						</row>
 						<row>
 							<entry>--customer=UPLOAD_CUSTOMER</entry>
 							<entry>
-								Customer name. This value is a string with a maximum length of 50 characters that contains only the following characters: [A-Za-z0-9_.-]. 
-								If any other characters are included in the string, the request is rejected. 
+								顧客名。 最大50文字までの文字列、次の文字のみ指定可能: [A-Za-z0-9_.-] 
+								それ以外の文字を含んでいた場合、リクエストはリジェクトされる。 
 							</entry>
 						</row>
 						<row>
 							<entry>--ticket=UPLOAD_TICKET</entry>
-							<entry>Couchbase support ticket number. This value is a string with a maximum length of 7 character that contains only digits 0-9. The ticket number is optional and is used only in conjunction with the --upload option.
+							<entry>Couchbaseサポートチケット番号。 この値は最大8文字の文字列、0-9の数値のみ。 チケット番号は任意で、--uploadオプションを指定した場合のみ利用される。
 							</entry>
 						</row>
 					</tbody>
@@ -231,16 +217,16 @@
 			
 		</section>
 		
-		<section><title>Example</title>
-			<p>To create a diagnostics .zip file, log onto the node and run the <codeph>cbcollect_info</codeph> tool.</p>
+		<section><title>例</title>
+			<p>解析用の.zipファイルを作成するには、ノードにログインし、<codeph>cbcollect_info</codeph>ツールを実行する。</p>
 			<codeblock>
 cbcollect_info collect.zip
 			</codeblock>
 		</section>
 		
-		<section><title>Response</title>
+		<section><title>レスポンス</title>
 			
-			<p>The following example response shows partial output when running the <codeph>cbcollect_info</codeph> command.</p>
+			<p>以下の例は<codeph>cbcollect_info</codeph>コマンド実行結果を部分的に表示しています。</p>
 			<codeblock>
 uname (uname -a) - OK
 time and TZ (date; date -u) - OK
@@ -283,7 +269,7 @@ adding: /tmp/tmpMYbSyD/ns_server.stats.log -> cbcollect_info_ns_1@10.5.2.117_201
 			<link
 				href="http://www.couchbase.com/wiki/display/couchbase/Working+with+the+Couchbase+Technical+Support+Team"
 				scope="external" format="html">
-				<linktext>Working with Couchbase Customer Support</linktext>
+				<linktext>Couchbaseカスタマーサポートを利用する</linktext>
 			</link>
 		</linklist>
 	</related-links>
