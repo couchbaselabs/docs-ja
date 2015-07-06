@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_yb1_sjy_p4">
-  <title>Uninstalling on Windows</title><shortdesc>To uninstall Couchbase Server on a Windows system, you must have Administrator or Power
-    User privileges.</shortdesc>
+<topic xml:lang="ja" id="topic_yb1_sjy_p4">
+  <title>Uninstalling on Windows</title>
+  <shortdesc>WindowsシステムからCouchbase Serverをアンインストールするには、管理者権限かパワーユーザー権限を持っていなければいけません。</shortdesc>
   <body>
-    <p>To uninstall Couchbase Server:
+    <p>Couchbase Serverのアンインストール:
       <ol>
-        <li>Navigate to <menucascade>
-          <uicontrol>Start</uicontrol><uicontrol>Settings</uicontrol><uicontrol>Control  Panel</uicontrol>
-        </menucascade></li>
-        <li>Select <uicontrol>Add or Remove Programs</uicontrol>.</li>
-        <li>Remove the Couchbase Server software.</li>
+        <li><menucascade>
+          <uicontrol>スタート</uicontrol><uicontrol>設定</uicontrol><uicontrol>コントロールパネル</uicontrol>
+        </menucascade>と選択していきます。</li>
+        <li><uicontrol>プログラムの追加と削除</uicontrol>を選択します。</li>
+        <li>Couchbase Server ソフトウェアを削除します。</li>
       </ol>
     </p>
     
