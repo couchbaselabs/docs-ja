@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_dp4_b4l_34">
-	<title>Diagnostics with couchbase-cli</title>
-	<shortdesc>You can start, stop, and view status of a diagnostics collection by using the <codeph>couchbase-cli</codeph> tool.</shortdesc>
+<concept xml:lang="ja" id="concept_dp4_b4l_34">
+	<title>couchbase-cliによる診断</title>
+	<shortdesc><codeph>couchbase-cli</codeph>ツールを利用して診断結果の収集を開始、停止、ステータスの閲覧ができます。</shortdesc>
 	<conbody>
 		<section>
-			<title>Start log collection command</title>
-			<p>The start log collection command initiates a log collection process. You must specify
-				whether to collect logs from all nodes or only specified nodes. You can optionally
-				request the logs to be uploaded to Couchbase. If you request an upload to Couchbase, you
-				must include the name of your organization and optionally a support ticket number. The
-				command uses the following syntax:</p>
+			<title>ログ収集開始コマンド</title>
+			<p>ログ収集開始コマンドはログ収集プロセスを開始します。 すべてのノードか、特定のノードでログを収集するかを指定する必要があります。 Couchbaseへのログアップロードをリクエストすることもできます。 Couchbaseへのアップロードをリクエストする際には、組織名とサポートチケット番号を指定してください。 コマンドのシンタックスは以下の通りです:</p>
 			<synph>
 				<kwd>couchbase-cli</kwd>
 				<kwd>collect-logs-start</kwd>
@@ -29,9 +25,8 @@
 		</section>
 
 		<section>
-			<title>Stop log collection command</title>
-			<p>The stop log collection command cancels collection on each node. It uses the following
-				syntax:</p>
+			<title>ログ収集停止コマンド</title>
+			<p>ログ収集停止コマンドは各ノード上での収集処理をキャンセルします。 シンタックスは以下の通りです:</p>
 			<synph>
 				<kwd>couchbase-cli</kwd>
 				<kwd>collect-logs-stop</kwd>
@@ -44,9 +39,8 @@
 		</section>
 
 		<section>
-			<title>Report log collection status command</title>
-			<p>The report log collection status command returns information about each node. It uses
-				the following syntax:</p>
+			<title>ログ収集ステータスレポートコマンド</title>
+			<p>ログ収集ステータスレポートコマンドは各ノードの情報を返します。 シンタックスは以下の通りです:</p>
 			<synph>
 				<kwd>couchbase-cli</kwd>
 				<kwd>collect-logs-status</kwd>
