@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_jkv_xw1_34">
-	<title>Managing diagnostics</title>
-	<shortdesc>The command-line interface provides commands to start, stop, and report status for log
-		collection.</shortdesc>
+<concept xml:lang="ja" id="concept_jkv_xw1_34">
+	<title>診断結果の管理</title>
+	<shortdesc>コマンドラインインタフェースはログコレクションの開始、停止、ステータスレポートを実行するコマンドを提供します。</shortdesc>
 	<conbody>
-		<p>You can collect diagnostics through the command-line interface by using either the
-			couchbase-cli tool or the cbcollect_info tool.</p>
+		<p>couchbase-cliツール、もしくは、cbcollect_infoツールを利用してコマンドラインインタフェース経由で診断結果を収集できます。</p>
 	</conbody>
 </concept>
