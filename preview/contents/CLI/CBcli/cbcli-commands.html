@@ -1,20 +1,20 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>couchbase-cli commands</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../../assets/stylesheets/application.css"><link rel="stylesheet" href="../../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>couchbase-cliコマンド</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../../assets/stylesheets/application.css"><link rel="stylesheet" href="../../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../../CLI/cli-overview.html"><span>CLI overview</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/cbcli-intro.html"><span>couchbase-cli tool</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBcli/cbcli-commands.html" class="current"><span>couchbase-cli commands</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../../CLI/CBcli/cbcli-rza.html"><span>Rack-zone awareness</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-buckets.html"><span>バケット</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-servers.html"><span>Server nodes</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-xdcr.html"><span>XDCR</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-cluster-wide-info.html"><span>Diagnostics with couchbase-cli</span></a></li></ul></li><li class="section"><a href="../../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-	<h1 class="title topictitle1">couchbase-cli commands</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBcli/cbcli-commands.html" class="current"><span>couchbase-cliコマンド</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../../CLI/CBcli/cbcli-rza.html"><span>ラックゾーンアウェアネス</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-buckets.html"><span>バケット</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-servers.html"><span>サーバノード</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-xdcr.html"><span>XDCR</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-cluster-wide-info.html"><span>Diagnostics with couchbase-cli</span></a></li></ul></li><li class="section"><a href="../../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+	<h1 class="title topictitle1">couchbase-cliコマンド</h1>
 
 	
-	<div class="body refbody"><p class="shortdesc">Commands used with the CLI <samp class="ph codeph">couchbase-cli</samp> tool.</p>
+	<div class="body refbody"><p class="shortdesc"><samp class="ph codeph">couchbase-cli</samp>ツールで利用可能なコマンドの一覧です。</p>
 
 		
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. couchbase-cli commands</span></caption>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">表 1. couchbase-cliコマンド</span></caption>
 				
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d2648e33">Command</th>
+						<th class="entry" valign="top" width="50%" id="d2648e32">コマンド</th>
 
-						<th class="entry" valign="top" width="50%" id="d2648e36">Description</th>
+						<th class="entry" valign="top" width="50%" id="d2648e35">説明</th>
 
 					</tr>
 
@@ -22,193 +22,193 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">server-list</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">server-list</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">List all servers in a cluster.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">server-info</td>
-
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Show details on one server.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">クラスタ内のすべてのサーバを一覧表示。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">server-add</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">server-info</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Add one or more servers to the cluster.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">server-readd</td>
-
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Readds a server that was failed over.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">単一のサーバの詳細を表示。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">group-manage</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">server-add</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Manages server groups (Enterprise Edition only).</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">rebalance</td>
-
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Start a cluster rebalancing.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">一つまたは複数のサーバをクラスタに追加。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">rebalance-stop</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">server-readd</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Stop current cluster rebalancing.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">rebalance-status</td>
-
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Show status of current cluster rebalancing.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">フェイルオーバしたサーバを再追加。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">failover</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">group-manage</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Failover one or more servers. Default: Graceful failover
-						<p class="p">Hard failover is implemented with the <samp class="ph codeph">--force</samp> option.</p>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">サーバグループを管理する(エンタープライズエディションのみ)。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">rebalance</td>
+
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">クラスタのリバランスを開始。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">rebalance-stop</td>
+
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">クラスタのリバランスを停止。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">rebalance-status</td>
+
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">現在のクラスタリバランス状態を表示。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">failover</td>
+
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">一つまたは複数のサーバをフェイルオーバ。 デフォルト: グレイスフルフェイルオーバ
+						<p class="p">ハードフェイルオーバは<samp class="ph codeph">--force</samp>オプションを指定。</p>
 </td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">cluster-init</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">cluster-init</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Set the username,password and port of the cluster.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">cluster-edit</td>
-
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Modify cluster settings.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">クラスタのユーザ名、パスワード、ポートを設定。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">node-init</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">cluster-edit</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Set node specific parameters.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">bucket-list</td>
-
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">List all buckets in a cluster.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">クラスタ設定の変更。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">bucket-create</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">node-init</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Add a new bucket to the cluster.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">bucket-edit</td>
-
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Modify an existing bucket.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">ノード個別のパラメータを設定。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">bucket-delete</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">bucket-list</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Delete an existing bucket.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">bucket-flush</td>
-
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Flush all data from disk for a given bucket.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">クラスタ内のバケットを一覧表示。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">bucket-compact</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">bucket-create</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Compact database and index data.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">setting-compaction</td>
-
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Set auto compaction settings.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">クラスタに新規バケットを追加。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">setting-notification</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">bucket-edit</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Set notifications.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">setting-alert</td>
-
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Email alert settings.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">既存のバケットを変更。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">setting-autofailover</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">bucket-delete</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Set auto failover settings.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">setting-xdcr</td>
-
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Set XDCR-related configuration which affect behavior.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">既存バケットを削除。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">ssl-manage</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">bucket-flush</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Manage cluster SSL certificate.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">xdcr-setup</td>
-
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Set up XDCR replication.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">指定バケットのすべてのデータをディスクから削除する。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">xdcr-replicate</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">bucket-compact</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Create and run replication via XDCR.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">データベースとインデックスデータをコンパクションする。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e33 ">help show longer</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">setting-compaction</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e36 ">Syntax, usage, and examples.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">自動コンパクションを設定する。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">setting-notification</td>
+
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">通知を設定する。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">setting-alert</td>
+
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">eメール通知設定。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">setting-autofailover</td>
+
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">自動フェイルオーバを設定する。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">setting-xdcr</td>
+
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">XDCRの挙動に関わるXDCR関連の設定を行う。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">ssl-manage</td>
+
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">クラスタのSSL証明書を管理する。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">xdcr-setup</td>
+
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">XDCRレプリケーションを設定する。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">xdcr-replicate</td>
+
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">XDCRでのレプリケーションを作成し実行する。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d2648e32 ">help</td>
+
+						<td class="entry" valign="top" width="50%" headers="d2648e35 ">より詳細なシンタックス、利用方法、利用例を表示する。</td>
 
 					</tr>
 
@@ -217,18 +217,18 @@
 			</table>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">couchbase-cli command options</h2><p class="p">The following are options which can be used with their respective commands.</p>
+		<div class="section"><h2 class="title sectiontitle">couchbase-cliコマンドオプション</h2><p class="p">以下のコマンドは特定のコマンドで利用できるオプションです。</p>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">server-list options</h2>
+		<div class="section"><h2 class="title sectiontitle">server-list オプション</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e319">server-list options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e318">server-list オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e322">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e321">説明</th>
 
 						</tr>
 
@@ -236,10 +236,9 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e319 ">–-group-name=GROUPNAME</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e318 ">–-group-name=GROUPNAME</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e322 ">Displays all server in a server group (Enterprise Edition
-								only)</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e321 ">サーバグループ内のすべてのサーバを表示 (エンタープライズエディションのみ)</td>
 
 						</tr>
 
@@ -249,15 +248,15 @@
 </div>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">server-add options</h2>
+		<div class="section"><h2 class="title sectiontitle">server-add オプション</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e356">server-add options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e355">server-add オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e359">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e358">説明</th>
 
 						</tr>
 
@@ -265,31 +264,30 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e356 ">--server-add=HOST[:PORT]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e355 ">--server-add=HOST[:PORT]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e359 ">Server to add to cluster</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e356 ">--server-add-username=USERNAME</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e359 ">Admin username for the server to be added</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e358 ">クラスタに追加するサーバ</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e356 ">--server-add-password=PASSWORD</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e355 ">--server-add-username=USERNAME</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e359 ">Admin password for the server to be added</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e358 ">追加するサーバの管理者ユーザ名</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e356 ">--group-name=GROUPNAME</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e355 ">--server-add-password=PASSWORD</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e359 ">Server group where the server is to be added (Enterprise Edition
-								only) </td>
+							<td class="entry" valign="top" width="50%" headers="d2648e358 ">追加するサーバの管理者パスワード</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e355 ">--group-name=GROUPNAME</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e358 ">サーバを追加するサーバグループ (エンタープライズエディションのみ) </td>
 
 						</tr>
 
@@ -299,15 +297,15 @@
 </div>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">server-readd options</h2>
+		<div class="section"><h2 class="title sectiontitle">server-readd オプション</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e420">server-readd options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e419">server-readd オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e423">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e422">説明</th>
 
 						</tr>
 
@@ -315,31 +313,30 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e420 ">--server-add=HOST[:PORT]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e419 ">--server-add=HOST[:PORT]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e423 ">Server to re-add to cluster</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e420 ">--server-add-username=USERNAME</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e423 ">Administrator username for the server to be added</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e422 ">クラスタに再追加するサーバ</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e420 ">--server-add-password=PASSWORD</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e419 ">--server-add-username=USERNAME</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e423 ">Administrator password for the server to be added</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e422 ">追加するサーバの管理者ユーザ名</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e420 ">--group-name=GROUPNAME</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e419 ">--server-add-password=PASSWORD</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e423 ">Server group where the server is to be added (Enterprise Edition
-								only)</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e422 ">追加するサーバの管理者パスワード</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e419 ">--group-name=GROUPNAME</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e422 ">サーバを追加するサーバグループ (エンタープライズエディションのみ)</td>
 
 						</tr>
 
@@ -349,15 +346,15 @@
 </div>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">group-manage options (Enterprise Edition only)</h2>
+		<div class="section"><h2 class="title sectiontitle">group-manage オプション (エンタープライズエディションのみ)</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e485">group-manage options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e484">group-manage オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e488">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e487">説明</th>
 
 						</tr>
 
@@ -365,66 +362,65 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e485 ">--group-name=GROUPNAME</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e484 ">--group-name=GROUPNAME</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e488 ">Server group name</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e485 ">--list</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e488 ">Shows the server groups and the server assigned to each server
-								group</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e487 ">サーバグループ名</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e485 ">--create</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e484 ">--list</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e488 ">Creates a server group.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e485 ">--delete</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e488 ">Removes an empty server group.</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e487 ">サーバグループと各サーバグループに所属するサーバを表示</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e485 ">--rename=NEWGROUPNAME</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e484 ">--create</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e488 ">Renames an existing server group.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e485 "><samp class="ph codeph">--add-servers="HOST:PORT;HOST:PORT"</samp></td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e488 ">Adds servers to a group</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e487 ">サーバグループの作成</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e485 ">--move-servers="HOST:PORT;HOST:PORT"</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e484 ">--delete</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e488 ">Moves a list of server from a group</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e485 ">--from-group=GROUPNAME</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e488 ">Moves one or more servers from a group.</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e487 ">空のサーバグループを削除</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e485 ">--to-group=GROUPNAME</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e484 ">--rename=NEWGROUPNAME</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e488 ">Moves one or more server to a group</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e487 ">既存のサーバグループの名前を変更する。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e484 "><samp class="ph codeph">--add-servers="HOST:PORT;HOST:PORT"</samp></td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e487 ">サーバをグループに追加</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e484 ">--move-servers="HOST:PORT;HOST:PORT"</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e487 ">グループからサーバのリストを移動</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e484 ">--from-group=GROUPNAME</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e487 ">グループから一つまたは複数のサーバを移動。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e484 ">--to-group=GROUPNAME</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e487 ">一つまたは複数のサーバをグループへ移動</td>
 
 						</tr>
 
@@ -434,15 +430,15 @@
 </div>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">rebalance options</h2>
+		<div class="section"><h2 class="title sectiontitle">rebalance オプション</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e596">rebalance options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e595">rebalance オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e599">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e598">説明</th>
 
 						</tr>
 
@@ -450,16 +446,16 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e596 ">--server-add*</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e595 ">--server-add*</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e599 ">See server-add OPTIONS</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e598 ">server-addオプションを参照</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e596 ">--server-remove=[host]:[port]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e595 ">--server-remove=[host]:[port]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e599 ">The server to remove from cluster </td>
+							<td class="entry" valign="top" width="50%" headers="d2648e598 ">クラスタから削除するサーバ </td>
 
 						</tr>
 
@@ -469,15 +465,15 @@
 </div>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">failover option</h2>
+		<div class="section"><h2 class="title sectiontitle">failover オプション</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e642">failover option</th>
+							<th class="entry" valign="top" width="50%" id="d2648e641">failover オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e645">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e644">説明</th>
 
 						</tr>
 
@@ -485,16 +481,16 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e642 ">--server-failover=[host]:[port]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e641 ">--server-failover=[host]:[port]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e645 ">Server to failover.</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e644 ">フェイルオーバするサーバ。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e642 ">--force</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e641 ">--force</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e645 ">Force a hard failover.</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e644 ">ハードフェイルオーバを強制する。</td>
 
 						</tr>
 
@@ -504,16 +500,16 @@
 </div>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">cluster-* options</h2>
+		<div class="section"><h2 class="title sectiontitle">cluster-* オプション</h2>
 			
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e689">cluster-* options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e688">cluster-* オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e692">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e691">説明</th>
 
 						</tr>
 
@@ -521,30 +517,30 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e689 ">--cluster-username=USER</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e688 ">--cluster-username=USER</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e692 ">New admin username</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e689 ">--cluster-password=PASSWORD</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e692 ">New admin password</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e691 ">新しい管理者ユーザ名</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e689 ">--cluster-port=PORT</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e688 ">--cluster-password=PASSWORD</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e692 ">New cluster REST/http port</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e691 ">新しい管理者パスワード</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e689 ">--cluster-ramsize=RAMSIZEMB</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e688 ">--cluster-port=PORT</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e692 ">Per node RAM quota in MB </td>
+							<td class="entry" valign="top" width="50%" headers="d2648e691 ">新しいクラスタのREST/httpポート</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e688 ">--cluster-ramsize=RAMSIZEMB</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e691 ">ノード単位のRAM割当量、MB </td>
 
 						</tr>
 
@@ -554,15 +550,15 @@
 </div>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">node-init options</h2>
+		<div class="section"><h2 class="title sectiontitle">node-init オプション</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e753">node-init options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e752">node-init オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e756">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e755">説明</th>
 
 						</tr>
 
@@ -570,23 +566,23 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e753 ">--node-init-data-path=PATH</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e752 ">--node-init-data-path=PATH</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e756 ">Per node path to store data</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e753 ">--node-init-index-path=PATH</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e756 ">Per node path to store index </td>
+							<td class="entry" valign="top" width="50%" headers="d2648e755 ">ノードごとのデータ保存パス</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e753 ">--node-init-hostname=NAME</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e752 ">--node-init-index-path=PATH</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e756 ">Host name for the node. Default: 127.0.0.1</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e755 ">ノードごとのインデックス保存パス </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e752 ">--node-init-hostname=NAME</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e755 ">ノードのホスト名 デフォルト: 127.0.0.1</td>
 
 						</tr>
 
@@ -596,15 +592,15 @@
 </div>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">bucket-* options</h2>
+		<div class="section"><h2 class="title sectiontitle">bucket-* オプション</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e808">bucket-* options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e807">bucket-* オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e811">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e810">説明</th>
 
 						</tr>
 
@@ -612,87 +608,86 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e808 ">--bucket=BUCKETNAME</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e807 ">--bucket=BUCKETNAME</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e811 ">Named bucket to act on</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e808 ">--bucket-type=TYPE</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e811 ">Bucket type, either memcached or couchbase</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e810 ">対象の名前付きバケット</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e808 ">--bucket-port=PORT</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e807 ">--bucket-type=TYPE</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e811 ">Supports ASCII protocol and does not require
-								authentication</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e808 ">--bucket-password=PASSWORD</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e811 ">Standard port, exclusive with bucket-port</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e810 ">バケット種別、memcachedあるいはcouchbase</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e808 ">--bucket-ramsize=RAMSIZEMB</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e807 ">--bucket-port=PORT</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e811 ">Bucket RAM quota in MB</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e808 ">--bucket-replica=COUNT</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e811 ">Replication count</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e810 ">ASCIIプロトコルをサポートし、認証を不要とする</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e808 ">--enable-flush=[0\|1]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e807 ">--bucket-password=PASSWORD</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e811 ">Enable/disable flush</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e808 ">--enable-index-replica=[0\|1]</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e811 ">Enable/disable index replicas</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e810 ">標準ポート、バケットポートとは排他</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e808 ">--wait</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e807 ">--bucket-ramsize=RAMSIZEMB</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e811 ">Wait for bucket create to be complete before returning</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e808 ">--force</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e811 ">Force command execution without asking for confirmation</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e810 ">バケットのRAM割当量、MB</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e808 ">--data-only</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e807 ">--bucket-replica=COUNT</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e811 ">Compact database data only</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e810 ">レプリケーション数</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e808 ">--view-only</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e807 ">--enable-flush=[0\|1]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e811 ">Compact view data only </td>
+							<td class="entry" valign="top" width="50%" headers="d2648e810 ">フラッシュの有効/無効化</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e807 ">--enable-index-replica=[0\|1]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e810 ">インデックスレプリカの有効/無効化</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e807 ">--wait</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e810 ">バケットの作成完了を待つ</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e807 ">--force</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e810 ">確認を行わずに強制的にコマンドを実行する</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e807 ">--data-only</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e810 ">データベースデータのみをコンパクション</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e807 ">--view-only</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e810 ">Viewデータのみをコンパクション </td>
 
 						</tr>
 
@@ -702,15 +697,15 @@
 </div>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">setting-compaction options</h2>
+		<div class="section"><h2 class="title sectiontitle">setting-compaction オプション</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e947">setting-compaction options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e946">setting-compaction オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e950">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e949">説明</th>
 
 						</tr>
 
@@ -718,62 +713,58 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e947 ">--compaction-db-percentage=PERCENTAGE</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e946 ">--compaction-db-percentage=PERCENTAGE</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e950 ">Percentage of disk fragmentation when database compaction is
-								triggered</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e947 ">--compaction-db-size=SIZE[MB]</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e950 ">Size of disk fragmentation when database compaction is
-								triggered</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e949 ">コンパクション実行条件のディスクフラグメント率</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e947 ">--compaction-view-percentage=PERCENTAGE</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e946 ">--compaction-db-size=SIZE[MB]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e950 ">Percentage of disk fragmentation when views compaction is
-								triggered</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e947 ">--compaction-view-size=SIZE[MB]</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e950 ">Size of disk fragmentation when views compaction is
-								triggered</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e949 ">コンパクション実行条件のディスクフラグメントサイズ</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e947 ">--compaction-period-from=HH:MM</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e946 ">--compaction-view-percentage=PERCENTAGE</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e950 ">Enable compaction from this time onwards</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e947 ">--compaction-period-to=HH:MM</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e950 ">Stop enabling compaction at this time</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e949 ">Viewコンパクション実行条件のディスクフラグメント率</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e947 ">--enable-compaction-abort=[0\|1]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e946 ">--compaction-view-size=SIZE[MB]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e950 ">Allow compaction to abort when time expires</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e949 ">Viewコンパクション実行条件のディスクフラグメントサイズ</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e947 ">--enable-compaction-parallel=[0\|1]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e946 ">--compaction-period-from=HH:MM</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e950 ">Allow parallel compaction processes for database and view
+							<td class="entry" valign="top" width="50%" headers="d2648e949 ">コンパクション実行開始時刻</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e946 ">--compaction-period-to=HH:MM</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e949 ">コンパクション実行終了時刻</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e946 ">--enable-compaction-abort=[0\|1]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e949 ">時刻を過ぎた際にコンパクションの強制終了を許可する</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e946 ">--enable-compaction-parallel=[0\|1]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e949 ">データベースとViewの並列コンパクションを許可する
 							</td>
 
 						</tr>
@@ -784,15 +775,15 @@
 </div>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">setting-alert and notification options</h2>
+		<div class="section"><h2 class="title sectiontitle">setting-alertとnotificationオプション</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e1048">setting-alert options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e1047">setting-alert オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e1051">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e1050">説明</th>
 
 						</tr>
 
@@ -800,123 +791,121 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--enable-email-alert=[0\|1]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--enable-email-alert=[0\|1]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Allow email alert</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--email-recipients=RECIPIENT</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Email recipents, separate addresses with, or ;</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">eメール通知を許可する</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--email-sender=SENDER</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--email-recipients=RECIPIENT</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Sender email address</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--email-user=USER</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Email server username</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">eメール受信者のアドレスを , あるいは ; 区切りで指定</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--email-password=PWD</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--email-sender=SENDER</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Email server password</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--email-host=HOST</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Email server hostname</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">送信者のeメールアドレス</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--email-port=PORT</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--email-user=USER</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Email server port</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--enable-email-encrypt=[0\|1]</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Email encryption with 0 the default for no encryption</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">eメールサーバのユーザ名</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--alert-auto-failover-node</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--email-password=PWD</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Node was failed over via autofailover</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--alert-auto-failover-max-reached</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Maximum number of auto failover nodes reached</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">eメールサーバのパスワード</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--alert-auto-failover-node-down</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--email-host=HOST</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Node not auto failed-over as other nodes are down at the same
-								time</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--alert-auto-failover-cluster-small</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Node not auto failed-over as cluster was too small</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">eメールサーバのホスト名</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--alert-ip-changed</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--email-port=PORT</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Node ip address changed unexpectedly</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--alert-disk-space</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Disk space used for persistent storage has reached at least 90%
-								capacity</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">eメールサーバのポート番号</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--alert-meta-overhead</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--enable-email-encrypt=[0\|1]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Metadata overhead is more than 50% of RAM for node</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--alert-meta-oom</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Bucket memory on a node is entirely used for metadata</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">eメールの暗号化、デフォルトは0で暗号化しない</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1048 ">--alert-write-failed</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--alert-auto-failover-node</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1051 ">Writing data to disk for a specific bucket has failed </td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">ノードが自動フェイルオーバによってフェイルオーバされた</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--alert-auto-failover-max-reached</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">最大自動フェイルオーバノード数に達した</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--alert-auto-failover-node-down</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">同時に他のノードもダウンしたため、ノードがフェイルオーバされなかった</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--alert-auto-failover-cluster-small</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">クラスタが小さすぎるため、ノードがフェイルオーバされなかった</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--alert-ip-changed</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">ノードのIPアドレスが予期せず変わった</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--alert-disk-space</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">永続化ストレージのディスクスペースが容量の90%に達した</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--alert-meta-overhead</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">メタデータオーバヘッドがノードのRAMの50%を超えた</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--alert-meta-oom</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">ノード上のバケットメモリがすべてメタデータで利用されている</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1047 ">--alert-write-failed</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1050 ">特定のバケットにおいてディスクへのデータ書き込みが失敗した </td>
 
 						</tr>
 
@@ -930,9 +919,9 @@
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e1227">setting-notification option</th>
+							<th class="entry" valign="top" width="50%" id="d2648e1226">setting-notification オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e1230">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e1229">説明</th>
 
 						</tr>
 
@@ -940,9 +929,9 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1227 ">--enable-notification=[0\|1]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1226 ">--enable-notification=[0\|1]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1230 ">Allow notifications </td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1229 ">通知を許可する </td>
 
 						</tr>
 
@@ -953,15 +942,15 @@
 </div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">setting-autofailover options</h2>
+		<div class="section"><h2 class="title sectiontitle">setting-autofailover オプション</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e1264">setting-autofailover options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e1263">setting-autofailover オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e1267">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e1266">説明</th>
 
 						</tr>
 
@@ -969,17 +958,16 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1264 ">--enable-auto-failover=[0\|1]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1263 ">--enable-auto-failover=[0\|1]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1267 ">Allow auto failover</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1266 ">フェイルオーバを有効にする</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1264 ">--auto-failover-timeout=TIMEOUT
-								(&gt;=30)</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1263 ">--auto-failover-timeout=TIMEOUT (&gt;=30)</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1267 ">Specify amount of node timeout that triggers auto failover
+							<td class="entry" valign="top" width="50%" headers="d2648e1266 ">自動フェイルオーバを実行するまでのノードタイムアウト時間を指定
 							</td>
 
 						</tr>
@@ -991,15 +979,15 @@
 </div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">setting-xdcr options</h2>
+		<div class="section"><h2 class="title sectiontitle">setting-xdcr オプション</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e1310">setting-xdcr options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e1309">setting-xdcr オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e1313">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e1312">説明</th>
 
 						</tr>
 
@@ -1007,45 +995,44 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1310 ">--max-concurrent-reps=[32]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1309 ">--max-concurrent-reps=[32]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1313 ">Maximum concurrent replicators per bucket, 8 to 256.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1310 ">--checkpoint-interval=[1800]</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1313 ">Intervals between checkpoints, 60 to 14400 seconds.</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1312 ">バケット単位の最大並列レプリケーターを指定、8から256。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1310 ">--worker-batch-size=[500]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1309 ">--checkpoint-interval=[1800]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1313 ">Doc batch size, 500 to 10000.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1310 ">--doc-batch-size=[2048]KB</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1313 ">Document batching size, 10 to 100000 KB</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1312 ">チェックポイント間隔、60から14400秒。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1310 ">--failure-restart-interval=[30]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1309 ">--worker-batch-size=[500]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1313 ">Interval for restarting failed xdcr, 1 to 300 seconds</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1312 ">ドキュメントのバッチサイズ、500から10000。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1310 ">--optimistic-replication-threshold=[256]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1309 ">--doc-batch-size=[2048]KB</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1313 ">Document body size threshold (bytes) to trigger optimistic
-								replication </td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1312 ">ドキュメントのバッチサイズ、10から100000KB</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1309 ">--failure-restart-interval=[30]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1312 ">失敗したXDCRのリスタート間隔、1から300秒</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1309 ">--optimistic-replication-threshold=[256]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1312 ">楽観的レプリケーション実行のドキュメントボディサイズ閾値(bytes) </td>
 
 						</tr>
 
@@ -1055,92 +1042,88 @@
 </div>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">xdcr-setup options</h2>
+		<div class="section"><h2 class="title sectiontitle">xdcr-setup オプション</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e1393">xdcr-setup options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e1392">xdcr-setup オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e1396">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e1395">説明</th>
 
 						</tr>
 
 					</thead>
 
 					<tbody class="tbody"><tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d2648e1393 ">--create</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e1392 ">--create</td>
 
-						<td class="entry" valign="top" width="50%" headers="d2648e1396 ">Creates a new XDCR configuration.</td>
+						<td class="entry" valign="top" width="50%" headers="d2648e1395 ">新しいXDCR設定を作成する。</td>
 
 					</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1393 ">--edit</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1392 ">--edit</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1396 ">Modifies an existing XDCR configuration.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1393 ">--delete</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1396 ">Deletes an existing XDCR configuration.</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1395 ">既存のXDCR設定を変更する。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1393 ">--list</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1392 ">--delete</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1396 ">Lists all XDCR configurations.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1393 ">--xdcr-cluster-name=[clustername]</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1396 ">Cluster name.</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1395 ">既存のXDCR設定を削除する。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1393 ">--xdcr-hostname=[hostname]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1392 ">--list</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1396 ">Remote host name to connect to.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1393 ">--xdcr-username=[username]</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1396 ">Remote cluster administrator username.</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1395 ">すべてのXDCR設定をリスト表示する。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1393 ">--xdcr-password=[password</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1392 ">--xdcr-cluster-name=[clustername]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1396 ">Remote cluster administrator password.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1393 ">--xdcr-demand-encryption=[0 | 1]</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1396 ">Enables and disables data encrypted using ssl. True is 1 and enables data encryption.
-								False is 0 and disables data encryption. Default: 0 (Enterprise
-								Edition only)</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1395 ">クラスタ名</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1393 ">--xdcr-certificate=[certificate]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1392 ">--xdcr-hostname=[hostname]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1396 ">Specifies the pem-encoded certificate. The certificate is required for XDCR data
-								encryption. Specify the full path for the location of the
-								pem-encoded certificate file on the source cluster. (Enterprise
-								Edition only)</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1395 ">接続するリモートホスト名。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1392 ">--xdcr-username=[username]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1395 ">リモートクラスタの管理者ユーザ名。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1392 ">--xdcr-password=[password</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1395 ">リモートクラスタの管理者パスワード。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1392 ">--xdcr-demand-encryption=[0 | 1]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1395 ">SSLによるデータ暗号化の有効/無効化。 Trueが1で、暗号化を有効に。
+								Falseが0で、暗号化を無効に。 デフォルト: 0 (エンタープライズエディションのみ)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1392 ">--xdcr-certificate=[certificate]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1395 ">pemエンコードの証明書を指定。 XDCRデータ暗号化には証明書が必要。 ソースクラスタ上のpemエンコードされた証明書の絶対パスを指定。 (エンタープライズエディションのみ)</td>
 
 						</tr>
 
@@ -1150,15 +1133,15 @@
 </div>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">xdcr-replicate options</h2>
+		<div class="section"><h2 class="title sectiontitle">xdcr-replicate オプション</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e1511">xdcr-replicate options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e1510">xdcr-replicate オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e1514">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e1513">説明</th>
 
 						</tr>
 
@@ -1166,123 +1149,122 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--create</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--create</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Create and start a new replication</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--delete</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Stop and cancel a replication</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">新しいレプリケーションを作成し開始する。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--list</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--delete</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">List all XDCR replications</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--pause</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Pause the replication</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">レプリケーションを停止しキャンセルする。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--resume</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--list</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Resume the replication</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--settings</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Update settings for the replication</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">すべてのXDCRレプリケーションを表示</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--xdcr-replicator=REPLICATOR</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--pause</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Replication ID</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--xdcr-from-bucket=BUCKET</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Local bucket name to replicate from</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">レプリケーションを一時停止</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--xdcr-cluster-name=CLUSTERNAME</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--resume</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Remote cluster to replicate to</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--xdcr-to-bucket=BUCKETNAME</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Remote bucket to replicate to</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">レプリケーションを再開</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--max-concurrent-reps =[ 16 ]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--settings</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Maximum concurrent replications per bucket, 8 to 256. Default: 16</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--checkpoint-interval =[ 1800 ]</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Intervals between checkpoints , 60 to 14400 seconds</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">レプリケーションの設定を更新</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--worker-batch-size =[ 500 ]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--xdcr-replicator=REPLICATOR</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Document batch size,  500 to 10000</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--doc-batch size =[ 2048 ] KB</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Document batch size, 10 to 100000 KB</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">レプリケーションID</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--failure-restart-interval =[ 30 ]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--xdcr-from-bucket=BUCKET</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Interval for restarting failed XDCR, 1 to 300 seconds</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--optimistic-replication-threshold =[ 256 ]</td>
-
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Document body size threshold (bytes) to trigger optimistic replication</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">レプリケーション元のローカルのバケット名</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1511 ">--xdcr-replication-mode=[xmem | capi]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--xdcr-cluster-name=CLUSTERNAME</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1514 ">Replication protocol, either capi or xmem.
-								<samp class="ph codeph">xmem</samp> indicates memcached while
-								<samp class="ph codeph">capi</samp> indicates REST protocol. </td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">レプリケーション先のリモートクラスタ</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--xdcr-to-bucket=BUCKETNAME</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">レプリケーション先のリモートバケット名</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--max-concurrent-reps =[ 16 ]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">バケットごとの最大並列レプリケーション、8から256。 デフォルト: 16</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--checkpoint-interval =[ 1800 ]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">チェックポイント間隔、60から14400秒</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--worker-batch-size =[ 500 ]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">ドキュメントバッチサイズ、500から10000</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--doc-batch size =[ 2048 ] KB</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">ドキュメントバッチサイズ、10から100000KB</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--failure-restart-interval =[ 30 ]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">失敗したXDCRのリスタート間隔、1から300秒</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--optimistic-replication-threshold =[ 256 ]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">楽観的レプリケーション実行のドキュメントボディサイズ閾値(bytes)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2648e1510 ">--xdcr-replication-mode=[xmem | capi]</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2648e1513 ">レプリケーションプロトコル、capiあるいはxmem、
+								<samp class="ph codeph">xmem</samp>はmemcached、<samp class="ph codeph">capi</samp>はRESTプロトコルを意味する. </td>
 
 						</tr>
 
@@ -1292,15 +1274,15 @@
 </div>
 </div>
 
-		<div class="section"><h2 class="title sectiontitle">ssl-manage options (Enterprise Edition only)</h2>
+		<div class="section"><h2 class="title sectiontitle">ssl-manage オプション (エンタープライズエディションのみ)</h2>
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d2648e1701">ssl-manage options</th>
+							<th class="entry" valign="top" width="50%" id="d2648e1700">ssl-manage オプション</th>
 
-							<th class="entry" valign="top" width="50%" id="d2648e1704">Description</th>
+							<th class="entry" valign="top" width="50%" id="d2648e1703">説明</th>
 
 						</tr>
 
@@ -1308,24 +1290,17 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1701 ">--regenerate-cert=[certificate]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1700 ">--regenerate-cert=[certificate]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1704 ">Regenerates a self-signed certificate on the destination cluster.
-								Specify the full path for the location of the pem-encoded
-								certificate file. For example,
-									<samp class="ph codeph">--regenerate-cert=./new.pem</samp>. (Enterprise
-								Edition only)</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1703 ">対象のクラスタ上で自己署名の証明書を再生成する。
+								pemエンコードの証明書ファイルの絶対パスを指定。例、<samp class="ph codeph">--regenerate-cert=./new.pem</samp>. (エンタープライズエディションのみ)</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d2648e1701 ">--retrieve-cert=[certificate]</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1700 ">--retrieve-cert=[certificate]</td>
 
-							<td class="entry" valign="top" width="50%" headers="d2648e1704 ">Retrieves the self-signed certificate from the destination
-								cluster to the source cluster. Specify a local location (full path)
-								and file name for the pem-encoded certificate. For example,
-									<samp class="ph codeph">--retrieve-cert=./newCert.pem</samp>. (Enterprise
-								Edition only)</td>
+							<td class="entry" valign="top" width="50%" headers="d2648e1703 ">自己署名証明書を宛先クラスタからソースクラスタへと保存する。 pemエンコード証明書のローカル保存先(絶対パス)とファイル名を指定する。例、<samp class="ph codeph">--retrieve-cert=./newCert.pem</samp> (エンタープライズエディションのみ)</td>
 
 						</tr>
 
@@ -1339,7 +1314,7 @@
 
 <nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/cbcli-intro.html" title="The couchbase-cli tool is used to perform operations on an entire cluster.">couchbase-cli tool</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBcli/cbcli-rza.html" title="Rack-Zone Awareness enables logical groupings of servers on a cluster where each server group physically belongs to a rack or Availability Zone. Enterprise Edition only.">Rack-zone awareness</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../../CLI/cbcli-intro.html" title="couchbase-cliツールはクラスタ規模の操作を実行する際に利用します。">couchbase-cliツール</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../../CLI/CBcli/cbcli-rza.html" title="ラックゾーンアウェアネスは、各サーバグループがラックやアベイラビリティゾーンに物理的に属しているクラスタ内で、サーバの論理的なグルーピングを可能とします。 エンタープライズエディションでのみ利用できます。">ラックゾーンアウェアネス</a></div>
 </div>
 </nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../../';</script><script src="../../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

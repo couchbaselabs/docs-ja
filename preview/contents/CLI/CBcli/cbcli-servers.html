@@ -1,20 +1,18 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Server nodes</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../../assets/stylesheets/application.css"><link rel="stylesheet" href="../../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>サーバノード</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../../assets/stylesheets/application.css"><link rel="stylesheet" href="../../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../../CLI/cli-overview.html"><span>CLI overview</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/cbcli-intro.html"><span>couchbase-cli tool</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBcli/cbcli-commands.html"><span>couchbase-cli commands</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-rza.html"><span>Rack-zone awareness</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-buckets.html"><span>バケット</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/CBcli/cbcli-servers.html" class="current"><span>Server nodes</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBcli/cbcli-cluster-rebalance.html"><span>Rebalancing clusters</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-server-add.html"><span>Adding nodes to clusters</span></a></li><li class="section"><a href="../../CLI/cli-failover.html"><span>Failing over nodes</span></a></li><li class="section"><a href="../../CLI/cli-node-recovery-incremental.html"><span>Recovering nodes</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-xdcr.html"><span>XDCR</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-cluster-wide-info.html"><span>Diagnostics with couchbase-cli</span></a></li></ul></li><li class="section"><a href="../../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-    <h1 class="title topictitle1">Server nodes</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBcli/cbcli-commands.html"><span>couchbase-cliコマンド</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-rza.html"><span>ラックゾーンアウェアネス</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-buckets.html"><span>バケット</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/CBcli/cbcli-servers.html" class="current"><span>サーバノード</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBcli/cbcli-cluster-rebalance.html"><span>クラスタのリバランス</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-server-add.html"><span>クラスタへのノード追加</span></a></li><li class="section"><a href="../../CLI/cli-failover.html"><span>ノードのフェイルオーバ</span></a></li><li class="section"><a href="../../CLI/cli-node-recovery-incremental.html"><span>ノードのリカバリ</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-xdcr.html"><span>XDCR</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-cluster-wide-info.html"><span>Diagnostics with couchbase-cli</span></a></li></ul></li><li class="section"><a href="../../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+    <h1 class="title topictitle1">サーバノード</h1>
 
     
-    <div class="body refbody"><p class="shortdesc">Managing server nodes in a cluster involve a variety of
-            <samp class="ph codeph">couchbase-cli</samp> tool commands.</p>
+    <div class="body refbody"><p class="shortdesc">クラスタ内のサーバノードを管理するには、様々な<samp class="ph codeph">couchbase-cli</samp>ツールコマンドを利用します。</p>
 
-        <div class="section"><h2 class="title sectiontitle">Description</h2>
-            <p class="p">This section provides examples of miscellaneous <samp class="ph codeph">couchbase-cli</samp> tool
-                commands for cluster operations.</p>
+        <div class="section"><h2 class="title sectiontitle">説明</h2>
+            <p class="p">このセクションではクラスタ操作の多様な<samp class="ph codeph">couchbase-cli</samp>ツールコマンドの実行例を紹介します。</p>
 
         
         
         
-        <p class="p">To list servers in a cluster:</p>
+        <p class="p">クラスタ内のサーバリストを表示する:</p>
 
         <pre class="pre codeblock"><code>
 couchbase-cli server-list -c 192.168.0.1:8091
@@ -22,7 +20,7 @@ couchbase-cli server-list -c 192.168.0.1:8091
 
         
         
-        <p class="p">To retrieve server information:</p>
+        <p class="p">サーバ情報を取得する:</p>
 
             <pre class="pre codeblock"><code>couchbase-cli server-info -c 192.168.0.1:8091
 </code></pre>
@@ -30,9 +28,7 @@ couchbase-cli server-list -c 192.168.0.1:8091
 
        
         
-        <div class="section"><h2 class="title sectiontitle">Example: Setting cluster parameters</h2><p class="p">The following example sets the
-                username, password, port and ram
-                quota:</p>
+        <div class="section"><h2 class="title sectiontitle">例: クラスタパラメータを設定する</h2><p class="p">以下の例では、ユーザ名、パスワード、ポート、RAM割当量を設定します:</p>
 
             <pre class="pre codeblock"><code>couchbase-cli cluster-init -c 192.168.0.1:8091 
     --cluster-init-username=Administrator 
@@ -42,8 +38,7 @@ couchbase-cli server-list -c 192.168.0.1:8091
 </code></pre>
 
             
-            <p class="p">The following example changes the cluster username, password, port and ram
-            quota:</p>
+            <p class="p">以下の例では、クラスタのユーザ名、パスワード、ポート、RAM割当量を変更します:</p>
 
             <pre class="pre codeblock"><code>couchbase-cli cluster-edit -c 192.168.0.1:8091 
     --cluster-username=Administrator 
@@ -55,8 +50,8 @@ couchbase-cli server-list -c 192.168.0.1:8091
 
         
         
-        <div class="section"><h2 class="title sectiontitle">Example: Setting data paths</h2>
-            <p class="p">To set a data path for an unprovisioned cluster:</p>
+        <div class="section"><h2 class="title sectiontitle">例: データパスの設定</h2>
+            <p class="p">未プロビジョニング状態のクラスタでデータパスを設定するには:</p>
 
             <pre class="pre codeblock"><code>
 couchbase-cli node-init -c 192.168.0.1:8091 
@@ -65,7 +60,7 @@ couchbase-cli node-init -c 192.168.0.1:8091
 </code></pre>
 
 
-        <p class="p">To change the data path and hostname for an unprovisioned cluster:</p>
+        <p class="p">未プロビジョニング状態のクラスタでデータパスを変更するには:</p>
 
             
             <pre class="pre codeblock"><code>
@@ -85,19 +80,19 @@ couchbse-cli node-init -c 192.168.0.1:8091
 
 <nav class="related-links"><h2>Related information</h2>
 <ol class="olchildlinks">
-<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-cluster-rebalance.html">Rebalancing clusters</a><br>
-Clusters are rebalanced whenever a node is added or removed from a cluster.</li>
-<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-server-add.html">Adding nodes to clusters</a><br>
-Nodes can be added to clusters with either the <samp class="ph codeph">server-add</samp> or <samp class="ph codeph">rebalance</samp> command.</li>
-<li class="link olchildlink"><a href="../../CLI/cli-failover.html">Failing over nodes</a><br>
-Nodes are failed over either by a graceful failover or hard failover operation.      Graceful failover is the default.</li>
-<li class="link olchildlink"><a href="../../CLI/cli-node-recovery-incremental.html">Recovering nodes</a><br>
-To re-add a server node to a cluster, use the <samp class="ph codeph">couchbase-cli</samp> tool and     the <samp class="ph codeph">recovery</samp> command with the <samp class="ph codeph">--recovery-type</samp> parameter. </li>
+<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-cluster-rebalance.html">クラスタのリバランス</a><br>
+クラスタへノードを追加したり、クラスタからノードを削除する際にクラスタのリバランスを行います。</li>
+<li class="link olchildlink"><a href="../../CLI/CBcli/cbcli-server-add.html">クラスタへのノード追加</a><br>
+<samp class="ph codeph">server-add</samp>コマンド、または<samp class="ph codeph">rebalance</samp>コマンドを利用し、ノードをクラスタに追加できます。</li>
+<li class="link olchildlink"><a href="../../CLI/cli-failover.html">ノードのフェイルオーバ</a><br>
+グレイスフルフェイルオーバまたはハードフェイルオーバ操作によりノードをフェイルオーバできます。      グレイスフルフェイルオーバがデフォルトです。</li>
+<li class="link olchildlink"><a href="../../CLI/cli-node-recovery-incremental.html">ノードのリカバリ</a><br>
+ノードをクラスタへ再追加するには、<samp class="ph codeph">couchbase-cli</samp>ツールの<samp class="ph codeph">recovery</samp>コマンドを<samp class="ph codeph">--recovery-type</samp>パラメータを指定して実行します。 </li>
 </ol>
 
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/cbcli-intro.html" title="The couchbase-cli tool is used to perform operations on an entire cluster.">couchbase-cli tool</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBcli/cbcli-buckets.html" title="バケットは、couchbase-cliツールとbucket-*コマンドで管理します。">バケット</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBcli/cbcli-xdcr.html" title="XDCR commands used with the couchbase-cli tool.">XDCR</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../../CLI/cbcli-intro.html" title="couchbase-cliツールはクラスタ規模の操作を実行する際に利用します。">couchbase-cliツール</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../../CLI/CBcli/cbcli-buckets.html" title="バケットは、couchbase-cliツールとbucket-*コマンドで管理します。">バケット</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../../CLI/CBcli/cbcli-xdcr.html" title="couchbase-cliツールでは以下のXDCRコマンドが利用できます。">XDCR</a></div>
 </div>
 </nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../../';</script><script src="../../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>
