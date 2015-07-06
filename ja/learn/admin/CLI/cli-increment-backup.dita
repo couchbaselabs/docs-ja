@@ -1,44 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cli-increment-backup">
-  <title>Backing up incrementally</title>
-	<shortdesc>Incremental backups are run by using the <codeph>cbbackup</codeph>
-			command-line tool.</shortdesc>
+<reference xml:lang="ja" id="cli-increment-backup">
+  <title>差分バックアップ</title>
+	<shortdesc><codeph>cbbackup</codeph>コマンドラインツールを利用して差分バックアップを実行できます。</shortdesc>
 
 	<refbody>
-		<section><title>Description</title>
+		<section><title>説明</title>
   	
-		<p>The general format of the <codeph>cbbackup</codeph> command is:
+		<p><codeph>cbbackup</codeph>コマンドの一般的なフォーマットは:
 		<codeblock>cbbackup [options] source backup_dir </codeblock></p>
-		<p>The updated <codeph>cbbackup</codeph> tool adds a new option
-			to support incremental backups. The tool still supports the existing options.</p>
-		<p>The following table describes the new backup mode option:</p>
+		<p>最新の<codeph>cbbackup</codeph>ツールは差分バックアップをサポートする新しいオプションが追加されました。 ツールは既存のオプションもサポートしています。</p>
+		<p>以下の表で、新しいバックアップモードのオプションを解説します:</p>
       
 <table>
 	<tgroup cols="2">
 		<thead>
 			<row>
-				<entry>Option</entry>
-				<entry>Description</entry>
+				<entry>オプション</entry>
+				<entry>説明</entry>
 			</row>
 		</thead>
 		<tbody>
 			<row>
 				<entry><codeph>-m MODE</codeph>, <codeph>--mode=MODE</codeph></entry>
-				<entry>Backup mode. The mode option takes any one of the following values: <dl>
+				<entry>バックアップモード。 モードオプションは以下のいずれかを指定できます: <dl>
 								<dlentry>
 									<dt><codeph>full</codeph></dt>
-									<dd>Perform a full backup</dd>
+									<dd>フルバックアップを実行します</dd>
 								</dlentry>
 								<dlentry>
 									<dt><codeph>diff</codeph></dt>
-									<dd>Perform a differential incremental backup, which backs up only the
-										changes since the last full or incremental backup.</dd>
+									<dd>最後に取得したフルあるいは差分バックアップからの変更のみをバックアップする、変更差分バックアップを実行します。</dd>
 								</dlentry>
 								<dlentry>
 									<dt><codeph>accu</codeph></dt>
-									<dd>Perform a cumulative incremental backup, which backs up all changes
-										since the last full backup.</dd>
+									<dd>最終フルバックアップからの変更をすべてバックアップする、累積差分バックアップを実行します。</dd>
 								</dlentry>
 							</dl></entry>
 			</row>
@@ -48,12 +44,12 @@
 </table>
 		</section>
 		
-		<section><title>Syntax</title>
-			<p>Basic syntax:</p>
+		<section><title>シンタックス</title>
+			<p>基本シンタックス:</p>
 			<codeblock>cbbackup -m [backup-mode] http://[host]:8091 [backup-location]</codeblock>
 
 			
-			<p>Syntax example of a full backup plus two differentials and one accumulative for a single node.</p>
+			<p>単一ノードに対する、フルバックアップ、そして、二つの変更差分、一つの累積差分バックアップのシンタックス例。</p>
 			
 			<codeblock>
 	cbbackup couchbase://HOST:8091 /backup-43 [-m full] --single-node
@@ -62,20 +58,20 @@
 	cbbackup couchbase://HOST:8091 /backup-43 -m accu --single-node
 			</codeblock>
 			
-			<note type="note">A full backup task is always triggered for a new sink location no matter what backup mode is specified.</note>
+			<note type="note">新規のシンクロケーションに対してはバックアップモードの指定に関わらず、常にフルバックアップが実行されます。</note>
 		</section>
 		
-		<section><title>Example</title>
+		<section><title>例</title>
 		
-		<p>The following example requests a full backup of all the data on the specified cluster:</p>
+		<p>以下は指定したクラスタ上のすべてのデータのフルバックアップをリクエストする例です。</p>
 		<codeblock>cbbackup -m full http://example.com:8091 /backups/backup-1</codeblock>
 		
     
-		<p>After an initial full backup, incremental backups can be performed. 
-			This example requests a differential incremental backup of all the data on the specified cluster:</p>
+		<p>初回のフルバックアップを実行後、差分バックアップを実行可能となります。 
+			以下は指定したクラスタ上のすべてのデータに対し変更差分バックアップをリクエストする例です:</p>
 		<codeblock>cbbackup -m diff http://example.com:8091 /backups/backup-1</codeblock>
 		
-		<p>This example requests a cumulative incremental backup of all the data on the specified cluster:</p>
+		<p>以下は指定したクラスタ上のすべてのデータに対し累積差分バックアップをリクエストする例です:</p>
 		<codeblock>cbbackup -m accu http://example.com:8091 /backups/backup-1</codeblock>
 		</section>
 		     
