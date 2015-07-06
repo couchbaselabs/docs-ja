@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="reference_hl3_v2v_sq">
-  <title>Rebalancing clusters</title>
-  <shortdesc>Clusters are rebalanced whenever a node is added or removed from a cluster.</shortdesc>
+<reference xml:lang="ja" id="reference_hl3_v2v_sq">
+  <title>クラスタのリバランス</title>
+  <shortdesc>クラスタへノードを追加したり、クラスタからノードを削除する際にクラスタのリバランスを行います。</shortdesc>
   <refbody>
-    <section><title>Description</title>
-      <p>The available <codeph>couchbase-cli</codeph> rebalance commands are:</p><table>
+    <section><title>説明</title>
+      <p>利用可能な<codeph>couchbase-cli</codeph>リバランスコマンドは:</p><table>
         <tgroup cols="2">
           <colspec colname="col1"/>
           <colspec colname="col2"/>
           <thead>
             <row>
-              <entry>Command</entry>
-              <entry>Description</entry>
+              <entry>コマンド</entry>
+              <entry>説明</entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>rebalance</entry>
-              <entry>Starts a cluster rebalancing.</entry>
+              <entry>クラスタのリバランスを開始。</entry>
             </row>
             <row>
               <entry>rebalance-stop</entry>
-              <entry>Stops the current cluster rebalancing.</entry>
+              <entry>クラスタのリバランスを停止。</entry>
             </row>
             <row>
               <entry>rebalance-status</entry>
-              <entry>Shows the status of the current cluster rebalancing.</entry>
+              <entry>現在のクラスタリバランス状態を表示。</entry>
             </row>
           </tbody>
         </tgroup>
       </table>> </section>
     
-    <section><title>CLI command and parameters</title>
-      <p>The <codeph>couchbase-cli rebalance</codeph> command options have all of the 
-        <codeph>server-add</codeph> command options and some additional options.</p>
+    <section><title>CLIコマンドとパラメータ</title>
+      <p><codeph>couchbase-cli rebalance</codeph>コマンドのオプションは、すべての<codeph>server-add</codeph>コマンドオプションに加え、いくつか追加のオプションがあります。</p>
       
       <table>
         <tgroup cols="2">
@@ -42,30 +41,30 @@
           <colspec colname="col2"/>
           <thead>
             <row>
-              <entry>Parameter</entry>
-              <entry>Description</entry>
+              <entry>パラメータ</entry>
+              <entry>説明</entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>--server-add=[host]:[port]</entry>
-              <entry>Server to be added</entry>
+              <entry>追加するサーバ</entry>
             </row>
             <row>
               <entry>--server-add-username=[username]</entry>
-              <entry>Administrator username for the server to be added.</entry>
+              <entry>追加するサーバの管理者ユーザ名。</entry>
             </row>
             <row>
               <entry>--server-add-password=[password]</entry>
-              <entry>Administrator password for the server to be added.</entry>
+              <entry>追加するサーバの管理者パスワード。</entry>
             </row>
             <row>
               <entry>--server-remove=[host]:[port]</entry>
-              <entry>The server to be removed.</entry>
+              <entry>削除するサーバ。</entry>
             </row>
             <row>
               <entry>--recovery-buckets=BUCKETS</entry>
-              <entry>Comma separated list of bucket name. Default is for all buckets.</entry>
+              <entry>カンマ区切りのバケット名リスト。 デフォルトはすべてのバケットを対象。</entry>
             </row>
           </tbody>
         </tgroup>
@@ -73,16 +72,16 @@
 
     </section>
     
-    <section><title>Syntax</title>
-    <p>Syntax:</p>
+    <section><title>シンタックス</title>
+    <p>シンタックス:</p>
     <codeblock>
       
     </codeblock>
     </section>
     
     
-    <section><title>Example: Removing nodes and rebalancing</title>
-      <p>The following example removes a node from a cluster and rebalances:</p>
+    <section><title>例: ノードを削除してリバランス</title>
+      <p>以下の例では、クラスタからノードを削除し、リバランスを実行します:</p>
       <codeblock>couchbase-cli rebalance -c 192.168.0.1:8091
     --server-remove=192.168.0.2:8091
 </codeblock>
@@ -90,8 +89,8 @@
     
     
     
-    <section><title>Example: Adding nodes and rebalancing</title>
-      <p>The following example adds a node to a cluster and rebalances:</p>
+    <section><title>例: ノードを追加してリバランス</title>
+      <p>以下の例では、クラスタにノードを追加して、リバランスします:</p>
       <codeblock>couchbase-cli rebalance -c 192.168.0.1:8091 
     --server-add=192.168.0.2:8091 
     --server-add-username=Administrator 
@@ -100,9 +99,9 @@
     </section>
     
     
-    <section><title>Example: Removing nodes, adding nodes, and rebalancing</title>
+    <section><title>例: ノードの削除、ノードの追加、リバランス</title>
       
-      <p>The following example removes and adds nodes from/to a cluster and rebalances:</p>
+      <p>以下の例では、クラスタからノードを削除および追加し、リバランスします:</p>
       
       <codeblock>couchbase-cli rebalance -c 192.168.0.1:8091 
     --server-remove=192.168.0.2 
@@ -113,8 +112,8 @@
     </section>
     
     
-    <section><title>Example: Stopping rebalance</title>
-      <p>The following example stops the current rebalancing:</p>
+    <section><title>例: リバランスの停止</title>
+      <p>以下の例は実行中のリバランスを停止します:</p>
       
       <codeblock>couchbase-cli rebalance-stop -c 192.168.0.1:8091
 </codeblock>

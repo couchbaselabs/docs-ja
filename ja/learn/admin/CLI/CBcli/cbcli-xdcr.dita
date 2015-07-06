@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbcli-xdcr">
+<reference xml:lang="ja" id="cbcli-xdcr">
   <title>XDCR</title>
-  <shortdesc>XDCR commands used with the <codeph>couchbase-cli</codeph> tool.</shortdesc>
+  <shortdesc><codeph>couchbase-cli</codeph>ツールでは以下のXDCRコマンドが利用できます。</shortdesc>
   <refbody>
-    <section><title>Description</title>
-      <p>Remote XDCR replications, connections, and operations are managed with the following XDCR
-        commands and options.</p>
+    <section><title>説明</title>
+      <p>リモートXDCRレプリケーション、コネクション、オペレーションは以下のXDCRコマンドとオプションで管理します。</p>
       
     </section>
     
-    <section><title>CLI commands and parameters</title>
+    <section><title>CLIコマンドとパラメータ</title>
       
       <table frame="all" id="table_drj_bcn_c4">
-        <title>couchbase-cli xdcr commands</title>
+        <title>couchbase-cli xdcr コマンド</title>
         <tgroup cols="2">
           <colspec colname="c1" colnum="1" colwidth="1*"/>
           <colspec colname="c2" colnum="2" colwidth="1.99*"/>
           <thead>
             <row>
-              <entry>Command</entry>
-              <entry>Description</entry>
+              <entry>コマンド</entry>
+              <entry>説明</entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>xdcr-setup</entry>
-              <entry>Manage the XDCR replication configuration.</entry>
+              <entry>XDCRレプリケーション設定の管理。</entry>
             </row>
             <row>
               <entry>setting-xdcr</entry>
-              <entry>Set XDCR related replication settings.</entry>
+              <entry>XDCR関連のレプリケーション設定。</entry>
             </row>
             <row>
               <entry>xdcr-replicate</entry>
-              <entry>Manage the XDCR replication operations.</entry>
+              <entry>XDCRレプリケーションオペレーションの管理。</entry>
             </row>
             <row>
               <entry>ssl-manage</entry>
-              <entry>Manage cluster SSL certificate.</entry>
+              <entry>クラスタのSSL証明書を管理する。</entry>
             </row>
             
           </tbody>
@@ -46,100 +45,100 @@
       </table>
       
       
-      <p>The following are <codeph>couchbase-cli xdcr-setup</codeph> options.</p>
+      <p><codeph>couchbase-cli xdcr-setup</codeph>のオプションを以下に示します。</p>
       <table frame="all" id="table_xdcr-setup">
-        <title>xdcr-setup options</title>
+        <title>xdcr-setup オプション</title>
         <tgroup cols="2">
           <colspec colname="c1" colnum="1" colwidth="1*"/>
           <colspec colname="c2" colnum="2" colwidth="1.99*"/>
           <thead>
             <row>
-              <entry>xdcr-setup options</entry>
-              <entry>Description</entry>
+              <entry>xdcr-setup オプション</entry>
+              <entry>説明</entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>--create</entry>
-              <entry>Creates a new XDCR configuration.</entry>
+              <entry>新しいXDCR設定を作成する。</entry>
             </row>
             <row>
               <entry>--edit</entry>
-              <entry>Modifies an existing XDCR configuration.</entry>
+              <entry>既存のXDCR設定を変更する。</entry>
             </row>
             <row>
               <entry>--delete</entry>
-              <entry>Deletes an existing XDCR configuration.</entry>
+              <entry>既存のXDCR設定を削除する。</entry>
             </row>
             <row>
               <entry>--list</entry>
-              <entry>Lists all XDCR configurations.</entry>
+              <entry>すべてのXDCR設定をリスト表示する。</entry>
             </row>
             <row>
               <entry>--xdcr-cluster-name=[clustername]</entry>
-              <entry>Cluster name.</entry>
+              <entry>クラスタ名。</entry>
             </row>
             <row>
               <entry>--xdcr-hostname=[hostname]</entry>
-              <entry>Remote host name to connect to.</entry>
+              <entry>接続するリモートホスト名。</entry>
             </row>
             <row>
               <entry>--xdcr-username=[username]</entry>
-              <entry>Remote cluster administrator username.</entry>
+              <entry>リモートクラスタの管理者ユーザ名。</entry>
             </row>
             <row>
               <entry>--xdcr-password=[password</entry>
-              <entry>Remote cluster administrator password.</entry>
+              <entry>リモートクラスタの管理者パスワード。</entry>
             </row>
             <row>
               <entry>--xdcr-demand-encryption=[0 | 1]</entry>
-              <entry>Enables and disables data encrypted using ssl. True is 1 and enables data encryption. False is 0 and disables data encryption. Default: 0</entry>
+              <entry>SSLによるデータ暗号化の有効/無効化。 Trueが1で、暗号化を有効に。 Falseが0で、暗号化を無効に。 デフォルト: 0</entry>
             </row>
             <row>
               <entry>--xdcr-certificate=[certificate]</entry>
-              <entry>Pem-encoded certificate. This self-signed certificate must be present if xdcr-demand-encryption is true.</entry>
+              <entry>pemエンコードの証明書を指定。 xdcr-demand-encryptionがTrueの場合、自己署名の証明書を指定する必要があります。</entry>
             </row>
           </tbody>
         </tgroup>
       </table>
             
             
-            <p>The following are <codeph>couchbase-cli setting-xdcr</codeph> options.</p>
+            <p><codeph>couchbase-cli setting-xdcr</codeph>のオプションを以下に示します。</p>
             <table frame="all" id="table_setting-xdcr">
-              <title>setting-xdcr options</title>
+              <title>setting-xdcr オプション</title>
               <tgroup cols="2">
                 <colspec colname="c1" colnum="1" colwidth="1*"/>
                 <colspec colname="c2" colnum="2" colwidth="1.99*"/>
                 <thead>
                   <row>
-                    <entry>setting-xdcr options</entry>
-                    <entry>Description</entry>
+                    <entry>setting-xdcr オプション</entry>
+                    <entry>説明</entry>
                   </row>
                 </thead>
                 <tbody>
                   <row>
                     <entry>--max-concurrent-reps=[32]</entry>
-                    <entry>Maximum concurrent replications per bucket, 8 to 256.</entry>
+                    <entry>バケットごとの最大並列レプリケーション、8から256。</entry>
                   </row>
                   <row>
                     <entry>--checkpoint-interval=[1800]</entry>
-                    <entry>Intervals between checkpoints, 60 to 14400 seconds.</entry>
+                    <entry>チェックポイント間隔、60から14400秒。</entry>
                   </row>
                   <row>
                     <entry>--worker-batch-size=[500]</entry>
-                    <entry>Document worker batch size, 500 to 10000.</entry>
+                    <entry>ドキュメントワーカのバッチサイズ、500から10000</entry>
                   </row>
                   <row>
                     <entry>--doc-batch-size=[2049]KB</entry>
-                    <entry>Document batching size, 10 to 100000 KB.</entry>
+                    <entry>ドキュメントバッチサイズ、10から100000KB</entry>
                   </row>
                   <row>
                     <entry>--failure-restart-interval=[30]</entry>
-                    <entry>Interval for restarting failed XDCR, 1 to 300 seconds.</entry>
+                    <entry>失敗したXDCRのリスタート間隔、1から300秒</entry>
                   </row>
                   <row>
                     <entry>--optimistic-replication-threshold=[256]</entry>
-                    <entry>Document body size threshold (bytes) to trigger optimistic replication.</entry>
+                    <entry>楽観的レプリケーション実行のドキュメントボディサイズ閾値(bytes)</entry>
                   </row>
                 </tbody>
               </tgroup>
@@ -147,119 +146,114 @@
       
      
       
-      <p>The following are <codeph>couchbase-cli xdcr-replicate</codeph> options.</p>
+      <p><codeph>couchbase-cli xdcr-replicate</codeph>のオプションを以下に示します。</p>
       <table frame="all" id="table_xdcr-replicate">
-        <title>xdcr-replicate options</title>
+        <title>xdcr-replicate オプション</title>
         <tgroup cols="2">
           <colspec colname="c1" colnum="1" colwidth="1*"/>
           <colspec colname="c2" colnum="2" colwidth="1.99*"/>
           <thead>
             <row>
-              <entry>xdcr-replicate options</entry>
-              <entry>Description</entry>
+              <entry>xdcr-replicate オプション</entry>
+              <entry>説明</entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>--create</entry>
-              <entry>Create and start a new replication</entry>
+              <entry>新しいレプリケーションを作成し開始する</entry>
             </row>
             <row>
               <entry>--delete</entry>
-              <entry>Stop and cancel a replication</entry>
+              <entry>レプリケーションを停止しキャンセルする</entry>
             </row>
             <row>
               <entry>--list</entry>
-              <entry>List all XDCR replications</entry>
+              <entry>すべてのXDCRレプリケーションを表示</entry>
             </row>
             <row>
               <entry>--pause</entry>
-              <entry>Pause the replication</entry>
+              <entry>レプリケーションを一時停止</entry>
             </row>
             <row>
               <entry>--resume</entry>
-              <entry>Resume the replication</entry>
+              <entry>レプリケーションを再開</entry>
             </row>
             <row>
               <entry>--settings</entry>
-              <entry>Update settings for the replication</entry>
+              <entry>レプリケーションの設定を更新</entry>
             </row>
             <row>
               <entry>--xdcr-replicator=[replicator]</entry>
-              <entry>Replication ID</entry>
+              <entry>レプリケーションID</entry>
             </row>
             <row>
               <entry>--xdcr-from-bucket=[bucket-name]</entry>
-              <entry>Local bucket name to replicate from</entry>
+              <entry>レプリケーション元のローカルのバケット名</entry>
             </row>
             <row>
               <entry>--xdcr-cluster-name=[remote-cluster]</entry>
-              <entry>Remote cluster to replicate to</entry>
+              <entry>レプリケーション先のリモートクラスタ</entry>
             </row>
             <row>
               <entry>--xdcr-to-bucket=[remote-bucket]</entry>
-              <entry>Remote bucket to replicate to</entry>
+              <entry>レプリケーション先のリモートバケット名</entry>
             </row>
             <row>
               <entry>--max-concurrent-reps =[ 16 ]</entry>
-              <entry>Maximum concurrent replications per bucket, 8 to 256. Default: 16</entry>
+              <entry>バケット単位の最大並列レプリケーションを指定、8から256。 デフォルト: 16</entry>
             </row>
             <row>
               <entry>--checkpoint-interval =[ 1800 ]</entry>
-              <entry>Intervals between checkpoints , 60 to 14400 seconds</entry>
+              <entry>チェックポイント間隔、60から14400秒</entry>
             </row>
             <row>
               <entry>--worker-batch-size =[ 500 ]</entry>
-              <entry>Document worker batch size, 500 to 10000</entry>
+              <entry>ドキュメントワーカのバッチサイズ、500から10000</entry>
             </row>
             <row>
               <entry>--doc-batch size =[ 2048 ] KB</entry>
-              <entry>Document batch size, 10 to 100000 KB</entry>
+              <entry>ドキュメントのバッチサイズ、10から100000KB</entry>
             </row>
             <row>
               <entry>--failure-restart-interval =[ 30 ]</entry>
-              <entry>Interval for restarting failed xdcr, 1 to 300 seconds</entry>
+              <entry>失敗したXDCRのリスタート間隔、1から300秒</entry>
             </row>
             <row>
               <entry>--optimistic-replication-threshold =[ 256 ]</entry>
-              <entry>Document body size threshold (bytes) to trigger optimistic replication</entry>
+              <entry>楽観的レプリケーション実行のドキュメントボディサイズ閾値(bytes)</entry>
             </row>
             <row>
               <entry>--xdcr-replication-mode=[xmem | capi]</entry>
-              <entry>Replication protocol, either capi or xmem</entry>
+              <entry>レプリケーションプロトコル、capiあるいはxmem</entry>
             </row>
           </tbody>
         </tgroup>
       </table>
       
-      <p>The following are <codeph>couchbase-cli ssl-manage</codeph> options. This option is
-        available for Enterprise Edition only.</p>
+      <p><codeph>couchbase-cli ssl-manage</codeph>のオプションを以下に示します。 このオプションはエンタープライズエディションのみ利用可能です。</p>
       
       <table frame="all" rowsep="1" colsep="1"
         id="table_ssl-manage">
-        <title>ssl-manage command options</title>
+        <title>ssl-manage コマンドオプション</title>
         <tgroup cols="2">
           <colspec colname="c1" colnum="1" colwidth="1.0*"/>
           <colspec colname="c2" colnum="2" colwidth="1.0*"/>
           <thead>
             <row>
-              <entry>ssl-manage options (Enterprise Edition only)</entry>
-              <entry>Description</entry>
+              <entry>ssl-manage オプション (エンタープライズエディションのみ)</entry>
+              <entry>説明</entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>--retrieve-cert=[certificate]</entry>
-              <entry>Retrieves the self-signed certificate from the destination cluster to the
-                source cluster. Specify a local location (full path) and file name for the
-                pem-encoded certificate. For example,
-                <codeph>--retrieve-cert=./newCert.pem</codeph>.</entry>
+              <entry>自己署名証明書を宛先クラスタからソースクラスタへと保存する。 pemエンコード証明書のローカル保存先(絶対パス)とファイル名を指定する。 例、 <codeph>--retrieve-cert=./newCert.pem</codeph></entry>
             </row>
             <row>
               <entry>--regenerate-cert=[certificate]</entry>
-              <entry>Regenerates a self-signed certificate on the destination cluster. Specify the
-                full path for the location of the pem-encoded certificate file. For example,
-                <codeph>--regenerate-cert=./newRegen.pem</codeph>.</entry>
+              <entry>対象のクラスタ上で自己署名の証明書を再生成する。 pemエンコードの証明書ファイルの絶対パスを指定。例、 
+                <codeph>--regenerate-cert=./newRegen.pem</codeph></entry>
             </row>
           </tbody>
         </tgroup>
@@ -268,8 +262,8 @@
     </section>
     
 
-    <section><title>Example: Creating a remote cluster reference</title>
-      <p>To create a remote cluster reference:</p>
+    <section><title>例: リモートクラスタの参照を作成する</title>
+      <p>リモートクラスタの参照を作成するには:</p>
       <codeblock>couchbase-cli xdcr-setup -c 10.3.121.121:8091 -u Administrator  -p password 
     --create 
     --xdcr-cluster-name=RemoteCluster  
@@ -281,11 +275,10 @@
       
 
       
-      <p>Upon success, the following response is returned:</p>
+      <p>成功すると、以下のレスポンスが返却されます:</p>
       <codeblock>SUCCESS: init RemoteCluster</codeblock>
       
-      <p>Now, you can start replication to the remote cluster using memcached protocol as the existing
-        default:</p>
+      <p>その後、デフォルトとしてmemcachedプロトコルでリモートクラスタへのレプリケーションを開始できます。</p>
       
       <codeblock>couchbase-cli xdcr-replicate -c 10.3.121.123:8091 -u Administrator -p password 
         --xdcr-cluster-name RemoteCluster 
@@ -293,8 +286,8 @@
         --xdcr-to-bucket backup
       </codeblock>
       
-      <p>An XDCR protocol for the mode of replication can be specified for XDCR. 
-        To explicitly set the protocol to memcached:</p>
+      <p>XDCRのレプリケーションで利用するプロトコルは設定可能です。 
+        明示的にmemcachedプロトコルを指定するには:</p>
       
       <codeblock>couchbase-cli xdcr-replicate -c 10.3.121.123:8091 -u Administrator -p password
     --xdcr-cluster-name RemoteCluster 
@@ -303,7 +296,7 @@
     --xdcr-replication-mode xmem
       </codeblock>
       
-      <p>To set the protocol to CAPI:</p>
+      <p>CAPIプロトコルを指定するには:</p>
       
       <codeblock>couchbase-cli xdcr-replicate -c 10.3.121.123:8091 -u Administrator -p password
     --xdcr-cluster-name=RemoteCluster 
@@ -312,15 +305,14 @@
     --xdcr-replication-mode=capi
       </codeblock>
       
-      <p>To change a XDCR replication protocol for an existing XDCR replication:</p>
+      <p>既存のXDCRレプリケーションで、XDCRレプリケーションプロトコルを変更するには:</p>
       
       <ol>
-        <li>Delete the replication.</li>
-        <li>Re-create the replication with your preference.</li>
+        <li>レプリケーションを削除する。</li>
+        <li>設定を指定してレプリケーションを再作成する。</li>
       </ol>
       
-      <p>If there is already an existing replication for a bucket, you get an error when starting the
-        replication again with new settings:</p>
+      <p>バケットですでにレプリケーションが存在する場合、新しい設定でレプリケーションを開始する際にエラーとなります。</p>
       <codeblock>couchbase-cli xdcr-replicate -c 10.3.121.121:8091 -u Administrator -p password 
     --xdcr-cluster-name=RemoteCluster 
     --xdcr-from-bucket=default 
@@ -328,17 +320,16 @@
     --xdcr-replication-mode=capi
       </codeblock>
       
-      <p>Results in the following error:</p>
+      <p>以下のエラーが返されます:</p>
       <codeblock>ERROR: unable to create replication (400) Bad Request
         {u'errors': {u'_': u'Replication to the same remote cluster and bucket already exists'}}
 ERROR: Replication to the same remote cluster and bucket already exists
       </codeblock>
     </section>
     
-    <section><title>Example: Listing XDCR remote clusters</title>
-      <p>In the following example, the <codeph>couchbase-cli xdcr-setup</codeph> command is executed 
-        from the local host and the specified host is the remote host. 
-        To list all XDCR configurations:</p>
+    <section><title>例: XDCRリモートクラスタリストの表示</title>
+      <p>以下の例では、ローカルホストから<codeph>couchbase-cli xdcr-setup</codeph>コマンドを実行し、リモートホストをホストに指定します。 
+        すべてのXDCR設定をリスト表示する:</p>
       <codeblock>
 couchbase-cli xdcr-setup 
   -c 10.5.2.117:8091 
@@ -347,11 +338,10 @@ couchbase-cli xdcr-setup
       </codeblock>
     </section>
     
-    <section><title>Example: Listing XDCR replication streams</title>
+    <section><title>例: XDCRレプリケーションストリームをリスト表示する</title>
       
-      <p>In the following example, the <codeph>couchbase-cli xdcr-replicate</codeph> command is executed 
-        from the local host and the specified host is the remote host. 
-        To list all XDCR replication streams:</p>
+      <p>以下の例では、ローカルホストから<codeph>couchbase-cli xdcr-replicate</codeph>コマンドを実行し、ホスト名にリモートホストを指定します。 
+        XDCRレプリケーションストリームをリスト表示する</p>
       <codeblock>
 couchbase-cli xdcr-replicate 
   -c 10.5.2.117:8091 
@@ -360,9 +350,8 @@ couchbase-cli xdcr-replicate
       </codeblock>
     </section>
     
-    <section><title>Response</title>
-      <p>The follow response example is for the <codeph>couchbase-cli xdcr-setup --list</codeph>
-        command option and shows the local host, UUID, URI, and user name:</p>
+    <section><title>レスポンス</title>
+      <p>以下は<codeph>couchbase-cli xdcr-setup --list</codeph>コマンドオプションのレスポンス例で、ローカルホスト、UUID、URI、ユーザ名を表示します:</p>
       <codeblock>
 cluster name: source1
       uuid: bfa861d3734c90559522a88b9db81606
@@ -372,9 +361,7 @@ cluster name: source1
       </codeblock>
       
       
-      <p>The follow response example is for the <codeph>couchbase-cli xdcr-replicate --list</codeph>
-        command option and shows the replication stream from the source bucket to the remote
-        bucket:</p>
+      <p>以下は<codeph>couchbase-cli xdcr-replicate --list</codeph>コマンドオプションのレスポンス例で、ソースバケットからリモートバケットへのレプリケーションストリームを表示します。</p>
       <codeblock>
 stream id: bfa861d3734c90559522a88b9db81606/test2/test
    status: running

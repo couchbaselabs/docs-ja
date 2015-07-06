@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cli-failover">
-  <title>Failing over nodes</title>
-  <shortdesc>Nodes are failed over either by a graceful failover or hard failover operation. 
-    Graceful failover is the default.</shortdesc>
+<reference xml:lang="ja" id="cli-failover">
+  <title>ノードのフェイルオーバ</title>
+  <shortdesc>グレイスフルフェイルオーバまたはハードフェイルオーバ操作によりノードをフェイルオーバできます。 
+    グレイスフルフェイルオーバがデフォルトです。</shortdesc>
   <refbody>
     
-    <section><title>Description</title>
-      <p>Nodes are failed over with one of the following methods:
+    <section><title>説明</title>
+      <p>以下のいずれかの方法でノードをフェイルオーバします:
       <ul>
-        <li>Graceful failover</li>
-        <li>Hard failover</li>
+        <li>グレイスフルフェイルオーバ</li>
+        <li>ハードフェイルオーバ</li>
       </ul></p>
       
-      <p>Graceful failover safely fails over nodes from clusters by allowing all in-flight operations to complete 
-        before implementing the failover operation. 
-        Graceful failover is the default behavior for the <codeph>couchbase-cli failover</codeph> operation.</p>
+      <p>グレイスフルフェイルオーバは、フェイルオーバ操作の実行前に、受信中のオペレーションの完了を待ち、安全にノードをクラスタからフェイルオーバします。 
+        グレイスフルフェイルオーバは<codeph>couchbase-cli failover</codeph>オペレーションのデフォルトの動作です。</p>
 
-      <p>Hard failover immediately fails over nodes from clusters. 
-        To perform a hard failover, the <codeph>--force</codeph> option is used. 
-        Hard failover is typically used when the node is in a bad state. 
-        Auto-failover is a hard failover. </p>
+      <p>ハードフェイルオーバは即座にクラスタからノードをフェイルオーバします。 
+        ハードフェイルオーバを実行するには、<codeph>--force</codeph>オプションを利用します。 
+        ハードフェイルオーバは一般的に、ノードが不正な状態で利用します。 
+        自動フェイルオーバはハードフェイルオーバです。 </p>
       
-      <note type="note">Be sure to update any scripts that implement failover.</note>
+      <note type="note">フェイルオーバを実行するすべてのスクリプトを更新するように注意してください。</note>
     </section>
     
-    <section><title>Syntax</title>
+    <section><title>シンタックス</title>
       <codeblock>couchbase-cli failover
     --cluster=HOST:PORT
     --server-failover=HOST:PORT
@@ -35,11 +34,8 @@
     </section>
 
       
-      <section><title>Example: Setting failover, readd, recovery, and rebalance operations</title>
-      <p>The following example shows a failover, readd, recovery and rebalance sequence operations,
-        where as, a node in a cluster is gracefully failed over, the node is re-added to the
-        cluster, a delta recovery is implemented for the node, and rebalance is performed on the
-        cluster:</p>
+      <section><title>例: フェイルオーバの設定、再追加、リカバリ、リバランス操作の実行</title>
+      <p>以下の例は、クラスタ内のノードをグレイスフルにフェイルオーバし、ノードをクラスタへ再追加し、ノードのデルタリカバリを実行し、クラスタでリバランスを実行する、フェイルオーバ、再追加、リカバリ、リバランスの一連の操作例を示します。</p>
       
       <codeblock>
 couchbase-cli failover -c 192.168.0.1:8091 \\	
@@ -60,9 +56,8 @@ couchbase-cli rebalance -c 192.168.0.1:8091 \\
       </codeblock>
       </section>
     
-    <section><title>Example: Failing over a node immediately</title>
-      <p>The following example shows a node failing over immediately, that is, a hard failover is
-        implemented rather than a graceful failover.</p>
+    <section><title>例: 即座にノードをフェイルオーバする</title>
+      <p>以下の例は、グレイスフルフェイルオーバではなく、ハードフェイルオーバを利用し、即座にノードをフェイルオーバする例です。</p>
       <codeblock>
 couchbase-cli failover -c 192.168.0.1:8091 \\	
     --server-failover=192.168.0.2 \\	

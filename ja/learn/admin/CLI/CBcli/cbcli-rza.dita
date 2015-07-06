@@ -1,35 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbcli-rza">
-   <title>Rack-zone awareness</title>
-   <shortdesc>Rack-Zone Awareness enables logical groupings of servers on a cluster where each server
-      group physically belongs to a rack or Availability Zone. <b>Enterprise Edition only.</b></shortdesc>
+<reference xml:lang="ja" id="cbcli-rza">
+   <title>ラックゾーンアウェアネス</title>
+   <shortdesc>ラックゾーンアウェアネスは、各サーバグループがラックやアベイラビリティゾーンに物理的に属しているクラスタ内で、サーバの論理的なグルーピングを可能とします。 <b>エンタープライズエディションでのみ利用できます。</b></shortdesc>
 
 
    <refbody>
-      <section><title>Description</title>
-      <p>The Rack-Zone Awareness feature provides the ability to specify that active and
-         corresponding replica partitions be created on servers that are part of a separate rack or
-         zone. To enable Rack-Zone Awareness, all servers in a cluster must be upgraded. </p>
+      <section><title>説明</title>
+      <p>ラックゾーンアウェアネスはアクティブと対応するレプリカのパーティションが、異なるラックやゾーンに属するサーバ上に作成されるように指定できる機能です。 ラックゾーンアウェアネスを有効にするには、クラスタ内のすべてのサーバをアップグレードする必要があります。 </p>
 
       
-      <note type="note">The Rack-Zone Awareness feature with its server group capability is an
-         Enterprise Edition feature.</note>
-      <p>To configure servers into groups, use the <codeph>couchbase-cli</codeph> tool with the
-            <codeph>group-manage</codeph> command.</p>
+      <note type="note">サーバグループによるラックゾーンアウェアネス機能はエンタープライズエディションでのみ利用できます。</note>
+      <p>サーバをグループに設定するには、<codeph>couchbase-cli</codeph>ツールの、<codeph>group-manage</codeph> コマンドを利用します。</p>
       </section>
       
-      <section><title>CLI command and parameters</title>
+      <section><title>CLIコマンドとパラメータ</title>
          
          <table>
-            <title>group-manage options</title>
+            <title>group-manage オプション</title>
             <tgroup cols="2">
                <colspec colname="col1"/>
                <colspec colname="col2"/>
                <thead>
                   <row>
-                     <entry>Option</entry>
-                     <entry>Description</entry>
+                     <entry>オプション</entry>
+                     <entry>説明</entry>
                   </row>
                </thead>
                <tbody>
@@ -39,40 +34,40 @@
                   </row>
                   <row>
                      <entry>-c HOST:PORT or --cluster=HOST:PORT</entry>
-                     <entry>Cluster location</entry>
+                     <entry>クラスタのロケーション</entry>
                   </row>
                   <row>
                      <entry>-u USERNAME or --username=USERNAME</entry>
-                     <entry>Administrator username for the cluster</entry>
+                     <entry>クラスタの管理者ユーザ名</entry>
                   </row>
                   <row>
                      <entry>-p PASSWORD or --password=PASSWORD</entry>
-                     <entry>Administrator password for the cluster</entry>
+                     <entry>クラスタの管理者パスワード</entry>
                   </row>
                   <row>
                      <entry>--list</entry>
-                     <entry>Shows the server groups and the servers assigned to each server group.</entry>
+                     <entry>サーバグループと各サーバグループに所属するサーバを表示</entry>
                   </row>
                   <row>
                      <entry>--create --group-name=groupName</entry>
-                     <entry>Creates a server group.</entry>
+                     <entry>サーバグループの作成。</entry>
                   </row>
                   <row>
                      <entry>--delete --group-name=groupName</entry>
-                     <entry>Removes an empty server group.</entry>
+                     <entry>空のサーバグループを削除。</entry>
                   </row>
                   <row>
                      <entry>--rename=newGroupName --group-name=oldGroupName</entry>
-                     <entry>Renames an existing server group.</entry>
+                     <entry>既存のサーバグループの名称を変更。</entry>
                   </row>
                   <row>
                      <entry>--group-name=groupName --add-servers="HOST:PORT;HOST:PORT"</entry>
-                     <entry>Adds servers to a group.</entry>
+                     <entry>サーバをグループに追加。</entry>
                   </row>
                   <row>
                      <entry>--from-group=groupName --to-group=groupName
                         --move-servers="HOST:PORT;HOST:PORT"</entry>
-                     <entry>Moves one or more servers from one group to another.</entry>
+                     <entry>グループから一つまたは複数のサーバを他のグループへ移動。</entry>
                   </row>
                </tbody>
             </tgroup>
@@ -80,8 +75,8 @@
 
       </section>
       
-      <section><title>Syntax</title>
-         <p>General syntax with <codeph>group-manage</codeph>:</p>
+      <section><title>シンタックス</title>
+         <p><codeph>group-manage</codeph>の一般的なシンタックス:</p>
          
          <codeblock>
 couchbase-cli group-manage -c [localhost]:[port] 
@@ -90,13 +85,11 @@ couchbase-cli group-manage -c [localhost]:[port]
 </codeblock>
       </section>
       
-      <section><title>Example: Creating server groups</title>
-         <p>In the following example, a server group is
-            created.</p>
+      <section><title>例: サーバグループの作成</title>
+         <p>以下の例では、サーバグループが作成されます。</p>
          
          
-         <note type="note">The <codeph>-create --group-name</codeph> command can fail when an
-            exclamation (!) is present inside the group name.
+         <note type="note"><codeph>-create --group-name</codeph>コマンドはエクスクラメーション(!)がグループ名で利用されていると失敗します。
          </note>
          
          <codeblock>
@@ -106,11 +99,9 @@ couchbase-cli group-manage -c 192.168.0.1:8091
    --create --group-name=myGroupName
 </codeblock></section>
       
-      <section><title>Example: Adding servers to server groups</title>
+      <section><title>例: サーバグループへサーバを追加</title>
          
-         <p>In the following example, two
-            servers are added to a server group using the <codeph>group-manage</codeph>
-            command.</p>
+         <p>以下の例では、二つのサーバを<codeph>group-manage</codeph>コマンドでサーバグループに追加します。</p>
          
          <codeblock>
 couchbase-cli group-manage -c 192.168.0.1:8091 
@@ -120,18 +111,12 @@ couchbase-cli group-manage -c 192.168.0.1:8091
    --add-servers="10.1.1.1:8091;10.1.1.2:8091"
 </codeblock>
          
-         <p>In
-            the following example, a server is added to the server group using the
-               <codeph>server-add</codeph> command.</p>
+         <p>以下の例では、<codeph>server-add</codeph>コマンドを利用し、サーバをサーバグループに追加します。</p>
          
          
-         <note type="note">The <codeph>couchbase-cli
-            group-manage</codeph> command is the preferred method of adding servers to server
-            group.</note>
+         <note type="note">複数のサーバをサーバグループに追加するには<codeph>couchbase-cli group-manage</codeph>コマンドの方を利用してください。</note>
          
-         <p>If the <codeph>--group-name</codeph> option is not specified with the <codeph>server-add</codeph>
-            command, the server is added to the default
-         group.</p>
+         <p><codeph>server-add</codeph>コマンドで<codeph>--group-name</codeph>を指定しない場合、サーバはデフォルトグループに追加されます。</p>
          
          <codeblock>
 couchbase-cli server-add -c 192.168.0.1:8091
@@ -142,12 +127,9 @@ couchbase-cli server-add -c 192.168.0.1:8091
 </codeblock></section>
       
       
-      <section><title>Example: Moving servers from server groups</title>
+      <section><title>例: サーバグループからサーバを移動する</title>
          
-         <p>In the following example, two
-            servers are moved from one server group to another using the
-               <codeph>group-manage</codeph>
-         command.</p>
+         <p>以下の例では、<codeph>group-manage</codeph>コマンドを利用し、二つのサーバをサーバグループから他のサーバグループへと移動します。</p>
          
          <codeblock>
 couchbase-cli group-manage -c 192.168.0.1:8091 

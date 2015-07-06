@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbcli-node-recovery">
-  <title>Recovering nodes</title>
-  <shortdesc>To re-add a server node to a cluster, use the <codeph>couchbase-cli</codeph> tool and
-    the <codeph>recovery</codeph> command with the <codeph>--recovery-type</codeph> parameter. </shortdesc>
+<reference xml:lang="ja" id="cbcli-node-recovery">
+  <title>ノードのリカバリ</title>
+  <shortdesc>ノードをクラスタへ再追加するには、<codeph>couchbase-cli</codeph>ツールの<codeph>recovery</codeph>コマンドを<codeph>--recovery-type</codeph>パラメータを指定して実行します。 </shortdesc>
   <refbody>
-    <section><title>Description</title>
-      <p>Recovery options are either <codeph>delta</codeph> or <codeph>full</codeph>.</p>
+    <section><title>説明</title>
+      <p>リカバリオプションには<codeph>delta</codeph>または<codeph>full</codeph>を指定します。</p>
       
       <table frame="all" id="table_recovery-type">
-        <title>Recovery type</title>
+        <title>リカバリタイプ</title>
         <tgroup cols="2">
           <colspec colname="c1" colnum="1" colwidth="1*"/>
           <colspec colname="c2" colnum="2" colwidth="1.99*"/>
           <thead>
             <row>
-              <entry>Option</entry>
-              <entry>Description</entry>
+              <entry>オプション</entry>
+              <entry>説明</entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>--server-recovery=[host]:[port]</entry>
-              <entry>Server to recover</entry>
+              <entry>リカバリするサーバ</entry>
             </row>
             <row>
               <entry>--recovery-type=[delta | full]</entry>
-              <entry>Type of recovery to be performed for the node. Delta or full.</entry>
+              <entry>ノードのリカバリで利用する種別 deltaまたはfull。</entry>
             </row>
           </tbody>
         </tgroup>
@@ -34,7 +33,7 @@
       
     </section>
     
-    <section><title>Syntax</title>
+    <section><title>シンタックス</title>
       <codeblock>couchbase-cli failover
     --cluster=HOST:PORT
     --server-recovery=HOST:PORT
@@ -49,8 +48,8 @@
     
     
     <section>
-      <title>Example: Setting recovery type</title>
-      <p>To set incremental node recovery type for a server:</p>
+      <title>例: リカバリタイプの設定</title>
+      <p>サーバのリカバリにインクリメンタルノードリカバリを設定するには:</p>
       <codeblock>       
 couchbase-cli recovery -c 192.168.0.1:8091	
     --server-recovery=192.168.0.2	
@@ -60,11 +59,8 @@ couchbase-cli recovery -c 192.168.0.1:8091
     </section>     
     
     
-    <section><title>Example: Setting failover, readd, recovery, and rebalance operations</title>
-      <p>The following example shows a failover, readd, recovery and rebalance sequence operations,
-        where as, a node in a cluster is gracefully failed over, the node is re-added to the
-        cluster, a delta recovery is implemented for the node, and rebalance is performed on the
-        cluster:</p>
+    <section><title>例: フェイルオーバの設定、再追加、リカバリ、リバランス操作の実行</title>
+      <p>以下の例は、クラスタ内のノードをグレイスフルにフェイルオーバし、ノードをクラスタへ再追加し、ノードのデルタリカバリを実行し、クラスタでリバランスを実行する、フェイルオーバ、再追加、リカバリ、リバランスの一連の操作例を示します:</p>
       
       <codeblock>
 couchbase-cli failover -c 192.168.0.1:8091	

@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cli-overview">
-	<title>CLI overview</title>
-	<shortdesc>The command-line tools perform different functions and operations, these CLI tools are
-		described individually.</shortdesc>
+<reference xml:lang="ja" id="cli-overview">
+	<title>CLI概要</title>
+	<shortdesc>コマンドラインツールは様々な機能や操作を実行でき、これらのCLIツールを個別に説明しています。</shortdesc>
 	<refbody>
-		<section><title>Description</title>
+		<section><title>説明</title>
 		
-		<p>Tools can be located in a number of directories, dependent on the tool in question in each
-				case.</p>
+		<p>ツールは色々なディレクトリに存在し、対象のツールによって異なります。</p>
 		
-			<p>By default, the command-line tools are installed into the following locations on each platform:</p>
+			<p>デフォルトでは、コマンドラインツールは各プラットフォームで以下の場所にインストールされています:</p>
 			
 			<table>
 				<tgroup cols="2">
@@ -18,22 +16,21 @@
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>Operating System</entry>
-							<entry>Directory Locations</entry>
+							<entry>オペレーティングシステム</entry>
+							<entry>ディレクトリの場所</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>Linux</entry>
-							<entry><codeph>/opt/couchbase/bin</codeph>, <codeph>/opt/couchbase/bin/install</codeph>,  and
+							<entry><codeph>/opt/couchbase/bin</codeph>, <codeph>/opt/couchbase/bin/install</codeph>, 
 									<codeph>/opt/couchbase/bin/tools</codeph></entry>
 						</row>
 						<row>
 							<entry>Windows</entry>
 							<entry><codeph>C:\Program Files\couchbase\server\bin</codeph>,
 									<codeph>C:\Program Files\couchbase\server\bin\install</codeph>,
-								and
-								<codeph>C:\Program Files\couchbase\server\bin\tools</codeph>.</entry>
+								<codeph>C:\Program Files\couchbase\server\bin\tools</codeph></entry>
 						</row>
 						<row>
 							<entry>Mac OS X</entry>
