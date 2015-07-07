@@ -1,68 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cli-incremental-restore">
-	<title>Restoring incrementally</title>
-	<shortdesc>Incremental restore operations are run by using the <codeph>cbrestore</codeph>
-			command-line tool.</shortdesc>
+<reference xml:lang="ja" id="cli-incremental-restore">
+	<title>差分リストア</title>
+	<shortdesc>差分リストアオペレーションは、<codeph>cbrestore</codeph>ツールを利用して実行します。</shortdesc>
 
 	<refbody>
-		<section><title>Description</title>
+		<section><title>説明</title>
 
-		<p>The updated tool adds new options to support partial
-			restore operations. The tool still supports the existing options for full restores. </p>
-		<p>The following table describes the new incremental restore options:</p>
+		<p>最新のツールは部分的なリストアオペレーションをサポートするオプションを追加しています。 ツールは完全なリストア用の既存のオプションもサポートしています。 </p>
+		<p>以下の表で、新しい差分リストアオプションを解説します:</p>
 
 		<table frame="all" id="table_wts_fw5_c4">
 			
 			<tgroup cols="2">
 				<thead>
 					<row>
-						<entry>Option</entry>
-						<entry>Description</entry>
+						<entry>オプション</entry>
+						<entry>説明</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
 						<entry><codeph>--from-date=DATE</codeph></entry>
-						<entry>Restores the data beginning with the specified date. Data collected before this date is
-							not restored. </entry>
+						<entry>指定した日付からのデータをリストアする。 この日付以前のデータはリストアされない。</entry>
 					</row>
 					<row>
 						<entry><codeph>--to-date=DATE</codeph></entry>
-						<entry>Restores data ending with the specified date. Data collected after this date is not
-							restored.</entry>
+						<entry>指定日付までのデータをリストアする。 この日付以降のデータはリストアされない。</entry>
 					</row>
 				</tbody>
 			</tgroup>
 		</table>
 		
 		<p>
-			The format of the <codeph>DATE</codeph> specification is <codeph>YYYY-MM-DD</codeph>, where: <dl>
+			指定する<codeph>DATE</codeph>フォーマットは、<codeph>YYYY-MM-DD</codeph>: <dl>
 				<dlentry>
 					<dt><codeph>YYYY</codeph></dt>
-					<dd>4-digit year</dd>
+					<dd>4桁数値の年 <codeph>MM</codeph></dd>
 				</dlentry>
 				<dlentry>
 					<dt><codeph>MM</codeph></dt>
-					<dd>2-digit month</dd>
+					<dd>2桁数値の月 <codeph>DD</codeph></dd>
 				</dlentry>
 				<dlentry>
 					<dt><codeph>DD</codeph></dt>
-					<dd>2-digit day</dd>
+					<dd>2桁数値の日</dd>
 				</dlentry>
 			</dl>
 		</p>
 		</section>
 		
-		<section><title>Syntax</title>
-			<p>The general format of the <codeph>cbrestore</codeph> command is:</p>
+		<section><title>シンタックス</title>
+			<p><codeph>cbrestore</codeph>コマンドの一般的なフォーマットは:</p>
 			<codeblock>cbrestore [options] [backup_dir] [destination]</codeblock>
 		</section>
 		
-		<section><title>Example</title>
+		<section><title>例</title>
 		
-		<p>The following example requests a restoration of data backed up between August 1, 2014 and
-			August 3, 2014. The &#x2011;b option specifies the name of the bucket to restore from the backup file and the &#x2011;B option specifies the name of the destination bucket in the cluster.</p>
+		<p>以下の例は、2014年8月1日から2014年8月3日までのデータをリストアします。 &#x2011;b オプションはバックアップファイルからリストアするバケットの名前を指定し、 &#x2011;B オプションはクラスタ内のレストア先のバケット名を指定します。</p>
 		
 		<codeblock>cbrestore -b source-bucket -B destination-bucket --from-date=2014-08-01 --to-date=2014-08-03 /backups/backup-1 http://example.com:8091</codeblock>
 			
