@@ -1,38 +1,33 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>cbcollect_info tool</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>cbcollect_info ツール</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a></li><li class="section"><a href="../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../CLI/cbcollect_info_tool.html" class="current"><span>cbcollect_info tool</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-	<h1 class="title topictitle1">cbcollect_info tool</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a></li><li class="section"><a href="../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../CLI/cbcollect_info_tool.html" class="current"><span>cbcollect_info ツール</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../CLI/cbdocloader_tool.html"><span>cbdocloader ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../CLI/cbhealthchecker_tool.html"><span>cbhealthcheckerツール</span></a></li><li class="section"><a href="../CLI/cbreset_password_tool.html"><span>cbreset_password ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbrestore_tool.html"><span>cbrestore ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../CLI/cbtransfer_tool.html"><span>cbtransfer ツール</span></a></li><li class="section"><a href="../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen ツール</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+	<h1 class="title topictitle1">cbcollect_info ツール</h1>
 
 	
-	<div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbcollect_info</samp> tool provides detailed statistics for a specific node.</p>
+	<div class="body refbody"><p class="shortdesc"><samp class="ph codeph">cbcollect_info</samp>ツールは特定ノードの詳細な統計情報を提供します。</p>
 
-		<div class="section"><h2 class="title sectiontitle">Description</h2>
+		<div class="section"><h2 class="title sectiontitle">説明</h2>
 			
-			<p class="p">This tool is a per-node operation. 
-				This command collects information from an individual Couchbase Server node.
-				To collect diagnostic information for an entire cluster, perform the command for every node that exists for that
-				cluster.
-				If you are experiencing problems with multiple nodes in a cluster, you may need to run it on
-				all nodes in a cluster.
+			<p class="p">このツールはノード単位のオペレーションです。 
+				このコマンドは個別のCouchbase Serverノードから情報を収集します。
+				クラスタ全体の診断情報を収集するには、クラスタ内の各ノードに対してコマンドを実行します。
+				クラスタ内の複数のノードで問題が発生している場合、クラスタ内のすべてのノードでこれを実行する必要があるでしょう。
 			</p>
 
-			<p class="p">A root account is required to run this command and collect all the server information
-				needed. There are internal server files and directories that this tool accesses which
-				require root privileges.</p>
+			<p class="p">このコマンドの実行および必要なすべてのサーバ情報を収集するにはrootアカウントが必要です。
+			 	このツールでアクセスする際にroot権限が必要な、内部のサーバファイルやディレクトリがあります。</p>
 
-			<p class="p">To use this command, remotely connect to the machine which contains the Couchbase
-				Server then issue the command with options. This command is typically run under the
-				direction of technical support at Couchbase and generates a large .zip file. This
-				archive contains files which contain performance statistics and
-				extracts from server logs.
+			<p class="p">このコマンドを利用するには、Couchbase Serverが稼働するマシンにリモート接続し、コマンドにオプションを指定して実行します。
+				このコマンドは一般的にCouchbaseのテクニカルサポートの指示のもとに実行し、大きな.zipファイルを生成します。
+				このアーカイブは性能の統計情報やサーバログから抽出した情報を保持するファイルを含んでいます。
 			</p>
 
 			
 			
-		<div class="note attention"><span class="attentiontitle">Attention:</span> <samp class="ph codeph">cbcollect_info</samp> is one of the most important diagnostic tools used by Couchbase technical support.</div>
+		<div class="note attention"><span class="attentiontitle">重要:</span> <samp class="ph codeph">cbcollect_info</samp>はCouchbaseテクニカルサポートによって利用される最も重要な診断ツールの一つです。</div>
 
 		
-		<p class="p">This tool is at the following locations</p>
+		<p class="p">このツールは以下の場所にあります</p>
 
 		
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
@@ -40,9 +35,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d37862e52">Operating System</th>
+						<th class="entry" valign="top" width="50%" id="d37862e51">オペレーティングシステム</th>
 
-						<th class="entry" valign="top" width="50%" id="d37862e55">Location</th>
+						<th class="entry" valign="top" width="50%" id="d37862e54">ロケーション</th>
 
 					</tr>
 
@@ -50,23 +45,23 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d37862e52 ">Linux</td>
+						<td class="entry" valign="top" width="50%" headers="d37862e51 ">Linux</td>
 
-						<td class="entry" valign="top" width="50%" headers="d37862e55 ">/opt/couchbase/bin/cbcollect_info</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d37862e52 ">Windows</td>
-
-						<td class="entry" valign="top" width="50%" headers="d37862e55 ">C:\Program&nbsp;Files\Couchbase\Server\bin\cbcollect_info</td>
+						<td class="entry" valign="top" width="50%" headers="d37862e54 ">/opt/couchbase/bin/cbcollect_info</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d37862e52 ">Mac OS X</td>
+						<td class="entry" valign="top" width="50%" headers="d37862e51 ">Windows</td>
 
-						<td class="entry" valign="top" width="50%" headers="d37862e55 ">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbcollect_info</td>
+						<td class="entry" valign="top" width="50%" headers="d37862e54 ">C:\Program&nbsp;Files\Couchbase\Server\bin\cbcollect_info</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d37862e51 ">Mac OS X</td>
+
+						<td class="entry" valign="top" width="50%" headers="d37862e54 ">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbcollect_info</td>
 
 					</tr>
 
@@ -76,7 +71,7 @@
 </div>
 
 		
-			<p class="p">The tool creates the following log files in the output file:</p>
+			<p class="p">このツールは以下のログファイルを出力ファイル内に作成します:</p>
 
 			
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
@@ -84,9 +79,9 @@
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d37862e107">Log file</th>
+							<th class="entry" valign="top" width="50%" id="d37862e106">ログファイル</th>
 
-							<th class="entry" valign="top" width="50%" id="d37862e110">Description</th>
+							<th class="entry" valign="top" width="50%" id="d37862e109">説明</th>
 
 						</tr>
 
@@ -94,147 +89,141 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">couchbase.log</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">couchbase.log</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">OS-level information about a node.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ddocs.log</td>
-
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Contains diagnostic dumps design documents and replication documents from this node.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">ノードに関するOSレベルの情報。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">diag.log</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ddocs.log</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Contains all kinds of internal diagnostics (list and states of processes, user-visible logs, in-memory stats, etc) 
-								from within live node.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ini.log</td>
-
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Contains dumps of couchdb .ini files.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">このノードでのデザインドキュメントとレプリケーションドキュメントの診断情報。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">memcached.log</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">diag.log</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Contains logs from memcached.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ns_server.babysitter.log</td>
-
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Logs of babysitter.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">稼働中のノードに関するあらゆる内部診断結果(プロセスのリストとステータス、ユーザが閲覧可能なログ、インメモリのステータス, etc)。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ns_server.couchdb.log</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ini.log</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Information about the persistence layer for a node.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ns_server.debug.log</td>
-
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Debug-level information for the cluster management component of this
-								node.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">couchdb .ini ファイルのダンプ。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ns_server.error.log</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">memcached.log</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Error-level information for the cluster management component of this
-								node.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ns_server.http_access.log</td>
-
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Contains log of http requests to port 8091.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">memcachedのログ。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ns_server.info.log</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ns_server.babysitter.log</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Info-level entries for the cluster management component of this
-								node.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ns_server.mapreduce_errors.log</td>
-
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Contains logs of errors from map/reduce functions.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">babysitterのログ。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ns_server.reports.log</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ns_server.couchdb.log</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Contains crash reports of erlang services.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">ノードの永続化層に関する情報。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ns_server.ssl_proxy.log</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ns_server.debug.log</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Los of the ssl proxy component.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">このノードのクラスタ管理コンポーネントに関するデベッグ情報。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ns_server.error.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">このノードのクラスタ管理コンポーネントに関するエラー情報。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ns_server.http_access.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">8091ポートに対するHTTPリクエストのログ。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ns_server.info.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">このノードのクラスタ管理コンポーネントに関するINFOレベルの情報。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ns_server.mapreduce_errors.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">map/reduce関数のエラーログ。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ns_server.reports.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">Erlangサービスのクラッシュレポート。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ns_server.ssl_proxy.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">SSLプロキシコンポーネント群。</td>
 
 						</tr>
 <tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ns_server.stats.log</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ns_server.stats.log</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Logs of statistic related components of ns_server.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ns_server.views.log</td>
-
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Includes information about indexing, time taken for indexing, queries
-								which have been run, and other statistics about views.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">ns_serverの統計情報関連コンポーネントのログ。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ns_server.xdcr_errors.log</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ns_server.views.log</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Error-level messages of the ns_server.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">ns_server.xdcr.log</td>
-
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">XDCR logs.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">インデクシングに関わる情報、インデクシングにかかった時間、実行されたクエリ、その他のViewに関する統計情報。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">stats.log</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ns_server.xdcr_errors.log</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">The results from multiple <samp class="ph codeph">cbstats</samp> options run for
-								the node.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">ns_serverのエラーレベルメッセージ。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e107 ">syslog.tar.gz</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">ns_server.xdcr.log</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e110 ">Archive of the operating system logs.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">XDCRのログ。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">stats.log</td>
+
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">ノードでの<samp class="ph codeph">cbstats</samp>オプションを複数回実行した結果。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d37862e106 ">syslog.tar.gz</td>
+
+							<td class="entry" valign="top" width="50%" headers="d37862e109 ">オペレーティングシステムログのアーカイブ。</td>
 
 						</tr>
 
@@ -246,26 +235,24 @@
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">CLI command and parameters</h2>
-			<p class="p">The following describes usage, where <samp class="ph codeph">output-file</samp> is the name of the .zip file 
-				to create and send to Couchbase technical support.</p>
+		<div class="section"><h2 class="title sectiontitle">CLIコマンドとパラメータ</h2>
+			<p class="p">以下に利用方法を記載します、<samp class="ph codeph">output-file</samp>に作成およびCouchbaseテクニカルサポートに送信する.zipファイルの名称を指定します。</p>
 
 		<pre class="pre codeblock"><code>cbcollect_info [options] [output-file]</code></pre>
 
 			
-		<p class="p">The<samp class="ph codeph">cbcollect_info</samp> command gathers statistics  from an
-				individual node in the cluster.</p>
+		<p class="p"><samp class="ph codeph">cbcollect_info</samp>コマンドはクラスタ内の個々のノードから統計情報を収集します。</p>
 
 			
 			
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. cbcollect_info options</span></caption>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">表 1. cbcollect_info オプション</span></caption>
 					
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d37862e340">Parameter</th>
+							<th class="entry" valign="top" width="50%" id="d37862e338">パラメータ</th>
 
-							<th class="entry" valign="top" width="50%" id="d37862e343">Description</th>
+							<th class="entry" valign="top" width="50%" id="d37862e341">説明</th>
 
 						</tr>
 
@@ -273,79 +260,78 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e340 ">-h, --help</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e338 ">-h, --help</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e343 ">Shows help information.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e340 ">-r ROOT</td>
-
-							<td class="entry" valign="top" width="50%" headers="d37862e343 ">Root directory. Default to <samp class="ph codeph">/opt/couchbase/bin/..</samp></td>
+							<td class="entry" valign="top" width="50%" headers="d37862e341 ">このヘルプ情報を表示します。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e340 ">-v</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e338 ">-r ROOT</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e343 ">Increases verbosity level. If specified, debugging information for
-								<samp class="ph codeph">cbcollect_info</samp> is also displayed on your console.
+							<td class="entry" valign="top" width="50%" headers="d37862e341 ">ルートディレクトリ。 デフォルトは<samp class="ph codeph">/opt/couchbase/bin/..</samp></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d37862e338 ">-v</td>
+
+							<td class="entry" valign="top" width="50%" headers="d37862e341 ">冗長性レベルを増加させます。 指定すると、<samp class="ph codeph">cbcollect_info</samp>のデバッグ情報が利用中のコンソールにも出力されます。
 							</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e340 ">-p</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e338 ">-p</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e343 ">Gathers only product-related information.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e340 ">-d</td>
-
-							<td class="entry" valign="top" width="50%" headers="d37862e343 ">Dumps a list of commands that <samp class="ph codeph">cbcollect_info</samp> needs.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e341 ">プロダクトに関連する情報のみ収集します。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e340 ">--initargs-INITARG</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e338 ">-d</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e343 ">Ther server <samp class="ph codeph">initargs</samp> path.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e340 ">--single-node-diag</td>
-
-							<td class="entry" valign="top" width="50%" headers="d37862e343 ">Collects on aper node basis, diagnostics on just this node. The default is all reachable nodes.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e341 "><samp class="ph codeph">cbcollect_info</samp>が必要とするコマンドのリストをダンプします。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e340 ">--upload-host=UPLOAD_HOST</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e338 ">--initargs-INITARG</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e343 ">Fully-qualified domain name of the host you want the logs uploaded to. 
-								The protocol prefix of the domain name, <samp class="ph codeph">https://</samp>, is optional. 
-								It is the default only supported protocol.</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e341 ">サーバの<samp class="ph codeph">initargs</samp>パス。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e340 ">--customer=UPLOAD_CUSTOMER</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e338 ">--single-node-diag</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e343 ">
-								Customer name. This value is a string with a maximum length of 50 characters that contains only the following characters: [A-Za-z0-9_.-]. 
-								If any other characters are included in the string, the request is rejected. 
+							<td class="entry" valign="top" width="50%" headers="d37862e341 ">このノード上でのノード単位の診断結果を収集する。 デフォルトは接続可能なすべてのノード。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d37862e338 ">--upload-host=UPLOAD_HOST</td>
+
+							<td class="entry" valign="top" width="50%" headers="d37862e341 ">ログのアップロード先となるホストのFQDN(Fully-Qualified Domain Name)。 
+								ドメイン名のプロトコルプリフィクス、<samp class="ph codeph">https://</samp>が指定可能。 
+								これはデフォルトで唯一指定できるプロトコル。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d37862e338 ">--customer=UPLOAD_CUSTOMER</td>
+
+							<td class="entry" valign="top" width="50%" headers="d37862e341 ">
+								顧客名。 最大50文字までの文字列、次の文字のみ指定可能: [A-Za-z0-9_.-] 
+								それ以外の文字を含んでいた場合、リクエストはリジェクトされる。 
 							</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d37862e340 ">--ticket=UPLOAD_TICKET</td>
+							<td class="entry" valign="top" width="50%" headers="d37862e338 ">--ticket=UPLOAD_TICKET</td>
 
-							<td class="entry" valign="top" width="50%" headers="d37862e343 ">Couchbase support ticket number. This value is a string with a maximum length of 7 character that contains only digits 0-9. The ticket number is optional and is used only in conjunction with the --upload option.
+							<td class="entry" valign="top" width="50%" headers="d37862e341 ">Couchbaseサポートチケット番号。 この値は最大8文字の文字列、0-9の数値のみ。 チケット番号は任意で、--uploadオプションを指定した場合のみ利用される。
 							</td>
 
 						</tr>
@@ -360,8 +346,8 @@
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Example</h2>
-			<p class="p">To create a diagnostics .zip file, log onto the node and run the <samp class="ph codeph">cbcollect_info</samp> tool.</p>
+		<div class="section"><h2 class="title sectiontitle">例</h2>
+			<p class="p">解析用の.zipファイルを作成するには、ノードにログインし、<samp class="ph codeph">cbcollect_info</samp>ツールを実行する。</p>
 
 			<pre class="pre codeblock"><code>
 cbcollect_info collect.zip
@@ -370,9 +356,9 @@ cbcollect_info collect.zip
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Response</h2>
+		<div class="section"><h2 class="title sectiontitle">レスポンス</h2>
 			
-			<p class="p">The following example response shows partial output when running the <samp class="ph codeph">cbcollect_info</samp> command.</p>
+			<p class="p">以下の例は<samp class="ph codeph">cbcollect_info</samp>コマンド実行結果を部分的に表示しています。</p>
 
 			<pre class="pre codeblock"><code>
 uname (uname -a) - OK
@@ -415,13 +401,13 @@ adding: /tmp/tmpMYbSyD/ns_server.stats.log -&gt; cbcollect_info_ns_1@10.5.2.117_
 
 	<nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Serverコマンドラインインタフェース（CLI） ツールはクラスタ、サーバ、vBuckets、XDCRなどの管理や監視を提供します。">CLIリファレンス</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../CLI/cbbackup_tool.html" title="cbbackupツールは、稼働中の全クラスタ・全バケット・単一ノード・正常稼働中ノード上の単一バケット のコピーを作成します。">cbbackupツール</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../CLI/cbdocloader_tool.html" title="The cbdocloader tool is used to load a group of JSON documents in a given directory or in a single .zip file.">cbdocloader tool</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Serverコマンドラインインタフェース（CLI） ツールはクラスタ、サーバ、vBuckets、XDCRなどの管理や監視を提供します。">CLIリファレンス</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../CLI/cbbackup_tool.html" title="cbbackupツールは、稼働中の全クラスタ・全バケット・単一ノード・正常稼働中ノード上の単一バケット のコピーを作成します。">cbbackupツール</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../CLI/cbdocloader_tool.html" title="cbdocloaderツールは、指定ディレクトリ内、または単一の.zipファイル内のJSONドキュメントをロードするために利用します。">cbdocloader ツール</a></div>
 </div>
 
 <div class="linklist linklist">
 <div><a class="link" href="cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
-<div><a class="link" href="http://www.couchbase.com/wiki/display/couchbase/Working+with+the+Couchbase+Technical+Support+Team" target="_blank">Working with Couchbase Customer Support</a></div></div>
+<div><a class="link" href="http://www.couchbase.com/wiki/display/couchbase/Working+with+the+Couchbase+Technical+Support+Team" target="_blank">Couchbaseカスタマーサポートを利用する</a></div></div>
 </nav>
 </div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

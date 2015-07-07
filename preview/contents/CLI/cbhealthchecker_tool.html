@@ -1,41 +1,29 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>cbhealthchecker tool</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>cbhealthcheckerツール</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a></li><li class="section"><a href="../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../CLI/cbhealthchecker_tool.html" class="current"><span>cbhealthchecker tool</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-	<h1 class="title topictitle1">cbhealthchecker tool</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a></li><li class="section"><a href="../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../CLI/cbcollect_info_tool.html"><span>cbcollect_info ツール</span></a></li><li class="section"><a href="../CLI/cbdocloader_tool.html"><span>cbdocloader ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../CLI/cbhealthchecker_tool.html" class="current"><span>cbhealthcheckerツール</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../CLI/cbreset_password_tool.html"><span>cbreset_password ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbrestore_tool.html"><span>cbrestore ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../CLI/cbtransfer_tool.html"><span>cbtransfer ツール</span></a></li><li class="section"><a href="../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen ツール</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+	<h1 class="title topictitle1">cbhealthcheckerツール</h1>
 
 	
-	<div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbhealthchecker</samp> tool generates a health report named <em class="ph i">Cluster
-		Health Check Report</em> for a cluster.</p>
+	<div class="body refbody"><p class="shortdesc"><samp class="ph codeph">cbhealthchecker</samp>ツールは、 <em class="ph i">Cluster
+		Health Check Report</em> という名前のクラスタのヘルスレポートを生成します。</p>
 
-		<div class="section"><h2 class="title sectiontitle">Description</h2>
-		<p class="p">The report provides data that helps
-			administrators, developers, and testers determine whether a cluster is healthy, has
-			issues that must be addressed soon to prevent future problems, or has issues that must
-			be addressed immediately.</p>
+		<div class="section"><h2 class="title sectiontitle">説明</h2>
+		<p class="p">レポートは管理者、開発者、テスターがクラスタが健全な状態かどうか、問題を未然に防ぐために解決されるべき問題があるか、または直ちに解決すべき問題があるかどうかを判断するために有用なデータを提供します。</p>
 
-		<p class="p">The tool retrieves data from the Couchbase Server monitoring system, aggregates it over a
-			time scale, analyzes the statistics against thresholds, and generates a report. Unlike
-			other command line tools such as <samp class="ph codeph">cbstats</samp> and
-				<samp class="ph codeph">cbtransfer</samp> that use the TAP protocol to obtain data from the monitoring system,
-				<samp class="ph codeph">cbhealthchecker</samp> obtains data by using the REST API and the
-			memcached protocol.</p>
+		<p class="p">このツールはCouchbase Serverモニタリングシステムからデータを取得し、タイムスケールで集約し、閾値に対して統計情報を分析し、レポートを生成します。 <samp class="ph codeph">cbstats</samp>や<samp class="ph codeph">cbtransfer</samp>など、TAPプロトコルを利用してモニタリングシステムからデータを取得する他のコマンドラインツールと異なり、<samp class="ph codeph">cbhealthchecker</samp>はREST APIとmemcachedプロトコルを利用してデータを取得します。</p>
 
-		<p class="p">You can generate reports on the following time scales: minute, hour, day, week, month,
-			and year. The tool outputs an HTML file, a text file, and a JSON file. Each file
-			contains the same information — the only difference between them is the format of the
-			information. All <samp class="ph codeph">cbhealthchecker</samp> output is stored in a
-				<samp class="ph codeph">reports</samp> folder. The tool does not delete any files from the folder.
-			You can delete files manually if the <samp class="ph codeph">reports</samp> folder becomes too large.
-			The path to the output files is displayed when the run finishes.</p>
+		<p class="p">以下のタイムスケールでレポートを生成できます: minute, hour, day, week, month, year。 このツールはHTMLファイル、テキストファイル、JSONファイルを出力します。 各ファイルは同一の情報を含んでいます - 唯一の違いは情報のフォーマットだけです。 すべての<samp class="ph codeph">cbhealthchecker</samp>の出力は、<samp class="ph codeph">reports</samp>フォルダに保存されます。 このツールはそのフォルダからファイルを削除しません。
+			<samp class="ph codeph">reports</samp>フォルダのサイズが肥大化した場合は、手動でファイルを削除してください。
+			実行が完了すると、出力ファイルのパスが表示されます。</p>
 
-		<div class="note note"><span class="notetitle">Note:</span> <samp class="ph codeph">cbhealthchecker</samp> is automatically installed with Couchbase Server. You
-			can find the tool in the following locations, depending upon your platform:</div>
+		<div class="note note"><span class="notetitle">注:</span> <samp class="ph codeph">cbhealthchecker</samp>はCouchbase Serverと共に自動的にインストールされます。
+			ツールは、プラットフォームに応じて、以下の場所に存在します:</div>
 
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">CLI command and parameters</h2>
-			<p class="p">This tool has the following options:</p>
+		<div class="section"><h2 class="title sectiontitle">CLIコマンドとパラメータ</h2>
+			<p class="p">このツールには以下のオプションがあります:</p>
 
 			
 			
@@ -45,11 +33,11 @@
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="33.33333333333333%" id="d41424e79">Option</th>
+							<th class="entry" valign="top" width="33.33333333333333%" id="d41424e78">オプション</th>
 
-							<th class="entry" valign="top" width="33.33333333333333%" id="d41424e82">Syntax</th>
+							<th class="entry" valign="top" width="33.33333333333333%" id="d41424e81">シンタックス</th>
 
-							<th class="entry" valign="top" width="33.33333333333333%" id="d41424e85">Description</th>
+							<th class="entry" valign="top" width="33.33333333333333%" id="d41424e84">説明</th>
 
 						</tr>
 
@@ -57,98 +45,93 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e79 ">CLUSTER</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e78 ">CLUSTER</td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e82 "><samp class="ph codeph">-c HOST[:PORT]</samp>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e81 "><samp class="ph codeph">-c HOST[:PORT]</samp>
 								<samp class="ph codeph">--cluster=HOST[:PORT]</samp></td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e85 ">Hostname and port of a node in the cluster. The default port is
-								8091.</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e84 ">クラスタ内ノードのホスト名とポート。 デフォルトポートは8091。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e79 ">USERNAME</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e78 ">USERNAME</td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e82 "><samp class="ph codeph">-u USERNAME</samp>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e81 "><samp class="ph codeph">-u USERNAME</samp>
 								<samp class="ph codeph">--user=USERNAME</samp></td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e85 ">Admin username of the cluster.</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e84 ">クラスタの管理者ユーザ名。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e79 ">PASSWORD</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e78 ">PASSWORD</td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e82 "><samp class="ph codeph">-p PASSWORD</samp>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e81 "><samp class="ph codeph">-p PASSWORD</samp>
 								<samp class="ph codeph">--password=PASSWORD</samp></td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e85 ">Admin password of the cluster.</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e84 ">クラスタの管理者ユーザパスワード。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e79 ">OPTIONS</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e78 ">OPTIONS</td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e82 "><samp class="ph codeph">-b BUCKETNAME</samp>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e81 "><samp class="ph codeph">-b BUCKETNAME</samp>
 								<samp class="ph codeph">--bucket=BUCKETNAME</samp></td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e85 ">Specific bucket on which to report. The default is all
-								buckets.</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e84 ">レポートするバケット名。 デフォルトはすべてのバケット。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e79 ">&nbsp;</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e78 ">&nbsp;</td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e82 "><samp class="ph codeph">-i FILENAME</samp>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e81 "><samp class="ph codeph">-i FILENAME</samp>
 								<samp class="ph codeph">--input=FILENAME</samp></td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e85 ">Generate an analysis report from an input JSON file.</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e84 ">JSON入力ファイルから分析レポートを生成する。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e79 ">&nbsp;</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e78 ">&nbsp;</td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e82 "><samp class="ph codeph">-o FILENAME</samp>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e81 "><samp class="ph codeph">-o FILENAME</samp>
 								<samp class="ph codeph">--output=FILENAME</samp></td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e85 ">File name for the HTML report. The default output file name is the
-								report time stamp, for example:
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e84 ">HTMLレポートのファイル名、デフォルトの出力ファイル名はレポートのタイムスタンプ、例:
 								<samp class="ph codeph">2013-07-26_13-26-23.html</samp>.</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e79 ">&nbsp;</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e78 ">&nbsp;</td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e82 "><samp class="ph codeph">-h</samp>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e81 "><samp class="ph codeph">-h</samp>
 								<samp class="ph codeph">--help</samp></td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e85 ">Show the help message and exit.</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e84 ">ヘルプメッセージを表示して終了する。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e79 ">&nbsp;</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e78 ">&nbsp;</td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e82 "><samp class="ph codeph">-s SCALE</samp>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e81 "><samp class="ph codeph">-s SCALE</samp>
 								<samp class="ph codeph">--scale=SCALE</samp></td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e85 ">Time span (scale) for the statistics: minute, hour, day, week, month
-								or year. The default time span is day.</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e84 ">統計情報のタイムスパン(スケール): minute, hour, day, week, month, year。 デフォルトのタイムスパンはday。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e79 ">&nbsp;</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e78 ">&nbsp;</td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e82 "><samp class="ph codeph">-j</samp>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e81 "><samp class="ph codeph">-j</samp>
 								<samp class="ph codeph">--jsononly</samp></td>
 
-							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e85 ">Collect data and output only a JSON file. When you use this option,
-								the analysis report is not generated.</td>
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d41424e84 ">データを収集し、JSONファイルのみを出力する。 このオプションを利用すると、分析レポートは生成されません。</td>
 
 						</tr>
 
@@ -165,9 +148,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d41424e250">Operating System</th>
+						<th class="entry" valign="top" width="50%" id="d41424e249">オペレーティングシステム</th>
 
-						<th class="entry" valign="top" width="50%" id="d41424e253">Location</th>
+						<th class="entry" valign="top" width="50%" id="d41424e252">ロケーション</th>
 
 					</tr>
 
@@ -175,23 +158,23 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d41424e250 "><strong class="ph b">Linux</strong></td>
+						<td class="entry" valign="top" width="50%" headers="d41424e249 "><strong class="ph b">Linux</strong></td>
 
-						<td class="entry" valign="top" width="50%" headers="d41424e253 "><samp class="ph codeph">/opt/couchbase/bin/</samp></td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d41424e250 "><strong class="ph b">Windows</strong></td>
-
-						<td class="entry" valign="top" width="50%" headers="d41424e253 "><samp class="ph codeph">C:\Program&nbsp;Files\Couchbase\Server\bin\</samp></td>
+						<td class="entry" valign="top" width="50%" headers="d41424e252 "><samp class="ph codeph">/opt/couchbase/bin/</samp></td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d41424e250 "><strong class="ph b">Mac OS X</strong></td>
+						<td class="entry" valign="top" width="50%" headers="d41424e249 "><strong class="ph b">Windows</strong></td>
 
-						<td class="entry" valign="top" width="50%" headers="d41424e253 "><samp class="ph codeph">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/</samp></td>
+						<td class="entry" valign="top" width="50%" headers="d41424e252 "><samp class="ph codeph">C:\Program&nbsp;Files\Couchbase\Server\bin\</samp></td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d41424e249 "><strong class="ph b">Mac OS X</strong></td>
+
+						<td class="entry" valign="top" width="50%" headers="d41424e252 "><samp class="ph codeph">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/</samp></td>
 
 					</tr>
 
@@ -203,8 +186,8 @@
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Syntax</h2>
-		<p class="p">The format of the <samp class="ph codeph">cbhealthchecker</samp> command is:</p>
+		<div class="section"><h2 class="title sectiontitle">シンタックス</h2>
+		<p class="p"><samp class="ph codeph">cbhealthchecker</samp>コマンドのフォーマットは以下の通りです:</p>
 
 		<pre class="pre codeblock"><code>cbhealthchecker CLUSTER USERNAME PASSWORD OPTIONS
 </code></pre>
@@ -215,8 +198,8 @@
 		
 		
 		
-		<div class="section"><h2 class="title sectiontitle">Examples</h2>
-		<p class="p">The following command runs a report on all buckets in the cluster for the past day:</p>
+		<div class="section"><h2 class="title sectiontitle">例</h2>
+		<p class="p">以下のコマンドはクラスタ内のすべてのバケットに対し、過去の日次レポートを実行します:</p>
 
 		<pre class="pre codeblock"><code>cbhealthchecker -c 10.3.1.10:8091 -u Administrator -p password
 
@@ -230,7 +213,7 @@ Please find html output at '/opt/couchbase/bin/reports/2013-07-23_16-29-02.html'
 and text output at '/opt/couchbase/bin/reports/2013-07-23_16-29-02.txt'.
 </code></pre>
 
-		<p class="p">The following command runs a report on all buckets in the cluster for the past month:</p>
+		<p class="p">以下のコマンドはクラスタ内のすべてのバケットに対し、過去の月次レポートを実行します:</p>
 
 		<pre class="pre codeblock"><code>cbhealthchecker -c 10.3.1.10:8091 -u Administrator -p password -s month
 
@@ -239,9 +222,8 @@ Please find html output at '/opt/couchbase/bin/reports/2013-07-26_13-26-23.html'
 and text output at '/opt/couchbase/bin/reports/2013-07-26_13-26-23.txt'.
 </code></pre>
 
-		<p class="p">The following command runs a report on only the <samp class="ph codeph">beer-sample</samp> bucket for
-			the past year and outputs the HTML report to a file named
-				<samp class="ph codeph">beer-health-report.html</samp>.</p>
+	<p class="p">以下のコマンドは<samp class="ph codeph">beer-sample</samp>バケットのみの過去の年次レポートを実行し、
+	HTMLレポートを<samp class="ph codeph">beer-health-report.html</samp>のファイル名で出力します。</p>
 
 		<pre class="pre codeblock"><code>cbhealthchecker -c 10.3.1.10:8091 -u Administrator -p password -o beer-health-report.html \
       -b beer-sample -s year
@@ -251,7 +233,7 @@ Please find html output at '/opt/couchbase/bin/reports/beer-health-report.html'
 and text output at '/opt/couchbase/bin/reports/2013-07-26_15-57-11.txt'.
 </code></pre>
 
-		<p class="p">The following command generates only the statistics and outputs them in a JSON file:</p>
+		<p class="p">以下のコマンドは統計情報のみをJSONファイルに出力します:</p>
 
 		<pre class="pre codeblock"><code>cbhealthchecker -c 10.3.1.10:8091 -u Administrator -p password -j
 
@@ -264,35 +246,27 @@ Please find collected stats at '/opt/couchbase/bin/reports/2013-07-26_13-30-36.j
 		
 		
 		
-		<div class="section"><h2 class="title sectiontitle">HTML Report</h2>
-		<p class="p">You can view the HTML report in any web browser. If you copy the report to another
-			location, be sure to copy all the files in the reports folder to ensure that the report
-			is displayed correctly by the browser. When you have multiple HTML reports in the
-			folder, you can use the tabs at the top of the page to display a particular report. (If
-			the tabs do not function in your browser, try using Firefox.)</p>
+		<div class="section"><h2 class="title sectiontitle">HTMLレポート</h2>
+		<p class="p">任意のWebブラウザでHTMLレポートを閲覧できます。 レポートを他の場所にコピーする場合、レポートフォルダ内のすべてのファイルをコピーし、ブラウザで正しくレポートが表示されるようにしてください。 フォルダ内に複数のHTMLレポートがある場合、特定のレポートを表示するにはページのトップにあるタブを利用します。 (タブが表示されない場合、FireFoxをお試しください)</p>
 
-		<p class="p">Throughout the report, normal health statuses are highlighted in green, warnings are
-			highlighted in yellow, and conditions that require immediate action are highlighted in
-			red. When viewing the report, you can hover your mouse over each statistic to display a
-			message that describes how the statistic is calculated.</p>
+		<p class="p">レポートでは、正常なステータスは緑で、警告は黄色で、直ちにアクションが必要な状態は赤でハイライトされます。
+			レポートを閲覧する際、各統計情報にマウスを乗せると、その統計情報の計算方法を解説するメッセージを表示できます。</p>
 
-		<p class="p">The report begins with a header that lists the statistics scale, the date and time the
-			report was run, and an assessment of the overall health of the cluster. The following
-			figure shows the report header:</p>
+		<p class="p">レポートは統計情報のスケール、レポート実行日時、クラスタ状態の概要を含むヘッダから始まります。
+			以下の図はレポートヘッダを示します:</p>
 
 		<div class="fig fignone">
 				<img class="image" src="../images/health-report-header.png" width="480">
 			</div>
 
 		
-			<p class="p">The body of the report is divided into several sections: Couchbase — Alerts</p>
+			<p class="p">レポートのボディは幾つかのセクションに分かれています: Couchbase — Alerts</p>
 
 		
-		<p class="p">The alerts section contains a list of urgent issues that require immediate attention. For
-			each issue, the report lists the symptoms detected, the impact of the issue, and the
-			recommended corrective action to take. This section appears in the report only when
-			urgent issues are detected. The following figure shows a portion of the alerts section
-			of a report:</p>
+			<p class="p">アラートセクションには直ちにアクションが必要な緊急の問題のリストがあります。
+				各問題に対し、レポートは検知された症状、問題の深刻度、推奨する対策を表示します。
+				このセクションは緊急の問題が検知された場合のみ表示されます。
+				以下の図はレポートのアラートセクションの一部を表示しています:</p>
 
 		
 		<div class="fig fignone"><img class="image" src="../images/health-report-alerts.png" width="480"></div>
@@ -302,9 +276,8 @@ Please find collected stats at '/opt/couchbase/bin/reports/2013-07-26_13-30-36.j
 			<p class="p">Couchbase Cluster Overview:</p>
 
 	
-		<p class="p">The cluster overview section contains cluster-wide metrics and metrics for each bucket
-			and node in the cluster. This section appears in all reports. The following figure shows
-			a portion of the cluster overview section of a report:</p>
+			<p class="p">クラスタ概要のセクションにはクラスタ全体でのメトリックと、クラスタ内の各バケットと各ノードのメトリックがあります。
+				このセクションはすべてのレポートで表示されます。 以下の図はレポートのクラスタ概要セクションの一部を表示しています:</p>
 
 		
 		<div class="fig fignone"><img class="image" src="../images/health-report-cluster-overview.png" width="480"></div>
@@ -314,11 +287,7 @@ Please find collected stats at '/opt/couchbase/bin/reports/2013-07-26_13-30-36.j
 			<p class="p">Couchbase — Warning Indicators:</p>
 
 		
-		<p class="p">The warning indicators section contains a list of issues that require attention. For each
-			issue, the report lists the symptoms detected, the impact of the issue, and the
-			recommended corrective action to take. This section appears in the report only when
-			warning indicators are detected. The following figure shows a portion of the warning
-			indicators section of a report:</p>
+		<p class="p">警告インジケータセクションには注意すべき問題のリストがあります。 各問題に対し、レポートは検知された症状、問題の深刻度、推奨する対策を表示します。 このセクションは警告すべき問題が検知された場合のみ表示されます。 以下の図はレポートの警告インジケータセクションの一部を表示しています:</p>
 
 		
 		<div class="fig fignone"><img class="image" src="../images/health-report-warnings.png" width="480"></div>
@@ -330,9 +299,9 @@ Please find collected stats at '/opt/couchbase/bin/reports/2013-07-26_13-30-36.j
 
 	<nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Serverコマンドラインインタフェース（CLI） ツールはクラスタ、サーバ、vBuckets、XDCRなどの管理や監視を提供します。">CLIリファレンス</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../CLI/cbepctl-intro.html" title="cbepctlツールはvBucketのステータス、設定、メモリとディスク永続化の挙動をコントロールするために利用します。">cbepctlツール</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../CLI/cbreset_password_tool.html" title="The cbreset_password tool is used to reset an administrative or user read-only password.">cbreset_password tool</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Serverコマンドラインインタフェース（CLI） ツールはクラスタ、サーバ、vBuckets、XDCRなどの管理や監視を提供します。">CLIリファレンス</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../CLI/cbepctl-intro.html" title="cbepctlツールはvBucketのステータス、設定、メモリとディスク永続化の挙動をコントロールするために利用します。">cbepctlツール</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../CLI/cbreset_password_tool.html" title="cbreset_passwordツールは管理者または参照専用ユーザのパスワードをリセットするために利用します。">cbreset_password ツール</a></div>
 </div>
 
 <div class="linklist linklist">

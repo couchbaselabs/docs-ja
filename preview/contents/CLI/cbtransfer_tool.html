@@ -1,37 +1,21 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>cbtransfer tool</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>cbtransfer ツール</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a></li><li class="section"><a href="../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../CLI/cbtransfer_tool.html" class="current"><span>cbtransfer tool</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-	<h1 class="title topictitle1">cbtransfer tool</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a></li><li class="section"><a href="../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../CLI/cbcollect_info_tool.html"><span>cbcollect_info ツール</span></a></li><li class="section"><a href="../CLI/cbdocloader_tool.html"><span>cbdocloader ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../CLI/cbhealthchecker_tool.html"><span>cbhealthcheckerツール</span></a></li><li class="section"><a href="../CLI/cbreset_password_tool.html"><span>cbreset_password ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbrestore_tool.html"><span>cbrestore ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../CLI/cbtransfer_tool.html" class="current"><span>cbtransfer ツール</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen ツール</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+	<h1 class="title topictitle1">cbtransfer ツール</h1>
 
 	
-	<div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbtransfer</samp> tool is used to transfer data between clusters and
-		to/from files. </p>
+	<div class="body refbody"><p class="shortdesc"><samp class="ph codeph">cbtransfer</samp>ツールはクラスタ間やファイルとクラスタ間でデータを転送する際に利用します。 </p>
 
-		<div class="section"><h2 class="title sectiontitle">Description</h2>
+		<div class="section"><h2 class="title sectiontitle">説明</h2>
 			
-			<p class="p">In addition to transferring data between clusters and to/from files, the
-					<samp class="ph codeph">cbtransfer</samp> tool can also be used create a copy of data from a
-				node that no longer running. This tool is the underlying, generic data transfer tool
-				that <samp class="ph codeph">cbbackup</samp> and <samp class="ph codeph">cbrestore</samp> are built upon. It is
-				a lightweight extract-transform-load (ETL) tool that can move data from a source to
-				a destination. The source and destination parameters are similar to URLs or file
-				paths.</p>
+			<p class="p">クラスタやファイル間でデータを転送することに加え、<samp class="ph codeph">cbtransfer</samp>ツールは、稼働していないノードからデータをコピーすることもできます。 このツールは<samp class="ph codeph">cbbackup</samp>と<samp class="ph codeph">cbrestore</samp>が内部で利用している共通のデータ転送ツールです。 これは軽量のExtract-Transform-Load (ETL)ツールで、データをソースから宛先へと移動します。 ソースと宛先のパラメータは同様でURLやファイルパスとなります。</p>
 
-			<div class="note note"><span class="notetitle">Note:</span> The most important way to use this tool is for transferring data from
-				a Couchbase node that is no longer running to a cluster that is running. The
-					<samp class="ph codeph">cbbackup</samp>, <samp class="ph codeph">cbrestore</samp>, and
-					<samp class="ph codeph">cbtransfer</samp> tools do not communicate with external IP addresses
-				for server nodes outside of a cluster. Backup, restore, or transfer operations are
-				performed on data from a node within a Couchbase cluster. They only communicate with
-				nodes from a node list obtained within a cluster. This also means that if Couchbase
-				Server is installed with a default IP address, an external hostname cannot be used
-				to access it.</div>
+			<div class="note note"><span class="notetitle">注:</span> このツールの最も重要な利用方法はクラスタではすでに稼働していないCouchbaseノードからデータを転送することです。
+				<samp class="ph codeph">cbbackup</samp>、 <samp class="ph codeph">cbrestore</samp>、<samp class="ph codeph">cbtransfer</samp>ツールはクラスタ外部のサーバノードの外部IPアドレスとは通信しません。 バックアップ、リストア、転送のオペレーションはCouchbaseクラスタ内のノードのデータに対して実行されます。 これらはクラスタから取得したノードリスト内のノードとのみ通信します。 Couchbase ServerがデフォルトIPアドレスを利用してインストールされた場合、外部ホスト名を利用してアクセスすることはできません。</div>
 
-			<div class="note note"><span class="notetitle">Note:</span> Couchbase Server does not transfer design documents. To backup design
-				document, use <samp class="ph codeph">cbbackup</samp> to store the information and
-					<samp class="ph codeph">cbrestore</samp> to read it back into memory.</div>
+			<div class="note note"><span class="notetitle">注:</span> Couchbase Serverはデザインドキュメントを転送しません。 デザインドキュメントをバックアップするには、<samp class="ph codeph">cbbackup</samp>を利用して情報を保存し、<samp class="ph codeph">cbrestore</samp>でメモリへと読み込みます。</div>
 
-			<p class="p">The tool is at the following location:</p>
+			<p class="p">このツールは以下の場所にあります:</p>
 
 			
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
@@ -39,9 +23,9 @@
 					
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" width="50%" id="d45380e72">Operating system</th>
+							<th class="entry" valign="top" width="50%" id="d45380e71">オペレーティングシステム</th>
 
-							<th class="entry" valign="top" width="50%" id="d45380e75">Location</th>
+							<th class="entry" valign="top" width="50%" id="d45380e74">ロケーション</th>
 
 						</tr>
 
@@ -49,23 +33,23 @@
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d45380e72 ">Linux</td>
+							<td class="entry" valign="top" width="50%" headers="d45380e71 ">Linux</td>
 
-							<td class="entry" valign="top" width="50%" headers="d45380e75 ">/opt/couchbase/bin/</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d45380e72 ">Windows</td>
-
-							<td class="entry" valign="top" width="50%" headers="d45380e75 ">C:\Program&nbsp;Files\Couchbase\Server\bin\</td>
+							<td class="entry" valign="top" width="50%" headers="d45380e74 ">/opt/couchbase/bin/</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" width="50%" headers="d45380e72 ">Mac OS X</td>
+							<td class="entry" valign="top" width="50%" headers="d45380e71 ">Windows</td>
 
-							<td class="entry" valign="top" width="50%" headers="d45380e75 ">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/</td>
+							<td class="entry" valign="top" width="50%" headers="d45380e74 ">C:\Program&nbsp;Files\Couchbase\Server\bin\</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d45380e71 ">Mac OS X</td>
+
+							<td class="entry" valign="top" width="50%" headers="d45380e74 ">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/</td>
 
 						</tr>
 
@@ -77,23 +61,23 @@
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">CLI command and parameters</h2>
+		<div class="section"><h2 class="title sectiontitle">CLIコマンドとパラメータ</h2>
 			
-		<p class="p">Basic syntax for this command:</p>
+		<p class="p">コマンドの基本シンタックス:</p>
 
 		<pre class="pre codeblock"><code>cbtransfer [options] source destination</code></pre>
 
-		<p class="p">The following are the command options:</p>
+		<p class="p">以下のコマンドオプションが利用できます:</p>
 
 		
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. cbtransfer options</span></caption>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">表 1. cbtransfer オプション</span></caption>
 				
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d45380e141">Parameters</th>
+						<th class="entry" valign="top" width="50%" id="d45380e140">パラメータ</th>
 
-						<th class="entry" valign="top" width="50%" id="d45380e144">Description</th>
+						<th class="entry" valign="top" width="50%" id="d45380e143">説明</th>
 
 					</tr>
 
@@ -101,124 +85,115 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">-h, –help</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">-h, –help</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">Command line help.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">-b BUCKET_SOURCE</td>
-
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">Single named bucket from source cluster to transfer.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">コマンドラインヘルプ。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">-B BUCKET_DESTINATION, –bucket-destination=BUCKET_DESTINATION</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">-b BUCKET_SOURCE</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">Single named bucket on destination cluster which receives transfer. This enables you to
-							transfer to a bucket with a different name as your source bucket. If you
-							do not provide defaults to the same name as the bucket-source.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">転送するソースクラスタのバケット名。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">-i ID, –id=ID</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">-B BUCKET_DESTINATION, –bucket-destination=BUCKET_DESTINATION</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">Transfer only items that match a vbucket ID.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">-k KEY, –key=KEY</td>
-
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">Transfer only items with keys that match a regexp.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">転送先クラスタのバケット名。 ソースバケットとは異なる名前のバケットへの転送が可能。 指定しない場合、デフォルトはbucket-sourceのバケット。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">-n, –dry-run</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">-i ID, –id=ID</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">No actual transfer; just validate parameters, files, connectivity and
-							configurations.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">-u USERNAME, –username=USERNAME</td>
-
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">REST username for source cluster or server node.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">vBucket IDに一致したアイテムのみを転送する。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">-p PASSWORD, –password=PASSWORD</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">-k KEY, –key=KEY</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">REST password for cluster or server node.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">-t THREADS, –threads=THREADS</td>
-
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">Number of concurrent workers threads performing the transfer. Default: 4.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">正規表現とマッチするキーのアイテムのみを転送する。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">-v, –verbose</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">-n, –dry-run</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">Verbose logging; provide more verbosity.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">-x EXTRA, –extra=EXTRA</td>
-
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">Provide extra, uncommon config parameters.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">パラメータ、ファイル、接続、設定の検証のみ。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">–single-node</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">-u USERNAME, –username=USERNAME</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">Transfer from a single server node in a source cluster. This single server node is a
-							source node URL.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">–source-vbucket-state=SOURCE_VBUCKET_STATE</td>
-
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">Only transfer from source vbuckets in this state, such as ‘active’
-							(default) or ‘replica’. Must be used with Couchbase cluster as
-							source.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">ソースクラスタまたはサーバノードのRESTユーザ名。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">–destination-vbucket-state=DESTINATION_VBUCKET_STATE</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">-p PASSWORD, –password=PASSWORD</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">Only transfer to destination vbuckets in this state, such as ‘active’
-							(default) or ‘replica’. Must be used with Couchbase cluster as
-							destination.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">クラスタまたはサーバノードのRESTパスワード</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 ">–destination-operation=DESTINATION_OPERATION</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">-t THREADS, –threads=THREADS</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">Perform this operation on transfer. “set” will override an existing
-							document, ‘add’ will not override, ‘get’ will load all keys transferred
-							from a source cluster into the caching layer at the destination.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">転送を実行するワーカスレッドの並列数。 デフォルト: 4。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e141 "><samp class="ph codeph">/path/to/filename</samp></td>
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">-v, –verbose</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e144 ">Export a.csv file from the server or import a.csv file to the server.
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">冗長なロギング; より冗長となる。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">-x EXTRA, –extra=EXTRA</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">一般的ではない拡張パラメータを指定する。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">–single-node</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">ソースクラスタの単一サーバから転送する。 この単一サーバノードはソースノードのURL。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">–source-vbucket-state=SOURCE_VBUCKET_STATE</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">'active' (デフォルト) または 'replica' で、指定したステータスのvBucketからのみ転送する。 Couchbaseクラスタをソースに利用する必要がある。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">–destination-vbucket-state=DESTINATION_VBUCKET_STATE</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">'active' (デフォルト) または 'replica' で、指定したステータスのvBucketのみに転送する。 Couchbaseクラスタを宛先に利用する必要がある。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45380e140 ">–destination-operation=DESTINATION_OPERATION</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">転送時にこのオペレーションを実施する。 
+						"set"は既存のドキュメントを上書きし、'add'は上書きしない、'get'はソースクラスタから取得したすべてのキーを宛先のキャッシュ層にロードする。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45380e140 "><samp class="ph codeph">/path/to/filename</samp></td>
+
+						<td class="entry" valign="top" width="50%" headers="d45380e143 ">サーバから.csvファイルに出力するか、.csvファイルをサーバにインポートする。
 						</td>
 
 					</tr>
@@ -228,19 +203,18 @@
 			</table>
 </div>
 
-			<p class="p">The following are extra, specialized command options with the <samp class="ph codeph">cbtransfer -x</samp>
-				parameter.</p>
+			<p class="p">以下に、<samp class="ph codeph">cbtransfer -x</samp>パラメータで利用する特別なオプションを記載します。</p>
 
 			
 			
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 2. cbtransfer -x options</span></caption>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">表 2. cbtransfer -x オプション</span></caption>
 				
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d45380e323">-x options</th>
+						<th class="entry" valign="top" width="50%" id="d45380e322">-x オプション</th>
 
-						<th class="entry" valign="top" width="50%" id="d45380e326">Description</th>
+						<th class="entry" valign="top" width="50%" id="d45380e325">説明</th>
 
 					</tr>
 
@@ -249,125 +223,122 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">backoff_cap=10</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">backoff_cap=10</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">Maximum backoff time during the rebalance period.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">batch_max_bytes=400000</td>
-
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">Transfer this # of bytes per batch.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">リバランス中の最大バックオフ時間。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">batch_max_size=1000</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">batch_max_bytes=400000</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">Transfer this # of documents per batch.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">cbb_max_mb=100000</td>
-
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">Split backup file on destination cluster if it exceeds the MB.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">指定したバイト数をバッチで転送。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">conflict_resolve=1</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">batch_max_size=1000</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">By default, disable conflict resolution.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">data_only=0</td>
-
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">For value 1, transfer only data from a backup file or cluster.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">指定したドキュメント数をバッチで転送。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">design_doc_only=0</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">cbb_max_mb=100000</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">For value 1, transfer only design documents from a backup file or cluster. Default: 0.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">max_retry=10</td>
-
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">Max number of sequential retries if the transfer fails.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">指定したMBを越えると、宛先クラスタでのバックアップファイルを分割。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">mcd_compatible=1</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">conflict_resolve=1</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">For value 0, display extended fields for stdout output.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">nmv_retry=1</td>
-
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">0 or 1, where 1 retries transfer after a NOT_MY_VBUCKET message. Default: 1.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">デフォルトでは、コンフリクトの解決は無効。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">recv_min_bytes=4096</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">data_only=0</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">Amount of bytes for every TCP/IP batch transferred.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">rehash=0</td>
-
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">For value 1, rehash the partition id's of each item. 
-							This is required when transferring data between clusters with
-							different number of partitions, such as when transferring data from an
-							Mac OS X server to a non-Mac OS X cluster.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">1を指定すると、バックアップファイルまたはクラスタからデータのみを転送。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">report=5</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">design_doc_only=0</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">Number batches transferred before updating progress bar in console.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">report_full=2000</td>
-
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">Number batches transferred before emitting progress information in console.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">1を指定すると、バックアップファイルまたはクラスタからデザインドキュメントのみを転送。 デフォルト: 0。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">seqno=0</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">max_retry=10</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">By default, start seqno from beginning.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">try_xwm=1</td>
-
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">Transfer documents with metadata. Default: 1. Value of 0 is only used when transferring
-								from 1.8.x to 1.8.x.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">転送失敗時の最大連続リトライ回数。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d45380e323 ">uncompress=0</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">mcd_compatible=1</td>
 
-						<td class="entry" valign="top" width="50%" headers="d45380e326 ">For value 1, restore data in uncompressed mode.</td>
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">0を指定すると、拡張フィールドを標準出力に出力。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">nmv_retry=1</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">0または1、1はNOT_MY_VBUCKETメッセージ後にリトライする。 デフォルト: 1。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">recv_min_bytes=4096</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">各TCP/IPバッチ転送のバイト数。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">rehash=0</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">1を指定すると、各アイテムのパーティションIDを再ハッシュ。 
+							Mac OS XサーバからMac OS X以外のクラスタへのデータ転送など、異なるパーティション数のクラスタ間でデータを転送する場合に必要。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">report=5</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">コンソール上の進捗バーを更新するまでに転送するバッチ数。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">report_full=2000</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">コンソールに進捗状況を表示するまでに転送するバッチ数。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">seqno=0</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">デフォルトは、seqnoの最初から。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">try_xwm=1</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">ドキュメントをメタデータ付きで転送。 デフォルト: 1。 0は1.8.xから1.8.xへの転送でのみ利用する。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d45380e322 ">uncompress=0</td>
+
+						<td class="entry" valign="top" width="50%" headers="d45380e325 ">1を指定すると、非圧縮モードでデータをリストアする。</td>
 
 					</tr>
 
@@ -379,14 +350,14 @@
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Syntax</h2>
-			<p class="p">The following is the basic syntax:</p>
+		<div class="section"><h2 class="title sectiontitle">シンタックス</h2>
+			<p class="p">基本シンタックス:</p>
 
 			<pre class="pre codeblock"><code>cbtransfer [options] source destination</code></pre>
 
 			
 			
-			<p class="p">The following are syntax examples:</p>
+			<p class="p">シンタックス例:</p>
 
 			
 			<pre class="pre codeblock"><code>
@@ -402,10 +373,10 @@ cbtransfer file.csv http://DEST:8091
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Example: Transferring data to a cluster</h2>
-			<p class="p">The following example and response transfers data from a non-running node to a running cluster:</p>
+		<div class="section"><h2 class="title sectiontitle">例: クラスタへとデータを転送する</h2>
+			<p class="p">以下はクラスタで稼働していないノードからデータを転送する例とそのレスポンスです:</p>
 
-			<p class="p">Syntax:</p>
+			<p class="p">シンタックス</p>
 
 			<pre class="pre codeblock"><code>
 cbtransfer
@@ -423,7 +394,7 @@ cbtransfer
 </code></pre>
 
 		
-			<p class="p">The response shows 10000 total documents transferred in batch size of 1088 documents each.</p>
+			<p class="p">レスポンスは計10000のドキュメントが、1088ドキュメントずつのバッチで転送されたことを示しています。</p>
 
 		<pre class="pre codeblock"><code>[####################] 100.0% (10000/10000 msgs)
 bucket: bucket_name, msgs transferred...
@@ -437,8 +408,8 @@ done
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Example: Transferring data to standard output</h2>
-			<p class="p">The following example and response sends all the data from a node to standard output:</p>
+		<div class="section"><h2 class="title sectiontitle">例: 標準出力へデータを転送する</h2>
+			<p class="p">以下はノードからすべてのデータを標準出力に転送する例とレスポンスです:</p>
 
 		<pre class="pre codeblock"><code>cbtransfer http://10.5.2.37:8091/ stdout:
 
@@ -459,15 +430,10 @@ set pymc34 0 0 10
 
 		
 		
-		<div class="section"><h2 class="title sectiontitle">Example: Exporting and importing CSV files</h2>
-		<p class="p">The <samp class="ph codeph">cbtransfer</samp> tool is also used to import and export <samp class="ph codeph">csv</samp>
-				files. Data is imported into Couchbase Server as documents and documents are
-				exported from the server into comma-separated values. Design documents associated
-				with vBuckets are not included.</p>
+		<div class="section"><h2 class="title sectiontitle">例: CSVファイルのエクスポートとインポート</h2>
+		<p class="p"><samp class="ph codeph">cbtransfer</samp>は<samp class="ph codeph">csv</samp>ファイルのインポートとエクスポートも可能です。 データはドキュメントとしてCouchbase Serverにインポートされ、サーバからエクスポートしたドキュメントはカンマ区切りの値となります。 バケットに関連するデザインドキュメントは含まれません。</p>
 
-			<p class="p">In these examples, the following records are in the default bucket where re-fdeea652a89ec3e9
-				is the document ID, 0 are flags, 0 is the expiration, and the CAS value is
-				4271152681275955. The actual value is the hash starting with "{""key""....... </p>
+			<p class="p">以下の例では、ドキュメントIDがre-fdeea652a89ec3e9、フラグが0、有効期限が0、CASが4271152681275955のレコードがデフォルトバケットにあるとします。 実際の値は"{""key"".......で始まるハッシュです </p>
 
 		<pre class="pre codeblock"><code>re-fdeea652a89ec3e9,
 0,
@@ -488,19 +454,13 @@ set pymc34 0 0 10
 ......
 </code></pre>
 
-			<p class="p">This example exports these items to a .csv file. All items are transferred from the default
-				bucket, <samp class="ph codeph">-b default</samp> available at the node
-					<samp class="ph codeph">http://localhost:8091</samp> and put into the
-					<samp class="ph codeph">/data.csv</samp> file. If a different bucket is provided for the
-					<samp class="ph codeph">-b</samp> option, all items are exported from that bucket. Credentials
-				are required for the cluster when exporting items from a bucket in the cluster. </p>
+			<p class="p">この例ではこれらのアイテムを.csvファイルへとエクスポートします。 <samp class="ph codeph">http://localhost:8091</samp>のノード上の、<samp class="ph codeph">-b default</samp>デフォルトバケットからすべてのアイテムを、<samp class="ph codeph">/data.csv</samp>ファイルに保存します。 別のバケットを<samp class="ph codeph">-b</samp>オプションで指定すると、そのバケットからすべてのアイテムがエクスポートされます。 クラスタ内のバケットからアイテムをエクスポートする場合、クラスタの認証情報が必要です。 </p>
 
 		<pre class="pre codeblock"><code>cbtransfer http://[localhost]:8091 csv:./data.csv -b default -u Administrator -p password
 </code></pre>
 
 		
-			<p class="p">The following example response is similar to that in other <samp class="ph codeph">cbtransfer</samp>
-				scenarios:</p>
+			<p class="p">以下は他の<samp class="ph codeph">cbtransfer</samp>シナリオと同様のレスポンス例です:</p>
 
 		<pre class="pre codeblock"><code>[####################] 100.0% (10000/10000 msgs)
 bucket: default, msgs transferred...
@@ -512,15 +472,12 @@ bucket: default, msgs transferred...
 done
 </code></pre>
 
-		<p class="p">The following example syntax shows 1053 batches of data transferred at 550.8 batches per
-				second. The tool outputs “cannot save bucket design….” to indicate that no design
-				documents were exported. To import information from a.csv file to a named bucket in
-				a cluster:</p>
+		<p class="p">以下の例は1053のデータをバッチ形式で、秒間550.8バッチ転送していることを示しています。 ツールはデザインドキュメントがエクスポートされないことを示す “cannot save bucket design….” を出力します。 .csvファイルからクラスタ内の任意のバケットへと情報をインポートするには:</p>
 
 		<pre class="pre codeblock"><code>cbtransfer /data.csv http://[hostname]:[port] -B bucket_name -u Administrator -p password
 </code></pre>
 
-		<p class="p">If the .csv file is not correctly formatted, the following error displays during import:</p>
+		<p class="p">.csvファイルのフォーマットが不正な場合、インポート中に以下のエラーが表示されます:</p>
 
 		<pre class="pre codeblock"><code>w0 error: fails to read from csv file, .....
 </code></pre>
@@ -534,8 +491,8 @@ done
 
 <nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Serverコマンドラインインタフェース（CLI） ツールはクラスタ、サーバ、vBuckets、XDCRなどの管理や監視を提供します。">CLIリファレンス</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../CLI/cbworkloadgen_tool.html" title="The cbworkloadgen tool is used to generate random data and perform read/writes.">cbworkloadgen tool</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Serverコマンドラインインタフェース（CLI） ツールはクラスタ、サーバ、vBuckets、XDCRなどの管理や監視を提供します。">CLIリファレンス</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../CLI/cbworkloadgen_tool.html" title="cbworkloadgenツールはランダムデータを生成し、参照/更新を実行するために利用します。">cbworkloadgen ツール</a></div>
 </div>
 </nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

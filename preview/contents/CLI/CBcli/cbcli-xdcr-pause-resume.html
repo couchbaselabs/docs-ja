@@ -1,6 +1,6 @@
 <!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>XDCRレプリケーションストリームの一時停止</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../../assets/stylesheets/application.css"><link rel="stylesheet" href="../../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBcli/cbcli-commands.html"><span>couchbase-cliコマンド</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-rza.html"><span>ラックゾーンアウェアネス</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-buckets.html"><span>バケット</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-servers.html"><span>サーバノード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/CBcli/cbcli-xdcr.html"><span>XDCR</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBcli/cbcli-xdcr-manage-replication.html"><span>XDCRレプリケーションストリームの管理</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-xdcr-pause-resume.html" class="current"><span>XDCRレプリケーションストリームの一時停止</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../../CLI/CBcli/cbcli-xdcr-manage-encryption.html"><span>XDCRデータの暗号化管理</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-ssl.html"><span>SSL証明書の管理</span></a></li></ul></li><li class="section"><a href="../../CLI/CBcli/cbcli-cluster-wide-info.html"><span>Diagnostics with couchbase-cli</span></a></li></ul></li><li class="section"><a href="../../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../../CLI/cbcollect_info_tool.html"><span>cbcollect_info tool</span></a></li><li class="section"><a href="../../CLI/cbdocloader_tool.html"><span>cbdocloader tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../../CLI/cbhealthchecker_tool.html"><span>cbhealthchecker tool</span></a></li><li class="section"><a href="../../CLI/cbreset_password_tool.html"><span>cbreset_password tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbrestore_tool.html"><span>cbrestore tool</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../../CLI/cbtransfer_tool.html"><span>cbtransfer tool</span></a></li><li class="section"><a href="../../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen tool</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBcli/cbcli-commands.html"><span>couchbase-cliコマンド</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-rza.html"><span>ラックゾーンアウェアネス</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-buckets.html"><span>バケット</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBcli/cbcli-servers.html"><span>サーバノード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/CBcli/cbcli-xdcr.html"><span>XDCR</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBcli/cbcli-xdcr-manage-replication.html"><span>XDCRレプリケーションストリームの管理</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-xdcr-pause-resume.html" class="current"><span>XDCRレプリケーションストリームの一時停止</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../../CLI/CBcli/cbcli-xdcr-manage-encryption.html"><span>XDCRデータの暗号化管理</span></a></li><li class="section"><a href="../../CLI/CBcli/cbcli-ssl.html"><span>SSL証明書の管理</span></a></li></ul></li><li class="section"><a href="../../CLI/CBcli/cbcli-cluster-wide-info.html"><span>couchbase-cliによる診断</span></a></li></ul></li><li class="section"><a href="../../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../../CLI/cbcollect_info_tool.html"><span>cbcollect_info ツール</span></a></li><li class="section"><a href="../../CLI/cbdocloader_tool.html"><span>cbdocloader ツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../../CLI/cbhealthchecker_tool.html"><span>cbhealthcheckerツール</span></a></li><li class="section"><a href="../../CLI/cbreset_password_tool.html"><span>cbreset_password ツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbrestore_tool.html"><span>cbrestore ツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../../CLI/cbtransfer_tool.html"><span>cbtransfer ツール</span></a></li><li class="section"><a href="../../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen ツール</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
   <h1 class="title topictitle1">XDCRレプリケーションストリームの一時停止</h1>
 
   
@@ -16,9 +16,9 @@
           
           <thead class="thead" align="left">
             <tr class="row">
-              <th class="entry" valign="top" width="33.44481605351171%" id="d10286e42">オプション</th>
+              <th class="entry" valign="top" width="33.44481605351171%" id="d10284e42">オプション</th>
 
-              <th class="entry" valign="top" width="66.5551839464883%" id="d10286e45">説明</th>
+              <th class="entry" valign="top" width="66.5551839464883%" id="d10284e45">説明</th>
 
             </tr>
 
@@ -26,121 +26,121 @@
 
           <tbody class="tbody">
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--create</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--create</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">新しいレプリケーションを作成し開始する</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--delete</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">レプリケーションを停止しキャンセルする</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">新しいレプリケーションを作成し開始する</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--list</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--delete</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">すべてのXDCRレプリケーションを表示</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--pause</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">レプリケーションを一時停止</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">レプリケーションを停止しキャンセルする</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--resume</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--list</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">レプリケーションを再開</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--settings</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">レプリケーションの設定を更新</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">すべてのXDCRレプリケーションを表示</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--xdcr-replicator=REPLICATOR</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--pause</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">レプリケーションID</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--xdcr-from-bucket=BUCKET</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">レプリケーション元のローカルのバケット名</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">レプリケーションを一時停止</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--xdcr-cluster-name=CLUSTERNAME</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--resume</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">レプリケーション先のリモートクラスタ</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--xdcr-to-bucket=BUCKETNAME</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">レプリケーション先のリモートバケット名</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">レプリケーションを再開</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--max-concurrent-reps =[ 16 ]</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--settings</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">バケットごとの最大並列レプリケーション、8から256。 デフォルト: 16</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--checkpoint-interval =[ 1800 ]</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">チェックポイント間隔、60から14400秒</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">レプリケーションの設定を更新</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--worker-batch-size =[ 500 ]</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--xdcr-replicator=REPLICATOR</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">ドキュメントバッチサイズ、500から10000</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--doc-batch size =[ 2048 ] KB</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">ドキュメントバッチサイズ、10から100000KB</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">レプリケーションID</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--failure-restart-interval =[ 30 ]</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--xdcr-from-bucket=BUCKET</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">失敗したXDCRのリスタート間隔、1から300秒</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--optimistic-replication-threshold =[ 256 ]</td>
-
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">楽観的レプリケーション実行のドキュメントボディサイズ閾値(bytes)</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">レプリケーション元のローカルのバケット名</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="33.44481605351171%" headers="d10286e42 ">--xdcr-replication-mode=[xmem|capi]</td>
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--xdcr-cluster-name=CLUSTERNAME</td>
 
-              <td class="entry" valign="top" width="66.5551839464883%" headers="d10286e45 ">レプリケーションプロトコル、capiあるいはxmem</td>
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">レプリケーション先のリモートクラスタ</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--xdcr-to-bucket=BUCKETNAME</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">レプリケーション先のリモートバケット名</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--max-concurrent-reps =[ 16 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">バケットごとの最大並列レプリケーション、8から256。 デフォルト: 16</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--checkpoint-interval =[ 1800 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">チェックポイント間隔、60から14400秒</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--worker-batch-size =[ 500 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">ドキュメントバッチサイズ、500から10000</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--doc-batch size =[ 2048 ] KB</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">ドキュメントバッチサイズ、10から100000KB</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--failure-restart-interval =[ 30 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">失敗したXDCRのリスタート間隔、1から300秒</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--optimistic-replication-threshold =[ 256 ]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">楽観的レプリケーション実行のドキュメントボディサイズ閾値(bytes)</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.44481605351171%" headers="d10284e42 ">--xdcr-replication-mode=[xmem|capi]</td>
+
+              <td class="entry" valign="top" width="66.5551839464883%" headers="d10284e45 ">レプリケーションプロトコル、capiあるいはxmem</td>
 
             </tr>
 
