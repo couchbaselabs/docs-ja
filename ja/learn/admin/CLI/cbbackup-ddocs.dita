@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbbackup-ddocs">
+<reference xml:lang="ja" id="cbbackup-ddocs">
   <title>デザインドキュメントのバックアップ</title>
   <shortdesc>デザインドキュメントは<codeph>design_doc_only=1</codeph>というオプションをつけることでバックアップできます。</shortdesc>
   <refbody>

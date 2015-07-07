@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cdbrestore-tool">
-  <title>cbrestore tool</title>
-  <shortdesc>The <codeph>cbrestore</codeph> tool restores data from a file to an entire cluster or
-    to a single bucket in the cluster. </shortdesc>
+<reference xml:lang="ja" id="cdbrestore-tool">
+  <title>cbrestore ツール</title>
+  <shortdesc><codeph>cbrestore</codeph>ツールはクラスタ全体、またはクラスタ内の単一のバケットに、ファイルからデータをリストアします。 </shortdesc>
   <refbody>
-    <section><title>Description</title>
+    <section><title>説明</title>
     
-    <p>Items that had been written to file on disk are restored to RAM.The
-        <codeph>cbbackup</codeph>, <codeph>cbrestore</codeph>, and <codeph>cbtransfer</codeph> tools
-        do not communicate with external IP addresses for server nodes outside of a cluster. Backup,
-        restore, or transfer operations are performed on data from a node within a Couchbase
-        cluster. They only communicate with nodes from a node list obtained within a cluster. This
-        also means that if Couchbase Server is installed with a default IP address, an external
-        hostname cannot be used to access it.</p>
-    <p>The tool is in the following locations:</p>
+    <p>ディスク上のファイルに書き込まれたアイテムはRAMへリストアされます。<codeph>cbbackup</codeph> 、<codeph>cbrestore</codeph> 、<codeph>cbtransfer</codeph>ツールはクラスタ外のサーバノードの外部IPアドレスとは通信できません。
+				バックアップ、リストア、転送のオペレーションはCouchbaseクラスタ内のノードのデータに対して実行されます。
+				これらはクラスタから取得したノードリスト内のノードとのみ通信します。
+				Couchbase ServerがデフォルトIPアドレスを利用してインストールされた場合、外部ホスト名を利用してアクセスすることはできません。</p>
+    <p>このツールは以下の場所にあります:</p>
     <table>
       <tgroup cols="2">
         <colspec colname="col1"/>
         <colspec colname="col2"/>
         <thead>
           <row>
-            <entry>Operating system</entry>
-            <entry>Location</entry>
+            <entry>オペレーティングシステム</entry>
+            <entry>ロケーション</entry>
           </row>
         </thead>
         <tbody>
@@ -43,203 +39,191 @@
     </table>
     </section>
     
-    <section><title>CLI command and parameters</title>
+    <section><title>CLIコマンドとパラメータ</title>
       
-      <p>Basic syntax for this command:</p>
+      <p>コマンドの基本シンタックス:</p>
       <codeblock>cbrestore [options] [backup-dir] [destination]</codeblock>
       
       
       
-      <p>Where:</p><ul>
-        <li>[options]<p>Command options for <codeph>cbrestore</codeph> are the same
-            options for <codeph>cbtransfer</codeph>.</p></li>
-        <li>[backup-dir]<p>The backup directory for the source data. This is in the
-            directory created by <codeph>cbbackup</codeph> when performing the backup.</p></li>
-        <li>[destination]<p>The destination bucket for the restored information.
-            This is a bucket in an existing cluster. If restoring data to a single node in a
-            cluster, provide the hostname and port of the node being restored to. If restoring an
-            entire data bucket, provide the URL of one of the nodes within the cluster.</p></li>
+      <p>ここで:</p><ul>
+        <li>[options]<p><codeph>cbrestore</codeph>のオプションは<codeph>cbtransfer</codeph>と同一です。</p></li>
+        <li>[backup-dir]<p>リストアするデータが保存されているバックアップディレクトリ。 これは<codeph>cbbackup</codeph>でバックアップを実行した際に作成されるディレクトリです。</p></li>
+        <li>[destination]<p>情報をリストアする先のバケット。
+            存在するクラスタ内のバケットです。 クラスタ内の単一のノードへデータをリストアする場合、リストアされるノードのホスト名とポートを指定します。 完全なデータバケットをリストアする場合、クラスタ内のいずれかのノードURLを指定します。</p></li>
       </ul>
       
-      <note type="important">Be sure to create the destination bucket before restoring the data.</note>
+      <note type="important">リストア前にリストア先のバケットを作成してください。</note>
       
-      <p>The following are the command options:</p>
+      <p>以下のコマンドオプションが利用できます:</p>
       <table>
-        <title>cbrestore options</title>
+        <title>cbrestore オプション</title>
         <tgroup cols="2">
           <colspec colname="col1"/>
           <colspec colname="col2"/>
           <thead>
             <row>
-              <entry>Parameters</entry>
-              <entry>Description</entry>
+              <entry>パラメータ</entry>
+              <entry>説明</entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>-h, –help</entry>
-              <entry>Command line help.</entry>
+              <entry>コマンドラインヘルプ。</entry>
             </row>
             <row>
               <entry>-a, –add</entry>
-              <entry>Used to not overwrite existing items in the destination. Use add instead of set.</entry>
+              <entry>リストア先の既存アイテムを上書きしない。 setの代わりにaddを利用する。</entry>
             </row>
             <row>
               <entry>-b BUCKET_SOURCE, --bucket-source=BUCKET_SOURCE</entry>
-              <entry>Single named bucket from the backup directory to restore. If the backup
-                directory only contains a signle bucket, then that bucket is automatically
-                used.</entry>
+              <entry>バックアップディレクトリから単一のバケットをリストアする。 バックアップディレクトリにバケットが一つしか存在しない場合、そのバケットが自動的に利用されます。</entry>
             </row>
             <row>
               <entry>-B BUCKET_DESTINATION, –bucket-destination=BUCKET_DESTINATION</entry>
-              <entry>When --bucket-source is specified, overrides the destination bucket name. This
-                allow you to restore to a different bucket. Defaults to the same as the
-                bucket-source.</entry>
+							<entry>--bucket-sourceを指定していた場合、リストア先のバケット名をオーバライドする。
+								このため、異なるバケットへのリストアが可能。 デフォルトはbucket-sourceのバケット。</entry>
             </row>
             <row>
               <entry>from-date=FROM_DATE</entry>
-              <entry>Restore data from the date specified as yyyy-mm-dd. By default, all data from the very beginning is restored.</entry>
+              <entry>yyyy-mm-ddで指定した日付からのデータをリストアする。 デフォルトでは、最初からすべてのデータをリストアする。</entry>
             </row>
             <row>
               <entry>to-date=TO_DATE</entry>
-              <entry>Restore data until the date specified as yyyy-mm-dd. By default, all data collected is restored.</entry>
+              <entry>yyyy-mm-ddで指定した日付までのデータをリストアする。 デフォルトでは、バックアップされたすべてのデータがリストアされます。</entry>
             </row>
             <row>
               <entry>-i ID, –id=ID</entry>
-              <entry>Transfer only items that match a vbucket ID.</entry>
+              <entry>vBucket IDに一致したアイテムのみを転送する。</entry>
             </row>
             <row>
               <entry>-k KEY, –key=KEY</entry>
-              <entry>Transfer only items with keys that match a regexp.</entry>
+              <entry>正規表現とマッチするキーのアイテムのみを転送する。</entry>
             </row>
             <row>
               <entry>-n, –dry-run</entry>
-              <entry>No actual transfer. Just validate parameters, files, connectivity and
-                configurations.</entry>
+              <entry>転送は実行しない。 パラメータ、ファイル、接続、設定の検証のみ。</entry>
             </row>
             <row>
               <entry>-u USERNAME, –username=USERNAME</entry>
-              <entry>REST username for source cluster or server node.</entry>
+              <entry>ソースクラスタまたはサーバノードのRESTユーザ名。</entry>
             </row>
             <row>
               <entry>-p PASSWORD, –password=PASSWORD</entry>
-              <entry>REST password for cluster or server node.</entry>
+              <entry>クラスタまたはサーバノードのRESTパスワード</entry>
             </row>
             <row>
               <entry>-t THREADS, –threads=THREADS</entry>
-              <entry>Number of concurrent workers threads performing the transfer. </entry>
+              <entry>転送を実行するワーカスレッドの並列数。 </entry>
             </row>
             <row>
               <entry>-v, –verbose</entry>
-              <entry>Verbose logging. More v's provide more verbosity. Max: -vvv.</entry>
+              <entry>冗長なロギング。 vの数を増やすとより冗長となる。 最大: -vvv。</entry>
             </row>
             <row>
               <entry>-x EXTRA, –extra=EXTRA</entry>
-              <entry>Provide extra, uncommon configuration parameters. Comma-separated key=val(key-val)* pairs.</entry>
+              <entry>一般的ではない拡張パラメータを指定する。 カンマ区切りの key=val(key-val)* ペア。</entry>
             </row>
             
           </tbody>
         </tgroup>
       </table>
-      <p>The following are extra, specialized command options with the <codeph>cbrestore -x</codeph>
-        parameter.</p>
+      <p>以下に、<codeph>cbrestore -x</codeph>パラメータで利用する特別なオプションを記載します。</p>
       
       <table>
-        <title>cbrestore -x options</title>
+        <title>cbrestore -x オプション</title>
         <tgroup cols="2">
           <colspec colname="col1"/>
           <colspec colname="col2"/>
           <thead>
             <row>
-              <entry>-x options</entry>
-              <entry>Description</entry>
+              <entry>-x オプション</entry>
+              <entry>説明</entry>
             </row>
             
           </thead>
           <tbody>
             <row>
               <entry>backoff_cap=10</entry>
-              <entry>Maximum backoff time during the rebalance period.</entry>
+              <entry>リバランス中の最大バックオフ時間。</entry>
             </row>
             <row>
               <entry>batch_max_bytes=400000</entry>
-              <entry>Transfer this # of bytes per batch.</entry>
+              <entry>指定したバイト数をバッチで転送。</entry>
             </row>
             <row>
               <entry>batch_max_size=1000</entry>
-              <entry>Transfer this # of documents per batch.</entry>
+              <entry>指定したドキュメント数をバッチで転送。</entry>
             </row>
             <row>
               <entry>cbb_max_mb=100000</entry>
-              <entry>Split backup file on destination cluster if it exceeds the MB.</entry>
+              <entry>指定したMBを越えると、宛先クラスタでのバックアップファイルを分割。</entry>
             </row>
             <row>
               <entry>conflict_resolve=1</entry>
-              <entry>By default, disable conflict resolution.</entry>
+              <entry>デフォルトでは、コンフリクトの解決は無効。</entry>
             </row>
             <row>
               <entry>data_only=0</entry>
-              <entry>For value 1, transfer only data from a backup file or cluster.</entry>
+              <entry>1を指定すると、バックアップファイルまたはクラスタからデータのみを転送。</entry>
             </row>
             <row>
               <entry>design_doc_only=0</entry>
-              <entry>For value 1, transfer only design documents from a backup file or cluster. Default: 0.</entry>
+              <entry>1を指定すると、バックアップファイルまたはクラスタからデザインドキュメントのみを転送。 デフォルト: 0。</entry>
             </row>
             <row>
               <entry>max_retry=10</entry>
-              <entry>Max number of sequential retries if the transfer fails.</entry>
+              <entry>転送失敗時の最大連続リトライ回数。</entry>
             </row>
             <row>
               <entry>mcd_compatible=1</entry>
-              <entry>For value 0, display extended fields for stdout output.</entry>
+              <entry>0を指定すると、拡張フィールドを標準出力に出力。</entry>
             </row>
             <row>
               <entry>nmv_retry=1</entry>
-              <entry>0 or 1, where 1 retries transfer after a NOT_MY_VBUCKET message. Default: 1.</entry>
+              <entry>0または1、1はNOT_MY_VBUCKETメッセージ後にリトライする。 デフォルト: 1。</entry>
             </row>
             <row>
               <entry>recv_min_bytes=4096</entry>
-              <entry>Amount of bytes for every TCP/IP batch transferred.</entry>
+              <entry>各TCP/IPバッチ転送のバイト数。</entry>
             </row>
             <row>
               <entry>rehash=0</entry>
-              <entry>For value 1, rehash the partition id's of each item. 
-                This is required when transferring data between clusters with
-                different number of partitions, such as when transferring data from an
-                Mac OS X server to a non-Mac OS X cluster.</entry>
+              <entry>1を指定すると、各アイテムのパーティションIDを再ハッシュ。 
+                Mac OS XサーバからMac OS X以外のクラスタへのデータ転送など、異なるパーティション数のクラスタ間でデータを転送する場合に必要。</entry>
             </row>
             <row>
               <entry>report=5</entry>
-              <entry>Number batches transferred before updating progress bar in console.</entry>
+              <entry>コンソール上の進捗バーを更新するまでに転送するバッチ数。</entry>
             </row>
             <row>
               <entry>report_full=2000</entry>
-              <entry>Number batches transferred before emitting progress information in console.</entry>
+              <entry>コンソールに進捗状況を表示するまでに転送するバッチ数。</entry>
             </row>
             <row>
               <entry>seqno=0</entry>
-              <entry>By default, start seqno from beginning.</entry>
+              <entry>デフォルトは、seqnoの最初から。</entry>
             </row>
             <row>
               <entry>try_xwm=1</entry>
-              <entry>Transfer documents with metadata. Default: 1. Value of 0 is only used when transferring
-                from 1.8.x to 1.8.x.</entry>
+              <entry>ドキュメントをメタデータ付きで転送。 デフォルト: 1。 0は1.8.xから1.8.xへの転送でのみ利用する。</entry>
             </row>
             <row>
               <entry>uncompress=0</entry>
-              <entry>For value 1, restore data in uncompressed mode.</entry>
+              <entry>1を指定すると、非圧縮モードでデータをリストアする。</entry>
             </row>
           </tbody>
         </tgroup>
       </table>
     </section>
     
-    <section><title>Syntax</title>
-      <p>The following is the basic syntax:</p>
+    <section><title>シンタックス</title>
+      <p>基本シンタックス:</p>
       <codeblock>cbrestore [options] [backup-dir] [destination]</codeblock>
       
       
-      <p>The following are syntax examples:</p>
+      <p>シンタックス例:</p>
       
       <codeblock>
 cbrestore /backups/backup-42 http://HOST:8091 \
@@ -267,7 +251,7 @@ cbrestore /backups/backup-42 memcached://HOST:11211 \
   <related-links>
     <linklist>
       <link href="https://github.com/couchbase/couchbase-cli" scope="external" format="html">
-        <linktext>Couchbase command-line tools GitHub repository</linktext></link>
+        <linktext>CouchbaseコマンドラインツールGitHubリポジトリ</linktext></link>
       <link href="../Install/hostnames.dita"/>
       <link href="../UI/ui-views-editor.dita"/>
       <link href="../CLI/cbbackup_tool.dita"/>

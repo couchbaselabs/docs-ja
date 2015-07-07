@@ -1,42 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="reference_zpr_m1h_hq">
-  <title>Restoring from different operating systems</title>
-  <shortdesc>Data is restored to an operating system that is different from the backup operating
-    system, using the <codeph>cbrestore</codeph> tool with the <codeph>restore=1</codeph>
-    option.</shortdesc>
+<reference xml:lang="ja" id="reference_zpr_m1h_hq">
+  <title>異なるオペレーティングシステム間のリストア</title>
+  <shortdesc>データをバックアップしたオペレーティングシステムと異なるオペレーティングシステムへとリストアするには、<codeph>cbrestore</codeph>ツールで <codeph>restore=1</codeph>オプションを指定します。</shortdesc>
   <refbody>
-    <section><title>Description</title>
-      <p>Couchbase Server on Mac OS X uses a different number of configured vBuckets than Linux and
-        Windows installations. Because of this, restoring to Mac OS X from a Linux or Windows backup
-        or restoring to Linux/Windows from a Mac OS X backup requires the <codeph>rehash=1</codeph>
-        option.</p>
+    <section><title>説明</title>
+      <p>Mac OS Xは、LinuxやWindowsのインストールと異なるvBucket数で設定されています。 このため、LinuxやWindowsのバックアップからMac OS Xへのリストア、またはMac OS XのバックアップからLinux/Windowsへリストアする際には、<codeph>rehash=1</codeph>オプションを指定する必要があります。</p>
       
-      <p>To backup the data (from any operating system), use the
-        standard <codeph>cbbackup</codeph> tool and options.</p>
+      <p>データのバックアップには(いかなるオペレーティングシステムでも)、標準の<codeph>cbbackup</codeph>ツールとオプションを利用します。</p>
       
-      <p>For example, from Mac OS X:</p>
+      <p>例、Mac OS X:</p>
       <codeblock>cbbackup http://[Administrator]:[password]@[mac-hostname]:8091 /macbackup/today</codeblock>
       
-      <p>For example, from Linux:</p>
+      <p>例、Linux:</p>
       <codeblock>cbbackup [Administrator]:[password]@[linux-hostname]:8091 /linuxbackup/today</codeblock>
     </section>
     
-    <section><title>Syntax</title>
-      <p>To restore the data to a cluster with a different operating system, connect to the 8091
-        port, and use the <codeph>rehash=1</codeph> option to rehash the information and distribute
-        the data to the appropriate node within the cluster. <codeph>rehash=1</codeph> rehashes the
-        partition id's of each item. This is required when transferring data between clusters with a
-        different number of partitions, such as when transferring data from a Mac OS X server to a
-        non-Mac OS X cluster.</p>
+    <section><title>シンタックス</title>
+      <p>異なるオペレーティングシステムのクラスタへとデータをリストアするには、8091ポートに接続し、<codeph>rehash=1</codeph>オプションを指定して情報を再ハッシュし、クラスタ内の適切なノードへとデータを分散させます。 <codeph>rehash=1</codeph>は各アイテムのパーティションIDを再ハッシュします。 Mac OS XサーバからMac OS X以外のクラスタへのデータ転送など、異なるパーティション数のクラスタ間でデータを転送する場合に必要。</p>
       <codeblock>cbrestore backup 
   -u [username] -p [password] 
   -x rehash=1
   http://[localhost]:8091 
   --bucket-source [my_bucket] 
   --bucket-destination [my_bucket]</codeblock>
-      <note type="note">If you backed up multiple buckets from Mac OS X and are restoring to either
-        Linux or Windows, each bucket must be restored individually.</note>
+      <note type="note">複数のバケットをMac OS Xからバックアップし、LinuxやWindowsへとリストアする場合、各バケットは個別にリストアする必要があります。</note>
     </section>
    
   </refbody>

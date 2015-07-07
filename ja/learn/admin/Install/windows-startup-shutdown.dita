@@ -1,50 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic1367">
-  <title>Start-up and shutdown on Windows</title><shortdesc>Start-up and shutdown scripts are used to manually start up or shut down Couchbase Server.</shortdesc>
+<topic xml:lang="ja" id="topic1367">
+  <title>Windows上での開始と停止</title>
+  <shortdesc>開始と停止用のスクリプトはCouchbase Serverを手動で開始したり停止するために使用されます。</shortdesc>
   <body>
-    <p>On Windows, Couchbase Server is installed as a Windows service. You can use the
-        <wintitle>Services</wintitle> tab within the <wintitle>Windows Task Manager</wintitle> to start and stop Couchbase
-      Server.</p>
+    <p>Windows上では、Couchbase ServerはWindowsサービスとしてインストールされます。
+      <wintitle>Windowsタスクマネージャ</wintitle>にある<wintitle>サービス</wintitle>タブからCouchbase Serverの開始や停止を行うことが出来ます。</p>
     
-    <p>You will need a power user or administrator privileges, or have separately granted 
-      rights to manage services to start and stop Couchbase Server. 
-      By default, the service automatically starts when the machine boots. </p>
-    
-    <p>Couchbase Server can be started and stopped via Windows Task Manager, Windows system <cmdname>net</cmdname> command, and Couchbase-supplied <cmdname>.bat</cmdname> scripts.
-      
+    <p>
+      Couchbase Serverを起動したり停止したりするために、パワーユーザ権限か管理者権限があるか、サービスを管理する権限を個別に付与することになります。
+      デフォルトでは、サービスはマシンの起動時に自動的にサービスが開始されます。
     </p>
     
-    <section><title>Start and stop Couchbase Server via Windows Task Manager</title>
+    <p>
+      Couchbase ServerはWindowsタスクマネージャを使うか、Windowsの<cmdname>net</cmdname>コマンドを使うか、Couchbaseから提供された<cmdname>.bat</cmdname>スクリプト使用することで起動、停止を行うことが出来ます。
+    </p>
     
-    <p>To manually start the service from the Windows interface: <ol>
-          <li>Open the Windows Task Manager and select the <uicontrol>Services</uicontrol> tab to
-            open the Services management console. <p>Alternatively, select the
-                <uicontrol>Start</uicontrol>, select <uicontrol>Run</uicontrol> and then type
-                <userinput>Services.msc</userinput> to open the Services management
-            console.</p></li>
-          <li>Locate the <wintitle>Couchbase Server</wintitle> service and right-click.</li>
-          <li>Select <uicontrol>Start</uicontrol> or <uicontrol>Stop</uicontrol> as
-            appropriate.</li>
-        </ol><note type="note">You can also alter the configuration so that the service is not
-          automatically started during boot.</note></p>
+    <section><title>Windowsタスクマネージャを使用したCouchbase Serverの起動と停止</title>
+    
+    <p>手動でWindowsインターフェイスからサービスを開始するには: <ol>
+          <li>Open the Windowsタスクマネージャを開き、<uicontrol>サービス</uicontrol>タブを選択し、サービス管理コンソールを開きます。
+            <p>あるいは、<uicontrol>スタート</uicontrol>を選択し、<uicontrol>起動</uicontrol>を選択、<userinput>Services.msc</userinput>と打ってサービス管理コンソールを開きます。</p>
+          </li>
+          <li><wintitle>Couchbase Server</wintitle>サービスを見つけて右クリックします。</li>
+          <li><uicontrol>開始</uicontrol>もしくは<uicontrol>停止</uicontrol>の適切な方を選択します。</li>
+        </ol><note type="note">設定を変更することでマシンの起動中に自動でサービスが起動しないようにすることが出来ます。</note></p>
     </section>
   
-    <section><title>Start and stop Couchbase Server via Windows system <cmdname>net</cmdname> command</title>
+    <section><title>Windowsの <cmdname>net</cmdname> コマンドを使用したCouchbase Serverの起動と停止</title>
         
-        <p>To start and stop Couchbase Server using <codeph>net</codeph>:</p>
+        <p>Couchbase Serverの起動と停止には<codeph>net</codeph>を使用します:</p>
         <codeblock>net start CouchbaseServer</codeblock>
         <codeblock>net stop CouchbaseServer</codeblock>
 
       </section>
       
       
-    <section><title>Start and stop Couchbase Server via Couchbase-supplied <cmdname>.bat</cmdname> scripts</title>
+    <section><title>Couchbaseが提供する<cmdname>.bat</cmdname>スクリプトを使用したCouchbase Serverの起動と停止</title>
         
-        <p>The Couchbase-supplied start and stop scripts are provided in the standard installation in the
-        <codeph>bin</codeph> directory.</p>
-        <p>To start and stop Couchbase Server, use the scripts located in:</p>
+        <p>The Couchbaseする起動と停止のためのスクリプトは標準インストールでは<codeph>bin</codeph>ディレクトリに設置されます。</p>
+        <p>Couchbase Serverの起動と停止を行うには以下のスクリプトを見つけて使用してください:</p>
         
       <p><filepath> C:\Program Files\Couchbase\Server\bin\service_start.bat</filepath></p>
       <p><filepath> C:\Program Files\Couchbase\Server\bin\service_stop.bat</filepath></p>

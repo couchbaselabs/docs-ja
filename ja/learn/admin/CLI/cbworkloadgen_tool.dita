@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbworkloadgen_tool">
-	<title>cbworkloadgen tool</title>
-	<shortdesc>The <codeph>cbworkloadgen</codeph> tool is used to generate random data and perform read/writes.</shortdesc>
+<reference xml:lang="ja" id="cbworkloadgen_tool">
+	<title>cbworkloadgen ツール</title>
+	<shortdesc><codeph>cbworkloadgen</codeph>ツールはランダムデータを生成し、参照/更新を実行するために利用します。</shortdesc>
 	<refbody>
-		<section><title>Description</title>
-			<p>The <codeph>cbworkloadgen</codeph> tool is useful for testing Couchbase servers and clusters.</p>
+		<section><title>説明</title>
+			<p><codeph>cbworkloadgen</codeph>ツールはCouchbase Serverクラスタのテストに便利です。</p>
 			
 			<table>
 				<tgroup cols="2">
@@ -13,76 +13,76 @@
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>Option</entry>
-							<entry>Description</entry>
+							<entry>オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>-h, --help</entry>
-							<entry>Show this help message and exit.</entry>
+							<entry>このヘルプメッセージを表示して終了する。</entry>
 						</row>
 						<row>
 							<entry>-r [number], --ratio-sets=[number]</entry>
-							<entry>The percentage of workload that are writes; the remainder is reads.</entry>
+							<entry>更新ワークロードのパーセンテージ; 残りが参照となる。</entry>
 						</row>
 						<row>
 							<entry>-n [localhost]:8091, --node=[localhost]:8091</entry>
-							<entry>Node's ns_server ip:port.</entry>
+							<entry>ノードのns_serverのip:port。</entry>
 						</row>
 						<row>
 							<entry>-b [bucket-name], --bucket=[bucket-name]</entry>
-							<entry>Insert data to a different bucket other than default.</entry>
+							<entry>デフォルトバケット以外にデータを挿入する場合に指定。</entry>
 						</row>
 						<row>
 							<entry>-i [number], --max-items=[number]</entry>
-							<entry>Number of inserted items.</entry>
+							<entry>インサートされるアイテム数。</entry>
 						</row>
 						<row>
 							<entry>-s [number], --size=[number]</entry>
-							<entry>Minimum value size.</entry>
+							<entry>最大バリューサイズ。</entry>
 						</row>
 						<row>
 							<entry>--prefix=pymc</entry>
-							<entry>Prefix to use for memcached keys or json IDs.</entry>
+							<entry>memcachedキーまたはJSONのIDに利用するプリフィクス。</entry>
 						</row>
 						<row>
 							<entry>-j, --json</entry>
-							<entry>Insert json data.</entry>
+							<entry>JSONデータを挿入する。</entry>
 						</row>
 						<row>
 							<entry>-l, --loop</entry>
-							<entry>Loop forever until interrupted by user</entry>
+							<entry>ユーザが中断するまで永遠にループする。</entry>
 						</row>
 						<row>
 							<entry>-u [username], --username=[username]</entry>
-							<entry>REST username for cluster or server node.</entry>
+							<entry>クラスタまたはサーバのRESTユーザ名。</entry>
 						</row>
 						<row>
 							<entry>-p [password], --password=[password]</entry>
-							<entry>REST password for cluster or server node.</entry>
+							<entry>クラスタまたはサーバノードのRESTパスワード。</entry>
 						</row>
 						<row>
 							<entry>-t [number], --threads=[number]</entry>
-							<entry>Number of concurrent threads.</entry>
+							<entry>同時並列スレッド数。</entry>
 						</row>
 						<row>
 							<entry>-v, --verbose</entry>
-							<entry>Verbose logging; more -v's provide more verbosity.</entry>
+							<entry>冗長なロギング; vの数を増やすとより冗長となる。</entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table>
 			
 		
-		<p>The tool is at the following locations:</p>
+		<p>このツールは以下の場所にあります:</p>
 		<table>
 			<tgroup cols="2">
 				<colspec colname="col1"/>
 				<colspec colname="col2"/>
 				<thead>
 					<row>
-						<entry>Operating system</entry>
+						<entry>オペレーティングシステム</entry>
 						<entry>Location</entry>
 					</row>
 				</thead>
@@ -104,15 +104,14 @@
 		</table>
 		</section>
 			
-			<section><title>Syntax</title>
-		<p>Basic command format:</p>
+			<section><title>シンタックス</title>
+		<p>コマンドの基本シンタックス:</p>
 		<codeblock>cbworkloadgen -n [localhost]:8091 -u [username] -p [password] [option]	</codeblock>
 			</section>
 		
 		
-		<section><title>Example</title>
-			<p>For example, to generate workload on a given Couchbase node and open port on that
-			node:</p>
+		<section><title>例</title>
+			<p>例えば、任意のCouchbaseノードのポートに対し負荷をかける場合:</p>
 		<codeblock>
 cbworkloadgen -n 10.5.2.54:8091
 	-r .9 -i 100000
@@ -122,8 +121,8 @@ cbworkloadgen -n 10.5.2.54:8091
 		</codeblock>
 		</section>
 		
-		<section><title>Response</title>
-		<p>If successful, produces a result similar to the following</p>
+		<section><title>レスポンス</title>
+		<p>成功すると、以下のような結果を返します:</p>
 		<codeblock>
   [####################] 100.0% (1111110/estimated 1111110 msgs)
 bucket: default, msgs transferred...

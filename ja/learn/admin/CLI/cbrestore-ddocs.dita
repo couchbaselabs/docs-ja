@@ -1,37 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbrestore-ddocs">
-  <title>Restoring design documents</title>
-  <shortdesc>Design documents are restored using the <codeph>design_doc_only=1</codeph> option.</shortdesc>
+<reference xml:lang="ja" id="cbrestore-ddocs">
+  <title>デザインドキュメントのリストア</title>
+  <shortdesc>デザインドキュメントは<codeph>design_doc_only=1</codeph>オプションを利用してリストアできます。</shortdesc>
   <refbody>
-    <section><title>Description</title>
-      <p>Design documents are restored to a server node with the option,
-          <codeph>design_doc_only=1</codeph>. The documents are restored from a backup file (created
-        with the <codeph>cbbackup</codeph>) tool.</p>
+    <section><title>説明</title>
+      <p>デザインドキュメントは、<codeph>design_doc_only=1</codeph>オプションを指定してサーバノードへとリストアできます。 ドキュメントはバックアップファイルからリストアされます (<codeph>cbbackup</codeph>ツールで作成)。</p>
     </section>
     
-    <section><title>Syntax</title>
-      <p>Basic syntax:</p>
+    <section><title>シンタックス</title>
+      <p>基本シンタックス:</p>
       <codeblock>
 cbrestore [backup-location] http://[localhost]:8091 -x design_doc_only=1 -b [source-bucket] -B [destination-bucket]
       </codeblock>
     </section>
     
-    <section><title>Example</title>
-      <p>The following example restores design documents from the backup file, ~/backup/a_bucket, 
-        to the destination bucket, my_bucket, in a cluster. </p>
+    <section><title>例</title>
+      <p>以下の例はバックアップファイル、~/backup/a_bucket からデザインドキュメントを、クラスタ内のリストア先バケット、my_bucketへとリストアします。 </p>
       <codeblock>
 cbrestore ~/backup http://10.3.1.10:8091 -x design_doc_only=1 -b a_bucket -B my_bucket
 </codeblock>
-      <p>If multiple source buckets were backed up, this command must be performed multiple times.
-        In the following example, a cluster with two data buckets is backed up and has the following backup
-        files: <ul>
-          <li><codeph>~/backup/bucket_one/design.json</codeph></li>
-          <li><codeph>~/backup/bucket_two/design.jsonT</codeph></li>
+      <p>複数のソースバケットがバックアップされている場合、このコマンドは複数回実行する必要があります。
+				以下の例では、二つのバケットを持つクラスタがバックアップされ、次のバックアップファイルがあります:
+				<ul>
+					<li><codeph>~/backup/bucket_one/design.json</codeph></li>
+					<li><codeph>~/backup/bucket_two/design.json</codeph></li>
         </ul></p>
       
-      <p>The following command restores the design documents in both backup files to a bucket
-        in a cluster named <codeph>my_bucket</codeph>.</p>
+      <p>次のコマンドはクラスタ内の<codeph>my_bucket</codeph> バケットへと、両バックアップファイルのデザインドキュメントをリストアします。</p>
       
       <codeblock>
 cbrestore ~/backup http://10.3.1.10:8091 -x design_doc_only=1 -b bucket_one -B my_bucket
@@ -41,8 +37,8 @@ cbrestore ~/backup http://10.3.1.10:8091 -x design_doc_only=1 -b bucket_two -B m
       
     </section>
     
-    <section><title>Response</title>
-    <p>The following example response shows a successful restore.</p>
+    <section><title>レスポンス</title>
+    <p>以下はリストア成功のレスポンス例です。</p>
       <codeblock>
 transfer design doc only. bucket msgs will be skipped.
 done

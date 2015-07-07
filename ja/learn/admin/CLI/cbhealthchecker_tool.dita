@@ -1,34 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbhealthchecker_tool">
-	<title>cbhealthchecker tool</title>
-	<shortdesc>The <codeph>cbhealthchecker</codeph> tool generates a health report named <i>Cluster
-		Health Check Report</i> for a cluster.</shortdesc>
+<reference xml:lang="ja" id="cbhealthchecker_tool">
+	<title>cbhealthcheckerツール</title>
+	<shortdesc><codeph>cbhealthchecker</codeph>ツールは、 <i>Cluster
+		Health Check Report</i> という名前のクラスタのヘルスレポートを生成します。</shortdesc>
 	<refbody>
-		<section><title>Description</title>
-		<p>The report provides data that helps
-			administrators, developers, and testers determine whether a cluster is healthy, has
-			issues that must be addressed soon to prevent future problems, or has issues that must
-			be addressed immediately.</p>
-		<p>The tool retrieves data from the Couchbase Server monitoring system, aggregates it over a
-			time scale, analyzes the statistics against thresholds, and generates a report. Unlike
-			other command line tools such as <codeph>cbstats</codeph> and
-				<codeph>cbtransfer</codeph> that use the TAP protocol to obtain data from the monitoring system,
-				<codeph>cbhealthchecker</codeph> obtains data by using the REST API and the
-			memcached protocol.</p>
-		<p>You can generate reports on the following time scales: minute, hour, day, week, month,
-			and year. The tool outputs an HTML file, a text file, and a JSON file. Each file
-			contains the same information — the only difference between them is the format of the
-			information. All <codeph>cbhealthchecker</codeph> output is stored in a
-				<codeph>reports</codeph> folder. The tool does not delete any files from the folder.
-			You can delete files manually if the <codeph>reports</codeph> folder becomes too large.
-			The path to the output files is displayed when the run finishes.</p>
-		<note type="note"><codeph>cbhealthchecker</codeph> is automatically installed with Couchbase Server. You
-			can find the tool in the following locations, depending upon your platform:</note>
+		<section><title>説明</title>
+		<p>レポートは管理者、開発者、テスターがクラスタが健全な状態かどうか、問題を未然に防ぐために解決されるべき問題があるか、または直ちに解決すべき問題があるかどうかを判断するために有用なデータを提供します。</p>
+		<p>このツールはCouchbase Serverモニタリングシステムからデータを取得し、タイムスケールで集約し、閾値に対して統計情報を分析し、レポートを生成します。 <codeph>cbstats</codeph>や<codeph>cbtransfer</codeph>など、TAPプロトコルを利用してモニタリングシステムからデータを取得する他のコマンドラインツールと異なり、<codeph>cbhealthchecker</codeph>はREST APIとmemcachedプロトコルを利用してデータを取得します。</p>
+		<p>以下のタイムスケールでレポートを生成できます: minute, hour, day, week, month, year。 このツールはHTMLファイル、テキストファイル、JSONファイルを出力します。 各ファイルは同一の情報を含んでいます - 唯一の違いは情報のフォーマットだけです。 すべての<codeph>cbhealthchecker</codeph>の出力は、<codeph>reports</codeph>フォルダに保存されます。 このツールはそのフォルダからファイルを削除しません。
+			<codeph>reports</codeph>フォルダのサイズが肥大化した場合は、手動でファイルを削除してください。
+			実行が完了すると、出力ファイルのパスが表示されます。</p>
+		<note type="note"><codeph>cbhealthchecker</codeph>はCouchbase Serverと共に自動的にインストールされます。
+			ツールは、プラットフォームに応じて、以下の場所に存在します:</note>
 		</section>
 		
-		<section><title>CLI command and parameters</title>
-			<p>This tool has the following options:</p>
+		<section><title>CLIコマンドとパラメータ</title>
+			<p>このツールには以下のオプションがあります:</p>
 			
 			<table>
 				<tgroup cols="3">
@@ -37,9 +25,9 @@
 					<colspec colname="col3"/>
 					<thead>
 						<row>
-							<entry>Option</entry>
-							<entry>Syntax</entry>
-							<entry>Description</entry>
+							<entry>オプション</entry>
+							<entry>シンタックス</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
@@ -47,61 +35,56 @@
 							<entry>CLUSTER</entry>
 							<entry><codeph>-c HOST[:PORT]</codeph>
 								<codeph>--cluster=HOST[:PORT]</codeph></entry>
-							<entry>Hostname and port of a node in the cluster. The default port is
-								8091.</entry>
+							<entry>クラスタ内ノードのホスト名とポート。 デフォルトポートは8091。</entry>
 						</row>
 						<row>
 							<entry>USERNAME</entry>
 							<entry><codeph>-u USERNAME</codeph>
 								<codeph>--user=USERNAME</codeph></entry>
-							<entry>Admin username of the cluster.</entry>
+							<entry>クラスタの管理者ユーザ名。</entry>
 						</row>
 						<row>
 							<entry>PASSWORD</entry>
 							<entry><codeph>-p PASSWORD</codeph>
 								<codeph>--password=PASSWORD</codeph></entry>
-							<entry>Admin password of the cluster.</entry>
+							<entry>クラスタの管理者ユーザパスワード。</entry>
 						</row>
 						<row>
 							<entry>OPTIONS</entry>
 							<entry><codeph>-b BUCKETNAME</codeph>
 								<codeph>--bucket=BUCKETNAME</codeph></entry>
-							<entry>Specific bucket on which to report. The default is all
-								buckets.</entry>
+							<entry>レポートするバケット名。 デフォルトはすべてのバケット。</entry>
 						</row>
 						<row>
 							<entry/>
 							<entry><codeph>-i FILENAME</codeph>
 								<codeph>--input=FILENAME</codeph></entry>
-							<entry>Generate an analysis report from an input JSON file.</entry>
+							<entry>JSON入力ファイルから分析レポートを生成する。</entry>
 						</row>
 						<row>
 							<entry/>
 							<entry><codeph>-o FILENAME</codeph>
 								<codeph>--output=FILENAME</codeph></entry>
-							<entry>File name for the HTML report. The default output file name is the
-								report time stamp, for example:
+							<entry>HTMLレポートのファイル名、デフォルトの出力ファイル名はレポートのタイムスタンプ、例:
 								<codeph>2013-07-26_13-26-23.html</codeph>.</entry>
 						</row>
 						<row>
 							<entry/>
 							<entry><codeph>-h</codeph>
 								<codeph>--help</codeph></entry>
-							<entry>Show the help message and exit.</entry>
+							<entry>ヘルプメッセージを表示して終了する。</entry>
 						</row>
 						<row>
 							<entry/>
 							<entry><codeph>-s SCALE</codeph>
 								<codeph>--scale=SCALE</codeph></entry>
-							<entry>Time span (scale) for the statistics: minute, hour, day, week, month
-								or year. The default time span is day.</entry>
+							<entry>統計情報のタイムスパン(スケール): minute, hour, day, week, month, year。 デフォルトのタイムスパンはday。</entry>
 						</row>
 						<row>
 							<entry/>
 							<entry><codeph>-j</codeph>
 								<codeph>--jsononly</codeph></entry>
-							<entry>Collect data and output only a JSON file. When you use this option,
-								the analysis report is not generated.</entry>
+							<entry>データを収集し、JSONファイルのみを出力する。 このオプションを利用すると、分析レポートは生成されません。</entry>
 						</row>
 					</tbody>
 				</tgroup>
@@ -114,8 +97,8 @@
 				<colspec colname="col2"/>
 				<thead>
 					<row>
-						<entry>Operating System</entry>
-						<entry>Location</entry>
+						<entry>オペレーティングシステム</entry>
+						<entry>ロケーション</entry>
 					</row>
 				</thead>
 				<tbody>
@@ -136,8 +119,8 @@
 		</table>
 		</section>
 		
-		<section><title>Syntax</title>
-		<p>The format of the <codeph>cbhealthchecker</codeph> command is:</p>
+		<section><title>シンタックス</title>
+		<p><codeph>cbhealthchecker</codeph>コマンドのフォーマットは以下の通りです:</p>
 		<codeblock>cbhealthchecker CLUSTER USERNAME PASSWORD OPTIONS
 </codeblock>
 		</section>
@@ -145,8 +128,8 @@
 		
 		
 		
-		<section><title>Examples</title>
-		<p>The following command runs a report on all buckets in the cluster for the past day:</p>
+		<section><title>例</title>
+		<p>以下のコマンドはクラスタ内のすべてのバケットに対し、過去の日次レポートを実行します:</p>
 		<codeblock>cbhealthchecker -c 10.3.1.10:8091 -u Administrator -p password
 
 bucket: default
@@ -158,16 +141,15 @@ The run finished successfully.
 Please find html output at '/opt/couchbase/bin/reports/2013-07-23_16-29-02.html'
 and text output at '/opt/couchbase/bin/reports/2013-07-23_16-29-02.txt'.
 </codeblock>
-		<p>The following command runs a report on all buckets in the cluster for the past month:</p>
+		<p>以下のコマンドはクラスタ内のすべてのバケットに対し、過去の月次レポートを実行します:</p>
 		<codeblock>cbhealthchecker -c 10.3.1.10:8091 -u Administrator -p password -s month
 
 The run finished successfully.
 Please find html output at '/opt/couchbase/bin/reports/2013-07-26_13-26-23.html'
 and text output at '/opt/couchbase/bin/reports/2013-07-26_13-26-23.txt'.
 </codeblock>
-		<p>The following command runs a report on only the <codeph>beer-sample</codeph> bucket for
-			the past year and outputs the HTML report to a file named
-				<codeph>beer-health-report.html</codeph>.</p>
+	<p>以下のコマンドは<codeph>beer-sample</codeph>バケットのみの過去の年次レポートを実行し、
+	HTMLレポートを<codeph>beer-health-report.html</codeph>のファイル名で出力します。</p>
 		<codeblock>cbhealthchecker -c 10.3.1.10:8091 -u Administrator -p password -o beer-health-report.html \
       -b beer-sample -s year
 
@@ -175,7 +157,7 @@ The run finished successfully.
 Please find html output at '/opt/couchbase/bin/reports/beer-health-report.html'
 and text output at '/opt/couchbase/bin/reports/2013-07-26_15-57-11.txt'.
 </codeblock>
-		<p>The following command generates only the statistics and outputs them in a JSON file:</p>
+		<p>以下のコマンドは統計情報のみをJSONファイルに出力します:</p>
 		<codeblock>cbhealthchecker -c 10.3.1.10:8091 -u Administrator -p password -j
 
 The run finished successfully.
@@ -185,30 +167,22 @@ Please find collected stats at '/opt/couchbase/bin/reports/2013-07-26_13-30-36.j
 		
 		
 		
-		<section><title>HTML Report</title>
-		<p>You can view the HTML report in any web browser. If you copy the report to another
-			location, be sure to copy all the files in the reports folder to ensure that the report
-			is displayed correctly by the browser. When you have multiple HTML reports in the
-			folder, you can use the tabs at the top of the page to display a particular report. (If
-			the tabs do not function in your browser, try using Firefox.)</p>
-		<p>Throughout the report, normal health statuses are highlighted in green, warnings are
-			highlighted in yellow, and conditions that require immediate action are highlighted in
-			red. When viewing the report, you can hover your mouse over each statistic to display a
-			message that describes how the statistic is calculated.</p>
-		<p>The report begins with a header that lists the statistics scale, the date and time the
-			report was run, and an assessment of the overall health of the cluster. The following
-			figure shows the report header:</p>
+		<section><title>HTMLレポート</title>
+		<p>任意のWebブラウザでHTMLレポートを閲覧できます。 レポートを他の場所にコピーする場合、レポートフォルダ内のすべてのファイルをコピーし、ブラウザで正しくレポートが表示されるようにしてください。 フォルダ内に複数のHTMLレポートがある場合、特定のレポートを表示するにはページのトップにあるタブを利用します。 (タブが表示されない場合、FireFoxをお試しください)</p>
+		<p>レポートでは、正常なステータスは緑で、警告は黄色で、直ちにアクションが必要な状態は赤でハイライトされます。
+			レポートを閲覧する際、各統計情報にマウスを乗せると、その統計情報の計算方法を解説するメッセージを表示できます。</p>
+		<p>レポートは統計情報のスケール、レポート実行日時、クラスタ状態の概要を含むヘッダから始まります。
+			以下の図はレポートヘッダを示します:</p>
 		<fig>
 				<image href="../images/health-report-header.png" width="480"></image>
 			</fig>
 		
-			<p>The body of the report is divided into several sections: Couchbase — Alerts</p>
+			<p>レポートのボディは幾つかのセクションに分かれています: Couchbase — Alerts</p>
 		
-		<p>The alerts section contains a list of urgent issues that require immediate attention. For
-			each issue, the report lists the symptoms detected, the impact of the issue, and the
-			recommended corrective action to take. This section appears in the report only when
-			urgent issues are detected. The following figure shows a portion of the alerts section
-			of a report:</p>
+			<p>アラートセクションには直ちにアクションが必要な緊急の問題のリストがあります。
+				各問題に対し、レポートは検知された症状、問題の深刻度、推奨する対策を表示します。
+				このセクションは緊急の問題が検知された場合のみ表示されます。
+				以下の図はレポートのアラートセクションの一部を表示しています:</p>
 		
 		<fig><image href="../images/health-report-alerts.png" width="480">
 			</image></fig>
@@ -216,9 +190,8 @@ Please find collected stats at '/opt/couchbase/bin/reports/2013-07-26_13-30-36.j
 		
 			<p>Couchbase Cluster Overview:</p>
 	
-		<p>The cluster overview section contains cluster-wide metrics and metrics for each bucket
-			and node in the cluster. This section appears in all reports. The following figure shows
-			a portion of the cluster overview section of a report:</p>
+			<p>クラスタ概要のセクションにはクラスタ全体でのメトリックと、クラスタ内の各バケットと各ノードのメトリックがあります。
+				このセクションはすべてのレポートで表示されます。 以下の図はレポートのクラスタ概要セクションの一部を表示しています:</p>
 		
 		<fig><image href="../images/health-report-cluster-overview.png" width="480">
 			</image></fig>
@@ -226,11 +199,7 @@ Please find collected stats at '/opt/couchbase/bin/reports/2013-07-26_13-30-36.j
 		
 			<p>Couchbase — Warning Indicators:</p>
 		
-		<p>The warning indicators section contains a list of issues that require attention. For each
-			issue, the report lists the symptoms detected, the impact of the issue, and the
-			recommended corrective action to take. This section appears in the report only when
-			warning indicators are detected. The following figure shows a portion of the warning
-			indicators section of a report:</p>
+		<p>警告インジケータセクションには注意すべき問題のリストがあります。 各問題に対し、レポートは検知された症状、問題の深刻度、推奨する対策を表示します。 このセクションは警告すべき問題が検知された場合のみ表示されます。 以下の図はレポートの警告インジケータセクションの一部を表示しています:</p>
 		
 		<fig><image href="../images/health-report-warnings.png" width="480">
 			</image></fig>
