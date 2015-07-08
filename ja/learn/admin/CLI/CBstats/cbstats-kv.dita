@@ -1,81 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbstats-kv">
-	<title>Kvstore and kvtimings</title>
-	<shortdesc>The <codeph>cbstats kvstore</codeph> and <codeph>kvtimings</codeph> commands provide low-level stats and timings 
-		from the underlying KV storage system.</shortdesc>
+<reference xml:lang="ja" id="cbstats-kv">
+	<title>Kvstore と kvtimings</title>
+	<shortdesc><codeph>cbstats kvstore</codeph>と、 <codeph>kvtimings</codeph>コマンドはローレベルの統計情報とタイミングを内部のKVストレージシステムから提供します。</shortdesc>
 	<refbody>
-		<section><title>Description</title>
-		<p>These commands are useful to understand various states of the storage system.</p>
-		<p>The following stats are available for the CouchStore database engine:</p>
+		<section><title>説明</title>
+		<p>これらのコマンドはストレージシステムの様々な状態を理解するのに役立ちます。</p>
+		<p>以下の統計情報がCouchStoreデータベースエンジンで利用可能です:</p>
 		<table>
 			<tgroup cols="2">
 				<colspec colname="col1"/>
 				<colspec colname="col2"/>
 				<thead>
 					<row>
-						<entry>Stat</entry>
-						<entry>Description</entry>
+						<entry>統計情報</entry>
+						<entry>説明</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
 						<entry>backend_type</entry>
-						<entry>Type of backend database engine</entry>
+						<entry>バックエンドのデータベースエンジン</entry>
 					</row>
 					<row>
 						<entry>close</entry>
-						<entry>Number of database close operations.</entry>
+						<entry>データベースのcloseオペレーション数</entry>
 					</row>
 					<row>
 						<entry>failure_get</entry>
-						<entry>Number of failed get operations.</entry>
+						<entry>失敗したgetオペレーションの数</entry>
 					</row>
 					<row>
 						<entry>failure_open</entry>
-						<entry>Number of failed open operations.</entry>
+						<entry>失敗したopenオペレーションの数</entry>
 					</row>
 					
 					<row>
 						<entry>failure_set</entry>
-						<entry>Number of failed set operations.</entry>
+						<entry>失敗したsetオペレーション数</entry>
 					</row>
 					<row>
 						<entry>failure_vbset</entry>
-						<entry>Number of failed vbucket set operation</entry>
+						<entry>失敗したvBucket setオペレーション数</entry>
 					</row>
 					<row>
 						<entry>lastCommDocs</entry>
-						<entry>Number of docs in the last commit.</entry>
+						<entry>最終コミット内のドキュメント数</entry>
 					</row>
 					<row>
 						<entry>numLoadedVb</entry>
-						<entry>Number of Vbuckets loaded into memory.</entry>
+						<entry>メモリにロードされたvBucket数</entry>
 					</row>
 					<row>
 						<entry>open</entry>
-						<entry>Number of database open operations.</entry>
+						<entry>データベースのopenオペレーション数</entry>
 					</row>
 				</tbody>
 			</tgroup>
 		</table>
 		</section>
 		
-		<section><title>Syntax</title>
-			<p>Request syntax:</p>
+		<section><title>シンタックス</title>
+			<p>リクエストシンタックス:</p>
 			<codeblock>cbstats [hostname]:11210 kvstore
 cbstats [hostname]:11210 kvtimings
 			</codeblock>
 		</section>
 		
-		<section><title>Example</title>
-			<p>Example request:</p>
+		<section><title>例</title>
+			<p>リクエスト例:</p>
 			<codeblock>cbstats 10.5.2.54:11210 kvstore</codeblock>
 			
 		</section>
 		
-		<section><title>Response</title>
-			<p>Example response for kvstore:</p>
+		<section><title>レスポンス</title>
+			<p>kvstoreのレスポンス例:</p>
 			<codeblock>
  ro_0:backend_type:  couchstore
  ro_0:close:         0

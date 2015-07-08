@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 
-<reference xml:lang="en-us" id="cbstats-timing">
+<reference xml:lang="ja" id="cbstats-timing">
   <title>Timings</title>
-  <shortdesc>The <codeph>cbstats timings</codeph> command provides timing statistics.</shortdesc>
+  <shortdesc><codeph>cbstats timings</codeph>コマンドはタイミングの統計情報を提供します。</shortdesc>
   <refbody>
-    <section><title>Description</title>
-    <p>Timing stats provide histogram data from high resolution timers over various operations
-      within the system.</p>
+    <section><title>説明</title>
+    <p>タイミング統計情報はシステム内の様々なオペレーションにおける高解像度のタイマーからヒストグラムデータを提供します。</p>
     </section>
     
-    <section><title>Syntax</title>
-      <p>To request the timings statistic, use the following syntax:</p>
+    <section><title>シンタックス</title>
+      <p>タイミング統計情報をリクエストするには、以下のシンタックスを利用します:</p>
       <codeblock>cbstats [host]:[dataport] timings</codeblock>
     </section>
     
-    <section><title>Example</title>
+    <section><title>例</title>
       
-      <p>The following example, uses the 10.5.2.117 host and the default port, 11210:</p>
+      <p>次の例では、105.2.117のホストとデフォルトの11210ポートを利用しています:</p>
       <codeblock>cbstats 10.5.2.117:11210 timings</codeblock>
     </section>
     
-    <section><title>Response</title>
+    <section><title>レスポンス</title>
     
-    <p>The following is sample output from <codeph>cbstats timings</codeph> :</p>
+    <p>以下は<codeph>cbstats timings</codeph>のサンプル出力です:</p>
     <codeblock>
 disk_commit (1024 total)
     0 - 1s : (100.00%) 1024 ###################################################
@@ -67,80 +66,77 @@ disk_commit (1024 total)
 
 </codeblock>
 
-    <p>The following are the possible return values provided by <codeph>cbstats
-      timings</codeph>. The return values provided by this command depend on what has actually
-      occurred on a data bucket:</p>
+    <p>以下は<codeph>cbstats timings</codeph>が返す値です。 このコマンドが出力した値はデータバケットで実際に何が起きたかに依存します。</p>
     <table>
       <tgroup cols="2">
         <colspec colname="col1"/>
         <colspec colname="col2"/>
         <thead>
           <row>
-            <entry>Values</entry>
-            <entry>Description</entry>
+            <entry>統計情報</entry>
+            <entry>説明</entry>
           </row>
         </thead>
         <tbody>
           <row>
             <entry>bg_load</entry>
-            <entry>Background fetches waiting for disk</entry>
+            <entry>ディスクを待っているバックグラウンドフェッチ</entry>
           </row>
           <row>
             <entry>bg_wait</entry>
-            <entry>Background fetches waiting in the dispatcher queue</entry>
+            <entry>ディスパッチャキューを待っているバックグラウンドフェッチ</entry>
           </row>
           <row>
             <entry>data_age</entry>
-            <entry>Age of data written to disk</entry>
+            <entry>ディスクに書き込まれたデータの存在期間</entry>
           </row>
           <row>
             <entry>disk_commit</entry>
-            <entry>Time waiting for a commit after a batch of updates</entry>
+            <entry>バッチ更新後にコミットを待っている時間</entry>
           </row>
           <row>
             <entry>disk_del</entry>
-            <entry>Wait for disk to delete an item</entry>
+            <entry>アイテム削除のディスク待ち</entry>
           </row>
           <row>
             <entry>disk_insert</entry>
-            <entry>Wait for disk to store a new item</entry>
+            <entry>新規アイテム保存のディスク待ち</entry>
           </row>
           <row>
             <entry>disk_vbstate_snapshot</entry>
-            <entry>Time spent persisting vbucket state changes</entry>
+            <entry>vBucket状態変更の永続化時間</entry>
           </row>
           <row>
             <entry>disk_update</entry>
-            <entry>Wait time for disk to modify an existing item</entry>
+            <entry>既存アイテム更新のディスク待ち</entry>
           </row>
           <row>
             <entry>get_cmd</entry>
-            <entry>Servicing get requests</entry>
+            <entry>getリクエスト処理</entry>
           </row>
           <row>
             <entry>get_stats_cmd</entry>
-            <entry>Servicing get_stats requests</entry>
+            <entry>get_statsリクエスト処理</entry>
           </row>
           <row>
             <entry>set_vb_cmd</entry>
-            <entry>Servicing vbucket set state commands</entry>
+            <entry>vBucket set statusコマンドの処理</entry>
           </row>
           <row>
             <entry>item_alloc_sizes</entry>
-            <entry>Item allocation size counters (in bytes)</entry>
+            <entry>アイテムアロケーションサイズカウンタ (byte)</entry>
           </row>
           <row>
             <entry>notify_io</entry>
-            <entry>Time for waking blocked connections</entry>
+            <entry>ブロックされた接続の起動時間</entry>
           </row>
           <row>
             <entry>storage_age</entry>
-            <entry>Time since most recently persisted item was initially queued for
-              storage.</entry>
+            <entry>保存された最後のオブジェクトが、キューに登録されてからの経過時間</entry>
           </row>
           <row>
             <entry>tap_mutation</entry>
-            <entry>Time spent servicing tap mutations</entry>
+            <entry>tapデータ変更の処理時間</entry>
           </row>
         </tbody>
       </tgroup>

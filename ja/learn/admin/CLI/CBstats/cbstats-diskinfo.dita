@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbstats-diskinfo">
+<reference xml:lang="ja" id="cbstats-diskinfo">
   <title>Diskinfo</title>
-  <shortdesc>The <codeph>cbstats diskinfo</codeph> command provides data and file size information.</shortdesc>
+  <shortdesc><codeph>cbstats diskinfo</codeph>コマンドはデータとファイルサイズの情報を提供します。</shortdesc>
   <refbody>
-    <section><title>CLI command and parameters</title>
+    <section><title>CLIコマンドとパラメータ</title>
       <p></p>
       <codeblock>cbstats diskinfo</codeblock>
       
     </section>
     
-    <section><title>Syntax</title>
-      <p>Request syntax:</p>
+    <section><title>シンタックス</title>
+      <p>リクエストシンタックス:</p>
       <codeblock>cbstats [localhost]:11210 diskinfo</codeblock>
     </section>
     
-    <section><title>Example</title>
-      <p>Example request:</p>
+    <section><title>例</title>
+      <p>リクエスト例:</p>
       <codeblock>cbstats 10.5.2.54:11210 diskinfo</codeblock>
       
       </section>
     
-    <section><title>Response</title>
-      <p>Example response:</p>
+    <section><title>レスポンス</title>
+      <p>レスポンス例:</p>
       <codeblock>
  ep_db_data_size: 121104
  ep_db_file_size: 19036812

@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbstats-scheduler">
+<reference xml:lang="ja" id="cbstats-scheduler">
   <title>Scheduler</title>
-  <shortdesc>The <codeph>cbstats scheduler</codeph> command provides scheduler task statistics.</shortdesc>
+  <shortdesc><codeph>cbstats scheduler</codeph>コマンドはスケジューラタスクの統計情報を提供します。</shortdesc>
   <refbody>
-    <section><title>CLI command and parameters</title>
+    <section><title>CLIコマンドとパラメータ</title>
       <p></p>
       <codeblock>cbstats scheduler</codeblock>
     </section>
     
-    <section><title>Syntax</title>
-      <p>Request syntax:</p>
+    <section><title>シンタックス</title>
+      <p>リクエストシンタックス:</p>
       <codeblock>cbstats [localhost]:11210 scheduler</codeblock>
     </section>
     
-    <section><title>Example</title>
-      <p>Example request:</p>
+    <section><title>例</title>
+      <p>リクエスト例:</p>
       <codeblock>cbstats 10.5.2.117:11210 scheduler</codeblock>
       
       </section>
     
-    <section><title>Response</title>
-      <p>Example response:</p>
+    <section><title>レスポンス</title>
+      <p>レスポンス例:</p>
       <codeblock>
  compactor_tasks (1024 total)
     8us - 16us    : (  0.10%)   1 

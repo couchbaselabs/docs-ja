@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbstats-memory">
+<reference xml:lang="ja" id="cbstats-memory">
 	<title>Memory</title>
-	<shortdesc>The <codeph>cbstats memory</codeph> command gets memory-related statistics.</shortdesc>
+	<shortdesc><codeph>cbstats memory</codeph>コマンドはメモリ関連の統計情報を取得します。</shortdesc>
 	<refbody>
-		<section><title>CLI command and parameter</title>
-		<p>This provides various memory-related stats including the stats from tcmalloc.</p>
+		<section><title>CLIコマンドとパラメータ</title>
+		<p>このコマンドはtcmallocからの統計情報を含む様々なメモリ関連の統計情報を提供します。</p>
 			
 			<codeblock>cbstats all</codeblock>
 			
-			<note type="note">tcmalloc stats are not available on operating systems (e.g., Windows) that do not
-				support tcmalloc.</note>
+			<note type="note">tcmalloc統計情報はtcmallocをサポートしていないオペレーションシステム(Windowsなど)では利用できません。</note>
 			
 		<table>
 			<tgroup cols="2">
@@ -18,146 +17,86 @@
 				<colspec colname="col2"/>
 				<thead>
 					<row>
-						<entry>Stat</entry>
-						<entry>Description</entry>
+						<entry>統計情報</entry>
+						<entry>説明</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
-						<entry>mem_used (deprecated)</entry>
-						<entry>Engine’s total memory usage</entry>
+						<entry>mem_used (非推奨)</entry>
+						<entry>エンジンの総利用メモリ</entry>
 					</row>
 					<row>
 						<entry>bytes</entry>
-						<entry>Engine’s total memory usage</entry>
+						<entry>エンジンの総利用メモリ</entry>
 					</row>
 					<row>
 						<entry>ep_kv_size</entry>
-						<entry>Memory used to store item metadata,</entry>
+						<entry>vBucketのステータスに関わらず、アイテムのメタデータ、キーとバリューで利用しているメモリ。</entry>
 					</row>
 					<row>
 						<entry/>
-						<entry>keys and values, no matter the</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>vbucket’s state. If an item’s value</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>is ejected, this stat will be</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>decremented by the size of the</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>item’s value.</entry>
+						<entry>アイテムのバリューがメモリから除去されている場合、この統計情報はそのアイテムのバリューサイズ分減少する。</entry>
 					</row>
 					<row>
 						<entry>ep_value_size</entry>
-						<entry>Memory used to store values for</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>resident keys</entry>
+						<entry>メモリ内に存在するキーのバリューを保存するために利用しているメモリ</entry>
 					</row>
 					<row>
 						<entry>ep_overhead</entry>
-						<entry>Extra memory used by transient data</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>like persistence queue, replication</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>queues, checkpoints, etc</entry>
+						<entry>永続化キュー、レプリケーションキュー、チェックポイントなどの一時的なデータに利用されているメモリ</entry>
 					</row>
 					<row>
 						<entry>ep_max_size</entry>
-						<entry>Max amount of data allowed in memory</entry>
+						<entry>メモリ内に保存できる最大データ量</entry>
 					</row>
 					<row>
 						<entry>ep_mem_low_wat</entry>
-						<entry>Low water mark for auto-evictions</entry>
+						<entry>メモリからのアイテム自動除去に利用する低水位</entry>
 					</row>
 					<row>
 						<entry>ep_mem_high_wat</entry>
-						<entry>High water mark for auto-evictions</entry>
+						<entry>メモリからのアイテム自動除去に利用する高水位</entry>
 					</row>
 					<row>
 						<entry>ep_oom_errors</entry>
-						<entry>Number of times unrecoverable OOMs</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>happened while processing operations</entry>
+						<entry>オペレーションの処理中に発生した復帰不能なOOM回数</entry>
 					</row>
 					<row>
 						<entry>ep_tmp_oom_errors</entry>
-						<entry>Number of times temporary OOMs</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>happened while processing operations</entry>
+						<entry>オペレーションの処理中に発生した一時的なOOM回数</entry>
 					</row>
 					<row>
 						<entry>ep_mem_tracker_enabled</entry>
-						<entry>If smart memory tracking is enabled</entry>
+						<entry>スマートメモリトラッキングが有効か否か</entry>
 					</row>
 					<row>
 						<entry>tcmalloc_allocated_bytes</entry>
-						<entry>Engine’s total memory usage reported</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>from tcmalloc</entry>
+						<entry>tcmallocでリポートされたエンジンの総利用メモリ</entry>
 					</row>
 					<row>
 						<entry>tcmalloc_heap_size</entry>
-						<entry>Bytes of system memory reserved by</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>tcmalloc</entry>
+						<entry>tcmallocで確保されたシステムメモリのバイト数</entry>
 					</row>
 					<row>
 						<entry>tcmalloc_free_bytes</entry>
-						<entry>Number of bytes in free, mapped</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>pages in page heap</entry>
+						<entry>ページヒープ内のページにマップされた空きバイト数</entry>
 					</row>
 					<row>
 						<entry>tcmalloc_unmapped_bytes</entry>
-						<entry>Number of bytes in free, unmapped</entry>
+						<entry>ページヒープ内のアンマップされた空きバイト数</entry>
 					</row>
 					<row>
 						<entry/>
-						<entry>pages in page heap. These are bytes</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>that have been released back to OS</entry>
+						<entry>これらはリリースされOSに戻されたバイト数</entry>
 					</row>
 					<row>
 						<entry>tcmalloc_max_thread_cache_bytes</entry>
-						<entry>A limit to how much memory TCMalloc</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>dedicates for small objects</entry>
+						<entry>TCMallocが小さなオブジェクト専用に割り当てるメモリの上限</entry>
 					</row>
 					<row>
 						<entry>tcmalloc_current_thread_cache_bytes</entry>
-						<entry>A measure of some of the memory</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>TCMalloc is using for small objects</entry>
+						<entry>TCMallocが小さなオブジェクト用に利用しているメモリ</entry>
 					</row>
 				</tbody>
 			</tgroup>
@@ -166,19 +105,19 @@
 		
 		
 		
-		<section><title>Syntax</title>
-			<p>Request syntax:</p>
+		<section><title>シンタックス</title>
+			<p>リクエストシンタックス:</p>
 			<codeblock>cbstats [localhost]:11210 memory</codeblock>
 		</section>
 		
-		<section><title>Example</title>
-			<p>Example request:</p>
+		<section><title>例</title>
+			<p>リクエスト例:</p>
 			<codeblock>cbstats 10.5.2.54:11210 memory</codeblock>
 			
 		</section>
 		
-		<section><title>Response</title>
-			<p>Example response:</p>
+		<section><title>レスポンス</title>
+			<p>レスポンス例:</p>
 			<codeblock>
 bytes:                               23716184
  ep_blob_num:                         0

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbstats-vbucket">
+<reference xml:lang="ja" id="cbstats-vbucket">
   <title>vBucket</title>
-  <shortdesc>The <codeph>cbstats vbucket</codeph> commands provide information</shortdesc>
+  <shortdesc><codeph>cbstats vbucket</codeph>コマンドはvBucketの情報を提供します。</shortdesc>
   <refbody>
-    <section><title>Description</title>
-      <p>The <codeph>vbucket</codeph> command shows whether a vBucket is an active or a replia vBucket.</p>
+    <section><title>説明</title>
+      <p><codeph>vbucket</codeph>コマンドはvBucketがアクティブか、レプリカvBucketかを表示します。</p>
     </section>
     
-    <section><title>CLI command and parameters</title>
+    <section><title>CLIコマンドとパラメータ</title>
       <p></p>
       <codeblock>
 cbstats vbucket
@@ -18,24 +18,24 @@ cbstats vbucket-seqno
       
     </section>
     
-    <section><title>Syntax</title>
-      <p>Request syntax:</p>
+    <section><title>シンタックス</title>
+      <p>リクエストシンタックス:</p>
       <codeblock>cbstats [localhost]:11210 vbucket
 cbstats [localhost]:11210 vbucket-details [vbid]
 cbstats [localhost]:11210 vbucket [vbid]
       </codeblock>
     </section>
     
-    <section><title>Example</title>
-      <p>Example requests:</p>
+    <section><title>例</title>
+      <p>リクエスト例:</p>
       <codeblock>cbstats 10.5.2.54:11210 vbucket</codeblock>
       <codeblock>cbstats 10.5.2.54:11210 vbucket-details 115</codeblock>
       <codeblock>cbstats 10.5.2.54:11210 vbucket-seqno 115</codeblock>
       
       </section>
     
-    <section><title>Response</title>
-      <p>Example response for <codeph>vbucket</codeph>:</p>
+    <section><title>レスポンス</title>
+      <p><codeph>vbucket</codeph>のレスポンス例:</p>
       <codeblock>
 vb_0:    replica
  vb_1:    replica
@@ -50,7 +50,7 @@ vb_0:    replica
  ...
       </codeblock>
       
-      <p>Example response for <codeph>vbucket-details</codeph>:</p>
+      <p><codeph>vbucket-details</codeph>のレスポンス例:</p>
         <codeblock>
  vb_115:                  active
  vb_115:db_data_size:     174
@@ -78,7 +78,7 @@ vb_0:    replica
         </codeblock>
       
       
-      <p>Example response for <codeph>vbucket-seqno</codeph>:</p>
+      <p><codeph>vbucket-seqno</codeph>のレスポンス例:</p>
       <codeblock>
  vb_115:abs_high_seqno: 0
  vb_115:high_seqno:     0

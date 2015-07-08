@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="topic678">
-	<title>vBucket stats</title>
-	<shortdesc>Description of vBucket total statistics.</shortdesc>
+<reference xml:lang="ja" id="topic678">
+	<title>vBucket 統計情報</title>
+	<shortdesc>vBucketの統計情報について解説します。</shortdesc>
 	<refbody>
 		<table>
 			<tgroup cols="2">
@@ -10,58 +10,58 @@
 				<colspec colname="col2"/>
 				<thead>
 					<row>
-						<entry>Stat</entry>
-						<entry>Description</entry>
+						<entry>統計情報</entry>
+						<entry>説明</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
 						<entry>ep_vb_total</entry>
-						<entry>Total vBuckets (count)</entry>
+						<entry>総vBucket数</entry>
 					</row>
 					<row>
 						<entry>curr_items_tot</entry>
-						<entry>Total number of items</entry>
+						<entry>総アイテム数</entry>
 					</row>
 					<row>
 						<entry>curr_items</entry>
-						<entry>Number of active items in memory</entry>
+						<entry>メモリ内のアクティブアイテム数</entry>
 					</row>
 					<row>
 						<entry>curr_temp_items</entry>
-						<entry>Number of temporary items in memory</entry>
+						<entry>メモリ内のテンポラリアイテム数</entry>
 					</row>
 					<row>
 						<entry>vb_dead_num</entry>
-						<entry>Number of dead vBuckets</entry>
+						<entry>dead状態のvBucket数</entry>
 					</row>
 					<row>
 						<entry>ep_diskqueue_items</entry>
-						<entry>Total items in disk queue</entry>
+						<entry>ディスクキュー内のアイテム数</entry>
 					</row>
 					<row>
 						<entry>ep_diskqueue_memory</entry>
-						<entry>Total memory used in disk queue</entry>
+						<entry>ディスクキューで利用されているメモリ容量</entry>
 					</row>
 					<row>
 						<entry>ep_diskqueue_fill</entry>
-						<entry>Total enqueued items on disk queue</entry>
+						<entry>ディスクキューに登録されたアイテムの総数</entry>
 					</row>
 					<row>
 						<entry>ep_diskqueue_drain</entry>
-						<entry>Total drained items on disk queue</entry>
+						<entry>ディスクキューからドレインしたアイテムの総数</entry>
 					</row>
 					<row>
 						<entry>ep_diskqueue_pending</entry>
-						<entry>Total bytes of pending writes</entry>
+						<entry>書込み待ちの総バイト数</entry>
 					</row>
 					<row>
 						<entry>ep_vb_snapshot_total</entry>
-						<entry>Total VB state snapshots persisted in disk</entry>
+						<entry>ディスクに永続化されたVB状態スナップショットの総数</entry>
 					</row>
 					<row>
 						<entry>ep_meta_data_memory</entry>
-						<entry>Total memory used by meta data</entry>
+						<entry>メタデータで利用している総メモリ容量</entry>
 					</row>
 
 				</tbody>

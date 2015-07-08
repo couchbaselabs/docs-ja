@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbstats-reset">
+<reference xml:lang="ja" id="cbstats-reset">
 	<title>Reset</title>
-	<shortdesc>The <codeph>cbstats reset</codeph> command resets the following reset and reset histogram statistics.</shortdesc>
+	<shortdesc><codeph>cbstats reset</codeph>コマンドは以下の統計情報と、ヒストグラムをリセットします。</shortdesc>
 	<refbody>
-		<section><title>CLI command and parameters</title>
+		<section><title>CLIコマンドとパラメータ</title>
 		<codeblock>cbstats reset</codeblock>
 		<table>
 			<tgroup cols="1">
 				<colspec colname="col1"/>
 				<thead>
 					<row>
-						<entry>Reset Stats</entry>
+						<entry>Reset 統計情報</entry>
 					</row>
 				</thead>
 				<tbody>
@@ -126,12 +126,12 @@
 			
 			
 		<table>
-			<title>Reset histogram stats</title>
+			<title>Reset ヒストグラム統計情報</title>
 			<tgroup cols="1">
 				<colspec colname="col1"/>
 				<thead>
 					<row>
-						<entry>Reset Histograms stats</entry>
+						<entry>Reset ヒストグラム統計情報</entry>
 					</row>
 				</thead>
 				<tbody>
@@ -206,13 +206,13 @@
 		</table>
 		</section>
 		
-		<section><title>Syntax</title>
-		<p>Request syntax:</p>
+		<section><title>シンタックス</title>
+		<p>リクエストシンタックス:</p>
 		<codeblock>cbstats [localhost]:11210 reset</codeblock>
 		</section>
 		
-		<section><title>Example</title>
-			<p>Example request:</p>
+		<section><title>例</title>
+			<p>リクエスト例:</p>
 			<codeblock>cbstats 10.5.2.54:11210 reset</codeblock>
 		</section>
 		

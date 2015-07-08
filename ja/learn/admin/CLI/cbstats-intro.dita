@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbstats-intro">
-	<title>cbstats tool</title>
-	<shortdesc>The <codeph>cbstats</codeph> tool is used to get node and cluster-level statistics about
-		performance and items in storage.</shortdesc>
+<reference xml:lang="ja" id="cbstats-intro">
+	<title>cbstats ツール</title>
+	<shortdesc><codeph>cbstats</codeph>ツールはノード単位、またはクラスタ単位の性能やストレージ内アイテムに関する統計情報を取得するために利用します。</shortdesc>
 	<refbody>
 		
-		<section><title>Description</title>
-			<p>The <codeph>cbstats</codeph> tool is a per-node, per-bucket operation.
-				That means that the IP address of a node in the cluster and a named bucket must be specified. 
-				If a named bucket is not provided, the server applies the
-				setting to any default bucket that exists at the specified node. 
-				To perform this operation for an entire cluster, perform the command for every
-				node/bucket combination that exists for that cluster.</p>
+		<section><title>説明</title>
+			<p><codeph>cbstats</codeph>ツールはノード、バケット単位のオペレーションです。
+				すなわち、クラスタ内のノードのIPアドレスと、バケット名を指定する必要があります。 
+				バケット名を指定しない場合、指定したノード上に存在するdefaultバケットに設定を反映します。 
+				クラスタ全体にこの操作を実行するには、コマンドをクラスタに存在する全てのノードとバケットの組み合わせに対して実行します。</p>
 			
-		<p>The tool is found in the following locations:</p>
+		<p>ツールは以下の場所にあります:</p>
 
 		<table>
 			<tgroup cols="2">
 				<thead>
 					<row>
-						<entry>Platform</entry>
-						<entry>Location</entry>
+						<entry>プラットフォーム</entry>
+						<entry>ロケーション</entry>
 					</row>
 				</thead>
 				<tbody>
@@ -45,9 +42,8 @@
 			
 		</section>
 		
-		<section><title>CLI command and parameters</title>
-		<p>This tool is used to get the couchbase node statistics. The general format for this command
-				is:</p>
+		<section><title>CLIコマンドとパラメータ</title>
+		<p>このツールはCouchbaseノードの統計情報の取得に利用します。 このコマンドの一般的なフォーマットは:</p>
 			<codeblock>
 cbstats [host]:11210 [command] -b [bucket-name] -p [bucket-password]
 			</codeblock>
@@ -55,10 +51,7 @@ cbstats [host]:11210 [command] -b [bucket-name] -p [bucket-password]
 			
 		
 		
-		<p>The following are commands. The <codeph>all</codeph> and <codeph>timings</codeph>
-				commands are used to understand cluster or node performance. The majority of these
-				commands are predominately used by Couchbase internally and to help resolve
-				customer support incidents. </p>
+		<p>利用可能なcommandは以下の通りです。 <codeph>all</codeph>と<codeph>timings</codeph>コマンドはクラスタやノードの性能を理解するために利用します。 これらのコマンドの多くは主にCouchbase内部で、カスタマーサポートインシデントの解決に利用されます。 </p>
 					
 
 		<pre>
@@ -95,32 +88,32 @@ vkey keyname vbid
 warmup
 workload
 </pre>
-			<p>The following are command options:</p>
+			<p>以下のコマンドオプションが利用できます:</p>
 			
 			<table>
 				<tgroup cols="2">
 					<thead>
 						<row>
-							<entry>Options</entry>
-							<entry>Description</entry>
+							<entry>オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>-h, --help</entry>
-							<entry>Shows the help message and exits.</entry>
+							<entry>このヘルプメッセージを表示して終了する。</entry>
 						</row>
 						<row>
 							<entry>-a</entry>
-							<entry>Iterates over all the vBuckets. Requires administrator username and password.</entry>
+							<entry>すべてのバケットをイテレートする。 管理者のユーザ名とパスワードが必要。</entry>
 						</row>
 						<row>
 							<entry>-b [bucket-name]</entry>
-							<entry>The vBucket to get the status from. Default: default</entry>
+							<entry>ステータスを取得するバケット。 デフォルト: default。</entry>
 						</row>
 						<row>
 							<entry>-p [password]</entry>
-							<entry>The password for the vBucket if one exists.</entry>
+							<entry>バケットのパスワード、設定されている場合。</entry>
 						</row>
 					</tbody>
 				</tgroup>
@@ -129,18 +122,18 @@ workload
 			
 		</section>
 		
-		<section><title>Syntax</title>
-			<p>Request syntax:</p>
+		<section><title>シンタックス</title>
+			<p>リクエストシンタックス:</p>
 			<codeblock>
 cbstats [host]:11210 [command]
 			</codeblock>
 		</section>
 		
-		<section><title>Example: Timings</title>
-			<p>To get statistics, for example, timings on host 10.5.2.117:</p>
+		<section><title>例: タイミング</title>
+			<p>10.5.2.117のホストでtimingの統計情報を取得するには:</p>
 			<codeblock>cbstats 10.5.2.117:11210 timings</codeblock>
 			
-			<p>Response:</p>
+			<p>レスポンス:</p>
 			<codeblock>
  disk_commit (1024 total)
     0 - 1s : (100.00%) 1024 ###################################################
@@ -187,10 +180,11 @@ cbstats [host]:11210 [command]
 		
 		</section>
 		
-		<section><title>Example: Using with other CLI tools</title>
+		<section><title>例: 他のCLIツールと利用する</title>
 		
-		<p>The <codeph>cbstats</codeph> output can be used with other command-line tools
-			to sort and filter the data, for example, the <codeph>watch</codeph> command.</p>
+			<p>
+				<codeph>cbstats</codeph>の出力は、<codeph>watch</codeph>コマンドなど、他のコマンドラインツールと組み合わせ、データのソートやフィルタを実行できます。
+			</p>
 		
 		<codeblock>watch --diff "cbstats \
     ip-10-12-19-81:11210 -b bucket_name -p bucket_password all | egrep 'item|mem|flusher|ep_queue|bg|eje|resi|warm'"

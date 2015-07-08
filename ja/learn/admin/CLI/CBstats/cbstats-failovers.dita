@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbstats-failovers">
+<reference xml:lang="ja" id="cbstats-failovers">
   <title>Failovers</title>
-  <shortdesc>The <codeph>cbstats failovers</codeph> command provides ID, sequence, and number of entries information.</shortdesc>
+  <shortdesc><codeph>cbstats failovers</codeph>コマンドはID、sequence、エントリ数の情報を提供します。</shortdesc>
   <refbody>
     
-    <section><title>CLI command and parameters</title>
+    <section><title>CLIコマンドとパラメータ</title>
       <p></p>
       <codeblock>cbstats failovers</codeblock>
       
     </section>
     
-    <section><title>Syntax</title>
-      <p>Request syntax:</p>
+    <section><title>シンタックス</title>
+      <p>リクエストシンタックス:</p>
       <codeblock>cbstats [localhost]:11210 failovers</codeblock>
     </section>
     
-    <section><title>Example</title>
-      <p>Example request:</p>
+    <section><title>例</title>
+      <p>リクエスト例:</p>
       <codeblock>cbstats 10.5.2.54:11210 failovers</codeblock>
       
       </section>
     
-    <section><title>Response</title>
-      <p>Example response:</p>
+    <section><title>レスポンス</title>
+      <p>レスポンス例:</p>
       <codeblock>
  vb_0:0:id:           81829249447048
  vb_0:0:seq:          0
