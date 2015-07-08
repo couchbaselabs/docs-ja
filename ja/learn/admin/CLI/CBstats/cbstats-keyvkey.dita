@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbstats-key">
-	<title>Key and vkey</title>
-	<shortdesc>The <codeph>cbstats key</codeph> and  <codeph>cbstats vkey</codeph> commands provide
-		information on keys.</shortdesc>
+<reference xml:lang="ja" id="cbstats-key">
+	<title>Keyとvkey</title>
+	<shortdesc><codeph>cbstats key</codeph>と、<codeph>cbstats vkey</codeph>コマンドはキーに関する情報を提供します。</shortdesc>
 	<refbody>
 		
-		<section><title>Description</title>
-			<p>The following key information is available.</p>
+		<section><title>説明</title>
+			<p>以下のキー情報が利用可能です。</p>
 		<table>
 			<tgroup cols="3">
 				<colspec colname="col1"/>
@@ -15,20 +14,20 @@
 				<colspec colname="col3"/>
 				<thead>
 					<row>
-						<entry>Stat</entry>
-						<entry>Description</entry>
+						<entry>統計情報</entry>
+						<entry>説明</entry>
 						<entry>K/V</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
 						<entry>key_cas</entry>
-						<entry>The keys current cas value</entry>
+						<entry>キーの現在のCAS値</entry>
 						<entry>KV</entry>
 					</row>
 					<row>
 						<entry>key_data_age</entry>
-						<entry>How long the key has waited for its</entry>
+						<entry>そのキーがどれだけバリューの永続化に待っているか (完了していれば0)</entry>
 						<entry>KV</entry>
 					</row>
 					<row>
@@ -38,63 +37,62 @@
 					</row>
 					<row>
 						<entry>key_exptime</entry>
-						<entry>Expiration time from the epoch</entry>
+						<entry>有効期限、epoch</entry>
 						<entry>KV</entry>
 					</row>
 					<row>
 						<entry>key_flags</entry>
-						<entry>Flags for this key</entry>
+						<entry>キーのフラグ</entry>
 						<entry>KV</entry>
 					</row>
 					<row>
 						<entry>key_is_dirty</entry>
-						<entry>If the value is not yet persisted</entry>
+						<entry>キーがまだ永続化されていない</entry>
 						<entry>KV</entry>
 					</row>
 					<row>
 						<entry>key_valid</entry>
-						<entry>See description below</entry>
+						<entry>下記の説明を参照</entry>
 						<entry>V</entry>
 					</row>
 					<row>
 						<entry>key_vb_state</entry>
-						<entry>The vbucket state of this key</entry>
+						<entry>キーのvBucketステータス</entry>
 						<entry>KV</entry>
 					</row>
 				</tbody>
 			</tgroup>
 		</table>
-		<p><codeph>key_valid</codeph>= can have the following responses:</p>
+		<p><codeph>key_valid</codeph>= は以下のレスポンスを返します:</p>
 		<ul>
-			<li>this_is_a_bug - Some case we didn’t take care of.</li>
-			<li>dirty - The value in memory has not been persisted yet.</li>
-			<li>length_mismatch - The key length in memory doesn’t match the length on
-				disk.</li>
-			<li>data_mismatch - The data in memory doesn’t match the data on disk.</li>
-			<li>flags_mismatch - The flags in memory don’t match the flags on disk.</li>
-			<li>valid - The key is both on disk and in memory</li>
-			<li>ram_but_not_disk - The value doesn’t exist yet on disk.</li>
-			<li>item_deleted - The item has been deleted.</li>
+			<li>this_is_a_bug - 予期せぬ状態。</li>
+			<li>dirty - メモリ内のバリューがまだ永続化されていない。</li>
+			<li>length_mismatch - キーのメモリ内サイズがディスク上のサイズと一致しない。</li>
+			<li>data_mismatch - メモリ内のデータがディスク上のデータと一致しない。</li>
+			<li>flags_mismatch - メモリ内のフラグがディスク上のフラグと一致しない。</li>
+			<li>valid - キーはディスクにもメモリにも存在する。</li>
+			<li>ram_but_not_disk - バリューがまだディスク上に存在しない。</li>
+			<li>item_deleted - アイテムはすでに削除されている。</li>
 		</ul>
 			
 			
 		</section>
 		
-		<section><title>Syntax</title>
-			<p>Request syntax:</p>
+		<section><title>シンタックス</title>
+			<p>リクエストシンタックス:</p>
 			<codeblock>cbstats [hostname]:11210 key [keyname] [vbid]
 cbstats [hostname]:11210 vkey [keyname] [vbid]
 			</codeblock>
 		</section>
 		
-		<section><title>Example</title>
-			<p>Example request:</p>
+		<section><title>例</title>
+			<p>リクエスト例:</p>
 			<codeblock>cbstats 10.5.2.54:11210 key foo 115</codeblock>
 			
 		</section>
 		
-		<section><title>Response</title>
-			<p>Example response for key foo:</p>
+		<section><title>レスポンス</title>
+			<p>key fooのレスポンス例:</p>
 			<codeblock>
  key_cas: 41206791218746
  key_exptime: 0

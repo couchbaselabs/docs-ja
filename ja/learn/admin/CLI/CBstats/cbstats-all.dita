@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbstats-all">
+<reference xml:lang="ja" id="cbstats-all">
   <title>All</title>
-  <shortdesc>The <codeph>cbstats all</codeph> command lists the information used for statistics.</shortdesc>
+  <shortdesc><codeph>cbstats all</codeph>コマンドは統計に利用される情報を一覧表示します。</shortdesc>
   <refbody>
-    <section><title>CLI command and parameter</title>
+    <section><title>CLIコマンドとパラメータ</title>
       <codeblock>cbstats all</codeblock>
     </section>
     
     
-    <section><title>Syntax</title>
-      <p>Request syntax:</p>
+    <section><title>シンタックス</title>
+      <p>リクエストシンタックス:</p>
       <codeblock>cbstats [localhost]:11210 all</codeblock>
     </section>
     
-    <section><title>Example</title>
-      <p>Example request:</p>
+    <section><title>例</title>
+      <p>リクエスト例:</p>
       <codeblock>cbstats 10.5.2.54:11210 all</codeblock>
       
       </section>
     
-    <section><title>Response</title>
-      <p>Example response:</p>
+    <section><title>レスポンス</title>
+      <p>レスポンス例:</p>
       <codeblock>
  accepting_conns:                    1
  auth_cmds:                          0

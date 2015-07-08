@@ -1,44 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbstats-dispatcher">
+<reference xml:lang="ja" id="cbstats-dispatcher">
 	<title>Dispatcher</title>
-	<shortdesc>The <codeph>cbstats dispatcher</codeph> command gets statistics from reader, writer, auxio, and nonio worker threads.</shortdesc>
+	<shortdesc><codeph>cbstats dispatcher</codeph>コマンドはreader、writer、auxio、nonioワーカスレッドの統計情報を取得します。</shortdesc>
 	<refbody>
-		<section><title>Description</title>
-		<p>This provides the stats from AUX dispatcher and non-IO dispatcher, and from all the
-			reader and writer threads running for the specific bucket. Along with stats, the job
-			logs for each of the dispatchers and worker threads is also made available.</p>
-		<p>The following stats are available for the workers and dispatchers:</p>
+		<section><title>説明</title>
+		<p>このコマンドはAUXディスパッチャ、non-IOディスパッチャ、そして特定のバケットで稼働するすべてのreader、writerスレッドの統計情報を提供します。 統計情報に加え、各ディスパッチャとワーカスレッドののジョブログも利用可能です。</p>
+		<p>ワーカとディスパッチャに関する以下の統計情報が利用できます:</p>
 		<table>
 			<tgroup cols="2">
 				<colspec colname="col1"/>
 				<colspec colname="col2"/>
 				<thead>
 					<row>
-						<entry>Stat</entry>
-						<entry>Description</entry>
+						<entry>統計情報</entry>
+						<entry>説明</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
 						<entry>cur_time</entry>
-						<entry>The current timestamp.</entry>
+						<entry>現在のタイムスタンプ。</entry>
 					</row>
 					<row>
 						<entry>runtime</entry>
-						<entry>The amount of time it tool for the job to run in milliseconds.</entry>
+						<entry>ジョブ実行時間、ミリ秒。</entry>
 					</row>
 					<row>
 						<entry>state</entry>
-						<entry>Threads’s current status: running, sleeping, etc.</entry>
+						<entry>スレッドの現在の状態: running、sleeping、など。</entry>
 					</row>
 					<row>
 						<entry>task</entry>
-						<entry>The activity the thread ran during that time.</entry>
+						<entry>該当時間にスレッドが実行していたアクティビティ。</entry>
 					</row>
 					<row>
 						<entry>waketime</entry>
-						<entry>The time stamp when the job started.</entry>
+						<entry>ジョブ開始時のタイムスタンプ</entry>
 					</row>
 					
 				</tbody>
@@ -47,19 +45,19 @@
 		
 		</section>
 		
-		<section><title>Syntax</title>
-			<p>Request syntax:</p>
+		<section><title>シンタックス</title>
+			<p>リクエストシンタックス:</p>
 			<codeblock>cbstats [hostname]:11210 dispatcher</codeblock>
 		</section>
 		
-		<section><title>Example</title>
-			<p>Example request:</p>
+		<section><title>例</title>
+			<p>リクエスト例:</p>
 			<codeblock>cbstats 10.5.2.54:11210 dispatcher</codeblock>
 		</section>
 		
 		
-		<section><title>Response</title>
-			<p>Example response:</p>
+		<section><title>レスポンス</title>
+			<p>レスポンス例:</p>
 			<codeblock>
  auxio_worker_8
      cur_time: 1419384974021911

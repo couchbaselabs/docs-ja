@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbstats-checkpoint">
+<reference xml:lang="ja" id="cbstats-checkpoint">
 	
 	<title>Checkpoint</title>
-	<shortdesc>Checkpoint stats provide detailed information on per-vbucket checkpoint
-		data structure.</shortdesc>
+	<shortdesc>チェックポイント統計情報はvBucket単位のチェックポイントデータ構造に関する詳細情報を提供します。</shortdesc>
 	<refbody>
-		<section><title>Description</title>
+		<section><title>説明</title>
 
 
-		<p>Like Hash stats, requesting these stats has some impact on performance. Therefore, do not poll
-				them from the server frequently.</p>
+		<p>ハッシュ統計情報と同様に、これらの統計をリクエストすると性能に多少の影響を与えます。 このため頻繁にサーバから取得しないで下さい。</p>
 			
-			<p>The following are command options:</p>
+			<p>以下のコマンドオプションが利用できます:</p>
 			
 			<table>
 				<tgroup cols="2">
 					<thead>
 						<row>
-							<entry>Options</entry>
-							<entry>Description</entry>
+							<entry>オプション</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>-h, --help</entry>
-							<entry>Shows the help message and exits.</entry>
+							<entry>ヘルプメッセージを表示して終了する。</entry>
 						</row>
 						<row>
 							<entry>-a</entry>
-							<entry>Iterates over all the vBuckets. Requires administrator username and password.</entry>
+							<entry>すべてのバケットをイテレートする。 管理者のユーザ名とパスワードが必要。</entry>
 						</row>
 						<row>
 							<entry>-b [bucket-name]</entry>
-							<entry>The vBucket to get the status from. Default: default</entry>
+							<entry>ステータスを取得するバケット。 デフォルト: default</entry>
 						</row>
 						<row>
 							<entry>-p [password]</entry>
-							<entry>The password for the vBucket if one exists.</entry>
+							<entry>バケットのパスワード、設定されている場合。</entry>
 						</row>
 					</tbody>
 				</tgroup>
@@ -45,58 +43,43 @@
 			
 			
 	<table>
-		<title>cbstats checkpoint values</title>
+		<title>cbstats checkpoint 統計情報</title>
 		<tgroup cols="2"><colspec colname="col1"/><colspec colname="col2"/><thead><row>
-	<entry>Stat</entry>
-	<entry>Description</entry>
+	<entry>統計情報</entry>
+	<entry>説明</entry>
 </row></thead><tbody><row>
 	<entry>cursor_name:cursor_checkpoint_id</entry>
-	<entry>Checkpoint ID at which the cursor is</entry>
-</row><row>
-	<entry/>
-	<entry>name ‘cursor_name’ is pointing now</entry>
+	<entry>'cursor_name'の名前のカーソルが指し示すチェックポイントID</entry>
 </row><row>
 	<entry>open_checkpoint_id</entry>
-	<entry>ID of the current open checkpoint</entry>
+	<entry>現在オープンしているチェックポイントのID</entry>
 </row><row>
 	<entry>num_tap_cursors</entry>
-	<entry>Number of referencing TAP cursors</entry>
+	<entry>参照しているTAPカーソル数</entry>
 </row><row>
 	<entry>num_checkpoint_items</entry>
-	<entry>Number of total items in a checkpoint</entry>
-</row><row>
-	<entry/>
-	<entry>data structure</entry>
+	<entry>チェックポイントデータ構造内のアイテム総数</entry>
 </row><row>
 	<entry>num_open_checkpoint_items</entry>
-	<entry>Number of items in the open checkpoint</entry>
+	<entry>オープンチェックポイント内のアイテム数</entry>
 </row><row>
 	<entry>num_checkpoints</entry>
-	<entry>Number of checkpoints in a checkpoint</entry>
-</row><row>
-	<entry/>
-	<entry>data structure</entry>
+	<entry>チェックポイントデータ構造内のチェックポイント数</entry>
 </row><row>
 	<entry>num_items_for_persistence</entry>
-	<entry>Number of items remaining for persistence</entry>
+	<entry>永続化待ちのアイテム数</entry>
 </row><row>
 	<entry>checkpoint_extension</entry>
-	<entry>True if the open checkpoint is in the</entry>
-</row><row>
-	<entry/>
-	<entry>extension mode</entry>
+	<entry>オープンチェックポイントが拡張モードの場合True</entry>
 </row><row>
 	<entry>state</entry>
-	<entry>The state of the vbucket this checkpoint</entry>
-</row><row>
-	<entry/>
-	<entry>contains data for</entry>
+	<entry>このチェックポイントデータの対象となるvBucketのステータス</entry>
 </row><row>
 	<entry>last_closed_checkpoint_id</entry>
-	<entry>The last closed checkpoint number</entry>
+	<entry>最後にクローズしたチェックポイント番号</entry>
 </row><row>
 	<entry>persisted_checkpoint_id</entry>
-	<entry>The last persisted checkpoint number</entry>
+	<entry>最後に永続化したチェックポイント番号</entry>
 </row>
 </tbody>
 		
@@ -105,22 +88,22 @@
 			
 		</section>
 		
-		<section><title>Syntax</title>
-			<p>Request syntax:</p>
+		<section><title>シンタックス</title>
+			<p>リクエストシンタックス:</p>
 			<codeblock>
 cbstats [host]:11210 checkpoint
 			</codeblock>
 		</section>
 		
-		<section><title>Example</title>
-		<p>Request example:</p>
+		<section><title>例</title>
+		<p>リクエスト例:</p>
 			<codeblock>
 cbstats 10.5.2.117:11210 checkpoint
 			</codeblock>
 		</section>
 		
-		<section><title>Response</title>
-			<p>Response example:</p>
+		<section><title>レスポンス</title>
+			<p>レスポンス例:</p>
 			<codeblock>
  vb_0:last_closed_checkpoint_id:    1
  vb_0:num_checkpoint_items:         1

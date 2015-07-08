@@ -1,35 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbstats-workload">
+<reference xml:lang="ja" id="cbstats-workload">
   <title>Workload</title>
-  <shortdesc>The <codeph>cbstats workload</codeph> command provides the workload status of threads
-    for buckets.</shortdesc>
+  <shortdesc><codeph>cbstats workload</codeph>コマンドはバケットのスレッドのワークロード状態を提供します。</shortdesc>
   <refbody>
     
-    <section><title>Description</title>
-      <p>This command is used to check how many threads of various types are currently running.</p>
+    <section><title>説明</title>
+      <p>このコマンドはどれだけの様々な種別のスレッドが現在稼働しているかを取得するために利用します。</p>
     </section>
     
-    <section><title>Syntax</title>
-      <p>Basic syntax:</p>
+    <section><title>シンタックス</title>
+      <p>基本シンタックス:</p>
       <codeblock>cbstats [hostname]:11210 -b bucket_name workload</codeblock>
     </section>
     
     
-    <section><title>Example</title>
-      <p>Request example:</p>
+    <section><title>例</title>
+      <p>リクエスト例:</p>
       <codeblock>cbstats 10.5.2.54:11210 workload</codeblock>
       </section>
 
 
-  <section><title>Response</title>
+  <section><title>レスポンス</title>
     
-    <p>This example shows four reader threads and four writer threads on
-      the default bucket in the cluster at <codeph>10.5.2.54:11210</codeph>. The
-      vBucket map for the data bucket is grouped into multiple shards, where one read worker
-      accesses one of the shards. In this example, there is one reader for each of the four
-      shards.</p>
-    <p>Example response:</p>
+    <p>この例は、<codeph>10.5.2.54:11210</codeph>のクラスタ内のデフォルトバケットの4つのreaderスレッドと、4つのwriterスレッドを表示しています。データバケットのvBucketマップは複数のシャードにグループ化されていて、一つのreadワーカが一つのシャードにアクセスします。 この例では、4つのシャードごとに一つのreaderがあります。</p>
+    <p>レスポンス例:</p>
     
     <codeblock>
  ep_workload:LowPrioQ_AuxIO:InQsize:   5
