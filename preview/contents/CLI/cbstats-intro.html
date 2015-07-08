@@ -1,32 +1,29 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>cbstats tool</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>cbstats ツール</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a></li><li class="section"><a href="../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../CLI/cbcollect_info_tool.html"><span>cbcollect_info ツール</span></a></li><li class="section"><a href="../CLI/cbdocloader_tool.html"><span>cbdocloader ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../CLI/cbhealthchecker_tool.html"><span>cbhealthcheckerツール</span></a></li><li class="section"><a href="../CLI/cbreset_password_tool.html"><span>cbreset_password ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbrestore_tool.html"><span>cbrestore ツール</span></a></li><li class="section section--has-sub-sections section--active"><a href="../CLI/cbstats-intro.html" class="current"><span>cbstats tool</span></a><ul class="sub-sections"><li class="section"><a href="../CLI/CBstats/cbstats-generalform.html"><span>General form</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/CBstats/cbstats-all.html"><span>All</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-allocator.html"><span>Allocator</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-checkpoint.html"><span>Checkpoint</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-config.html"><span>Config</span></a></li><li class="section"><a href="../CLI/cli-cbstats-dcp.html"><span>DCP</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-diskinfo.html"><span>Diskinfo</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-dispatcher-job.html"><span>Dispatcher</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-failovers.html"><span>Failovers</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-hash.html"><span>Hash</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-keyvkey.html"><span>Key and vkey</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-kv.html"><span>Kvstore and kvtimings</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-memory.html"><span>Memory</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-reset.html"><span>Reset</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-runtimes.html"><span>Runtimes</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-scheduler.html"><span>Scheduler</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-tap.html"><span>Tap</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-timing.html"><span>Timings</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-uuid.html"><span>UUID</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-vbucket.html"><span>vBucket</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-warmup.html"><span>Warmup</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-workload.html"><span>Workload</span></a></li></ul></li><li class="section"><a href="../CLI/cbtransfer_tool.html"><span>cbtransfer ツール</span></a></li><li class="section"><a href="../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen ツール</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-	<h1 class="title topictitle1">cbstats tool</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a></li><li class="section"><a href="../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../CLI/cbcollect_info_tool.html"><span>cbcollect_info ツール</span></a></li><li class="section"><a href="../CLI/cbdocloader_tool.html"><span>cbdocloader ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../CLI/cbhealthchecker_tool.html"><span>cbhealthcheckerツール</span></a></li><li class="section"><a href="../CLI/cbreset_password_tool.html"><span>cbreset_password ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbrestore_tool.html"><span>cbrestore ツール</span></a></li><li class="section section--has-sub-sections section--active"><a href="../CLI/cbstats-intro.html" class="current"><span>cbstats ツール</span></a><ul class="sub-sections"><li class="section"><a href="../CLI/CBstats/cbstats-generalform.html"><span>共通形式</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/CBstats/cbstats-all.html"><span>All</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-allocator.html"><span>Allocator</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-checkpoint.html"><span>Checkpoint</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-config.html"><span>Config</span></a></li><li class="section"><a href="../CLI/cli-cbstats-dcp.html"><span>DCP</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-diskinfo.html"><span>Diskinfo</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-dispatcher-job.html"><span>Dispatcher</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-failovers.html"><span>Failovers</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-hash.html"><span>Hash</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-keyvkey.html"><span>Keyとvkey</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-kv.html"><span>Kvstore と kvtimings</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-memory.html"><span>Memory</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-reset.html"><span>Reset</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-runtimes.html"><span>Runtimes</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-scheduler.html"><span>Scheduler</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-tap.html"><span>Tap</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-timing.html"><span>Timings</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-uuid.html"><span>UUID</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-vbucket.html"><span>vBucket</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-warmup.html"><span>Warmup</span></a></li><li class="section"><a href="../CLI/CBstats/cbstats-workload.html"><span>Workload</span></a></li></ul></li><li class="section"><a href="../CLI/cbtransfer_tool.html"><span>cbtransfer ツール</span></a></li><li class="section"><a href="../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen ツール</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+	<h1 class="title topictitle1">cbstats ツール</h1>
 
 	
-	<div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbstats</samp> tool is used to get node and cluster-level statistics about
-		performance and items in storage.</p>
+	<div class="body refbody"><p class="shortdesc"><samp class="ph codeph">cbstats</samp>ツールはノード単位、またはクラスタ単位の性能やストレージ内アイテムに関する統計情報を取得するために利用します。</p>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Description</h2>
-			<p class="p">The <samp class="ph codeph">cbstats</samp> tool is a per-node, per-bucket operation.
-				That means that the IP address of a node in the cluster and a named bucket must be specified. 
-				If a named bucket is not provided, the server applies the
-				setting to any default bucket that exists at the specified node. 
-				To perform this operation for an entire cluster, perform the command for every
-				node/bucket combination that exists for that cluster.</p>
+		<div class="section"><h2 class="title sectiontitle">説明</h2>
+			<p class="p"><samp class="ph codeph">cbstats</samp>ツールはノード、バケット単位のオペレーションです。
+				すなわち、クラスタ内のノードのIPアドレスと、バケット名を指定する必要があります。 
+				バケット名を指定しない場合、指定したノード上に存在するdefaultバケットに設定を反映します。 
+				クラスタ全体にこの操作を実行するには、コマンドをクラスタに存在する全てのノードとバケットの組み合わせに対して実行します。</p>
 
 			
-		<p class="p">The tool is found in the following locations:</p>
+		<p class="p">ツールは以下の場所にあります:</p>
 
 
 		
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d44653e41">Platform</th>
+						<th class="entry" valign="top" width="50%" id="d43615e39">プラットフォーム</th>
 
-						<th class="entry" valign="top" width="50%" id="d44653e44">Location</th>
+						<th class="entry" valign="top" width="50%" id="d43615e42">ロケーション</th>
 
 					</tr>
 
@@ -34,24 +31,24 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d44653e41 ">Linux</td>
+						<td class="entry" valign="top" width="50%" headers="d43615e39 ">Linux</td>
 
-						<td class="entry" valign="top" width="50%" headers="d44653e44 "><samp class="ph codeph">/opt/couchbase/bin/cbstats</samp></td>
+						<td class="entry" valign="top" width="50%" headers="d43615e42 "><samp class="ph codeph">/opt/couchbase/bin/cbstats</samp></td>
 
 					</tr>
 
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d44653e41 ">Windows</td>
+						<td class="entry" valign="top" width="50%" headers="d43615e39 ">Windows</td>
 
-						<td class="entry" valign="top" width="50%" headers="d44653e44 "><samp class="ph codeph">C:\Program&nbsp;Files\Couchbase\Server\bin\cbstats.exe</samp></td>
+						<td class="entry" valign="top" width="50%" headers="d43615e42 "><samp class="ph codeph">C:\Program&nbsp;Files\Couchbase\Server\bin\cbstats.exe</samp></td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d44653e41 ">Mac OS X</td>
+						<td class="entry" valign="top" width="50%" headers="d43615e39 ">Mac OS X</td>
 
-						<td class="entry" valign="top" width="50%" headers="d44653e44 "><samp class="ph codeph">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbstats</samp></td>
+						<td class="entry" valign="top" width="50%" headers="d43615e42 "><samp class="ph codeph">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbstats</samp></td>
 
 					</tr>
 
@@ -65,9 +62,8 @@
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">CLI command and parameters</h2>
-		<p class="p">This tool is used to get the couchbase node statistics. The general format for this command
-				is:</p>
+		<div class="section"><h2 class="title sectiontitle">CLIコマンドとパラメータ</h2>
+		<p class="p">このツールはCouchbaseノードの統計情報の取得に利用します。 このコマンドの一般的なフォーマットは:</p>
 
 			<pre class="pre codeblock"><code>
 cbstats [host]:11210 [command] -b [bucket-name] -p [bucket-password]
@@ -77,10 +73,7 @@ cbstats [host]:11210 [command] -b [bucket-name] -p [bucket-password]
 			
 		
 		
-		<p class="p">The following are commands. The <samp class="ph codeph">all</samp> and <samp class="ph codeph">timings</samp>
-				commands are used to understand cluster or node performance. The majority of these
-				commands are predominately used by Couchbase internally and to help resolve
-				customer support incidents. </p>
+		<p class="p">利用可能なcommandは以下の通りです。 <samp class="ph codeph">all</samp>と<samp class="ph codeph">timings</samp>コマンドはクラスタやノードの性能を理解するために利用します。 これらのコマンドの多くは主にCouchbase内部で、カスタマーサポートインシデントの解決に利用されます。 </p>
 
 					
 
@@ -119,16 +112,16 @@ warmup
 workload
 </code></pre>
 
-			<p class="p">The following are command options:</p>
+			<p class="p">以下のコマンドオプションが利用できます:</p>
 
 			
 			
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
 					<thead class="thead" align="left">
 						<tr class="row">
-							<th class="entry" valign="top" id="d44653e119">Options</th>
+							<th class="entry" valign="top" id="d43615e117">オプション</th>
 
-							<th class="entry" valign="top" id="d44653e122">Description</th>
+							<th class="entry" valign="top" id="d43615e120">説明</th>
 
 						</tr>
 
@@ -136,30 +129,30 @@ workload
 
 					<tbody class="tbody">
 						<tr class="row">
-							<td class="entry" valign="top" headers="d44653e119 d44653e122 ">-h, --help</td>
+							<td class="entry" valign="top" headers="d43615e117 d43615e120 ">-h, --help</td>
 
-							<td class="entry" valign="top" headers="d44653e119 d44653e122 ">Shows the help message and exits.</td>
-
-						</tr>
-
-						<tr class="row">
-							<td class="entry" valign="top" headers="d44653e119 d44653e122 ">-a</td>
-
-							<td class="entry" valign="top" headers="d44653e119 d44653e122 ">Iterates over all the vBuckets. Requires administrator username and password.</td>
+							<td class="entry" valign="top" headers="d43615e117 d43615e120 ">このヘルプメッセージを表示して終了する。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d44653e119 d44653e122 ">-b [bucket-name]</td>
+							<td class="entry" valign="top" headers="d43615e117 d43615e120 ">-a</td>
 
-							<td class="entry" valign="top" headers="d44653e119 d44653e122 ">The vBucket to get the status from. Default: default</td>
+							<td class="entry" valign="top" headers="d43615e117 d43615e120 ">すべてのバケットをイテレートする。 管理者のユーザ名とパスワードが必要。</td>
 
 						</tr>
 
 						<tr class="row">
-							<td class="entry" valign="top" headers="d44653e119 d44653e122 ">-p [password]</td>
+							<td class="entry" valign="top" headers="d43615e117 d43615e120 ">-b [bucket-name]</td>
 
-							<td class="entry" valign="top" headers="d44653e119 d44653e122 ">The password for the vBucket if one exists.</td>
+							<td class="entry" valign="top" headers="d43615e117 d43615e120 ">ステータスを取得するバケット。 デフォルト: default。</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" headers="d43615e117 d43615e120 ">-p [password]</td>
+
+							<td class="entry" valign="top" headers="d43615e117 d43615e120 ">バケットのパスワード、設定されている場合。</td>
 
 						</tr>
 
@@ -173,8 +166,8 @@ workload
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Syntax</h2>
-			<p class="p">Request syntax:</p>
+		<div class="section"><h2 class="title sectiontitle">シンタックス</h2>
+			<p class="p">リクエストシンタックス:</p>
 
 			<pre class="pre codeblock"><code>
 cbstats [host]:11210 [command]
@@ -183,13 +176,13 @@ cbstats [host]:11210 [command]
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Example: Timings</h2>
-			<p class="p">To get statistics, for example, timings on host 10.5.2.117:</p>
+		<div class="section"><h2 class="title sectiontitle">例: タイミング</h2>
+			<p class="p">10.5.2.117のホストでtimingの統計情報を取得するには:</p>
 
 			<pre class="pre codeblock"><code>cbstats 10.5.2.117:11210 timings</code></pre>
 
 			
-			<p class="p">Response:</p>
+			<p class="p">レスポンス:</p>
 
 			<pre class="pre codeblock"><code>
  disk_commit (1024 total)
@@ -239,10 +232,11 @@ cbstats [host]:11210 [command]
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Example: Using with other CLI tools</h2>
+		<div class="section"><h2 class="title sectiontitle">例: 他のCLIツールと利用する</h2>
 		
-		<p class="p">The <samp class="ph codeph">cbstats</samp> output can be used with other command-line tools
-			to sort and filter the data, for example, the <samp class="ph codeph">watch</samp> command.</p>
+			<p class="p">
+				<samp class="ph codeph">cbstats</samp>の出力は、<samp class="ph codeph">watch</samp>コマンドなど、他のコマンドラインツールと組み合わせ、データのソートやフィルタを実行できます。
+			</p>
 
 		
 		<pre class="pre codeblock"><code>watch --diff "cbstats \
@@ -256,56 +250,56 @@ cbstats [host]:11210 [command]
 
 	<nav class="related-links"><h2>Related information</h2>
 <ol class="olchildlinks">
-<li class="link olchildlink"><a href="../CLI/CBstats/cbstats-generalform.html">General form</a><br>
-This section describes the general form of statistics.</li>
+<li class="link olchildlink"><a href="../CLI/CBstats/cbstats-generalform.html">共通形式</a><br>
+このセクションでは統計情報の共通形式を解説します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-all.html">All</a><br>
-The <samp class="ph codeph">cbstats all</samp> command lists the information used for statistics.</li>
+<samp class="ph codeph">cbstats all</samp>コマンドは統計に利用される情報を一覧表示します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-allocator.html">Allocator</a><br>
-The <samp class="ph codeph">cbstats allocator</samp> command provides information on memory management.</li>
+<samp class="ph codeph">cbstats allocator</samp>コマンドはメモリ管理の情報を提供します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-checkpoint.html">Checkpoint</a><br>
-Checkpoint stats provide detailed information on per-vbucket checkpoint 		data structure.</li>
+チェックポイント統計情報はvBucket単位のチェックポイントデータ構造に関する詳細情報を提供します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-config.html">Config</a><br>
-The <samp class="ph codeph">cbstats config</samp> command shows configuration statistics.</li>
+<samp class="ph codeph">cbstats config</samp>コマンドは設定情報の統計を表示します。</li>
 <li class="link olchildlink"><a href="../CLI/cli-cbstats-dcp.html">DCP</a><br>
  			データベース変更プロトコル(DCP)に関する統計情報は<samp class="ph codeph">cbstats</samp>CLIツールから取得可能です。 			以下の表は<samp class="ph codeph">cbstats</samp>ツールでDCP統計情報取得に利用可能なコマンドの一覧です: 		</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-diskinfo.html">Diskinfo</a><br>
-The <samp class="ph codeph">cbstats diskinfo</samp> command provides data and file size information.</li>
+<samp class="ph codeph">cbstats diskinfo</samp>コマンドはデータとファイルサイズの情報を提供します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-dispatcher-job.html">Dispatcher</a><br>
-The <samp class="ph codeph">cbstats dispatcher</samp> command gets statistics from reader, writer, auxio, and nonio worker threads.</li>
+<samp class="ph codeph">cbstats dispatcher</samp>コマンドはreader、writer、auxio、nonioワーカスレッドの統計情報を取得します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-failovers.html">Failovers</a><br>
-The <samp class="ph codeph">cbstats failovers</samp> command provides ID, sequence, and number of entries information.</li>
+<samp class="ph codeph">cbstats failovers</samp>コマンドはID、sequence、エントリ数の情報を提供します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-hash.html">Hash</a><br>
-The <samp class="ph codeph">cbstats hash</samp> command provides information on vBucket hash tables.</li>
-<li class="link olchildlink"><a href="../CLI/CBstats/cbstats-keyvkey.html">Key and vkey</a><br>
-The <samp class="ph codeph">cbstats key</samp> and  <samp class="ph codeph">cbstats vkey</samp> commands provide 		information on keys.</li>
-<li class="link olchildlink"><a href="../CLI/CBstats/cbstats-kv.html">Kvstore and kvtimings</a><br>
-The <samp class="ph codeph">cbstats kvstore</samp> and <samp class="ph codeph">kvtimings</samp> commands provide low-level stats and timings  		from the underlying KV storage system.</li>
+<samp class="ph codeph">cbstats hash</samp>コマンドはvBucketハッシュテーブルに関する情報を提供します。</li>
+<li class="link olchildlink"><a href="../CLI/CBstats/cbstats-keyvkey.html">Keyとvkey</a><br>
+<samp class="ph codeph">cbstats key</samp>と、<samp class="ph codeph">cbstats vkey</samp>コマンドはキーに関する情報を提供します。</li>
+<li class="link olchildlink"><a href="../CLI/CBstats/cbstats-kv.html">Kvstore と kvtimings</a><br>
+<samp class="ph codeph">cbstats kvstore</samp>と、 <samp class="ph codeph">kvtimings</samp>コマンドはローレベルの統計情報とタイミングを内部のKVストレージシステムから提供します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-memory.html">Memory</a><br>
-The <samp class="ph codeph">cbstats memory</samp> command gets memory-related statistics.</li>
+<samp class="ph codeph">cbstats memory</samp>コマンドはメモリ関連の統計情報を取得します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-reset.html">Reset</a><br>
-The <samp class="ph codeph">cbstats reset</samp> command resets the following reset and reset histogram statistics.</li>
+<samp class="ph codeph">cbstats reset</samp>コマンドは以下の統計情報と、ヒストグラムをリセットします。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-runtimes.html">Runtimes</a><br>
-The <samp class="ph codeph">cbstats runtimes</samp> command provides various information about runtime statistics.</li>
+<samp class="ph codeph">cbstats runtimes</samp>コマンドは実行環境の統計に関わる様々な情報を提供します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-scheduler.html">Scheduler</a><br>
-The <samp class="ph codeph">cbstats scheduler</samp> command provides scheduler task statistics.</li>
+<samp class="ph codeph">cbstats scheduler</samp>コマンドはスケジューラタスクの統計情報を提供します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-tap.html">Tap</a><br>
-The <samp class="ph codeph">cbstats tap</samp> command is used to get statistics associated with 		tap and <samp class="ph codeph">cbstats tapagg</samp> is used to get statistics from named tap 		connections.</li>
+<samp class="ph codeph">cbstats tap</samp>コマンドはTAPに関連する統計情報の取得に利用し、<samp class="ph codeph">cbstats tapagg</samp>は指定したTAP接続からの統計情報取得に利用します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-timing.html">Timings</a><br>
-The <samp class="ph codeph">cbstats timings</samp> command provides timing statistics.</li>
+<samp class="ph codeph">cbstats timings</samp>コマンドはタイミングの統計情報を提供します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-uuid.html">UUID</a><br>
-The <samp class="ph codeph">cbstats uuid</samp> command provides the UUID for the server node.</li>
+<samp class="ph codeph">cbstats uuid</samp>コマンドはサーバノードのUUIDを提供します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-vbucket.html">vBucket</a><br>
-The <samp class="ph codeph">cbstats vbucket</samp> commands provide information</li>
+<samp class="ph codeph">cbstats vbucket</samp>コマンドはvBucketの情報を提供します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-warmup.html">Warmup</a><br>
-The <samp class="ph codeph">cbstats warmup</samp> command shows statistics related to warmup logic.</li>
+<samp class="ph codeph">cbstats warmup</samp>コマンドはウォームアップ処理に関連する統計情報を提供します。</li>
 <li class="link olchildlink"><a href="../CLI/CBstats/cbstats-workload.html">Workload</a><br>
-The <samp class="ph codeph">cbstats workload</samp> command provides the workload status of threads     for buckets.</li>
+<samp class="ph codeph">cbstats workload</samp>コマンドはバケットのスレッドのワークロード状態を提供します。</li>
 </ol>
 
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Serverコマンドラインインタフェース（CLI） ツールはクラスタ、サーバ、vBuckets、XDCRなどの管理や監視を提供します。">CLIリファレンス</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../CLI/cbrestore_tool.html" title="cbrestoreツールはクラスタ全体、またはクラスタ内の単一のバケットに、ファイルからデータをリストアします。">cbrestore ツール</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../CLI/cbtransfer_tool.html" title="cbtransferツールはクラスタ間やファイルとクラスタ間でデータを転送する際に利用します。">cbtransfer ツール</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Serverコマンドラインインタフェース（CLI） ツールはクラスタ、サーバ、vBuckets、XDCRなどの管理や監視を提供します。">CLIリファレンス</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../CLI/cbrestore_tool.html" title="cbrestoreツールはクラスタ全体、またはクラスタ内の単一のバケットに、ファイルからデータをリストアします。">cbrestore ツール</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../CLI/cbtransfer_tool.html" title="cbtransferツールはクラスタ間やファイルとクラスタ間でデータを転送する際に利用します。">cbtransfer ツール</a></div>
 </div>
 
 <div class="linklist linklist">

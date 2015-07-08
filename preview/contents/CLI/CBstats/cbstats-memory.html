@@ -1,20 +1,19 @@
 <!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Memory</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../../assets/stylesheets/application.css"><link rel="stylesheet" href="../../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a></li><li class="section"><a href="../../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../../CLI/cbcollect_info_tool.html"><span>cbcollect_info ツール</span></a></li><li class="section"><a href="../../CLI/cbdocloader_tool.html"><span>cbdocloader ツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../../CLI/cbhealthchecker_tool.html"><span>cbhealthcheckerツール</span></a></li><li class="section"><a href="../../CLI/cbreset_password_tool.html"><span>cbreset_password ツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbrestore_tool.html"><span>cbrestore ツール</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/cbstats-intro.html"><span>cbstats tool</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBstats/cbstats-generalform.html"><span>General form</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBstats/cbstats-all.html"><span>All</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-allocator.html"><span>Allocator</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-checkpoint.html"><span>Checkpoint</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-config.html"><span>Config</span></a></li><li class="section"><a href="../../CLI/cli-cbstats-dcp.html"><span>DCP</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-diskinfo.html"><span>Diskinfo</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-dispatcher-job.html"><span>Dispatcher</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-failovers.html"><span>Failovers</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-hash.html"><span>Hash</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-keyvkey.html"><span>Key and vkey</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-kv.html"><span>Kvstore and kvtimings</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-memory.html" class="current"><span>Memory</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../../CLI/CBstats/cbstats-reset.html"><span>Reset</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-runtimes.html"><span>Runtimes</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-scheduler.html"><span>Scheduler</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-tap.html"><span>Tap</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-timing.html"><span>Timings</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-uuid.html"><span>UUID</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-vbucket.html"><span>vBucket</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-warmup.html"><span>Warmup</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-workload.html"><span>Workload</span></a></li></ul></li><li class="section"><a href="../../CLI/cbtransfer_tool.html"><span>cbtransfer ツール</span></a></li><li class="section"><a href="../../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen ツール</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a></li><li class="section"><a href="../../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../../CLI/cbcollect_info_tool.html"><span>cbcollect_info ツール</span></a></li><li class="section"><a href="../../CLI/cbdocloader_tool.html"><span>cbdocloader ツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../../CLI/cbhealthchecker_tool.html"><span>cbhealthcheckerツール</span></a></li><li class="section"><a href="../../CLI/cbreset_password_tool.html"><span>cbreset_password ツール</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/cbrestore_tool.html"><span>cbrestore ツール</span></a></li><li class="section section--has-sub-sections section--active"><a href="../../CLI/cbstats-intro.html"><span>cbstats ツール</span></a><ul class="sub-sections"><li class="section"><a href="../../CLI/CBstats/cbstats-generalform.html"><span>共通形式</span></a></li><li class="section section--has-sub-sections"><a href="../../CLI/CBstats/cbstats-all.html"><span>All</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-allocator.html"><span>Allocator</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-checkpoint.html"><span>Checkpoint</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-config.html"><span>Config</span></a></li><li class="section"><a href="../../CLI/cli-cbstats-dcp.html"><span>DCP</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-diskinfo.html"><span>Diskinfo</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-dispatcher-job.html"><span>Dispatcher</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-failovers.html"><span>Failovers</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-hash.html"><span>Hash</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-keyvkey.html"><span>Keyとvkey</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-kv.html"><span>Kvstore と kvtimings</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-memory.html" class="current"><span>Memory</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../../CLI/CBstats/cbstats-reset.html"><span>Reset</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-runtimes.html"><span>Runtimes</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-scheduler.html"><span>Scheduler</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-tap.html"><span>Tap</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-timing.html"><span>Timings</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-uuid.html"><span>UUID</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-vbucket.html"><span>vBucket</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-warmup.html"><span>Warmup</span></a></li><li class="section"><a href="../../CLI/CBstats/cbstats-workload.html"><span>Workload</span></a></li></ul></li><li class="section"><a href="../../CLI/cbtransfer_tool.html"><span>cbtransfer ツール</span></a></li><li class="section"><a href="../../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen ツール</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
 	<h1 class="title topictitle1">Memory</h1>
 
 	
-	<div class="body refbody"><p class="shortdesc">The <samp class="ph codeph">cbstats memory</samp> command gets memory-related statistics.</p>
+	<div class="body refbody"><p class="shortdesc"><samp class="ph codeph">cbstats memory</samp>コマンドはメモリ関連の統計情報を取得します。</p>
 
-		<div class="section"><h2 class="title sectiontitle">CLI command and parameter</h2>
-		<p class="p">This provides various memory-related stats including the stats from tcmalloc.</p>
+		<div class="section"><h2 class="title sectiontitle">CLIコマンドとパラメータ</h2>
+		<p class="p">このコマンドはtcmallocからの統計情報を含む様々なメモリ関連の統計情報を提供します。</p>
 
 			
 			<pre class="pre codeblock"><code>cbstats all</code></pre>
 
 			
-			<div class="note note"><span class="notetitle">Note:</span> tcmalloc stats are not available on operating systems (e.g., Windows) that do not
-				support tcmalloc.</div>
+			<div class="note note"><span class="notetitle">注:</span> tcmalloc統計情報はtcmallocをサポートしていないオペレーションシステム(Windowsなど)では利用できません。</div>
 
 			
 		
@@ -23,9 +22,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="50%" id="d18324e43">Stat</th>
+						<th class="entry" valign="top" width="50%" id="d18160e42">統計情報</th>
 
-						<th class="entry" valign="top" width="50%" id="d18324e46">Description</th>
+						<th class="entry" valign="top" width="50%" id="d18160e45">説明</th>
 
 					</tr>
 
@@ -33,240 +32,135 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">mem_used (deprecated)</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">mem_used (非推奨)</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">Engine’s total memory usage</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">bytes</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">Engine’s total memory usage</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">エンジンの総利用メモリ</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">ep_kv_size</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">bytes</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">Memory used to store item metadata,</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">keys and values, no matter the</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">エンジンの総利用メモリ</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">ep_kv_size</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">vbucket’s state. If an item’s value</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">is ejected, this stat will be</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">vBucketのステータスに関わらず、アイテムのメタデータ、キーとバリューで利用しているメモリ。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">&nbsp;</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">decremented by the size of the</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">item’s value.</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">アイテムのバリューがメモリから除去されている場合、この統計情報はそのアイテムのバリューサイズ分減少する。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">ep_value_size</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">ep_value_size</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">Memory used to store values for</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">resident keys</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">メモリ内に存在するキーのバリューを保存するために利用しているメモリ</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">ep_overhead</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">ep_overhead</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">Extra memory used by transient data</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">like persistence queue, replication</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">永続化キュー、レプリケーションキュー、チェックポイントなどの一時的なデータに利用されているメモリ</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">ep_max_size</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">queues, checkpoints, etc</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">ep_max_size</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">Max amount of data allowed in memory</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">メモリ内に保存できる最大データ量</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">ep_mem_low_wat</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">ep_mem_low_wat</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">Low water mark for auto-evictions</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">ep_mem_high_wat</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">High water mark for auto-evictions</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">メモリからのアイテム自動除去に利用する低水位</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">ep_oom_errors</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">ep_mem_high_wat</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">Number of times unrecoverable OOMs</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">happened while processing operations</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">メモリからのアイテム自動除去に利用する高水位</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">ep_tmp_oom_errors</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">ep_oom_errors</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">Number of times temporary OOMs</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">happened while processing operations</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">オペレーションの処理中に発生した復帰不能なOOM回数</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">ep_mem_tracker_enabled</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">ep_tmp_oom_errors</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">If smart memory tracking is enabled</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">tcmalloc_allocated_bytes</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">Engine’s total memory usage reported</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">オペレーションの処理中に発生した一時的なOOM回数</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">ep_mem_tracker_enabled</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">from tcmalloc</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">tcmalloc_heap_size</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">Bytes of system memory reserved by</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">スマートメモリトラッキングが有効か否か</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">tcmalloc_allocated_bytes</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">tcmalloc</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">tcmalloc_free_bytes</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">Number of bytes in free, mapped</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">tcmallocでリポートされたエンジンの総利用メモリ</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">tcmalloc_heap_size</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">pages in page heap</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">tcmalloc_unmapped_bytes</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">Number of bytes in free, unmapped</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">tcmallocで確保されたシステムメモリのバイト数</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">tcmalloc_free_bytes</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">pages in page heap. These are bytes</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">that have been released back to OS</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">ページヒープ内のページにマップされた空きバイト数</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">tcmalloc_max_thread_cache_bytes</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">tcmalloc_unmapped_bytes</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">A limit to how much memory TCMalloc</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
-
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">dedicates for small objects</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">ページヒープ内のアンマップされた空きバイト数</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">tcmalloc_current_thread_cache_bytes</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">&nbsp;</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">A measure of some of the memory</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">これらはリリースされOSに戻されたバイト数</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="50%" headers="d18324e43 ">&nbsp;</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">tcmalloc_max_thread_cache_bytes</td>
 
-						<td class="entry" valign="top" width="50%" headers="d18324e46 ">TCMalloc is using for small objects</td>
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">TCMallocが小さなオブジェクト専用に割り当てるメモリの上限</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d18160e42 ">tcmalloc_current_thread_cache_bytes</td>
+
+						<td class="entry" valign="top" width="50%" headers="d18160e45 ">TCMallocが小さなオブジェクト用に利用しているメモリ</td>
 
 					</tr>
 
@@ -280,16 +174,16 @@
 		
 		
 		
-		<div class="section"><h2 class="title sectiontitle">Syntax</h2>
-			<p class="p">Request syntax:</p>
+		<div class="section"><h2 class="title sectiontitle">シンタックス</h2>
+			<p class="p">リクエストシンタックス:</p>
 
 			<pre class="pre codeblock"><code>cbstats [localhost]:11210 memory</code></pre>
 
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Example</h2>
-			<p class="p">Example request:</p>
+		<div class="section"><h2 class="title sectiontitle">例</h2>
+			<p class="p">リクエスト例:</p>
 
 			<pre class="pre codeblock"><code>cbstats 10.5.2.54:11210 memory</code></pre>
 
@@ -297,8 +191,8 @@
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Response</h2>
-			<p class="p">Example response:</p>
+		<div class="section"><h2 class="title sectiontitle">レスポンス</h2>
+			<p class="p">レスポンス例:</p>
 
 			<pre class="pre codeblock"><code>
 bytes:                               23716184
@@ -333,8 +227,8 @@ bytes:                               23716184
 
 <nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-kv.html" title="The cbstats kvstore and kvtimings commands provide low-level stats and timings from the underlying KV storage system.">Kvstore and kvtimings</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../../CLI/CBstats/cbstats-reset.html" title="The cbstats reset command resets the following reset and reset histogram statistics.">Reset</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../../CLI/cbstats-intro.html" title="cbstatsツールはノード単位、またはクラスタ単位の性能やストレージ内アイテムに関する統計情報を取得するために利用します。">cbstats ツール</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../../CLI/CBstats/cbstats-kv.html" title="cbstats kvstoreと、 kvtimingsコマンドはローレベルの統計情報とタイミングを内部のKVストレージシステムから提供します。">Kvstore と kvtimings</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../../CLI/CBstats/cbstats-reset.html" title="cbstats resetコマンドは以下の統計情報と、ヒストグラムをリセットします。">Reset</a></div>
 </div>
 </nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../../';</script><script src="../../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

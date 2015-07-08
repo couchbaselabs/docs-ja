@@ -1,6 +1,6 @@
 <!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>cbrestore ツール</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a></li><li class="section"><a href="../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../CLI/cbcollect_info_tool.html"><span>cbcollect_info ツール</span></a></li><li class="section"><a href="../CLI/cbdocloader_tool.html"><span>cbdocloader ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../CLI/cbhealthchecker_tool.html"><span>cbhealthcheckerツール</span></a></li><li class="section"><a href="../CLI/cbreset_password_tool.html"><span>cbreset_password ツール</span></a></li><li class="section section--has-sub-sections section--active"><a href="../CLI/cbrestore_tool.html" class="current"><span>cbrestore ツール</span></a><ul class="sub-sections"><li class="section"><a href="../CLI/cbrestore-ddocs.html"><span>デザインドキュメントのリストア</span></a></li><li class="section"><a href="../CLI/cli-incremental-restore.html"><span>差分リストア</span></a></li><li class="section"><a href="../CLI/cbrestore-tween-opsys.html"><span>異なるオペレーティングシステム間のリストア</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../CLI/cbstats-intro.html"><span>cbstats tool</span></a></li><li class="section"><a href="../CLI/cbtransfer_tool.html"><span>cbtransfer ツール</span></a></li><li class="section"><a href="../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen ツール</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections section--active"><a href="../cli-intro.html"><span>CLIリファレンス</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../CLI/cli-overview.html"><span>CLI概要</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbcli-intro.html"><span>couchbase-cliツール</span></a></li><li class="section"><a href="../CLI/cbanalyze-core_tool.html"><span>cbanalyze-coreツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbbackup_tool.html"><span>cbbackupツール</span></a></li><li class="section"><a href="../CLI/cbcollect_info_tool.html"><span>cbcollect_info ツール</span></a></li><li class="section"><a href="../CLI/cbdocloader_tool.html"><span>cbdocloader ツール</span></a></li><li class="section section--has-sub-sections"><a href="../CLI/cbepctl-intro.html"><span>cbepctlツール</span></a></li><li class="section"><a href="../CLI/cbhealthchecker_tool.html"><span>cbhealthcheckerツール</span></a></li><li class="section"><a href="../CLI/cbreset_password_tool.html"><span>cbreset_password ツール</span></a></li><li class="section section--has-sub-sections section--active"><a href="../CLI/cbrestore_tool.html" class="current"><span>cbrestore ツール</span></a><ul class="sub-sections"><li class="section"><a href="../CLI/cbrestore-ddocs.html"><span>デザインドキュメントのリストア</span></a></li><li class="section"><a href="../CLI/cli-incremental-restore.html"><span>差分リストア</span></a></li><li class="section"><a href="../CLI/cbrestore-tween-opsys.html"><span>異なるオペレーティングシステム間のリストア</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../CLI/cbstats-intro.html"><span>cbstats ツール</span></a></li><li class="section"><a href="../CLI/cbtransfer_tool.html"><span>cbtransfer ツール</span></a></li><li class="section"><a href="../CLI/cbworkloadgen_tool.html"><span>cbworkloadgen ツール</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
   <h1 class="title topictitle1">cbrestore ツール</h1>
 
   
@@ -21,9 +21,9 @@
         
         <thead class="thead" align="left">
           <tr class="row">
-            <th class="entry" valign="top" width="50%" id="d43154e48">オペレーティングシステム</th>
+            <th class="entry" valign="top" width="50%" id="d42116e48">オペレーティングシステム</th>
 
-            <th class="entry" valign="top" width="50%" id="d43154e51">ロケーション</th>
+            <th class="entry" valign="top" width="50%" id="d42116e51">ロケーション</th>
 
           </tr>
 
@@ -31,23 +31,23 @@
 
         <tbody class="tbody">
           <tr class="row">
-            <td class="entry" valign="top" width="50%" headers="d43154e48 ">Linux</td>
+            <td class="entry" valign="top" width="50%" headers="d42116e48 ">Linux</td>
 
-            <td class="entry" valign="top" width="50%" headers="d43154e51 "><samp class="ph codeph">/opt/couchbase/bin/cbrestore</samp></td>
-
-          </tr>
-
-          <tr class="row">
-            <td class="entry" valign="top" width="50%" headers="d43154e48 ">Windows</td>
-
-            <td class="entry" valign="top" width="50%" headers="d43154e51 "><samp class="ph codeph">C:\Program&nbsp;Files\Couchbase\Server\bin\cbrestore</samp></td>
+            <td class="entry" valign="top" width="50%" headers="d42116e51 "><samp class="ph codeph">/opt/couchbase/bin/cbrestore</samp></td>
 
           </tr>
 
           <tr class="row">
-            <td class="entry" valign="top" width="50%" headers="d43154e48 ">Mac OS X</td>
+            <td class="entry" valign="top" width="50%" headers="d42116e48 ">Windows</td>
 
-            <td class="entry" valign="top" width="50%" headers="d43154e51 "><samp class="ph codeph">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbrestore</samp></td>
+            <td class="entry" valign="top" width="50%" headers="d42116e51 "><samp class="ph codeph">C:\Program&nbsp;Files\Couchbase\Server\bin\cbrestore</samp></td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" width="50%" headers="d42116e48 ">Mac OS X</td>
+
+            <td class="entry" valign="top" width="50%" headers="d42116e51 "><samp class="ph codeph">/Applications/Couchbase&nbsp;Server.app/Contents/Resources/couchbase-core/bin/cbrestore</samp></td>
 
           </tr>
 
@@ -94,9 +94,9 @@
           
           <thead class="thead" align="left">
             <tr class="row">
-              <th class="entry" valign="top" width="50%" id="d43154e152">パラメータ</th>
+              <th class="entry" valign="top" width="50%" id="d42116e152">パラメータ</th>
 
-              <th class="entry" valign="top" width="50%" id="d43154e155">説明</th>
+              <th class="entry" valign="top" width="50%" id="d42116e155">説明</th>
 
             </tr>
 
@@ -104,101 +104,101 @@
 
           <tbody class="tbody">
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e152 ">-h, –help</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e152 ">-h, –help</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e155 ">コマンドラインヘルプ。</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e152 ">-a, –add</td>
-
-              <td class="entry" valign="top" width="50%" headers="d43154e155 ">リストア先の既存アイテムを上書きしない。 setの代わりにaddを利用する。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e155 ">コマンドラインヘルプ。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e152 ">-b BUCKET_SOURCE, --bucket-source=BUCKET_SOURCE</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e152 ">-a, –add</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e155 ">バックアップディレクトリから単一のバケットをリストアする。 バックアップディレクトリにバケットが一つしか存在しない場合、そのバケットが自動的に利用されます。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e155 ">リストア先の既存アイテムを上書きしない。 setの代わりにaddを利用する。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e152 ">-B BUCKET_DESTINATION, –bucket-destination=BUCKET_DESTINATION</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e152 ">-b BUCKET_SOURCE, --bucket-source=BUCKET_SOURCE</td>
 
-							<td class="entry" valign="top" width="50%" headers="d43154e155 ">--bucket-sourceを指定していた場合、リストア先のバケット名をオーバライドする。
+              <td class="entry" valign="top" width="50%" headers="d42116e155 ">バックアップディレクトリから単一のバケットをリストアする。 バックアップディレクトリにバケットが一つしか存在しない場合、そのバケットが自動的に利用されます。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d42116e152 ">-B BUCKET_DESTINATION, –bucket-destination=BUCKET_DESTINATION</td>
+
+							<td class="entry" valign="top" width="50%" headers="d42116e155 ">--bucket-sourceを指定していた場合、リストア先のバケット名をオーバライドする。
 								このため、異なるバケットへのリストアが可能。 デフォルトはbucket-sourceのバケット。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e152 ">from-date=FROM_DATE</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e152 ">from-date=FROM_DATE</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e155 ">yyyy-mm-ddで指定した日付からのデータをリストアする。 デフォルトでは、最初からすべてのデータをリストアする。</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e152 ">to-date=TO_DATE</td>
-
-              <td class="entry" valign="top" width="50%" headers="d43154e155 ">yyyy-mm-ddで指定した日付までのデータをリストアする。 デフォルトでは、バックアップされたすべてのデータがリストアされます。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e155 ">yyyy-mm-ddで指定した日付からのデータをリストアする。 デフォルトでは、最初からすべてのデータをリストアする。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e152 ">-i ID, –id=ID</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e152 ">to-date=TO_DATE</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e155 ">vBucket IDに一致したアイテムのみを転送する。</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e152 ">-k KEY, –key=KEY</td>
-
-              <td class="entry" valign="top" width="50%" headers="d43154e155 ">正規表現とマッチするキーのアイテムのみを転送する。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e155 ">yyyy-mm-ddで指定した日付までのデータをリストアする。 デフォルトでは、バックアップされたすべてのデータがリストアされます。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e152 ">-n, –dry-run</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e152 ">-i ID, –id=ID</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e155 ">転送は実行しない。 パラメータ、ファイル、接続、設定の検証のみ。</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e152 ">-u USERNAME, –username=USERNAME</td>
-
-              <td class="entry" valign="top" width="50%" headers="d43154e155 ">ソースクラスタまたはサーバノードのRESTユーザ名。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e155 ">vBucket IDに一致したアイテムのみを転送する。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e152 ">-p PASSWORD, –password=PASSWORD</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e152 ">-k KEY, –key=KEY</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e155 ">クラスタまたはサーバノードのRESTパスワード</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e152 ">-t THREADS, –threads=THREADS</td>
-
-              <td class="entry" valign="top" width="50%" headers="d43154e155 ">転送を実行するワーカスレッドの並列数。 </td>
+              <td class="entry" valign="top" width="50%" headers="d42116e155 ">正規表現とマッチするキーのアイテムのみを転送する。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e152 ">-v, –verbose</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e152 ">-n, –dry-run</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e155 ">冗長なロギング。 vの数を増やすとより冗長となる。 最大: -vvv。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e155 ">転送は実行しない。 パラメータ、ファイル、接続、設定の検証のみ。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e152 ">-x EXTRA, –extra=EXTRA</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e152 ">-u USERNAME, –username=USERNAME</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e155 ">一般的ではない拡張パラメータを指定する。 カンマ区切りの key=val(key-val)* ペア。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e155 ">ソースクラスタまたはサーバノードのRESTユーザ名。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d42116e152 ">-p PASSWORD, –password=PASSWORD</td>
+
+              <td class="entry" valign="top" width="50%" headers="d42116e155 ">クラスタまたはサーバノードのRESTパスワード</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d42116e152 ">-t THREADS, –threads=THREADS</td>
+
+              <td class="entry" valign="top" width="50%" headers="d42116e155 ">転送を実行するワーカスレッドの並列数。 </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d42116e152 ">-v, –verbose</td>
+
+              <td class="entry" valign="top" width="50%" headers="d42116e155 ">冗長なロギング。 vの数を増やすとより冗長となる。 最大: -vvv。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d42116e152 ">-x EXTRA, –extra=EXTRA</td>
+
+              <td class="entry" valign="top" width="50%" headers="d42116e155 ">一般的ではない拡張パラメータを指定する。 カンマ区切りの key=val(key-val)* ペア。</td>
 
             </tr>
 
@@ -217,9 +217,9 @@
           
           <thead class="thead" align="left">
             <tr class="row">
-              <th class="entry" valign="top" width="50%" id="d43154e314">-x オプション</th>
+              <th class="entry" valign="top" width="50%" id="d42116e314">-x オプション</th>
 
-              <th class="entry" valign="top" width="50%" id="d43154e317">説明</th>
+              <th class="entry" valign="top" width="50%" id="d42116e317">説明</th>
 
             </tr>
 
@@ -228,122 +228,122 @@
 
           <tbody class="tbody">
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">backoff_cap=10</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">backoff_cap=10</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">リバランス中の最大バックオフ時間。</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">batch_max_bytes=400000</td>
-
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">指定したバイト数をバッチで転送。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">リバランス中の最大バックオフ時間。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">batch_max_size=1000</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">batch_max_bytes=400000</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">指定したドキュメント数をバッチで転送。</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">cbb_max_mb=100000</td>
-
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">指定したMBを越えると、宛先クラスタでのバックアップファイルを分割。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">指定したバイト数をバッチで転送。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">conflict_resolve=1</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">batch_max_size=1000</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">デフォルトでは、コンフリクトの解決は無効。</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">data_only=0</td>
-
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">1を指定すると、バックアップファイルまたはクラスタからデータのみを転送。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">指定したドキュメント数をバッチで転送。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">design_doc_only=0</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">cbb_max_mb=100000</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">1を指定すると、バックアップファイルまたはクラスタからデザインドキュメントのみを転送。 デフォルト: 0。</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">max_retry=10</td>
-
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">転送失敗時の最大連続リトライ回数。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">指定したMBを越えると、宛先クラスタでのバックアップファイルを分割。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">mcd_compatible=1</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">conflict_resolve=1</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">0を指定すると、拡張フィールドを標準出力に出力。</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">nmv_retry=1</td>
-
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">0または1、1はNOT_MY_VBUCKETメッセージ後にリトライする。 デフォルト: 1。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">デフォルトでは、コンフリクトの解決は無効。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">recv_min_bytes=4096</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">data_only=0</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">各TCP/IPバッチ転送のバイト数。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">1を指定すると、バックアップファイルまたはクラスタからデータのみを転送。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">rehash=0</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">design_doc_only=0</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">1を指定すると、各アイテムのパーティションIDを再ハッシュ。 
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">1を指定すると、バックアップファイルまたはクラスタからデザインドキュメントのみを転送。 デフォルト: 0。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">max_retry=10</td>
+
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">転送失敗時の最大連続リトライ回数。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">mcd_compatible=1</td>
+
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">0を指定すると、拡張フィールドを標準出力に出力。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">nmv_retry=1</td>
+
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">0または1、1はNOT_MY_VBUCKETメッセージ後にリトライする。 デフォルト: 1。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">recv_min_bytes=4096</td>
+
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">各TCP/IPバッチ転送のバイト数。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">rehash=0</td>
+
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">1を指定すると、各アイテムのパーティションIDを再ハッシュ。 
                 Mac OS XサーバからMac OS X以外のクラスタへのデータ転送など、異なるパーティション数のクラスタ間でデータを転送する場合に必要。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">report=5</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">report=5</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">コンソール上の進捗バーを更新するまでに転送するバッチ数。</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">report_full=2000</td>
-
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">コンソールに進捗状況を表示するまでに転送するバッチ数。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">コンソール上の進捗バーを更新するまでに転送するバッチ数。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">seqno=0</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">report_full=2000</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">デフォルトは、seqnoの最初から。</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">try_xwm=1</td>
-
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">ドキュメントをメタデータ付きで転送。 デフォルト: 1。 0は1.8.xから1.8.xへの転送でのみ利用する。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">コンソールに進捗状況を表示するまでに転送するバッチ数。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d43154e314 ">uncompress=0</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">seqno=0</td>
 
-              <td class="entry" valign="top" width="50%" headers="d43154e317 ">1を指定すると、非圧縮モードでデータをリストアする。</td>
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">デフォルトは、seqnoの最初から。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">try_xwm=1</td>
+
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">ドキュメントをメタデータ付きで転送。 デフォルト: 1。 0は1.8.xから1.8.xへの転送でのみ利用する。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d42116e314 ">uncompress=0</td>
+
+              <td class="entry" valign="top" width="50%" headers="d42116e317 ">1を指定すると、非圧縮モードでデータをリストアする。</td>
 
             </tr>
 
@@ -404,7 +404,7 @@ cbrestore /backups/backup-42 memcached://HOST:11211 \
 <div class="familylinks">
 <div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../cli-intro.html" title="Couchbase Serverコマンドラインインタフェース（CLI） ツールはクラスタ、サーバ、vBuckets、XDCRなどの管理や監視を提供します。">CLIリファレンス</a></div>
 <div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../CLI/cbreset_password_tool.html" title="cbreset_passwordツールは管理者または参照専用ユーザのパスワードをリセットするために利用します。">cbreset_password ツール</a></div>
-<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../CLI/cbstats-intro.html" title="The cbstats tool is used to get node and cluster-level statistics about performance and items in storage.">cbstats tool</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../CLI/cbstats-intro.html" title="cbstatsツールはノード単位、またはクラスタ単位の性能やストレージ内アイテムに関する統計情報を取得するために利用します。">cbstats ツール</a></div>
 </div>
 
 <div class="linklist linklist">
