@@ -1,35 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbstats-tap">
+<reference xml:lang="ja" id="cbstats-tap">
 	<title>Tap</title>
-	<shortdesc>The <codeph>cbstats tap</codeph> command is used to get statistics associated with
-		tap and <codeph>cbstats tapagg</codeph> is used to get statistics from named tap
-		connections.</shortdesc>
+	<shortdesc><codeph>cbstats tap</codeph>コマンドはTAPに関連する統計情報の取得に利用し、<codeph>cbstats tapagg</codeph>は指定したTAP接続からの統計情報取得に利用します。</shortdesc>
 	<refbody>
-		<section><title>Description</title>
-			<p>TAP is an internal protocol that streams information about data changes between cluster nodes.
-				Couchbase Server uses the TAP protocol during rebalance and replication at other
-				cluster nodes. The <codeph>cbstats tapagg</codeph> is used to get statistics from
-				named tap connections which are logically grouped and aggregated together by
-				prefixes.</p>
+		<section><title>説明</title>
+			<p>TAPはクラスタノード感でデータ変更に関する情報をストリームするためのプロトコルです。
+				Couchbase Serverはリバランス中および他のクラスタノードへのレプリケーションにTAPプロトコルを利用します。
+				<codeph>cbstats tapagg</codeph>は指定したTAPコネクションから、論理的にグループ化され、プリフィクスで集約された統計情報の取得に利用します。</p>
 			
-			<p>For example, if all of your tap connections started with <codeph>rebalance_</codeph> or
-				<codeph>replication_</codeph>, you could call <codeph>cbstats tapagg _</codeph> to
-				request stats grouped by the prefix starting with <codeph>_</codeph>. This would return a
-				set of statistics for <codeph>rebalance</codeph> and a set for
-				<codeph>replication</codeph>.</p>
+			<p>例えば、すべてのTAP接続が<codeph>rebalance_</codeph>または<codeph>replication_</codeph>で始まっていれば、<codeph>cbstats tapagg _</codeph>を利用し、<codeph>_</codeph>をプリフィクスとしてグループ化した統計情報をリクエストできます。
+				これにより、<codeph>rebalance</codeph>や<codeph>replication</codeph>の統計情報セットを取得できます。</p>
 			
 		</section>
 
-		<section><title>CLI command and parameters</title>
+		<section><title>CLIコマンドとパラメータ</title>
 			
 			<codeblock>cbstats tap
 cbstats tap-takeover vb name
 cbstats tapagg</codeblock>
 		</section>
 		
-		<section><title>Syntax</title>
-			<p>Request syntax:</p>
+		<section><title>シンタックス</title>
+			<p>リクエストシンタックス:</p>
 			<codeblock>
 cbstats [host]:11210 tap
 cbstats [host]:11210 tapagg
@@ -37,14 +30,14 @@ cbstats [host]:11210 tap-takeover vb name
 			</codeblock>
 		</section>
 		
-		<section><title>Example: tap</title>
-			<p>Request example for tap stats:</p>
+		<section><title>例: tap</title>
+			<p>tap統計情報のリクエスト例:</p>
 			<codeblock>cbstats [host]:11210 tap</codeblock>
 			
 		</section>
 		
-		<section><title>Response: tap</title>
-			<p>Response example for tap stats:</p>
+		<section><title>レスポンス: tap</title>
+			<p>tap統計情報のレスポンス例:</p>
 			<codeblock>
  ep_tap_ack_grace_period:        300
  ep_tap_ack_interval:            1000
@@ -73,115 +66,115 @@ cbstats [host]:11210 tap-takeover vb name
 			
 			
 			<table>
-				<title>tap stats description</title>
+				<title>tap 統計情報解説</title>
 				<tgroup cols="2">
 					<colspec colname="col1"/>
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>Stat</entry>
-							<entry>Description</entry>
+							<entry>統計情報</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>ep_tap_ack_grace_period</entry>
-							<entry>The amount of time to wait for a tap acks before disconnecting</entry>
+							<entry>切断までにTAPが稼働できる期間</entry>
 						</row>
 						<row>
 							<entry>ep_tap_ack_interval</entry>
-							<entry>The amount of messages a tap producer should send before requesting an ack</entry>
+							<entry>Ackのリクエスト前にTAPプロデューサが送信すべきメッセージ数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_ack_window_size</entry>
-							<entry>The maximum amount of ack requests that can be sent before the consumer sends a response ack. 
-								When the window is full the tap stream is paused</entry>
+							<entry>コンシューマがレスポンスackを送信する前に送信可能な、最大ackリクエスト数。 
+								ウィンドウが飽和するとTAPストリームは一時停止する。</entry>
 						</row>
 						<row>
 							<entry>ep_tap_backoff_period</entry>
-							<entry>The number of seconds the tap connection should back off after receiving ETMPFAIL</entry>
+							<entry>ETMPFAILを受信した後にTAPコネクションがバックオフすべき秒数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_bg_fetch_requeued</entry>
-							<entry>Number of times a tap background fetch task is requeued</entry>
+							<entry>TAPのバックグラウンドフェッチタスクがキューに再登録された回数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_bg_fetched</entry>
-							<entry>Number of tap disk fetches</entry>
+							<entry>tapディスクフェッチ数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_bg_max_pending</entry>
-							<entry>The maximum number of background jobs a tap connection may have</entry>
+							<entry>単一のtapコネクションが保持できるバックグラウンドジョブの最大数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_count</entry>
-							<entry>Number of tap connections</entry>
+							<entry>tapコネクション数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_deletes</entry>
-							<entry>Number of tap deletion messages sent</entry>
+							<entry>TAPの送信削除メッセージ数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_fg_fetched</entry>
-							<entry>Number of tap memory fetches</entry>
+							<entry>tapメモリフェッチ数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_noop_interval</entry>
-							<entry>The number of secs between a noop is added to an idle connection</entry>
+							<entry>アイドル接続でnoopが送信される間隔、秒</entry>
 						</row>
 						<row>
 							<entry>ep_tap_queue_backfillremaining</entry>
-							<entry>Number of items to be backfilled</entry>
+							<entry>バックフィルするアイテム数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_queue_backoff</entry>
-							<entry>Total back-off items</entry>
+							<entry>総バックオフアイテム</entry>
 						</row>
 						<row>
 							<entry>ep_tap_queue_drain</entry>
-							<entry>Total drained items</entry>
+							<entry>キューからドレインしたアイテムの総数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_queue_fill</entry>
-							<entry>Total enqueued items</entry>
+							<entry>キューに登録されたアイテムの総数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_queue_itemondisk</entry>
-							<entry>Number of items remaining on disk</entry>
+							<entry>ディスク上に残っているアイテム数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_throttle_queue_cap</entry>
-							<entry>Disk write queue cap to throttle tap streams</entry>
+							<entry>tapストリームを絞る際のディスク書込みキュー上限</entry>
 						</row>
 						<row>
 							<entry>ep_tap_throttle_threshold</entry>
-							<entry>Percentage of memory in use before we throttle tap streams</entry>
+							<entry>tapストリームを絞る際に利用するメモリの割合。</entry>
 						</row>
 						<row>
 							<entry>ep_tap_throttled</entry>
-							<entry>Number of tap messages refused due to throttling</entry>
+							<entry>絞り込みにより拒否されたtapメッセージ数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_total_backlog_size</entry>
-							<entry>Number of remaining items for replication</entry>
+							<entry>レプリケーション待ちのアイテム数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_total_fetched</entry>
-							<entry>Sum of all tap messages sent</entry>
+							<entry>送信したtapメッセージの総数</entry>
 						</row>
 						<row>
 							<entry>ep_tap_total_queue</entry>
-							<entry>Sum of tap queue sizes on the current tap queues</entry>
+							<entry>tapキュー上のtapキューサイズ合計</entry>
 						</row>
 						</tbody>
 				</tgroup>
 			</table>
 		</section>
 
-		<section><title>Per Tap client stats</title>
+		<section><title>tapクライアント単位の統計情報</title>
 			
-			<p>Each stat begins with ep_tapq followed by a unique /client_id/ and another colon. For example,
-				if your client is named, slave1, the qlen stat would be ep_tapq:slave1:qlen.</p>
+			<p>各統計情報はep_tapqで始まり、ユニークなクライアントID/とコロンとなります。
+				例えば、クライアントの名前がslave1のqlenの統計情報はep_tapq:slave1:qlenとなります。</p>
 			<table>
 				<tgroup cols="3">
 					<colspec colname="col1"/>
@@ -189,327 +182,295 @@ cbstats [host]:11210 tap-takeover vb name
 					<colspec colname="col3"/>
 					<thead>
 						<row>
-							<entry>Stat</entry>
-							<entry>Description</entry>
+							<entry>統計情報</entry>
+							<entry>説明</entry>
 							<entry>P/C</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>type</entry>
-							<entry>The kind of tap connection (producer or</entry>
+							<entry>tapコネクション種別 (producerまたはconsumer)</entry>
 							<entry>PC</entry>
 						</row>
 						<row>
-							<entry/>
-							<entry>consumer)</entry>
-						</row>
-						<row>
 							<entry>created</entry>
-							<entry>Creation time for the tap connection</entry>
+							<entry>tapコネクション作成時間</entry>
 							<entry>PC</entry>
 						</row>
 						<row>
 							<entry>supports_ack</entry>
-							<entry>true if the connection use acks</entry>
+							<entry>コネクションがackを利用する場合True</entry>
 							<entry>PC</entry>
 						</row>
 						<row>
 							<entry>connected</entry>
-							<entry>true if this client is connected</entry>
+							<entry>クライアントが接続している場合True</entry>
 							<entry>PC</entry>
 						</row>
 						<row>
 							<entry>disconnects</entry>
-							<entry>Number of disconnects from this client</entry>
+							<entry>このクライアントから切断した回数</entry>
 							<entry>PC</entry>
 						</row>
 						<row>
 							<entry>reserved</entry>
-							<entry>true if the tap stream is reserved</entry>
+							<entry>tapストリームが予約されているか否か</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>suspended</entry>
-							<entry>true if the tap stream is suspended</entry>
+							<entry>tapストリームが停止しているか否か</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>qlen</entry>
-							<entry>Queue size for the given client_id</entry>
+							<entry>クライアントIDのキューサイズ</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>qlen_high_pri</entry>
-							<entry>High priority tap queue items</entry>
+							<entry>優先度高のtapキューアイテム</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>qlen_low_pri</entry>
-							<entry>Low priority tap queue items</entry>
+							<entry>優先度低のtapキューアイテム</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>vb_filters</entry>
-							<entry>Size of connection vbucket filter set</entry>
+							<entry>vBucketフィルタセットコネクションのサイズ</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>vb_filter</entry>
-							<entry>The content of the vbucket filter</entry>
+							<entry>vBucketフィルタの内容</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>rec_fetched</entry>
-							<entry>Tap messages sent to the client</entry>
+							<entry>クライアントに送信されたtapメッセージ</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>rec_skipped</entry>
-							<entry>Number of messages skipped due to</entry>
-							<entry>P</entry>
-						</row>
-						<row>
-							<entry/>
-							<entry>tap reconnect with a different filter</entry>
+							<entry>異なるフィルタで再接続したtapによりスキップされたメッセージ数</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>idle</entry>
-							<entry>True if this connection is idle</entry>
+							<entry>コネクションがアイドルか否か</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>has_queued_item</entry>
-							<entry>True if there are any remaining items</entry>
+							<entry>ハッシュテーブルまたはディスクに残アイテムがある場合True</entry>
 							<entry>P</entry>
 						</row>
 						<row>
-							<entry/>
-							<entry>from hash table or disk</entry>
-						</row>
-						<row>
 							<entry>bg_result_size</entry>
-							<entry>Number of ready background results</entry>
+							<entry>完了したバックグラウンド結果の数</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>bg_jobs_issued</entry>
-							<entry>Number of background jobs started</entry>
+							<entry>開始したバックグラウンドジョブ数</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>bg_jobs_completed</entry>
-							<entry>Number of background jobs completed</entry>
+							<entry>完了したバックグラウンドジョブ数</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>flags</entry>
-							<entry>Connection flags set by the client</entry>
+							<entry>クライアントが設定したコネクションのフラグ</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>pending_disconnect</entry>
-							<entry>true if we’re hanging up on this client</entry>
+							<entry>このクライアントを待っている場合True</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>paused</entry>
-							<entry>true if this client is blocked</entry>
+							<entry>このクライアントがブロックされている場合True</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>pending_backfill</entry>
-							<entry>true if we’re still backfilling keys</entry>
-							<entry>P</entry>
-						</row>
-						<row>
-							<entry/>
-							<entry>for this connection</entry>
+							<entry>このコネクションで、キーがまだバックフィル中の場合True</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>pending_disk_backfill</entry>
-							<entry>true if we’re still backfilling keys</entry>
-							<entry>P</entry>
-						</row>
-						<row>
-							<entry/>
-							<entry>from disk for this connection</entry>
+							<entry>このコネクションでキーがまだディスクからバックフィル中の場合True</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>backfill_completed</entry>
-							<entry>true if all items from backfill is</entry>
-							<entry>P</entry>
-						</row>
-						<row>
-							<entry/>
-							<entry>successfully transmitted to the client</entry>
+							<entry>バックフィルからすべてのアイテムがクライアントに正常に転送された場合True</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>backfill_start_timestamp</entry>
-							<entry>Timestamp of backfill start</entry>
+							<entry>バックフィル開始タイムスタンプ</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>reconnects</entry>
-							<entry>Number of reconnects from this client</entry>
+							<entry>このクライアントからの再接続回数</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>backfill_age</entry>
-							<entry>The age of the start of the backfill</entry>
+							<entry>バックフィル開始からの経過時間</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>ack_seqno</entry>
-							<entry>The current tap ACK sequence number</entry>
+							<entry>現在のtapのackシーケンス番号</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>recv_ack_seqno</entry>
-							<entry>Last receive tap ACK sequence number</entry>
+							<entry>最後に受信したtapのackシーケンス番号</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>ack_log_size</entry>
-							<entry>Tap ACK backlog size</entry>
+							<entry>tapのackバックログサイズ</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>ack_window_full</entry>
-							<entry>true if our tap ACK window is full</entry>
+							<entry>tapのackウィンドウが飽和しているか否か</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>seqno_ack_requested</entry>
-							<entry>The seqno of the ack message that the</entry>
+							<entry>プロデューサがレスポンスを待っているackメッセージのseqno</entry>
 							<entry>P</entry>
 						</row>
 						<row>
-							<entry/>
-							<entry>producer is wants to get a response for</entry>
-						</row>
-						<row>
 							<entry>expires</entry>
-							<entry>When this ACK backlog expires</entry>
+							<entry>ackバックログ有効期限</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>queue_memory</entry>
-							<entry>Memory used for tap queue</entry>
+							<entry>tapキューで利用されているメモリ</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>queue_fill</entry>
-							<entry>Total queued items</entry>
+							<entry>キューに登録されたアイテムの総数</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>queue_drain</entry>
-							<entry>Total drained items</entry>
+							<entry>キューからドレインしたアイテムの総数</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>queue_backoff</entry>
-							<entry>Total back-off items</entry>
+							<entry>総バックオフアイテム</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>queue_backfillremaining</entry>
-							<entry>Number of backfill remaining</entry>
+							<entry>残バックフィル数</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>queue_itemondisk</entry>
-							<entry>Number of items remaining on disk</entry>
+							<entry>ディスク上に残っているアイテム数</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>total_backlog_size</entry>
-							<entry>Num of remaining items for replication</entry>
+							<entry>レプリケーション待ちアイテム数</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>total_noops</entry>
-							<entry>Number of NOOP messages sent</entry>
+							<entry>送信されたnoopメッセージ数</entry>
 							<entry>P</entry>
 						</row>
 						<row>
 							<entry>num_checkpoint_end</entry>
-							<entry>Number of chkpoint end operations</entry>
+							<entry>チェックポイント終了オペレーション数</entry>
 							<entry>C</entry>
 						</row>
 						<row>
 							<entry>num_checkpoint_end_failed</entry>
-							<entry>Number of chkpoint end operations failed</entry>
+							<entry>失敗したチェックポイント終了オペレーション数</entry>
 							<entry>C</entry>
 						</row>
 						<row>
 							<entry>num_checkpoint_start</entry>
-							<entry>Number of chkpoint end operations</entry>
+							<entry>チェックポイント開始オペレーション数</entry>
 							<entry>C</entry>
 						</row>
 						<row>
 							<entry>num_checkpoint_start_failed</entry>
-							<entry>Number of chkpoint end operations failed</entry>
+							<entry>失敗したチェックポイント開始オペレーション数</entry>
 							<entry>C</entry>
 						</row>
 						<row>
 							<entry>num_delete</entry>
-							<entry>Number of delete operations</entry>
+							<entry>削除オペレーション数</entry>
 							<entry>C</entry>
 						</row>
 						<row>
 							<entry>num_delete_failed</entry>
-							<entry>Number of failed delete operations</entry>
+							<entry>失敗した削除オペレーション数</entry>
 							<entry>C</entry>
 						</row>
 						<row>
 							<entry>num_flush</entry>
-							<entry>Number of flush operations</entry>
+							<entry>フラッシュオペレーション数</entry>
 							<entry>C</entry>
 						</row>
 						<row>
 							<entry>num_flush_failed</entry>
-							<entry>Number of failed flush operations</entry>
+							<entry>失敗したフラッシュオペレーション数</entry>
 							<entry>C</entry>
 						</row>
 						<row>
 							<entry>num_mutation</entry>
-							<entry>Number of mutation operations</entry>
+							<entry>データ変更オペレーション数</entry>
 							<entry>C</entry>
 						</row>
 						<row>
 							<entry>num_mutation_failed</entry>
-							<entry>Number of failed mutation operations</entry>
+							<entry>失敗したデータ変更オペレーション数</entry>
 							<entry>C</entry>
 						</row>
 						<row>
 							<entry>num_opaque</entry>
-							<entry>Number of opaque operation</entry>
+							<entry>opaqueオペレーション数</entry>
 							<entry>C</entry>
 						</row>
 						<row>
 							<entry>num_opaque_failed</entry>
-							<entry>Number of failed opaque operations</entry>
+							<entry>失敗したopaqueオペレーション数</entry>
 							<entry>C</entry>
 						</row>
 						<row>
 							<entry>num_vbucket_set</entry>
-							<entry>Number of vbucket set operations</entry>
+							<entry>vBucket setオペレーション数</entry>
 							<entry>C</entry>
 						</row>
 						<row>
 							<entry>num_vbucket_set_failed</entry>
-							<entry>Number of failed vbucket set operations</entry>
+							<entry>失敗したvBucket setオペレーション数</entry>
 							<entry>C</entry>
 						</row>
 						<row>
 							<entry>num_unknown</entry>
-							<entry>Number of unknown operations</entry>
+							<entry>unkownオペレーション数</entry>
 							<entry>C</entry>
 						</row>
 					</tbody>
@@ -519,13 +480,9 @@ cbstats [host]:11210 tap-takeover vb name
 		
 		<section><title>Tap aggregated stats</title>
 			
-			<p>Aggregated tap stats allow named tap connections to be logically grouped and aggregated together by prefixes.</p>
+			<p>集約されたtap統計情報は任意のtapコネクションを論理的にグループ化し、プリフィクスで集約します。</p>
 			
-			<p>For example, if all of your tap connections started with <codeph>rebalance_</codeph> or
-					<codeph>replication_</codeph>, you could call <codeph>cbstats tapagg _</codeph>
-				to request stats grouped by the prefix starting with <codeph>_</codeph>. This
-				returns a set of statistics for rebalance and a set for replication. The following
-				are possible values returned by <codeph>cbstats tapagg</codeph> :</p>
+			<p>例えば、すべてのTAP接続が<codeph>rebalance_</codeph>または<codeph>replication_</codeph>で始まっていれば、<codeph>cbstats tapagg _</codeph>を利用し、<codeph>_</codeph>をプリフィクスとしてグループ化した統計情報をリクエストできます。 これはリバンランスやレプリケーションで集約した統計情報を返します。 以下は<codeph>cbstats tapagg</codeph>で返される値です:</p>
 			
 			<table>
 				<tgroup cols="2">
@@ -533,42 +490,42 @@ cbstats [host]:11210 tap-takeover vb name
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>Stat</entry>
-							<entry>Description</entry>
+							<entry>統計情報</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
-							<entry>[prefix]:count</entry>
-							<entry>Number of connections matching this prefix</entry>
+							<entry>[プリフィクス]:count</entry>
+							<entry>このプリフィクスに一致したコネクション数</entry>
 						</row>
 						<row>
-							<entry>[prefix]:qlen</entry>
-							<entry>Total length of queues with this prefix</entry>
+							<entry>[プリフィクス]::qlen</entry>
+							<entry>このプリフィクスの総キューサイズ</entry>
 						</row>
 						<row>
-							<entry>[prefix]:backfill_remaining</entry>
-							<entry>Number of items to be backfilled</entry>
+							<entry>[プリフィクス]:backfill_remaining</entry>
+							<entry>バックフィルするアイテム数</entry>
 						</row>
 						<row>
-							<entry>[prefix]:backoff</entry>
-							<entry>Total number of backoff events</entry>
+							<entry>[プリフィクス]:backoff</entry>
+							<entry>総バックオフイベント回数</entry>
 						</row>
 						<row>
-							<entry>[prefix]:drain</entry>
-							<entry>Total number of items drained</entry>
+							<entry>[プリフィクス]:drain</entry>
+							<entry>キューからドレインしたアイテムの総数</entry>
 						</row>
 						<row>
-							<entry>[prefix]:fill</entry>
-							<entry>Total number of items filled</entry>
+							<entry>[プリフィクス]:fill</entry>
+							<entry>キューに登録されたアイテムの総数</entry>
 						</row>
 						<row>
-							<entry>[prefix]:itemondisk</entry>
-							<entry>Number of items remaining on disk</entry>
+							<entry>[プリフィクス]:itemondisk</entry>
+							<entry>ディスク上に残っているアイテム数</entry>
 						</row>
 						<row>
-							<entry>[prefix]:total_backlog_size</entry>
-							<entry>Number of remaining items for replication</entry>
+							<entry>[プリフィクス]:total_backlog_size</entry>
+							<entry>レプリケーション待ちのアイテム数</entry>
 						</row>
 					</tbody>
 				</tgroup>

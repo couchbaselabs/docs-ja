@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="cbstats-runtimes">
+<reference xml:lang="ja" id="cbstats-runtimes">
   <title>Runtimes</title>
-  <shortdesc>The <codeph>cbstats runtimes</codeph> command provides various information about runtime statistics.</shortdesc>
+  <shortdesc><codeph>cbstats runtimes</codeph>コマンドは実行環境の統計に関わる様々な情報を提供します。</shortdesc>
   <refbody>
-    <section><title>CLI command and parameters</title>
+    <section><title>CLIコマンドとパラメータ</title>
       <p></p>
       <codeblock>cbstats runtimes</codeblock>
       
       
     </section>
     
-    <section><title>Syntax</title>
-      <p>Request syntax:</p>
+    <section><title>シンタックス</title>
+      <p>リクエストシンタックス:</p>
       <codeblock>cbstats [localhost]:11210 runtimes</codeblock>
     </section>
     
-    <section><title>Example</title>
-      <p>Example request:</p>
+    <section><title>例</title>
+      <p>リクエスト例:</p>
       <codeblock>cbstats 10.5.2.117:11210 runtimes</codeblock>
       
       </section>
     
-    <section><title>Response</title>
-      <p>Example response:</p>
+    <section><title>レスポンス</title>
+      <p>レスポンス例:</p>
       <codeblock>
  compactor_tasks (1024 total)
     1ms - 2ms  : (  2.34%)  24 #

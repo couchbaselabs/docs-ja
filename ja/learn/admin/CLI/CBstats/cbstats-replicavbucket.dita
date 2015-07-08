@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbstats-replica-bucket">
-	<title>Replica vBucket stats</title>
-	<shortdesc>Description of replica vBucket satistics.</shortdesc>
+<reference xml:lang="ja" id="cbstats-replica-bucket">
+	<title>レプリカvBucket統計情報</title>
+	<shortdesc>レプリカvBucket統計情報について解説します。</shortdesc>
 	<refbody>
 		<table>
 			<tgroup cols="2">
@@ -10,86 +10,86 @@
 				<colspec colname="col2"/>
 				<thead>
 					<row>
-						<entry>Stat</entry>
-						<entry>Description</entry>
+						<entry>統計情報</entry>
+						<entry>説明</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
 						<entry>vb_replica_num</entry>
-						<entry>Number of replica vBuckets</entry>
+						<entry>レプリカvBucketの個数</entry>
 					</row>
 					<row>
 						<entry>vb_replica_curr_items</entry>
-						<entry>Number of in memory items</entry>
+						<entry>メモリ内のアイテム数</entry>
 					</row>
 					<row>
 						<entry>vb_replica_num_non_resident</entry>
-						<entry>Number of non-resident items</entry>
+						<entry>メモリ内に存在しないアイテム数</entry>
 					</row>
 					<row>
 						<entry>vb_replica_perc_mem_resident</entry>
-						<entry>% memory resident</entry>
+						<entry>メモリ内に存在するアイテムのパーセンテージ</entry>
 					</row>
 					<row>
 						<entry>vb_replica_eject</entry>
-						<entry>Number of times item values got ejected</entry>
+						<entry>アイテムのバリューがメモリから除去された回数</entry>
 					</row>
 					<row>
 						<entry>vb_replica_expired</entry>
-						<entry>Number of times an item was expired</entry>
+						<entry>アイテムが期限切れとなった回数</entry>
 					</row>
 					<row>
 						<entry>vb_replica_ht_memory</entry>
-						<entry>Memory overhead of the hashtable</entry>
+						<entry>ハッシュテーブルのメモリオーバヘッド</entry>
 					</row>
 					<row>
 						<entry>vb_replica_itm_memory</entry>
-						<entry>Total item memory</entry>
+						<entry>総アイテムメモリ</entry>
 					</row>
 					<row>
 						<entry>vb_replica_meta_data_memory</entry>
-						<entry>Total metadata memory</entry>
+						<entry>総メタデータメモリ</entry>
 					</row>
 					<row>
 						<entry>vb_replica_ops_create</entry>
-						<entry>Number of create operations</entry>
+						<entry>挿入オペレーション数</entry>
 					</row>
 					<row>
 						<entry>vb_replica_ops_update</entry>
-						<entry>Number of update operations</entry>
+						<entry>更新オペレーション数</entry>
 					</row>
 					<row>
 						<entry>vb_replica_ops_delete</entry>
-						<entry>Number of delete operations</entry>
+						<entry>削除オペレーション数</entry>
 					</row>
 					<row>
 						<entry>vb_replica_ops_reject</entry>
-						<entry>Number of rejected operations</entry>
+						<entry>リジェクトされたオペレーション数</entry>
 					</row>
 					<row>
 						<entry>vb_replica_queue_size</entry>
-						<entry>Replica items in disk queue</entry>
+						<entry>ディスクキュー内のレプリカアイテム</entry>
 					</row>
 					<row>
 						<entry>vb_replica_queue_memory</entry>
-						<entry>Memory used for disk queue</entry>
+						<entry>ディスクキューに利用しているメモリ</entry>
 					</row>
 					<row>
 						<entry>vb_replica_queue_age</entry>
-						<entry>Sum of disk queue item age in milliseconds</entry>
+						<entry>アイテムがディスクキュー内に存在する時間の合計、ミリ秒</entry>
 					</row>
 					<row>
 						<entry>vb_replica_queue_pending</entry>
-						<entry>Total bytes of pending writes</entry>
+						<entry>書込み待ちの総バイト数</entry>
 					</row>
 					<row>
 						<entry>vb_replica_queue_fill</entry>
-						<entry>Total enqueued items</entry>
+						<entry>キューに登録されたアイテムの総数</entry>
 					</row>
 					<row>
 						<entry>vb_replica_queue_drain</entry>
-						<entry>Total drained items</entry>
+						<entry>キューからドレインしたアイテムの総数</entry>
 					</row>
 				</tbody>
 			</tgroup>

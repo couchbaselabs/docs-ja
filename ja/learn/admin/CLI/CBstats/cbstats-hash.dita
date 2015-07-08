@@ -1,40 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbstats-hash">
+<reference xml:lang="ja" id="cbstats-hash">
 	<title>Hash</title>
-	<shortdesc>The <codeph>cbstats hash</codeph> command provides information on vBucket hash tables.</shortdesc>
+	<shortdesc><codeph>cbstats hash</codeph>コマンドはvBucketハッシュテーブルに関する情報を提供します。</shortdesc>
 	<refbody>
-		<section><title>Description</title>
-		<p>Requesting these stats does affect performance, so don’t do it too regularly, but it’s useful
-				for debugging certain types of performance issues. For example, if your hash table
-				is tuned to have too few buckets for the data load within it, the max_depth will be
-				too large and performance will suffers.</p>
+		<section><title>説明</title>
+		<p>これらの統計情報をリクエストすると性能に影響があるため、頻繁に実行しないでください、しかし、特定の性能問題をデバッグするには有用です。 例えば、ハッシュテーブル内にロードしたデータに対してバケット数が不足している場合、max_depthは肥大化し、パフォーマンスが犠牲になります。</p>
 		
-		<p>It is also possible to get more detailed hash tables stats by using ‘hash detail’. 
-			This prints per-vbucket stats. 
-			Each stat is prefixed with vb_ followed by a number, a colon, then the individual stat
-			name. For example, the stat representing the size of the hash table for vbucket 0 is
-			vb_0:size=.</p>
+		<p>'hash detail'を利用し、より詳細なハッシュテーブル統計情報を取得することもできます。 
+			これはvBucketごとの統計を出力します。 
+			各統計情報はvb_に続き、番号、コロン、そして各統計の名称で出力されます。 例えば、vBucket 0のハッシュテーブルのサイズを示す統計は、vb_0:size=となります。</p>
 		
 		</section>
 		
-		<section><title>Syntax</title>
-		<p>Request syntax:</p>
+		<section><title>シンタックス</title>
+		<p>リクエストシンタックス:</p>
 		<codeblock>cbstats [hostname]:11210 hash
 cbstats [hostname]:11210 hash detail
 		</codeblock>
 		</section>
 		
-		<section><title>Example: hash</title>
-			<p>Request example:</p>
+		<section><title>例: hash</title>
+			<p>リクエスト例:</p>
 			<codeblock>cbstats 10.5.2.54:11210 hash</codeblock></section>
 		
-		<section><title>Example: hash detail</title>
-			<p>Request example:</p>
+		<section><title>例: hash detail</title>
+			<p>リクエスト例:</p>
 			<codeblock>cbstats 10.5.2.54:11210 hash detail</codeblock></section>
 		
-		<section><title>Response: hash</title>
-			<p>Example response:</p>
+		<section><title>レスポンス: hash</title>
+			<p>レスポンス例:</p>
 			<codeblock>
  avg_count:    0
  avg_max:      0
@@ -52,42 +47,42 @@ cbstats [hostname]:11210 hash detail
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>Stat</entry>
-							<entry>Description</entry>
+							<entry>統計情報</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>avg_count</entry>
-							<entry>The average number of items per vbucket</entry>
+							<entry>vBucketごとの平均アイテム数</entry>
 						</row>
 						<row>
 							<entry>avg_max</entry>
-							<entry>The average max depth of a vbucket hash table</entry>
+							<entry>vBucketハッシュテーブルの平均最大深度</entry>
 						</row>
 						<row>
 							<entry>avg_min</entry>
-							<entry>The average min depth of a vbucket hash table</entry>
+							<entry>vBucketハッシュテーブルの平均最小深度</entry>
 						</row>
 						<row>
 							<entry>largest_max</entry>
-							<entry>The largest hash table depth of in all vbuckets</entry>
+							<entry>全vBucketでの最大ハッシュテーブル深度</entry>
 						</row>
 						<row>
 							<entry>largest_min</entry>
-							<entry>The largest minimum hash table depth of all vbuckets</entry>
+							<entry>全vBucketで最も大きな最小ハッシュテーブル深度</entry>
 						</row>
 						<row>
 							<entry>max_count</entry>
-							<entry>The largest number of items in a vbucket</entry>
+							<entry>単一vBucket内の最大アイテム数</entry>
 						</row>
 						<row>
 							<entry>min_count</entry>
-							<entry>The smallest number of items in a vbucket</entry>
+							<entry>単一vBucket内の最小アイテム数</entry>
 						</row>
 						<row>
 							<entry>total_counts</entry>
-							<entry>The total number of items in all vbuckets</entry>
+							<entry>全vBucket内の総アイテム数</entry>
 						</row>
 					</tbody>
 				</tgroup>
@@ -95,8 +90,8 @@ cbstats [hostname]:11210 hash detail
 		</section>
 
 		
-		<section><title>Response: hash detail</title>
-			<p>Example response:</p>
+		<section><title>レスポンス: hash detail</title>
+			<p>レスポンス例:</p>
 			<codeblock>
  avg_count:                0
  avg_max:                  0
@@ -125,50 +120,50 @@ cbstats [hostname]:11210 hash detail
 					<colspec colname="col2"/>
 					<thead>
 						<row>
-							<entry>Stat</entry>
-							<entry>Description</entry>
+							<entry>統計情報</entry>
+							<entry>説明</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
 							<entry>state</entry>
-							<entry>The current state of this vbucket</entry>
+							<entry>このvBucketの現在のステータス</entry>
 						</row>
 						<row>
 							<entry>size</entry>
-							<entry>Number of hash buckets</entry>
+							<entry>ハッシュバケット数</entry>
 						</row>
 						<row>
 							<entry>locks</entry>
-							<entry>Number of locks covering hash table operations</entry>
+							<entry>ハッシュテーブル操作をカバーするロックの数</entry>
 						</row>
 						<row>
 							<entry>min_depth</entry>
-							<entry>Minimum number of items found in a bucket</entry>
+							<entry>バケット内で見つかった最小アイテム数</entry>
 						</row>
 						<row>
 							<entry>max_depth</entry>
-							<entry>Maximum number of items found in a bucket</entry>
+							<entry>バケット内で見つかった最大アイテム数</entry>
 						</row>
 						<row>
 							<entry>reported</entry>
-							<entry>Number of items this hash table reports having</entry>
+							<entry>このハッシュテーブルが保持するとレポートしたアイテム数</entry>
 						</row>
 						<row>
 							<entry>counted</entry>
-							<entry>Number of items found while walking the table</entry>
+							<entry>テーブルを走査する間に見つけたアイテム数</entry>
 						</row>
 						<row>
 							<entry>resized</entry>
-							<entry>Number of times the hash table resized</entry>
+							<entry>ハッシュテーブルがリサイズされた回数</entry>
 						</row>
 						<row>
 							<entry>mem_size</entry>
-							<entry>Running sum of memory used by each item</entry>
+							<entry>各アイテムで利用されたメモリの合計</entry>
 						</row>
 						<row>
 							<entry>mem_size_counted</entry>
-							<entry>Counted sum of current memory used by each item</entry>
+							<entry>カウントした各アイテムで利用されたメモリの合計</entry>
 						</row>
 					</tbody>
 				</tgroup>

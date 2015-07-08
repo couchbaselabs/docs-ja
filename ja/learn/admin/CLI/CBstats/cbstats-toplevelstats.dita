@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbstats-toplevelstats">
-	<title>Toplevel stats</title>
-	<shortdesc>Description of top-level statistics.</shortdesc>
+<reference xml:lang="ja" id="cbstats-toplevelstats">
+	<title>トップレベル統計情報</title>
+	<shortdesc>トップレベル統計情報について解説します。</shortdesc>
 	<refbody>
 		
 		<table>
@@ -11,646 +11,598 @@
 				<colspec colname="col2"/>
 				<thead>
 					<row>
-						<entry>Stat</entry>
-						<entry>Description</entry>
+						<entry>統計情報</entry>
+						<entry>説明</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
 						<entry>uuid</entry>
-						<entry>The unique identifier for the bucket</entry>
+						<entry>バケットのユニーク識別子</entry>
 					</row>
 					<row>
 						<entry>ep_version</entry>
-						<entry>Version number of ep_engine</entry>
+						<entry>ep_engineのバージョン番号</entry>
 					</row>
 					<row>
 						<entry>ep_storage_age</entry>
-						<entry>Seconds since most recently stored object was initially
-							queued</entry>
+						<entry>保存された最後のオブジェクトが、キューに登録されてからの経過秒数</entry>
 					</row>
 					<row>
 						<entry>ep_storage_age_highwat</entry>
-						<entry>ep_storage_age high water mark</entry>
+						<entry>ep_strage_ageの高水位。</entry>
 					</row>
 					<row>
 						<entry>ep_startup_time</entry>
-						<entry>System-generated engine startup time</entry>
+						<entry>システムが生成したエンジンの起動時刻</entry>
 					</row>
 					<row>
 						<entry>ep_data_age</entry>
-						<entry>Seconds since most recently stored object was modified</entry>
+						<entry>最後に保存されたオブジェクトが変更されてからの経過秒数</entry>
 					</row>
 					<row>
 						<entry>ep_data_age_highwat</entry>
-						<entry>ep_data_age high water mark</entry>
+						<entry>ep_data_ageの高水位</entry>
 					</row>
 					<row>
 						<entry>ep_too_young</entry>
-						<entry>Number of times an object was not stored due to being too
-							young</entry>
+						<entry>オブジェクトが若すぎるために保存されなかった回数</entry>
 					</row>
 					<row>
 						<entry>ep_too_old</entry>
-						<entry>Number of times an object was stored after being dirty too
-							long</entry>
+						<entry>オブジェクトが長期間ダーティーであった後に保存された回数</entry>
 					</row>
 					<row>
 						<entry>ep_total_enqueued</entry>
-						<entry>Total number of items queued for persistence</entry>
+						<entry>永続化のためにキューに登録されたアイテムの総数</entry>
 					</row>
 					<row>
 						<entry>ep_total_new_items</entry>
-						<entry>Total number of persisted new items</entry>
+						<entry>永続化された新規アイテムの総数</entry>
 					</row>
 					<row>
 						<entry>ep_total_del_items</entry>
-						<entry>Total number of persisted deletions</entry>
+						<entry>削除の永続化総数</entry>
 					</row>
 					<row>
 						<entry>ep_total_persisted</entry>
-						<entry>Total number of items persisted</entry>
+						<entry>永続化したアイテムの総数</entry>
 					</row>
 					<row>
 						<entry>ep_item_flush_failed</entry>
-						<entry>Number of times an item failed to flush due to storage errors</entry>
+						<entry>ストレージエラーでアイテムのフラッシュに失敗した回数</entry>
 					</row>
 					<row>
 						<entry>ep_item_commit_failed</entry>
-						<entry>Number of times a transaction failed to commit due to storage
-							errors</entry>
+						<entry>ストレージエラーでトランザクションのコミットに失敗した回数</entry>
 					</row>
 					<row>
 						<entry>ep_item_begin_failed</entry>
-						<entry>Number of times a transaction failed to start due to storage
-							errors</entry>
+						<entry>ストレージエラーでトランザクションの開始に失敗した回数</entry>
 					</row>
 					<row>
 						<entry>ep_expired_access</entry>
-						<entry>Number of times an item was expired on application access.</entry>
+						<entry>アプリケーションからのアクセスにより有効期限切れとなったアイテム数</entry>
 					</row>
 					<row>
 						<entry>ep_expired_pager</entry>
-						<entry>Number of times an item was expired by ep engine item pager</entry>
+						<entry>EPエンジンアイテムページャにてアイテムを期限切れとした回数</entry>
 					</row>
 					<row>
 						<entry>ep_item_flush_expired</entry>
-						<entry>Number of times an item is not flushed due to the expiry of the
-							item</entry>
+						<entry>有効期限切れのため、アイテムをフラッシュしなかった回数</entry>
 					</row>
 					<row>
 						<entry>ep_queue_size</entry>
-						<entry>Number of items queued for storage</entry>
+						<entry>ストレージのキューに登録されたアイテム数</entry>
 					</row>
 					<row>
 						<entry>ep_flusher_todo</entry>
-						<entry>Number of items currently being written</entry>
+						<entry>現在書き込まれているアイテム数</entry>
 					</row>
 					<row>
 						<entry>ep_flusher_state</entry>
-						<entry>Current state of the flusher thread</entry>
+						<entry>フラッシャースレッドの現在の状態</entry>
 					</row>
 					<row>
 						<entry>ep_commit_num</entry>
-						<entry>Total number of write commits</entry>
+						<entry>書込みのコミット回数</entry>
 					</row>
 					<row>
 						<entry>ep_commit_time</entry>
-						<entry>Number of milliseconds of most recent commit</entry>
+						<entry>直近のコミット時間、ミリ秒</entry>
 					</row>
 					<row>
 						<entry>ep_commit_time_total</entry>
-						<entry>Cumulative milliseconds spent committing</entry>
+						<entry>累計コミット時間、ミリ秒</entry>
 					</row>
 					<row>
 						<entry>ep_vbucket_del</entry>
-						<entry>Number of vbucket deletion events</entry>
+						<entry>vBucket削除イベント回数</entry>
 					</row>
 					<row>
 						<entry>ep_vbucket_del_fail</entry>
-						<entry>Number of failed vbucket deletion events</entry>
+						<entry>vBucket削除イベント失敗回数</entry>
 					</row>
 					<row>
 						<entry>ep_vbucket_del_max_walltime</entry>
-						<entry>Max wall time (µs) spent by deleting a vbucket</entry>
+						<entry>vBucket削除の制限時間(µs)</entry>
 					</row>
 					<row>
 						<entry>ep_vbucket_del_avg_walltime</entry>
-						<entry>Avg wall time (µs) spent by deleting a vbucket</entry>
+						<entry>平均vBucket削除時間(µs)</entry>
 					</row>
 					<row>
 						<entry>ep_flush_duration_total</entry>
-						<entry>Cumulative seconds spent flushing</entry>
+						<entry>累計フラッシュ時間</entry>
 					</row>
 					<row>
 						<entry>ep_flush_all</entry>
-						<entry>True if disk flush_all is scheduled</entry>
+						<entry>ディスクのflush_allがスケジュールされている場合True</entry>
 					</row>
 					<row>
 						<entry>ep_num_ops_get_meta</entry>
-						<entry>Number of getMeta operations</entry>
+						<entry>getMetaオペレーション数</entry>
 					</row>
 					<row>
 						<entry>ep_num_ops_set_meta</entry>
-						<entry>Number of setWithMeta operations</entry>
+						<entry>setWithMetaオペレーション数</entry>
 					</row>
 					<row>
 						<entry>ep_num_ops_del_meta</entry>
-						<entry>Number of delWithMeta operations</entry>
+						<entry>delWithMetaオペレーション数</entry>
 					</row>
 					<row>
 						<entry>ep_num_ops_set_meta_res_failed</entry>
-						<entry>Number of setWithMeta ops that failed conflict resolution</entry>
+						<entry>コンフリクトの解決に失敗したsetWithMetaオペレーション数</entry>
 					</row>
 					<row>
 						<entry>ep_num_ops_del_meta_res_failed</entry>
-						<entry>Number of delWithMeta ops that failed conflict resolution</entry>
+						<entry>コンフリクトの解決に失敗したdelWithMetaオペレーション数</entry>
 					</row>
 					<row>
 						<entry>ep_num_ops_set_ret_meta</entry>
-						<entry>Number of setRetMeta operations</entry>
+						<entry>setMetaオペレーション数</entry>
 					</row>
 					<row>
 						<entry>ep_num_ops_del_ret_meta</entry>
-						<entry>Number of delRetMeta operations</entry>
+						<entry>delMetaオペレーション数</entry>
 					</row>
 					<row>
 						<entry>curr_items</entry>
-						<entry>Num items in active vbuckets (temp + live)</entry>
+						<entry>アクティブvBucket内のアイテム数 (temp + live)</entry>
 					</row>
 					<row>
 						<entry>curr_temp_items</entry>
-						<entry>Num temp items in active vbuckets</entry>
+						<entry>アクティブvBucket内のtempアイテム数</entry>
 					</row>
 					<row>
 						<entry>curr_items_tot</entry>
-						<entry>Num current items including those not active (replica, dead and
-							pending states)</entry>
+						<entry>アクティブ以外(replica, dead, pending状態)を含む現在のアイテム数</entry>
 					</row>
 					<row>
 						<entry>ep_kv_size</entry>
-						<entry>Memory used to store item metadata, keys and values, no matter the
-							vbucket’s state. If an item’s value is ejected, this stats will be
-							decremented by the size of the item’s value.</entry>
+						<entry>vBucketのステータスに関係なく、アイテムメタデータ、キーとバリューの保存に利用されているメモリサイズ。 アイテムのバリューが除去された場合、そのアイテムのバリューサイズ分、この統計は減少する。</entry>
 					</row>
 					<row>
 						<entry>ep_value_size</entry>
-						<entry>Memory used to store values for resident keys</entry>
+						<entry>メモリ内に存在するキーのバリューを保存するために利用しているメモリ</entry>
 					</row>
 					<row>
 						<entry>ep_overhead</entry>
-						<entry>Extra memory used by transient data like persistence queues,
-							replication queues, checkpoints, etc</entry>
+						<entry>永続化キュー、レプリケーションキュー、チェックポイントなどの一時的なデータに利用されているメモリ</entry>
 					</row>
 					<row>
 						<entry>ep_mem_low_wat</entry>
-						<entry>Low water mark for auto-evictions</entry>
+						<entry>メモリからのアイテム自動除去に利用する低水位</entry>
 					</row>
 					<row>
 						<entry>ep_mem_high_wat</entry>
-						<entry>High water mark for auto-evictions</entry>
+						<entry>メモリからのアイテム自動除去に利用する高水位</entry>
 					</row>
 					<row>
 						<entry>ep_total_cache_size</entry>
-						<entry>The total byte size of all items, no</entry>
+						<entry>全アイテムの総バイトサイズ、</entry>
 					</row>
 					<row>
 						<entry/>
-						<entry>matter the vbucket’s state, no matter if an item’s value is
-							ejected</entry>
+						<entry>vBucketのステータス、アイテムのバリューが除去されているかは関係しない</entry>
 					</row>
 					<row>
 						<entry>ep_oom_errors</entry>
-						<entry>Number of times unrecoverable OOMs happened while processing
-							operations</entry>
+						<entry>オペレーションの処理中に発生した復帰不能なOOM回数</entry>
 					</row>
 					<row>
 						<entry>ep_tmp_oom_errors</entry>
-						<entry>Number of times temporary OOMs happened while processing
-							operations</entry>
+						<entry>オペレーションの処理中に発生した一時的なOOM回数</entry>
 					</row>
 					<row>
 						<entry>ep_mem_tracker_enabled</entry>
-						<entry>True if memory usage tracker is enabled</entry>
+						<entry>メモリ利用状況トラッカーが有効な場合True</entry>
 					</row>
 					<row>
 						<entry>ep_bg_fetched</entry>
-						<entry>Number of items fetched from disk</entry>
+						<entry>ディスクからのアイテムフェッチ回数</entry>
 					</row>
 					<row>
 						<entry>ep_bg_meta_fetched</entry>
-						<entry>Number of meta items fetched from disk</entry>
+						<entry>ディスクからのメタアイテムフェッチ回数</entry>
 					</row>
 					<row>
 						<entry>ep_bg_remaining_jobs</entry>
-						<entry>Number of remaining bg fetch jobs</entry>
+						<entry>バックグラウドフェッチジョブの残数</entry>
 					</row>
 					<row>
 						<entry>ep_max_bg_remaining_jobs</entry>
-						<entry>Max number of remaining bg fetch jobs that we have seen in the queue
-							so far</entry>
+						<entry>現在までにキューに登録されたバックグラウドフェッチジョブの最大残数</entry>
 					</row>
 					<row>
 						<entry>ep_tap_bg_fetched</entry>
-						<entry>Number of tap disk fetches</entry>
+						<entry>TAPディスクフェッチ数</entry>
 					</row>
 					<row>
 						<entry>ep_tap_bg_fetch_requeued</entry>
-						<entry>Number of times a tap bg fetch task is requeued</entry>
+						<entry>TAPバックグラウドフェッチタスクがキューに再登録された回数</entry>
 					</row>
 					<row>
 						<entry>ep_num_pager_runs</entry>
-						<entry>Number of times we ran pager loops to seek additional memory</entry>
+						<entry>メモリの空きを作るために実行したページャのループ回数</entry>
 					</row>
 					<row>
 						<entry>ep_num_expiry_pager_runs</entry>
-						<entry>Number of times we ran expiry pager loops to purge expired items from
-							memory/disk</entry>
+						<entry>期限切れアイテムをメモリ/ディスクから削除するために実行したページャのループ回数</entry>
 					</row>
 					<row>
 						<entry>ep_num_access_scanner_runs</entry>
-						<entry>Number of times we ran access scanner to snapshot working set</entry>
+						<entry>ワーキングセットのスナップショットを作成するために実行したアクセススキャナの回数</entry>
 					</row>
 					<row>
 						<entry>ep_access_scanner_num_items</entry>
-						<entry>Number of items that last access scanner task swept to access
-							log.</entry>
+						<entry>最後に実行したアクセススキャナがアクセスログに書き込んだアイテム数</entry>
 					</row>
 					<row>
 						<entry>ep_access_scanner_task_time</entry>
-						<entry>Time of the next access scanner task (GMT)</entry>
+						<entry>次回のアクセススキャナタスク実行時刻 (GMT)</entry>
 					</row>
 					<row>
 						<entry>ep_access_scanner_last_runtime</entry>
-						<entry>Number of seconds that last access scanner task took to
-							complete.</entry>
+						<entry>最後のアクセススキャナが完了するのに経過した秒数</entry>
 					</row>
 					<row>
 						<entry>ep_items_rm_from_checkpoints</entry>
-						<entry>Number of items removed from closed unreferenced checkpoints</entry>
+						<entry>クローズされ参照されなくなったチェックポイントから削除されたアイテム数</entry>
 					</row>
 					<row>
 						<entry>ep_num_value_ejects</entry>
-						<entry>Number of times item values got ejected from memory to disk</entry>
+						<entry>メモリからディスクへとアイテムバリューを除去した回数</entry>
 					</row>
 					<row>
 						<entry>ep_num_eject_failures</entry>
-						<entry>Number of items that could not be ejected</entry>
+						<entry>除去されなかったアイテムの個数</entry>
 					</row>
 					<row>
 						<entry>ep_num_not_my_vbuckets</entry>
-						<entry>Number of times Not My VBucket exception happened during
-							runtime</entry>
+						<entry>実行中にNot My VBucketエラーが発生した回数</entry>
 					</row>
 					<row>
 						<entry>ep_tap_keepalive</entry>
-						<entry>Tap keepalive time</entry>
+						<entry>TAPのkeepalive時間</entry>
 					</row>
 					<row>
 						<entry>ep_dbname</entry>
-						<entry>DB path</entry>
+						<entry>DBのパス</entry>
 					</row>
 					<row>
 						<entry>ep_io_num_read</entry>
-						<entry>Number of io read operations</entry>
+						<entry>参照IOオペレーション数</entry>
 					</row>
 					<row>
 						<entry>ep_io_num_write</entry>
-						<entry>Number of io write operations</entry>
+						<entry>更新IOオペレーション数</entry>
 					</row>
 					<row>
 						<entry>ep_io_read_bytes</entry>
-						<entry>Number of bytes read (key + values)</entry>
+						<entry>参照バイト数 (キー + バリュー)</entry>
 					</row>
 					<row>
 						<entry>ep_io_write_bytes</entry>
-						<entry>Number of bytes written (key + values)</entry>
+						<entry>更新バイト数 (キー + バリュー)</entry>
 					</row>
 					<row>
 						<entry>ep_pending_ops</entry>
-						<entry>Number of ops awaiting pending vbuckets</entry>
+						<entry>ペンディング状態のvBucketを待機している秒間オペレーション数</entry>
 					</row>
 					<row>
 						<entry>ep_pending_ops_total</entry>
-						<entry>Total blocked pending ops since reset</entry>
+						<entry>リセット実行後にブロックされたペンディングオペレーション総数</entry>
 					</row>
 					<row>
 						<entry>ep_pending_ops_max</entry>
-						<entry>Max ops seen awaiting 1 pending vbucket</entry>
+						<entry>ペンディング状態のvBucketを待機している最大秒間オペレーション数</entry>
 					</row>
 					<row>
 						<entry>ep_pending_ops_max_duration</entry>
-						<entry>Max time (µs) used waiting on pending</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>vbuckets</entry>
+						<entry>ペンディングvBucketの待機に利用した最大時間 (µs)</entry>
 					</row>
 					<row>
 						<entry>ep_bg_num_samples</entry>
-						<entry>The number of samples included in the average</entry>
+						<entry>平均に含まれるサンプル数</entry>
 					</row>
 					<row>
 						<entry>ep_bg_min_wait</entry>
-						<entry>The shortest time (µs) in the wait queue</entry>
+						<entry>キュー内の最小待ち時間 (µs)</entry>
 					</row>
 					<row>
 						<entry>ep_bg_max_wait</entry>
-						<entry>The longest time (µs) in the wait queue</entry>
+						<entry>キュー内の最大待ち時間 (µs)</entry>
 					</row>
 					<row>
 						<entry>ep_bg_wait_avg</entry>
-						<entry>The average wait time (µs) for an item before it’s serviced by the
-							dispatcher</entry>
+						<entry>アイテムがディスパッチャで処理されるまでの平均待ち時間 (µs)</entry>
 					</row>
 					<row>
 						<entry>ep_bg_min_load</entry>
-						<entry>The shortest load time (µs)</entry>
+						<entry>最小ロード時間 (µs)</entry>
 					</row>
 					<row>
 						<entry>ep_bg_max_load</entry>
-						<entry>The longest load time (µs)</entry>
+						<entry>最大ロード時間 (µs)</entry>
 					</row>
 					<row>
 						<entry>ep_bg_load_avg</entry>
-						<entry>The average time (µs) for an item to be loaded from the persistence
-							layer</entry>
+						<entry>アイテムが永続化層でロードされるまでの平均時間 (µs)</entry>
 					</row>
 					<row>
 						<entry>ep_num_non_resident</entry>
-						<entry>The number of non-resident items</entry>
+						<entry>メモリ内に存在しないアイテム数</entry>
 					</row>
 					<row>
 						<entry>ep_bg_wait</entry>
-						<entry>The total elapse time for the wait queue</entry>
+						<entry>キュー内の待ち総待ち時間</entry>
 					</row>
 					<row>
 						<entry>ep_bg_load</entry>
-						<entry>The total elapse time for items to be loaded from the persistence
-							layer</entry>
+						<entry>アイテムが永続化層にロードされるまでの総経過時間</entry>
 					</row>
 					<row>
 						<entry>ep_allow_data_loss_during_shutdown</entry>
-						<entry>Whether data loss is allowed during server shutdown</entry>
+						<entry>サーバシャットダウン中にデータロスを許容するか否か</entry>
 					</row>
 					<row>
 						<entry>ep_alog_block_size</entry>
-						<entry>Access log block size</entry>
+						<entry>アクセスログブロックサイズ</entry>
 					</row>
 					<row>
 						<entry>ep_alog_path</entry>
-						<entry>Path to the access log</entry>
+						<entry>アクセスログのパス</entry>
 					</row>
 					<row>
 						<entry>ep_alog_sleep_time</entry>
-						<entry>Interval between access scanner runs in minutes</entry>
+						<entry>アクセススキャナ間隔(分)</entry>
 					</row>
 					<row>
 						<entry>ep_alog_task_time</entry>
-						<entry>Hour in GMT time when access scanner task is scheduled to run</entry>
+						<entry>次回のアクセススキャナタスク実行時刻 (GMT)</entry>
 					</row>
 					<row>
 						<entry>ep_backend</entry>
-						<entry>The backend that is being used for data persistence</entry>
+						<entry>データ永続化に利用しているバックエンド</entry>
 					</row>
 					<row>
 						<entry>ep_bg_fetch_delay</entry>
-						<entry>The amount of time to wait before doing a background fetch</entry>
+						<entry>バックグラウドフェッチの実行までの待ち時間</entry>
 					</row>
 					<row>
 						<entry>ep_chk_max_items</entry>
-						<entry>The number of items allowed in a before a new one is created</entry>
+						<entry>新規チェックポイント作成までにチェックポイントで許容するアイテム数</entry>
 					</row>
 					<row>
 						<entry>ep_chk_period</entry>
-						<entry>The maximum lifetime of a checkpoint before a new one is
-							created</entry>
+						<entry>新規チェックポイント作成までの最大チェックポイント存続時間</entry>
 					</row>
 					<row>
 						<entry>ep_chk_persistence_remains</entry>
-						<entry>Number of remaining vbuckets for checkpoint persistence</entry>
+						<entry>チェックポイント永続化の残vBucket数</entry>
 					</row>
 					<row>
 						<entry>ep_chk_persistence_timeout</entry>
-						<entry>Timeout for vbucket checkpoint persistence</entry>
+						<entry>vBucketチェックポイント永続化のタイムアウト</entry>
 					</row>
 					<row>
 						<entry>ep_chk_remover_stime</entry>
-						<entry>The time interval for purging closed checkpoints from memory</entry>
+						<entry>メモリからクローズされたチェックポイントを削除する間隔</entry>
 					</row>
 					<row>
 						<entry>ep_config_file</entry>
-						<entry>The location of the ep-engine config file</entry>
+						<entry>ep-engine設定ファイルの場所</entry>
 					</row>
 					<row>
 						<entry>ep_couch_bucket</entry>
-						<entry>The name of this bucket</entry>
+						<entry>本バケットの名称</entry>
 					</row>
 					<row>
 						<entry>ep_couch_host</entry>
-						<entry>The hostname that the CouchDB views server is listening on</entry>
+						<entry>CouchDB Viewサーバがリスンしているホスト名</entry>
 					</row>
 					<row>
 						<entry>ep_couch_port</entry>
-						<entry>The port the CouchDB views server is listening on</entry>
+						<entry>CouchDB Viewサーバがリスンしているポート番号</entry>
 					</row>
 					<row>
 						<entry>ep_couch_reconnect_sleeptime</entry>
-						<entry>The amount of time to wait before reconnecting to CouchDB</entry>
+						<entry>CouchDBに再接続するまでの待ち時間</entry>
 					</row>
 					<row>
 						<entry>ep_couch_response_timeout</entry>
-						<entry>Length of time to wait for a response from CouchDB before
-							reconnecting</entry>
+						<entry>CouchDBに再接続するまでのレスポンスタイムアウト時間</entry>
 					</row>
 					<row>
 						<entry>ep_data_traffic_enabled</entry>
-						<entry>Whether or not data traffic is enabled for this bucket</entry>
+						<entry>このバケットに対するデータトラフィックが有効か否か</entry>
 					</row>
 					<row>
 						<entry>ep_degraded_mode</entry>
-						<entry>True if the engine is either warming >up or data traffic is
-							disabled</entry>
+						<entry>エンジンがウォームアップ中かデータトラフィックが無効な場合True</entry>
 					</row>
 					<row>
 						<entry>ep_exp_pager_stime</entry>
-						<entry>The time interval for purging expired items from memory</entry>
+						<entry>メモリからの期限切れアイテム削除の実行間隔</entry>
 					</row>
 					<row>
 						<entry>ep_failpartialwarmup</entry>
-						<entry>True if we want kill the bucket if warmup fails</entry>
+						<entry>ウォームアップが失敗した場合にバケットをkillする場合True</entry>
 					</row>
 					<row>
 						<entry>ep_flushall_enabled</entry>
-						<entry>True if this bucket enables the use of the flush_all command</entry>
+						<entry>このバケットでflush_allコマンドが有効化されている場合True</entry>
 					</row>
 					<row>
 						<entry>ep_getl_default_timeout</entry>
-						<entry>The default getl lock duration</entry>
+						<entry>デフォルトのgetlロック時間</entry>
 					</row>
 					<row>
 						<entry>ep_getl_max_timeout</entry>
-						<entry>The maximum getl lock duration</entry>
+						<entry>最大getlロック時間</entry>
 					</row>
 					<row>
 						<entry>ep_ht_locks</entry>
-						<entry>The amount of locks per vb hashtable</entry>
+						<entry>vbハッシュテーブル単位のロック数</entry>
 					</row>
 					<row>
 						<entry>ep_ht_size</entry>
-						<entry>The initial size of each vb hashtable</entry>
+						<entry>各vbハッシュテーブルの初期サイズ</entry>
 					</row>
 					<row>
 						<entry>ep_item_num_based_new_chk</entry>
-						<entry>True if the number of items in the current checkpoint plays a role in
-							a new checkpoint creation</entry>
+						<entry>新規チェックポイント作成に現在のチェックポイント内アイテム数を利用する場合True</entry>
 					</row>
 					<row>
 						<entry>ep_keep_closed_chks</entry>
-						<entry>True if we want to keep the closed checkpoints for each vbucket
-							unless the memory usage is above high water mark</entry>
+						<entry>メモリ利用量が高水位を超えない限り、各vBucketのクローズしたチェックポイントを保持する場合、True</entry>
 					</row>
 					<row>
 						<entry>ep_max_checkpoints</entry>
-						<entry>The maximum amount of checkpoints that can be in memory per
-							vbucket</entry>
+						<entry>メモリに保持できるvBucketごとの最大チェックポイント数</entry>
 					</row>
 					<row>
 						<entry>ep_max_item_size</entry>
-						<entry>The maximum value size</entry>
+						<entry>最大バリューサイズ</entry>
 					</row>
 					<row>
 						<entry>ep_max_size</entry>
-						<entry>The maximum amount of memory this bucket can use</entry>
+						<entry>このバケットで利用可能な最大メモリ容量</entry>
 					</row>
 					<row>
 						<entry>ep_max_vbuckets</entry>
-						<entry>The maximum amount of vbuckets that can exist in this bucket</entry>
+						<entry>このバケット内で利用可能な最大vBucket数</entry>
 					</row>
 					<row>
 						<entry>ep_mutation_mem_threshold</entry>
-						<entry>The ratio of total memory available that we should start sending temp
-							oom or oom message when hitting</entry>
+						<entry>一時的なOOMやOOMメッセージの送信を開始する利用可能なメモリの割合</entry>
 					</row>
 					<row>
 						<entry>ep_pager_active_vb_pcnt</entry>
-						<entry>Active vbuckets paging percentage</entry>
+						<entry>アクティブvBucketページング割合</entry>
 					</row>
 					<row>
 						<entry>ep_tap_ack_grace_period</entry>
-						<entry>The amount of time to wait for a tap acks before
-							disconnecting</entry>
+						<entry>切断までにTAPが稼働できる期間</entry>
 					</row>
 					<row>
 						<entry>ep_tap_ack_initial_sequence_number</entry>
-						<entry>The initial sequence number for a tap ack when a tap stream is
-							created</entry>
+						<entry>TAPストリームが作成された際にTAPが稼働する初期シーケンス番号</entry>
 					</row>
 					<row>
 						<entry>ep_tap_ack_interval</entry>
-						<entry>The amount of messages a tap producer should send before requesting
-							an ack</entry>
+						<entry>Ackのリクエスト前にTAPプロデューサが送信すべきメッセージ数</entry>
 					</row>
 					<row>
 						<entry>ep_tap_ack_window_size</entry>
-						<entry>The maximum amount of ack requests that can be sent before the
-							consumer sends a response ack. When the window is full the tap stream is
-							paused.</entry>
+						<entry>コンシューマがレスポンスackを送信する前に送信可能な、最大ackリクエスト数。 ウィンドウが飽和するとTAPストリームは一時停止する。</entry>
 					</row>
 					<row>
 						<entry>ep_tap_backfill_resident</entry>
-						<entry>The resident ratio for deciding how to do backfill. If under the
-							ratio we schedule full disk backfill. If above the ratio then we do bg
-							fetches for</entry>
-					</row>
-					<row>
-						<entry/>
-						<entry>non-resident items.</entry>
+						<entry>バックフィルの実行方法を決定するためのメモリ内アイテム数割合。 この割合を下回るとフルディスクバックフィルをスケジュールする。 この割合を上回る場合、メモリに存在しないアイテムにバックグラウンドフェッチを実行する。</entry>
 					</row>
 					<row>
 						<entry>ep_tap_backlog_limit</entry>
-						<entry>The maximum amount of backfill items that can be in memory waiting to
-							be sent to the tap consumer</entry>
+						<entry>メモリ内に保持できるTAPコンシューマへの送信待機中の最大バックフィルアイテム数</entry>
 					</row>
 					<row>
 						<entry>ep_tap_backoff_period</entry>
-						<entry>The number of seconds the tap connection</entry>
+						<entry>TAP接続の秒数</entry>
 					</row>
 					<row>
 						<entry>ep_tap_bg_fetch_requeued</entry>
-						<entry>Number of times a tap bg fetch task is requeued</entry>
+						<entry>TAPバックグラウドフェッチタスクがキューに再登録された回数</entry>
 					</row>
 					<row>
 						<entry>ep_tap_bg_max_pending</entry>
-						<entry>The maximum number of bg jobs a tap connection may have</entry>
+						<entry>TAP接続が保持できる最大バックグラウンドジョブ数</entry>
 					</row>
 					<row>
 						<entry>ep_tap_noop_interval</entry>
-						<entry>Number of seconds between a noop is sent on an idle
-							connection</entry>
+						<entry>アイドル接続でnoopが送信される間隔、秒</entry>
 					</row>
 					<row>
 						<entry>ep_tap_requeue_sleep_time</entry>
-						<entry>The amount of time to wait before a failed tap item is
-							requeued</entry>
+						<entry>失敗したTAPアイテムがキューに再登録されるまでの待ち時間</entry>
 					</row>
 					<row>
 						<entry>ep_tap_throttle_cap_pcnt</entry>
-						<entry>Percentage of total items in write queue at which we throttle tap
-							input</entry>
+						<entry>TAPインプットを絞る際の書込みキュー内総アイテム数の割合</entry>
 					</row>
 					<row>
 						<entry>ep_tap_throttle_queue_cap</entry>
-						<entry>Max size of a write queue to throttle incoming tap input</entry>
+						<entry>TAPインプットを絞る際の最大書込みキューサイズ</entry>
 					</row>
 					<row>
 						<entry>ep_tap_throttle_threshold</entry>
-						<entry>Percentage of max mem at which we begin NAKing tap input</entry>
+						<entry>TAPインプットをNAKしはじめる最大メモリ割合</entry>
 					</row>
 					<row>
 						<entry>ep_uncommitted_items</entry>
-						<entry>The amount of items that have not been written to disk</entry>
+						<entry>ディスクにまだ書き込まれていないアイテムの割合</entry>
 					</row>
 					<row>
 						<entry>ep_vb0</entry>
-						<entry>Whether vbucket 0 should be created by default</entry>
+						<entry>vBucket 0がデフォルトで作成されるべきか否か</entry>
 					</row>
 					<row>
 						<entry>ep_waitforwarmup</entry>
-						<entry>True if we should wait for the warmup process to complete before
-							enabling traffic</entry>
+						<entry>トラフィックを受け付けるまでウォームアッププロセスの完了を待機する場合True</entry>
 					</row>
 					<row>
 						<entry>ep_warmup</entry>
-						<entry>Shows if warmup is enabled / disabled</entry>
+						<entry>ウォームアップが有効か否か</entry>
 					</row>
 					<row>
 						<entry>ep_warmup_batch_size</entry>
-						<entry>The size of each batch loaded during warmup</entry>
+						<entry>ウォームアップ中のバッチロードサイズ</entry>
 					</row>
 					<row>
 						<entry>ep_warmup_dups</entry>
-						<entry>Number of Duplicate items encountered during warmup</entry>
+						<entry>ウォームアップ中に発生した重複アイテム数</entry>
 					</row>
 					<row>
 						<entry>ep_warmup_min_items_threshold</entry>
-						<entry>Percentage of total items warmed up before we enable traffic</entry>
+						<entry>トラフィック受付け前にウォームアップされたアイテムの割合</entry>
 					</row>
 					<row>
 						<entry>ep_warmup_min_memory_threshold</entry>
-						<entry>Percentage of max mem warmed up before we enable traffic</entry>
+						<entry>トラフィックを受付けるまでにウォームアップする最大メモリの割合</entry>
 					</row>
 					<row>
 						<entry>ep_warmup_oom</entry>
-						<entry>The amount of oom errors that occurred during warmup</entry>
+						<entry>ウォームアップ中に発生したOOMエラー回数</entry>
 					</row>
 					<row>
 						<entry>ep_warmup_thread</entry>
-						<entry>The status of the warmup thread</entry>
+						<entry>ウォームアップスレッドのステータス</entry>
 					</row>
 					<row>
 						<entry>ep_warmup_time</entry>
-						<entry>The amount of time warmup took</entry>
+						<entry>ウォームアップ処理時間</entry>
 					</row>
 				</tbody>
 			</tgroup>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="cbstats-generalform">
-  <title>General form</title>
-  <shortdesc>This section describes the general form of statistics.</shortdesc>
+<reference xml:lang="en" id="cbstats-generalform">
+  <title>共通形式</title>
+  <shortdesc>このセクションでは統計情報の共通形式を解説します。</shortdesc>
   <refbody>
-    <section><title>Description</title>
-    <p>The following sample statistics show that disk_insert took 8–16µs 9,488 times, 16–32µs 290
-      times, and so on.</p>
+    <section><title>説明</title>
+    <p>以下のサンプル統計情報は8-16µsかかったdisk_insertが9,488回、16–32µsが290回発生していることを示しています。</p>
     
       <codeblock>
 STAT disk_insert_8,16 9488
@@ -21,7 +20,7 @@ STAT disk_insert_1024,2048 1
 
 
 
-      <p>The same statistics displayed by the CLI <codeph>cbstats</codeph> tool looks like the following:</p>
+      <p>同様の統計情報がCLIの<codeph>cbstats</codeph>ツールで以下のように表示されます:</p>
       <codeblock>
 disk_insert (10008 total)
 8us - 16us : ( 94.80%) 9488 ###########################################
