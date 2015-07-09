@@ -1,57 +1,52 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>XDCR in cloud deployments</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>クラウド環境でのXDCR</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a><ul class="sub-sections"><li class="section"><a href="../Concepts/swap-space.html"><span>Swap space</span></a></li><li class="section"><a href="../Concepts/bp-clusterDesign.html"><span>クラスタ設計の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-sizingGuidelines.html"><span>Sizing guidelines</span></a></li><li class="section"><a href="../Concepts/bp-deployment-strategies.html"><span>Deployment strategies</span></a></li><li class="section"><a href="../Concepts/bp-maintenance.html"><span>Ongoing monitoring and maintenance</span></a></li><li class="section"><a href="../Concepts/bp-firewall.html"><span>Couchbase behind a secondary firewall</span></a></li><li class="section"><a href="../Concepts/bp-cloudDeployment.html"><span>クラウドでCouchbaseを利用する</span></a></li><li class="section"><a href="../Tasks/xdcr-cloud.html" class="current"><span>XDCR in cloud deployments</span></a><ul class="sub-sections"></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-  <h1 class="title topictitle1">XDCR in cloud deployments</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a><ul class="sub-sections"><li class="section"><a href="../Concepts/swap-space.html"><span>Swap領域</span></a></li><li class="section"><a href="../Concepts/bp-clusterDesign.html"><span>クラスタ設計の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-sizingGuidelines.html"><span>サイジングガイドライン</span></a></li><li class="section"><a href="../Concepts/bp-deployment-strategies.html"><span>デプロイ戦略</span></a></li><li class="section"><a href="../Concepts/bp-maintenance.html"><span>継続的な監視とメンテナンス</span></a></li><li class="section"><a href="../Concepts/bp-firewall.html"><span>Couchbaseと二次ファイアウォール</span></a></li><li class="section"><a href="../Concepts/bp-cloudDeployment.html"><span>クラウドでCouchbaseを利用する</span></a></li><li class="section"><a href="../Tasks/xdcr-cloud.html" class="current"><span>クラウド環境でのXDCR</span></a><ul class="sub-sections"></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">クラウド環境でのXDCR</h1>
 
-  <div class="body">
-    <p class="p">If you want to use XDCR within a cloud deployment to replicate between two or more clusters
-      that are deployed in the cloud, there are some additional configuration requirements:</p>
+  <div class="body"><p class="shortdesc">XDCR (クロスデータセンタレプリケーション)はクラウド上にデプロイされたクラスタ間でのデータレプリケーションに利用できます。</p>
 
-    <ul class="ul">
-      <li class="li">Use a public DNS names and public IP addresses for nodes in your clusters.</li>
+    <p class="p">クラウド上にデプロイした二つ以上のクラスタ間でレプリケートするには、以下の設定に注意してください:</p>
 
-    </ul>
+    <dl class="dl">
+      
+        <dt class="dt dlterm">パブリックDNS名とパブリックIPアドレスを利用する</dt>
 
-    <p class="p">Cloud services support the use of a public IP address to allow communication to the nodes
-      within the cluster. Within the cloud deployment environment, the public IP address will
-      resolve internally within the cluster, but allow external communication. In Amazon EC2, for
-      example, ensure that you have enabled the public interface in your instance configuration,
-      that the security parameters allow communication to the required ports, and that public DNS
-      record exposed by Amazon is used as the reference name.</p>
+				<dd class="dd">パブリックDNS名とパブリックIPアドレスをクラスタ内のノードで利用できます。
+					クラウドサービスはパブリックIPアドレスをクラスタ内のノード間通信で利用することをサポートしています。
+					クラウドのデプロイ環境では、パブリックIPアドレスはクラスタ内で解決されますが、外部通信も許容しています。 </dd>
 
-    <p class="p">Configure the cluster with a fixed IP address and the public DNS name according to
-      the recommendations for using Couchbase in the cloud.</p>
+        <dd class="dd">例えば、Amazon EC2では、インスタンス設定でパブリックインタフェースを有効にして、セキュリティパラメータが必要なポートで通信を許可し、Amazonにより公開されているパブリックDNSレコードを参照名として利用するようにしてください。</dd>
 
-    <ul class="ul">
-      <li class="li">Use a DNS service to identify or register a CNAME that points to the public DNS address of
-        each node within the cluster. This will allow you to configure XDCR to use the CNAME to a
-        node in the cluster. The CNAME will be constant, even though the underlying public DNS
-        address may change within the cloud service.</li>
+        <dd class="dd">Couchbaseをクラウドで利用する際は、推奨設定に従って、クラスタを固定IPアドレスとパブリックDNS名で構築します。</dd>
 
-    </ul>
+      
+    </dl>
 
-    <p class="p">The CNAME record entry can then be used as the destination IP address when configuring
-      replication between the clusters using XDCR. If a transient failure causes the public DNS
-      address for a given cluster node to change, update the CNAME to point to the updated public
-      DNS address provided by the cloud service.</p>
+    
+    <dl class="dl">
+      
+        <dt class="dt dlterm">DNSサービスの利用</dt>
 
-    <p class="p">By updating the CNAME records, replication should be able to persist over a public, internet-
-      based connection, even though the individual IP of different nodes within each cluster
-      configured in XDCR.</p>
+        <dd class="dd">クラスタ内のノードでパブリックDNS名とパブリックIPアドレスを利用できます。 DNSサービスを利用して、クラスタ内の各ノードのパブリックDNSアドレスを指し示す<samp class="ph codeph">CNAME</samp>の特定や登録をします。 これにより、XDCRがクラスタ内のノードに<samp class="ph codeph">CNAME</samp>を使用するように設定できます。 クラウドサービス内のパブリックDNSアドレスが変わったとしても<samp class="ph codeph">CNAME</samp>は不変です。</dd>
 
-    <p class="p">For additional security, you should configure your security groups to allow traffic only on
-      the required ports between the IP addresses for each cluster. To configure security groups,
-      you will need to specify the inbound port and IP address range. You will also need to ensure
-      that the security also includes the right port and IP addresses for the remainder of your
-      cluster to allow communication between the nodes within the cluster.</p>
+        <dd class="dd">このため、クラスタ間のレプリケーションに利用するXDCRの設定時に、宛先のIPアドレスとして<samp class="ph codeph">CNAME</samp>レコードエントリを指定できます。 一時的な障害が原因であるクラスタノードのパブリックDNSアドレスが変わった場合、<samp class="ph codeph">CNAME</samp>を更新し、クラウドサービスで提供された最新のパブリックDNSアドレスを設定します。</dd>
+
+        <dd class="dd">XDCRで設定されている各クラスタ内のノードのIPアドレスが変わっても、<samp class="ph codeph">CNAME</samp>レコードを更新することで、レプリケーションはパブリックなインターネットベースのコネクションでも継続することができます。</dd>
+
+      
+    </dl>
+
+    
+    
+    <p class="p">セキュリティを高めるために、各クラスタのIPアドレス間で必要なポートのトラフィックのみを許可するようにセキュリティグループを設定すべきです。 セキュリティグループの設定には、インバウンドポートとIPアドレスの範囲を指定する必要があります。 同時に、クラスタ内のノード間の通信を許可するために、正しいポートとIPアドレスをセキュリティグループの設定に含めてください。</p>
 
     
   </div>
 
   <nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/bp-deployment-considerations.html" title="アクセス制限、ノード間通信、スワップの設定、接続タイムアウトなどの考慮事項について説明します。">デプロイ構成の考慮事項</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/bp-cloudDeployment.html" title="Couchbase Serverは、非常に簡単にクラウド上にデプロイすることが出来ます。">クラウドでCouchbaseを利用する</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Concepts/bp-deployment-considerations.html" title="アクセス制限、ノード間通信、スワップの設定、接続タイムアウトなどの考慮事項について説明します。">デプロイ構成の考慮事項</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../Concepts/bp-cloudDeployment.html" title="Couchbase Serverは、非常に簡単にクラウド上にデプロイすることが出来ます。">クラウドでCouchbaseを利用する</a></div>
 </div>
 
 <div class="linklist linklist">

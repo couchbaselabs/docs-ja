@@ -1,105 +1,88 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Sizing guidelines</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>サイジングガイドライン</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a><ul class="sub-sections"><li class="section"><a href="../Concepts/swap-space.html"><span>Swap space</span></a></li><li class="section"><a href="../Concepts/bp-clusterDesign.html"><span>クラスタ設計の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Concepts/bp-sizingGuidelines.html" class="current"><span>Sizing guidelines</span></a><ul class="sub-sections"><li class="section"><a href="../Concepts/bp-disk-throughput.html"><span>Disk throughput and sizing</span></a></li></ul></li><li class="section"><a href="../Concepts/bp-deployment-strategies.html"><span>Deployment strategies</span></a></li><li class="section"><a href="../Concepts/bp-maintenance.html"><span>Ongoing monitoring and maintenance</span></a></li><li class="section"><a href="../Concepts/bp-firewall.html"><span>Couchbase behind a secondary firewall</span></a></li><li class="section"><a href="../Concepts/bp-cloudDeployment.html"><span>クラウドでCouchbaseを利用する</span></a></li><li class="section"><a href="../Tasks/xdcr-cloud.html"><span>XDCR in cloud deployments</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-	<h1 class="title topictitle1">Sizing guidelines</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a><ul class="sub-sections"><li class="section"><a href="../Concepts/swap-space.html"><span>Swap領域</span></a></li><li class="section"><a href="../Concepts/bp-clusterDesign.html"><span>クラスタ設計の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Concepts/bp-sizingGuidelines.html" class="current"><span>サイジングガイドライン</span></a><ul class="sub-sections"><li class="section"><a href="../Concepts/bp-disk-throughput.html"><span>ディスクのスループットとサイジング</span></a></li></ul></li><li class="section"><a href="../Concepts/bp-deployment-strategies.html"><span>デプロイ戦略</span></a></li><li class="section"><a href="../Concepts/bp-maintenance.html"><span>継続的な監視とメンテナンス</span></a></li><li class="section"><a href="../Concepts/bp-firewall.html"><span>Couchbaseと二次ファイアウォール</span></a></li><li class="section"><a href="../Concepts/bp-cloudDeployment.html"><span>クラウドでCouchbaseを利用する</span></a></li><li class="section"><a href="../Tasks/xdcr-cloud.html"><span>クラウド環境でのXDCR</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+	<h1 class="title topictitle1">サイジングガイドライン</h1>
 
 	
-	<div class="body"><p class="shortdesc">The primary considerations for sizing a Couchbase Server cluster are the number of
-		nodes and node size.</p>
+	<div class="body"><p class="shortdesc">Couchbase Serverクラスタのサイジングで最も考慮すべき点は、ノード数とノードスペックです。</p>
 
-		<p class="p">When sizing your Couchbase Server cluster, ask the following questions:</p>
+		<p class="p">Couchbase Serverクラスタのサイジングを行う際は、以下の設問を利用します:</p>
 
 		<ul class="ul">
-			<li class="li">How many nodes do I need?</li>
+			<li class="li">何台のノードが必要か?</li>
 
-			<li class="li">How large (RAM, CPU, disk space) must those nodes be?</li>
+			<li class="li">これらのノードはどの程度のスペック(RAM、CPU、ディスク容量)であるべきか?</li>
 
 		</ul>
 
-		<p class="p">To determine the number of nodes needed for a cluster, consider the following:</p>
+		<p class="p">クラスタで必要なノード数を決定するには、以下を考慮してください:</p>
 
 		<ul class="ul">
 			<li class="li">RAM</li>
 
-			<li class="li">Disk throughput and sizing</li>
+			<li class="li">ディスクスループットとサイジング</li>
 
-			<li class="li">Network bandwidth</li>
+			<li class="li">ネットワーク帯域</li>
 
-			<li class="li">Data distribution and safety</li>
+			<li class="li">データ分散と安全性</li>
 
 		</ul>
 
-		<p class="p">Due to the in-memory nature of Couchbase Server, RAM is usually the determining factor for
-			sizing. However, the primary sizing factor depends on the actual data set and the
-			information being stored. For example:</p>
+		<p class="p">Couchbase Serverのインメモリな性質として、RAMは通常サイジングを決定する要素になります。
+			しかしながら、主なサイジング要素は実際のデータセットと保存される情報に依存します。 例えば:</p>
 
 		<ul class="ul">
-			<li class="li">If you have a very small data set with a very high load, you must calculate the size based
-				more on the network bandwidth than RAM.</li>
+			<li class="li">非常に小さなデータセットに対し、非常に頻繁にアクセスする場合、RAMよりもネットワーク帯域をベースにサイジングを計算すべきです。</li>
 
-			<li class="li">If you have a very high write rate, you’ll need more nodes to support the disk throughput
-				that is needed to persist all that data (and likely more RAM to buffer the incoming
-				writes).</li>
+			<li class="li">非常に高いデータ更新頻度の場合、より多くのノードで、すべてのデータを永続化するために必要なディスクスループットをサポートする必要があるでしょう (加えて更新リクエストのバッファ用により多くのRAMも必要になります)。</li>
 
-			<li class="li">Even with a very small data set under low load, you might want three nodes for proper
-				distribution and safety.</li>
+			<li class="li">非常に小さなデータセットで、アクセス頻度も低い場合でも、分散と安全性を担保するために、3台のノードが必要でしょう。</li>
 
 		</ul>
 
-		<p class="p">With Couchbase Server, you can increase the capacity of your cluster (RAM, disk, CPU, or
-			network) by increasing the number of nodes within the cluster, since each limit will be
-			increased linearly as the cluster size is increased.</p>
+		<p class="p">Couchbase Serverでは、クラスタ内のノード台数を増やすことでクラスタのキャパシティ(RAM、ディスク、CPU、ネットワーク)を拡張できます。それぞれの上限がクラスタサイズを増やすことでリニアに増加します。</p>
 
 		
 		<dl class="dl">
 			
-				<dt class="dt dlterm">RAM sizing</dt>
+				<dt class="dt dlterm">RAMサイジング</dt>
 
-				<dd class="dd">RAM is usually the most critical sizing parameter. It is also the one that can have most
-					impact on performance and stability.</dd>
+				<dd class="dd">RAMは通常最もクリティカルなサイジングパラメータです。 また、性能や安定性に最も影響を与えます。</dd>
 
 			
 		</dl>
 
 		<dl class="dl">
 			
-				<dt class="dt dlterm">Working set</dt>
+				<dt class="dt dlterm">ワーキングセット</dt>
 
-				<dd class="dd">The working set is the data that the client application actively uses at any point in time.
-					Ideally, all of the working set lives in memory, which impacts the amount of
-					needed memory.</dd>
+				<dd class="dd">ワーキングセットはクライアントアプリケーションがアクティブに利用するデータです。
+					ワーキングセットがメモリ内に常駐するのが理想的で、これは必要なメモリ容量に影響します。</dd>
 
 			
 		</dl>
 
 <dl class="dl">
 	
-		<dt class="dt dlterm">Memory quota</dt>
+		<dt class="dt dlterm">メモリ割当量</dt>
 
-		<dd class="dd">It is very important that your Couchbase cluster’s size corresponds to the working set size
-					and total data you expect. The goal is to size the available RAM so that all
-					your document IDs, the document ID meta data, and the working set values fit.
-					The memory must rest just below the point at which Couchbase Server will
-					start evicting values to disk (the High Water Mark).</dd>
+		<dd class="dd">予定しているワーキングセットサイズと、全データサイズに応じてCouchbaseクラスタをサイジングすることは非常に重要です。 サイジングのゴールはすべてのドキュメントID、ドキュメントIDメタデータ、そしてワーキングセットのバリューが収まるRAMをサイジングすることです。
+					Couchbase ServerがRAMからディスクへとバリューの除去を開始するポイント(高水位)よりも、メモリ利用が下回る必要があります。</dd>
 
 	
 </dl>
 
 		
 			
-			<div class="note important"><span class="importanttitle">Important:</span> You will not be able to allocate all your machine RAM to a Couchbase
-			Server node (<samp class="ph codeph">per_node_ram_quota</samp> parameter) because other programs might
-			be running on your machine.</div>
+			<div class="note important"><span class="importanttitle">重要:</span> Couchbase Serverノードにマシンの全RAMを割り当てることはできません(<samp class="ph codeph">per_node_ram_quota</samp>)、他のプログラムもマシン上で稼働するためです。</div>
 
 			
-			<p class="p">How much memory and disk space per node you will need depends on several different
-			variables.</p>
+			<p class="p">ノードごとにどの程度メモリやディスク領域が必要になるかはいくつかの様々な要素に依存します。</p>
 
 			
 			
-			<p class="p">The following are per-bucket calculations amnd must be summed up across all buckets. If all
-			the buckets have the same configuration, treat the total data as a single bucket. There
-			is no per-bucket overhead that needs to be considered.</p>
+			<p class="p">以下はバケット単位の計算方法で、複数のバケットすべてで合計する必要があります。 すべてのバケットが同一の設定であれば、全体のデータを単一バケットとして扱うこともできます。
+				バケット単位のオーバヘッドは考慮する必要はありません。</p>
 
 			
 			
@@ -108,9 +91,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="25%" id="d52589e125">Variable</th>
+						<th class="entry" valign="top" width="25%" id="d52590e125">変数</th>
 
-						<th class="entry" valign="top" width="75%" id="d52589e128">Description</th>
+						<th class="entry" valign="top" width="75%" id="d52590e128">説明</th>
 
 					</tr>
 
@@ -118,44 +101,44 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e125 "><var class="keyword varname">documents_num</var></td>
+						<td class="entry" valign="top" width="25%" headers="d52590e125 "><var class="keyword varname">documents_num</var></td>
 
-						<td class="entry" valign="top" width="75%" headers="d52589e128 ">The total number of documents you expect in your working set</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e125 "><var class="keyword varname">ID_size</var></td>
-
-						<td class="entry" valign="top" width="75%" headers="d52589e128 ">The average size of document IDs</td>
+						<td class="entry" valign="top" width="75%" headers="d52590e128 ">ワーキングセットのドキュメント総数</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e125 "><var class="keyword varname">value_size</var></td>
+						<td class="entry" valign="top" width="25%" headers="d52590e125 "><var class="keyword varname">ID_size</var></td>
 
-						<td class="entry" valign="top" width="75%" headers="d52589e128 ">The average size of values</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e125 "><var class="keyword varname">number_of_replicas</var></td>
-
-						<td class="entry" valign="top" width="75%" headers="d52589e128 ">The number of copies of the original data you want to keep</td>
+						<td class="entry" valign="top" width="75%" headers="d52590e128 ">ドキュメントIDの平均サイズ</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e125 "><var class="keyword varname">working_set_percentage</var></td>
+						<td class="entry" valign="top" width="25%" headers="d52590e125 "><var class="keyword varname">value_size</var></td>
 
-						<td class="entry" valign="top" width="75%" headers="d52589e128 ">The percentage of your data you want in memory</td>
+						<td class="entry" valign="top" width="75%" headers="d52590e128 ">バリューの平均サイズ</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e125 "><var class="keyword varname">per_node_ram_quota</var></td>
+						<td class="entry" valign="top" width="25%" headers="d52590e125 "><var class="keyword varname">number_of_replicas</var></td>
 
-						<td class="entry" valign="top" width="75%" headers="d52589e128 ">How much RAM can be assigned to Couchbase </td>
+						<td class="entry" valign="top" width="75%" headers="d52590e128 ">オリジナルデータのコピーをいくつ保持するか</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="25%" headers="d52590e125 "><var class="keyword varname">working_set_percentage</var></td>
+
+						<td class="entry" valign="top" width="75%" headers="d52590e128 ">メモリ内に保持するデータのパーセンテージ</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="25%" headers="d52590e125 "><var class="keyword varname">per_node_ram_quota</var></td>
+
+						<td class="entry" valign="top" width="75%" headers="d52590e128 ">Couchbaseに割り当てられるメモリ容量 </td>
 
 					</tr>
 
@@ -165,7 +148,7 @@
 </div>
 
 			
-			<p class="p">Use the following items to calculate how much memory you need:</p>
+			<p class="p">必要なメモリ容量の計算には以下の項目を利用します:</p>
 
 			
 			
@@ -174,9 +157,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="33.33333333333333%" id="d52589e214">Constant</th>
+						<th class="entry" valign="top" width="33.33333333333333%" id="d52590e214">定数</th>
 
-						<th class="entry" valign="top" width="66.66666666666666%" id="d52589e217">Description</th>
+						<th class="entry" valign="top" width="66.66666666666666%" id="d52590e217">説明</th>
 
 					</tr>
 
@@ -184,36 +167,30 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="33.33333333333333%" headers="d52589e214 ">Metadata per document (metadata_per_document)</td>
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d52590e214 ">ドキュメント単位のメタデータ (metadata_per_document)</td>
 
-						<td class="entry" valign="top" width="66.66666666666666%" headers="d52589e217 ">This is the amount of memory that Couchbase needs to store metadata
-							per document. Metadata uses 56 bytes. All the metadata needs to live in
-							memory while a node is running and serving data.</td>
+						<td class="entry" valign="top" width="66.66666666666666%" headers="d52590e217 ">これはCouchbaseがドキュメントごとのメタデータを保持するために必要なメモリ容量です。 メタデータは56 byte利用します。 ノードが稼働中でデータをサービスしている間、すべてのメタデータはメモリ内に保持しなくてはなりません。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="33.33333333333333%" headers="d52589e214 ">SSD or Spinning</td>
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d52590e214 ">SSDまたは回転式ディスク</td>
 
-						<td class="entry" valign="top" width="66.66666666666666%" headers="d52589e217 ">SSDs give better I/O performance.</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="33.33333333333333%" headers="d52589e214 ">headroom</td>
-
-						<td class="entry" valign="top" width="66.66666666666666%" headers="d52589e217 ">The cluster needs additional overhead to store metadata. That space
-							is called the headroom. This requires approximately 25–30% more space
-							than the raw RAM requirements for your dataset. Since SSDs are faster
-							than spinning (traditional) hard disks, you should set aside 25% of
-							memory for SSDs and 30% of memory for spinning hard disks.</td>
+						<td class="entry" valign="top" width="66.66666666666666%" headers="d52590e217 ">SSDはより良いI/O性能を提供します。</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="33.33333333333333%" headers="d52589e214 ">High Water Mark (high_water_mark)</td>
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d52590e214 ">headroom</td>
 
-						<td class="entry" valign="top" width="66.66666666666666%" headers="d52589e217 ">By default, the high water mark for a node’s RAM is set at 85%.
+						<td class="entry" valign="top" width="66.66666666666666%" headers="d52590e217 ">クラスタはメタデータ保存用に追加のオーバヘッドを必要とします。 この領域をheadroomと呼びます。 データセット自体が必要とするRAMに対し、およそ25-30%余分に領域が必要です。 SSDは回転式ハードディスク(伝統的)よりも高速なため、SSDでは25%、回転式ハードディスクでは30%のメモリとします。</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d52590e214 ">高水位 (high_water_mark)</td>
+
+						<td class="entry" valign="top" width="66.66666666666666%" headers="d52590e217 ">デフォルトではノードのRAMの高水位は85%に設定されます。
 						</td>
 
 					</tr>
@@ -222,8 +199,7 @@
 
 			</table>
 </div>
-<p class="p">This is a rough guideline to size your
-				cluster:</p>
+<p class="p">以下はクラスタサイジングガイドラインの概要です:</p>
 
 			
 			
@@ -232,9 +208,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="33.33333333333333%" id="d52589e278">Variable</th>
+						<th class="entry" valign="top" width="33.33333333333333%" id="d52590e278">変数</th>
 
-						<th class="entry" valign="top" width="66.66666666666666%" id="d52589e281">Calculation</th>
+						<th class="entry" valign="top" width="66.66666666666666%" id="d52590e281">計算式</th>
 
 					</tr>
 
@@ -242,47 +218,47 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="33.33333333333333%" headers="d52589e278 "><var class="keyword varname">no_of_copies</var></td>
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d52590e278 "><var class="keyword varname">no_of_copies</var></td>
 
-						<td class="entry" valign="top" width="66.66666666666666%" headers="d52589e281 "><samp class="ph codeph">1 + number_of_replicas</samp></td>
+						<td class="entry" valign="top" width="66.66666666666666%" headers="d52590e281 "><samp class="ph codeph">1 + number_of_replicas</samp></td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="33.33333333333333%" headers="d52589e278 "><var class="keyword varname">total_metadata</var>. All the documents need to live in the memory.</td>
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d52590e278 "><var class="keyword varname">total_metadata</var>. 全ドキュメントのメタデータがメモリに保持される必要があります。</td>
 
-						<td class="entry" valign="top" width="66.66666666666666%" headers="d52589e281 "><samp class="ph codeph">(documents_num) * (metadata_per_document + ID_size) *
+						<td class="entry" valign="top" width="66.66666666666666%" headers="d52590e281 "><samp class="ph codeph">(documents_num) * (metadata_per_document + ID_size) *
 								(no_of_copies)</samp></td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="33.33333333333333%" headers="d52589e278 "><var class="keyword varname">total_dataset</var></td>
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d52590e278 "><var class="keyword varname">total_dataset</var></td>
 
-						<td class="entry" valign="top" width="66.66666666666666%" headers="d52589e281 "><samp class="ph codeph">(documents_num) * (value_size) *
+						<td class="entry" valign="top" width="66.66666666666666%" headers="d52590e281 "><samp class="ph codeph">(documents_num) * (value_size) *
 							(no_of_copies)</samp></td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="33.33333333333333%" headers="d52589e278 "><var class="keyword varname">working_set</var></td>
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d52590e278 "><var class="keyword varname">working_set</var></td>
 
-						<td class="entry" valign="top" width="66.66666666666666%" headers="d52589e281 "><samp class="ph codeph">total_dataset * (working_set_percentage)</samp></td>
+						<td class="entry" valign="top" width="66.66666666666666%" headers="d52590e281 "><samp class="ph codeph">total_dataset * (working_set_percentage)</samp></td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="33.33333333333333%" headers="d52589e278 ">Cluster RAM quota required</td>
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d52590e278 ">クラスタで必要なRAM容量</td>
 
-						<td class="entry" valign="top" width="66.66666666666666%" headers="d52589e281 "><samp class="ph codeph">(total_metadata + working_set) * (1 + headroom) /
+						<td class="entry" valign="top" width="66.66666666666666%" headers="d52590e281 "><samp class="ph codeph">(total_metadata + working_set) * (1 + headroom) /
 								(high_water_mark)</samp></td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="33.33333333333333%" headers="d52589e278 ">number of nodes</td>
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d52590e278 ">必要なノード台数</td>
 
-						<td class="entry" valign="top" width="66.66666666666666%" headers="d52589e281 "><samp class="ph codeph">Cluster RAM quota required / per_node_ram_quota</samp>
+						<td class="entry" valign="top" width="66.66666666666666%" headers="d52590e281 "><samp class="ph codeph">クラスタで必要なRAM容量 / per_node_ram_quota</samp>
 						</td>
 
 					</tr>
@@ -293,10 +269,9 @@
 </div>
 
 			
-			<div class="note important"><span class="importanttitle">Important:</span> You will need at least the number of replicas + 1 nodes regardless of your
-				data size.</div>
+			<div class="note important"><span class="importanttitle">重要:</span> データサイズに関わらず、少なくともレプリカ数 + 1台のノードが必要です。</div>
 
-			<p class="p">The following is a sample sizing calculation:</p>
+			<p class="p">以下はサイジング計算のサンプルです:</p>
 
 			
 			
@@ -305,9 +280,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="25%" id="d52589e376">Input Variable</th>
+						<th class="entry" valign="top" width="25%" id="d52590e376">変数</th>
 
-						<th class="entry" valign="top" width="75%" id="d52589e379">value</th>
+						<th class="entry" valign="top" width="75%" id="d52590e379">値</th>
 
 					</tr>
 
@@ -315,37 +290,37 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e376 "><var class="keyword varname">documents_num</var></td>
+						<td class="entry" valign="top" width="25%" headers="d52590e376 "><var class="keyword varname">documents_num</var></td>
 
-						<td class="entry" valign="top" width="75%" headers="d52589e379 ">1,000,000</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e376 "><var class="keyword varname">ID_size</var></td>
-
-						<td class="entry" valign="top" width="75%" headers="d52589e379 ">100</td>
+						<td class="entry" valign="top" width="75%" headers="d52590e379 ">1,000,000</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e376 "><var class="keyword varname">value_size</var></td>
+						<td class="entry" valign="top" width="25%" headers="d52590e376 "><var class="keyword varname">ID_size</var></td>
 
-						<td class="entry" valign="top" width="75%" headers="d52589e379 ">10,000</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e376 "><var class="keyword varname">number_of_replicas</var></td>
-
-						<td class="entry" valign="top" width="75%" headers="d52589e379 ">1</td>
+						<td class="entry" valign="top" width="75%" headers="d52590e379 ">100</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e376 "><var class="keyword varname">working_set_percentage</var></td>
+						<td class="entry" valign="top" width="25%" headers="d52590e376 "><var class="keyword varname">value_size</var></td>
 
-						<td class="entry" valign="top" width="75%" headers="d52589e379 ">20% </td>
+						<td class="entry" valign="top" width="75%" headers="d52590e379 ">10,000</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="25%" headers="d52590e376 "><var class="keyword varname">number_of_replicas</var></td>
+
+						<td class="entry" valign="top" width="75%" headers="d52590e379 ">1</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="25%" headers="d52590e376 "><var class="keyword varname">working_set_percentage</var></td>
+
+						<td class="entry" valign="top" width="75%" headers="d52590e379 ">20% </td>
 
 					</tr>
 
@@ -361,9 +336,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="25%" id="d52589e451">Constants</th>
+						<th class="entry" valign="top" width="25%" id="d52590e451">定数</th>
 
-						<th class="entry" valign="top" width="75%" id="d52589e454">value</th>
+						<th class="entry" valign="top" width="75%" id="d52590e454">値</th>
 
 					</tr>
 
@@ -371,30 +346,30 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e451 ">Type of Storage</td>
+						<td class="entry" valign="top" width="25%" headers="d52590e451 ">ストレージの種類</td>
 
-						<td class="entry" valign="top" width="75%" headers="d52589e454 ">SSD</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e451 ">overhead_percentage</td>
-
-						<td class="entry" valign="top" width="75%" headers="d52589e454 ">25%</td>
+						<td class="entry" valign="top" width="75%" headers="d52590e454 ">SSD</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e451 ">metadata_per_document</td>
+						<td class="entry" valign="top" width="25%" headers="d52590e451 ">overhead_percentage</td>
 
-						<td class="entry" valign="top" width="75%" headers="d52589e454 ">56 for 2.1 and higher, 64 for 2.0.x</td>
+						<td class="entry" valign="top" width="75%" headers="d52590e454 ">25%</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e451 ">high_water_mark</td>
+						<td class="entry" valign="top" width="25%" headers="d52590e451 ">metadata_per_document</td>
 
-						<td class="entry" valign="top" width="75%" headers="d52589e454 ">85% </td>
+						<td class="entry" valign="top" width="75%" headers="d52590e454 ">2.1 以降は56、 2.0.x は64</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="25%" headers="d52590e451 ">high_water_mark</td>
+
+						<td class="entry" valign="top" width="75%" headers="d52590e454 ">85% </td>
 
 					</tr>
 
@@ -410,14 +385,9 @@
 				
 				<thead class="thead" align="left">
 					<tr class="row">
-						<th class="entry" valign="top" width="25%" id="d52589e512">git status</th>
+						<th class="entry" valign="top" width="25%" id="d52590e512">変数</th>
 
-					</tr>
-
-					<tr class="row">
-						<th class="entry" valign="top" width="25%" id="d52589e518">Variable</th>
-
-						<th class="entry" valign="top" width="75%" id="d52589e521">Calculation</th>
+						<th class="entry" valign="top" width="75%" id="d52590e515">計算式</th>
 
 					</tr>
 
@@ -425,37 +395,37 @@
 
 				<tbody class="tbody">
 					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e512 d52589e518 "><var class="keyword varname">no_of_copies</var></td>
+						<td class="entry" valign="top" width="25%" headers="d52590e512 "><var class="keyword varname">no_of_copies</var></td>
 
-						<td class="entry" valign="top" width="75%" headers="d52589e521 ">= 1 for original and 1 for replica</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e512 d52589e518 "><var class="keyword varname">total_metadata</var></td>
-
-						<td class="entry" valign="top" width="75%" headers="d52589e521 ">= 1,000,000 * (100 + 56) * (2) = 312,000,000</td>
+						<td class="entry" valign="top" width="75%" headers="d52590e515 ">= オリジナルに1、レプリカに1</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e512 d52589e518 "><var class="keyword varname">total_dataset</var></td>
+						<td class="entry" valign="top" width="25%" headers="d52590e512 "><var class="keyword varname">total_metadata</var></td>
 
-						<td class="entry" valign="top" width="75%" headers="d52589e521 ">= 1,000,000 * (10,000) * (2) = 20,000,000,000</td>
-
-					</tr>
-
-					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e512 d52589e518 "><var class="keyword varname">working_set</var></td>
-
-						<td class="entry" valign="top" width="75%" headers="d52589e521 ">= 20,000,000,000 * (0.2) = 4,000,000,000</td>
+						<td class="entry" valign="top" width="75%" headers="d52590e515 ">= 1,000,000 * (100 + 56) * (2) = 312,000,000</td>
 
 					</tr>
 
 					<tr class="row">
-						<td class="entry" valign="top" width="25%" headers="d52589e512 d52589e518 ">Cluster RAM quota required</td>
+						<td class="entry" valign="top" width="25%" headers="d52590e512 "><var class="keyword varname">total_dataset</var></td>
 
-						<td class="entry" valign="top" width="75%" headers="d52589e521 ">= (440,000,000 + 4,000,000,000) * (1+0.25)/(0.7) =
+						<td class="entry" valign="top" width="75%" headers="d52590e515 ">= 1,000,000 * (10,000) * (2) = 20,000,000,000</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="25%" headers="d52590e512 "><var class="keyword varname">working_set</var></td>
+
+						<td class="entry" valign="top" width="75%" headers="d52590e515 ">= 20,000,000,000 * (0.2) = 4,000,000,000</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="25%" headers="d52590e512 ">クラスタで必要なRAM容量</td>
+
+						<td class="entry" valign="top" width="75%" headers="d52590e515 ">= (440,000,000 + 4,000,000,000) * (1+0.25)/(0.7) =
 							7,928,000,000</td>
 
 					</tr>
@@ -466,8 +436,7 @@
 </div>
 
 			
-			<p class="p">For example, if you have 8GB machines and you want to use 6 GB for
-				Couchbase…</p>
+			<p class="p">例えば、8GBのマシンで6GBをCouchbaseに割り当てる場合...</p>
 
 			
 			<pre class="pre codeblock"><code>number of nodes =
@@ -480,20 +449,17 @@
 		
 	
 		
-		<div class="section"><h2 class="title sectiontitle">Network bandwidth</h2>
-			<p class="p">Network bandwidth is not normally a significant
-				factor to consider for cluster sizing. However, clients require network bandwidth to
-				access information in the cluster. Nodes also need network bandwidth to exchange
-				information (node to node).</p>
+		<div class="section"><h2 class="title sectiontitle">ネットワーク帯域</h2>
+			<p class="p">ネットワーク帯域は通常クラスタのサイジングで重要な要素にはなりません。 しかしながら、クライアントがクラスタ内の情報にアクセスするにはネットワーク帯域が必要です。 ノード間で情報をやり取りするためにもネットワーク帯域が必要です。</p>
 
 			
-			<p class="p">In general, calculate your network bandwidth requirements using the following formula:</p>
+			<p class="p">一般的に、ネットワーク帯域要件の計算には、以下の式を利用します:</p>
 
 			
 			<pre class="pre codeblock"><code>Bandwidth = (operations per second * item size) + overhead for rebalancing </code></pre>
 
 			
-			<p class="p">Calculate the <samp class="ph codeph">operations per second</samp> with the following formula:</p>
+			<p class="p"><samp class="ph codeph">秒間オペレーション数</samp>を以下の式で計算します:</p>
 
 			
 			<pre class="pre codeblock"><code>Operations per second = Application reads + (Application writes * Replica copies) </code></pre>
@@ -501,113 +467,88 @@
 			</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Data safety</h2>
-			<p class="p">Make sure you have enough nodes (and the right
-				configuration) in your cluster to keep your data safe. There are two areas to keep
-				in mind: how you distribute data across nodes and how many replicas you store across
-				your
-				cluster.</p>
+		<div class="section"><h2 class="title sectiontitle">データの安全性</h2>
+			<p class="p">データを安全に保持するためには、クラスタ内で十分なノード台数(そして正しい設定)が必要です。 ノード間での情報の分散と、クラスタ内で保存される情報のレプリカ数という2つの考慮すべき側面があります。</p>
 
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Data distribution</h2>
-			<p class="p">Basically, more nodes are better than less. If
-				you only have two nodes, your data is split across the two nodes, half and half. 
-				This means that half of your dataset is impacted if one goes away. 
-				On the other hand, with ten nodes, only 10% of the dataset is impacted if one nodes goes away. 
-				Even with automatic failover, there still is some period of time when data is unavailable if nodes fail. 
-				This is mitigated by having more nodes.</p>
+		<div class="section"><h2 class="title sectiontitle">データの分散</h2>
+			<p class="p">基本的には、より多くのノードの方が、より少ないノードよりも良いです。 2台しかノードがない場合、データは50%ずつ、2台のノードに分散されます。 
+				これは、1台がダウンした影響がデータセットの半分におよぶことを意味します。 
+				一方で、10台ノードがあれば、データセットの10%だけが1台のノードがダウンした場合に影響を受けます。 
+				自動フェイルオーバを利用していても、ノードがダウンした時にデータが利用できない期間が発生します。 
+				これはより多くのノードを利用することで軽減できます。</p>
 
 			
-			<p class="p">After a failover, the cluster takes on an extra load. 
-				The question is - how heavy is that extra load and are you prepared for it? 
-				Again, with only two nodes, each one needs to be ready to handle the entire load. 
-				With ten, each node only needs to be able to take on an extra tenth of the workload should one fail.</p>
+			<p class="p">フェイルオーバ後にクラスタが受け付ける負荷についても考慮する必要があります。 
+				どれだけ負荷が増加し、それに準備できているか検討が必要です。2台しかなければ、それぞれは1台で全アクセスを処理できる準備ができている必要があります。 
+				10ノードでは、1台のノードが故障した場合、全ワークロードの10分の1を余計に処理できるようにすれば良いのです。</p>
 
 			
-			<p class="p">While two nodes does provide a minimal level of redundancy, we recommend
-				that you always use at least three nodes.</p>
+			<p class="p">2ノードでも最低限の冗長性を提供できますが、常に最小でも3ノードを利用することをお勧めします。</p>
 
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Replication</h2>
-			<p class="p">Couchbase Server authorizes you to configure up to three replicas (creating four copies of the dataset). 
-				In the event of a failure, you can only “fail over” (either manually or automatically) as many nodes as you have
-				replicas. 
-				For example:</p>
+		<div class="section"><h2 class="title sectiontitle">レプリケーション</h2>
+			<p class="p">Couchbase Serverではレプリカ数を3つまで設定できます（データセットのコピーを4つ生成します）。 
+				障害が発生した場合、レプリカ数と同じノード数しか"フェイルオーバ"できません(手動でも自動でも)。 
+				例:</p>
 
 			<ul class="ul">
-				<li class="li">In a five node cluster with one replica, if one node goes down, you can fail
-						it over. If a second node goes down, you no longer have enough replica
-						copies to fail over to and will have to go through a slower process to
-						recover.</li>
+				<li class="li">5台のクラスタでレプリカを1とした場合、1つのノードがダウンすると、それをフェイルオーバできます。 2つ目のノードがダウンすると、フェイルオーバするために十分なレプリカのコピーがないため、より時間のかかる復旧処理を実施しなくてはなりません。</li>
 
-				<li class="li">In a five node cluster with two replicas, if one node goes down, you can fail
-						it over. If a second node goes down, you can fail it over as well. Should a
-						third one go down, you now no longer have replicas to fail over.</li>
+				<li class="li">5ノードのクラスタでレプリカを2つ設定していると、1つのノードがダウンしたら、それをフェイルオーバできます。 2つ目のノードがダウンしても、それをフェイルオーバできます。 3つ目のノードがダウンした場合、フェイルオーバに必要なレプリカが十分に存在しない状態になります。</li>
 
 			</ul>
 
-			<p class="p">After a node goes down and is failed over, try to replace that node as soon as
-				possible and rebalance. The rebalance recreates the replica copies (if you still
-				have enough nodes to do so).</p>
+			<p class="p">ノードがダウンし、フェイルオーバした後は、可能な限り早くそのノードを交換し、リバランスするようにしてください。 リバランスによりレプリカコピーが再作成されます(レプリカ数に十分なノード数がある場合)。</p>
 
 			
-			<div class="note tip"><span class="tiptitle">Tip:</span> As a rule of thumb, configure the following:
+			<div class="note tip"><span class="tiptitle">ヒント:</span> 目安として、以下の設定を推奨します：
 			<ul class="ul">
-				<li class="li">One replica for up to five nodes.</li>
+				<li class="li">5ノードまではレプリカ数1</li>
 
-				<li class="li">One or two replicas for five to ten nodes.</li>
+				<li class="li">5から10ノードはレプリカ数1または2</li>
 
-				<li class="li">One, two, or three replicas for over ten nodes.</li>
+				<li class="li">10ノードより大きなクラスタではレプリカ数1、2あるいは3</li>
 
 			</ul>
 
-				While there can be variations to this, there are diminishing returns from having more replicas in smaller clusters.
+				これには多くのバリエーションがありますが、小規模のクラスタ内で多くのレプリカを持ってもそれほど効果がありません。
 			</div>
 
 			
 			</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Hardware requirements</h2>
-			<p class="p">In general, Couchbase Server has very low
-				hardware requirements and is designed to be run on commodity or virtualized systems.
-				However, as a rough guide to the primary concerns for your servers, the following is recommended:
+		<div class="section"><h2 class="title sectiontitle">ハードウェア要件</h2>
+			<p class="p">一般的にCouchbase Serverのハードウェア要件は非常に低く、コモディティハードウェア、あるいは仮想化システム上で動作するように設計されています。
+				とはいえ、サーバーの主な考慮事項のおおよその目安として:
 				</p>
 
 			<ul class="ul">
-				<li class="li">RAM: This is your primary consideration. We use RAM to store active items,
-						and that is the key reason Couchbase Server has such low latency.</li>
+				<li class="li">RAM: 最も重要です。 アクティブなアイテムを保持し、Couchbase Serverが低いレイテンシを提供する主な理由であるためです。</li>
 
-				<li class="li">CPU: Couchbase Server has very low CPU requirements. The server is
-						multi-threaded and therefore benefits from a multi-core system. We recommend
-						machines with at least four or eight physical cores.</li>
+				<li class="li">CPU: Couchbase ServerのCPU要件は非常に低いものです。 サーバはマルチスレッドであるためマルチコアシステムの恩恵を受けます。 少なくとも4つまたは8つの物理コアを搭載したマシンを推奨します。</li>
 
-				<li class="li">Disk: By decoupling the RAM from the I/O layer, Couchbase Server can support
-						low-performance disks better than other databases. 
-						As a best practice, have separate devices for server install, data
-						directories, and index directories.</li>
+				<li class="li">ディクス: RAMをIO層から切り離すことで、Couchbase Serverは他のデータベースに比べ、低速なディスクであっても効率的に扱うことができます。 
+						ベストプラクティスとして、サーバインストール、データディレクトリ、インデックスディレクトリにはそれぞれ個別のデバイスを利用します。</li>
 
-				<li class="li">Network: Most configurations work with Gigabit Ethernet interfaces. Faster
-					solutions such as 10GBit and Infiniband will provide spare capacity.</li>
+				<li class="li">ネットワーク: ギガビットイーサインタフェースを利用したほとんどの構成で動作します。 10GBitやInfinibandのようにさらに高速なソリューションを利用することもできます。</li>
 
 			</ul>
 
-			<p class="p">Known working configurations include SAN, SAS, SATA, SSD, and EBS with the
-				following recommendations:</p>
+			<p class="p">SAN、SAS、SATA、SSDおよびEBSで動作が確認され、次の構成が推奨されます：</p>
 
 			
 			<ul class="ul">
-				<li class="li">SSDs have been shown to provide a great performance boost both in terms of
-  draining the write queue and also in restoring data from disk (either on
-  cold-boot or for purposes of rebalancing).</li>
+				<li class="li">SSDは書き込みキューを処理する点でも、データをリストアする点（コールドブート及びリバランシング用途）でも優れた性能を発揮することができます。</li>
 
-				<li class="li">RAID generally provides better throughput and reliability.</li>
+				<li class="li">RAIDは、一般的にスループットと信頼性の向上を提供します。</li>
 
-				<li class="li">Striping across EBS volumes (in Amazon EC2) has been shown to increase throughput.</li>
+				<li class="li">（Amazon EC2の）EBSボリュームでストライピングすると、スループットを高めることができます。</li>
 
 			</ul>
 
@@ -615,14 +556,8 @@
 		</div>
 
 		
-		<div class="section"><h2 class="title sectiontitle">Considerations for Cloud environments (that is Amazon EC2)</h2>
-			<p class="p">Due to the
-				unreliability and general lack of consistent I/O performance in cloud environments,
-				we highly recommend lowering the per-node RAM footprint and increasing the number of
-				nodes. This will give better disk throughput and improve rebalancing since
-				each node will have to store (and therefore transmit) less data. By distributing the
-				data further, it lessens the impact of losing a single node (which could be fairly
-				common).</p>
+		<div class="section"><h2 class="title sectiontitle">クラウド環境に関する考慮事項（例えばAmazon EC2）</h2>
+			<p class="p">クラウド環境においては、信頼性や一貫したIO性能が確保できないため、ノード単位のRAMフットプリントを縮小し、ノード数を増やすことをお勧めしています。 これにより、より良いディスクスループットに加え、各ノードが保持するデータが（そして転送するデータも）少なくなるため、リバランスも容易になります。 さらにデータを分散することで、単一のノードが故障した際（一般に起こりえます）に受ける影響も軽減することができます。</p>
 
 		</div>
 
@@ -630,14 +565,14 @@
 
 	<nav class="related-links"><h2>Related information</h2>
 <ol class="olchildlinks">
-<li class="link olchildlink"><a href="../Concepts/bp-disk-throughput.html">Disk throughput and sizing</a><br>
-Couchbase Server decouples RAM from the     I/O layer to enable high scaling.</li>
+<li class="link olchildlink"><a href="../Concepts/bp-disk-throughput.html">ディスクのスループットとサイジング</a><br>
+Couchbase ServerはRAMをI/O層から分離することで高いスケーラビリティを提供します。</li>
 </ol>
 
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/bp-deployment-considerations.html" title="アクセス制限、ノード間通信、スワップの設定、接続タイムアウトなどの考慮事項について説明します。">デプロイ構成の考慮事項</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/bp-clusterDesign.html" title="クラスタ設計はRAM、ノード数、コア数クライアントサイドおよびサーバサイドのmoxiなどを検討する必要があります">クラスタ設計の考慮事項</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Concepts/bp-deployment-strategies.html">Deployment strategies</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Concepts/bp-deployment-considerations.html" title="アクセス制限、ノード間通信、スワップの設定、接続タイムアウトなどの考慮事項について説明します。">デプロイ構成の考慮事項</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../Concepts/bp-clusterDesign.html" title="クラスタ設計はRAM、ノード数、コア数クライアントサイドおよびサーバサイドのmoxiなどを検討する必要があります">クラスタ設計の考慮事項</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Concepts/bp-deployment-strategies.html">デプロイ戦略</a></div>
 </div>
 
 <div class="linklist linklist">
