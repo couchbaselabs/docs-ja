@@ -1,40 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic2417">
-  <title>XDCR in cloud deployments</title>
+<topic xml:lang="ja" id="topic2417">
+  <title>クラウド環境でのXDCR</title><shortdesc>XDCR (クロスデータセンタレプリケーション)はクラウド上にデプロイされたクラスタ間でのデータレプリケーションに利用できます。</shortdesc>
   <body>
-    <p>If you want to use XDCR within a cloud deployment to replicate between two or more clusters
-      that are deployed in the cloud, there are some additional configuration requirements:</p>
-    <ul>
-      <li>Use a public DNS names and public IP addresses for nodes in your clusters.</li>
-    </ul>
-    <p>Cloud services support the use of a public IP address to allow communication to the nodes
-      within the cluster. Within the cloud deployment environment, the public IP address will
-      resolve internally within the cluster, but allow external communication. In Amazon EC2, for
-      example, ensure that you have enabled the public interface in your instance configuration,
-      that the security parameters allow communication to the required ports, and that public DNS
-      record exposed by Amazon is used as the reference name.</p>
-    <p>Configure the cluster with a fixed IP address and the public DNS name according to
-      the recommendations for using Couchbase in the cloud.</p>
-    <ul>
-      <li>Use a DNS service to identify or register a CNAME that points to the public DNS address of
-        each node within the cluster. This will allow you to configure XDCR to use the CNAME to a
-        node in the cluster. The CNAME will be constant, even though the underlying public DNS
-        address may change within the cloud service.</li>
-    </ul>
-    <p>The CNAME record entry can then be used as the destination IP address when configuring
-      replication between the clusters using XDCR. If a transient failure causes the public DNS
-      address for a given cluster node to change, update the CNAME to point to the updated public
-      DNS address provided by the cloud service.</p>
-    <p>By updating the CNAME records, replication should be able to persist over a public, internet-
-      based connection, even though the individual IP of different nodes within each cluster
-      configured in XDCR.</p>
-    <p>For additional security, you should configure your security groups to allow traffic only on
-      the required ports between the IP addresses for each cluster. To configure security groups,
-      you will need to specify the inbound port and IP address range. You will also need to ensure
-      that the security also includes the right port and IP addresses for the remainder of your
-      cluster to allow communication between the nodes within the cluster.</p>
+    <p>クラウド上にデプロイした二つ以上のクラスタ間でレプリケートするには、以下の設定に注意してください:</p>
+    <dl>
+      <dlentry>
+        <dt>パブリックDNS名とパブリックIPアドレスを利用する</dt>
+				<dd>パブリックDNS名とパブリックIPアドレスをクラスタ内のノードで利用できます。
+					クラウドサービスはパブリックIPアドレスをクラスタ内のノード間通信で利用することをサポートしています。
+					クラウドのデプロイ環境では、パブリックIPアドレスはクラスタ内で解決されますが、外部通信も許容しています。 </dd>
+        <dd>例えば、Amazon EC2では、インスタンス設定でパブリックインタフェースを有効にして、セキュリティパラメータが必要なポートで通信を許可し、Amazonにより公開されているパブリックDNSレコードを参照名として利用するようにしてください。</dd>
+        <dd>Couchbaseをクラウドで利用する際は、推奨設定に従って、クラスタを固定IPアドレスとパブリックDNS名で構築します。</dd>
+      </dlentry>
+    </dl>
+    
+    <dl>
+      <dlentry>
+        <dt>DNSサービスの利用</dt>
+        <dd>クラスタ内のノードでパブリックDNS名とパブリックIPアドレスを利用できます。 DNSサービスを利用して、クラスタ内の各ノードのパブリックDNSアドレスを指し示す<codeph>CNAME</codeph>の特定や登録をします。 これにより、XDCRがクラスタ内のノードに<codeph>CNAME</codeph>を使用するように設定できます。 クラウドサービス内のパブリックDNSアドレスが変わったとしても<codeph>CNAME</codeph>は不変です。</dd>
+        <dd>このため、クラスタ間のレプリケーションに利用するXDCRの設定時に、宛先のIPアドレスとして<codeph>CNAME</codeph>レコードエントリを指定できます。 一時的な障害が原因であるクラスタノードのパブリックDNSアドレスが変わった場合、<codeph>CNAME</codeph>を更新し、クラウドサービスで提供された最新のパブリックDNSアドレスを設定します。</dd>
+        <dd>XDCRで設定されている各クラスタ内のノードのIPアドレスが変わっても、<codeph>CNAME</codeph>レコードを更新することで、レプリケーションはパブリックなインターネットベースのコネクションでも継続することができます。</dd>
+      </dlentry>
+    </dl>
+    
+    
+    <p>セキュリティを高めるために、各クラスタのIPアドレス間で必要なポートのトラフィックのみを許可するようにセキュリティグループを設定すべきです。 セキュリティグループの設定には、インバウンドポートとIPアドレスの範囲を指定する必要があります。 同時に、クラスタ内のノード間の通信を許可するために、正しいポートとIPアドレスをセキュリティグループの設定に含めてください。</p>
     
   </body>
   <related-links>

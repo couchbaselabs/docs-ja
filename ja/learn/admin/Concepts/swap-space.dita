@@ -1,33 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_ebk_c35_cq">
-  <title>Swap space</title><shortdesc>On Linux, swap space is used when the physical memory (RAM)
-    is full.</shortdesc>
+<topic xml:lang="ja" id="topic_ebk_c35_cq">
+  <title>Swap領域</title><shortdesc>Linuxでは、物理メモリ(RAM)の空きがなくなると、swap領域を利用します。</shortdesc>
   <body>
-    <p>If the system needs more memory resources and the RAM is full, inactive pages in
-      memory are moved to the swap space. <term>Swappiness</term> indicates how frequently a system uses the 
-      swap space based on RAM usage. The swappiness range is from 0 to 100 where, by default, most
-      Linux platforms have swappiness set to 60.</p>
+    <p>RAMの空きがなく、システムがそれ以上のメモリリソースを必要とする場合、メモリ内のアクティブでないページがswap領域へと移動します。 <term>Swappiness</term> RAM利用状況に応じて、どの程度頻繁にシステムがswap領域を利用するのかを示します。 swappinessは0から100の範囲で指定でき、デフォルトでは、多くのLinuxプラットホームでswappinessが60に設定されています。</p>
     
-    <p>For the optimal Couchbase
-        Server operations, set the swappiness to <b>0</b> (zero). </p>
-    <p>To change the swap configuration:</p><ol>
-            <li>Execute <userinput>cat /proc/sys/vm/swappiness</userinput> on each node to determine the
-              current swap usage configuration.</li>
-            <li>Execute 
-             <userinput> sudo sysctl vm.swappiness=0 </userinput>to immediately change the swap
-              configuration and ensure that it persists through server restarts.</li>
-            <li>Using <codeph>sudo</codeph> or <codeph>root</codeph> user privileges, edit the kernel parameters configuration file,
-              <filepath>/etc/sysctl.conf</filepath>, so that the change is always in effect.</li>
-            <li>Append <codeph>vm.swappiness = 0</codeph> to the file.</li>
-            <li>Reboot your system.</li>
+    <p>Couchbase Serverのオペレーションに最適化するために、swappinessを <b>0</b> に設定してください。 </p>
+    <p>swap設定の変更方法:</p><ol>
+            <li>次のコマンド、 <userinput>cat /proc/sys/vm/swappiness</userinput> を各ノード上で実行し、現在のswap利用設定を確認します。</li>
+            <li>次のコマンド、 
+             <userinput> sudo sysctl vm.swappiness=0 </userinput>を実行し、直ちにswap設定を変更してから、サーバを再起動してもこの変更が永続化されるようにします。</li>
+            <li><codeph>sudo</codeph>や<codeph>root</codeph>ユーザ権限を利用して、<filepath>/etc/sysctl.conf</filepath>のカーネルパラメータ設定ファイルを編集し、この変更が常に有効となるようにします。</li>
+            <li><codeph>vm.swappiness = 0</codeph>をファイルに追記します。</li>
+            <li>システムを再起動します。</li>
           </ol>
 
-            <note>Executing <userinput>sudo sysctl vm.swappiness=0</userinput> ensures that the
-              operating system no longer uses swapping unless memory is completely exhausted. Updating the
-              kernel parameters configuration file <codeph>sysctl.conf</codeph> ensures that the
-              operating system always uses swapping in accordance with Couchbase recommendations, even when the
-              node is rebooted.</note>
+            <note>次のコマンド、 <userinput>sudo sysctl vm.swappiness=0</userinput> を実行すると、メモリが完全に枯渇するまで、オペレーティングシステムがswapを利用しなくなります。 カーネルパラメータ設定ファイル、<codeph>sysctl.conf</codeph>を更新することで、ノードを再起動したとしても、Couchbaseが推奨する方法で常にオペレーティングシステムがswapを利用するようにできます。</note>
             
              
   </body>
