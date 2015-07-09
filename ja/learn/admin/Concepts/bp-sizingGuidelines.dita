@@ -1,78 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic13047">
-	<title>Sizing guidelines</title>
-	<shortdesc>The primary considerations for sizing a Couchbase Server cluster are the number of
-		nodes and node size.</shortdesc>
+<topic xml:lang="ja" id="topic13047">
+	<title>サイジングガイドライン</title>
+	<shortdesc>Couchbase Serverクラスタのサイジングで最も考慮すべき点は、ノード数とノードスペックです。</shortdesc>
 	<body>
-		<p>When sizing your Couchbase Server cluster, ask the following questions:</p>
+		<p>Couchbase Serverクラスタのサイジングを行う際は、以下の設問を利用します:</p>
 		<ul>
-			<li>How many nodes do I need?</li>
-			<li>How large (RAM, CPU, disk space) must those nodes be?</li>
+			<li>何台のノードが必要か?</li>
+			<li>これらのノードはどの程度のスペック(RAM、CPU、ディスク容量)であるべきか?</li>
 		</ul>
-		<p>To determine the number of nodes needed for a cluster, consider the following:</p>
+		<p>クラスタで必要なノード数を決定するには、以下を考慮してください:</p>
 		<ul>
 			<li>RAM</li>
-			<li>Disk throughput and sizing</li>
-			<li>Network bandwidth</li>
-			<li>Data distribution and safety</li>
+			<li>ディスクスループットとサイジング</li>
+			<li>ネットワーク帯域</li>
+			<li>データ分散と安全性</li>
 		</ul>
-		<p>Due to the in-memory nature of Couchbase Server, RAM is usually the determining factor for
-			sizing. However, the primary sizing factor depends on the actual data set and the
-			information being stored. For example:</p>
+		<p>Couchbase Serverのインメモリな性質として、RAMは通常サイジングを決定する要素になります。
+			しかしながら、主なサイジング要素は実際のデータセットと保存される情報に依存します。 例えば:</p>
 		<ul>
-			<li>If you have a very small data set with a very high load, you must calculate the size based
-				more on the network bandwidth than RAM.</li>
-			<li>If you have a very high write rate, you’ll need more nodes to support the disk throughput
-				that is needed to persist all that data (and likely more RAM to buffer the incoming
-				writes).</li>
-			<li>Even with a very small data set under low load, you might want three nodes for proper
-				distribution and safety.</li>
+			<li>非常に小さなデータセットに対し、非常に頻繁にアクセスする場合、RAMよりもネットワーク帯域をベースにサイジングを計算すべきです。</li>
+			<li>非常に高いデータ更新頻度の場合、より多くのノードで、すべてのデータを永続化するために必要なディスクスループットをサポートする必要があるでしょう (加えて更新リクエストのバッファ用により多くのRAMも必要になります)。</li>
+			<li>非常に小さなデータセットで、アクセス頻度も低い場合でも、分散と安全性を担保するために、3台のノードが必要でしょう。</li>
 		</ul>
-		<p>With Couchbase Server, you can increase the capacity of your cluster (RAM, disk, CPU, or
-			network) by increasing the number of nodes within the cluster, since each limit will be
-			increased linearly as the cluster size is increased.</p>
+		<p>Couchbase Serverでは、クラスタ内のノード台数を増やすことでクラスタのキャパシティ(RAM、ディスク、CPU、ネットワーク)を拡張できます。それぞれの上限がクラスタサイズを増やすことでリニアに増加します。</p>
 		
 		<dl>
 			<dlentry>
-				<dt>RAM sizing</dt>
-				<dd>RAM is usually the most critical sizing parameter. It is also the one that can have most
-					impact on performance and stability.</dd>
+				<dt>RAMサイジング</dt>
+				<dd>RAMは通常最もクリティカルなサイジングパラメータです。 また、性能や安定性に最も影響を与えます。</dd>
 			</dlentry>
 		</dl>
 		<dl
 			>
 			<dlentry>
-				<dt>Working set</dt>
-				<dd>The working set is the data that the client application actively uses at any point in time.
-					Ideally, all of the working set lives in memory, which impacts the amount of
-					needed memory.</dd>
+				<dt>ワーキングセット</dt>
+				<dd>ワーキングセットはクライアントアプリケーションがアクティブに利用するデータです。
+					ワーキングセットがメモリ内に常駐するのが理想的で、これは必要なメモリ容量に影響します。</dd>
 			</dlentry>
 		</dl>
 <dl>
 	<dlentry>
-		<dt>Memory quota</dt>
-		<dd>It is very important that your Couchbase cluster’s size corresponds to the working set size
-					and total data you expect. The goal is to size the available RAM so that all
-					your document IDs, the document ID meta data, and the working set values fit.
-					The memory must rest just below the point at which Couchbase Server will
-					start evicting values to disk (the High Water Mark).</dd>
+		<dt>メモリ割当量</dt>
+		<dd>予定しているワーキングセットサイズと、全データサイズに応じてCouchbaseクラスタをサイジングすることは非常に重要です。 サイジングのゴールはすべてのドキュメントID、ドキュメントIDメタデータ、そしてワーキングセットのバリューが収まるRAMをサイジングすることです。
+					Couchbase ServerがRAMからディスクへとバリューの除去を開始するポイント(高水位)よりも、メモリ利用が下回る必要があります。</dd>
 	</dlentry>
 </dl>
 		
 			
-			<note type="important">You will not be able to allocate all your machine RAM to a Couchbase
-			Server node (<codeph>per_node_ram_quota</codeph> parameter) because other programs might
-			be running on your machine.</note>
+			<note type="important">Couchbase Serverノードにマシンの全RAMを割り当てることはできません(<codeph>per_node_ram_quota</codeph>)、他のプログラムもマシン上で稼働するためです。</note>
 			
-			<p>How much memory and disk space per node you will need depends on several different
-			variables.</p>
+			<p>ノードごとにどの程度メモリやディスク領域が必要になるかはいくつかの様々な要素に依存します。</p>
 			
 			
-			<p>The following are per-bucket calculations amnd must be summed up across all buckets. If all
-			the buckets have the same configuration, treat the total data as a single bucket. There
-			is no per-bucket overhead that needs to be considered.</p>
+			<p>以下はバケット単位の計算方法で、複数のバケットすべてで合計する必要があります。 すべてのバケットが同一の設定であれば、全体のデータを単一バケットとして扱うこともできます。
+				バケット単位のオーバヘッドは考慮する必要はありません。</p>
 			
 			<table>
 				<tgroup cols="2">
@@ -80,40 +63,40 @@
 				<colspec colname="col2" colwidth="3*"/>
 				<thead>
 					<row>
-						<entry>Variable</entry>
-						<entry>Description</entry>
+						<entry>変数</entry>
+						<entry>説明</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
 						<entry><varname>documents_num</varname></entry>
-						<entry>The total number of documents you expect in your working set</entry>
+						<entry>ワーキングセットのドキュメント総数</entry>
 					</row>
 					<row>
 						<entry><varname>ID_size</varname></entry>
-						<entry>The average size of document IDs</entry>
+						<entry>ドキュメントIDの平均サイズ</entry>
 					</row>
 					<row>
 						<entry><varname>value_size</varname></entry>
-						<entry>The average size of values</entry>
+						<entry>バリューの平均サイズ</entry>
 					</row>
 					<row>
 						<entry><varname>number_of_replicas</varname></entry>
-						<entry>The number of copies of the original data you want to keep</entry>
+						<entry>オリジナルデータのコピーをいくつ保持するか</entry>
 					</row>
 					<row>
 						<entry><varname>working_set_percentage</varname></entry>
-						<entry>The percentage of your data you want in memory</entry>
+						<entry>メモリ内に保持するデータのパーセンテージ</entry>
 					</row>
 					<row>
 						<entry><varname>per_node_ram_quota</varname></entry>
-						<entry>How much RAM can be assigned to Couchbase </entry>
+						<entry>Couchbaseに割り当てられるメモリ容量 </entry>
 					</row>
 				</tbody>
 			</tgroup>
 			</table>
 			
-			<p>Use the following items to calculate how much memory you need:</p>
+			<p>必要なメモリ容量の計算には以下の項目を利用します:</p>
 			
 			<table>
 				<tgroup cols="2">
@@ -121,38 +104,31 @@
 				<colspec colname="col2" colwidth="2*"/>
 				<thead>
 					<row>
-						<entry>Constant</entry>
-						<entry>Description</entry>
+						<entry>定数</entry>
+						<entry>説明</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
-						<entry>Metadata per document (metadata_per_document)</entry>
-						<entry>This is the amount of memory that Couchbase needs to store metadata
-							per document. Metadata uses 56 bytes. All the metadata needs to live in
-							memory while a node is running and serving data.</entry>
+						<entry>ドキュメント単位のメタデータ (metadata_per_document)</entry>
+						<entry>これはCouchbaseがドキュメントごとのメタデータを保持するために必要なメモリ容量です。 メタデータは56 byte利用します。 ノードが稼働中でデータをサービスしている間、すべてのメタデータはメモリ内に保持しなくてはなりません。</entry>
 					</row>
 					<row>
-						<entry>SSD or Spinning</entry>
-						<entry>SSDs give better I/O performance.</entry>
+						<entry>SSDまたは回転式ディスク</entry>
+						<entry>SSDはより良いI/O性能を提供します。</entry>
 					</row>
 					<row>
 						<entry>headroom</entry>
-						<entry>The cluster needs additional overhead to store metadata. That space
-							is called the headroom. This requires approximately 25–30% more space
-							than the raw RAM requirements for your dataset. Since SSDs are faster
-							than spinning (traditional) hard disks, you should set aside 25% of
-							memory for SSDs and 30% of memory for spinning hard disks.</entry>
+						<entry>クラスタはメタデータ保存用に追加のオーバヘッドを必要とします。 この領域をheadroomと呼びます。 データセット自体が必要とするRAMに対し、およそ25-30%余分に領域が必要です。 SSDは回転式ハードディスク(伝統的)よりも高速なため、SSDでは25%、回転式ハードディスクでは30%のメモリとします。</entry>
 					</row>
 					<row>
-						<entry>High Water Mark (high_water_mark)</entry>
-						<entry>By default, the high water mark for a node’s RAM is set at 85%.
+						<entry>高水位 (high_water_mark)</entry>
+						<entry>デフォルトではノードのRAMの高水位は85%に設定されます。
 						</entry>
 					</row>
 				</tbody>
 			</tgroup>
-			</table><p>This is a rough guideline to size your
-				cluster:</p>
+			</table><p>以下はクラスタサイジングガイドラインの概要です:</p>
 			
 			<table>
 				<tgroup cols="2">
@@ -160,8 +136,8 @@
 				<colspec colname="col2" colwidth="2*"/>
 				<thead>
 					<row>
-						<entry>Variable</entry>
-						<entry>Calculation</entry>
+						<entry>変数</entry>
+						<entry>計算式</entry>
 					</row>
 				</thead>
 				<tbody>
@@ -170,7 +146,7 @@
 						<entry><codeph>1 + number_of_replicas</codeph></entry>
 					</row>
 					<row>
-						<entry><varname>total_metadata</varname>. All the documents need to live in the memory.</entry>
+						<entry><varname>total_metadata</varname>. 全ドキュメントのメタデータがメモリに保持される必要があります。</entry>
 						<entry><codeph>(documents_num) * (metadata_per_document + ID_size) *
 								(no_of_copies)</codeph></entry>
 					</row>
@@ -184,22 +160,21 @@
 						<entry><codeph>total_dataset * (working_set_percentage)</codeph></entry>
 					</row>
 					<row>
-						<entry>Cluster RAM quota required</entry>
+						<entry>クラスタで必要なRAM容量</entry>
 						<entry><codeph>(total_metadata + working_set) * (1 + headroom) /
 								(high_water_mark)</codeph></entry>
 					</row>
 					<row>
-						<entry>number of nodes</entry>
-						<entry><codeph>Cluster RAM quota required / per_node_ram_quota</codeph>
+						<entry>必要なノード台数</entry>
+						<entry><codeph>クラスタで必要なRAM容量 / per_node_ram_quota</codeph>
 						</entry>
 					</row>
 				</tbody>
 			</tgroup>
 			</table>
 			
-			<note type="important">You will need at least the number of replicas + 1 nodes regardless of your
-				data size.</note>
-			<p>The following is a sample sizing calculation:</p>
+			<note type="important">データサイズに関わらず、少なくともレプリカ数 + 1台のノードが必要です。</note>
+			<p>以下はサイジング計算のサンプルです:</p>
 			
 			<table>
 				<tgroup cols="2">
@@ -207,8 +182,8 @@
 				<colspec colname="col2" colwidth="3*"/>
 				<thead>
 					<row>
-						<entry>Input Variable</entry>
-						<entry>value</entry>
+						<entry>変数</entry>
+						<entry>値</entry>
 					</row>
 				</thead>
 				<tbody>
@@ -242,13 +217,13 @@
 				<colspec colname="col2" colwidth="3*"/>
 				<thead>
 					<row>
-						<entry>Constants</entry>
-						<entry>value</entry>
+						<entry>定数</entry>
+						<entry>値</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
-						<entry>Type of Storage</entry>
+						<entry>ストレージの種類</entry>
 						<entry>SSD</entry>
 					</row>
 					<row>
@@ -257,7 +232,7 @@
 					</row>
 					<row>
 						<entry>metadata_per_document</entry>
-						<entry>56 for 2.1 and higher, 64 for 2.0.x</entry>
+						<entry>2.1 以降は56、 2.0.x は64</entry>
 					</row>
 					<row>
 						<entry>high_water_mark</entry>
@@ -273,17 +248,14 @@
 				<colspec colname="col2" colwidth="3*"/>
 				<thead>
 					<row>
-						<entry>git status</entry>
-					</row>
-					<row>
-						<entry>Variable</entry>
-						<entry>Calculation</entry>
+						<entry>変数</entry>
+						<entry>計算式</entry>
 					</row>
 				</thead>
 				<tbody>
 					<row>
 						<entry><varname>no_of_copies</varname></entry>
-						<entry>= 1 for original and 1 for replica</entry>
+						<entry>= オリジナルに1、レプリカに1</entry>
 					</row>
 					<row>
 						<entry><varname>total_metadata</varname></entry>
@@ -298,7 +270,7 @@
 						<entry>= 20,000,000,000 * (0.2) = 4,000,000,000</entry>
 					</row>
 					<row>
-						<entry>Cluster RAM quota required</entry>
+						<entry>クラスタで必要なRAM容量</entry>
 						<entry>= (440,000,000 + 4,000,000,000) * (1+0.25)/(0.7) =
 							7,928,000,000</entry>
 					</row>
@@ -306,8 +278,7 @@
 			</tgroup>
 			</table>
 			
-			<p>For example, if you have 8GB machines and you want to use 6 GB for
-				Couchbase…</p>
+			<p>例えば、8GBのマシンで6GBをCouchbaseに割り当てる場合...</p>
 			
 			<codeblock>number of nodes =
     Cluster RAM quota required/per_node_ram_quota =
@@ -318,114 +289,80 @@
 		
 	
 		
-		<section><title>Network bandwidth</title>
-			<p>Network bandwidth is not normally a significant
-				factor to consider for cluster sizing. However, clients require network bandwidth to
-				access information in the cluster. Nodes also need network bandwidth to exchange
-				information (node to node).</p>
+		<section><title>ネットワーク帯域</title>
+			<p>ネットワーク帯域は通常クラスタのサイジングで重要な要素にはなりません。 しかしながら、クライアントがクラスタ内の情報にアクセスするにはネットワーク帯域が必要です。 ノード間で情報をやり取りするためにもネットワーク帯域が必要です。</p>
 			
-			<p>In general, calculate your network bandwidth requirements using the following formula:</p>
+			<p>一般的に、ネットワーク帯域要件の計算には、以下の式を利用します:</p>
 			
 			<codeblock>Bandwidth = (operations per second * item size) + overhead for rebalancing </codeblock>
 			
-			<p>Calculate the <codeph>operations per second</codeph> with the following formula:</p>
+			<p><codeph>秒間オペレーション数</codeph>を以下の式で計算します:</p>
 			
 			<codeblock>Operations per second = Application reads + (Application writes * Replica copies) </codeblock>
 			</section>
 		
-		<section><title>Data safety</title>
-			<p>Make sure you have enough nodes (and the right
-				configuration) in your cluster to keep your data safe. There are two areas to keep
-				in mind: how you distribute data across nodes and how many replicas you store across
-				your
-				cluster.</p>
+		<section><title>データの安全性</title>
+			<p>データを安全に保持するためには、クラスタ内で十分なノード台数(そして正しい設定)が必要です。 ノード間での情報の分散と、クラスタ内で保存される情報のレプリカ数という2つの考慮すべき側面があります。</p>
 		</section>
 		
-		<section><title>Data distribution</title>
-			<p>Basically, more nodes are better than less. If
-				you only have two nodes, your data is split across the two nodes, half and half. 
-				This means that half of your dataset is impacted if one goes away. 
-				On the other hand, with ten nodes, only 10% of the dataset is impacted if one nodes goes away. 
-				Even with automatic failover, there still is some period of time when data is unavailable if nodes fail. 
-				This is mitigated by having more nodes.</p>
+		<section><title>データの分散</title>
+			<p>基本的には、より多くのノードの方が、より少ないノードよりも良いです。 2台しかノードがない場合、データは50%ずつ、2台のノードに分散されます。 
+				これは、1台がダウンした影響がデータセットの半分におよぶことを意味します。 
+				一方で、10台ノードがあれば、データセットの10%だけが1台のノードがダウンした場合に影響を受けます。 
+				自動フェイルオーバを利用していても、ノードがダウンした時にデータが利用できない期間が発生します。 
+				これはより多くのノードを利用することで軽減できます。</p>
 			
-			<p>After a failover, the cluster takes on an extra load. 
-				The question is - how heavy is that extra load and are you prepared for it? 
-				Again, with only two nodes, each one needs to be ready to handle the entire load. 
-				With ten, each node only needs to be able to take on an extra tenth of the workload should one fail.</p>
+			<p>フェイルオーバ後にクラスタが受け付ける負荷についても考慮する必要があります。 
+				どれだけ負荷が増加し、それに準備できているか検討が必要です。2台しかなければ、それぞれは1台で全アクセスを処理できる準備ができている必要があります。 
+				10ノードでは、1台のノードが故障した場合、全ワークロードの10分の1を余計に処理できるようにすれば良いのです。</p>
 			
-			<p>While two nodes does provide a minimal level of redundancy, we recommend
-				that you always use at least three nodes.</p>
+			<p>2ノードでも最低限の冗長性を提供できますが、常に最小でも3ノードを利用することをお勧めします。</p>
 		</section>
 		
-		<section><title>Replication</title>
-			<p>Couchbase Server authorizes you to configure up to three replicas (creating four copies of the dataset). 
-				In the event of a failure, you can only “fail over” (either manually or automatically) as many nodes as you have
-				replicas. 
-				For example:</p>
+		<section><title>レプリケーション</title>
+			<p>Couchbase Serverではレプリカ数を3つまで設定できます（データセットのコピーを4つ生成します）。 
+				障害が発生した場合、レプリカ数と同じノード数しか"フェイルオーバ"できません(手動でも自動でも)。 
+				例:</p>
 			<ul>
-				<li>In a five node cluster with one replica, if one node goes down, you can fail
-						it over. If a second node goes down, you no longer have enough replica
-						copies to fail over to and will have to go through a slower process to
-						recover.</li>
-				<li>In a five node cluster with two replicas, if one node goes down, you can fail
-						it over. If a second node goes down, you can fail it over as well. Should a
-						third one go down, you now no longer have replicas to fail over.</li>
+				<li>5台のクラスタでレプリカを1とした場合、1つのノードがダウンすると、それをフェイルオーバできます。 2つ目のノードがダウンすると、フェイルオーバするために十分なレプリカのコピーがないため、より時間のかかる復旧処理を実施しなくてはなりません。</li>
+				<li>5ノードのクラスタでレプリカを2つ設定していると、1つのノードがダウンしたら、それをフェイルオーバできます。 2つ目のノードがダウンしても、それをフェイルオーバできます。 3つ目のノードがダウンした場合、フェイルオーバに必要なレプリカが十分に存在しない状態になります。</li>
 			</ul>
-			<p>After a node goes down and is failed over, try to replace that node as soon as
-				possible and rebalance. The rebalance recreates the replica copies (if you still
-				have enough nodes to do so).</p>
+			<p>ノードがダウンし、フェイルオーバした後は、可能な限り早くそのノードを交換し、リバランスするようにしてください。 リバランスによりレプリカコピーが再作成されます(レプリカ数に十分なノード数がある場合)。</p>
 			
-			<note type="tip">As a rule of thumb, configure the following:
+			<note type="tip">目安として、以下の設定を推奨します：
 			<ul>
-				<li>One replica for up to five nodes.</li>
-				<li>One or two replicas for five to ten nodes.</li>
-				<li>One, two, or three replicas for over ten nodes.</li>
+				<li>5ノードまではレプリカ数1</li>
+				<li>5から10ノードはレプリカ数1または2</li>
+				<li>10ノードより大きなクラスタではレプリカ数1、2あるいは3</li>
 			</ul>
-				While there can be variations to this, there are diminishing returns from having more replicas in smaller clusters.
+				これには多くのバリエーションがありますが、小規模のクラスタ内で多くのレプリカを持ってもそれほど効果がありません。
 			</note>
 			
 			</section>
 		
-		<section><title>Hardware requirements</title>
-			<p>In general, Couchbase Server has very low
-				hardware requirements and is designed to be run on commodity or virtualized systems.
-				However, as a rough guide to the primary concerns for your servers, the following is recommended:
+		<section><title>ハードウェア要件</title>
+			<p>一般的にCouchbase Serverのハードウェア要件は非常に低く、コモディティハードウェア、あるいは仮想化システム上で動作するように設計されています。
+				とはいえ、サーバーの主な考慮事項のおおよその目安として:
 				</p>
 			<ul>
-				<li>RAM: This is your primary consideration. We use RAM to store active items,
-						and that is the key reason Couchbase Server has such low latency.</li>
-				<li>CPU: Couchbase Server has very low CPU requirements. The server is
-						multi-threaded and therefore benefits from a multi-core system. We recommend
-						machines with at least four or eight physical cores.</li>
-				<li>Disk: By decoupling the RAM from the I/O layer, Couchbase Server can support
-						low-performance disks better than other databases. 
-						As a best practice, have separate devices for server install, data
-						directories, and index directories.</li>
-				<li>Network: Most configurations work with Gigabit Ethernet interfaces. Faster
-					solutions such as 10GBit and Infiniband will provide spare capacity.</li>
+				<li>RAM: 最も重要です。 アクティブなアイテムを保持し、Couchbase Serverが低いレイテンシを提供する主な理由であるためです。</li>
+				<li>CPU: Couchbase ServerのCPU要件は非常に低いものです。 サーバはマルチスレッドであるためマルチコアシステムの恩恵を受けます。 少なくとも4つまたは8つの物理コアを搭載したマシンを推奨します。</li>
+				<li>ディクス: RAMをIO層から切り離すことで、Couchbase Serverは他のデータベースに比べ、低速なディスクであっても効率的に扱うことができます。 
+						ベストプラクティスとして、サーバインストール、データディレクトリ、インデックスディレクトリにはそれぞれ個別のデバイスを利用します。</li>
+				<li>ネットワーク: ギガビットイーサインタフェースを利用したほとんどの構成で動作します。 10GBitやInfinibandのようにさらに高速なソリューションを利用することもできます。</li>
 			</ul>
-			<p>Known working configurations include SAN, SAS, SATA, SSD, and EBS with the
-				following recommendations:</p>
+			<p>SAN、SAS、SATA、SSDおよびEBSで動作が確認され、次の構成が推奨されます：</p>
 			
 			<ul>
-				<li>SSDs have been shown to provide a great performance boost both in terms of
-  draining the write queue and also in restoring data from disk (either on
-  cold-boot or for purposes of rebalancing).</li>
-				<li>RAID generally provides better throughput and reliability.</li>
-				<li>Striping across EBS volumes (in Amazon EC2) has been shown to increase throughput.</li>
+				<li>SSDは書き込みキューを処理する点でも、データをリストアする点（コールドブート及びリバランシング用途）でも優れた性能を発揮することができます。</li>
+				<li>RAIDは、一般的にスループットと信頼性の向上を提供します。</li>
+				<li>（Amazon EC2の）EBSボリュームでストライピングすると、スループットを高めることができます。</li>
 			</ul>
 
 		</section>
 		
-		<section><title>Considerations for Cloud environments (that is Amazon EC2)</title>
-			<p>Due to the
-				unreliability and general lack of consistent I/O performance in cloud environments,
-				we highly recommend lowering the per-node RAM footprint and increasing the number of
-				nodes. This will give better disk throughput and improve rebalancing since
-				each node will have to store (and therefore transmit) less data. By distributing the
-				data further, it lessens the impact of losing a single node (which could be fairly
-				common).</p>
+		<section><title>クラウド環境に関する考慮事項（例えばAmazon EC2）</title>
+			<p>クラウド環境においては、信頼性や一貫したIO性能が確保できないため、ノード単位のRAMフットプリントを縮小し、ノード数を増やすことをお勧めしています。 これにより、より良いディスクスループットに加え、各ノードが保持するデータが（そして転送するデータも）少なくなるため、リバランスも容易になります。 さらにデータを分散することで、単一のノードが故障した際（一般に起こりえます）に受ける影響も軽減することができます。</p>
 		</section>
 	</body>
 	<related-links>

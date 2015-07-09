@@ -1,54 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_lbc_x3p_tq">
-  <title>Disk throughput and sizing</title><shortdesc>Couchbase Server decouples RAM from the
-    I/O layer to enable high scaling.</shortdesc>
+<topic xml:lang="ja" id="topic_lbc_x3p_tq">
+  <title>ディスクのスループットとサイジング</title><shortdesc>Couchbase ServerはRAMをI/O層から分離することで高いスケーラビリティを提供します。</shortdesc>
   <body>
   
-      <p>Decoupling enables high scaling at very low and consistent latencies and very high write
-      loads without affecting the client application performance.</p>
+      <p>分離することで、クライアントアプリケーション性能に影響を与えることなく、一貫して非常に低いレイテンシを可能とし、非常に高い更新負荷に対応します。</p>
      
-      <p>Couchbase Server implements an append-only format and a built-in automatic compaction
-      process. Requirements of your disk subsystem are broken down into two components: size and
-      I/O. </p>
-      <section><title>Disk size requirements</title>
+		<p>Couchbase Serverは追記のみのフォーマットと、ビルトインの自動コンパクション処理を実装しています。
+			ディスクサブシステムの要件はサイズとI/Oの二つに分類できます。 </p>
+      <section><title>ディスクサイズ要件</title>
       
-      <p>Disk size requirements are impacted by the Couchbase file write format,
-        append-only, and the built-in automatic compaction process. Append-only format means
-        that every write (insert/update/delete) creates a new entry in the
-        file(s).</p>
-      <p>The required disk size increases from the update and delete workload
-        and then shrinks as the automatic compaction process runs. The size increases
-        because of the data expansion rather than the actual data using more disk space.
-        Heavier update and delete workloads increases the size more dramatically than heavy
-        insert and read workloads.</p>
-      <p>Size recommendations are available for key-value data only. 
-        If views and indexes or XDCR are implemented, contact Couchbase support for analysis and recommendations.</p>
-      <p>Depending on the workload, the required disk size is <b>2–3x</b> your total dataset size (active
-        and replica data combined). </p>
-      <note type="important">The disk size requirement of 2-3x
-        your total dataset size applies to key-value data only and does not take into
-        account other data formats and the use of views and indexes or XDCR.</note>
+      <p>ディスクサイズ要件は、追記型のCouchbaseファイル書き込みフォーマット、ビルトインの自動コンパクション処理が影響します。 追記型のフォーマットでは各更新(insert/update/delete)がファイルに新しいエントリを作成します。</p>
+      <p>更新や削除のワークロードで必要なディスクサイズは増加し、自動コンパクション処理を実行することで減少します。 実データサイズ以上にデータが拡張されるため、より多くのディスク領域を使用します。
+        頻繁に挿入や参照を行うワークロードよりも、頻繁な更新や削除のワークロードは、劇的にサイズを増加させます。</p>
+      <p>推奨サイズはキーバリューデータでのみ有効です。 
+        Viewとインデックス、またはXDCRを利用する場合、Couchbaseサポートに推奨構成を問い合わせてください。</p>
+      <p>ワークロードに応じて、必要なディスクサイズは <b>全データセットサイズの2倍から3倍になります</b> (アクティブとレプリカデータを合計)。 </p>
+      <note type="important">全データセットサイズの2倍から3倍というディスクサイズ要件はキーバリューのデータのみに当てはまり、その他のデータフォーマットやViewインデックスまたはXDCRの利用は考慮していません。</note>
       </section>
       
-      <section><title>I/O requirements</title>
-      <p>I/O is a combination of the sustained write rate, the need to compact the
-        database files, and anything else that requires disk access. Couchbase Server
-        automatically buffers writes to the database in RAM and eventually persists them to
-        disk. Because of this, the software can accommodate much higher write rates than what a
-        disk is able to handle. However, sustaining these writes eventually requires enough
-        I/O to get it all down to disk. </p>
-      <p>To manage I/O, configure the thresholds and schedule when the compaction process starts (or
-        doesn’t start), keeping in mind that the successful completion of compaction is critical to
-        keeping the disk size in check. Disk size and disk I/O become critical to size correctly
-        when using views and indexes and Cross Data Center Replication (XDCR). They are also
-        important for backups and any other operations outside of Couchbase Server that need
-        space or are accessing the disk. </p>
+      <section><title>I/O要件</title>
+      <p>I/Oは維持すべき書き込み頻度、データベースファイルのコンパクション要件、そしてその他の必要なディスクアクセスの組み合わせとなります。
+				Couchbase Serverは自動的にデータベースへの書き込みをメモリにバッファし、結果的にそれらをディスクへ永続化します。
+				このため、ソフトウェアはディスクが処理できるよりも高い書き込み頻度を実現できます。 しかしながら、このような書き込みを維持するには、結果的にすべてをディスクに保存できる十分なI/Oが必要になります。 </p>
+      <p>I/Oを管理するには、コンパクション処理の起動(もしくは起動させない)を決定する閾値とスケジュールを設定し、ディスクサイズを抑えるためにコンパクションが正常に完了することが非常に重要であることを意識する必要があります。 Viewとインデックス、クロスデータセンタレプリケーション(XDCR)を利用する際に、ディスクサイズとディスクI/Oを正しく設定することは非常に重要となります。 バックアップなどCouchbase Server外で行うその他のオペレーションで利用する容量やディスクアクセスも重要になります。 </p>
       
       
-      <note type="tip">Use the available configuration options to separate data files, indexes and
-        the installation/configuration directories on separate drives and devices to ensure that 
-        
-        I/O and space are allocated effectively. </note></section>
+      <note type="tip">データファイル、インデックス、インストール/設定ディレクトリを個別のドライブやデバイスに設定するオプションを利用し、I/Oとディスク領域を効率的に割り当ててください。 </note></section>
   </body>
 </topic>

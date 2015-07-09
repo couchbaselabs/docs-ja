@@ -5,51 +5,42 @@
  <title>デプロイ構成の考慮事項</title>
  <shortdesc>アクセス制限、ノード間通信、スワップの設定、接続タイムアウトなどの考慮事項について説明します。</shortdesc>
  <body>
-  <p>When configuring the Couchbase Server deployment, pay attention to the following:</p>
+  <p>Couchbase Serverのデプロイ構成では、以下の項目に注意してください:</p>
   
   <dl>
    <dlentry>
-    <dt>Restricted access to Moxi ports</dt>
-    <dd>Make sure that only trusted machines (including the other nodes in the cluster) can access the
-     ports that Moxi uses.</dd>
+    <dt>Moxiポートへのアクセスを制限</dt>
+    <dd>信頼できるマシン(クラスタ内の他のノードを含む)からのみMoxiが利用するポートへアクセスできるようにしてください。</dd>
    </dlentry>
   </dl>
   <dl>
    <dlentry>
-    <dt>Restricted access to web console (port 8091)</dt>
-    <dd>The web console is password protected. However, we recommend that you restrict access to port
-     8091; an abuser could do potentially harmful operations (like remove a node) from the web
-     console.</dd>
+    <dt>Webコンソール(8091ポート)へのアクセスを制限</dt>
+    <dd>Webコンソールはパスワードで守られています。 しかしながら、8091ポートへのアクセスを制限することを推奨します; 悪意のあるユーザによってWebコンソールから不正なオペレーション(ノードの削除など)を実行される可能性があります。</dd>
    </dlentry>
   </dl>
   <dl>
    <dlentry>
-    <dt>Node to node communication on ports</dt>
-    <dd>All nodes in the cluster should be able to communicate with each other on 11210 and 8091</dd>
+    <dt>ノード間の通信ポート</dt>
+    <dd>クラスタ内のすべてのノードは互いに11210と8091ポートで通信できる必要があります。</dd>
    </dlentry>
   </dl>
   <dl>
    <dlentry>
-    <dt>Swap configuration</dt>
-    <dd>Swap should be configured on Couchbase Server. This prevents the operating system from
-     killing Couchbase Server should the system RAM be exhausted. Having swap provides more options on
-     how to manage such a situation.</dd><dd>See <xref href="swap-space.dita">Swap space </xref> 
-      for a recommendation about setting up a swap space on Linux.</dd>
+    <dt>Swapの設定</dt>
+    <dd>Couchbase Server上でswapを設定してください。 これはシステムRAMを使い果たしてしまった場合に、オペレーティングシステムがCouchbase Serverをkillすることを防ぐことができます。 swapを用意しておくことは、このような状況への対処により多くの選択肢をもたらします。</dd><dd>Linuxでのswap領域設定の推奨設定については、<xref href="swap-space.dita">Swap領域</xref>を参照してください。</dd>
    </dlentry>
   </dl>
   <dl>
    <dlentry>
-    <dt>Idle connection timeouts</dt>
-    <dd>Some firewall or proxy software will drop TCP connections if they are idle for a certain amount
-     of time (e.g. 20 minutes). If the software does not allow you to change that timeout, send a
-     command from the client periodically to keep the connection alive.</dd>
+    <dt>アイドルコネクションタイムアウト</dt>
+    <dd>いくつかのファイヤウォールやプロキシソフトウェアは一定期間アイドル状態のTCPコネクションを切断します (例、 20分)。 これらのソフトウェアでタイムアウトを変更できない場合、クライアントから定期的にコマンドを送信し、コネクションを維持します。</dd>
    </dlentry>
   </dl>
   <dl>
    <dlentry>
-    <dt>Port Exhaustion on Windows</dt>
-    <dd>The TCP/IP port allocation on Windows by default includes a restricted number of ports
-     available for client communication.</dd>
+    <dt>Windowsでのポート枯渇</dt>
+    <dd>WindowsでのTCP/IPポート割り当ては、デフォルトでクライアント通信で利用可能なポート数を制限しています。</dd>
    </dlentry>
   </dl>
   
