@@ -1,42 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="reference_wqm_j2g_rn">
-  <title>Limits</title>
-  <shortdesc>Couchbase Server limits and limitations may effect server usage and
-    implementation.</shortdesc>
+<reference xml:lang="ja" id="reference_wqm_j2g_rn">
+  <title>制限</title>
+  <shortdesc>Couchbase Serverではサーバの利用や実装に影響のある制限がいくつかあります。</shortdesc>
 
   <refbody>
    
 <simpletable>
   <sthead>
-    <stentry>Limit</stentry>
-    <stentry>Value</stentry>  
+    <stentry>制限</stentry>
+    <stentry>値</stentry>  
   </sthead>
   <strow>
-    <stentry>Max key length</stentry>
+    <stentry>最大データ長</stentry>
     <stentry>250 bytes</stentry>
   </strow>
   <strow>
-    <stentry>Max value size</stentry>
+    <stentry>最大バリューサイズ</stentry>
     <stentry>20 MB</stentry>
   </strow>
   <strow>
-    <stentry>Max data size</stentry>
-    <stentry>none</stentry>
+    <stentry>最大バケットサイズ</stentry>
+    <stentry>無制限</stentry>
+  </strow>
+ 
+  <strow>
+    <stentry>クラスタあたりの最大バケット数 (デフォルト)</stentry>
+    <stentry>10*</stentry>
   </strow>
   <strow>
-    <stentry>Max metadata</stentry>
-    <stentry>Approximately 150 bytes per document</stentry>
-  </strow>
-  <strow>
-    <stentry>Max Buckets per Cluster</stentry>
-    <stentry>10</stentry>
-  </strow>
-  <strow>
-    <stentry>Max View Key Size</stentry>
+    <stentry>最大Viewキーサイズ</stentry>
     <stentry>4096 bytes</stentry>
   </strow>
-</simpletable>
+</simpletable><unknown>* ユーザが変更可能です</unknown>
+    
   </refbody>
-</reference>
 
+</reference>

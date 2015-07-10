@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
-<task id="task_of4_bgt_24">
-    <title>Viewing the impact of read-write changes</title>
-    <shortdesc>Through the Web Console, the impact of reader/writer changes for a bucket is viewable
-        via that bucket analytics: <uicontrol>Data Buckets > Bucket Name > DISK
-        QUEUES</uicontrol>.</shortdesc>
+<task xml:lang="ja" id="task_of4_bgt_24">
+    <title>read-write変更の効果を確認する</title>
+    <shortdesc>Webコンソールから、バケットのreader/writer変更が与える影響を、そのバケットのグラフで閲覧することができます: <uicontrol>Data Buckets > Bucket Name > DISK QUEUES</uicontrol></shortdesc>
     <taskbody>
         <context>
-            <p>A change to the number of readers/writers is reflected in the change in the active
-                and replica <i>fill rate</i>, <i>drain rate</i>, and <i>average age</i>.</p>
+            <p>readers/writers数の変更はアクティブとレプリカの <i>fill rate</i>、 <i>drain rate</i>、 <i>average age</i>に反映されます。</p>
         </context>
         <steps>
             <step>
-                <cmd>Click the <uicontrol>Data Buckets</uicontrol> tab.</cmd>
+                <cmd><uicontrol>Data Buckets</uicontrol>タブをクリックします。</cmd>
             </step>
             <step>
-                <cmd>Click on the bucket name (rather than the expander icon) to view the analytics for the bucket.</cmd>
+                <cmd>バケット名をクリックし(アイコンを開くのではなく)、バケットのグラフを表示します。</cmd>
             </step>
             <step>
-                <cmd>Expand the <uicontrol>DISK QUEUE</uicontrol> section to view active, replica, pending, and total summary.</cmd>
-                <info>Additionally, the number of items, fill rate, drain rate, and average age is
-                    summarized and displayed on a per server basis.</info>
+                <cmd><uicontrol>DISK QUEUE</uicontrol>セクションを開き、active、replica、pending、summaryを確認します。</cmd>
+                <info>加えて、サーバ単位のアイテム数、fill rate、drain rate、average ageが合計されて表示されます。</info>
             </step>
         </steps>
         

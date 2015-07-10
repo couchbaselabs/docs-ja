@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_mdz_4gw_h4">
-	<title>Cluster-wide diagnostics</title>
-	<shortdesc> The Couchbase support team uses logs and other system diagnostics to analyze customer
-		issues. </shortdesc>
+<concept xml:lang="ja" id="concept_mdz_4gw_h4">
+	<title>クラスタの診断</title>
+	<shortdesc> Couchbaseサポートチームはログやその他のシステム診断結果を利用し、お客様の問題を解析します。 </shortdesc>
 	<conbody>
-		<p>If you contact the Couchbase customer support, you might be asked to collect diagnostics from
-			your cluster. Couchbase Server offers several methods that enable you to efficiently
-			collect diagnostics for an entire cluster. </p>
-		<p>To collect diagnostic information, you can use either the Couchbase Web Console, CLI, or
-			the REST API.</p>
+		<p>Couchbaseカスタマーサポートに問い合わせると、クラスタから診断結果の収集を求められることがあります。 Couchbase Serverには効率的にクラスタ全体から診断結果を収集するいくつかの方法があります。 </p>
+		<p>診断結果情報を収集するには、Couchbase Webコンソール、CLI、REST APIのいずれかを利用します。</p>
 		
 		<ul>
-			<li>To use the Couchbase Web Console to collect and view diagnostic information, see <xref
-					href="../UI/ui-cluster-wide-info.dita"/></li>
-			<li>To use the CLI <codeph>couchbase-cli</codeph> tool to collect information, see <xref
-					href="../CLI/CBcli/cbcli-cluster-wide-info.dita"/></li>
-			<li>To use the CLI <codeph>cbcollect</codeph> tool to collect information, see <xref
-					href="../CLI/cbcollect_info_tool.dita"/></li>
+			<li>Couchbase Webコンソールを利用して収集し、診断結果の情報を閲覧するには、<xref href="../UI/ui-cluster-wide-info.dita"/>を参照してください。</li>
+			<li>CLIの<codeph>couchbase-cli</codeph>ツールを利用して情報を収集するには、<xref href="../CLI/CBcli/cbcli-cluster-wide-info.dita"/>を参照してください。</li>
+			<li>CLIの<codeph>cbcollect</codeph>ツールを利用して情報を収集するには、<xref href="../CLI/cbcollect_info_tool.dita"/>を参照してください。</li>
 		</ul>
 		
 	</conbody>
