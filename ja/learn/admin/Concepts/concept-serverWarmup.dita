@@ -1,79 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_a4m_zmj_wn">
- <title>Server warmup</title>
- <shortdesc>Whenever Couchbase server is restarted or data is restored to a server instance, the
-  server undergoes a warmup process before data requests can be handled.</shortdesc>
+<concept xml:lang="ja" id="concept_a4m_zmj_wn">
+ <title>サーバウォームアップ</title>
+ <shortdesc>Couchbase Serverを再起動、またはサーバインスタンスにデータをリストアすると、サーバはデータリクエストを受け付ける前にウォームアップ処理を実行します。</shortdesc>
  <conbody>
+  <p>ウォームアップ中、Couchbase Serverはディスクに永続化されたデータをRAMにロードします。 </p>
+	<p>Couchbase ServerはディスクからRAMへとシーケンシャルにデータをロードする最適化されたウォームアッププロセスを提供します。
+		ロードするデータを分割し、複数のフェーズで処理します。 ウォームアッププロセスが完了すると、クライアントからデータの読み書きが可能になります。 システムサイズ、システム設定、システムに永続化されたデータ量に応じて、サーバウォームアップに必要な時間は異なります。</p>
+  <note type="note">Couchbase ServerはvBucketからすべてのキーとデータをロードする前にデータ提供を開始することもできます。</note>
+  <p>Couchbase Serverは頻繁に利用されるアイテムを特定し、それらを優先的に、他のデータをシーケンシャルにロードするよりも前にロードします。 頻繁に利用されるアイテムはアクセスログ内で優先されています。
+		サーバは最も頻繁にアクセスされるキーのリストを事前に読み込み、それらのドキュメントを他のアイテムより先にディスクからフェッチします。</p>
+ <p>サーバは設定可能なスキャナプロセスでどのキーが最も頻繁に利用されているかを判定します。
+	 スキャナプロセスは事前に設定されていますが、変更も可能です。 コマンドラインツールの、<codeph>cbepctl flush_param</codeph> を利用すると、スキャナプロセスの初回実行時刻と、実行間隔を変更できます。
+   例えば、特定のキーをより早く利用可能とするために、スキャナプロセスが特定の時間帯に稼働させることができます。</p>
+ <p>サーバはすべてのキーに対するドキュメントをRAMにロードする前にアクセス可能な状態に遷移することもできます。
+	 保存されたすべてのアイテムをロードする前にデータの提供を開始できます。
+	 アクセス可能状態への遷移は変更可能な設定で、サーバのウォームアップ時間を調整できます。</p>
+  <p>ウォームアップの初期フェーズでは、Couchbase Serverは全てのキーとメタデータをディスクからフェッチし始めます。 その後、サーバはログ情報にアクセスし、最も利用されるキーを取得する:</p>
   
+  <dl>
+   <dlentry>
+    <dt>1. 初期化</dt>
+    <dd>このフェーズ中はまだ、Couchbase Serverは提供するデータを一切持っていません。 記録された各vBucketの初期ステータスをロードし、ディスクに保存された全てのvBucketのリストを作成します。</dd>
+   </dlentry>
+  </dl>
+  <dl>
+   <dlentry>
+    <dt>2. キーダンプ</dt>
+    <dd>Couchbase ServerはvBucketリスト内のアイテムをベースに、ディスクから全てのキーとメタデータを事前にフェッチします。</dd>
+   </dlentry>
+  </dl>
+  <dl>
+   <dlentry>
+    <dt>3. アクセスログのチェック</dt>
+		<dd>Couchbase Serverはどのキーが頻繁にアクセスされたかを示す、単一のキャッシュされたアクセスログを読み込みます。
+			サーバは定期的にこのログをメンテナンスしています。スケジュールは変更可能です。
+			このログが存在する場合、サーバはまず、ログをに記載のアイテムを他のアイテムより先にロードします。</dd>
+   </dlentry>
+  </dl>
   
-  <p>During server warmup, the server loads data persisted on disk into RAM. Couchbase Server
-   provides an optimized warmup process which loads data sequentially from disk into RAM, it divides
-   the data to be loaded and handles it in multiple phases. After the warmup process completes, the
-   data is available for clients to read and write. The time needed for server warmup depends on
-   system size, system configuration and the amount of data persisted in the system.</p>
-   
-   <note type="note">Couchbase Server is able to begin serving data before it has actually loaded all
-    the keys and data from vBuckets.</note>
-
-   
-   <p>Couchbase server identifies items that are frequently used, prioritizes them, and loads them 
-    before sequentially loading the remaining data.
-   The frequently-used items are prioritized in an access log. The
-   server pre-fetches a list of the most frequently accessed keys and then fetches these documents
-   before any other items from disk.</p>
-   <p>The server runs a configurable scanner process that determines which keys are most
-   frequently-used. The scanner process is pre-set and is configurable. The command-line tool,
-    <codeph>cbepctl flush_param</codeph> is used to change the initial time and interval for the
-   scanner process. For example, you might want to configure the scanner process to be run during a
-   specific time period when certain keys need to be identified and made available sooner.</p>
-   <p>The server can also switch into a ready mode before it has actually retrieved all documents
-   for keys into RAM, therefore, data can be served before all stored items are loaded. Switching
-   into ready mode is a configurable setting so that server warmup time can be adjusted.</p>
-  
-   <p>The following describes the initial warmup phases for Couchbase Server. In these first
-   phase, the server begins to fetch all keys and metadata from disk. Then the server accesses
-   the log information that it needs to retrieve the most used keys:</p>
-  
-   <ol>
-    <li><b>Initialize</b> - At this phase, the server does not have any data that it can serve yet.
-     The server starts populating a list of all vBuckets stored on disk by loading the recorded,
-     initial state of each vBucket.</li>
-    <li><b>Key Dump</b> - The server begins pre-fetching all keys and metadata
-     from disk based on items in the vBucket list.</li>
-    <li><b>Check Access Logs</b> - The server then reads a single cached access log which indicates
-     which keys are frequently accessed. The server generates and maintains this log on a periodic
-     basis and it is configurable. If this log exists, the server first loads items based on
-     this log before it loads other items from disk.</li>
-   </ol>
-   <p>Once Couchbase Server has the information about keys and has read in any access log information, 
-    it loads documents based on the following criteria:</p>
-   <ul>
-    <li><p><b>Loading based on Access Logs</b> - Couchbase Server loads documents into memory based on
-     the frequently-used items identified in the access log.</p></li>
-    <li><p><b>Loading Data</b> - If the access log is empty or is disabled, the server
-     sequentially loads documents for each key based on the vBucket list.</p></li>
-   </ul>
-   <p>Couchbase Server is able to serve information from RAM when one of the following conditions is
-    met during warmup:</p>
-   <ul>
-    <li>The server has finished loading documents for all keys listed in the access log</li>
-    <li>The server has finished loading documents for every key stored on disk for all vBuckets</li>
-    <li>The percentage of documents loaded into memory is greater than, or equal to, the setting for the 
-      <codeph>cbepctl ep_warmup_min_items_threshold</codeph> parameter</li>
-    <li>If total % of RAM filled by documents is greater than, or equal to, the setting for the 
-      <codeph>cbepctl ep_warmup_min_memory_threshold</codeph> parameter</li>
-    <li>If total RAM usage by a node is greater than or equal to the setting for
-     <codeph>mem_low_wat</codeph>.</li>
-   </ul>
-   <p>When the server reaches one of these states, known as the <i>run level</i>, 
-    the server stops loading documents for the remaining keys. and 
-    loads the remaining documents from disk into RAM as a background data fetch.</p>
-   
-   
-   
-   
-  
+  <p>Couchbase Serverがキーに関する情報を得て、アクセスログの情報を読み込むと、続いて以下の条件でドキュメントをロードします:</p>
+  <dl>
+   <dlentry>
+    <dt>アクセスログに基づきロードする</dt>
+    <dd>Couchbase Serverはアクセスログで特定された頻繁に利用されるアイテムに基づき、ドキュメントをメモリへとロードします。</dd>
+   </dlentry>
+  </dl>
+  <dl>
+   <dlentry>
+    <dt>データのロード</dt>
+    <dd>アクセスログが空か無効な場合、Couchbase ServerはシーケンシャルにvBucketリスト上の各キーのドキュメントをロードします。</dd>
+   </dlentry>
+  </dl>
+  <p>Couchbase Serverは以下のウォームアップ中に以下の条件のいずれかを満たす時、RAMからの情報の提供を開始できます:</p>
+  <ul>
+   <li>サーバがアクセスログに記載の全てのキーに対するドキュメントのロードを完了したとき。</li>
+   <li>サーバが全てのvBucketで保存された各キーのドキュメントのロードを完了したとき。</li>
+   <li>メモリへのロード済みドキュメントの割合が、<codeph>cbepctl ep_warmup_min_items_threshold</codeph>パラメータ設定以上となったとき。</li>
+   <li>ドキュメントで利用された総RAM容量に対する割合が、<codeph>cbepctl ep_warmup_min_memory_threshold</codeph>パラメータ設定以上となったとき。</li>
+   <li>ノードのRAM利用量が<codeph>mem_low_wat</codeph>設定以上となったとき。</li>
+  </ul>
+  <p>Couchbase Serverがいずれかの状態に達すると、 <i>run level</i>となり、残りのキーのドキュメントのロードは停止し、残りのドキュメントはバックグラウンドフェッチでディスクからRAMへとロードされます。</p>
  </conbody>
  <related-links>
   <linklist>

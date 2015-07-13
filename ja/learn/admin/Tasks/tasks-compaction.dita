@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic11042">
- <title>Compacting data files</title>
- <shortdesc>Database and view compaction helps to reclaim disk space and reduce fragmentation.</shortdesc>
+<topic xml:lang="ja" id="topic11042">
+ <title>データファイルのコンパクション</title>
+ <shortdesc>データベースとViewのコンパクションはフラグメント化を解消し、ディスク容量を解放します。</shortdesc>
  <body>
-  <p>The data files in which information is stored in a persistent state for a Couchbase bucket are
-      written to and updated as information is appended, updated and deleted. This process
-      eventually leads to gaps within the data file (particularly when data is deleted) which can be
-      reclaimed using a process called compaction.</p>
-  <p>The index files that are created each time a view is built are also written in a sequential
-   format. Updated index information is appended to the file as updates to the stored information is
-   indexed.</p>
-  <p>In both these cases, frequent compaction of the files on disk can help to reclaim disk space
-   and reduce fragmentation.</p>
+  <p>Couchbaseバケットの情報が永続化されたデータファイルは、情報が追加、更新、削除されるたびに書き込まれます。 このプロセスは結果的にデータファイル内で実データサイズとファイルサイズの差(特にデータを削除した場合)が発生します、これはコンパクションと呼ばれる処理で解消します。</p>
+  <p>Viewが構築されるたびに作成されるインデックスファイルも、シーケンシャルなフォーマットで保存されています。 保存された情報のインデックスを更新する際に、更新したインデックス情報がファイルに追記されます。</p>
+  <p>どちらの場合も、ディスク上のファイルを頻繁にコンパクションすることで、ディスク容量を解放し、フラグメント化を削減できます。</p>
  </body>
  <related-links>
   <linklist>
