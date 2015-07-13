@@ -1,103 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_jm3_1qp_dq">
-  <title>Compaction process</title><shortdesc>Couchbase Server compacts views and data files.</shortdesc>
+<topic xml:lang="ja" id="topic_jm3_1qp_dq">
+  <title>コンパクションプロセス</title><shortdesc>Couchbase ServerはViewとデータファイルをコンパクションします。</shortdesc>
   <body>
-   <p> For database compaction, Couchbase Server creates a new file to which the active (non-stale)
-      information is written. Meanwhile, the existing database files stay in place and continue to be
-      used for storing information and updating the index data. This process ensures that the database
-      continues to be available while compaction takes place. Once compaction is completed, the old
-      database is disabled and saved. After that, any incoming updates are posted in the newly created database
-      files and the old database is deleted from the system.</p>
-    <p>View compaction occurs in the same way. Couchbase Server creates a new index file for each
-      active design document. Then it takes this new index file and writes active index information
-      into it. Old index files are handled in the same way as the old data files during compaction.
-      Once compaction is completed, old index files are deleted from the system.</p>
+   <p> データベースのコンパクションでは、Couchbase Serverは新規ファイルを作成し、アクティブな(最新の)情報を書き込みます。 その際、既存のデータベースファイルはそのまま存在し、情報の保存とインデックスデータの更新に利用されます。 この処理はコンパクションを実行中でも、データベースが継続して利用可能であることを保証します。 コンパクションが完了すると、以前のデータベースは無効化され保存されます。 その後、すべての更新リクエストは新しく作成されたデータベースファイルに渡され、古いデータベースはシステムから削除されます。</p>
+    <p>Viewのコンパクションも同様の方法で実行します。 Couchbase Serverは各アクティブなデザインドキュメントで、新規のインデックスファイルを作成します。 そして、この新規インデックスファイルを利用し、アクティブなインデックス情報を書き込みます。 古いインデックスファイルをコンパクション中に、古いインデックスファイルは同様に処理されます。
+      コンパクションが完了すると、古いインデックスファイルはシステムから削除されます。</p>
     
-  <section><title>How to use compaction</title>
+  <section><title>コンパクションの利用方法</title>
     
-    <p>Compaction takes place as a background process while Couchbase Server is running.
-            You do not need to shut down or pause the database operation and clients can continue to access
-            and submit requests while the database is running. While compaction takes place in the
-            background, be sure to:</p>
+    <p>コンパクションはCouchbase Server稼働中に、バックグラウンドプロセスとして実行されます。
+            データベースオペレーションを停止したり、シャットダウンすることなく、データベース稼働中にクライアントが継続してアクセスでき、リクエストを送信できます。 コンパクションをバックグラウンドで実行中は、以下に注意してください:</p>
     
     <dl>
       <dlentry>
-        <dt>Perform compaction on every server.</dt>
-        <dd>Compaction operates only on a single server in the Couchbase Server cluster. You need to
-            perform compaction on each node in your cluster, and on each database in your
-            cluster.</dd>
+        <dt>すべてのサーバ上でコンパクションを実施する。</dt>
+        <dd>コンパクションはCouchbase Serverクラスタ内の単一のサーバ上で実行される処理です。 クラスタ内のすべてのデータベース、およびすべてのノード上でコンパクションを実行する必要があります。</dd>
       </dlentry>
     </dl>
     <dl>
       <dlentry>
-        <dt>Perform compaction during off-peak hours.</dt>
-        <dd>The compaction process is both disk and CPU intensive. In heavy write-based databases
-            where compaction is required, it must be scheduled during off-peak hours (use
-            auto-compact to schedule specific times). <p>If compaction isn’t scheduled during
-              off-peak hours, it can cause problems. Since the compaction process can take long time
-              to complete on large and busy databases, it is possible that it can fail to complete
-              properly while the database is still active. In extreme cases, this can lead to the
-              compaction process never catching up with the database modifications, and eventually
-              using up all the disk space. Schedule compaction during off-peak hours to prevent
-              this!</p></dd>
+        <dt>オフピーク時間帯にコンパクションを実行する。</dt>
+        <dd>コンパクション処理はディスク、CPUインテンシブな処理です。 頻繁に書き込みを行うデータベースでコンパクションを実行する場合、オフピーク時間帯にスケジュールするべきです (特定の時間帯を指定するには自動コンパクションを利用します)。 <p>コンパクションをオフピーク時間帯にスケジュールしない場合、問題が発生する可能性があります。 巨大でビジーなデータベースでは、コンパクションが完了するまでに長時間かかることがあり、データベースがアクティブであっても、正常に完了せず失敗することがあります。 極端な場合、データベース変更にコンパクション処理が追いつかず、結果的にすべてのディスク領域を使い果たしてしまう場合もあります。 これを避けるために、オフピーク時間帯にコンパクションをスケジュールしてください。</p></dd>
       </dlentry>
     </dl>
     <dl>
       <dlentry>
-        <dt>Perform compaction with adequate disk space.</dt>
-        <dd>Since compaction occurs by creating new files and
-          updating the information, you might need as much as twice the disk space of your current database
-          and index files. However, it is important to keep in mind that the exact amount of the disk space required
-            depends on the level of fragmentation, the amount of dead data, and the activity of the database,
-            as changes during compaction will also need to be written to the updated data
-            files. Before compaction takes place, the disk space is checked. If the amount of
-              available disk space is less than twice the current database size, the compaction process does
-              not take place and a warning is issued in the log.</dd>
+        <dt>十分なディスク領域を用いてコンパクションを実行する。</dt>
+        <dd>コンパクションは新規ファイルを作成して情報を更新するため、現在のデータベースとインデックスファイルの二倍のディスク領域が必要になります。 しかしながら、実際に必要となるディスク領域は、フラグメントレベル、最新でないデータの量、コンパクション中にも更新したデータファイルを書き込む必要があるため、データベースのアクティビティに依存するということを考慮してください。 コンパクション実行前にディスク容量がチェックされます。 利用可能なディスク容量が現在のデータベースサイズの二倍より少ない場合、コンパクション処理は実行されず、警告がログに出力されます。</dd>
       </dlentry>
     </dl>
     
     
   </section>
-    <section><title>Compaction behavior</title>
+    <section><title>コンパクションの挙動</title>
       
-   <p>The activities you can set up for auto-compaction are:</p>
+   <p>自動コンパクションで設定可能な挙動は:</p>
       
       <dl>
         <dlentry>
-          <dt>Stop/Restart:</dt>
-          <dd>The compaction process can be stopped and restarted. However, you
-            should be aware that the if the compaction process is stopped and updates to the database 
-            completed, when the compaction process is restarted the updated database may not be a
-            clean compacted version. This happens because any changes to the portion of the database file that
-            were processed before the compaction was canceled and restarted have already been
-            processed.</dd>
+          <dt>停止/再開:</dt>
+          <dd>コンパクション処理は停止、再開できます。 しかしながら、コンパクション処理を停止し、データベースへの更新を行った場合、コンパクション処理を再開しても、更新されたデータベースはコンパクションされたバージョンではないことに注意してください。 これはコンパクションをキャンセルし、再開する前に実行したデータベースファイルの一部への変更が、すでに処理されているため発生します。</dd>
         </dlentry>
       </dl>
       
       <dl>
         <dlentry>
-          <dt>Auto-compaction:</dt>
-          <dd>Auto-compaction automatically triggers the compaction process on
-            your database. You can schedule specific hours when compaction can take place.</dd>
+          <dt>自動コンパクション</dt>
+          <dd>自動コンパクションはデータベースのコンパクション処理を自動的に開始します。 コンパクション実行時間帯を指定できます。</dd>
         </dlentry>
       </dl>
       <dl>
         <dlentry>
-          <dt>Compaction activity log:</dt>
-          <dd>Compaction activity is reported in Couchbase Server
-            log. You will see entries similar to following showing the compaction operation and
-            duration:
+          <dt>コンパクション実行ログ:</dt>
+          <dd>コンパクションの実行はCouchbase Serverログに出力されます。 コンパクションの動作と実行時間を示す以下のようなエントリが出力されます:
             <ul>
-              <li>Autocompaction: Indicates compaction cannot be performed because of inadequate
-                disk space.</li>
+              <li>自動コンパクション: ディスク容量不足のため、コンパクションが実行できなかったことを示します。</li>
               
-              <li>Manually triggered compaction</li>
-              <li>Compaction completed successfully</li>
-              <li>Compaction failed</li>
-              <li>Purge deletes compaction</li>
-              <li>Compaction started/completed</li>
-              <li>Compaction failed</li>
+              <li>手動で実行されたコンパクション</li>
+              <li>コンパクションが正常に完了</li>
+              <li>コンパクションが失敗</li>
+              <li>コンパクションを削除</li>
+              <li>コンパクションの開始/完了</li>
+              <li>コンパクションが失敗</li>
             </ul>
           </dd>
         </dlentry></dl>

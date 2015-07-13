@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic6788">
-  <title>Using multi-readers and writers</title>
-  <shortdesc>Multiple readers and writers are supported to increase disk I/O throughput.</shortdesc>
+<topic xml:lang="ja" id="topic6788">
+  <title>マルチ reader writer の利用</title>
+  <shortdesc>複数のreaderとwriterを利用すると、ディスクI/Oスループットを向上できます。</shortdesc>
   <body>
-    <p>Multiple readers and writers are supported to persist data onto disk. By default, this is set
-      to three total workers per data bucket, with two reader workers and one writer worker for the
-      bucket. This feature helps increase disk I/O throughput. If disk utilization is below the
-      optimal level, increase the setting to improve disk utilization. If disk utilization is near
-      the maximum and heavy I/O contention occurs, decrease this setting. By default, three total
-      readers and writers are allocated.</p>
+    <p>複数のreaderとwriterはディスクへのデータ永続化をサポートします。 デフォルトでは、データバケット単位に計3つのワーカが設定され、2つのreaderワーカと、1つのwriterワーカとなります。 この機能はディスクI/Oスループットの改善に利用できます。 最適なディスク利用レベルに達していない場合、設定を増加させることでディスク利用を向上できます。 ディスク利用がほぼ最大で、I/O競合が発生している場合、この設定を下げてください。 デフォルトでは計3つのreaderとwriterが割り当てられています。</p>
       
       
   </body>

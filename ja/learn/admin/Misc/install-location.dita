@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_bx1_5xc_s4">
-  <title>Installation location</title>
-  <shortdesc>The default installation location for Couchbase Server depends on the operating
-    system.</shortdesc>
+<topic xml:lang="ja" id="topic_bx1_5xc_s4">
+  <title>インストールの場所</title>
+  <shortdesc>Couchbase Serverのデフォルトインストール先はオペレーティングシステムによって異なります。</shortdesc>
   <body>
-    <p>By default, Couchbase Server installs under the following locations:</p>
+    <p>デフォルトではCouchbase Serverは以下の場所にインストールされます:</p>
     <table>
       <tgroup cols="2">
         <colspec colname="col1" colwidth="1*"/>
         <colspec colname="col2" colwidth="2.77*"/>
         <thead>
           <row>
-            <entry>Platform</entry>
-            <entry>Directory</entry>
+            <entry>プラットフォーム</entry>
+            <entry>ディレクトリ</entry>
           </row>
         </thead>
         <tbody>

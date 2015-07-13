@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic1711">
-	<title>Data file location</title>
-	<shortdesc>Couchbase Server stores data files (database and indices) under <menucascade>
-			<uicontrol>var</uicontrol>
-			<uicontrol>lib</uicontrol>
-			<uicontrol>couchbase </uicontrol>
-			<uicontrol>data</uicontrol>
-		</menucascade>. </shortdesc>
+<topic xml:lang="ja" id="topic1711">
+	<title>データファイルの場所</title>
+	<shortdesc>Couchbase Serverはデータファイル (データベースとインデックス)を<menucascade> <uicontrol>var</uicontrol> <uicontrol>lib</uicontrol> <uicontrol>couchbase</uicontrol> <uicontrol>data</uicontrol></menucascade>に保存します。 </shortdesc>
 	<body>
-		<p>The disk path for the database and index files is set during the initial setup of the server
-			node. The default disk path is typically used for development purposes only. If the
-			server node is used for production, configure a different disk path. </p>
+		<p>データベースとインデックスファイルの保存場所はサーバノードの初期セットアップ時に指定できます。
+			一般的にデフォルトのディスクパスは開発用途のみに利用します。
+			プロダクション環境では、異なるディスクパスを設定します。 </p>
 		
 		
 		<table>
@@ -21,8 +16,8 @@
 				<colspec colname="col2" colwidth="2.77*"/>
 				<thead>
 					<row>
-						<entry>Platform</entry>
-						<entry>Default directory</entry>
+						<entry>プラットフォーム</entry>
+						<entry>デフォルトディレクトリ</entry>
 					</row>
 				</thead>
 				<tbody>
@@ -42,37 +37,26 @@
 			</tgroup>
 		</table>
 		
-		<note type="important">Do not store arbitrary data in the data path, and especially not the Couchbase Server backups.  
-			Such data will be deleted by Couchbase Server under certain conditions.</note>
+		<note type="important">データパスにはその他のファイル、特にCouchbase Serverのバックアップを保存しないでください。  
+			このディレクトリのデータはCouchbase Serverが特定の条件で削除することがあります。</note>
 		
-		<section><title>Changing the data file path</title>The disk path where the data and index files
-			are stored cannot be changed on a running server. To change the disk path, the node must
-			be removed from the cluster, configured with the new path, and added back to the
-			cluster. The data file path can be changed for each node with the Couchbase Web Console
-			during setup, with REST API, or CLI. Once a node or a cluster has already been set up
-			and is storing data, the path cannot be changed while the node is a part of a running
-			cluster. <p>The quickest and easiest method is to provision a new node with the
-				configured correct disk path, and then use swap rebalance to add the new node in
-				while taking the old node out. This ensures that the cluster performance is not
-				impacted.  </p><p>To change the disk path by replacing a node (with swap
-				rebalance):</p><ol>
-				<li>Set up a new node with a different disk path.</li>
-				<li>Swap rebalance the new node for the existing node.</li>
-				<li>Repeat the process for each node in the cluster.</li>
-			</ol><p>To change the disk path of an existing node (without swap rebalance): </p><ol>
-				<li>Remove the node from the cluster and rebalance.</li>
-				<li>Change the path on the running node either via the REST API or using the
-					Couchbase CLI. </li>
-				<li>Re-add the node back to the cluster and rebalance.</li>
-			</ol> To change the disk path on multiple nodes, swap out each node and change the disk
-			path individually. <note type="important">Changing the data path for a node that is
-				already a part of a cluster permanently deletes the stored data.</note>
-			<note type="tip">When using CLI, the data file and index file path settings cannot be
-				changed individually. To change the setting individually, use the REST API.</note>
+		<section><title>データファイルパスの変更</title>データやインデックスファイルが保存されるディスクパスは稼働中のサーバで変更できません。 ディスクパスを変更するには、そのノードをクラスタから削除し、パスを変更後、クラスタに戻す必要があります。
+			データファイルパスは各ノードのセットアップ時に、Couchbase Webコンソール、REST API、またはCLIから変更することができます。 ノードやクラスタをセットアップしデータの保存を開始すると、クラスタの一部となったノードのパスは変更できません。
+			<p>最も高速で簡単な方法は、新規ノードを正しいディスクパスで設定し、スワップリバランスを利用して新規ノードを追加すると同時に、既存ノードをクラスタから削除することです。 これはクラスタのパフォーマンスに影響を与えません。</p>
+			<p>ノードを置換してディスクパスを変更する(スワップリバランス):</p><ol>
+				<li>新規ノードのディスクパスを変更する。</li>
+				<li>既存ノードと新規ノードをスワップリバランスする。</li>
+				<li>クラスタ内の各ノードでこの処理を繰り返す。</li>
+			</ol><p>既存ノードのディスクパスを変更する(スワップリバランスを利用しない): </p><ol>
+				<li>クラスタからノードを削除しリバランスする。</li>
+				<li>そのノードのパスをREST APIまたはCouchbase CLIで変更する。 </li>
+				<li>クラスタにノードを再追加しリバランスする。</li>
+			</ol> 複数ノードのディスクパスを変更するには、各ノードをスワップアウトし、個々のディスクパスを変更します。 <note type="important">すでにクラスタの一部であったノードのデータパスを変更すると、保存されていたデータは完全に削除されます。</note>
+			<note type="tip">CLIを利用する場合、データファイルとインデックスファイルのパスは個別に変更することはできません。 個別に設定を変更する場合、REST APIを利用します。</note>
 		</section>
 		
 			
-		<example><title>CLI example</title>
+		<example><title>CLI実行例</title>
 		<codeblock>
 couchbase-cli node-init -c 10.5.2.54:8091 \
 	--node-init-data-path=new_path \
