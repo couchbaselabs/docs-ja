@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_f1t_c5c_3p">
-  <title>Cluster maintenance</title>
+<topic xml:lang="ja" id="topic_f1t_c5c_3p">
+  <title>クラスタのメンテナンス</title>
   <body>
-    <p>Cluster maintenance involves:</p>
+    <p>クラスタのメンテナンスは以下の操作を含みます:</p>
       <ul>
-        <li>Adding server nodes to a cluster.</li>
-        <li>Removing server nodes from a cluster.</li>
-        <li>Rebalancing the cluster.</li>
+        <li>サーバノードをクラスタに追加する。</li>
+        <li>クラスタからサーバノードを削除する。</li>
+        <li>クラスタをリバランスする。</li>
       </ul>
   </body>
 </topic>

@@ -1,62 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_ynd_gm2_q4">
-  <title>Rebalancing factors</title>
-  <shortdesc>Choosing when, why, and how to rebalance your cluster depends on the scenario.</shortdesc>
+<topic xml:lang="ja" id="topic_ynd_gm2_q4">
+  <title>リバランス実行時の考慮事項</title>
+  <shortdesc>クラスタをいつ、なぜ、どのようにリバランスするかは、シナリオに依存します。</shortdesc>
   <body>
-    <p>Choosing when each of situations applies is not always straightforward and various indicators 
-      define when to change the node configuration and when to perform a rebalance.</p>
+    <p>どの状況かを選択し適用するかはいつも単純とは限らず、様々な要素がいつノード構成を変更してリバランスを行うべきかを決定します。</p>
     
-    <section><title>When to expand your cluster</title>
-    <p>You can increase the size of your cluster by adding more nodes. Adding more
-          nodes increases the available RAM, disk I/O and network bandwidth available to your client
-          applications and helps to spread the load accross more machines. There are a few different
-          metrics and statistics you can use to make your decision:</p>
+    <section><title>いつクラスタを拡張するべきか</title>
+    <p>より多くのノードを追加することで、クラスタのサイズを拡張できます。 ノードを追加することで、利用可能なRAM、ディスクI/O、クライアントアプリケーションで利用可能なネットワーク帯域が増加し、より多くのマシンに負荷を分散可能になります。 ここでは、タイミングを決定するためにいくつかのメトリックと統計情報があります:</p>
       
       <dl>
         <dlentry>
-          <dt>Increase RAM capacity</dt>
-          <dd>One of the most important components in a Couchbase Server cluster is the amount of RAM
-            available. RAM not only stores application data and supports the Couchbase Server
-            caching layer, it is also actively used for other operations by the server, and a
-            reduction in the overall available RAM may cause performance problems
-            elsewhere. The following are common indicators for increasing your RAM capacity
-              within your cluster: 
-            <ul>
-                <li>If you see more disk fetches occurring, that means that your application is
-                  requesting more and more data from disk that is not available in RAM. Increasing the
-                  RAM in a cluster will allow it to store more data and therefore provide better
-                  performance to your application.</li>
-                <li>If you want to add more buckets to your Couchbase Server cluster you may need more
-                  RAM to do so. Adding nodes will increase the overall capacity of the system and then
-                  you can shrink any existing buckets in order to make room for new ones.</li>
-              </ul></dd>
+          <dt>RAM容量を増加する</dt>
+          <dd>Couchbase Serverクラスタ内で最も重要なコンポーネントの一つが利用可能なRAM容量です。 RAMはCouchbase Serverのキャッシュレイヤとしてアプリケーションデータを保存するだけでなく、その他のオペレーションでもサーバによって利用されます。 全体で利用可能なRAM容量を低減すると、どこか別の場所で性能の問題を引き起こすこともあります。 以下にクラスタのRAM容量を増加すべき一般的なインジケータを示します: <ul>
+              <li>より多くのディスクフェッチが発生している場合、アプリケーションがリクエストしたデータがRAM上に存在せず、より多くのデータをディスクからフェッチしていることを意味します。 クラスタ内のRAMを増加すると、より多くのデータをRAMに保持でき、より良いパフォーマンスをアプリケーションに提供できます。</li>
+              <li>Couchbase Serverクラスタにより多くのバケットを追加する場合、より多くのRAMが必要になることがあります。 ノードを追加すると、システム全体のキャパシティを増加し、既存バケットを縮小して新規バケット用の空きを作ることができます。</li>
+            </ul></dd>
         </dlentry>
       </dl>
     
     
     <dl>
       <dlentry>
-        <dt>Increase disk I/O throughput</dt>
-        <dd>By adding nodes to a Couchbase Server cluster, you will increase the aggregate amount of 
-          disk I/O that can be performed across the cluster. This is especially important in high-write 
-          environments, but can also be a factor when you need to read large amounts of data from the disk.</dd>
+        <dt>ディスクI/Oスループットを増加させる</dt>
+        <dd>Couchbase Serverクラスタにノードを追加することで、クラスタ全体で実行可能なディスクI/Oを増加させることができます。 これは特に書き込み頻度の高い環境で重要です、しかしディスクから大量のデータを参照する必要がある場合にも重要な要素となります。</dd>
       </dlentry>
     </dl>
     <dl>
       <dlentry>
-        <dt>Increase disk capacity</dt>
-        <dd>You can either add more disk space to your current nodes or add more nodes to add aggregate disk space to the cluster.</dd>
+        <dt>ディスク容量を増加させる</dt>
+        <dd>現在のノードにより多くのディスク容量を追加するか、より多くのノードを追加することでクラスタ全体のディスク容量を追加できます。</dd>
       </dlentry>
     </dl>
       
       <dl>
         <dlentry>
-          <dt>Increase network bandwidth</dt>
-          <dd>If you see that you are or are close to saturating the network bandwidth of your cluster, 
-            this is a very strong indicator of the need for more nodes. More nodes will cause the overall 
-            network bandwidth required to be spread out across additional nodes, which will reduce the 
-            individual bandwidth of each node.</dd>
+          <dt>ネットワーク帯域を増加させる</dt>
+          <dd>クラスタのネットワーク帯域が飽和してしまうか、飽和しそうなポイントに達した場合、より多くのノードが必要である協力なインジケータとなります。 より多くのノードはこれらの追加したノードに、必要なネットワーク帯域を拡散し、各ノード個別の帯域を削減します。</dd>
         </dlentry>
       </dl>
     
@@ -64,47 +44,20 @@
       
       
       
-      <section><title>When to shrink your cluster</title> Choosing to shrink a Couchbase cluster is
-      a more subjective decision. It is usually based upon cost considerations, or a change in
-      application requirements that doesn't require such a large cluster to support the required
-      load. <p>When choosing whether to shrink a cluster:</p><ul>
-        <li>Ensure that you have enough capacity in the remaining nodes to support your dataset and
-          application load. Removing nodes may have a significant detrimental effect on your cluster
-          if there are not enough nodes.</li>
-        <li>Avoid removing multiple nodes at once if you are trying to determine the ideal cluster
-          size. Instead, remove each node one at a time to understand the impact on the cluster as a
-          whole.</li>
-        <li>Remove and rebalance a node rather than using failover. When a node fails and is not
-          coming back to the cluster, the failover functionality will promote its replica vBuckets
-          to become active immediately. If a healthy node is failed over, there might be some data
-          loss for the replication data that was in flight during that operation. Using the remove
-          functionality will ensure that all data is properly replicated and continuously
-          available.</li>
-      </ul>
-    </section>
+      <section><title>いつクラスタを縮小すべきか</title>Couchbaseクラスタ縮小の選択はより主観的な判断となります。 通常は、コスト面での考慮、またはアプリケーション要件が変わり、必要な負荷に対応するために大きなクラスタが必要になくなったときに検討します。 <p>いつクラスタを縮小すべきか:</p><ul>
+        <li>データセットとアプリケーション負荷をサポートするために、残りのノードで十分なキャパシティを提供できるか確認してください。 ノードを削除すると、十分なノードが存在しない場合、クラスタに不利益な重大な影響を与えることがあります。</li>
+        <li>理想的なクラスタサイズの決定を試行する場合、一度に複数のノードを削除することは避けてください。 代わりに、各ノードを一度に一つずつ削除し、クラスタ全体での影響を理解できるようにします。</li>
+        <li>フェイルオーバを利用するより、ノードの削除とリバランスを利用してください。 ノードがダウンし、クラスタに復帰しない場合、フェイルオーバ機能によってそのレプリカvBucketが即座にアクティブに昇格されます。 健全なノードをフェイルオーバすると、実行中のオペレーションのレプリケーションデータの一部を失う可能性があります。 <codeph>remove</codeph>を利用すると、すべてのデータが正しくレプリケートされ、継続して利用可能であることを保証できます。 </li>
+      </ul></section>
     
-    <section><title>When to rebalance your cluster</title>
+    <section><title>いつクラスタをリバランスすべきか</title>
 
-    <p>Once you decide to add or remove nodes, consider the following:</p>
+    <p>ノードを追加または削除することを決定したなら、次の点を考慮してください:</p>
       <ul>
-                <li>If you’re planning on adding or removing multiple nodes in a short period of time, it
-                  is best to add them all at once and then kick-off the rebalancing operation rather than
-                  rebalance after each addition. This will reduce the overall load placed on the system as well
-                  as the amount of data that needs to be moved.</li>
-                <li>Choose a quiet time for adding nodes. While the rebalancing operation is meant to be
-                  performed online, it is not a “free” operation and will undoubtedly put increased load on the
-                  system as a whole in the form of disk IO, network bandwidth, CPU resources and RAM
-                  usage.</li>
-                <li>Voluntary rebalancing (i.e. not part of a failover situation) should be performed during
-                  a period of low usage of the system. Rebalancing is a comparatively resource intensive
-                  operation as the data is redistributed around the cluster and you should avoid performing a
-                  rebalance during heavy usage periods to avoid having a detrimental affect on overall cluster
-                  performance.</li>
-                <li>Rebalancing requires moving large amounts of data around the cluster. The more RAM that
-                  is available will allow the operating system to cache more disk access which will allow it to
-                  perform the rebalancing operation much faster. If there is not enough memory in your cluster
-                  the rebalancing may be very slow. It is recommended that you don’t wait for your cluster to
-                  reach full capacity before adding new nodes and rebalancing.</li>
+                <li>複数のノードを短時間で追加または削除することを計画している場合、一台ずつリバランスを実行するよりも、それらすべてを一度に追加し、リバランスを実行するのが最良の手順です。 これはシステムにかかる全体的な負荷と、移動が必要なデータ量を削減します。</li>
+                <li>クラスタへの負荷が低い時間帯にノードを追加します。 リバランス操作はオンラインで実行できるように設計されているものの、"全く負荷がない"処理ではなく、ディスクI/O、ネットワーク帯域、CPU利用率、RAM利用量という形でシステム全体の負荷を増加させることは疑う余地はありません。</li>
+                <li>自主的にリバランスを行う場合(フェイルオーバ後の復旧ではない場合)は、システムの利用が少ない時間帯に実行すべきです。 クラスタ内でデータが再分散されるため、リバランスは比較的リソースインテンシブな処理であり、全体的なクラスタパフォーマンスに不利益な影響を与えることを避けるために、システムを活発に利用している時間帯にリバランスを実行することは避けるべきです。</li>
+                <li>リバランスはクラスタ内で大量のデータを移動します。 より多くのRAMが利用できれば、オペレーティングシステムがより多くのディスクアクセスをキャッシュでき、リバランス処理をより高速に実行できます。 クラスタ内に十分なメモリがない場合、リバランスは非常に遅くなるでしょう。 クラスタのキャパシティを使い切る前に、新規ノードを追加しリバランスを実行することを推奨します。</li>
               </ul>
     </section>
     
