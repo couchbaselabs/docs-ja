@@ -1,40 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_bbv_ywf_q4">
- <title>Rebalance behind-the-scenes</title>
- <shortdesc>The rebalance process is managed through a
-  specific process called the <term>orchestrator</term>.</shortdesc>
+<concept xml:lang="ja" id="concept_bbv_ywf_q4">
+ <title>リバランスの舞台裏</title>
+ <shortdesc>リバランス処理は、 <term>orchestrator</term>と呼ばれる特別なプロセスによって管理されています。</shortdesc>
  <conbody>
   
-  <p>The orchestrator examines the current vBucket map
-   and then combines that information with the node additions and removals in order to create a new
-   vBucket map.</p>
-  <p>The orchestrator starts the process of moving the individual vBuckets from
-    the current vBucket map to the new vBucket structure. It only starts the process while thew nodes 
-    themselves are responsible for actually performing the movement of data
-    between the nodes. The aim is to make the newly calculated vBucket map match the current
-    situation.</p>
-  <p>Each vBucket is moved independently, and a number of vBuckets can be migrated
-     simultaneously in parallel between the different nodes in the cluster. On each destination node,
-     a process called <codeph>ebucketmigrator</codeph> is started. It uses the TAP system to
-     request that all the data be transferred for a single vBucket, and that the new vBucket data
-     becomes the active vBucket once the migration has been completed.</p>
-  <p>While the vBucket
-      migration process is taking place, clients are still sending data to the existing vBucket. This
-      information is migrated along with the original data that existed before the migration was
-      requested. Once the migration of all the data has completed, the original vBucket is marked
-      as disabled, and the new vBucket is enabled. This updates the vBucket map and is communicated
-      back to the connected clients that will now use the new location.</p>
+  <p>orchestratorは現在のvBucketマップを調査し、ノードの追加や削除の情報を組み合わせ、新しいvBucketマップを作成します。</p>
+  <p>orchestratorは、現在のvBucketマップから、新しいvBucket構成へと、各vBucketの移動処理を開始します。 ノード自身が実際にノード間でデータの移動を実行している間だけ、そのプロセスは稼働します。 目的は新しく計算されたvBucketマップに、現在の状況を一致させることです。</p>
+  <p>各vBucketは個別に移動し、クラスタ内の様々なノード間で複数のvBucketを同時並列で移動できます。 各宛先ノード上では、 <codeph>ebucketmigrator</codeph> と呼ばれるプロセスが開始されます。 これはTAPシステムを利用し単一のvBucketにおけるすべてのデータの転送をリクエストし、移行が完了すると、新規vBucketデータをアクティブなvBucketとします。</p>
+  <p>vBucket移行処理を実行中にも、クライアントは継続して既存のvBucketへとデータを送信できます。
+		この情報は移行がリクエストされた時点で存在していたオリジナルのデータとともに移行されます。
+		すべてのデータの移行が完了すると、オリジナルのvBucketは無効とマークされ、新しいvBucketが有効になります。 これはvBucketマップを更新し、接続されたクライアントに伝わり、新しいロケーションが利用可能となります。</p>
   
   
   
-  <section><title>Changing vBucket moves with REST</title>
-   <p>The number of vBucket moves that occur during the rebalance
-    operation can be modified. The default is one (1) and indicates that only one vBucket is moved at a time
-    during the rebalance operation.</p>
-  <p>To change the number of vBucket moves, execute a curl <cmdname>POST</cmdname>
-         command using the following syntax with the <codeph>/internalSettings</codeph> endpoint and
-         the option <codeph>rebalanceMovesPerNode</codeph>.</p>
+  <section><title>RESTを利用してvBucket移動を変更する</title>
+		<p>リバランス中に発生するvBucketの移動数の設定は変更できます。
+			デフォルトは1で、1つのvBucketのみがリバランス操作中に移動可能であることを示します。</p>
+  <p>vBucket移動数を変更するには、curlの <cmdname>POST</cmdname>
+         コマンドを以下のシンタックスで<codeph>/internalSettings</codeph>エンドポイントに対し、<codeph>rebalanceMovesPerNode</codeph>オプションを指定して実行します。</p>
 
   <codeblock>
 curl -X POST -u admin:password
@@ -42,7 +26,7 @@ curl -X POST -u admin:password
  http://HOST:PORT/internalSettings
 </codeblock>
   
-  <p>For example:</p>
+  <p>例:</p>
    <codeblock>
 curl -X POST -u Administrator:password
  -d rebalanceMovesPerNode=14

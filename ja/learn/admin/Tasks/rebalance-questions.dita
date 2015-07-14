@@ -1,72 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_fz1_vxf_q4">
- <title>Common rebalancing questions</title>
- <shortdesc>Common questions and answers about the rebalancing operation are addressed.</shortdesc>
+<concept xml:lang="ja" id="concept_fz1_vxf_q4">
+ <title>一般的なリバランスに関する質問</title>
+ <shortdesc>一般的にリバランスに関して行われる質疑応答を紹介します。</shortdesc>
  <conbody>
 
 
  
-   <section><title>How long will rebalancing take?</title>
+   <section><title>リバランスにはどのくらいの時間がかかるか?</title>
 
-  <p>Because the rebalancing operation moves data stored in RAM and on disk, and continues while the
-   cluster is still servicing client requests, the time required to perform the rebalancing
-   operation is unique to each cluster. Other factors, such as the size and number of objects, speed
-   of the underlying disks used for storage, and the network bandwidth and capacity will also impact
-   the rebalance speed.</p>
-  <p>Busy clusters may take a significant amount of time to complete the rebalance operation.
-   Similarly, clusters with a large quantity of data to be moved between nodes on the cluster will
-   also take some time for the operation to complete. A busy cluster with lots of data may take a
-   significant amount of time to fully rebalance.</p>
+  <p>リバランス操作はクラスタが継続してクライアントリクエストを処理する間に、RAMとディスクに保存されたデータを移動するため、リバランス操作の実行に必要な時間は各クラスタ独自のものになります。 その他の要素として、オブジェクトのサイズと数、ストレージに利用しているディスクの速度、ネットワーク帯域とキャパシティがリバランスの速度に影響します。</p>
+  <p>ビジーなクラスタではリバランス操作の完了に非常に長時間かかることがあります。
+   同様に、クラスタ上のノード間で巨大なデータを移動する場合、オペレーション完了までに長時間かかることがあります。 ビジーで大量のデータを保持するクラスタではリバランスが完了するまでに非常に長い時間がかかるでしょう。</p>
    </section>
   
   
   
-   <section><title>How many nodes can be added or removed?</title>
+   <section><title>何台のノードを追加、または削除できるのか?</title>
   
-  <p>Functionally there is no limit to the number of nodes that can be added or removed in one
-   operation. However, from a practical level you should be conservative about the numbers of nodes
-   being added or removed at one time.</p>
+		 <p>機能的には一度の操作で追加および削除できるノード数に上限はありません。
+			 しかしながら、現実的には、一度に追加または削除するノード台数に関しては保守的になるべきでしょう。</p>
     <ul>
-     <li>When expanding your cluster, adding more nodes and performing fewer rebalances is the recommend
-      practice.</li>
-     <li>When removing nodes, you should take care to ensure that you do not remove too many nodes and
-      significantly reduce the capability and functionality of your cluster.</li>
+     <li>クラスタを拡張するとき、より多くのノードを追加し、実行するリバランスの回数を減らすことが推奨される手順になります。</li>
+     <li>ノードを削除するときは、一度に多くのノードを削除しすぎて、クラスタのキャパシティと機能性を極端に減らさないように注意してください。</li>
     </ul>
-  <p>Remember as well that you can remove nodes, and add nodes, simultaneously. If you are planning
-   on performing a number of addition and removals simultaneously, it is better to add and remove
-   multiple nodes and perform one rebalance, than to perform a rebalance operation with each
-   individual move.</p>
-  <p>If you are swapping out nodes for servicing, then you can use this method to keep the size and
-   performance of your cluster constant.</p>
+  <p>同時にノードの削除と追加ができる点も忘れないでください。 同時に追加と削除を実行することを検討している場合、複数のノードを同時に追加、および削除し、一回のリバランスを実行する方が、個々の移動ごとにリバランスを実行するよりも良いです。</p>
+  <p>クラスタのサイズやパフォーマンスを一貫して維持するためには、ノードをスワップアウトさせます。</p>
    </section>
   
   
 
-   <section><title>Will cluster performance be affected during a rebalance?</title>
+   <section><title>リバランス中にクラスタのパフォーマンスに影響はあるか?</title>
   
-  <p>By design, there should not be any significant impact on the performance of your application.
-   However, it should be obvious that a rebalance operation implies a significant additional load on
-   the nodes in your cluster, particularly the network and disk I/O performance as data is
-   transferred between the nodes.</p>
-  <p>Ideally, you should perform a rebalance operation during the quiet periods to reduce the impact
-   on your running applications.</p>
+  <p>設計上、アプリケーションのパフォーマンスに重大な影響を与えるべきではありません。
+   しかしながら、リバランス操作はクラスタ内のノード上の負荷、特にノード間でデータを転送するため、ネットワークとディスクI/O性能への負荷が大幅に増加することは明らかです。</p>
+  <p>理想的には、稼働中のアプリケーションへの影響を削減するために、クラスタへの負荷が低い時間帯にリバランスを実行するべきです。</p>
    </section>
   
   
 
-   <section><title>Can I stop a rebalance operation?</title>
+   <section><title>リバランス処理は停止できるか?</title>
   
-  <p>The vBuckets within the cluster are moved individually. This means that you can stop a
-   rebalance operation at any time. Only the vBuckets that have been fully migrated will have been
-   made active. You can re-start the rebalance operation at any time to continue the process.
-   Partially migrated vBuckets are not activated.</p>
-  <p>The one exception to this rule is when removing nodes from the cluster. Stopping the rebalance
-   cancels their removal. You will need to mark these nodes again for removal before continuing the
-   rebalance operation.</p>
-  <p>To ensure that the necessary clean up occurs, stopping a rebalance incurs a five minute grace
-   period before the rebalance can be restarted. This ensures that the cluster is in a fixed state
-   before rebalance is requested again.</p>
+  <p>クラスタ内のvBucketは個別に移動されます。 このため、リバランス処理はいつでも停止することができます。 すでに完全に移行されたvBucketだけがアクティブになります。 処理を継続するために、いつでもリバランス操作を再開できます。 </p>
+   <p>部分的に移行されたvBucketはアクティブになりません。</p>
+  <p>このルールに対する一つの例外は、クラスタからノードを削除する場合です。 リバランスの停止はノードの削除をキャンセルします。 リバランス処理を継続する前に、これらのノードを削除として再度マークする必要があります。</p>
+  <p>必要なクリーンアップを確実にするため、リバランスを停止した後は、リバランスを再開できるまで5分の待機期間が必要です。 これはリバランスが再度リクエストされる前にクラスタが状態を修復することを保証するためです。</p>
    </section>
 
  </conbody>

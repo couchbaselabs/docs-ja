@@ -1,34 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_e1d_lxf_q4">
- <title>Rebalance effect on bucket types</title>
- <shortdesc>The rebalance operation works across the cluster both on the Couchbase and memcached
-  buckets.</shortdesc>
+<concept xml:lang="ja" id="concept_e1d_lxf_q4">
+ <title>バケット種別によるリバランスの影響</title>
+ <shortdesc>リバランス操作はクラスタ全体、Couchbaseとmemcahcedバケットの両方で動作します。</shortdesc>
  <conbody>
-  <p>There are differences in the rebalance operation for the Couchbase and memcached buckets due to the inherent differences of the two bucket types.</p>
+  <p>二つのバケット種別が持つ違いにより、Couchbaseとmemcachedバケットでのリバランス処理には異なる点があります。</p>
   
-  <section><title>Couchbase buckets</title>
+  <section><title>Couchbaseバケット</title>
   
-  <p>For Couchbase buckets:</p><ul>
-     <li>Data is rebalanced across all nodes in the cluster to match the new
-      configuration.</li>
-     <li>The updated vBucket map is communicated to clients as each vBucket is successfully
-      moved.</li>
-     <li>No data is lost, and there are no changes to the caching or availability of individual keys.</li>
+  <p>Couchbaseバケットでは:</p><ul>
+     <li>新しい構成に一致するように、データはクラスタ内のすべてのノードにリバランスされます。</li>
+     <li>更新されたvBucketマップは各vBucketが正常に移動するにつれ、クライアントへと伝わります。</li>
+     <li>データロスは発生せず、キャッシュや各キーの可用性には変化がありません。</li>
   </ul></section>
   
   
-  <section><title>Memcached buckets</title>
-  <p>For memcached buckets:</p>
+  <section><title>Memcachedバケット</title>
+  <p>Memcachedバケットでは:</p>
   <ul>
-     <li>If new nodes are added to the cluster, each new node is added to the cluster and
-     to the list of nodes supporting the memcached bucket data.</li>
-     <li>If nodes are removed from the cluster, the data stored on that node within the
-      memcached bucket is lost and the node is removed from the available list of nodes.</li>
-     <li>In either case, the list of nodes handling the bucket data is automatically updated and
-      communicated to the client nodes. Memcached buckets use the Ketama hashing algorithm, which is
-      designed to cope with server changes. However, server node changes can shift the hashing and
-      invalidate some keys once the rebalance operation is completed.</li>
+     <li>新規ノードがクラスタに追加されると、各新規ノードはmemcachedバケットデータをサポートするノードのリストに追加されます。</li>
+     <li>クラスタからノードが削除されると、そのノードで保存されていたmemcachedバケット内のデータは失われ、そのノードは利用可能なノードのリストから削除されます。</li>
+     <li>どちらの場合も、バケットデータを処理するノードのリストは自動的に更新され、クライアントノードへと伝わります。 Memcachedバケットは、サーバの変更に対応できるように設計されているKetamaハッシュアルゴリズムを利用しています。 しかしながら、サーバノードの変更によりハッシュが移動することになり、リバランス操作が完了すると、いくつかのキーが利用できなくなります。</li>
     </ul>
   </section>
   

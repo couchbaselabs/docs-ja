@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_gp4_rx2_lq">
-  <title>Resuming rebalance after a failure</title><shortdesc>Improved rebalance latency of Couchbase Server is demonstrated through its ability to
-    better resume rebalancing operation after any blips or failures have occurred in the
-    process.</shortdesc>
+<topic xml:lang="ja" id="topic_gp4_rx2_lq">
+  <title>リバランス失敗からの再開</title><shortdesc>リバランス実行中に一時的な不具合や障害が発生した後に、リバランスを再開できることは、Couchbase Serverのリバランス時間を向上させます。</shortdesc>
   <body>
-    <p>In case the rebalancing operation is interrupted at any point, it can be resumed instead of
-      repeating the whole process.</p> 
-      <p>Couchbase Server is able to perform incremental catch-up due to the
-        <term>restartability</term> option provided through DCP (Database Change Protocol). </p>
-    <p>With DCP, the improved rebalance latency is achieved through efficient data movement, which
-      is characterized by better capability to resume operation after failures,  as well as to
-      perform incremental catch-up.</p>
+    <p>リバランス操作がある時点で中断された場合、すべてのプロセスを繰り返す代わりに、リバランスを再開できます。</p> 
+      <p>Couchbase Serverは、DCP (Database Change Protocol)を利用しており、
+        <term>再開可能</term> で、インクリメンタルにキャッチアップできます。 </p>
+    <p>DCPの利用は、効率的なデータの移動でリバランスレイテンシを向上させ、障害発生後にオペレーションを再開しインクリメンタルにキャッチアップできる特徴があります。</p>
   </body>
 </topic>

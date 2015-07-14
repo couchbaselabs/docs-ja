@@ -1,45 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_byh_lbg_q4">
-  <title>Removing nodes</title>
-  <shortdesc>Removing a node marks
-    the node for removal from the cluster and completely disables the node from serving any
-    requests across the cluster.</shortdesc>
+<topic xml:lang="ja" id="topic_byh_lbg_q4">
+  <title>ノードの削除</title>
+  <shortdesc>ノードを削除すると、クラスタからそのノードを削除するようにマークします。</shortdesc>
   <body>
-    <p>Once a node is removed, it is no longer part of the cluster and can be switched off, updated, or upgraded. 
-      Removing a node does not stop the node from servicing requests.
-      Instead, it only marks the node ready for removal from the cluster. You must perform a
-      rebalance operation to complete the removal process.</p>
+    <p>ノードを削除しても、そのノードでのリクエスト処理を停止するわけではありません。 その代わり、クラスタからそのノードを削除するようにマークするだけです。 削除処理を完了させるためには、リバランス操作を実行する必要があります。 ノードが削除されると、そのノードはクラスタの一部ではなくなり、停止、アップデート、アップグレードが可能となります。</p>
     
-   <note type="important">Before you remove a node from the cluster, ensure that you have the capacity within the remaining nodes to handle the workload. For the best results, 
-        use swap rebalance. </note>
+   <note type="important">クラスタからノードを削除する前に、残りのノードでワークロードを処理できるキャパシティがあることを確認してください。 最良の結果を得るには、スワップリバランスを利用します。 </note>
     
-    <note type="warning">Occasionally, during an online upgrade, VM-based configurations can swap out old 
-      VM nodes in place of a totally new set.  If all old nodes are removed from the cluster, 
-      clients may no longer know about any nodes and fail to connect. To prevent such problems, 
-      make sure that you provide one of the following solutions: <ul>
-          <li>At least one of the original nodes is maintained in the cluster, and this node is
-            listed in the client's server configuration.</li>
-          <li>The client's server configuration is appropriately updated to include at least one
-            new node before the last old node is removed.</li>
+    <note type="warning">オンラインアップグレード中に、VMベースの環境では、複数の古いVMノードを完全に新しいノードセットに置き換えることもあります。  すべてのノードをクラスタから削除すると、クライアントはもはやどのノードもわからず、接続に失敗するでしょう。 この問題を回避するために、以下のいずれかの解決策を利用するようにしてください: <ul>
+          <li>少なくとも一つの既存ノードをクラスタ内に維持しておき、このノードをクライアントのサーバ設定に登録しておく。</li>
+          <li>クライアントのサーバ設定を適切に更新し、最後の既存ノードが削除される前に、少なくとも一つの新規ノードを登録しておく。</li>
         </ul></note>
     
-    <p>Nodes can be removed either via the Couchbase Web Console or CLI.</p>
+    <p>ノードはCouchbase WebコンソールまたはCLIから削除できます。</p>
       
-<section><title>Using the Couchbase Web Console</title>
-          <p>You can remove a node from the cluster from within the <wintitle>Manage Server Nodes</wintitle> 
-            section of the Couchbase Web Console.</p><p>Click on the <uicontrol>Remove Server</uicontrol> button 
-              next to the node you want to remove. A warning will appear to confirm that you want to remove the node. 
-              Click <uicontrol>Remove</uicontrol> to mark the node for removal.</p>
+<section><title>Couchbase Webコンソールを利用する</title>
+          <p>Couchbase Webコンソールの<wintitle>Manage Server Nodes</wintitle>セクションで、ノードをクラスタから削除できます。</p>
+  <ol>
+    <li>削除するノードの隣にある、<uicontrol>Remove Server</uicontrol>ボタンをクリックします。 ノードを削除するかの確認メッセージが表示されます。</li>
+    <li><uicontrol>Remove</uicontrol>をクリックし、ノードを削除状態にマークします。</li>
+  </ol>
             </section>
                 
-<section><title>Using CLI</title>
-              <p>You cannot mark a node for removal from the command-line without simultaneously initiating a
-                rebalance operation. The <cmdname>rebalance</cmdname> command accepts one or more
-                <codeph>--server-add</codeph> or <codeph>--server-remove</codeph> options. This adds or
-                removes the server from the cluster, and immediately initiates a rebalance operation.</p>
+<section><title>CLIの利用</title>
+	<p>コマンドラインからは、同時にリバランス操作を実行せずに、ノードを削除状態としてマークすることはできません。
+		この、 <cmdname>rebalance</cmdname> コマンドでは一つ以上の、<codeph>--server-add</codeph>と、<codeph>--server-remove</codeph>オプションを指定できます。
+								クラスタからサーバを削除または追加し、即座にリバランス操作を実行します。</p>
                   
-                  <p>T o remove a node during a rebalance operation:</p>
+                  <p>リバランス操作中にノードを削除するには:</p>
                   
                   <codeblock>
 &gt; couchbase-cli rebalance --cluster=127.0.0.1:8091 \
