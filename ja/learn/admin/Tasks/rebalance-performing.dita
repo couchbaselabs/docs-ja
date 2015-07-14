@@ -1,41 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_ctg_g1g_q4">
-  <title>Performing a rebalance</title>
+<topic xml:lang="ja" id="topic_ctg_g1g_q4">
+  <title>リバランスの実行</title>
   
-  <shortdesc>Rebalancing a cluster involves marking nodes to be added or removed from the cluster
-    and performing the rebalance operation.</shortdesc>
+  <shortdesc>クラスタのリバランスはクラスタへとノードを追加または削除としてマークし、リバランス操作を実行します。</shortdesc>
   <body>
     
-    <p>A rebalance moves the data around the cluster so that the data is distributed across the entire
-      cluster, removing and adding data to different nodes in the process. </p>
+    <p>リバランスは、データがクラスタ全体で分散されるようにデータをクラスタ内で移動し、様々なノード上でデータの削除や追加を行います。 </p>
     
-    <note type="important">Until you complete
-      a rebalance, avoid using the failover functionality since it may result in loss of data that
-      has not yet been replicated. </note>
+    <note type="important">リバランスが完了するまで、まだレプリケートされていないデータをロスする可能性があるため、フェイルオーバ機能の利用は避けてください。 </note>
     
-    <p>In the event of a failover situation, a rebalance is required to bring the cluster back
-      to a healthy state and re-enable the configured replicas.</p>
+    <p>フェイルオーバを実行した後、クラスタを健全な状態に復元し、レプリカの設定を再度有効にするために、リバランスが必要になります。</p>
     
-    <section><title>Rebalancing via UI</title>
+    <section><title>UIからリバランスを実行する</title>
     
-    <p>The Couchbase Web Console indicates when a cluster requires rebalance. This happens when the structure of the cluster has been changed, 
-      either through adding a node, removing a
-      node, or due to a failover. The notification is carried through the servers that
-      require a rebalance. The following figure shows the <wintitle>Manage Server Nodes</wintitle> page.</p>
+    <p>Couchbase Webコンソールはリバランスが必要になると、その旨を表示します。 これはノードの追加や削除、またはフェイルオーバによってクラスタの構成が変化した場合です。
+			リバランスが必要という通知はサーバ間で共有されます。
+			以下は、<wintitle>Manage Server Nodes</wintitle>ページのイメージです。</p>
       
       <fig><image href="../images/admin-tasks-pending-rebalance.png" width="720"></image></fig>
       
-      <p>If Couchbase Server identifies that a rebalance is required (through explicit addition
-        or removal, or through a failover), then the cluster is in a <wintitle>Pending Rebalance</wintitle> state. 
-        This does not affect the cluster operation and merely indicates
-        that a rebalance operation is required to move the cluster into its configured state. To
-        start a rebalance, click <uicontrol>Rebalance</uicontrol>.</p>
+      <p>Couchbase Serverが(明示的なノードの追加、削除、またはフェイルオーバにより)リバランスが必要だと特定すると、クラスタは<wintitle>Pending Rebalance</wintitle>状態になります。 
+        これはクラスタの操作に何の影響も与えず、単に設定された構成へとクラスタを遷移させるために、リバランス操作が必要だということを示しています。
+				リバランスを開始するには、<uicontrol>Rebalance</uicontrol>をクリックします。</p>
     </section>
         
-  <section><title>Rebalancing via CLI</title>
+  <section><title>CLIからリバランスを実行する</title>
     
-    <p>To initiate a rebalance using the <codeph>couchbase-cli</codeph> and the rebalance command:</p>
+    <p>リバランスを開始するには、<codeph>couchbase-cli</codeph>のrebalanceコマンドを利用します:</p>
       
       <codeblock>
 &gt; couchbase-cli rebalance -c 127.0.0.1:8091 -u Administrator -p Password
@@ -49,12 +41,10 @@
   SUCCESS: rebalanced cluster
 </codeblock>
       
-      <p>You can also use this method to add and remove nodes and initiate the rebalance operation using a
-        <cmdname>single</cmdname> command. </p>
-        <p>Specify nodes to be added using the <codeph>--server-add</codeph>
-        option, and nodes to be removed using the <codeph>--server-remove</codeph>.</p> 
-        <p>You can use multiple options of each type. For example, to add two nodes, and remove two
-        nodes, and immediately initiate a rebalance operation:</p>
+      <p>この方法を利用すると、ノードの追加や削除を行うと同時にリバランスの開始を、
+        <cmdname>単一の</cmdname> コマンドで実行できます。 </p>
+        <p>追加するノードを、<codeph>--server-add</codeph>オプションで、削除するノードを<codeph>--server-remove</codeph>オプションで指定します。</p> 
+        <p>これらのオプションは複数回指定することができます。 例えば、二つのノードを追加し、二つのノードを削除し、即座にリバランスを開始するには:</p>
       
       <codeblock>
 &gt; couchbase-cli rebalance -c 127.0.0.1:8091 \
@@ -65,15 +55,13 @@
           --server-remove=192.168.0.69
 </codeblock>
       
-      <p>CLI provides an active view of the progress and will return once the rebalance
-        operation has either completed successfully, or in the event of a failure. 
-        The time taken for a rebalance operation depends on the number of servers, 
-        quantity of data, cluster performance and any existing cluster activity. 
-        It is, therefore, difficult to accurately predict or estimate the duration.</p>
+      <p>CLIはアクティブな進捗状態を提供し、リバランス操作が正常に完了するか、失敗した場合にCLIは終了します。 
+        リバランス操作にかかる時間はサーバ台数、データ量、クラスタのパフォーマンスと既存のクラスタアクティビティに依存します。 
+        すなわち、実行時間を正確に予測または算出することは困難です。</p>
         
-       <note type="note"> Throughout any rebalance operation, monitor the process to ensure that it completes successfully.</note>
+       <note type="note"> リバランス操作を通して、プロセスをモニタリングし、正常に完了することを確認してください。</note>
             
-            <p>Stop the rebalance operation by using the CLI command <cmdname>stop-rebalance</cmdname>.</p>
+            <p>CLIコマンドの、 <cmdname>stop-rebalance</cmdname>を利用してリバランス処理を停止できます。</p>
           </section>
       
   </body>

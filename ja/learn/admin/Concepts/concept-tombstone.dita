@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="concept_t2w_sr3_wn">
- <title>Tombstone purging</title>
- <shortdesc>Tombstones are records of expired or deleted items that include item keys and metadata.</shortdesc>
+<concept xml:lang="ja" id="concept_t2w_sr3_wn">
+ <title>墓石(tombstone)の削除</title>
+ <shortdesc>墓石は、削除された、または期限切れとなったアイテムのキーとメタデータを保持するレコードです。</shortdesc>
  <conbody>
-  <p>Couchbase Server and other distributed databases
-    maintain tombstones in order to provide eventual consistency between nodes and between
-    clusters. Tombstones are records of expired or deleted items and they include the key for
-    the item and metadata. Couchbase Server stores the key plus several bytes of metadata
-    per deleted item in two structures per node. With millions of mutations, the space taken up
-    by tombstones can grow quickly. This is especially the case if there are a large number of
-    deletions or expired documents.</p>
+  <p>Couchbase Serverやその他の分散データベースは、ノード間やクラスタ間で結果整合性を提供するために、墓石を維持します。 墓石は、削除された、または期限切れとなったアイテムのキーとメタデータを保持するレコードです。 Couchbase Serverはキーと、数バイトのメタデータを削除されたアイテムごとに二つの構造でノード単位に保存します。 数百万のデータ変更では、墓石によって消費されるデータ領域が高速に増加します。 これは特に大量の削除や期限切れドキュメントが存在する場合に顕著に現れます。</p>
     
-    <p>The Metadata Purge Interval sets how frequently a node permanently purges metadata on deleted and expired
-     items. The Metadata Purge Interval setting runs as part of auto-compaction. This helps reduce the storage
-     requirement by roughly 3x times lower than before and also frees up space much faster.</p>
+    <p>メタデータ削除間隔は、ノードが削除または期限切れとなったアイテムのメタデータを完全に削除する頻度を設定します。 メタデータ削除間隔の設定は、自動コンパクションの一部として実行されます。 これにより以前と比べストレージ要件がおよそ3分の1に削減され、ディスク領域の解放も高速になりました。</p>
 
  </conbody>
  <related-links>

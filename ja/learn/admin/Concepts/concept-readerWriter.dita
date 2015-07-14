@@ -1,49 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic5374">
-  <title>Multiple readers and writers</title>
-  <shortdesc>Multi-threaded readers and writers provide multiple processes to simultaneously read
-    and write data on disk. Simultaneous reads and writes increase disk speed and improve the read
-    rate from disk. </shortdesc>
+<topic xml:lang="ja" id="topic5374">
+  <title>複数のreaderとwriter</title>
+  <shortdesc>マルチスレッドのreaderとwriterは複数のプロセスが同時並列でディスク上のデータを読み書きできるようにします。 同時並列の読み書きはディスクスピードを向上し、ディスクからの参照レートを向上します。 </shortdesc>
   
   <body>
     
-    <p>Multiple readers and writers are supported to persist data on disk. For earlier versions of
-      Couchbase Server, each server instance had only single disk reader and writer threads.</p> 
-      <p>Disk
-      speeds have now increased to the point where single read/write threads do not efficiently
-      keep up with the speed of the disk hardware. The other problem caused by single read/write
-      threads is that if you have a good portion of data on disk and not in RAM, you can experience a
-      high level of cache misses when you request this data. </p>
+    <p>複数のreader、writerはディスクに永続化されたデータに対応しています。 以前のCouchbaseサーバは、各サーバインスタンスで単一のディスクreader、writerスレッドのみを利用していました。</p> 
+      <p>単一のread/writeスレッドがディスクハードウェアのスピードに追いつかない場合、ディスクスピードを増加できます。 単一のread/writeスレッドが引き起こすもう一つの問題は、RAMではなくディスク上に大部分のデータがある場合、これらのデータをリクエストした時により多くのキャッシュミスによる影響が発生する点です。</p>
      
      
      
-    <note type="note">In a Couchbase Server cluster, earlier versions of Couchbase Server can 
-      co-exist with higher versions of Couchbase Server. Pre-2.1 nodes remain with single readers and writer for the data bucket. 
-      Post-2.1 nodes have multiple readers and writers. </note> 
+    <note type="note">Couchbase Serverクラスタでは、以前のバージョンのCouchbase Serverと、新しいバージョンのCouchbase Serverを同居させることができます。 2.1以前のノードはデータバケットに対し、単一のreader/writerを利用し続けます。 
+      2.1以降のノードは複数のreader、writerを利用します。 </note> 
       
       <p>
-      When server nodes are upgraded, the multiple readers and writers setting is implemented with 
-      bucket restart and warmup. In this case, install the new node, add it to the cluster, 
-      and edit the existing bucket setting for readers and writers.</p> 
-      <p>After rebalancing the cluster, 
-      the new node performs reads and writes with multiple readers and writers and the data bucket 
-      does not restart or go through a warmup. All existing pre–2.1 nodes remain with a single readers 
-      and writers for the data bucket. As pre-2.1 nodes are upgraded and added to the cluster, 
-      these new nodes automatically pick up the setting and use multiple readers and writers for the bucket.</p>
+      サーバノードをアップグレードすると、バケットの再起動とウォームアップにより複数のreaderとwriter設定が有効となります。 この場合、新規ノードをインストールし、クラスタに追加し、既存バケットの設定でreaderとwriterを変更します。</p> 
+      <p>クラスタをリバランスすると、新規ノードが複数のreaderとwriterを利用して読み書きを実行し、データバケットは再起動またはウォームアップを必要としません。 すべての既存の2.1以前のノードはデータバケットに対し、単一のreader/writerを利用し続けます。 2.1以前のノードをアップグレードし、クラスタに追加すると、これらの新規ノードは自動的にバケットに対する複数のreaderとwriterの設定を反映します。</p>
 
 
     
-    <p>The multi-threaded engine includes additional synchronization among threads that are accessing the 
-      same data cache to avoid conflicts. To maintain performance while avoiding conflicts over data, 
-      Couchbase Server uses a form of locking between threads and thread allocation among vBuckets with static partitioning.</p> 
-     <p> When Couchbase Server creates multiple reader and writer threads, the server assesses a range of vBuckets for 
-      each thread and assigns each thread exclusively to certain vBuckets. 
-      With this static thread coordination, the server schedules threads so that only a single reader and 
-      single writer thread can access the same vBucket at any given time. 
-      The image shows six pre-allocated threads and two data Buckets. 
-      Each thread has the range of vBuckets that is statically partitioned for read and write access.</p>
+    <p>マルチスレッドのエンジンは、競合を避けるために、同一のデータキャッシュにアクセスする複数のスレッド間での同期を追加しています。 データへの競合を回避しつつ、パフォーマンスを維持するために、Couchbase Serverはスレッド間でロックを利用し、静的なパーティションによるvBucket間でスレッドの割り当てを行っています。</p> 
+     <p> Couchbase Serverが複数のreader、writerスレッドを作成する際、サーバは各スレッドでのvBucket範囲を算定し、各スレッドを特定のvBucketに排他的にアサインします。 
+      この静的なスレッド割り当てにより、サーバは常に単一のreaderと単一のwriterスレッドのみが、同一のvBucketにアクセスするようにしています。 
+      このイメージは6つの事前に割り当てられたスレッドと2つのデータバケットを示しています。 
+      各スレッドは参照、更新アクセス用に、静的に分割されたvBucketの範囲を保持しています。</p>
     
     <image href="../images/threads_read_write.png" width="500"></image>
     
