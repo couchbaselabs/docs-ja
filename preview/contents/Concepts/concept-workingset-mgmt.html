@@ -1,68 +1,42 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Working set management and ejection</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>ワーキングセットの管理とデータ除去</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Concepts/concept-clusterMgr.html"><span>クラスタマネージャ</span></a></li><li class="section"><a href="../Concepts/concept-dataStorage.html"><span>データストレージ</span></a></li><li class="section"><a href="../Concepts/concept-ramQuota.html"><span>RAM割当量</span></a></li><li class="section"><a href="../Concepts/concept-vBucket.html"><span>vBuckets</span></a></li><li class="section"><a href="../Concepts/concept-cacheLayer.html"><span>キャッシュレイヤー</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-diskStorage.html"><span>ディスクストレージ</span></a></li><li class="section"><a href="../Concepts/global-thread-pool.html"><span>共有スレッドプール</span></a></li><li class="section"><a href="../Concepts/bucket-priority.html"><span>ディスクI/O優先度</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Concepts/bucket-eviction.html"><span>チューナブルメモリ</span></a><ul class="sub-sections"><li class="section"><a href="../Concepts/concept-workingset-mgmt.html" class="current"><span>Working set management and ejection</span></a><ul class="sub-sections"></ul></li></ul></li><li class="section"><a href="../Concepts/concept-docExpiration.html"><span>アイテムの有効期限</span></a></li><li class="section"><a href="../Concepts/concept-serverWarmup.html"><span>Server warmup</span></a></li><li class="section"><a href="../Concepts/concept-replication.html"><span>レプリカとレプリケーション</span></a></li><li class="section"><a href="../Concepts/concepts-TAP.html"><span>TAP</span></a></li><li class="section"><a href="../Concepts/dcp.html"><span>データベース変更プロトコル(DCP)</span></a></li><li class="section"><a href="../Concepts/concept-client-interface.html"><span>クライアントインタフェース</span></a></li><li class="section"><a href="../Concepts/concepts-statsMonitor.html"><span>統計情報とモニタリング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
- <h1 class="title topictitle1">Working set management and ejection</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>Couchbase Server管理の基本</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Concepts/concept-clusterMgr.html"><span>クラスタマネージャ</span></a></li><li class="section"><a href="../Concepts/concept-dataStorage.html"><span>データストレージ</span></a></li><li class="section"><a href="../Concepts/concept-ramQuota.html"><span>RAM割当量</span></a></li><li class="section"><a href="../Concepts/concept-vBucket.html"><span>vBuckets</span></a></li><li class="section"><a href="../Concepts/concept-cacheLayer.html"><span>キャッシュレイヤー</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-diskStorage.html"><span>ディスクストレージ</span></a></li><li class="section"><a href="../Concepts/global-thread-pool.html"><span>共有スレッドプール</span></a></li><li class="section"><a href="../Concepts/bucket-priority.html"><span>ディスクI/O優先度</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Concepts/bucket-eviction.html"><span>チューナブルメモリ</span></a><ul class="sub-sections"><li class="section"><a href="../Concepts/concept-workingset-mgmt.html" class="current"><span>ワーキングセットの管理とデータ除去</span></a><ul class="sub-sections"></ul></li></ul></li><li class="section"><a href="../Concepts/concept-docExpiration.html"><span>アイテムの有効期限</span></a></li><li class="section"><a href="../Concepts/concept-serverWarmup.html"><span>サーバウォームアップ</span></a></li><li class="section"><a href="../Concepts/concept-replication.html"><span>レプリカとレプリケーション</span></a></li><li class="section"><a href="../Concepts/concepts-TAP.html"><span>TAP</span></a></li><li class="section"><a href="../Concepts/dcp.html"><span>データベース変更プロトコル(DCP)</span></a></li><li class="section"><a href="../Concepts/concept-client-interface.html"><span>クライアントインタフェース</span></a></li><li class="section"><a href="../Concepts/concepts-statsMonitor.html"><span>統計情報とモニタリング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+ <h1 class="title topictitle1">ワーキングセットの管理とデータ除去</h1>
 
  
- <div class="body conbody"><p class="shortdesc">Working set management is the process of freeing up space and ensuring that the most
-  used items are available in RAM. Ejection is the process of removing data from RAM to provide room
-  for frequently used items. </p>
+ <div class="body conbody"><p class="shortdesc">ワーキングセット管理は空き容量を解放し、最も利用されるアイテムがRAMに保持されるようにする処理です。 データ除去はデータをRAMから除去し、頻繁に利用されるアイテム用の空きを作る処理です。 </p>
 
-  <p class="p"> The process that Couchbase Server performs to free space in RAM, and to ensure the most-used
-   items are still available in RAM is also known as working set management. Ejection is the process
-   of removing data from RAM to provide room for frequently-used items. Ejections is automatically
-   performed by Couchbase Server. When Couchbase Server ejects information, it works in conjunction
-   with the disk persistence system to ensure that data in RAM has been persisted to disk and can be
-   safely retrieved back into RAM if the item is requested. </p>
+  <p class="p"> Couchbase ServerがRAM内の容量を解放する処理、そして最も利用されるアイテムをRAM内に残す処理をワーキングセット管理と呼んでいます。 データ除去はデータをRAMから除去し、頻繁に利用されるアイテム用の空きを作る処理です。 データ除去はCouchbase Serverにより自動的に実行されます。 Couchbase Serverが情報を除去するとき、ディスク永続化システムと連携しRAM内のデータがすでにディスクへ永続化され、アイテムがリクエストされた場合はディスクから安全にRAMへと復元できるようにしています。 </p>
 
-  <p class="p"> In addition to memory quota for the caching layer, there are two watermarks the engine uses to
-   determine when it is necessary to start persisting more data to disk. These are <samp class="ph codeph">mem_low_wat</samp> and
-   <samp class="ph codeph">mem_high_wat</samp>. </p>
+  <p class="p"> キャッシュ層のメモリ割当量に加え、エンジンがより多くのデータをディスクに永続化すべきかを判断するために利用する二つのウォータマークがあります。 それは、<samp class="ph codeph">mem_low_wat</samp>と<samp class="ph codeph">mem_high_wat</samp>です。 </p>
 
-  <p class="p"> As the caching layer becomes full of data, eventually the mem_low_wat is passed. At this time,
-   no action is taken. As data continues to load, it eventually reaches mem_high_wat. At this point,
-   a background job is scheduled to ensure items are migrated to disk and that memory is available
-   for other Couchbase Server items. This job runs until measured memory reaches mem_low_wat. If the
-   rate of incoming items is faster than the migration of items to disk, the system can return
-   errors indicating there is not enough space. This continues until there is available memory. The
-   process of removing data from the caching to make way for the actively used information is called
-   ejection and is controlled automatically through thresholds set on each configured bucket in the
-   Couchbase Server cluster. </p>
+  <p class="p"> キャッシュ層がデータで満たされると、結果的にmem_low_watを超えます。 この時点では何も起きません。 データが増加を続けると、結果的にmem_high_watに到達します。 この時点で、バックグラウンドジョブがスケジュールされ、アイテムがディスクに書き込まれたことを確認し、他のCouchbase Serverアイテム用にメモリを利用できるようにします。 このジョブはメモリがmem_low_watに到達するまで継続します。
+	 アイテムの更新頻度がディスクへの書込みよりも早い場合、システムは容量不足を示すエラーを返すことがあります。 これはメモリが利用可能になるまで続きます。
+	 アクティブに利用される情報のためにキャッシュからデータを削除する処理はデータの除去(ejection)と呼ばれ、Couchbase Serverクラスタの各バケットで設定された閾値を元に自動的に制御されます。 </p>
 
   <img class="image" src="../images/couchbase-060711-1157-32_img_300.jpg" width="300">
-  <div class="section"><h2 class="title sectiontitle">Working set management process</h2>
+  <div class="section"><h2 class="title sectiontitle">ワーキングセット管理プロセス</h2>
    
-   <p class="p">Couchbase Server actively manages the data stored in a caching layer; this includes the
-    information which is frequently accessed by clients and which needs to be available for rapid
-    reads and writes. When there are too many items in RAM, Couchbase Server removes certain data to
-    create free space and to maintain system performance. This process is called “working set
-    management” and the set of data in RAM is referred to as the “working set”.</p>
+   <p class="p">Couchbase Serverはアクティブにキャッシュ層に保存されたデータの管理を行います; これはクライアントによりどのデータが頻繁にアクセスされ、どのデータを高速な参照や更新のために保持すべきかの情報を利用します。
+		 RAM内のアイテムが増えすぎると、Couchbase Serverは特定のデータを除去し、システム性能を維持するために空き容量を作成します。 このプロセスは"ワーキングセット管理"と呼ばれ、RAM内のデータセットを"ワーキングセット"と呼びます。</p>
 
-   <p class="p">In general the working set consists of all the keys, metadata, and associated documents which
-    are frequently used require fast access. The process the server performs to remove data from RAM
-    is known as ejection. When the server performs this process, it removes the document, but not
-    the keys or metadata for the item. Keeping keys and metadata in RAM serves three important
-    purposes in a system:</p>
+   <p class="p">一般的にはワーキングセットはすべてのキー、メタデータ、そして頻繁に利用され高速なアクセスが必要なドキュメントで構成されます。 サーバがRAMからデータを除去する処理はejectionと呼ばれます。 サーバがこのプロセスを実行すると、ドキュメントを除去しますが、アイテムのキーとメタデータは除去しません。 キーとメタデータをRAMに保持することにはシステムで3つの重要な目的があります:</p>
 
    <ul class="ul">
     <li class="li">
-     <p class="p">Couchbase Server uses the remaining key and metadata in RAM if a request for that key comes
-      from a client. If a request occurs, the server then tries to fetch the item from disk and
-      return it into RAM.</p>
+			<p class="p">Couchbase ServerはRAM内に残っているキーとメタデータをクライアントからリクエストされたキーに利用します。
+				リクエストを受信すると、サーバはディスクからRAMへとアイテムのフェッチを試みます。</p>
 
     </li>
 
     <li class="li">
-     <p class="p">The server can also use the keys and metadata in RAM for “miss access”. This means that it
-      is quickly determine whether an item is missing and if so, perform some action, such as add
-      it.</p>
+			<p class="p">サーバはまた、RAM内のキーとメタデータを"ミスアクセス"に利用します。
+				アイテムが存在しないことを高速に判断し、存在しない場合にアイテムを挿入するなど特定のアクションを実施します。</p>
 
     </li>
 
     <li class="li">
-     <p class="p">Finally, the expiration process in Couchbase Server uses the metadata in RAM to quickly scan
-      for items that are expired and later remove them from disk. This process is known as the
-      “expiry pager” and runs every 60 minutes by default. </p>
+     <p class="p">最後に、Couchbase Server内の期限切れアイテム削除処理でRAM内のメタデータを利用し、高速に期限切れアイテムをスキャンし、後にディスクから削除します。 このプロセスは"expiry pager"と呼ばれ、デフォルトでは60分毎に起動します。 </p>
 
     </li>
 
@@ -70,27 +44,15 @@
 
   </div>
 
-  <div class="section"><h2 class="title sectiontitle">Not Frequently Used (NFU) items</h2>
+  <div class="section"><h2 class="title sectiontitle">頻繁に参照されないアイテム</h2>
    
-   <p class="p">All items in the server contain metadata indicating whether the item has been recently
-    accessed or not. This metadata is known as not-recently-used (NRU). If an item has not been
-    recently used, then the item is a candidate for ejection if the high water mark has been
-    exceeded. When the high water mark has been exceeded, the server evicts items from RAM.</p>
+   <p class="p">サーバ内のすべてのアイテムはそのアイテムが最近アクセスされたかどうかを示すメタデータを持っています。 このメタデータはNRU(Not-Recently-Used)と呼ばれます。 アイテムが最近利用されていないと、そのアイテムは高水位を超えた際のデータ除去の候補となります。 高水位を越えると、サーバはアイテムをRAMから除去します。</p>
 
-   <p class="p">Couchbase Server provides two NRU bits per item and also provides a replication protocol that
-    can propagate items that are frequently read, but not mutated often. </p>
+   <p class="p">Couchbase Serverはアイテムごとに二つのNRUビットを利用しており、レプリケーションプロトコルで頻繁に参照されるが、あまり更新されないアイテムを転送する機能も実装しています。 </p>
 
-   <p class="p">For earlier versions, Couchbase Server provided only a single bit for NRU and a different
-    replication protocol which resulted in two issues: metadata could not reflect how frequently or
-    recently an item had been changed, and the replication protocol only propagated NRUs for
-    mutation items from an active vBucket to a replica vBucket. This second behavior meant that the
-    working set on an active vBucket could be quite different than the set on a replica vBucket. By
-    changing the replication protocol, the working set in replica vBuckets will be closer to the
-    working set in the active vBucket.</p>
+   <p class="p">以前のバージョンでは、Couchbase ServerはNRUに単一のビットを利用し、別のレプリケーションプロトコルを利用していましたが、二つの問題を引き起こしました: メタデータがアイテムの参照頻度や更新されたかどうかを反映できず、レプリケーションプロトコルではアクティブなvBucketからレプリカvBucketへ更新されたアイテムのNRUしか転送されませんでした。 二つ目の挙動はアクティブvBucket上のワーキングセットがレプリカvBucketのそれと著しく異なる可能性があることを意味します。 レプリケーションプロトコルを変更することで、レプリカvBucket内のワーキングセットがアクティブvBucket内のワーキングセットと同様になりました。</p>
 
-   <p class="p">NRUs are decremented or incremented by server processes to indicate an item is more frequently
-    used, or less frequently used. Items with lower bit values have lower scores and are considered
-    more frequently used. The bit values, corresponding scores and status are as follows:</p>
+   <p class="p">NRUはサーバプロセスによって増加、減少され、アイテムがより頻繁に利用されているかどうかを示します。 より低いビットを持つアイテムはより低いスコアとなり、より頻繁に参照されていると判定されます。 ビットの値と関連するスコア、ステータスは以下の通りです:</p>
 
    
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
@@ -100,13 +62,13 @@
      
      <thead class="thead" align="left">
       <tr class="row">
-       <th class="entry" valign="top" width="25%" id="d57960e100"><strong class="ph b">Binary NRU</strong></th>
+       <th class="entry" valign="top" width="25%" id="d57968e100"><strong class="ph b">バイナリNRU</strong></th>
 
-       <th class="entry" valign="top" width="25%" id="d57960e104"><strong class="ph b">Score</strong></th>
+       <th class="entry" valign="top" width="25%" id="d57968e104"><strong class="ph b">スコア</strong></th>
 
-       <th class="entry" valign="top" width="25%" id="d57960e108"><strong class="ph b">Access pattern</strong></th>
+       <th class="entry" valign="top" width="25%" id="d57968e108"><strong class="ph b">アクセスパターン</strong></th>
 
-       <th class="entry" valign="top" width="25%" id="d57960e112"><strong class="ph b">Description</strong></th>
+       <th class="entry" valign="top" width="25%" id="d57968e112"><strong class="ph b">説明</strong></th>
 
       </tr>
 
@@ -114,46 +76,46 @@
 
      <tbody class="tbody">
       <tr class="row">
-       <td class="entry" valign="top" width="25%" headers="d57960e100 ">00</td>
+       <td class="entry" valign="top" width="25%" headers="d57968e100 ">00</td>
 
-       <td class="entry" valign="top" width="25%" headers="d57960e104 ">0</td>
+       <td class="entry" valign="top" width="25%" headers="d57968e104 ">0</td>
 
-       <td class="entry" valign="top" width="25%" headers="d57960e108 ">Set by write access to 00. Decremented by read access or no access.</td>
+       <td class="entry" valign="top" width="25%" headers="d57968e108 ">更新アクセスで00に設定される。 参照アクセス、アクセスなしで減少。</td>
 
-       <td class="entry" valign="top" width="25%" headers="d57960e112 ">Most heavily used item.</td>
-
-      </tr>
-
-      <tr class="row">
-       <td class="entry" valign="top" width="25%" headers="d57960e100 ">01</td>
-
-       <td class="entry" valign="top" width="25%" headers="d57960e104 ">1</td>
-
-       <td class="entry" valign="top" width="25%" headers="d57960e108 ">Decremented by read access.</td>
-
-       <td class="entry" valign="top" width="25%" headers="d57960e112 ">Frequently access item.</td>
+       <td class="entry" valign="top" width="25%" headers="d57968e112 ">最も頻繁に利用されるアイテム。</td>
 
       </tr>
 
       <tr class="row">
-       <td class="entry" valign="top" width="25%" headers="d57960e100 ">10</td>
+       <td class="entry" valign="top" width="25%" headers="d57968e100 ">01</td>
 
-       <td class="entry" valign="top" width="25%" headers="d57960e104 ">2</td>
+       <td class="entry" valign="top" width="25%" headers="d57968e104 ">1</td>
 
-       <td class="entry" valign="top" width="25%" headers="d57960e108 ">Initial value or decremented by read access.</td>
+       <td class="entry" valign="top" width="25%" headers="d57968e108 ">参照アクセスで減少。</td>
 
-       <td class="entry" valign="top" width="25%" headers="d57960e112 ">Default for new items.</td>
+       <td class="entry" valign="top" width="25%" headers="d57968e112 ">頻繁に参照されるアイテム。</td>
 
       </tr>
 
       <tr class="row">
-       <td class="entry" valign="top" width="25%" headers="d57960e100 ">11</td>
+       <td class="entry" valign="top" width="25%" headers="d57968e100 ">10</td>
 
-       <td class="entry" valign="top" width="25%" headers="d57960e104 ">3</td>
+       <td class="entry" valign="top" width="25%" headers="d57968e104 ">2</td>
 
-       <td class="entry" valign="top" width="25%" headers="d57960e108 ">Incremented by item pager for eviction.</td>
+       <td class="entry" valign="top" width="25%" headers="d57968e108 ">初期値、参照アクセスで減少。</td>
 
-       <td class="entry" valign="top" width="25%" headers="d57960e112 ">Less frequently used item.</td>
+       <td class="entry" valign="top" width="25%" headers="d57968e112 ">新規アイテムのデフォルト値。</td>
+
+      </tr>
+
+      <tr class="row">
+       <td class="entry" valign="top" width="25%" headers="d57968e100 ">11</td>
+
+       <td class="entry" valign="top" width="25%" headers="d57968e104 ">3</td>
+
+       <td class="entry" valign="top" width="25%" headers="d57968e108 ">データ除去のアイテムページャで増加される。</td>
+
+       <td class="entry" valign="top" width="25%" headers="d57968e112 ">あまり頻繁に利用されないアイテム。</td>
 
       </tr>
 
@@ -162,39 +124,31 @@
     </table>
 </div>
 
-   <p class="p">There are two processes which change the NRU for an item: </p>
+   <p class="p">アイテムのNRUを変更するプロセスは二つあります: </p>
 
    <ul class="ul">
-    <li class="li">A client reads or writes an item, the server decrements NRU and lowers the item’s score</li>
+    <li class="li">クライアントがアイテムを読み書きすると、サーバはNRUを減らし、アイテムのスコアを低くします。</li>
 
-    <li class="li">A daily process which creates a list of frequently-used items in RAM. After this process
-     runs, the server increments one of the NRU bits.</li>
+    <li class="li">RAM内の頻繁に参照されるアイテムのリストを作成する日次の処理があります。 この処理が実行されると、サーバはNRUビットの一つを増加させます。</li>
 
    </ul>
 
-   <p class="p">Because the two processes changes NRUs, they also affect which items are candidates for
-    ejection.</p>
+   <p class="p">この二つのプロセスはNRUを変更するため、これらはどのアイテムがデータ除去の候補になるかにも影響します。</p>
 
-   <p class="p">Couchbase Server settings can be adjusted to change behavior during ejection. For example,
-    specify the percentage of RAM to be consume before items are ejected or specify whether ejection
-    should occur more frequently on replicated data than on original data. Couchbase recommends that
-    the default settings be used.</p>
+	<p class="p">Couchbase Server設定でデータ除去の挙動を調整できます。
+		例えば、アイテムの除去を開始する際のRAM使用量パーセンテージを指定したり、オリジナルデータよりレプリカデータでより頻繁にデータ除去を行うように指定したりできます。 Couchbaseはデフォルトの設定を使用することを推奨します。</p>
 
   </div>
 
-  <div class="section"><h2 class="title sectiontitle">Understanding the item pager</h2>
+  <div class="section"><h2 class="title sectiontitle">アイテムページャを理解する</h2>
    
-   <p class="p">The item pager process, which runs periodically, removes documents from RAM and retains the
-    item’s key and metadata. If the amount of RAM used by items reaches the high water mark (upper
-    threshold), both active and replica data are ejected until the memory usage (amount of RAM
-    consumed) reaches the low water mark (lower threshold). Evictions of active and replica data
-    occur with the ratio probability of 40% (active data) to 60% (replica data) until the memory
-    usage reaches the low watermark. Both the high water mark and low water mark are expressed as a
-    percentage amount of RAM, such as 80%.</p>
+	 <p class="p">アイテムページャプロセスは定期的に実行され、RAMからドキュメントを削除し、アイテムのキーとメタデータは残します。
+		 アイテムで利用されたRAM容量が高水位を越えると(上方閾値)、メモリ利用量が低水位(下方閾値)に達するまで、アクティブとレプリカの両データが除去されます。
+		 アクティブとレプリカデータの除去は、40%(アクティブ)と60%(レプリカ)の割合で、メモリ利用量が低水位に達するまで継続します。
+		 高水位と低水位は両方ともRAM容量のパーセンテージで表現されます、80%など。</p>
 
-   <p class="p">Both the high water mark and low water mark can be changed by providing a percentage amount of
-    RAM for a node, for example, 80%. Couchbase recommends that the following default settings be
-    used:</p>
+	<p class="p">ノードのRAM容量に対するパーセンテージを指定することで、高水位、低水位の変更が可能です、例: 80%。
+		Couchbaseは以下のデフォルト設定を利用することを推奨します:</p>
 
    
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
@@ -203,11 +157,11 @@
      
      <thead class="thead" align="left">
       <tr class="row">
-       <th class="entry" valign="top" width="33.33333333333333%" id="d57960e228"><strong class="ph b">Version</strong></th>
+       <th class="entry" valign="top" width="33.33333333333333%" id="d57968e228"><strong class="ph b">バージョン</strong></th>
 
-       <th class="entry" valign="top" width="33.33333333333333%" id="d57960e232"><strong class="ph b">High water mark</strong></th>
+       <th class="entry" valign="top" width="33.33333333333333%" id="d57968e232"><strong class="ph b">高水位</strong></th>
 
-       <th class="entry" valign="top" width="33.33333333333333%" id="d57960e236"><strong class="ph b">Low water mark</strong></th>
+       <th class="entry" valign="top" width="33.33333333333333%" id="d57968e236"><strong class="ph b">低水位</strong></th>
 
       </tr>
 
@@ -215,20 +169,20 @@
 
      <tbody class="tbody">
       <tr class="row">
-       <td class="entry" valign="top" width="33.33333333333333%" headers="d57960e228 ">2.0</td>
+       <td class="entry" valign="top" width="33.33333333333333%" headers="d57968e228 ">2.0</td>
 
-       <td class="entry" valign="top" width="33.33333333333333%" headers="d57960e232 ">75%</td>
+       <td class="entry" valign="top" width="33.33333333333333%" headers="d57968e232 ">75%</td>
 
-       <td class="entry" valign="top" width="33.33333333333333%" headers="d57960e236 ">60%</td>
+       <td class="entry" valign="top" width="33.33333333333333%" headers="d57968e236 ">60%</td>
 
       </tr>
 
       <tr class="row">
-       <td class="entry" valign="top" width="33.33333333333333%" headers="d57960e228 ">2.0.1 and higher</td>
+       <td class="entry" valign="top" width="33.33333333333333%" headers="d57968e228 ">2.0.1 and higher</td>
 
-       <td class="entry" valign="top" width="33.33333333333333%" headers="d57960e232 ">85%</td>
+       <td class="entry" valign="top" width="33.33333333333333%" headers="d57968e232 ">85%</td>
 
-       <td class="entry" valign="top" width="33.33333333333333%" headers="d57960e236 ">75% </td>
+       <td class="entry" valign="top" width="33.33333333333333%" headers="d57968e236 ">75% </td>
 
       </tr>
 
@@ -237,29 +191,22 @@
     </table>
 </div>
 
-   <p class="p">The item pager ejects items from RAM in two phases:</p>
+   <p class="p">アイテムページャは二つのフェーズでRAMからアイテムを除去します:</p>
 
    <ul class="ul">
     <li class="li">
-     <p class="p"><strong class="ph b">Phase 1: Eject based on NRU</strong>. Scan NRU for items and create list of all items with
-      score of 3. Eject all items with a NRU score of 3. Check RAM usage and repeat this process if
-      usage is still above the low water mark.</p>
+     <p class="p"><strong class="ph b">フェーズ1: NRUを元に除去</strong>。 アイテムのNRUをスキャンし、スコアが3の全てのアイテムのリストを作成します。 NRUスコアが3のアイテムすべてを除去します。 RAM使用量をチェックし、低水位をまだ上回っている場合この処理を繰り返します。</p>
 
     </li>
 
     <li class="li">
-     <p class="p"><strong class="ph b">Phase 2: Eject based on Algorithm</strong>. Increment all item NRUs by 1. If an NRU is equal
-      to 3, generate a random number and eject that item if the random number is greater than a
-      specified probability. The probability is based on current memory usage, low water mark, and
-      whether a vBucket is in an active or replica state. If a vBucket is in active state the
-      probability of ejection is lower than if the vBucket is in a replica state. The default
-      probabilities for ejection from active of replica vBuckets is as follows:</p>
+     <p class="p"><strong class="ph b">フェーズ2: アルゴリズムに基づく除去</strong>。 全てのアイテムのNRUを1ずつインクリメントします。 NRUが3になったら、ランダムな数値を生成し、その数値が指定した確率よりも大きければそのアイテムを除去します。 確率は現在のメモリ利用量、低水位、そしてvBucketがアクティブかレプリカかどうかで決まる。 データ除去の確率は、vBucketがアクティブであれば、レプリカのvBucketよりも低くなります。 アクティブ、レプリカvBucketのデフォルトの確率は以下の通りです:</p>
 
     </li>
 
    </ul>
 
-   <p class="p">The following is the probability of ejection based on active vs. replica vBuckets:</p>
+   <p class="p">データ除去の確率はアクティブか レプリカvBucketかにより以下のようになります:</p>
 
    
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
@@ -267,9 +214,9 @@
      
      <thead class="thead" align="left">
       <tr class="row">
-       <th class="entry" valign="top" width="50%" id="d57960e309">Active vBucket</th>
+       <th class="entry" valign="top" width="50%" id="d57968e309">アクティブvBucket</th>
 
-       <th class="entry" valign="top" width="50%" id="d57960e312">Replica vBucket</th>
+       <th class="entry" valign="top" width="50%" id="d57968e312">レプリカvBucket</th>
 
       </tr>
 
@@ -277,9 +224,9 @@
 
      <tbody class="tbody">
       <tr class="row">
-       <td class="entry" valign="top" width="50%" headers="d57960e309 ">60%</td>
+       <td class="entry" valign="top" width="50%" headers="d57968e309 ">60%</td>
 
-       <td class="entry" valign="top" width="50%" headers="d57960e312 ">40% </td>
+       <td class="entry" valign="top" width="50%" headers="d57968e312 ">40% </td>
 
       </tr>
 
@@ -294,7 +241,7 @@
 
  <nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Concepts/bucket-eviction.html" title="チューナブルメモリにより、メモリからバリューのみの除去と、完全なメタデータとバリューの除去を選択可能です。">チューナブルメモリ</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Concepts/bucket-eviction.html" title="チューナブルメモリにより、メモリからバリューのみの除去と、完全なメタデータとバリューの除去を選択可能です。">チューナブルメモリ</a></div>
 </div>
 
 <div class="linklist linklist">

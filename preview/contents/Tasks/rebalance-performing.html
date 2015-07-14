@@ -1,50 +1,42 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Performing a rebalance</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>リバランスの実行</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-manage-serverWarmup.html"><span>サーバウォームアップの対処</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-replication.html"><span>レプリケーションの設定</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-compaction.html"><span>Compacting data files</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-maintenance.html"><span>Cluster maintenance</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/rebalance-adding-nodes.html"><span>Adding nodes</span></a></li><li class="section"><a href="../Tasks/rebalance-remove-node.html"><span>Removing nodes</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/tasks-rebalance.html"><span>Rebalancing</span></a><ul class="sub-sections"><li class="section"><a href="../Concepts/concept-rebalancing.html"><span>Rebalancing operation</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/rebalance-performing.html" class="current"><span>Performing a rebalance</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/rebalance-incremental.html"><span>Resuming rebalance after a failure</span></a></li></ul></li><li class="section"><a href="../Tasks/rebalance-behind-the-scenes.html"><span>Rebalance behind-the-scenes</span></a></li><li class="section"><a href="../Tasks/rebalance-bucket-types.html"><span>Rebalance effect on bucket types</span></a></li><li class="section"><a href="../Tasks/rebalance-swap-rebalance.html"><span>Swap rebalance</span></a></li><li class="section"><a href="../Tasks/rebalance-factors.html"><span>Rebalancing factors</span></a></li><li class="section"><a href="../Tasks/rebalance-questions.html"><span>Common rebalancing questions</span></a></li></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/maintenance-server-node.html"><span>Server maintenance</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-backup-restore.html"><span>Backup and restore</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-xdcr.html"><span>Managing XDCR</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-  <h1 class="title topictitle1">Performing a rebalance</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>Couchbase Server管理の基本</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-manage-serverWarmup.html"><span>サーバウォームアップの対処</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-replication.html"><span>レプリケーションの設定</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-compaction.html"><span>データファイルのコンパクション</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-maintenance.html"><span>クラスタのメンテナンス</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/rebalance-adding-nodes.html"><span>ノードの追加</span></a></li><li class="section"><a href="../Tasks/rebalance-remove-node.html"><span>ノードの削除</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/tasks-rebalance.html"><span>リバランス</span></a><ul class="sub-sections"><li class="section"><a href="../Concepts/concept-rebalancing.html"><span>リバランス操作</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/rebalance-performing.html" class="current"><span>リバランスの実行</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/rebalance-incremental.html"><span>リバランス失敗からの再開</span></a></li></ul></li><li class="section"><a href="../Tasks/rebalance-behind-the-scenes.html"><span>リバランスの舞台裏</span></a></li><li class="section"><a href="../Tasks/rebalance-bucket-types.html"><span>バケット種別によるリバランスの影響</span></a></li><li class="section"><a href="../Tasks/rebalance-swap-rebalance.html"><span>スワップリバランス</span></a></li><li class="section"><a href="../Tasks/rebalance-factors.html"><span>リバランス実行時の考慮事項</span></a></li><li class="section"><a href="../Tasks/rebalance-questions.html"><span>一般的なリバランスに関する質問</span></a></li></ul></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/maintenance-server-node.html"><span>Server maintenance</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-backup-restore.html"><span>Backup and restore</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-xdcr.html"><span>Managing XDCR</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">リバランスの実行</h1>
 
   
   
-  <div class="body"><p class="shortdesc">Rebalancing a cluster involves marking nodes to be added or removed from the cluster
-    and performing the rebalance operation.</p>
+  <div class="body"><p class="shortdesc">クラスタのリバランスはクラスタへとノードを追加または削除としてマークし、リバランス操作を実行します。</p>
 
     
-    <p class="p">A rebalance moves the data around the cluster so that the data is distributed across the entire
-      cluster, removing and adding data to different nodes in the process. </p>
+    <p class="p">リバランスは、データがクラスタ全体で分散されるようにデータをクラスタ内で移動し、様々なノード上でデータの削除や追加を行います。 </p>
 
     
-    <div class="note important"><span class="importanttitle">Important:</span> Until you complete
-      a rebalance, avoid using the failover functionality since it may result in loss of data that
-      has not yet been replicated. </div>
+    <div class="note important"><span class="importanttitle">重要:</span> リバランスが完了するまで、まだレプリケートされていないデータをロスする可能性があるため、フェイルオーバ機能の利用は避けてください。 </div>
 
     
-    <p class="p">In the event of a failover situation, a rebalance is required to bring the cluster back
-      to a healthy state and re-enable the configured replicas.</p>
+    <p class="p">フェイルオーバを実行した後、クラスタを健全な状態に復元し、レプリカの設定を再度有効にするために、リバランスが必要になります。</p>
 
     
-    <div class="section"><h2 class="title sectiontitle">Rebalancing via UI</h2>
+    <div class="section"><h2 class="title sectiontitle">UIからリバランスを実行する</h2>
     
-    <p class="p">The Couchbase Web Console indicates when a cluster requires rebalance. This happens when the structure of the cluster has been changed, 
-      either through adding a node, removing a
-      node, or due to a failover. The notification is carried through the servers that
-      require a rebalance. The following figure shows the <span class="keyword wintitle">Manage Server Nodes</span> page.</p>
+    <p class="p">Couchbase Webコンソールはリバランスが必要になると、その旨を表示します。 これはノードの追加や削除、またはフェイルオーバによってクラスタの構成が変化した場合です。
+			リバランスが必要という通知はサーバ間で共有されます。
+			以下は、<span class="keyword wintitle">Manage Server Nodes</span>ページのイメージです。</p>
 
       
       <div class="fig fignone"><img class="image" src="../images/admin-tasks-pending-rebalance.png" width="720"></div>
 
       
-      <p class="p">If Couchbase Server identifies that a rebalance is required (through explicit addition
-        or removal, or through a failover), then the cluster is in a <span class="keyword wintitle">Pending Rebalance</span> state. 
-        This does not affect the cluster operation and merely indicates
-        that a rebalance operation is required to move the cluster into its configured state. To
-        start a rebalance, click <span class="ph uicontrol">Rebalance</span>.</p>
+      <p class="p">Couchbase Serverが(明示的なノードの追加、削除、またはフェイルオーバにより)リバランスが必要だと特定すると、クラスタは<span class="keyword wintitle">Pending Rebalance</span>状態になります。 
+        これはクラスタの操作に何の影響も与えず、単に設定された構成へとクラスタを遷移させるために、リバランス操作が必要だということを示しています。
+				リバランスを開始するには、<span class="ph uicontrol">Rebalance</span>をクリックします。</p>
 
     </div>
 
         
-  <div class="section"><h2 class="title sectiontitle">Rebalancing via CLI</h2>
+  <div class="section"><h2 class="title sectiontitle">CLIからリバランスを実行する</h2>
     
-    <p class="p">To initiate a rebalance using the <samp class="ph codeph">couchbase-cli</samp> and the rebalance command:</p>
+    <p class="p">リバランスを開始するには、<samp class="ph codeph">couchbase-cli</samp>のrebalanceコマンドを利用します:</p>
 
       
       <pre class="pre codeblock"><code>
@@ -60,14 +52,12 @@
 </code></pre>
 
       
-      <p class="p">You can also use this method to add and remove nodes and initiate the rebalance operation using a
-        <span class="keyword cmdname">single</span> command. </p>
+      <p class="p">この方法を利用すると、ノードの追加や削除を行うと同時にリバランスの開始を、
+        <span class="keyword cmdname">単一の</span> コマンドで実行できます。 </p>
 
-        <p class="p">Specify nodes to be added using the <samp class="ph codeph">--server-add</samp>
-        option, and nodes to be removed using the <samp class="ph codeph">--server-remove</samp>.</p>
+        <p class="p">追加するノードを、<samp class="ph codeph">--server-add</samp>オプションで、削除するノードを<samp class="ph codeph">--server-remove</samp>オプションで指定します。</p>
  
-        <p class="p">You can use multiple options of each type. For example, to add two nodes, and remove two
-        nodes, and immediately initiate a rebalance operation:</p>
+        <p class="p">これらのオプションは複数回指定することができます。 例えば、二つのノードを追加し、二つのノードを削除し、即座にリバランスを開始するには:</p>
 
       
       <pre class="pre codeblock"><code>
@@ -80,17 +70,15 @@
 </code></pre>
 
       
-      <p class="p">CLI provides an active view of the progress and will return once the rebalance
-        operation has either completed successfully, or in the event of a failure. 
-        The time taken for a rebalance operation depends on the number of servers, 
-        quantity of data, cluster performance and any existing cluster activity. 
-        It is, therefore, difficult to accurately predict or estimate the duration.</p>
+      <p class="p">CLIはアクティブな進捗状態を提供し、リバランス操作が正常に完了するか、失敗した場合にCLIは終了します。 
+        リバランス操作にかかる時間はサーバ台数、データ量、クラスタのパフォーマンスと既存のクラスタアクティビティに依存します。 
+        すなわち、実行時間を正確に予測または算出することは困難です。</p>
 
         
-       <div class="note note"><span class="notetitle">Note:</span>  Throughout any rebalance operation, monitor the process to ensure that it completes successfully.</div>
+       <div class="note note"><span class="notetitle">注:</span>  リバランス操作を通して、プロセスをモニタリングし、正常に完了することを確認してください。</div>
 
             
-            <p class="p">Stop the rebalance operation by using the CLI command <span class="keyword cmdname">stop-rebalance</span>.</p>
+            <p class="p">CLIコマンドの、 <span class="keyword cmdname">stop-rebalance</span>を利用してリバランス処理を停止できます。</p>
 
           </div>
 
@@ -99,13 +87,13 @@
 
 <nav class="related-links"><h2>Related information</h2>
 <ol class="olchildlinks">
-<li class="link olchildlink"><a href="../Tasks/rebalance-incremental.html">Resuming rebalance after a failure</a><br>
-Improved rebalance latency of Couchbase Server is demonstrated through its ability to     better resume rebalancing operation after any blips or failures have occurred in the     process.</li>
+<li class="link olchildlink"><a href="../Tasks/rebalance-incremental.html">リバランス失敗からの再開</a><br>
+リバランス実行中に一時的な不具合や障害が発生した後に、リバランスを再開できることは、Couchbase Serverのリバランス時間を向上させます。</li>
 </ol>
 
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Tasks/tasks-rebalance.html" title="Rebalancing is the process of redistributing information across nodes.">Rebalancing</a></div>
-<div class="previouslink"><strong>Previous topic:</strong> <a class="link" href="../Concepts/concept-rebalancing.html" title="Rebalancing operation is performed to expand or reduce the size of a cluster, to react to fail-overs, or to temporary remove nodes for various upgrades.">Rebalancing operation</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Tasks/rebalance-behind-the-scenes.html" title="The rebalance process is managed through a specific process called the orchestrator.">Rebalance behind-the-scenes</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Tasks/tasks-rebalance.html" title="リバランスは情報をノード間に再分配する処理です。">リバランス</a></div>
+<div class="previouslink"><strong>前のトピック:</strong> <a class="link" href="../Concepts/concept-rebalancing.html" title="リバランス操作はクラスタサイズを拡張または縮小、フェイルオーバへの対処、様々なアップグレードのために一時的にノードを削除するために実行します。">リバランス操作</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Tasks/rebalance-behind-the-scenes.html" title="リバランス処理は、 orchestratorと呼ばれる特別なプロセスによって管理されています。">リバランスの舞台裏</a></div>
 </div>
 </nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

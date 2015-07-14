@@ -1,59 +1,52 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Adding nodes</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>ノードの追加</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-manage-serverWarmup.html"><span>サーバウォームアップの対処</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-replication.html"><span>レプリケーションの設定</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-compaction.html"><span>Compacting data files</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-maintenance.html"><span>Cluster maintenance</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/rebalance-adding-nodes.html" class="current"><span>Adding nodes</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Tasks/rebalance-remove-node.html"><span>Removing nodes</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-rebalance.html"><span>Rebalancing</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/maintenance-server-node.html"><span>Server maintenance</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-backup-restore.html"><span>Backup and restore</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-xdcr.html"><span>Managing XDCR</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-  <h1 class="title topictitle1">Adding nodes</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>Couchbase Server管理の基本</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-manage-serverWarmup.html"><span>サーバウォームアップの対処</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-replication.html"><span>レプリケーションの設定</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-compaction.html"><span>データファイルのコンパクション</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-maintenance.html"><span>クラスタのメンテナンス</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/rebalance-adding-nodes.html" class="current"><span>ノードの追加</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Tasks/rebalance-remove-node.html"><span>ノードの削除</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-rebalance.html"><span>リバランス</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/maintenance-server-node.html"><span>Server maintenance</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-backup-restore.html"><span>Backup and restore</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-xdcr.html"><span>Managing XDCR</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">ノードの追加</h1>
 
-  <div class="body"><p class="shortdesc">Nodes can be added to a cluster via the UI,
-    CLI, or REST API.</p>
+  <div class="body"><p class="shortdesc">ノードはUI、CLI、REST APIを利用してクラスタに追加できます。</p>
 
-    <p class="p">There are a several methods for adding a node to a cluster. In each
-      case a node is marked to be added to the cluster, but it doesn't becomne an active member of the cluster 
-      until the rebalancing operation is performed. </p>
+    <p class="p">クラスタにノードを追加するにはいくつかの方法があります。 どの方法でも、ノードはクラスタに追加されるようにマークされますが、リバランス操作を実行するまではノードはクラスタのアクティブなメンバにはなりません。 </p>
 
       
-      <p class="p">When setting up a new Couchbase Server installation, 
-        you have the option to join the new node to an existing cluster.</p>
+      <p class="p">新しくCouchbase Serverをインストールする際、新規ノードを既存のクラスタに参加させるか選択できます。</p>
 
-      <p class="p">During the first step, select the <span class="ph uicontrol">Join a cluster now</span>
-        radio button, as shown in the figure below:</p>
+      <p class="p">まず、以下の図の様に、<span class="ph uicontrol">Join a cluster now</span>ラジオボタンを選択します:</p>
 
       
       <div class="fig fignone"><img class="image" src="../images/admin-tasks-rebalance-add-setup.png" width="480"></div>
 
       
-      <p class="p">You are prompted to add the following information:</p>
+      <p class="p">次の情報を入力します:</p>
 
     <dl class="dl">
       
-        <dt class="dt dlterm">IP Address</dt>
+        <dt class="dt dlterm">IPアドレス</dt>
 
-        <dd class="dd">The IP address of any existing node within the cluster you want to join.</dd>
+        <dd class="dd">参加するクラスタ内の任意の既存ノードのIPアドレスを指定します。</dd>
 
       
     </dl>
 
     <dl class="dl">
       
-        <dt class="dt dlterm">Username</dt>
+        <dt class="dt dlterm">ユーザ名</dt>
 
-        <dd class="dd">The username of the administrator of the target cluster.</dd>
+        <dd class="dd">対象のクラスタの管理者ユーザ名です。</dd>
 
       
     </dl>
 
       <dl class="dl">
         
-          <dt class="dt dlterm">Password</dt>
+          <dt class="dt dlterm">パスワード</dt>
 
-          <dd class="dd">The password of the administrator of the target cluster.</dd>
+          <dd class="dd">対象クラスタの管理者パスワードです。</dd>
 
         
       </dl>
 
       
-      <p class="p">The node will be created as a new cluster, but the pending status of the node within the new
-        cluster will be indicated on the <span class="keyword wintitle">Cluster Overview</span> page, as shown in the example
-        below:</p>
+      <p class="p">ノードはクラスタの新規ノードとして作成されますが、クラスタ内で追加待ちの状態として、<span class="keyword wintitle">Cluster Overview</span>ページに以下の様に表示されます:</p>
 
       
       <div class="fig fignone"><img class="image" src="../images/admin-tasks-rebalance-node-added.png" width="720"></div>
@@ -62,74 +55,64 @@
       
       
       
-        <div class="section"><h2 class="title sectiontitle">Adding nodes via UI</h2>
-      <p class="p">To add a new node to an existing cluster after installation, click on the
-        <span class="ph uicontrol">Add Server</span> button within the <span class="keyword wintitle">Manage Server Nodes</span> area of the
-        Admin Console. </p>
+        <div class="section"><h2 class="title sectiontitle">UIでノードを追加する</h2>
+      <p class="p">インストール後に既存クラスタに新規ノードを追加するには、管理コンソールの<span class="keyword wintitle">Manage Server Nodes</span>エリアにある<span class="ph uicontrol">Add Server</span>ボタンをクリックします。 </p>
 
           
           <p class="p"><img class="image" src="../images/admin-tasks-rebalance-add-button.png" width="720"></p>
 
           
-          <p class="p">Couchbase Server is installed and is configured as per the normal setup procedures. Using the same method, you can 
-          add a server that was previously part of this or another cluster. During this process, Couchbase Server must be running.</p>
+          <p class="p">Couchbase Serverは通常の手順でインストールされ、設定されています。 同様の手順で、このクラスタや他のクラスタの一部だったサーバを追加できます。 この処理の間、Couchbase Serverは起動している必要があります。</p>
 
       
       
       <div class="fig fignone"><img class="image" src="../images/admin-tasks-rebalance-add-console.png" width="480"></div>
 
       
-      <p class="p">Fill in the requested information:</p>
+      <p class="p">必要な情報を入力します:</p>
 
           <dl class="dl">
             
-              <dt class="dt dlterm">Server IP Address</dt>
+              <dt class="dt dlterm">サーバIPアドレス</dt>
 
-              <dd class="dd">The IP address of the server that you want to add.</dd>
+              <dd class="dd">追加するサーバのIPアドレスです。</dd>
 
             
           </dl>
 
       <dl class="dl">
         
-          <dt class="dt dlterm">Username</dt>
+          <dt class="dt dlterm">ユーザ名</dt>
 
-          <dd class="dd">The username of the administrator of the target node.</dd>
+          <dd class="dd">対象ノードの管理者ユーザ名です。</dd>
 
         
       </dl>
 
           <dl class="dl">
             
-              <dt class="dt dlterm">Password</dt>
+              <dt class="dt dlterm">パスワード</dt>
 
-              <dd class="dd">The password of the administrator of the target node.</dd>
+              <dd class="dd">対象ノードの管理者パスワードです。</dd>
 
             
           </dl>
 
       
-      <p class="p">A warning will appear indicating that the operation is destructive on the
-        destination server. Any data currently stored on the server will be deleted, and if the server
-        is currently part of another cluster, it will be removed and marked as failed over in that
-        cluster.</p>
+      <p class="p">対象のサーバ上のデータは削除される旨の警告が表示されます。 追加するサーバに現在保存されているデータは削除され、もしそのサーバが現在他のクラスタの一部であった場合、そのクラスタから削除され、そのクラスタ内ではフェイルオーバされたとマークされます。</p>
 
       
-      <p class="p">Once the information has been entered successfully, the node will be marked as
-        ready to be added to the cluster, and the server's pending rebalance count will be updated.</p>
+      <p class="p">情報が正常に入力されると、ノードはそのクラスタに追加される準備が整います、そしてサーバはリバランスカウントが更新されるまでペンディング状態となります。</p>
 
         </div>
 
       
       
       
-        <div class="section"><h2 class="title sectiontitle">Adding nodes via REST</h2>
+        <div class="section"><h2 class="title sectiontitle">RESTでノードを追加する</h2>
      
       
-      <p class="p">With the REST API, you can add nodes to the cluster by providing the IP address,
-        administrator username, and password as part of the data payload. For example, using
-        <samp class="ph codeph">curl</samp> you could add a new
-        node:</p>
+      <p class="p">REST APIを利用すると、IPアドレス、管理者ユーザ名およびパスワードをペイロードデータで指定して、ノードをクラスタに追加できます。 例えば、<samp class="ph codeph">curl</samp>を利用して新規ノードを追加できます:</p>
 
       
       
@@ -144,14 +127,11 @@
       
       
       
-        <div class="section"><h2 class="title sectiontitle">Adding nodes via CLI</h2>
-      <p class="p">You can use the <samp class="ph codeph">couchbase-cli</samp> command-line tool to add one or more
-        nodes to an existing cluster. The new nodes must have Couchbase Server installed, and Couchbase
-        Server must be running on each node.</p>
+        <div class="section"><h2 class="title sectiontitle">CLIでノードを追加する</h2>
+      <p class="p"><samp class="ph codeph">couchbase-cli</samp>コマンドラインツールを利用して一つまたは複数のノードを既存クラスタに追加できます。 新規ノードにはCouchbase Serverを事前にインストールする必要があり、Couchbase Serverが各ノード上で稼働している必要があります。</p>
 
           
-          <p class="p">To add, run the
-          command:</p>
+			<p class="p">追加するには、次のコマンドを実行します:</p>
 <pre class="pre codeblock"><code><samp class="ph codeph">```
 &gt; couchbase-cli server-add \
       --cluster=localhost:8091 \
@@ -161,7 +141,7 @@
       --server-add-password=node-password
 ```
 </samp></code></pre>
-<p class="p">Where:</p>
+<p class="p">ここで指定するパラメータは:</p>
 
       
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
@@ -169,9 +149,9 @@
           
           <thead class="thead" align="left">
             <tr class="row">
-              <th class="entry" valign="top" width="50%" id="d112321e193">Parameter</th>
+              <th class="entry" valign="top" width="50%" id="d112315e192">パラメータ</th>
 
-              <th class="entry" valign="top" width="50%" id="d112321e196">Description</th>
+              <th class="entry" valign="top" width="50%" id="d112315e195">説明</th>
 
             </tr>
 
@@ -179,44 +159,44 @@
 
           <tbody class="tbody">
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d112321e193 "><samp class="ph codeph">--cluster</samp></td>
+              <td class="entry" valign="top" width="50%" headers="d112315e192 "><samp class="ph codeph">--cluster</samp></td>
 
-              <td class="entry" valign="top" width="50%" headers="d112321e196 ">The IP address of a node in the existing cluster.</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d112321e193 "><samp class="ph codeph">-u</samp></td>
-
-              <td class="entry" valign="top" width="50%" headers="d112321e196 ">The username for the existing cluster.</td>
+              <td class="entry" valign="top" width="50%" headers="d112315e195 ">既存クラスタ内のノードのIPアドレス。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d112321e193 "><samp class="ph codeph">-p</samp></td>
+              <td class="entry" valign="top" width="50%" headers="d112315e192 "><samp class="ph codeph">-u</samp></td>
 
-              <td class="entry" valign="top" width="50%" headers="d112321e196 ">The password for the existing cluster.</td>
-
-            </tr>
-
-            <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d112321e193 "><samp class="ph codeph">--server-add</samp></td>
-
-              <td class="entry" valign="top" width="50%" headers="d112321e196 ">The IP address of the node to be added to the cluster.</td>
+              <td class="entry" valign="top" width="50%" headers="d112315e195 ">既存クラスタのユーザ名。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d112321e193 "><samp class="ph codeph">--server-add-username</samp></td>
+              <td class="entry" valign="top" width="50%" headers="d112315e192 "><samp class="ph codeph">-p</samp></td>
 
-              <td class="entry" valign="top" width="50%" headers="d112321e196 ">The username of the node to be added.</td>
+              <td class="entry" valign="top" width="50%" headers="d112315e195 ">既存クラスタのパスワード。</td>
 
             </tr>
 
             <tr class="row">
-              <td class="entry" valign="top" width="50%" headers="d112321e193 "><samp class="ph codeph">--server-add-password</samp></td>
+              <td class="entry" valign="top" width="50%" headers="d112315e192 "><samp class="ph codeph">--server-add</samp></td>
 
-              <td class="entry" valign="top" width="50%" headers="d112321e196 ">The password of the node to be added.</td>
+              <td class="entry" valign="top" width="50%" headers="d112315e195 ">クラスタに追加するノードのIPアドレス。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d112315e192 "><samp class="ph codeph">--server-add-username</samp></td>
+
+              <td class="entry" valign="top" width="50%" headers="d112315e195 ">追加するノードのユーザ名。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d112315e192 "><samp class="ph codeph">--server-add-password</samp></td>
+
+              <td class="entry" valign="top" width="50%" headers="d112315e195 ">追加するノードのパスワード。</td>
 
             </tr>
 
@@ -226,29 +206,25 @@
 </div>
 
           
-          <p class="p">If adding was successful, you will see the following
-        response:</p>
+          <p class="p">追加が成功すると、以下のレスポンスが返ります:</p>
 
           <pre class="pre codeblock"><code>
 SUCCESS: server-add 192.168.0.72:8091
 </code></pre>
 
           
-          <p class="p">If you receive a failure message, you will be notified of the type of failure.</p>
+          <p class="p">失敗すると、メッセージに失敗の種別が表示されます。</p>
 
-          <p class="p">You can add  multiple nodes in one command by supplying multiple 
-            <samp class="ph codeph">--server-add</samp> command-line options to the command.</p>
+          <p class="p">複数の<samp class="ph codeph">--server-add</samp>コマンドラインオプションを指定して、複数のノードを単一のコマンドで追加できます。</p>
 
       
       
-      <div class="note note"><span class="notetitle">Note:</span> Once a server has been successfully added, the
-        Couchbase Server cluster indicates that a rebalance is required to complete the operation.
+      <div class="note note"><span class="notetitle">注:</span> サーバが正常に追加されると、Couchbase Serverは操作を完了するためにリバランスが必要な旨を示します。
       </div>
 
-      <p class="p">You can cancel the addition of a node to a cluster without having to perform a rebalance operation. 
-        Canceling the operation removes the server from the cluster without having transferred or exchanged any data, 
-        since no rebalance operation took place. 
-        You can cancel the operation through the web interface.</p>
+      <p class="p">リバランス操作を実行せずに、クラスタへのノード追加をキャンセルすることができます。 
+        操作をキャンセルすると、リバランス操作を実行していないので、データの転送や交換は実施せず、サーバをクラスタから削除します。 
+        Webインタフェースから操作をキャンセルできます。</p>
 
         </div>
 
@@ -257,7 +233,7 @@ SUCCESS: server-add 192.168.0.72:8091
 
 <nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Tasks/cluster-maintenance.html">Cluster maintenance</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Tasks/rebalance-remove-node.html" title="Removing a node marks the node for removal from the cluster and completely disables the node from serving any requests across the cluster.">Removing nodes</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Tasks/cluster-maintenance.html">クラスタのメンテナンス</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Tasks/rebalance-remove-node.html" title="ノードを削除すると、クラスタからそのノードを削除するようにマークします。">ノードの削除</a></div>
 </div>
 </nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>

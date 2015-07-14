@@ -1,55 +1,36 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Compaction process</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>コンパクションプロセス</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>管理の基礎</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-manage-serverWarmup.html"><span>サーバウォームアップの対処</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-replication.html"><span>レプリケーションの設定</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/tasks-compaction.html"><span>Compacting data files</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-compaction-process.html" class="current"><span>Compaction process</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Tasks/tasks-autocompact-strategies.html"><span>Auto-compaction configuration and strategies</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-maintenance.html"><span>Cluster maintenance</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/maintenance-server-node.html"><span>Server maintenance</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-backup-restore.html"><span>Backup and restore</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-xdcr.html"><span>Managing XDCR</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-  <h1 class="title topictitle1">Compaction process</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections"><a href="../install-intro.html"><span>インストールとアップグレード</span></a></li><li class="section section--has-sub-sections section--active"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a><ul class="sub-sections"><li class="section section--has-sub-sections"><a href="../Misc/admin-basics.html"><span>Couchbase Server管理の基本</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/concept-intro.html"><span>アーキテクチャと概念</span></a></li><li class="section section--has-sub-sections"><a href="../security/security-intro.html"><span>セキュリティ</span></a></li><li class="section section--has-sub-sections"><a href="../Concepts/bp-deployment-considerations.html"><span>デプロイ構成の考慮事項</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/cluster-management.html"><span>クラスタ管理</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-manage-serverWarmup.html"><span>サーバウォームアップの対処</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-replication.html"><span>レプリケーションの設定</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Tasks/tasks-compaction.html"><span>データファイルのコンパクション</span></a><ul class="sub-sections"><li class="section"><a href="../Tasks/tasks-compaction-process.html" class="current"><span>コンパクションプロセス</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Tasks/tasks-autocompact-strategies.html"><span>自動コンパクションの設定と戦略</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Tasks/cluster-maintenance.html"><span>クラスタのメンテナンス</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/maintenance-server-node.html"><span>Server maintenance</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-backup-restore.html"><span>Backup and restore</span></a></li><li class="section section--has-sub-sections"><a href="../Tasks/tasks-manage-xdcr.html"><span>Managing XDCR</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Monitoring/monitor-intro.html"><span>モニタリング</span></a></li><li class="section section--has-sub-sections"><a href="../XDCR/xdcr-intro.html"><span>クロスデータセンターレプリケーション（XDCR）</span></a></li><li class="section section--has-sub-sections"><a href="../UI/ui-intro.html"><span>Webコンソール</span></a></li><li class="section"><a href="../Misc/faq.html"><span>FAQ</span></a></li><li class="section section--has-sub-sections"><a href="../Misc/Trbl-intro.html"><span>トラブルシューティング</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+  <h1 class="title topictitle1">コンパクションプロセス</h1>
 
-  <div class="body"><p class="shortdesc">Couchbase Server compacts views and data files.</p>
+  <div class="body"><p class="shortdesc">Couchbase ServerはViewとデータファイルをコンパクションします。</p>
 
-   <p class="p"> For database compaction, Couchbase Server creates a new file to which the active (non-stale)
-      information is written. Meanwhile, the existing database files stay in place and continue to be
-      used for storing information and updating the index data. This process ensures that the database
-      continues to be available while compaction takes place. Once compaction is completed, the old
-      database is disabled and saved. After that, any incoming updates are posted in the newly created database
-      files and the old database is deleted from the system.</p>
+   <p class="p"> データベースのコンパクションでは、Couchbase Serverは新規ファイルを作成し、アクティブな(最新の)情報を書き込みます。 その際、既存のデータベースファイルはそのまま存在し、情報の保存とインデックスデータの更新に利用されます。 この処理はコンパクションを実行中でも、データベースが継続して利用可能であることを保証します。 コンパクションが完了すると、以前のデータベースは無効化され保存されます。 その後、すべての更新リクエストは新しく作成されたデータベースファイルに渡され、古いデータベースはシステムから削除されます。</p>
 
-    <p class="p">View compaction occurs in the same way. Couchbase Server creates a new index file for each
-      active design document. Then it takes this new index file and writes active index information
-      into it. Old index files are handled in the same way as the old data files during compaction.
-      Once compaction is completed, old index files are deleted from the system.</p>
+    <p class="p">Viewのコンパクションも同様の方法で実行します。 Couchbase Serverは各アクティブなデザインドキュメントで、新規のインデックスファイルを作成します。 そして、この新規インデックスファイルを利用し、アクティブなインデックス情報を書き込みます。 古いインデックスファイルをコンパクション中に、古いインデックスファイルは同様に処理されます。
+      コンパクションが完了すると、古いインデックスファイルはシステムから削除されます。</p>
 
     
-  <div class="section"><h2 class="title sectiontitle">How to use compaction</h2>
+  <div class="section"><h2 class="title sectiontitle">コンパクションの利用方法</h2>
     
-    <p class="p">Compaction takes place as a background process while Couchbase Server is running.
-            You do not need to shut down or pause the database operation and clients can continue to access
-            and submit requests while the database is running. While compaction takes place in the
-            background, be sure to:</p>
+    <p class="p">コンパクションはCouchbase Server稼働中に、バックグラウンドプロセスとして実行されます。
+            データベースオペレーションを停止したり、シャットダウンすることなく、データベース稼働中にクライアントが継続してアクセスでき、リクエストを送信できます。 コンパクションをバックグラウンドで実行中は、以下に注意してください:</p>
 
     
     <dl class="dl">
       
-        <dt class="dt dlterm">Perform compaction on every server.</dt>
+        <dt class="dt dlterm">すべてのサーバ上でコンパクションを実施する。</dt>
 
-        <dd class="dd">Compaction operates only on a single server in the Couchbase Server cluster. You need to
-            perform compaction on each node in your cluster, and on each database in your
-            cluster.</dd>
+        <dd class="dd">コンパクションはCouchbase Serverクラスタ内の単一のサーバ上で実行される処理です。 クラスタ内のすべてのデータベース、およびすべてのノード上でコンパクションを実行する必要があります。</dd>
 
       
     </dl>
 
     <dl class="dl">
       
-        <dt class="dt dlterm">Perform compaction during off-peak hours.</dt>
+        <dt class="dt dlterm">オフピーク時間帯にコンパクションを実行する。</dt>
 
-        <dd class="dd">The compaction process is both disk and CPU intensive. In heavy write-based databases
-            where compaction is required, it must be scheduled during off-peak hours (use
-            auto-compact to schedule specific times). <p class="p">If compaction isn’t scheduled during
-              off-peak hours, it can cause problems. Since the compaction process can take long time
-              to complete on large and busy databases, it is possible that it can fail to complete
-              properly while the database is still active. In extreme cases, this can lead to the
-              compaction process never catching up with the database modifications, and eventually
-              using up all the disk space. Schedule compaction during off-peak hours to prevent
-              this!</p>
+        <dd class="dd">コンパクション処理はディスク、CPUインテンシブな処理です。 頻繁に書き込みを行うデータベースでコンパクションを実行する場合、オフピーク時間帯にスケジュールするべきです (特定の時間帯を指定するには自動コンパクションを利用します)。 <p class="p">コンパクションをオフピーク時間帯にスケジュールしない場合、問題が発生する可能性があります。 巨大でビジーなデータベースでは、コンパクションが完了するまでに長時間かかることがあり、データベースがアクティブであっても、正常に完了せず失敗することがあります。 極端な場合、データベース変更にコンパクション処理が追いつかず、結果的にすべてのディスク領域を使い果たしてしまう場合もあります。 これを避けるために、オフピーク時間帯にコンパクションをスケジュールしてください。</p>
 </dd>
 
       
@@ -57,16 +38,9 @@
 
     <dl class="dl">
       
-        <dt class="dt dlterm">Perform compaction with adequate disk space.</dt>
+        <dt class="dt dlterm">十分なディスク領域を用いてコンパクションを実行する。</dt>
 
-        <dd class="dd">Since compaction occurs by creating new files and
-          updating the information, you might need as much as twice the disk space of your current database
-          and index files. However, it is important to keep in mind that the exact amount of the disk space required
-            depends on the level of fragmentation, the amount of dead data, and the activity of the database,
-            as changes during compaction will also need to be written to the updated data
-            files. Before compaction takes place, the disk space is checked. If the amount of
-              available disk space is less than twice the current database size, the compaction process does
-              not take place and a warning is issued in the log.</dd>
+        <dd class="dd">コンパクションは新規ファイルを作成して情報を更新するため、現在のデータベースとインデックスファイルの二倍のディスク領域が必要になります。 しかしながら、実際に必要となるディスク領域は、フラグメントレベル、最新でないデータの量、コンパクション中にも更新したデータファイルを書き込む必要があるため、データベースのアクティビティに依存するということを考慮してください。 コンパクション実行前にディスク容量がチェックされます。 利用可能なディスク容量が現在のデータベースサイズの二倍より少ない場合、コンパクション処理は実行されず、警告がログに出力されます。</dd>
 
       
     </dl>
@@ -75,21 +49,16 @@
     
   </div>
 
-    <div class="section"><h2 class="title sectiontitle">Compaction behavior</h2>
+    <div class="section"><h2 class="title sectiontitle">コンパクションの挙動</h2>
       
-   <p class="p">The activities you can set up for auto-compaction are:</p>
+   <p class="p">自動コンパクションで設定可能な挙動は:</p>
 
       
       <dl class="dl">
         
-          <dt class="dt dlterm">Stop/Restart:</dt>
+          <dt class="dt dlterm">停止/再開:</dt>
 
-          <dd class="dd">The compaction process can be stopped and restarted. However, you
-            should be aware that the if the compaction process is stopped and updates to the database 
-            completed, when the compaction process is restarted the updated database may not be a
-            clean compacted version. This happens because any changes to the portion of the database file that
-            were processed before the compaction was canceled and restarted have already been
-            processed.</dd>
+          <dd class="dd">コンパクション処理は停止、再開できます。 しかしながら、コンパクション処理を停止し、データベースへの更新を行った場合、コンパクション処理を再開しても、更新されたデータベースはコンパクションされたバージョンではないことに注意してください。 これはコンパクションをキャンセルし、再開する前に実行したデータベースファイルの一部への変更が、すでに処理されているため発生します。</dd>
 
         
       </dl>
@@ -97,37 +66,33 @@
       
       <dl class="dl">
         
-          <dt class="dt dlterm">Auto-compaction:</dt>
+          <dt class="dt dlterm">自動コンパクション</dt>
 
-          <dd class="dd">Auto-compaction automatically triggers the compaction process on
-            your database. You can schedule specific hours when compaction can take place.</dd>
+          <dd class="dd">自動コンパクションはデータベースのコンパクション処理を自動的に開始します。 コンパクション実行時間帯を指定できます。</dd>
 
         
       </dl>
 
       <dl class="dl">
         
-          <dt class="dt dlterm">Compaction activity log:</dt>
+          <dt class="dt dlterm">コンパクション実行ログ:</dt>
 
-          <dd class="dd">Compaction activity is reported in Couchbase Server
-            log. You will see entries similar to following showing the compaction operation and
-            duration:
+          <dd class="dd">コンパクションの実行はCouchbase Serverログに出力されます。 コンパクションの動作と実行時間を示す以下のようなエントリが出力されます:
             <ul class="ul">
-              <li class="li">Autocompaction: Indicates compaction cannot be performed because of inadequate
-                disk space.</li>
+              <li class="li">自動コンパクション: ディスク容量不足のため、コンパクションが実行できなかったことを示します。</li>
 
               
-              <li class="li">Manually triggered compaction</li>
+              <li class="li">手動で実行されたコンパクション</li>
 
-              <li class="li">Compaction completed successfully</li>
+              <li class="li">コンパクションが正常に完了</li>
 
-              <li class="li">Compaction failed</li>
+              <li class="li">コンパクションが失敗</li>
 
-              <li class="li">Purge deletes compaction</li>
+              <li class="li">コンパクションを削除</li>
 
-              <li class="li">Compaction started/completed</li>
+              <li class="li">コンパクションの開始/完了</li>
 
-              <li class="li">Compaction failed</li>
+              <li class="li">コンパクションが失敗</li>
 
             </ul>
 
@@ -144,7 +109,7 @@
 
 <nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Tasks/tasks-compaction.html" title="Database and view compaction helps to reclaim disk space and reduce fragmentation.">Compacting data files</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Tasks/tasks-autocompact-strategies.html" title="Couchbase Server incorporates an automated compaction mechanism that can compact both data files and the view index files based on triggers that measure the current fragmentation level within the database and view index data files.">Auto-compaction configuration and strategies</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Tasks/tasks-compaction.html" title="データベースとViewのコンパクションはフラグメント化を解消し、ディスク容量を解放します。">データファイルのコンパクション</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Tasks/tasks-autocompact-strategies.html" title="Couchbase Serverは自動化したコンパクションメカニズムを採用しており、データファイルとViewインデックスファイルをコンパクションできます。">自動コンパクションの設定と戦略</a></div>
 </div>
 </nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>
