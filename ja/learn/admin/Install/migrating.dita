@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic9118">
-  <title>Migrating</title><shortdesc>This section explains how to migrate from Membase or CouchDB to Couchbase
-    Server.</shortdesc>
+<topic xml:lang="ja" id="topic9118">
+  <title>移行</title>
+  <shortdesc>このセクションではMembaseまたはCouchDBからCouchbase Serverへの移行について説明します。</shortdesc>
   <body>
     
-    <p>Couchbase Server is based on components from both Membase Server and CouchDB. </p>
-    <p>If you are a user of these database systems, or are migrating from them to Couchbase Server,
-      the following information can help in translating your understanding of the main concepts and
-      terms.</p>
+    <p>Couchbase ServerはMembase ServerとCouchDB両方のコンポーネントをベースにしています。</p>
+    <p>これらのデータベースシステムのユーザもしくはこれらからCouchbase Serverへ移行する場合、次の情報は主要な概念や用語を理解するために変換するのに役立ちます。</p>
     
 
     
