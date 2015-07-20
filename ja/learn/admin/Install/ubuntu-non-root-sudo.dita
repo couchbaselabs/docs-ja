@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_gdp_bcf_2p">
-  <title>Installing as non-root, non-sudo</title>
-  <shortdesc>Installation on Ubuntu as non-root, non-sudo user is used only for development purposes.</shortdesc>
+<topic xml:lang="ja" id="topic_gdp_bcf_2p">
+  <title>非ルート、非sudoでのインストール</title>
+  <shortdesc>Installation on Ubuntu as root権限のないもしくはsudoが使えないユーザを使ったUbuntuでのインストールは開発目的でのみ利用できます。</shortdesc>
   <body>
-    <p>If you perform a non-sudo, non-root installation you will still be able to run Couchbase
-      Server and all Couchbase command-line tools. </p>
+    <p>
+      非ルート、非sudoでのインストールを実行した場合、Couchbase ServerとすべてのCouchbaseコマンドラインツールを実行できるようになります。
+    </p>
     <ol>
-      <li>After downloading the Couchbase DEB package, go to the directory where it is located and
-        extract it:<p>
+      <li>
+        Couchbase DEBパッケージをダウンロード後、パッケージのあるディレクトリに移動し、展開してください:
+        <p>
           <codeblock> &gt; dpkg-deb -x couchbase-server-community_x86_64_2.0.0-1767-rel.deb $HOME</codeblock>
-        </p><p>In the directory where you extracted the files, you will see
-            <filepath>/opt</filepath> and <filepath>/etc</filepath> subdirectories.</p></li>
-      <li>After you extract the Couchbase Server installation files, go to the subdirectory:
-        <codeblock>  cd opt/couchbase</codeblock></li>
-      <li>Run this password-related script:<p>
-          <codeblock>./bin/install/reloc.sh `pwd`</codeblock>
-        </p><p>This allows you to continue the installation as a non-root, non-sudo user.</p></li>
-      <li>To run the server use
-        <codeblock>./bin/couchbase-server -- -noinput -detached</codeblock></li>
-      <li>To stop the server use <codeblock>./bin/couchbase-server -k</codeblock>
+        </p>
+        <p>
+          ファイルを展開したディレクトリ内で、<filepath>/opt</filepath>と<filepath>/etc</filepath>サブディレクトリを見つけてください。
+        </p>
       </li>
+      <li>Couchbase Serverインストールファイルを展開したあと、サブディレクトリに移動してください:
+        <codeblock>  cd opt/couchbase</codeblock></li>
+      <li>このパスワード関連スクリプトを実行します:
+        <p>
+          <codeblock>./bin/install/reloc.sh `pwd`</codeblock>
+        </p>
+        <p>これでroot権限のないもしくはsudoが使えないユーザでのインストールを続ける事ができます。</p>
+      </li>
+      <li>サーバを動かすには <codeblock>./bin/couchbase-server -- -noinput -detached</codeblock> を使用します</li>
+      <li>サーバを停めるには <codeblock>./bin/couchbase-server -k</codeblock> を使用します</li>
     </ol>
   </body>
 </topic>
