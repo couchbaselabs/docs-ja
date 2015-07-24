@@ -6,10 +6,10 @@
   <shortdesc>起動と停止用のスクリプトは手動でCouchbase Serverを起動もしくは停止するために使用します。</shortdesc>
   <body>
     <p>
-      On Linux, Couchbase Serverは起動時に標準的な制御スクリプトを使用することによりバックグラウンド（デーモン）プロセスとして起動することがサポートされた独立したアプリケーションとしてインストールされます。 このスクリプトは<filepath> /etc/init.d/couchbase-server</filepath>にあります。
+      Couchbase Serverは起動時に標準的な制御スクリプトを使用することによりバックグラウンド（デーモン）プロセスとして起動することができる、独立したアプリケーションとしてインストールされます。 このスクリプトは<filepath> /etc/init.d/couchbase-server</filepath>にあります。
     </p>
     <p>
-      起動スクリプトはリリースしたLinuxパッケージ(Debian/Ubuntu または Red Hat/CentOS)のいずれかがインストールされた時に自動的にインストールされます。
+      起動スクリプトはLinuxパッケージリリース(Debian/Ubuntu または Red Hat/CentOS)のいずれかをインストールすると、自動的にインストールされます。
       デフォルトでは、Couchbase Serverは自動起動が起動レベル2、3、4、5で設定され、明示的な停止が0、1、6で設定されます。
     </p>
     
