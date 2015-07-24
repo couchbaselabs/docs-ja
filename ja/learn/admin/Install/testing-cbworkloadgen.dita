@@ -8,19 +8,19 @@
   <body>
     
     <p>
-      <cmdname>cbworkloadgen</cmdname>コマンドはCouchbase Serverのために提供されている基本的なテスト機能のありとあらゆるオペレーションを実行します。
+			<cmdname>cbworkloadgen</cmdname>コマンドは、Couchbase Serverの機能性の基本的なテストを実施するための、様々なオペレーションを実行します。
       パフォーマンスやワークロードのテストは含まれていません。
     </p>
     
     <p>
-      <cmdname>cbworkloadgen</cmdname>を使用してCouchbase Serverのインストールのテストをするには、稼働中のノードのIPアドレスを渡してコマンドを実行実行します:
+      <cmdname>cbworkloadgen</cmdname>を使用してCouchbase Serverのインストールのテストをするには、稼働中のノードのIPアドレスを渡してコマンドを実行します:
   </p>
     <codeblock>>&gt; cbworkloadgen -n localhost:8091
 Thread 0 - average set time : 0.0257480939229 seconds , min : 0.00325512886047 seconds , max : 0.0705931186676 seconds , operation timeouts 0</codeblock>
     <p>
-      進行状況や稼動状態はCouchbase Web コンソール内でも監視することが出来ます。
+      ツールの進行状況や稼動状態はCouchbase Webコンソール内でも監視することが出来ます。
     </p>
-    <p>長いテストを行うためにイテレーションの回数を増やすことが出来ます:</p>
+    <p>より長いテストを行うためにイテレーションの回数を増やすことが出来ます:</p>
     <codeblock>&gt; cbworkloadgen -n localhost:8091 --max-items=100000</codeblock>
   </body>
 </topic>
