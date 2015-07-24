@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_zrt_zvy_p4">
-  <title>Upgrading on Mac OS X</title><shortdesc>There is currently
-    no officially supported upgrade installer for Mac OS X.</shortdesc>
+<topic xml:lang="ja" id="topic_zrt_zvy_p4">
+  <title>Mac OS Xでのアップグレード</title><shortdesc>Mac OS Xのためのアップグレードインストーラは、現時点ではサポートされていません。</shortdesc>
   <body>
-      <p>If you want to migrate Couchbase Server on OS X, back up your data files with
-     <cmdname>cbbackup</cmdname>, install the latest version, and then restore your data with
-      <cmdname>cbrestore</cmdname>.</p>
+      <p>OS X上でCouchbase Serverの(新しいバージョンへの)マイグレーションを行う場合は、
+     <cmdname>cbbackup</cmdname>を使用してデータファイルをバックアップし、最新バージョンのインストールを行った後に、
+      <cmdname>cbrestore</cmdname>を使用してバックアップのリストアを行ってください。</p>
   </body>
   
   <related-links>

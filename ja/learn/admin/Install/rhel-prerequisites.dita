@@ -1,40 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_fm2_lps_g4">
-  <title>Prerequisites</title><shortdesc>Before you install, check the supported platforms.</shortdesc>
+<topic xml:lang="ja" id="topic_fm2_lps_g4">
+  <title>インストール要件</title><shortdesc>インストールする前に、サポート対象のプラットフォームをあらかじめ確認してください。</shortdesc>
   <body>
-    <p> The Red Hat installation uses the RPM
-      package.</p>
+    <p> Red Hatへのインストールには、RPMパッケージを使用します。</p>
     
-    <section><title>Check OpenSSL dependency</title>
-        <p>For Red Hat Enterprise Linux version 6.0, Couchbase Server RPM performs dependency checks
-          for OpenSSL using <codeph>pkg-config</codeph>. Verify that this file is available and install it if needed: </p>
+    <section><title>OpenSSL依存関係のチェック</title>
+        <p>Red Hat Enterprise Linux version 6.0に(インストールする場合)には、<codeph>pkg-config</codeph>オプションを指定して、Couchbase Server RPMパッケージのOpenSSL依存性チェックを行ってください。利用可能なファイルを確認し、必要に応じてインストールを行ってください。: </p>
           <codeblock>
 root-&gt; sudo yum install -y pkgconfig </codeblock>
-          <p>Upon successful installation, the following output appears:</p>
+          <p>インストールが成功すると、以下のような出力結果が表示されます。:</p>
           <codeblock>Loaded plugins .... Installed: pkgconfig.x86_64 1:0.21-2.el5 Complete!
       </codeblock>
     </section>
     
-    <section><title>Install OpenSSL 098e</title></section>
-        <p>For Red Hat Enterprise Linux version 6.0 and later, install a specific
-          OpenSSL dependency by running:</p>
+    <section><title>OpenSSL 098eのインストール</title></section>
+        <p>Red Hat Enterprise Linux version 6.0以降では、対応するOpenSSL互換パッケージをインストールしてください:</p>
           <codeblock>
 root-&gt; yum install openssl098e</codeblock>
-          <p>Some users cannot install <codeph>openssl098e</codeph> with this command without having
-      administrative privileges. In such case put the contents of the
-      <codeph>lib64</codeph>directory into <codeph>opt/couchbase/lib</codeph>:</p>
+          <p>管理者権限が無いと<codeph>openssl098e</codeph>をインストールできない場合があります。このような場合は、
+      <codeph>lib64</codeph>ディレクトリの内容を<codeph>opt/couchbase/lib</codeph>ディレクトリに直接移してください。:</p>
           
           <ol>
-            <li>Download <codeph>openssl098e–0.9.8e–17.el6.centos.2.x86_64.rpm</codeph>.</li>
-            <li>Go to the directory where you extracted Couchbase Server: <codeph>cd
-              opt/couchbase</codeph>.</li>
-            <li>Extract the openssl098e RPM:
+            <li><codeph>openssl098e–0.9.8e–17.el6.centos.2.x86_64.rpm</codeph>をダウンロードします。</li>
+            <li>Couchbase Serverを展開したディレクトリに移動します。: <codeph>cd
+              opt/couchbase</codeph></li>
+            <li>openssl098e RPMを展開します:
         <codeblock>rpm2cpio
 openssl098e-0.9.8e-17.el6.centos.2.x86_64.rpm | cpio --extract
 --make-directories --no-absolute-filenames</codeblock>
       </li>
-            <li>Move the extracted files to the <codeph>/lib</codeph> directory for Couchbase Server:
+            <li>展開されたファイルをCouchbase Serverの<codeph>/lib</codeph> ディレクトリに移動します。:
               <codeph>mv usr/lib64/* lib/</codeph></li>
           </ol>
  
