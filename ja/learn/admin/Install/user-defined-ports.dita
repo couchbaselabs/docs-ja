@@ -1,42 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic2033">
-  <title>Using user-defined ports</title>
-  <shortdesc>You can install and run Couchbase Server with user-defined ports rather than with the
-    default ports.</shortdesc>
+<topic xml:lang="ja" id="topic2033">
+  <title>ユーザによる使用ポートの設定方法</title>
+  <shortdesc>Couchbase Serverをデフォルト設定のポートから、ユーザ定義のポートに(設定変更して)インストール＆実行させることができます。</shortdesc>
   <body>
-    <p>To run Couchbase server on user-defined ports, make sure that the minimum RAM and CPU are
-      available for the Couchbase instance. </p>
-    <note type="note">Before creating user-defined ports, refer to the list of the <xref href="install-networkPorts.dita">reserved network ports</xref>.</note>
+    <p>ユーザ定義のポートでCouchbase serverを実行させるため、Couchbaseインスタンスのための、利用可能な最小RAMとCPUを確認してください。</p>
+    <note type="note">ユーザ定義のポートを生成する前に、<xref href="install-networkPorts.dita">ネットワークポート</xref>リストを参照してください。</note>
     
-    <section><title>Setting up Couchbase Server with user-defined ports</title>
+    <section><title>ユーザ定義のポートによるCouchbase Serverのセットアップ</title>
     <ol>
-      <li>Install Couchbase Server
+      <li>Couchbase Serverをインストールする
         <ul>
-          <li>If Couchbase Server is already installed and running, stop it.</li>
+          <li>Couchbase Serverが既にインストールされ、実行している場合は、停止させてください。</li>
         </ul></li>
-      <li>Add the new user-defined ports to the <filepath>/opt/couchbase/etc/couchbase/static_config</filepath>
-        file. <ul>
-          <li>The <filepath>/opt/couchbase/etc/couchbase/static_config</filepath> is the location
-              from where the Couchbase Server picks up the configuration parameters.</li>
-          <li>If port numbers are not specified, default ports are used.</li>
-          <li>To override some or all default ports, append the user-defined ports to the file.</li>
+      <li>新しいユーザ定義ポートを <filepath>/opt/couchbase/etc/couchbase/static_config</filepath>
+        ファイルに追加します。<ul>
+          <li><filepath>/opt/couchbase/etc/couchbase/static_config</filepath> は、
+              Couchbase Serverが設定パラメータを取得する場所です。</li>
+          <li>ポート番号が指定されていない場合は、デフォルトポートが使用されます。</li>
+          <li>デフォルトポート定義の一部もしくは全てを上書きするために、ユーザ定義ポートをこのファイルに追加します。</li>
         </ul></li>
-      <li>(Optional) CAPI port (default 8092) can be edited in the
-          <filepath>/opt/couchbase/etc/couchdb/default.d/capi.ini</filepath> file by replacing 8092 with the new
-        port name.</li>
-      <li>If the Couchbase Server was previously configured, delete the
-            <filepath>opt/couchbase/var/lib/couchbase/config/config.dat</filepath> file to remove
-          the old configuration.</li>
-      <li>Start Couchbase Server.</li>
+      <li>(オプション) CAPI ポート (デフォルトは 8092) を、8092番ポートから新しいポートにリプレースする場合は、
+          <filepath>/opt/couchbase/etc/couchdb/default.d/capi.ini</filepath> ファイルを編集します。</li>
+      <li>Couchbase Serverが既に設定変更されていた場合、
+            <filepath>opt/couchbase/var/lib/couchbase/config/config.dat</filepath> ファイルを削除し、古い設定を削除します。</li>
+      <li>Couchbase Serverをスタートします。</li>
     </ol>
     </section>
     
-    <section><title>Ports to change</title>
+    <section><title>変更可能なポート</title>
       
-    <p>The following are the user-defined ports to add, replace, or append to the
-        <filepath>/opt/couchbase/etc/couchbase/static_config</filepath> file. </p>
+    <p>以下のポートは、追加・変更可能なユーザ定義ポートです。
+        <filepath>/opt/couchbase/etc/couchbase/static_config</filepath> ファイルに追加します。 </p>
     <codeblock>
 {rest_port, 9000}.                                   
 {mccouch_port, 8999}.                         
@@ -50,27 +46,24 @@
 {ssl_proxy_upstream_port,11003}.
 </codeblock>
     
-    <note type="note">If the newly configured ports overlap with ports used by other running
-        applications, Couchbase Server fails to start. If the newly configured ports overlap with
-        ports used by Couchbase buckets, Erlang crash notifications appear in the log file. </note>
-      <note type="note">In order to set up multiple nodes per machine, you need to assign unique
-        values to these ports.</note>
-      
+    <note type="note">新たに設定したポートが、他のアプリケーションにより既に使用しているポートと重複した場合は、
+        Couchbase Serverはスタートに失敗します。また、新たに設定したポートが、
+        Couchbaseバケットで既に使用しているポートと重複した場合は、Erlangのクラッシュ通知が、ログファイルで確認できます。</note>
+      <note type="note">一台のマシンに複数ノードをセットアップするためには、これらのポートを各ノード毎にユニークなポート番号として割り当てる必要があります。</note>
     </section>
-    <section><title>How to map user-defined ports to the default ports</title> This chart shows how
-      certain user-defined ports are mapped to the default ports: <codeblock>
-{rest_port, 9000}                    8091 Web administration port                                   
-{mccouch_port, 8999}                 11213 Default value for mccouch                         
-{memcached_port, 12000}              11211 Client interface (proxy)
-{memcached_dedicated_port, 11999}    11211 Client interface (proxy)
-{moxi_port, 12001}                   11210 Internal/external bucket port
-{ssl_rest_port,11000}                18091 Internal REST HTTPS for SSL                                      
-{ssl_capi_port,11001}                18092 Internal CAPI HTTPS for SSL
-{ssl_proxy_downstream_port,11002}    11214 Incoming SSL proxy
-{ssl_proxy_upstream_port,11003}      11215 Internal outgoing SSL proxy
+    <section><title>ユーザ定義ポートとデフォルトポートの対応</title> ここでは、
+      あるユーザ定義ポート(例)とデフォルトポートの対応チャートを示します。: <codeblock>
+{rest_port, 9000}                    8091 Web管理ポート                                   
+{mccouch_port, 8999}                 11213 mccouchのデフォルトポート                         
+{memcached_port, 12000}              11211 クライアントインタフェース(proxy)
+{memcached_dedicated_port, 11999}    11211 クライアントインタフェース(proxy)
+{moxi_port, 12001}                   11210 内部/外部バケットポート
+{ssl_rest_port,11000}                18091 SSL用 内部REST HTTPSポート                                      
+{ssl_capi_port,11001}                18092 SSL用 内部CAPI HTTPSポート
+{ssl_proxy_downstream_port,11002}    11214 SSL proxyポート(ダウンストリーム)
+{ssl_proxy_upstream_port,11003}      11215 SSL proxyポート(アップストリーム)
 </codeblock>
-      <note type="important"/> All default ports are reserved and cannot be used for other
-      purposes.</section> 
+      <note type="important"/> 全てのデフォルトポートは、予約されているため、他の目的に使用することはできません。</section> 
   </body>
   <related-links>
     <linklist>

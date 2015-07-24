@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_ldx_gqs_g4">
-  <title>Installing on RHEL</title><shortdesc>Install Couchbase Server on RHEL using the <cmdname>rpm</cmdname> command-line tool with the downloaded RPM
-    package.</shortdesc>
+<topic xml:lang="ja" id="topic_ldx_gqs_g4">
+  <title>Red Hatへのインストール</title><shortdesc>Red HatへのCouchbase Serverのインストールは、ダウンロードしたRPMパッケージに対して<cmdname>rpm</cmdname> コマンドラインツールを使用して行います。</shortdesc>
   <body>
-    <note type="important">RHEL6 and other newer Linux distributions running on physical hardware are known to have transparent 
-     <term> huge pages</term> feature enabled. While this can provide a measurable performance boost, under some conditions that the Couchbase Server 
-      is known to trigger, this option may cause severe delays in page allocations. Therefore, it is strongly recommended to 
-      disable the transparent huge pages feature when installing the Couchbase Server. </note>
-    <p> Log in as root (superuser) to complete the installation:</p>
+    <note type="important">物理ハードウェアで稼働している、RHEL6以降のLinuxディストリビューションについては、transparent 
+     <term> huge pages</term> 機能が有効になっていることが知られています。
+このオプションが、ある程度のパフォーマンスの向上を提供してくれる一方で、いくつかの条件下ではCouchbase Serverについて、
+ページアロケーション中に深刻な遅延を引き起こす原因になる可能性があることが知られています。
+このためCouchbase Serverをインストールする際には、transparent huge pages(THP)機能を無効にすることを強く推奨します。</note>
+    <p> インストールを完了させるため、rootユーザ (superuser)としてログインしてください:</p>
       <codeblock>
 root-&gt; rpm --install couchbase-server-<varname>version</varname>.rpm 
      </codeblock>
-      <p>where <varname>version</varname> is the version number of the downloaded package.</p>
-      <p>After the <cmdname>rpm</cmdname> command completes, the Couchbase Server starts automatically. It 
-        is configured to automatically start during boot under the 2, 3, 4, and 5 runlevels. Refer to
-        the Red Hat RPM documentation for more information about installing packages using RPM.</p>
-      <p>After installation is completed, the installation process displays a message similar to the following:</p>
+      <p>上記<varname>version</varname>にはダウンロードパッケージ上のバージョン番号を指定します。</p>
+      <p><cmdname>rpm</cmdname>コマンドが完了するとCouchbase Serverは自動的に起動します。 (Couchbase Serverは)2, 3, 4,及び5のランレベルの下でブートしている場合、自動的に起動するようにコンフィギュレーションされています。
+RPMを使用したパッケージインストールに関する詳細については、the Red Hat RPM documentationを参照してください。</p>
+      <p>インストールが完了すると、インストレーションプロセスは、以下のようなメッセージを表示します:</p>
       <codeblock>
 Minimum RAM required : 4 GB 
     System RAM configured : 8174464 KB
@@ -40,11 +39,8 @@ By using this software you agree to the End User License Agreement.
 See /opt/couchbase/LICENSE.txt.
      </codeblock>
     
-    
-    <p>After the installation is completed, use the Red Hat <cmdname>chkconfig</cmdname> command to
-      manage the Couchbase Server service, including checking the current status and creating the
-      links to turn on and off the automatic start-up. To perform the initial Couchbase Server
-      setup, open a web browser and access the Couchbase Web Console.</p>
-    
+
+    <p>インストレーションが完了したら、Red Hat <cmdname>chkconfig</cmdname>コマンドを使用して、現在のステータスや、自動スタートアップのオン・オフのためのリンクの生成が正しく行われたたかチェックします。(その後)Couchbase Serverの初期セットアップのため、Webブラウザを開きCouchbase Web Consoleにアクセスしてください。</p>
+
   </body>
 </topic>
