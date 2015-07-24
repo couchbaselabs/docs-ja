@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_qxr_djy_p4">
-  <title>Uninstalling on Ubuntu Linux</title>
-  <shortdesc>To uninstal Couchbase Server on Ubuntu or Debian use the  <cmdname>dpkg</cmdname> command.</shortdesc>
+<topic xml:lang="ja" id="topic_qxr_djy_p4">
+  <title>Ubuntu Linux からのアンインストール</title>
+  <shortdesc><cmdname>dpkg</cmdname> コマンドを使用してUbuntuもしくはDebianからのCouchbase Serverのアンインストールを実行します。</shortdesc>
   <body>
     
     
-    <p>Before removing Couchbase Server:
+    <p>Couchbase Serverを削除する前に:
       <ul>
-        <li>Shut down Couchbase Server. </li>
-        <li>If your machine is a part of an active cluster, rebalance the cluster to take
-          the node out of the configuration. </li>
-        <li>Update clients to point to an available node within the Couchbase Server cluster.</li>
+        <li>Couchbase Serverをシャットダウンします。</li>
+        <li>もしマシンがアクティブなクラスタの一部である場合は、設定からノードを除外するためにクラスタのリバランスを実行します。</li>
+        <li>Couchbase Serverクラスタ内のノードに正しく接続できるようクライアントを更新します。</li>
       </ul></p>
     
-    <p>To uninstall the software on an Ubuntu Linux system, run the following command:</p>
+    <p>Couchbase ServerをUbuntu Linuxからアンインストールするには以下の手順を実行します:</p>
     
     <codeblock>&gt; sudo dpkg -r couchbase-server</codeblock>
     
-    <p>Refer to the Ubuntu documentation for more information about uninstalling packages using <cmdname>dpkg</cmdname>.</p>
-    <p>You might need to delete the data files associated with your installation. The default
-      installation location is <filepath>/opt</filepath>. </p>
-    <p>If an alternative location for your data files was specified, separately delete each data
-      directory from your system.</p> 
+    <p><cmdname>dpkg</cmdname>を使用したパッケージのアンインストールに関しての詳細は Ubuntu ドキュメントを参照してください。</p>
+    <p>インストールに関連したデータファイルを自分で削除する必要がある場合があります。デフォルトのインストール場所は <filepath>/opt</filepath> です。</p>
+    <p>もしデータファイルを別の場所に設置した場合は、システムの各ディレクトリからそれぞれ削除します。</p>
   </body>
 </topic>

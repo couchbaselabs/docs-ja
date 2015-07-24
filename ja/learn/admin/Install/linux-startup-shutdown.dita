@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic762">
-  <title>Start-up and shutdown on Linux</title><shortdesc>Start-up and shutdown scripts are used to manually start up or shut down Couchbase Server.</shortdesc>
+<topic xml:lang="ja" id="topic762">
+  <title>Linuxでの起動と停止</title>
+  <shortdesc>起動と停止用のスクリプトは手動でCouchbase Serverを起動もしくは停止するために使用します。</shortdesc>
   <body>
-    <p>On Linux, Couchbase Server is installed as a standalone application with support for running
-      as a background (daemon) process during start-up through the use of a standard control script,
-      which is located in <filepath> /etc/init.d/couchbase-server</filepath>. </p>
-    <p>The startup script is automatically installed during installation from one of the Linux
-      packaged releases (Debian/Ubuntu or Red Hat/CentOS). By default, Couchbase Server is
-      configured to be started automatically at run levels 2, 3, 4, and 5, and explicitly shut down
-      at run levels 0, 1 and 6.</p>
+    <p>
+      Couchbase Serverは起動時に標準的な制御スクリプトを使用することによりバックグラウンド（デーモン）プロセスとして起動することができる、独立したアプリケーションとしてインストールされます。 このスクリプトは<filepath> /etc/init.d/couchbase-server</filepath>にあります。
+    </p>
+    <p>
+      起動スクリプトはLinuxパッケージリリース(Debian/Ubuntu または Red Hat/CentOS)のいずれかをインストールすると、自動的にインストールされます。
+      デフォルトでは、Couchbase Serverは自動起動が起動レベル2、3、4、5で設定され、明示的な停止が0、1、6で設定されます。
+    </p>
     
-    <p>To manually start Couchbase Server using the startup/shutdown script:</p>
+    <p>手動でCouchbase Serverを起動するには起動・停止用のスクリプトを使用します:</p>
     
     <codeblock>>&gt; sudo /etc/init.d/couchbase-server start</codeblock>
     
-    <p>To manually stop Couchbase Server using the startup/shutdown script:</p>
+    <p>手動でCouchbase Serverを停止するには起動・停止用のスクリプトを使用します:</p>
     
     <codeblock>&gt; sudo /etc/init.d/couchbase-server stop</codeblock>
   </body>
