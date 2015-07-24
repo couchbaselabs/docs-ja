@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_kjx_2ty_p4">
-  <title>Upgrading on Ubuntu Linux</title>
-  <shortdesc>Perform an upgrade for Ubuntu/Debian Linux by installing the updated <codeph>.pkg</codeph>
-    package</shortdesc>
+<topic xml:lang="ja" id="topic_kjx_2ty_p4">
+  <title>Ubuntu Linuxでのアップグレード</title>
+  <shortdesc>Ubuntu(Debian) Linuxのアップグレードはアップデートした<codeph>.pkg</codeph>パッケージをインストールすることで実行します。</shortdesc>
   <body>
-    <p>Run the command:</p>
+    <p>コマンドを実行する:</p>
     
     <codeblock>
- &gt; sudo dpkg -i couchbase-server-architecture___meta_current_release.deb
-</codeblock>
+	  &gt; sudo dpkg -i couchbase-server-architecture___meta_current_release.deb
+    </codeblock>
     
   </body>
 </topic>
