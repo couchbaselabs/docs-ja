@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_qf5_kty_p4">
-  <title>Upgrading on Windows</title><shortdesc>The installation wizard will upgrade your server installation using the same
-    installation location.</shortdesc>
+<topic xml:lang="ja" id="topic_qf5_kty_p4">
+  <title>Windowsでのアップグレード</title>
+  <shortdesc>インストールウィザードはサーバをインストールした場所と同じ場所を利用してアップグレードします。</shortdesc>
   <body>
     
-    <p> If you have installed Couchbase Server in
-the default location <filepath>C:\Program Files\Couchbase\Server</filepath>, the installer will put the latest version in the same location.
+    <p>
+      もしデフォルトの <filepath>C:\Program Files\Couchbase\Server</filepath> にCouchbase Serverをインストールした場合、インストーラは同じ場所に最新バージョンを配置します。
     </p>
      
   </body>
