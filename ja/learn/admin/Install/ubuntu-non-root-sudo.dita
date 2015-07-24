@@ -2,10 +2,10 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
 <topic xml:lang="ja" id="topic_gdp_bcf_2p">
   <title>非ルート、非sudoでのインストール</title>
-  <shortdesc>Installation on Ubuntu as root権限のないもしくはsudoが使えないユーザを使ったUbuntuでのインストールは開発目的でのみ利用できます。</shortdesc>
+  <shortdesc>root権限のないもしくはsudoが使えないユーザを使ったUbuntuでのインストールは開発目的でのみ利用できます。</shortdesc>
   <body>
     <p>
-      非ルート、非sudoでのインストールを実行した場合、Couchbase ServerとすべてのCouchbaseコマンドラインツールを実行できるようになります。
+      非ルート、非sudoでのインストールを実行した場合でも、Couchbase ServerとすべてのCouchbaseコマンドラインツールを実行できます。
     </p>
     <ol>
       <li>
@@ -25,8 +25,8 @@
         </p>
         <p>これでroot権限のないもしくはsudoが使えないユーザでのインストールを続ける事ができます。</p>
       </li>
-      <li>サーバを動かすには <codeblock>./bin/couchbase-server -- -noinput -detached</codeblock> を使用します</li>
-      <li>サーバを停めるには <codeblock>./bin/couchbase-server -k</codeblock> を使用します</li>
+      <li>サーバを起動するには <codeblock>./bin/couchbase-server -- -noinput -detached</codeblock> を使用します</li>
+      <li>サーバを停止するには <codeblock>./bin/couchbase-server -k</codeblock> を使用します</li>
     </ol>
   </body>
 </topic>
