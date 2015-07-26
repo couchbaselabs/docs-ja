@@ -1,58 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="reference_rest_buckets">
+<reference xml:lang="ja" id="reference_rest_buckets">
   <title>Buckets API</title>
-    <shortdesc>The Buckets REST API creates, deletes, flushes, and retrieves information about
-    buckets and bucket operations.</shortdesc>
+    <shortdesc>Buckets REST APIはbucketとbucket操作についての情報の作成、削除、フラッシュ、取得を行います。</shortdesc>
   
   <refbody>
-    <section><title>Description</title>
-      <p>The bucket management and configuration REST API endpoints provide a fine level of
-        control over the individual buckets in the cluster, their configuration, and specific
-        operations.</p>
+    <section>
+      <title>説明</title>
+      <p>bucket管理・構成REST APIエンドポイントはクラスタ内の個々のbucketの細かいレベルでの制御、それらの構成、操作を提供します。</p>
     <table>
-      <title>Bucket endpoints</title>
+      <title>Bucketエンドポイント</title>
       <tgroup cols="3">
         <colspec colname="col1" colwidth="1*"/>
         <colspec colname="col2" colwidth="1.98*"/>
         <colspec colname="col3" colwidth="1.84*"/>
         <thead>
           <row>
-            <entry>HTTP method</entry>
-            <entry>URI path</entry>
-            <entry>Description</entry>
+            <entry>HTTPメソッド</entry>
+            <entry>URIパス</entry>
+            <entry>説明</entry>
           </row>
         </thead>
         <tbody>
           <row>
             <entry>GET</entry>
             <entry>/pools/default/buckets</entry>
-            <entry>Retrieves all bucket and bucket operations information from a cluster.</entry>
+            <entry>全てのbucketやbucket操作の情報をクラスタから取得します。</entry>
           </row>
           <row>
             <entry>GET</entry>
             <entry>/pools/default/buckets/default</entry>
-            <entry>Retrieves information for a single bucket associated with a cluster.</entry>
+            <entry>クラスタに関連したひとつのbucketの情報を取得します。</entry>
           </row>
           <row>
             <entry>GET</entry>
             <entry>/pools/default/buckets/[bucket_name]/stats</entry>
-            <entry>Retrieves bucket statistics for a specific bucket.</entry>
+            <entry>特定のbucketの統計情報を取得します。</entry>
           </row>
           <row>
             <entry>POST</entry>
             <entry>/pools/default/buckets</entry>
-            <entry>Creates a new Couchbase bucket.</entry>
+            <entry>新しいCouchbase bucketを作成します。</entry>
           </row>
           <row>
             <entry>DELETE</entry>
             <entry>/pools/default/buckets/[bucket_name]</entry>
-            <entry>Deletes a specific bucket.</entry>
+            <entry>特定のbucketを削除します。</entry>
           </row>
           <row>
             <entry>POST</entry>
             <entry>/pools/default/buckets/default/controller/doFlush</entry>
-            <entry>Flushes a specific bucket.</entry>
+            <entry>特定のbucketをフラッシュします。</entry>
           </row>
         </tbody>
       </tgroup>
