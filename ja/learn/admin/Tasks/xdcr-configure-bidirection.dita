@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
-<task id="task_iqr_zyn_14">
-    <title>Configuring bi-directional replication</title>
+<task xml:lang="ja" id="task_iqr_zyn_14">
+    <title>双方向レプリケーションの設定</title>
     <shortdesc/>
     <taskbody>
         <context>
-            <p>Replication is unidirectional from one cluster to another. To configure bidirectional
-                replication between two clusters, provide settings for two separate replication
-                streams. One stream replicates changes from Cluster A to Cluster B, another stream
-                replicates changes from Cluster B to Cluster A. </p>
+            <p>レプリケーションはあるクラスタから他のクラスタへの単一方向です。 双方向のレプリケーションを二つのクラスタ間で設定するには、二つの独立したレプリケーションストリームの設定を行います。 一つのストリームはクラスタAからクラスタBへと変更をレプリケートし、もう一つのストリームはクラスタBからクラスタAへと変更をレプリケートします。 </p>
                 
-                <note type="note">You do not need identical topologies for both clusters. You can have a different number
-                    of nodes in each cluster, RAM configuration, and persistence configuration.</note>
+                <note type="note">双方のクラスタで同一の構成である必要はありません。 各クラスタで異なるノード数、RAM設定、永続化設定を利用できます。</note>
                 
-                <p>To configure a bi-directional replication:</p>
+                <p>双方向レプリケーションを設定するには:</p>
         </context>
         <steps>
             <step>
-                <cmd>Create a replication from Cluster A to Cluster B on Cluster A.</cmd>
+                <cmd>クラスタAからクラスタBへのレプリケーションを、クラスタAで作成します。</cmd>
             </step>
             <step>
-                <cmd>Create a replication from Cluster B to Cluster A on Cluster B.</cmd>
+                <cmd>クラスタBからクラスタAへのレプリケーションを、クラスタAで作成します。</cmd>
             </step>
             <step>
-                <cmd>Configure the number of parallel replicators that run per node. The default number of
-                    parallel, active streams per node is 32 and is adjustable.</cmd>
+                <cmd>ノードごとに起動する並列レプリケータ数を設定します。 アクティブなストリームにおけるノード単位の並列数はデフォルトでは32で、変更も可能です。</cmd>
             </step>
         </steps>
         
