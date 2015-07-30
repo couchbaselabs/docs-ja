@@ -1,39 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_wgq_wzw_fp">
-  <title>Backing up and restoring between platforms</title>
+<topic xml:lang="ja" id="topic_wgq_wzw_fp">
+  <title>異なるプラットフォーム間でのバックアップとリストア</title>
   <body>
-    <p>Couchbase Server on Mac OS X uses a different number of configured vBuckets than the Linux
-      and Windows installations. Backing up is a standard backup, however, 
-      restoring to Mac OS X from a Linux or Windows backup or restoring to Linux/Windows from a Mac OS X backup 
-      requires the <codeph>rehash=1</codeph> option.</p>
+    <p>Mac OS Xは、LinuxやWindowsのインストールと異なるvBucket数で設定されています。 バックアップは通常通りですが、LinuxやWindowsのバックアップからMac OS Xへのリストア、またはMac OS XのバックアップからLinux/Windowsへリストアする際には、<codeph>rehash=1</codeph>オプションを指定する必要があります。</p>
     <section>
-      <title>Backing up Mac OS X and restoring on Linux/Windows</title>
-      <p>To backup the data from Mac OS X, use the standard <codeph>cbbackup</codeph> tool and options:</p>
+      <title>Mac OS Xからバックアップし、Linux/Windowsへリストアする</title>
+      <p>Mac OS Xからデータをバックアップするには、標準の<codeph>cbbackup</codeph>ツールとオプションを利用します:</p>
       <codeblock>cbbackup http://Administrator:password@mac:8091 /macbackup/today</codeblock>
-      <p>To restore the data to a Linux/Windows cluster, connect to the 8091 port, and use the
-          <codeph>rehash=1</codeph> option to rehash the information and distribute the data to
-        the appropriate node within the cluster. <codeph>rehash=1</codeph> rehashes the partition
-        id's of each item. </p>
+      <p>Linux/Windowsクラスタへとデータをリストアするには、8091ポートに接続し、<codeph>rehash=1</codeph>オプションを指定して情報を再ハッシュし、クラスタ内の適切なノードへとデータを分散させます。
+				<codeph>rehash=1</codeph>は各アイテムのパーティションIDを再ハッシュします。 </p>
       <codeblock>cbrestore backup 
   -u [username] -p [password] 
   -x rehash=1
   http://[localhost]:8091 --bucket-source [my_bucket] --bucket-destination [my_bucket]</codeblock>
-      <note type="note">If you have backed up multiple buckets from your Mac, you must restore to each bucket
-        individually.</note>
+      <note type="note">Macから複数のバケットをバックアップした場合、各バケットは個別にリストアする必要があります。</note>
     </section>
     <section>
-      <title>Backing up Linux/Windows and restoring on Mac OS X</title>
-      <p>To backup the data from Linux or Windows, use the standard <codeph>cbbackup</codeph> tool
-        and options:</p>
+      <title>Linux/Windowsからバックアップし、Mac OS Xへリストアする</title>
+      <p>LinuxやWindowsからデータをバックアップするには、標準の<codeph>cbbackup</codeph>ツールとオプションを利用します。</p>
       <codeblock>cbbackup http://Administrator:password@linux:8091 /linuxbackup/today</codeblock>
-      <p>To restore to the Mac OS X node or cluster, connect to the 8091 port, and use the
-          <codeph>rehash=1</codeph> option to rehash the information and distribute the data to the
-        appropriate node within the cluster. <codeph>rehash=1</codeph> rehashes the partition id's
-        of each item. This is needed when transferring data between clusters with different number
-        of partitions, such as when transferring data from a Mac OS X server to a non-Mac OS X
-        cluster.</p>
-      <p>Syntax:</p>
+      <p>Mac OS Xノードやクラスタへとデータをリストアするには、8091ポートに接続し、<codeph>rehash=1</codeph>オプションを指定して情報を再ハッシュし、クラスタ内の適切なノードへとデータを分散させます。 <codeph>rehash=1</codeph>は各アイテムのパーティションIDを再ハッシュします。 Mac OS XサーバからMac OS X以外のクラスタへのデータ転送など、異なるパーティション数のクラスタ間でデータを転送する場合に必要。</p>
+      <p>シンタックス:</p>
       <codeblock>./cbrestore backup 
   -u [username] -p [password] 
   -x rehash=1
@@ -41,9 +29,8 @@
       </codeblock>
     </section>
     <section>
-      <title>Transferring data directly</title>
-      <p>The <codeph>cbtransfer</codeph> tool can be used to move data directly between Mac OS X and
-        Linux/Windows clusters without creating the backup file.</p>
+      <title>データを直接転送する</title>
+      <p><codeph>cbtransfer</codeph>ツールを使って、Mac OS XとLinux/Windowsクラスタ間でバックアップファイルを作成せずに、直接データを移動することができます。</p>
       <codeblock>
 cbtransfer http://linux:8091 http://mac:8091 -b [bucket-source] -B [bucket-destination] -x rehash=1
 cbtransfer http://mac:8091 http://linux:8091 -b [bucket-source] -B [bucket-destination] -x rehash=1

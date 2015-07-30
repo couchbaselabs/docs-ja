@@ -1,90 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_q3t_bxw_fp">
-  <title>Restoring with <codeph>cbrestore</codeph></title>
-  <shortdesc>To restore bucket data that was backed up using the command <cmdname>cbbackup</cmdname>, 
-    use the command <cmdname>cbrestore</cmdname> to restore information into a bucket on a new cluster. </shortdesc>
+<topic xml:lang="ja" id="topic_q3t_bxw_fp">
+  <title><codeph>cbrestore</codeph>でのリストア</title>
+  <shortdesc><cmdname>cbbackup</cmdname>コマンドを利用して作成したバックアップからバケットデータを復元するには、 <cmdname>cbrestore</cmdname>コマンドを利用して、新規クラスタのバケットへと情報を復元します。 </shortdesc>
   <body>
 
     
-    <p> When restoring a backup, you have to select the appropriate restore sequence
-    based on the type of restore you are performing. The available methods 
-    when restoring a cluster depend on the method you used when backing up
-    the cluster. </p>
+    <p> バックアップをリストアするとき、適切なリストア手順を実行するリストアの種別に応じて適切に選択する必要があります。 クラスタで利用可能なリストア手順は、クラスタをバックアップする際に利用した方法によって異なります。 </p>
     
-    <p>If <cmdname>cbbackup</cmdname> was used to backup the bucket data, you can restore
-    back to a cluster with the same or different configuration. This is because
-      <cmdname>cbbackup</cmdname> stores information about the stored bucket data in a format that
-    enables it to be restored back into a bucket on a new cluster. </p>
+    <p>もし、 <cmdname>cbbackup</cmdname> がバケットデータのバックアップに利用されたなら、同一または異なる構成のクラスタにリストアすることができます。 なぜなら
+      <cmdname>cbbackup</cmdname> は、バケットデータの情報を、新規クラスタ上のバケットに復元可能なフォーマットで保存しているからです。 </p>
     
-    <note type="note">If the information was backed up using a direct file copy, then you must restore
-    the information back to an identical cluster.</note>
+    <note type="note">直接ファイルをコピーしてバックアップされた情報は、同一のクラスタにリストアする必要があります。</note>
 
     
-    <p>The <cmdname>cbrestore</cmdname> command takes the information that has been backed up via the
-      <cmdname>cbbackup</cmdname>> command and streams the stored data into a cluster. The configuration
-    of the cluster does not have to match the cluster configuration when the data
-    was backed up, allowing it to be used when transferring information to a new
-    cluster or updated or expanded version of the existing cluster in the event of
-    disaster recovery.</p>
+    <p><cmdname>cbrestore</cmdname> コマンドは
+      <cmdname>cbbackup</cmdname>コマンドでバックアップされた情報を利用し、保存されたデータをクラスタへと流し込みます。 クラスタの構成は、データがバックアップされたクラスタの構成と一致する必要はなく、ディザスタリカバリの際に、新規クラスタ、既存のクラスタを更新または拡張したクラスタに対して情報を転送することができます。</p>
     
-    <p>Because the data can be restored flexibly, it provides for a number of different
-    scenarios to be executed on the data that has been backed up:</p>
+    <p>データを柔軟に復元できるため、バックアップされたデータに対して様々なシナリオを適用できます:</p>
     
     <ul>
-      <li>Restoring data into a cluster of a different size and configuration.</li>
-      <li>Transferring or restoring data into a different bucket on the same or
-        different cluster.</li>
-      <li>Restoring a selected portion of the data into a new or different
-        cluster, or the same cluster but a different bucket.</li>
+      <li>異なるサイズ、構成のクラスタへリストアする。</li>
+      <li>同一、または異なるクラスタ上の異なるバケットにデータを転送しリストアする。</li>
+      <li>新規、または異なるクラスタ、あるいは同一のクラスタ内の異なるバケットに選択したデータの一部分をリストアする。</li>
     </ul>
 
     
-    <p>The basic format of the <cmdname>cbrestore</cmdname> command is as follows:</p>
+    <p><cmdname>cbrestore</cmdname> コマンドの基本形式は次の通りです:</p>
 
 <codeblock>cbrestore [options] [source] [destination]
 </codeblock>
     
-    <p>Where:</p>
+    <p>ここで:</p>
     <dl>
       <dlentry>
         <dt>[options]</dt>
-        <dd>Options specifying how the information should be restored into the cluster. Common options include:
+        <dd>どのように情報がクラスタへリストアされるのかを指定するオプションです。 一般的なオプション:
           <ul>
             <li>--bucket-source
-              <p>Specify the name of the bucket data to be read from the backup data that will be
-                restored.</p></li>
+              <p>リストアするバックアップデータから読み込むバケットデータの名前を指定します。</p></li>
             <li>--bucket-destination
-              <p>Specify the name of the bucket the data will be written to. If this option is
-                not specified, the data will be written to a bucket with the same name as the
-                source bucket.</p></li>
+              <p>データを書き込むバケット名を指定します。 このオプションを指定しない場合、sourceバケットと同一の名前のバケットへデータが書き込まれます。</p></li>
             <li>--add
-              <p>Use <codeph>--add</codeph> instead of <codeph>--set</codeph> in order to not overwrite existing items in the destination.</p></li>
+              <p><codeph>--add</codeph>を<codeph>--set</codeph>の代わりに利用し、リストア先の既存アイテムを上書きしません。</p></li>
           </ul></dd>
       </dlentry>
     </dl>
     <dl>
       <dlentry>
         <dt>[source]</dt>
-        <dd>The backup directory specified to <codeph>cbbackup</codeph> where the backup data was stored.</dd>
+        <dd><codeph>cbbackup</codeph> で指定されたバックアップディレクトリで、バックアップデータが保存された場所です。</dd>
       </dlentry>
     </dl>
     <dl>
       <dlentry>
         <dt>[destination]</dt>
-        <dd>The REST API URL of a node within the cluster where the information will be
-          restored.</dd>
+        <dd>情報が復元されるクラスタ内のノードのREST API URLです。</dd>
       </dlentry>
     </dl>
    
     
-    <p>The <cmdname>cbrestore</cmdname> command restores only a single bucket of data at a time. If you
-    have created a backup of an entire cluster (such as all buckets), then you must
-    restore each bucket individually back to the cluster. All destination buckets
-    must already exist since <cmdname>cbrestore</cmdname> does not create or configure destination buckets
-    for you.</p>
+    <p><cmdname>cbrestore</cmdname> コマンドは一度にひとつのバケットのデータのみをリストアします。 全クラスタのバックアップを取得した場合(全バケット)、各バケットを個別にクラスタへ復元しなければなりません。 すべてのリストア先バケットは事前に存在する必要があります。 <cmdname>cbrestore</cmdname> はリストア先のバケットの作成、設定は行いません。</p>
     
-    <p>For example, to restore a single bucket of data to a cluster:</p>
+    <p>例えば、単一のデータバケットをクラスタに復元する場合:</p>
     
     
 <codeblock>cbrestore \
@@ -100,7 +78,7 @@
     done
 </codeblock>
     
-    <p>To restore the bucket data to a different bucket on the cluster:</p>
+    <p>バケットデータをクラスタの異なるバケットへ復元する場合:</p>
     
     
 <codeblock>cbrestore \
@@ -117,16 +95,13 @@
     done
 </codeblock>
     
-    <p>The <codeph>msg</codeph> count in this case is the number of documents restored back to the
-    bucket in the cluster.</p>
+    <p><codeph>msg</codeph>カウントはこの場合、クラスタ内のバケットに復元されたドキュメントの数になります。</p>
     
-    <section><title>Filtering keys during restore</title>
-    The <cmdname>cbrestore</cmdname> command includes support for filtering the keys that are
-    restored to the database from the files that were created during backup. This is
-    in addition to the filtering support available during backup).
-      <p>The specification is in the form of a regular expression supplied as an option
-    to the <cmdname>cbrestore</cmdname> command. For example, to restore information to a bucket only
-    where the keys have an object prefix:</p>
+    <section><title>リストア中のキーのフィルタリング</title>
+    <cmdname>cbrestore</cmdname> コマンドはバックアップで作成されたファイルからデータベースへとリストアされるキーのフィルタリングに対応しています。
+		これはバックアップ時のフィルタリングとは別に実行できます。
+		<p>指定は正規表現形式で、 <cmdname>cbrestore</cmdname> コマンドのオプションに渡します。
+			例えばobjectプリフィクスを持つキーの情報だけをバケットにリストアする場合:</p>
     
     
 <codeblock>cbrestore /backups/backup-20120501 http://HOST:8091 \
@@ -146,31 +121,22 @@
     done
   </codeblock>
     
-    <p>This copies only the keys matching the specified prefix into the
-    <varname>default</varname> bucket. For each key skipped, an information message is provided.
-    The remaining output shows the records transferred and summary as normal.</p>
+    <p>これは指定したプリフィクスに一致するキーだけを
+    <varname>default</varname> バケットにコピーします。 キーをスキップするたびに、情報がメッセージ出力されます。
+    その他の出力は通常通り、転送されたレコードとサマリを示します。</p>
       
     </section>
     
-    <section><title>Restoring using file copies</title> To restore the information to the same
-      cluster with the same configuration, shut down your entire cluster while you restore the data
-      and then restart the cluster again. In this case, you are replacing the entire cluster data
-      and configuration with the backed up version of the data files, and then restarting the
-      cluster with the saved version of the cluster files. <note type="important">Make sure that any
-        restoration of files also sets the proper ownership of those files to the Couchbase
-        user.</note>
-      <p>When restoring data back in the same cluster, verify the following: <ul>
-          <li>Backup and restore must use the same version of Couchbase Server.</li>
-          <li>The cluster must contain the same number of nodes.</li>
-          <li>Each node must have the same IP address or hostname it was configured with when the
-            cluster was backed up.</li>
-          <li>All <codeph>config.dat</codeph> configuration files as well as all database files must
-            be restored to their original locations.</li>
-        </ul></p><p>The steps required to complete the restore process are: </p><ol>
-        <li>Stop the Couchbase Server service on all nodes.</li>
-        <li>On each node, restore the database, <codeph>stats.json</codeph>, and configuration file
-            <codeph>config.dat </codeph>from your backup copies for each node.</li>
-        <li>Restart the service on each node.</li>
+    <section><title>ファイルコピーを利用したリストア</title> 同一の設定を持つ同一のクラスタへ情報をリストアするには、クラスタ全体をシャットダウンし、データをリストアしてからクラスタを再起動します。 この場合、クラスタ全体のデータと設定をバックアップしたバージョンのデータファイルで置換し、クラスタファイルの保存されたバージョンでクラスタを再起動します。 <note type="important">ファイルの復元を行う際に、それらのファイルの所有者をCouchbaseユーザに正しく設定してください。</note>
+      <p>同一のクラスタへデータをリストアする場合、以下を確認してください: <ul>
+          <li>バックアップとリストアは同一のCouchbase Serverを利用していること。</li>
+          <li>クラスタは同一のノード数であること。</li>
+          <li>クラスタがバックアップされた時点と同一のIPアドレスまたはホスト名が各ノードで設定されていること。</li>
+          <li>すべての<codeph>config.dat</codeph>設定ファイルがデータベースファイルとともにオリジナルの場所へ復元されていること。</li>
+        </ul></p><p>リストアプロセスを完了させるために必要な手順は: </p><ol>
+        <li>Couchbase Serverのサービスをすべてのノードで停止する。</li>
+        <li>各ノードで、データベース、<codeph>stats.json</codeph>、そして<codeph>config.dat</codeph>設定ファイルを、各ノードのバックアップコピーから復元する。</li>
+        <li>各ノードでサービスを再起動する。</li>
       </ol>
     </section>      
   </body>
