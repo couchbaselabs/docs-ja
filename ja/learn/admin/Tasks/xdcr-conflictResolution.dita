@@ -1,38 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_dz3_wk4_14">
-  <title>Conflict resolution in XDCR</title>
-  <shortdesc>XDCR automatically performs conflict resolution for different document versions on source and
-    destination clusters.</shortdesc>
+<topic xml:lang="ja" id="topic_dz3_wk4_14">
+  <title>XDCRのコンフリクト解決</title>
+  <shortdesc>XDCRはソースと宛先クラスタの間で異なるドキュメントのバージョンに対し、自動的にコンフリクトの解決を実行します。</shortdesc>
   <body>
 
-      <p>The algorithm is designed to consistently select the same document on
-        either a source or destination cluster. For each stored document, XDCR perform checks of
-        metadata to resolve conflicts. It checks the following:</p><ul>
-          <li><p>Numerical sequence, which is incremented on each mutation</p></li>
-          <li><p>CAS value</p></li>
-          <li><p>Document flags</p></li>
-          <li><p>Expiration (TTL) value</p></li>
-        </ul><p>If a document does not have the highest revision number, changes to this document will
-          not be stored or replicated; instead the document with the highest score will take precedence on
-          both clusters. Conflict resolution is automatic and does not require any manual correction or
-          selection of documents.</p><p>By default XDCR fetches metadata twice from every document before
-            it replicates the document at a destination cluster. XDCR fetches metadata on the source cluster
-            and looks at the number of revisions for a document. It compares this number with the number of
-            revisions on the destination cluster and the document with more revisions is considered the
-            ‘winner.’</p><p>If XDCR determines a document from a source cluster will win conflict
-              resolution, it puts the document into the replication queue. If the document will lose conflict
-              resolution because it has a lower number of mutations, XDCR will not put it into the replication
-              queue. Once the document reaches the destination, this cluster will request metadata once again
-              to confirm the document on the destination has not changed since the initial check. If the
-              document from the source cluster is still the ‘winner’ it will be persisted onto disk at the
-              destination. The destination cluster will discard the document version with the lowest number of
-              mutations.</p><p>The key point is that the number of document mutations is the main factor that
-                determines whether XDCR keeps a document version or not. This means that the document that has
-                the most recent mutation may not be necessarily the one that wins conflict resolution. If both
-                documents have the same number of mutations, XDCR selects a winner based on other document
-                metadata. Precisely determining which document is the most recently changed is often difficult
-                in a distributed system. The algorithm Couchbase Server uses does ensure that each cluster can
-                independently reach a consistent decision on which document wins.</p>
+      <p>アルゴリズムはソース、宛先の両クラスタで一貫して同一のドキュメントが選択できるように設計されています。 各保存されたドキュメントごとに、XDCRはメタデータをチェックし、コンフリクトを解決します。 次の項目を確認します:</p><ul>
+          <li><p>シーケンス番号、各データ変更でインクリメントされる</p></li>
+          <li><p>CAS値</p></li>
+          <li><p>ドキュメントのフラグ</p></li>
+          <li><p>有効期限(TTL)</p></li>
+        </ul><p>ドキュメントが最大のバージョン番号ではない場合、このドキュメントに対する変更は保存、またはレプリケートされません; 代わりに、最大スコアを持つドキュメントが両クラスタ上で優先されます。 コンフリクトの解決は自動的に行われ、手動で補正やドキュメントの選択を行う必要はありません。</p><p>デフォルトでは各ドキュメントにつき2回ずつメタデータをフェッチしてから、宛先クラスタへとドキュメントをレプリケートします。 XDCRはソースクラスタ上のメタデータをフェッチし、ドキュメントのリビジョン番号を確認します。 そしてこの番号と、宛先クラスタ上のリビジョン番号とを比較し、より大くのリビジョンを持つドキュメントを'勝者'とします。</p><p>XDCRは、ソースクラスタのドキュメントがコンフリクトの解決で勝者と判断すると、レプリケーションキューにそのドキュメントを登録します。 ソースクラスタのドキュメントの方が小さな変更数であった場合、コンフリクトの解決で敗者となり、このドキュメントはXDCRのレプリケーションキューに登録されません。 ドキュメントが宛先クラスタに到達すると、このクラスタはもう一度メタデータをリクエストし、宛先クラスタのドキュメントが初回のチェックから変更されていないかを確認します。 ソースクラスタから送られたドキュメントがまだ'勝者'であるなら、宛先クラスタのディスク上に永続化されます。 宛先クラスタは少ない変更数を持つドキュメントのバージョンを削除します。</p><p>重要な点は、ドキュメントの変更回数が、XDCRによってドキュメントのバージョンを保持するか否かを決定するための主な要素であるということです。 このため、もっとも最近更新されたドキュメントがコンフリクトの解決で必ずしも勝者となるとは限りません。 もし双方のドキュメントが同一の更新回数であった場合、XDCRはドキュメントのその他のメタデータを元に勝者を選択します。 正確にどちらのドキュメントが最後に更新されたものなのかを特定することは、分散システムにおいてしばしば困難となります。 Couchbase Serverが利用しているアルゴリズムは、各クラスタが独立してどのドキュメントが勝者なのかを一貫して決定できることを保証しています。</p>
   </body>
 </topic>

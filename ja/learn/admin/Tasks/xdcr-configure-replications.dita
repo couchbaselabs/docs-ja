@@ -1,42 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_cyy_wh4_14">
-  <title>Configuring XDCR replications</title>
-  <shortdesc>Configuration of XDCR replications is done on a per-bucket basis.</shortdesc>
+<topic xml:lang="ja" id="topic_cyy_wh4_14">
+  <title>XDCRレプリケーションの設定</title>
+  <shortdesc>XDCRレプリケーションの設定はバケット単位に行います。</shortdesc>
   <body>
 
-      <p>Replications are configured from the <uicontrol>XDCR</uicontrol> tab of the Web
-        Console. You configure replication on a bucket basis. To replicate data from all
-        buckets in a cluster, individually configure replication for each bucket.</p>
+      <p>Webコンソールの<uicontrol>XDCR</uicontrol>タブからレプリケーションを設定します。 レプリケーションはバケット単位に設定します。 クラスタ内のすべてのバケットからデータをレプリケートするには、各バケットに対して個別のレプリケーションを設定します。</p>
     
-      <p>Before configuring XDCR:</p>
+      <p>XDCRを設定する前に:</p>
       <ul>
-        <li>Configure all nodes within each cluster to communicate with all the nodes on the
-          destination cluster. XDCR uses any node in a cluster to replicate between the two
-          clusters.</li>
-        <li>Ensure that all Couchbase Server versions and platforms match. For instance, if you want to replicate
-          from a Linux-based cluster, you need to do so with another Linux-based cluster.</li>
-        <li>When XDCR performs replication, it exchanges data between clusters over TCP/IP port 8092;
-          Couchbase Server uses TCP/IP port 8091 to exchange cluster configuration information. If you
-          are communicating with a destination cluster over a dedicated connection or the Internet you
-          should ensure that all the nodes in the destination and source clusters can communicate with
-          each other over ports 8091 and 8092.</li>
+        <li>各クラスタ内のすべてのノードが対象のクラスタ内のすべてのノードと通信ができるように設定してください。 XDCRは二つのクラスタ間でレプリケーションを行うために、クラスタ内のすべてのノードを利用します。</li>
+        <li>すべてのCouchbase Serverバージョンとプラットフォームが一致している必要があります。 例えばLinuxベースのクラスタからレプリケートするなら、もう一つのLinuxベースのクラスタが必要です。</li>
+        <li>XDCRがレプリケーションを実行する際、TCP/IPの8092ポートを利用してデータを転送します; Couchbase ServerはTCP/IPの8091ポートを利用し、クラスタ設定情報を転送します。
+					専用線やインターネットの先にあるクラスタへと通信をする場合、ソース、宛先の両クラスタ内のすべてのノードでお互いに8091ポートと8092ポートを利用した通信を可能にしてください。</li>
       </ul>
-      <p><codeph>Ongoing Replications</codeph> are those replications that are currently configured and
-        operating. You can monitor the current configuration, current status, and the last time a
-        replication process was triggered for each configured replication.</p><p>Under the XDCR tab you
-          can also configure <codeph>Remote Clusters</codeph> for XDCR; these are named destination
-          clusters you can select when you configure replication. When you configure XDCR, the destination
-          cluster reference should point to the IP address of one of the nodes in the destination
-          cluster.</p><p>Before you set up replication via XDCR, you should be certain that a destination
-            bucket already exists. If this bucket does not exist, replication via XDCR may not find some
-            shards on the destination cluster; this will result in replication of only some data from the
-            source bucket and will significantly delay replication. This would also require you to retry
-            replication multiple times to get a source bucket to be fully replicated to a destination.</p>
-      <p>Therefore, make sure that you check that a destination bucket exists. The recommended approach
-        is try to read on any key from the bucket. If you receive a ‘key not found’ error, or the
-        document for the key, the bucket exists and is available to all nodes in a cluster. You can do
-        this via a Couchbase SDK with any node in the cluster. </p>
+      <p><codeph>Ongoing Replications</codeph>は設定され稼働中のレプリケーションを指します。 現在の設定、現在のステータス、各レプリケーション設定における最終レプリケーション日時を監視することができます。</p><p>XDCRタブでは、XDCR用の<codeph>Remote Clusters</codeph>を設定することもできます; これらは名前付きの宛先クラスタで、レプリケーションの設定時に選択できます。 XDCRを設定するときは、宛先クラスタへの参照に、宛先クラスタ内の任意のノードのIPアドレスを指定します。</p><p>XDCRでレプリケーションを設定する前に、宛先のバケットがすでに存在するかを確認してください。 このバケットが存在しない場合、XDCRは宛先クラスタのシャードを見つけられません; このため、ソースバケットのいくつかのデータのみがレプリケートされ、レプリケーションが大幅に遅延します。 この場合、レプリケーションを複数回繰り返し、ソースバケットを完全に宛先へとレプリケートする必要があります。</p>
+      <p>このため、宛先のバケットが存在するか必ず確認してください。 推奨される方法はバケットから任意のキーを参照することです。 もし、'key not found'エラーが返された、もしくはキーのドキュメントが返されたなら、そのバケットは存在し、クラスタ内の全ノードで利用可能です。 クラスタ内の任意のノードに対し、Couchbase SDKを利用してこれを実行できます。 </p>
     
   </body>
 </topic>
