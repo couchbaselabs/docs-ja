@@ -3,7 +3,7 @@
 <reference xml:lang="ja" id="reference_rest_logs">
   <title>Logs API</title>
   <shortdesc>
-    Logs REST APIはログや診断情報を取得するためのREST APIのエンドポイントを提供します。診断情報にはSDKが使用できるかどうかだけでなくログにデータが入るかといった情報も含みます。
+		Logs REST APIはログや診断情報を取得するためのREST APIのエンドポイントを提供し、SDKからログにエントリをすることもできます。
   </shortdesc>
   <refbody>
     <section>
@@ -37,7 +37,7 @@
           <row>
             <entry>GET</entry>
             <entry>/diag</entry>
-            <entry>ログと追加サーバの診断状況を取得します。</entry>
+            <entry>ログに加え、サーバの診断状況を取得します。</entry>
           </row>
           <row>
             <entry>GET</entry>
