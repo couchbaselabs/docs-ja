@@ -1,43 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference xml:lang="en-us" id="rest-bucket-info">
-    <title>Getting single bucket information</title>
-    <shortdesc>To retrieve information about existing buckets and the default bucket, 
-        use the <codeph>GET</codeph> operation with the <codeph>/pools/default/buckets/[bucket-name]</codeph> URI.</shortdesc>
+<reference xml:lang="ja" id="rest-bucket-info">
+    <title>単一のbucket情報取得</title>
+    <shortdesc>
+        <codeph>GET</codeph>オペレーションと<codeph>/pools/default/buckets/[bucket-name]</codeph>URIを使用して、既存のbucketやデフォルトのbucketの情報を取得します。
+    </shortdesc>
     <refbody>
         
-        <section><title>HTTP method and URI</title>
-            <p>To retrieve information for a single bucket associated with a cluster, 
-                provide the name of a specific bucket.</p>
+        <section>
+            <title>HTTPメソッドとURI</title>
+            <p>特定のbucketの名前を渡して、クラスタに関連する単一のbucketの情報を取得します。</p>
             <codeblock>GET /pools/default/buckets/[bucket-name]</codeblock>
             
-            <p>The main REST API bucket endpoint,
-                    <codeph>/pools/default/buckets/[bucket-name]</codeph>, ends with the bucket
-                name. Clients MUST use the server list from the bucket, not the pool to indicate the
-                appropriate servers to connect to.</p>
+            <p>
+                主なREST API bucket エンドポイント（<codeph>/pools/default/buckets/[bucket-name]</codeph>）はbucket名で終わります。
+                クライアントは接続に適するサーバを指示するためにプールではなくbucketからサーバ一覧を使用しなければいけません。
+            </p>
         </section>
             
         
-        <section><title>Syntax</title>
-            <p>Curl request syntax:</p>
+        <section>
+            <title>シンタックス</title>
+            <p>Curlリクエストシンタックス:</p>
             <codeblock>
 curl -u [admin]:[password] 
     http://[localhost]:8091/pools/default/buckets/[bucket-name]</codeblock>
             
-            <p>To get information about the default bucket, replace <codeph>[bucket-name]</codeph> with <codeph>default</codeph>:</p>
+            <p>デフォルトbucketの情報を取得し、<codeph>[bucket-name]</codeph>の情報を<codeph>default</codeph>の情報で置き換えます:</p>
             <codeblock>
 curl -u [admin]:[password] 
     http://[localhost]:8091/pools/default/buckets/default</codeblock>
         </section>
         
-        <section><title>Example</title>
-        <p>Curl request example:</p>
+        <section><title>例</title>
+        <p>Curlリクエスト例:</p>
         <codeblock>curl -u Administrator:password 
     http://10.5.2.117:8091/pools/default/buckets/test2</codeblock>
         </section>
         
-        <section><title>Response</title>
-        <p>Couchbase Server returns a large JSON document with bucket information.</p>
+        <section><title>レスポンス</title>
+        <p>Couchbase Serverはbucket情報を含む大きなJSONドキュメントを返します。</p>
         <codeblock>{
     "authType": "sasl", 
     "autoCompactionSettings": {
@@ -171,7 +173,7 @@ curl -u [admin]:[password]
         
 
         
-        <section><title>Response codes</title>
+        <section><title>レスポンスコード</title>
         <codeblock>HTTP/1.1 200 OK</codeblock>
         </section>
     </refbody>
