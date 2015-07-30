@@ -1,67 +1,72 @@
-<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Installing on Windows with the wizard</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
+<!DOCTYPE html><html xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links" class="no-js developer-portal" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>ウィザードを使用したWindowsへのインストール</title><meta name="apple-mobile-web-app-title" content="Couchbase"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><link rel="stylesheet" href="../assets/stylesheets/application.css"><link rel="stylesheet" href="../assets/stylesheets/docs.css"></head><body data-modules="developer-portal-sidebar-navigation developer-portal-versions-navigation"><header class="developer-portal-header" role="banner"><div class="layout-wrapper"><div class="developer-portal-header__hgroup"><h1 class="developer-portal-header__logo"><a href="http://couchbase.com" rel="home">Couchbase</a></h1><p class="developer-portal-header__page-title">Couchbase Server</p></div><nav class="developer-portal-header__navigation" id="primary-navigation" role="navigation"><div class="developer-portal-header__navigation__wrapper" id="primary-navigation__wrapper"><a href="http://www.couchbase.com/learn" class="developer-porta-header__navigation__back">
 							Return to Learn
-						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections section--active"><a href="../install-intro.html"><span>インストールとアップグレード</span></a><ul class="sub-sections"><li class="section"><a href="../Install/setup-overview.html"><span>Couchbaseセットアップの概要</span></a></li><li class="section section--has-sub-sections"><a href="../Install/pre-install.html"><span>インストール要件</span></a></li><li class="section section--has-sub-sections"><a href="../Install/RHEL-install-intro.html"><span>Red Hat/CentOS installation</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Ubuntu-install.html"><span>UbuntuまたはDebianへのインストール方法</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Install/Windows-install.html"><span>Microsoft Windows へのインストール</span></a><ul class="sub-sections"><li class="section"><a href="../Install/windows-install-wizard.html" class="current"><span>Installing on Windows with the wizard</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Install/windows-install-unattended.html"><span>Unattended Windows installation</span></a></li><li class="section"><a href="../Install/uninstall-windows.html"><span>Uninstalling on Windows</span></a></li><li class="section"><a href="../Install/upgrade-windows.html"><span>Upgrading on Windows</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Install/Mac-install.html"><span>Mac OS X へのインストール</span></a></li><li class="section section--has-sub-sections"><a href="../Install/post-install.html"><span>インストール後の設定</span></a></li><li class="section section--has-sub-sections"><a href="../Install/upgrading.html"><span>Upgrading </span></a></li><li class="section section--has-sub-sections"><a href="../Install/migrating.html"><span>Migrating</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
-    <h1 class="title topictitle1">Installing on Windows with the wizard</h1>
+						</a><ul class="developer-portal-header__navigation__items"><li class="developer-portal-header__navigation__item"><a href="/developer">Developer Documentation</a></li><li class="developer-portal-header__navigation__item"><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li><li class="developer-portal-header__navigation__item"><a href="http://www.couchbase.com/open-source">Open Source Projects</a></li><li class="developer-portal-header__navigation__item"><a href="http://forums.couchbase.com">Forums</a></li><li class="developer-portal-header__navigation__item"><a href="http://docs.couchbase.com/archive-index">Documentation Archives</a></li></ul><div class="developer-portal-header__search"></div></div></nav></div></header><main class="developer-portal-global-content" role="main"><aside class="developer-portal-sidebar"><div class="developer-portal-sidebar__versions"><ul id="developer-portal-versions-navigation"><li class="active"><a href="#"><span>Version 3.0</span></a></li><li class=""><a href="http://docs.couchbase.com/archive-index"><span>Older</span></a></li></ul></div><nav class="developer-portal-sidebar__navigation"><div class="developer-portal-sidebar__navigation__wrapper" id="developer-portal-sidebar-navigation"><ul><li class="section section--has-sub-sections"><a href="../Couchbase-intro.html"><span>はじめに</span></a></li><li class="section"><a href="../Whats-new-3.0.html"><span>3.0の新機能</span></a></li><li class="section section--has-sub-sections section--active"><a href="../install-intro.html"><span>インストールとアップグレード</span></a><ul class="sub-sections"><li class="section"><a href="../Install/setup-overview.html"><span>Couchbaseセットアップの概要</span></a></li><li class="section section--has-sub-sections"><a href="../Install/pre-install.html"><span>インストール要件</span></a></li><li class="section section--has-sub-sections"><a href="../Install/RHEL-install-intro.html"><span>Red Hat/CentOS へのインストール</span></a></li><li class="section section--has-sub-sections"><a href="../Install/Ubuntu-install.html"><span>UbuntuまたはDebianへのインストール方法</span></a></li><li class="section section--has-sub-sections section--active"><a href="../Install/Windows-install.html"><span>Microsoft Windows へのインストール</span></a><ul class="sub-sections"><li class="section"><a href="../Install/windows-install-wizard.html" class="current"><span>ウィザードを使用したWindowsへのインストール</span></a><ul class="sub-sections"></ul></li><li class="section"><a href="../Install/windows-install-unattended.html"><span>Windowsの無人インストール</span></a></li><li class="section"><a href="../Install/uninstall-windows.html"><span>Uninstalling on Windows</span></a></li><li class="section"><a href="../Install/upgrade-windows.html"><span>Windowsでのアップグレード</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../Install/Mac-install.html"><span>Mac OS X へのインストール</span></a></li><li class="section section--has-sub-sections"><a href="../Install/post-install.html"><span>インストール後の設定</span></a></li><li class="section section--has-sub-sections"><a href="../Install/upgrading.html"><span>Upgrading </span></a></li><li class="section section--has-sub-sections"><a href="../Install/migrating.html"><span>移行</span></a></li></ul></li><li class="section section--has-sub-sections"><a href="../admin-intro.html"><span>Couchbase Serverの管理</span></a></li><li class="section section--has-sub-sections"><a href="../Views/views-intro.html"><span>Viewとインデックス</span></a></li><li class="section section--has-sub-sections"><a href="../cli-intro.html"><span>CLIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rest-intro.html"><span>REST APIリファレンス</span></a></li><li class="section section--has-sub-sections"><a href="../rel-notes/rel-notes3.0.html"><span>Release notes</span></a></li></ul></div></nav></aside><div class="developer-portal-content"><div class="developer-portal-content__wrapper textblock__content">
+    <h1 class="title topictitle1">ウィザードを使用したWindowsへのインストール</h1>
 
 
-    <div class="body taskbody"><p class="shortdesc">In this installation, you have to follow the steps defined in the wizard.</p>
+    <div class="body taskbody"><p class="shortdesc">このインストールでは、ウィザードで定義されている手順を実行する必要があります。</p>
 
         <div class="section context">
             
-         
                 <ol class="ol">
-                    <li class="li">Double click on the downloaded executable file. <p class="p">The installer for Windows detects if
-                        any redistributable packages included with the Couchbase Server need to be installed. If
-                        these packages are not already on your system, they are automatically installed 
-                        along with the Couchbase Server.</p>
-</li>
+                    <li class="li">
+                        ダウンロードした実行ファイルをダブルクリックします。
+                        <p class="p">
+                            Couchbase Serverに含まれる再頒布可能パッケージをインストールする必要がある場合、Windows用のインストーラが検出します。
+                            もしこれらのパッケージがシステム上にまだ存在していない場合、Couchbase Serverと一緒に自動的にインストールされます。
+                        </p>
 
-                    <li class="li">You will be prompted with the
-                        <span class="keyword wintitle">Installation Location</span> screen. You can change the location where the
-                        Couchbase Server application is located, which configures the server location and not the location
-                        where the persistent data is stored.
-                        <p class="p">The installer copies necessary files to the system. During the
-                            installation process, the installer also verifies that the default
-                            administration port is not already in use by another application. If the default port is
-                            unavailable, the installer prompts for a different port to be used for administration of
-                            the Couchbase Server. The installer asks you to set up sufficient ports available for
-                            the node. By default, Microsoft Server will not have an adequate number of ephemeral
-                            ports, see <em class="ph i">Microsoft Knowledge Base Article 196271</em></p>
+                    </li>
+
+                    <li class="li">
+                        <span class="keyword wintitle">Installation Location</span>画面が表示されます。
+                        Couchbase Serverアプリケーションを配置するときにサーバ構成を変更することが出来ます。これはサーバの永続データの格納場所ではありません。
+                        <p class="p">
+                            インストーラはシステムに必要なファイルをコピーします。
+                            インストール処理中に、デフォルトの管理用ポートが他のアプリケーションにすでに使用していないことの確認も行います。
+                            デフォルトのポートが使用できない場合、インストーラはCouchbase Serverの管理するためのポートを別に表示します。
+                            インストーラはノードの利用可能な十分なポートを設定するように求めます。
+                            デフォルトでは、マイクロソフトのサーバーは十分な数のエフェメラルポートを提供していません。
+                            <em class="ph i">Microsoft Knowledge Base Article 196271</em>を参照してください。
+                        </p>
 
                         <img class="image" src="../images/windows_port_check.png" width="720">
                     </li>
 
-                    <li class="li">Click <span class="ph uicontrol">Yes</span>. 
-                        <p class="p">Without a sufficient number of ephemeral ports, a
-                            Couchbase cluster fails during rebalance and backup. Other operations, such as client
-                            requests, will time out. If you already changed this setting, you can click <span class="ph uicontrol">No</span>. The
-                            installer displays this panel to confirm the update:</p>
+                    <li class="li"><span class="ph uicontrol">Yes</span>をクリックします。
+                        <p class="p">
+                            エフェメラルポートが十分な数がないと、Couchbaseのクラスタのりバランスやバックアップの最中に失敗します。
+                            その他クライアントのリクエストのような操作ではタイムアウトします。
+                            すでにこれらの設定を変更済みの場合、<span class="ph uicontrol">No</span>をクリックすることが出来ます。
+                            インストーラは更新を確認するためこのパネルを表示します:
+                        </p>
 
                         <img class="image" src="../images/windows_port_check2.png" width="720">
                     </li>
 
-                    <li class="li">Restart Couchbase Server to apply port changes.</li>
+                    <li class="li">ポートの変更を適用するためにCouchbase Serverを再起動します。</li>
 
-                    <li class="li">After installation, follow the server setup instructions.</li>
+                    <li class="li">インストール後、サーバーのセットアップ手順に従ってください。</li>
 
                 </ol>
 
             
-            <div class="note attention"><span class="attentiontitle">Attention:</span> If the Windows installer hangs on the <span class="keyword wintitle">Computing Space Requirements</span> screen, 
-                there is an issue with your setup or installation environment, such as other running applications. </div>
+            <div class="note attention"><span class="attentiontitle">重要:</span> 
+                Windowsインストーラが<span class="keyword wintitle">Computing Space Requirements</span>画面で固まった場合、セットアップや他の稼働中のアプリケーションなどインストール環境に問題があります。
+            </div>
 
             
-         <p class="p">You can implement this workaround to finish the installation: </p>
+         <p class="p">インストールを完了するためにこの回避策を実行することが出来ます: </p>
 
             
                 <ol class="ol">
-                    <li class="li">Stop any other browsers and applications that were running when you started installing the Couchbase Server.</li>
+                    <li class="li">Couchbase Serverのインストールをするときに稼働中の他のブラウザやアプリケーションを停止します。</li>
 
-                    <li class="li">Kill the installation process and uninstall the failed setup.</li>
+                    <li class="li">インストールプロセスを停止して、失敗したセットアップをアンインストールします。</li>
 
-                    <li class="li">Delete or rename the temp location under <span class="ph filepath">C:\Users\[logonuser]\AppData\Temp</span></li>
+                    <li class="li"><span class="ph filepath">C:\Users\[logonuser]\AppData\Temp</span>配下の一時保存先を削除するかリネームします。</li>
 
-                    <li class="li">Reboot and try again.</li>
+                    <li class="li">再起動して再実行します。</li>
 
                 </ol>
   
@@ -71,7 +76,7 @@
 
 <nav class="related-links"><h2>Related information</h2>
 <div class="familylinks">
-<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../Install/Windows-install.html" title="Couchbase ServerはWindowsオペレーションシステムが動いているマシンにインストールすることが出来ます。">Microsoft Windows へのインストール</a></div>
-<div class="nextlink"><strong>Next topic:</strong> <a class="link" href="../Install/windows-install-unattended.html" title="An unattended installation uses a script to install Couchbase Server.">Unattended Windows installation</a></div>
+<div class="parentlink"><strong>親トピック:</strong> <a class="link" href="../Install/Windows-install.html" title="Couchbase ServerはWindowsオペレーションシステムが動いているマシンにインストールすることが出来ます。">Microsoft Windows へのインストール</a></div>
+<div class="nextlink"><strong>次のトピック:</strong> <a class="link" href="../Install/windows-install-unattended.html" title="無人インストールは、Couchbase Serverをインストールするためのスクリプトを使用します。">Windowsの無人インストール</a></div>
 </div>
 </nav></div><footer class="developer-portal-footer" role="contentinfo"><p class="legal"><span class="license">© 2011–2015 <b class="company-name">Couchbase</b> All rights reserved.</span><a href="http://www.couchbase.com/developers">Developer Portal</a><a href="http://forums.couchbase.com">Forums</a><a href="http://www.couchbase.com/downloads">Download</a><a href="http://support.couchbase.com/">Customer Support Login</a></p></footer></div></main><script src="../assets/javascripts/vendor/prism.js"></script><script type="text/javascript">var BASEPATH='../';</script><script src="../assets/javascripts/init.js"></script><script type="text/javascript" src="https://issues.couchbase.com/s/en_US-pvmaib-418945332/845/131/1.2.9/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=86389172"></script></body></html>
