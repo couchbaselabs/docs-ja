@@ -1,73 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_ghc_d1q_fp">
-  <title>Backing up with <codeph>cbbackup</codeph></title>
+<topic xml:lang="ja" id="topic_ghc_d1q_fp">
+  <title><codeph>cbbackup</codeph>でのバックアップ</title>
   <body>
-    <p> The <codeph>cbbackup</codeph> tool is a flexible backup command that enables you to backup
-      both local data and remote nodes and clusters involving different combinations of your
-      data:</p>
+    <p> <codeph>cbbackup</codeph>ツールは柔軟なバックアップコマンドで、ローカルデータとリモートのクラスタやノードといった、様々なデータの組み合わせから、バックアップを取得できます。</p>
     <ul>
-      <li>Single bucket on a single node</li>
-      <li>All the buckets on a single node</li>
-      <li>Single bucket from an entire cluster</li>
-      <li>All the buckets from an entire cluster</li>
+      <li>単一ノード上の単一バケット</li>
+      <li>単一ノード上の全バケット</li>
+      <li>クラスタ全体の単一バケット</li>
+      <li>クラスタ全体の全バケット</li>
     </ul>
-    <p>Backups can be performed either locally, by copying the files directly on a single node, or
-      remotely by connecting to the cluster and then streaming the data from the cluster to your
-      backup location. Backups can be performed either on a live running node or cluster, or on an
-      offline node.</p><p>The <codeph>cbbackup</codeph> command stores data in a format that enables 
-     easy restoration. When restoring, using `cbrestore`, you can restore back to a cluster of
-      any configuration. The source and destination clusters do not need to match if you used
-      `cbbackup` to store the information.</p><p>The <codeph>cbbackup</codeph> command will copy the
-      data in each course from the source definition to a destination backup directory. The backup
-      file format is unique to Couchbase and enables you to restore, all or part of the backed up
-      data when restoring the information to a cluster. Selection can be made on a key (by regular
-      expression) or all the data stored in a particular vBucket ID. You can also select to copy the
-      source data from a bucketname into a bucket of a different name on the cluster on which you
-      are restoring the data.</p><p>The <codeph>cbbackup</codeph> command takes the following
-      arguments:</p>
+    <p>バックアップはローカルで、単一ノード上のファイルを直接コピーするか、クラスタにリモートで接続しクラスタからバックアップ先にデータをストリームして実行します。
+			バックアップは稼働中のノードやクラスタ、またはオフラインのノードで実行できます。</p>
+		<p><codeph>cbbackup</codeph>コマンドは簡単に復元できるフォーマットでデータを保存します。
+			リストアする際は、`cbrestore`を利用して任意の構成のクラスタへとリストアできます。
+			`cbbackup`を利用して情報を保存する場合、バックアップ元のクラスタとリストア先のクラスタは一致する必要がありません。</p>
+		<p><codeph>cbbackup</codeph>コマンドはバックアップ元の定義から、バックアップ先のディレクトリへとデータをコピーします。
+			バックアップファイルはCouchbaseのユニークなフォーマットで、バックアップデータのすべて、または一部の情報をクラスタへとリストアすることができます。
+			選択したキー(正規表現)のみ、あるいは特定のvBucket ID内のすべての保存データとなります。
+			データをリストアするクラスタ内の、バックアップ元のバケット名とは異なる名前のバケットへとデータをコピーすることもできます。</p>
+		<p><codeph>cbbackup</codeph>コマンドは以下の引数を指定できます:</p>
     
     <codeblock>cbbackup [options] [source] [backup_dir] </codeblock>
     
-    <note type="note">The <codeph>cbbackup</codeph> tool is located within the standard Couchbase
-      command-line directory. <p>Be aware that <codeph>cbbackup</codeph> does not support external IP
-      addresses. This means that if you install Couchbase Server with the default IP address, you
-      cannot use an external hostname to access it.</p> </note>
+		<note type="note"><codeph>cbbackup</codeph>ツールは標準のCouchbaseコマンドラインディレクトリに配置されています。
+			<p><codeph>cbbackup</codeph>は外部IPアドレスをサポートしていない点に注意してください。
+				Couchbase ServerがデフォルトIPアドレスを利用してインストールされている場合、外部ホスト名を利用してアクセスすることはできません。</p> </note>
     
-    <p>The following are <codeph>cbbackup [options]</codeph> arguments:</p> 
+    <p><codeph>cbbackup [options]</codeph>引数を以下に示します:</p> 
     
-    <p>These options are used to configure username and password information for connecting to
-    the cluster, backup type selection, and bucket selection. One or more options can be used.
-    The primary options select what will be backed up by <codeph>cbbackup</codeph>, including: </p>
+    <p>これらのオプションはクラスタへの接続用ユーザ名やパスワード情報、バックアップタイプの選択、バケットの選択を指定するために利用します。 一つまたは複数のオプションを利用できます。
+    <codeph>cbbackup</codeph>で指定する主なオプションは: </p>
     
     <ul>
       <li>--single-node
-        <p>Only back
-          up the single node identified by the source specification.</p>
+        <p>バックアップ元として指定された単一ノードからのみバックアップします。</p>
       </li>
-      <li>--bucket-source or -b
-        <p>Backup only
-          the specified bucket name.</p>
+      <li>--bucket-source または -b
+        <p>指定したバケット名のみをバックアップします。</p>
       </li>
     </ul>
     
-    <p>The following are <codeph>cbbackup [source]</codeph> arguments:</p>
-    <p>The source for the data, either a local data directory
-      reference, or a remote node/cluster specification:</p>
+    <p><codeph>cbbackup [source]</codeph> 引数を以下に示します:</p>
+    <p>データの提供元となる、ローカルデータディレクトリ、もしくはリモートノード/クラスタを指定します:</p>
     
     <ul>
-      <li>Local Directory Reference
-        <p>A local
-          directory specification is defined as a URL using the `couchstore-files` protocol. For example:</p>
-        <codeph>couchstore-files:///opt/couchbase/var/lib/couchbase/data/default</codeph>
-        <p>Using this method you
-          are specifically backing up the specified bucket data on a single node only. To backup an entire
-          bucket data across a cluster, or all the data on a single node, you must use the cluster node
-          specification. This method does not backup the design documents defined within the bucket.</p>
+      <li>ローカルディレクトリの参照
+				<p>ローカルディレクトリの書式は`couchstore-files`プロトコルを使用したURLで定義します。 例: </p>
+						<codeph>couchstore-files:///opt/couchbase/var/lib/couchbase/data/default</codeph>
+				<p>この方法を利用すると、単一ノード上の特定のバケットデータをバックアップします。
+					クラスタ全体の全バケットデータ、もしくは単一ノード上の全データをバックアップするには、クラスタノード書式を利用してください。
+					この方法ではバケット内で定義されているデザインドキュメントはバックアップされません。</p>
       </li>
-      <li>cluster node
-        <p>A node or node within a cluster, specified as a URL to the node or cluster
-          service. For example:</p>
+      <li>クラスタノード
+        <p>単一ノード、またはクラスタ内のノードは、ノードやクラスタサービスのURLとして指定します。 例:</p>
         <codeblock>http://HOST:8091
 
 // For distinction you can use the couchbase protocol prefix:
@@ -83,28 +69,20 @@ specify an administrative name and password for the bucket:
       </li>
     </ul>
     
-    <p>The combination of additional options specifies whether the supplied URL refers to the entire
-    cluster, a single node, or a single bucket (node or cluster). The node and cluster can be remote
-    (or local). This method also backs up the design documents used to define views and indexes. </p>
+    <p>追加オプションの組み合わせで、指定したURLがクラスタ全体、単一ノード、もしくは単一バケット(ノードまたはクラスタ)を指すのかが決まりす。 リモート(またはローカル)のノードやクラスタを指定できます。 この方法ではViewやインデックスを定義するために使用されたデザインドキュメントもバックアップします。 </p>
     
-    <p>The <codeph>cbbackup [backup_dir]</codeph> argument is 
-      the directory where the backup data files will be stored on the node on which the
-      <codeph>cbbackup</codeph> is executed. This must be an absolute, explicit, directory, as the files will be
-    stored directly within the specified directory; no additional directory structure is created to
-    differentiate between the different components of the data backup. The directory that you
-    specify for the backup should either not exist, or exist and be empty with no other files. If
-    the directory does not exist, it will be created, but only if the parent directory already
-    exists. The backup directory is always created on the local node, even if you are backing up a
-    remote node or cluster. The backup files are stored locally in the backup directory specified.
-    Backups can take place on a live, running, cluster or node for the IP.</p>
+    <p><codeph>cbbackup [backup_dir]</codeph>引数は、<codeph>cbbackup</codeph>コマンドを実行したノード上の、バックアップデータファイルが保存されるディレクトリです。 これは必ず絶対パスで、ディレクトリを明示してください、ファイルが直接指定したディレクトリに保存されます; データバックアップのその他のコンポーネント間で分別するための追加のディレクトリ構造は作成されません。 バックアップで指定したディレクトリは、存在しないか、存在しても空であるべきです。
+		ディレクトリが存在しない場合、親ディレクトリがすでに存在する場合のみ、作成されます。
+		リモートのノードやクラスタからバックアップしたとしても、バックアップディレクトリは常にローカルノード上で作成されます。
+		バックアップファイルはローカルの指定したバックアップディレクトリ内に保存されます。
+    バックアップはIPで指定した稼働中のクラスタまたはノードで実行できます。</p>
     
-    <p>Using this basic
-    structure, you can backup a number of different combinations of data from your source cluster.
-    Examples of the different combinations are provided below: </p>
+    <p>基本構造を利用して、ソースクラスタから様々な組み合わせのバックアップを作成できます。
+    様々な組み合わせの例を以下に示します: </p>
     
-    <section><title>Backup all nodes and all buckets</title>
+    <section><title>全ノードの全バケット</title>
       
-      <p>To backup an entire cluster, consisting of all the buckets and all the node data:</p>
+      <p>すべてのバケット、すべてのノードで構成されるクラスタ全体のバックアップを取るには:</p>
       
       
 <codeblock>cbbackup http://HOST:8091 /backups/backup-20120501 \ 
@@ -127,24 +105,19 @@ bucket: loggin, msgs transferred...
 done   
 </codeblock>
       
-      <p>When backing up multiple buckets, a progress
-      report, and summary report for the information transferred will be listed for each bucket
-      backed up. The `msgs` count shows the number of documents backed up. The `byte` shows the
-      overall size of the data document data.</p>
-    <p>The source specification in this case is the URL of one of the nodes in the cluster. The
-      backup process will stream data directly from each node in order to create the backup content.
-      The initial node is only used to obtain the cluster topology so that the data can be backed
-      up.</p>
-    <p>A backup created in this way enables you to choose during restoration how you want to restore
-      the information. You can choose to restore the entire dataset, or a single bucket, or a
-      filtered selection of that information onto a cluster of any size or configuration.</p>
+      <p>複数のバケットをバックアップする場合、進捗のレポートと、転送された情報のサマリのレポートがバックアップされた各バケットについて表示されます。
+				`msgs`カウントはバックアップされたドキュメント数です。 `byte`はドキュメントデータのトータルサイズです。</p>
+			<p>この場合のバックアップ元指定はクラスタ内のあるノードのURLです。
+				バックアップ処理はバックアップ内容を作成するために各ノードから直接データをストリームします。
+      初期のノードは、データをバックアップするために、クラスタトポロジを取得するためだけに利用されます。</p>
+		<p>この方法により作成されたバックアップはどのように情報を復元するのかをリストア時に選択できます。
+			全データセット、単一のバケットのみ、もしくは情報の選択した部分のみを、任意のサイズ、任意の構成のクラスタへとリストアできます。</p>
       
     </section>
     
     
-    <section><title>Backup all nodes, single bucket</title>
-      <p>To backup all the data for a single bucket, containing all of the information from the
-        entire cluster:</p>
+    <section><title>全ノードの、単一バケットのバックアップ</title>
+      <p>クラスタ全体からすべての情報を保持する、単一バケットの全データをバックアップするには:</p>
       <codeblock>cbbackup http://HOST:8091 /backups/backup-20120501 \
       -u Administrator -p password \
       -b default
@@ -156,39 +129,36 @@ done
      msg   :               231726 |     231726 |    27007.2
     done
 </codeblock>
-      The <codeph>-b</codeph> option specifies the name of the bucket that you want to backup. If
-      the bucket is a named bucket you will need to provide administrative name and password for
-      that bucket. To backup an entire cluster, you will need to run the same operation on each
-      bucket within the cluster. </section>
+		<codeph>-b</codeph>オプションはバックアップするバケットの名前を指定します。
+		名前付きバケットの場合、バケットの管理名とパスワードを指定してください。
+		クラスタ全体をバックアップするには、同一のオペレーションをクラスタ内の各バケットに対して実行します。 </section>
     
     <section>
-      <title>Backup single node, all buckets</title>
-      <p>To backup all of the data stored on a single node across all of the different buckets:</p>
+      <title>単一ノード、全バケットのバックアップ</title>
+      <p>単一ノード上の全バケットに保存されたすべてのデータをバックアップするには:</p>
       <codeblock>cbbackup http://HOST:8091 /backups/backup-20120501 \
       -u Administrator -p password \
       --single-node
 </codeblock>
-      <p>Using this method, the source specification must specify the node that you want backup. To
-        backup an entire cluster using this method, you should backup each node individually.</p>
+		<p>この方法では、バックアップ元にバックアップしたいノードを指定してください。
+			この方法を利用してクラスタ全体をバックアップするには、各ノードを個別にバックアップします。</p>
     </section>
     
     <section>
-      <title>Backup single node, single bucket</title>
-      <p>To backup the data from a single bucket on a single node:</p>
+      <title>単一ノード、単一バケットのバックアップ</title>
+      <p>単一ノード上の単一バケットからバックアップするには:</p>
       <codeblock>cbbackup http://HOST:8091 /backups/backup-20120501 \
       -u Administrator -p password \
       --single-node \
       -b default
 </codeblock>
-      <p>Using this method, the source specification must be the node that you want to back up.</p>
+      <p>この方法では、バックアップ元にバックアップしたいノードを指定してください。</p>
     </section>
     
     
     <section>
-      <title>Backup single node, single bucket; backup files stored on same node</title>
-      <p>To backup a single node and bucket, with the files stored on the same node as the source
-        data, there are two methods available. One uses a node specification, the other uses a file
-        store specification. Using the node specification:</p>
+      <title>単一ノード、単一バケットのバックアップ; バックアップファイルは同一ノード上に保存されます</title>
+      <p>バックアップ元と同じノード上のファイルに、単一のノードとバケットをバックアップするには、二つの方法が利用できます。 一つはノードの指定を利用し、もう一つはファイルストアの指定を使います。 ノード指定の利用:</p>
       <codeblock>ssh USER@HOST
     remote-> sudo su - couchbase
     remote-> cbbackup http://127.0.0.1:8091 /mnt/backup-20120501 \
@@ -196,65 +166,46 @@ done
       --single-node \
       -b default
 </codeblock>
-      <p>This method backups up the cluster data of a single bucket on the local node, storing the
-        backup data in the local filesystem.</p>
-      <p>Using a file store reference (in place of a node reference) is faster because the data
-        files can be copied directly from the source directory to the backup directory:</p>
+      <p>この方法では、ローカルノード上の単一ノードのデータをバックアップし、バックアップデータをローカルのファイルシステムに保存します。</p>
+      <p>データファイルが直接ソースディレクトリからバックアップディレクトリにコピーされるので、ノード参照よりも、ファイルストア参照を利用したほうが高速です。</p>
       <codeblock>ssh USER@HOST
     remote-> sudo su - couchbase
     remote-> cbbackup couchstore-files:///opt/couchbase/var/lib/couchbase/data/default /mnt/backup-20120501
 </codeblock>
-      <p>To backup the entire cluster using this method, you will need to backup each node, and each
-        bucket, individually.</p>
-      <note type="note">Choosing the right backup solution depends on your requirements and your
-        expected method for restoring the data to the cluster.</note>
+      <p>この方法を利用してクラスタ全体をバックアップするには、各ノードの各バケットを個別にバックアップする必要があります。</p>
+      <note type="note">正しいバックアップソリューションの選択はシステム要件や、希望するクラスタへのリストア方法によって異なります。</note>
     </section>
     <section>
-      <title>Filter keys during backup</title>
-      <p>The <codeph>cbbackup</codeph> command includes support for filtering the keys that are
-        backed up into the database files you create. This can be useful if you want to specifically
-        backup a portion of your dataset, or you want to move part of your dataset to a different
-        bucket.</p>
-      <p>The specification is in the form of a regular expression, and is performed on the
-        client-side within the <codeph>cbbackup</codeph> tool. For example, to backup information
-        from a bucket where the keys have a prefix of 'object':</p>
+      <title>バックアップ中のキーのフィルタリング</title>
+      <p><codeph>cbbackup</codeph>コマンドは作成されるデータベースファイルにバックアップされるキーのフィルタリングに対応しています。 これはデータセットの一部を指定してバックアップする場合、またはデータセットの一部を他のバケットに移動する場合に便利です。</p>
+      <p>指定は正規表現形式で、<codeph>cbbackup</codeph>ツールを実行したクライアント側で実行されます。 例えば、'object'をプリフィクスとして持つキーの情報のみをバケットからバックアップする場合:</p>
       <codeblock>cbbackup http://HOST:8091 /backups/backup-20120501 \
   -u Administrator -p password \
   -b default \
   -k '^object.*'
 </codeblock>
-      <p>The above copies only the keys matching the specified prefix into the backup file. When the
-        data is restored, only those keys that were recorded in the backup file will be
-        restored.</p>
+      <p>上記の例は指定したプリフィクスにマッチしたキーのみをバックアップファイルにコピーします。 データをリストアする際は、バックアップファイルに記録されたキーだけが復元されます。</p>
       <note type="important">
-        <p>The regular expression match is performed on the client side. This means that the entire bucket
-          contents must be accessed by the <codeph>cbbackup</codeph> command and then discarded if
-          the regular expression does not match.</p>
+        <p>正規表現のマッチングはクライアント側で実行されます。 このため、バケット内の全コンテンツが<codeph>cbbackup</codeph>コマンドでアクセスされ、正規表現にマッチしなかったものが破棄されます。</p>
       </note>
-      <p>Key-based regular expressions can also be used when restoring data. You can backup an
-        entire bucket and restore selected keys during the restore process using
-          <codeph>cbrestore</codeph>. </p>
+			<p>キーへの正規表現はデータのリストア時にも利用できます。
+				あるバケットの全体をバックアップし、<codeph>cbrestore</codeph>を使って選択したキーをリストアすることができます。 </p>
     </section>
     <section>
-      <title>Backup using file copies</title>
-      <p>You can also backup by using either <codeph>cbbackup</codeph> and specifying the local
-        directory where the data is stored, or by copying the data files directly using cp, tar, or
-        similar.</p>
-      <p>For example, using <codeph>cbbackup</codeph>:</p>
+      <title>ファイルコピーによるバックアップ</title>
+      <p><codeph>cbrestore</codeph>でデータが保存されているローカルディレクトリを指定するか、データファイルを直接、cp、tarなどを利用してコピーすることで、バックアップすることもできます。</p>
+      <p>例えば、<codeph>cbrestore</codeph>を利用して:</p>
       <codeblock>
 > cbbackup \
     couchstore-files:///opt/couchbase/var/lib/couchbase/data/default \
     /mnt/backup-20120501
 </codeblock>
-      <p>The same backup operation using `cp` :</p>
+      <p>同様のバックアップ操作を`cp`で行うと:</p>
       <codeblock>
 > cp -R /opt/couchbase/var/lib/couchbase/data/default \
       /mnt/copy-20120501
 </codeblock>
-      <p>The limitation of backing up information in this way is that the data can only be restored
-        to offline nodes in an identical cluster configuration, and where an identical vbucket map
-        is in operation (you should also copy the `config.dat` configuration file from each
-        node.</p>
+      <p>この方法で情報をバックアップすることの制限は、同一の構成で、かつ同一のvBucketマップで稼働しているクラスタ内のオフラインのノードにのみリストアが可能であるという点です(`config.dat`設定ファイルも各ノードからコピーするべきです)。</p>
     </section>
   </body>
 </topic>
