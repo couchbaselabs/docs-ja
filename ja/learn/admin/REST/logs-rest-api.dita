@@ -1,50 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="reference_rest_logs">
+<reference xml:lang="ja" id="reference_rest_logs">
   <title>Logs API</title>
-  <shortdesc>The Logs REST API provides the REST API endpoints for retrieving log and diagnostic
-    information as well as how an SDK can add entries into a log.</shortdesc>
+  <shortdesc>
+		Logs REST APIはログや診断情報を取得するためのREST APIのエンドポイントを提供し、SDKからログにエントリをすることもできます。
+  </shortdesc>
   <refbody>
-    <section><title>Description</title>
+    <section>
+      <title>説明</title>
       
-      <p>Couchbase Server logs various messages,
-        which are available via the REST API. These log messages are optionally categorized by the
-        module. A generic list of log entries or log entries for a particular category can be
-        retrieved. </p>
+      <p>
+        Couchbase Server様々なメッセージをログに残します。それらはREST APIを介して利用できます。
+        これらのログメッセージは必要に応じてモジュールによって分類されています。
+        一般的なログ項目の一覧もしくは特定カテゴリのログ項目を取得することが出来ます。
+      </p>
       
-      <note type="note">If the system is secured, administrator credentials are
-        required to access logs. </note>
+      <note type="note">
+        システムが保護されている場合、管理者権限でログへアクセス出来る必要があります。
+      </note>
     </section>
     
     <table>
-      <title>Log endpoints</title>
+      <title>Log エンドポイント</title>
       <tgroup cols="3">
         <colspec colname="col1" colwidth="1*"/>
         <colspec colname="col2" colwidth="1.36*"/>
         <colspec colname="col3" colwidth="2.81*"/>
         <thead>
           <row>
-            <entry>HTTP method</entry>
-            <entry>URI path</entry>
-            <entry>Description</entry>
+            <entry>HTTPメソッド</entry>
+            <entry>URIパス</entry>
+            <entry>説明</entry>
           </row>
         </thead>
         <tbody>
           <row>
             <entry>GET</entry>
             <entry>/diag</entry>
-            <entry>Retrieves log and additional server diagnostic information.</entry>
+            <entry>ログに加え、サーバの診断状況を取得します。</entry>
           </row>
           <row>
             <entry>GET</entry>
             <entry>/sasl_logs</entry>
-            <entry>Retrieves a generic list of log information.</entry>
+            <entry>一般的なログ情報の一覧を取得します。</entry>
           </row>
           <row>
             <entry>GET</entry>
             <entry>/sasl_logs/[log_name]</entry>
-            <entry>Retrieves information from the specified log category. Where
-              the <i>log_name</i> is one of the following log types:<ul>
+            <entry>特定のログカテゴリから情報を取得します。<i>log_name</i>は下記のログタイプからひとつ選択します:<ul>
                 <li>babysitter</li>
                 <li>couchdb</li>
                 <li>debug</li>
@@ -61,7 +64,7 @@
           <row>
             <entry>POST</entry>
             <entry>/logClientError</entry>
-            <entry>Adds entries to the central log from a custom Couchbase SDK.</entry>
+            <entry>カスタムCouchbase SDKからセントラルログに追記します。</entry>
           </row>
         </tbody>
       </tgroup>
