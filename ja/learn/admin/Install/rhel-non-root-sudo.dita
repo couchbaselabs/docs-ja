@@ -1,42 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_atz_r3s_g4">
-  <title>Installing as non-root, non-sudo</title>
-  <shortdesc>Installing on RHEL as non-root, non-sudo is used only for development purposes.</shortdesc>
+<topic xml:lang="ja" id="topic_atz_r3s_g4">
+  <title>非ルート権限によるインストール</title>
+  <shortdesc>Red Hat環境上で非ルート権限(非root,非sudo)によるインストールを行う場合は、開発を目的とした場合にのみ使用してください。</shortdesc>
   <body>
-    <note type="attention">This installation is
-      for development purposes only.</note> 
-    <p>There are cases when you want to install Couchbase Server as a non-root, non-sudo user. A
-      non-sudo, non-root installation still runs Couchbase Server and all Couchbase command-line
-      tools.</p>
+    <note type="attention">このインストール方法は、開発目的にのみ使用されます。</note> 
+    <p>Couchbase Serverを、非root、非sudoによりインストールしたい場合があります。
+      非root、非sudoによるインストールを実施する場合でも、Couchbase Serverを実行させることができ、また Couchbaseコマンドラインツールをすべて使用することができます。</p>
     
     <ol>
-        <li>After downloading the Couchbase RPM, go to the directory where it is located and extract
-        it: <codeblock>
+        <li>Couchbase RPMをダウンロードした後、ダウンロード先のディレクトリに直接移動し、これを展開します。: <codeblock>
 rpm2cpio couchbase-server-community_x86_64_2.0.0-1767-rel.rpm | cpio --extract --make-directories \
 --no-absolute-filenames
 </codeblock>
-        In the directory where the files were extracted, the <codeph>opt</codeph> and
-            <codeph>etc</codeph> subdirectories are available.
+        展開したディレクトから、 <codeph>opt</codeph> ディレクトリと、 <codeph>etc</codeph> ディレクトリを利用します。
       </li>
-          <li>If you need to separately provide <codeph>openssl098e</codeph>, put the
-            contents of this library into <filepath>opt/couchbase/lib</filepath>:
+          <li><codeph>openssl098e</codeph>を別途導入する必要がある場合は、中身(のファイル)を
+             <filepath>opt/couchbase/lib</filepath> ディレクトリに直接移動させます。:
           <ol>
-            <li>Download <codeph>openssl098e–0.9.8e–17.el6.centos.2.x86_64.rpm</codeph>.</li>
-            <li>Go to the directory where you extracted Couchbase Server: <userinput>cd opt/couchbase.</userinput></li>
-            <li>Extract <codeph>openssl098e</codeph> RPM:
+            <li><codeph>openssl098e–0.9.8e–17.el6.centos.2.x86_64.rpm</codeph>をダウンロードします。</li>
+            <li>Couchbase Serverを展開したディレクトリに移動します。: <userinput>cd opt/couchbase.</userinput></li>
+            <li><codeph>openssl098e</codeph> RPMを展開します。:
             <codeblock>rpm2cpio
 openssl098e-0.9.8e-17.el6.centos.2.x86_64.rpm | cpio --extract
 --make-directories --no-absolute-filenames</codeblock></li>
-            <li>Move the extracted files to the <filepath>/lib</filepath> directory for Couchbase Server:
+            <li>展開されたファイルを<filepath>/lib</filepath>ディレクトリに移動します。:
               <userinput>mv usr/lib64/* lib/</userinput></li>
           </ol></li>
-        <li>After you extract the Couchbase Server installation files, go to the subdirectory <userinput>cd opt/couchbase</userinput>.</li>
-        <li>Run the following password-related script: <userinput>./bin/install/reloc.sh \`pwd`</userinput> 
-         This enables you to continue the installation as a non-root, non-sudo user.</li>
-        <li>To run the server, use 
-         <userinput> ./bin/couchbase-server \-- -noinput -detached</userinput>. </li>
-        <li>To stop the server, use <userinput>./bin/couchbase-server -k</userinput> .</li>
+        <li>Couchbase Server インストレーションファイルを展開後、サブディレクトリに移動します。 <userinput>cd opt/couchbase</userinput></li>
+        <li>以下のパスワードの影響を受けるスクリプトを実行します。: <userinput>./bin/install/reloc.sh \`pwd`</userinput> 
+         これで、インストールを、非root、非sudoで実行することを可能にします。</li>
+        <li>サーバを実行するには、
+         <userinput> ./bin/couchbase-server \-- -noinput -detached</userinput>を使用してください。 </li>
+        <li>サーバを停止するには、 <userinput>./bin/couchbase-server -k</userinput>を実行してください。</li>
       </ol>
     
    </body>

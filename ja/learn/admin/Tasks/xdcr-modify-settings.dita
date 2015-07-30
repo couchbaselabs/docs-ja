@@ -1,41 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_ayq_cd4_14">
-  <title>Modifying XDCR settings</title>
-  <shortdesc>To modify XDCR advanced settings, use either the Couchbase Server CLI or REST API.</shortdesc>
+<topic xml:lang="ja" id="topic_ayq_cd4_14">
+  <title>XDCR設定の変更</title>
+  <shortdesc>XDCRの詳細設定を変更するには、Couchbase CLIかREST APIを利用します。</shortdesc>
   <body>
     <section><title></title>
       
-      <p>Besides Couchbase Web Console, you can use
-        several Couchbase REST API endpoints to modify XDCR settings. Some of these settings are
-        references used in XDCR and some of these settings will change XDCR behavior or performance:</p>
+      <p>Couchbase Webコンソールの他に、いくつかのREST APIエンドポイントでXDCR設定を変更できます。 これらの設定のいくつかはXDCR内で利用される値で、これらの設定のいくつかはXDCRの挙動や性能に影響するものです。</p>
       
-      <p>For the XDCR retry interval, you can provide an environment variable or make a PUT request. By
-        default if XDCR is unable to replicate for any reason like network failures, it will stop and
-        try to reach the remote cluster every 30 seconds if the network is back, XDCR will resume
-        replicating. You can change this default behavior by changing an environment variable or by
-        changing the server parameter <codeph>xdcr_failure_restart_interval</codeph> with a PUT
-        request:</p>
-      <note type="note">If you are using XDCR on multiple nodes in cluster and want to change this
-        setting throughout the cluster, you must perform this operation on every node in the
-        cluster.</note>
+			<p>XDCRのリトライ間隔には、環境変数を利用するか、PUTリクエストを利用できます。
+				デフォルトでは、ネットワーク障害などの理由でXDCRがレプリケートできない場合、レプリケーションを停止し、30秒ごとにネットワークが復旧しているかリモートクラスタに接続を試み、XDCRはレプリケーションを再開します。
+				この挙動は、環境変数を変更するか、<codeph>xdcr_failure_restart_interval</codeph>サーバパラメータをPUTリクエストで変更します:</p>
+      <note type="note">複数ノードのクラスタでXDCRを利用しており、クラスタ全体でこの設定を変更したい場合、この操作をクラスタ内のすべてのノードで実行する必要があります。</note>
       <ul>
-        <li>By an environment variable:</li>
+        <li>環境変数で指定する:</li>
       </ul>
       <codeblock>
 export XDCR_FAILURE_RESTART_INTERVAL=60
 </codeblock>
       <ul>
-        <li>By server setting:</li>
+        <li>サーバ設定で指定する:</li>
       </ul>
       <codeblock>
 curl -X POST 
   http://Administrator: asdasd@127.0.0.1:8091/diag/eval 
   -d 'rpc:call(node(), ns_config, set, [xdcr_failure_restart_interval, 60]).'
 </codeblock>
-      <p>You can put the system environment variable in a system configuration file on your nodes. When
-        the server restarts, it loads this parameter. If both the environment variable and the server
-        parameter are set, the value for the environment parameter will supersede.</p>
+      <p>システム環境変数は、ノードのシステム設定ファイルに定義できます。 サーバが再起動すると、このパラメータをロードします。 環境変数とサーバパラメータの両方が設定されている場合、環境変数で指定した値が優先されます。</p>
     </section>
   </body>
 </topic>

@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="reference_pxg_ftc_pp">
-  <title>Retrieving log information</title>
-  <shortdesc>Log information is retrieved via the <codeph>/diag</codeph> and <codeph>/sasl_logs</codeph> REST endpoints.</shortdesc>
+<reference xml:lang="ja" id="reference_pxg_ftc_pp">
+  <title>ログ情報の取得</title>
+  <shortdesc>ログ情報は<codeph>/diag</codeph>と<codeph>/sasl_logs</codeph>RESTエンドポイントを介して取得します。</shortdesc>
   
   <reference id="rest-logs-get-diag">
-    <title>Getting log and server info</title>
+    <title>ログとサーバ情報の取得</title>
   <refbody>
     
-    <section><title>HTTP method and URI</title>
-      <p>To retrieve log and server diagnostic information, perform a GET with the <codeph>/diag</codeph> endpoint.</p>
+    <section>
+      <title>HTTPメソッドとURI</title>
+      <p>GETメソッドで<codeph>/diag</codeph>エンドポイントを実行し、ログとサーバの診断情報を取得します。</p>
       
       <codeblock>GET /diag</codeblock>
     </section>
     
     
-    <section><title>Syntax</title>
-      <p>Curl request syntax:</p>
+    <section><title>シンタックス</title>
+      <p>Curlリクエストシンタックス:</p>
       <codeblock>curl -v -X GET -u [administrator]:[password] http://[hostname]:8091/diag</codeblock>
     </section>
     
     
-    <section><title>Example</title>
-      <p>Curl request example:</p>
+    <section><title>例</title>
+      <p>Curlリクエスト例:</p>
       <codeblock>
 curl -v -X GET -u Administrator:password
   http://127.0.0.1:8091/diag
@@ -32,24 +33,26 @@ curl -v -X GET -u Administrator:password
   </reference>
   
   <reference id="rest-logs-get-sasl">
-    <title>Getting generic log info</title>
+    <title>一般的なログの取得</title>
     <refbody>
       
-      <section><title>HTTP method and URI</title>
-        <p>To retrieve a generic list of logs, perform a GET with the <codeph>/sasl_logs</codeph> endpoint.</p>
+      <section>
+        <title>HTTPメソッドとURI</title>
+        <p>GETメソッドで<codeph>/sasl_logs</codeph>エンドポイントを実行し、一般的なログの一覧を取得します。</p>
         <codeblock>GET /sasl_logs</codeblock>
       </section>
       
       
-      <section><title>Syntax</title>
-        <p>Curl request syntax:</p>
+      <section>
+        <title>シンタックス</title>
+        <p>Curlリクエストシンタックス:</p>
         <codeblock>curl -v -X GET -u [administrator]:[password] 
   http://[hostname]:8091/sasl_logs
         </codeblock>
       </section>
       
-      <section><title>Example</title>
-        <p>Curl request example:</p>
+      <section><title>例</title>
+        <p>Curlリクエスト例:</p>
         
         <codeblock>
 curl -v -X GET -u Administrator:password 
@@ -62,27 +65,29 @@ curl -v -X GET -u Administrator:password
   
   
   <reference id="rest-logs-get-sasl-single">
-    <title>Getting specific log info</title>
+    <title>特定のログ情報を取得</title>
     <refbody>
     
-    <section><title>HTTP method and URI</title>
+    <section><title>HTTPメソッドとURI</title>
       
-      <p>To retrieve a specific log file, perform a GET on the <codeph>sasl_logs</codeph> endpoint and 
-        provide a specific log category.</p>
+      <p>
+        GETメソッドで<codeph>/sasl_logs</codeph>エンドポイントに特定のログカテゴリを渡して実行し、特定のログ情報を取得します。
+      </p>
       
       <codeblock>GET /sasl_logs/[log_name]</codeblock>
     </section>
     
-    <section><title>Syntax</title>
-      <p>Curl request syntax:</p>
+    <section><title>シンタックス</title>
+      <p>Curlリクエストシンタックス:</p>
       
       <codeblock>
 curl -v -X GET -u [administrator]:[password] 
   http://[hostname]:8091/sasl_logs/[log_name]
       </codeblock>
       
-      <p>Where
-          the <i>logName</i> is one of the following log types:</p><ul>
+      <p>
+          <i>logName</i>には次のログタイプの中から１つ選択してください:</p>
+          <ul>
             <li>babysitter</li>
             <li>couchdb</li>
             <li>debug</li>
@@ -97,9 +102,9 @@ curl -v -X GET -u [administrator]:[password]
           </ul>
     </section>
     
-    <section><title>Example</title>
+    <section><title>例</title>
       
-      <p>Curl request example to retrieve SSL proxy log information:</p>
+      <p>SSLプロキシログ情報を取得するときのCurlリクエスト例:</p>
       
       <codeblock>
 curl -v -X GET -u Administrator:password
@@ -107,9 +112,9 @@ curl -v -X GET -u Administrator:password
 </codeblock>
     </section>
     
-    <section><title>Response</title>
+    <section><title>レスポンス</title>
       
-      <p>Returns information similar to the following:</p>
+      <p>次のような情報が返ってきます:</p>
       
       <codeblock>* About to connect() to 10.5.2.118 port 8091 (#0)
 *   Trying 10.5.2.118... connected

@@ -1,132 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic8798">
- <title>Data recovery from remote clusters</title>
- <shortdesc>Data recovery from remote clusters requires an XDCR environment and 
-  adequate amount of memory and disk space to support the workload and recovered data.</shortdesc>
+<topic xml:lang="ja" id="topic8798">
+ <title>リモートクラスタからのデータリカバリ</title>
+ <shortdesc>リモートクラスタからのデータリカバリはXDCR環境、負荷と復旧データを扱うための十分なメモリとディスク容量が必要です。</shortdesc>
  <body>
-  <p>If more nodes fail in a cluster than the number of replicas, data partitions in that cluster
-   will no longer be available. For instance, if you have a four node cluster with one replica per
-   node and two nodes fail, some data partitions will no longer be available. There are two
-   solutions for this scenario:</p>
+  <p>レプリカ数を超えるノードがダウンしてしまうと、クラスタ内のデータパーティションは利用できなくなります。 例えば、4ノードのクラスタでレプリカを1つの構成で、2つのノードがダウンすると、いくつかのデータパーティションが利用できなくなります。
+	 この状況の解決方法は二つあります:</p>
   <ul>
-   <li>Recover data from disk. If you plan on recovering from disk, you may not be able to do so
-     if the disk completely fails.</li>
-   <li>Recover partitions from a remote cluster. You can use this second option when you have
-     XDCR set up to replicate data to the second cluster. The requirement for using
-      <codeph>cbrecovery</codeph> is that you need to set up a second cluster that will contain
-     backup data.</li>
+   <li>ディスクからデータを復旧する。 ディスクから復旧する計画の場合、ディスクが完全に故障してしまうと復旧できなくなります。</li>
+   <li>リモートクラスタのパーティションから復旧する。 二つ目のクラスタにXDCRのデータレプリケーションを設定している場合、この方法が利用できます。 <codeph>cbrecovery</codeph>を利用するためには、バックアップデータを保持する第二のクラスタを構築する必要があります。</li>
   </ul>
-  <p>The following shows a scenario where replica vBuckets are lost from a
-   cluster due to multi-node failure:</p>
+  <p>以下は複数ノードの障害により、クラスタのレプリカvBucketが消失しているシナリオを表しています:</p>
   
   <image href="../images/cb_rec_multi_failure.png" width="600"></image>
   
-  <p>Before you perform a recovery, make sure that your main cluster has an adequate amount of
-   memory and disk space to support the workload as well as the data you recover. This means that
-   even though you can recover data to a cluster with failed nodes, you should investigate what
-   caused the node failures and also make sure your cluster has adequate capacity before you recover
-   data. If you do add nodes be certain to rebalance only after you have </p>
+  <p>リカバリを実行する前に、メインのクラスタが十分なメモリとディスク容量を持っていて、負荷と復旧するデータを扱えることを確認してください。
+		ノード障害が起こったクラスタにデータが復旧できるとしても、ノード障害の原因を調査し、データを復旧する前に、十分なキャパシティを持つクラスタを用意することが重要です。
+		ノード追加後はリバランスを実行してください。 </p>
   
-  <p>When you use <codeph>cbrecovery</codeph> it compares the data partitions from a main cluster
-   with a backup cluster, then sends missing data partitions detected. If it fails, once you
-   successfully restart <codeph>cbrecovery</codeph>, it will do a delta between clusters again and
-   determine any missing partitions since the failure then resume restoring these partitions.</p>
-  <p><b>Failure Scenarios</b></p>
-  <p>Imagine the following happens when you have a four node cluster with one replica. Each node has
-   256 active and 256 replica vBuckets which total 1024 active and 1024 replica vBuckets:</p>
+  <p><codeph>cbrecovery</codeph>を利用すると、メインのクラスタとバックアップのクラスタのデータパーティションを比較し、検知した消失しているデータパーティションを送信します。 失敗した場合、<codeph>cbrecovery</codeph>を正常にリスタートすると、クラスタ間の差分を再度比較し、失敗した時点から消失しているパーティションを特定し、これらのパーティションの復旧を再開します。</p>
+  <p><b>障害シナリオ</b></p>
+  <p>4ノードのクラスタで、レプリカ数が1のとき、以下の事象が発生したとします。 各ノードは256のアクティブ、256のレプリカvBucketを持ち、合計で1024のアクティブ、1024のレプリカvBucketとなります。</p>
   <ol>
-   <li>When one node fails, some active and some replica vBuckets are no longer available in the
-     cluster.</li>
-   <li>After you fail over this node, the corresponding replica vBuckets on other nodes will be
-     put into an active state. At this point you have a full set of active vBuckets and a partial
-     set of replica vBuckets in the cluster.</li>
-   <li>A second node fails. More active vBuckets will not be accessible.</li>
-   <li>You fail over the second node. At this point any missing active vBuckets that do not have
-     corresponding replica vBuckets will be lost.</li>
+   <li>ノードが一つダウンすると、クラスタ内のいくつかのアクティブとレプリカのvBucketが利用できなくなります。</li>
+   <li>このノードをフェイルオーバすると、他のノード上にある関連するレプリカvBucketがアクティブの状態に遷移します。 この時点で、完全なアクティブのvBucketセットと、部分的なレプリカvBucketセットがクラスタ内に存在します。</li>
+   <li>二つ目のノードがダウンします。 より多くのアクティブvBucketがアクセスできなくなります。</li>
+   <li>二つ目のノードをフェイルオーバします。 この時、対応するレプリカvBucketが存在しないアクティブvBucketはすべて消失してしまいます。</li>
   </ol>
-  <p>In this type of scenario you can use <codeph>cbrecovery</codeph> to get the missing vBuckets
-   from your backup cluster. If you have multi-node failure on both your main and backup clusters
-   you will experience data loss.</p>
-  <p><b>Recovery Scenarios for cbrecovery</b></p>
-  <p>The following describes some different cluster setups so that you can better understand whether
-   or not this approach will work in your failure scenario:</p>
+  <p>このようなシナリオのとき、<codeph>cbrecovery</codeph>を利用して、失われたvBucketをバックアップクラスタから取得できます。 メインとバックアップの両クラスタで、複数ノードの障害が発生した場合、データロスが発生してしまいます。</p>
+  <p><b>cbrecoveryのリカバリシナリオ</b></p>
+  <p>このアプローチが発生した障害シナリオに有効かどうか、より良く理解していただけるよう、以下にいくつかのクラスタ構成を記載します:</p>
   <ul>
-   <li>Multiple Node Failure in Cluster. If multiple nodes fail in a cluster then some
-     vBuckets may be unavailable. In this case if you have already setup XDCR with another cluster,
-     you can recover those unavailable vBuckets from the other cluster.</li>
-   <li>Bucket with Inadequate Replicas.</li>
+   <li>クラスタ内の複数ノードがダウン。 クラスタ内の複数ノードがダウンすると、いくつかのvBucketが利用不可となります。 この場合、すでに他のクラスタとXDCRをセットアップしていれば、それらの利用できないvBucketを他のクラスタから復旧できます。</li>
+   <li>レプリカが不十分なバケット。</li>
   </ul>
-  <p><b>Single Bucket</b>. In this case where we have only one bucket with zero replicas on all the
-   nodes in a cluster. In this case when a node goes down in the cluster some of the partitions for
-   that node will be unavailable. If we have XDCR set up for this cluster we can recover the missing
-   partitions with <codeph>cbrecovery</codeph>.</p>
-  <p><b>Multi-Bucket</b>. In this case, nodes in a cluster have multiple buckets and some buckets
-   might have replicas and some do not. In the image below we have a cluster and all nodes have two
-   buckets, Bucket1 and Bucket2. Bucket 1 has replicas but Bucket2 does not. In this case if one of
-   the nodes goes down, since Bucket 1 has replicas, when we failover the node the replicas on other
-   nodes will be activated. But for the bucket with no replicas some partitions will be unavailable
-   and will require <codeph>cbrecovery</codeph> to recover data. In this same example if multiple
-   nodes fail in the cluster, we need to perform vBucket recovery both buckets since both will have
-   missing partitions.</p>
+	<p><b>単一バケット</b>。 クラスタ内に、レプリカが0の単一のバケットしか存在しない場合、
+		クラスタ内のノードがダウンすると、そのノードのパーティションは利用不可となります。
+		このクラスタでXDCRをセットアップしてあれば、失われたパーティションを<codeph>cbrecovery</codeph>で復旧できます。</p>
+  <p><b>複数バケット</b>。 クラスタ内のノードは複数のバケットを持ち、あるバケットにはレプリカがあり、またレプリカを持たないバケットもあるでしょう。 以下の図では、すべてのノードがBucket 1とBucket 2の二つのバケットを持っているクラスタを示しています。 Bucket 1はレプリカがありますが、Bucket 2にはありません。 この場合、ノードが1つダウンすると、Bucket 1にはレプリカがあるので、そのノードをフェイルオーバすれば、他のノード上のレプリカをアクティブにできます。
+	 しかし、レプリカがないバケットのいくつかのパーティションは利用不可となり、<codeph>cbrecovery</codeph>でデータを復旧しなくてはなりません。
+	 この例で、もしクラスタ内の複数のノードがダウンした場合、どちらのバケットもパーティションが失われるため、vBucketリカバリを両バケットに対して実行する必要があります。</p>
   
   <image href="../images/cbrecovery_diff_replicas.png" width="600">
    </image>
   
-  <p><b>Handling the Recovery</b></p>
-  <p>Should you encounter node failure and have unavailable vBuckets, you should follow this
-   process:</p>
+  <p><b>リカバリのハンドリング</b></p>
+  <p>ノード障害が発生し、vBucketが利用できなくなった場合、以下のプロセスに従ってください:</p>
   <ol>
-   <li>For each failed node, Click Fail Over under the Server Nodes tab in Web Console. 
-    <p>After you click Fail Over, under Web Console | Log tab you will see whether data is
-     unavailable and which vBuckets are unavailable. If you do not have enough replicas for the
-     number of failed over nodes, some vBuckets will no longer be available:</p>
+   <li>各障害ノードで、WebコンソールのServer NodesタブにあるFail Overをクリックします。 
+    <p>Fail Overをクリックすると、Web コンソールのLogタブにデータが利用不可かどうか、また利用不可のvBucketはどれかが表示されます。 フェイルオーバしたノード数に対して十分なレプリカがない場合、いくつかのvBucketが利用不可となります:</p>
 
       <image href="../images/post-failover-log-lost-data.png" width="600">
       </image>
    </li>
 
-   <li>Add new functioning nodes to replace the failed nodes.
-    <p>Do not rebalance after you add new nodes to the cluster. Typically you do this after adding
-     nodes to a cluster, but in this scenario the rebalance will destroy information about the
-     missing vBuckets and you cannot recover them.</p>
+   <li>障害ノードを置換するための、正常に機能する新規ノードを追加します。
+    <p>新規ノードをクラスタに追加後、リバランスはしないでください。 通常、ノードをクラスタに追加後にリバランスをしますが、このシナリオではリバランスすると、失われたvBucketの情報が削除されてしまい、それらを復旧することができなくなります。</p>
 
       <image href="../images/cb_recovery1b.png" width="600">
       </image>
 
-    <p>In this example we have two nodes that failed in a three-node cluster and we add a new node
-     10.3.3.61.</p>
-    <p>If you are certain your cluster can easily handle the workload and recovered data, you may
-     choose to skip this step.</p></li>
+    <p>この例では、3ノードのクラスタ内で、2つの障害ノードが存在し、新規ノードとして、10.3.3.61を追加しています。</p>
+    <p>お使いのクラスタが容易に負荷と復旧データを処理できるなら、このステップはスキップしても構いません。</p></li>
    
-   <li>Run <codeph>cbrecovery</codeph> to recover data from your backup cluster. In the Server
-     Panel, a Stop Recovery button appears.
+   <li><codeph>cbrecovery</codeph>を実行し、バックアップクラスタからデータを復旧します。 Serverパネルに、Stop Recoveryボタンが表示されます。
 
       <image href="../images/cb_recovery2.png" width="600">
       </image>
-    <p>After the recovery completes, this button disappears.</p>
+    <p>リカバリが完了すると、このボタンは非表示となります。</p>
    </li>
     
-   <li>Rebalance your cluster.
-    <p>Once the recovery is done, you can rebalance your cluster, which will recreate replica
-     vBuckets and evenly redistribute them across the cluster.</p>
+   <li>クラスタをリバランスします。
+    <p>リカバリが完了したら、クラスタをリバランスできます、実行するとレプリカを再作成し、クラスタ全体に均等に再分配します。</p>
 
       <image href="../images/cbrecovery_3b.png" width="600">
       </image>
    </li>
   </ol>
   
-  <p><b>Recovery ‘Dry-Run’</b></p>
-  <p>Before you recover vBuckets, you may want to preview a list of buckets no longer available in
-   the cluster. Use this command and options:</p>
+  <p><b>リカバリの'ドライラン'</b></p>
+  <p>vBucketをリカバリする前に、クラスタ内で利用できなくなっているバケットのリストを確認したい場合があります。 次のコマンドとオプションを利用します:</p>
   <codeblock>
    shell&gt; ./cbrecovery http://Administrator:password@10.3.3.72:8091 http://Administrator:password@10.3.3.61:8091 -n
 </codeblock>
-  <p>Here we provide administrative credentials for the node in the cluster as well as the option
-    <codeph>-n</codeph>. This will return a list of vBuckets in the remote secondary cluster which
-   are no longer in the your first cluster. If there are any unavailable buckets in the cluster with
-   failed nodes, you see output as follows:</p>
+<p>クラスタ内のノードの管理者情報を指定し、同時に<codeph>-n</codeph>オプションも指定しています。
+	これはメインのクラスタ内にはすでに存在しない、リモートのセカンダリクラスタのvBucketの一覧を返します。 クラスタ内でノード障害が発生していて、利用不可となっているバケットが存在する場合、以下のように出力されます:</p>
   <codeblock>
    2013-04-29 18:16:54,384: MainThread Missing vbuckets to be recovered:[{"node": "ns_1@10.3.3.61",
 "vbuckets": [513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526,, 528, 529,
@@ -134,53 +93,40 @@
 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 566, 567,
 568, 569, 570, 571, 572,....
 </codeblock>
-  <p>Where the <codeph>vbuckets</codeph> array contains all the vBuckets that are no longer
-   available in the cluster. These are the bucket you can recover from the remotes cluster. To
-   recover the vBuckets:</p>
+<p><codeph>vbuckets</codeph>配列はクラスタ内で利用不可となっているすべてのvBucketを含んでいます。
+	これらが、リモートクラスタから復旧できるバケットです。 vBucketのリカバリ方法:</p>
   <codeblock>
 shell&gt; ./cbrecovery http://Administrator:password@&lt;From_IP&gt;:8091 \
  http://Administrator:password@&lt;To_IP&gt;:8091 -B bucket_name
 </codeblock>
-  <p>You can run the command on either the cluster with unavailable vBuckets or on the remote
-   cluster, as long as you provide the hostname, port, and credentials for remote cluster and the
-   cluster with missing vBuckets in that order. If you do not provide the parameter
-    <codeph>-B</codeph> the tool assumes you will recover unavailable vBuckets for the default
-   bucket.</p>
-  <p><b>Monitoring the Recovery Process</b></p>
-  <p>You can monitor the progress of recovery under the Data Buckets tab of Couchbase Web
-   Console:</p>
+  <p>ホスト名、ポート、リモートクラスタの認証情報、失われたvBucketを持つクラスタの順で指定すれば、利用不可のvBucketがあるクラスタから、もしくはリモートクラスタからコマンドを実行できます。 <codeph>-B</codeph>パラメータを指定しない場合、ツールはデフォルトバケットの利用できないvBucketをリカバリします。</p>
+  <p><b>リカバリプロセスのモニタリング</b></p>
+  <p>Couchbase WebコンソールのData Bucketsタブでリカバリプロセスの進捗状況をモニタリングできます。</p>
   <ol>
-   <li>Click on the Data Buckets tab.</li>
-   <li>Select the data bucket you are recovering in the Data Buckets drop-down.</li>
-   <li>Click on the Summary drop-down to see more details about this data bucket. You see an
-     increased number in the <codeph>items</codeph> level during recovery:
+   <li>Data Bucketタブをクリックします。</li>
+   <li>Data Bucketsドロップダウンから、リカバリ中のデータバケットを選択します。</li>
+   <li>Summaryドロップダウンをクリックし、このデータバケットのより詳細な情報を確認します。 <codeph>items</codeph>のグラフでリカバリ中に数値が上昇しているのが確認できます。
 
       <image href="../images/monitor_cb_recovery.png" width="600"></image>
    </li>
 
-   <li>You can also see the number of active vBuckets increase as they are recovered until you
-     reach 1024 vBuckets. Click on the vBucket Resources drop-down:
+   <li>アクティブvBucketの数も増加し、1024個のvBucketとなるまでリカバリされます。 ドロップダウンでvBucket Resourcesをクリックします:
 
       <image href="../images/cbrec_monitor_vbucks.png" width="600">
       </image>
 
-   <p>As this tool runs from the command line you can stop it at any time as you would any other
-     command-line tool.</p>
+   <p>コマンドラインから実行したこのツールは、他のコマンドと同様、いつでも停止することができます。</p>
    </li>
-    <li>A <codeph>Stop Recovery</codeph> button appears in the Servers panels. If you click this
-     button, you will stop the recovery process between clusters. Once the recovery process
-     completes, this button will no longer appear and you will need to rebalance the cluster. If you
-     are in Couchbase Web Console, you can also stop it in this panel:
+    <li>Serversパネルに<codeph>Stop Recovery</codeph>ボタンが表示されます。 このボタンをクリックすると、クラスタ間のリカバリプロセスを停止します。 リカバリプロセスが完了すると、このボタンは非表示となり、クラスタをリバランスする必要があります。 Couchbase Webコンソールを表示していれば、このパネルからも停止できます:
 
       <image href="../images/stop_cbrecovery.png" width="600"></image>
     </li>
 
-   <li>After recovery completes, click on the Server Nodes tab then Rebalance to rebalance your
-     cluster.</li>
+   <li>リカバリが完了した後、Server Nodesタブをクリックし、Rebalanceをクリックしてクラスタをリバランスします。</li>
   </ol>
   
   
-  <p>When <codeph>cbrecovery</codeph> finishes it will output a report in the console:</p>
+  <p><codeph>cbrecovery</codeph>が完了すると、コンソールにレポートが出力されます:</p>
   <codeblock>
  Recovery :                Total |    Per sec
  batch    :                 0000 |       14.5
@@ -189,9 +135,7 @@ shell&gt; ./cbrecovery http://Administrator:password@&lt;From_IP&gt;:8091 \
 4 vbuckets recovered with elapsed time 10.90 seconds
 </codeblock>
   
-  <p>In this report <codeph>batch</codeph> is a group of internal operations performed by
-    <codeph>cbrecovery</codeph>, <codeph>byte</codeph> indicates the total number of bytes recovered
-   and <codeph>msg</codeph> is the number of documents recovered.</p>
+  <p>このレポート内の<codeph>batch</codeph>は<codeph>cbrecovery</codeph>によって実行された内部オペレーションのグループで、<codeph>byte</codeph>はリカバリされた総バイト数、<codeph>msg</codeph>はリカバリされたドキュメント数を示します。</p>
  </body>
  <related-links>
   <linklist>

@@ -1,251 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic17798">
-  <title>Failover considerations</title>
-  <shortdesc>Failing over a node means that Couchbase Server removes the node from a cluster and
-    makes replicated data at other nodes available for client requests.</shortdesc>
+<topic xml:lang="ja" id="topic17798">
+  <title>フェイルオーバの考慮事項</title>
+  <shortdesc>ノードをフェイルオーバするとは、Couchbase Serverがそのノードをクラスタから削除し、他のノードにあるレプリケートしたデータをクライアントのリクエストで利用可能にすることです。</shortdesc>
   <body>
-    <p> Because Couchbase Server provides data replication within a cluster, the cluster can handle
-      failure of one or more nodes without affecting your ability to access the stored data. In the
-      event of a node failure, you can manually initiate a <term>failover</term> status for the
-      node in the Couchbase Web Console and resolve the issues.</p>
-    <p>Alternately, you can configure Couchbase Server so it automatically removes a
-      failed node from the cluster and have the cluster operate in a degraded mode. If you choose this
-      automatic option, the workload for functioning nodes that remain in the cluster increases.
-      You still need to address the node failure, return a functioning node to the cluster, and
-      then rebalance the cluster in order for the cluster to function as it did prior to node
-      failure.</p>
-    <p>Whether you manually fail over a node or have Couchbase Server perform automatic failover, you
-      must determine the underlying cause for the failure. Then set up functioning
-      nodes, add the nodes, and rebalance the cluster. Keep in mind the following guidelines on
-      replacing or adding nodes when you cope with node failure and failover scenarios:</p>
+    <p> Couchbase Serverはクラスタ内でのデータレプリケーションを提供しているため、保存されたデータへのアクセスに影響させることなく、クラスタは一つ以上のノード障害へ対応できます。
+			ノード障害発生時には、Couchbase Webコンソールから、そのノードに<term>failover</term>ステータスを設定し、問題を解決することができます。</p>
+    <p>または、クラスタから自動的に障害ノードを削除し、縮退モードでクラスタを稼働させるように設定することもできます。
+			この自動オプションを選択した場合、クラスタ内に残る稼働中のノードに対する負荷は増大します。
+      クラスタがノード障害前と同じ状態で機能するためには、正常に機能するノードをクラスタに戻し、リバランスを実行して、ノード障害から復旧する必要があります。</p>
+    <p>手動でフェイルオーバを実行しても、Couchbase Serverが自動的に実行するようにしても、障害の原因を解明する必要があります。
+			そして、正常に機能するノードをセットアップし、そのノードを追加し、クラスタをリバランスします。
+			ノード障害とフェイルオーバシナリオに対処する際は、ノードの交換および追加に関する以下のガイダンスを参考にしてください:</p>
     <ul>
-      <li><p>If the node failed due to a hardware or system failure, you must add a new
-          replacement node to the cluster and rebalance.</p></li>
-      <li><p>If the node failed because of capacity problems in your cluster, you must replace the
-          node but also add additional nodes to meet the capacity needs.</p></li>
-      <li><p>If the node failure was transient in nature and the failed node functions once again,
-          you can add the node back to the cluster.</p></li>
+      <li><p>ハードウェアやシステム障害が起因してノードがダウンした場合、新規の交換用ノードをクラスタに追加してリバランスしてください。</p></li>
+      <li><p>クラスタのキャパシティ不足が原因でノードがダウンした場合、ノードの交換に加え、必要なキャパシティとするために必要な分だけノードを追加してください。</p></li>
+      <li><p>ノードの障害が一時的なもので、ノードが再び機能する場合、そのノードをクラスタに再追加することもできます。</p></li>
     </ul>
-    <p>Be aware that failover is a distinct operation compared to removing or rebalancing a
-      node. Typically, you remove a functioning node from a cluster for maintenance or other
-      reasons; in contrast, you perform a failover for a node that does not function.</p>
-    <p>To remove a functioning node from a cluster, use the Couchbase Web Console to indicate the node
-      that is to be removed. Then rebalance the cluster so that data requests for the node can be
-      handled by other nodes. Since the node you want to remove still functions, it is able to
-      handle data requests until the rebalance completes. At this point, other nodes in the cluster
-      will handle data requests. Therefore, there is no disruption in data service and no loss of data
-      that can occur when you remove a node and then rebalance the cluster. If you need to remove a
-      functioning node for administration purposes, you must use the remove and rebalance
-      functionality and not failover.</p>
-    <p>If you try to fail over a functioning node, this can result in data loss because
-      failover will immediately remove the node from the cluster. Any data that has not yet been
-      replicated to other nodes can be permanently lost if it had not been persisted to disk.</p>
-    <p>For more information about performing failover see the following resources:</p>
+		<p>フェイルオーバはノードの削除やノードのリバランスとは異なる操作であることに注意してください。
+			一般的には、正常に機能しているノードをメンテナンスなどの理由でクラスタから削除しますが、一方、フェイルオーバは正常に動作していないノードに対して実行します。</p>
+		<p>クラスタから機能しているノードを削除するには、Couchbase Webコンソールを利用し、削除するノードを指定します。
+			そしてクラスタをリバランスし、そのノードへのデータリクエストが他のノードで処理できるようにします。
+			削除したいノードはまだ機能しているので、リバランスが完了するまでデータリクエストを処理することができます。
+			この時点で、クラスタ内の他のノードによりデータリクエストが処理されることになります。 すなわち、データサービスを破壊するようなことも、データを消失してしまうこともなく、ノードを削除してクラスタをリバランスできるのです。
+			機能しているノードを運用管理目的で削除したい場合、フェイルオーバではなく、Removeを利用し、リバランスを実行してください。</p>
+    <p>機能するノードをフェイルオーバする場合、フェイルオーバは即座にノードをクラスタから削除するため、データロスが発生する可能性があります。 まだ他のノードへレプリケートされていないデータは、ディスクに永続化されていない場合完全に消失してしまいます。</p>
+    <p>フェイルオーバの実行に関するより詳細な情報は次もご参照ください:</p>
     <ul>
-      <li><itemgroup>Automated failover.</itemgroup> It will automatically mark a node as failed over if the node has
-        been identified as unresponsive or unavailable. There are some deliberate limitations to the
-        automated failover feature. </li>
-      <li><itemgroup>Initiating a failover.</itemgroup> Whether you use automatic or manual
-        failover, you need to perform additional steps to bring a cluster into a fully functioning
-        state.</li>
-      <li><itemgroup>Adding nodes after failover.</itemgroup> After you resolve the issue with the
-        failed over node, you can add the node back to the cluster. </li>
+      <li><itemgroup>自動フェイルオーバ。</itemgroup> ノードが応答なし、または稼働していないと判断されると、ノードを自動的にフェイルオーバとしてマークします。 自動フェイルオーバ機能には設計上いくつかの制限があります。 </li>
+      <li><itemgroup>フェイルオーバの実行。</itemgroup> 手動または自動のフェイルオーバのどちらを利用するかで、クラスタを完全に機能する状態へ戻すために、いくつかの手順を実行する必要があります。</li>
+      <li><itemgroup>フェイルオーバ後にノードを追加する。</itemgroup> フェイルオーバしたノードの問題を解決したら、ノードをクラスタへ再追加することができます。 </li>
     </ul>
     
     
-    <section><title>Choosing a failover solution</title>
-      <p>Because node failover has the potential
-        to reduce the performance of your cluster, you should consider how best to handle a failover
-        situation. Using automated failover means that a cluster can fail over a node without
-        user-intervention and without knowledge and identification of the issue that caused the node
-        failure. It still requires you to initiate a rebalance in order to return the cluster to a
-        healthy state.</p><p>If you choose manual failover to manage your cluster you need to
-        monitor the cluster and identify when an issue occurs. If an issues does occur you then
-        trigger a manual failover and rebalance operation. This approach requires more monitoring
-        and manual intervention, there is also still a possibility that your cluster and data access
-        may still degrade before you initiate failover and rebalance.</p><p>In the following
-        sections the two alternatives and their issues are described in more
-          detail.</p><p><b>Automated failover considerations</b></p><p>Automatically failing
-        components in any distributed system can cause problems. If you cannot identify the cause of
-        failure, and you do not understand the load that will be placed on the remaining system,
-        then automated failover can cause more problems than it is designed to solve. Some of the
-        situations that might lead to problems include:</p>
+    <section><title>フェイルオーバ手段の選択</title>
+      <p>フェイルオーバはクラスタの性能を縮小させてしまうため、フェイルオーバの状況をどのように処理すべきかをよく検討するべきです。
+				自動フェイルオーバを利用すると、ユーザ操作なしにノードをフェイルオーバできますが、ノード障害を発生させた問題の調査や特定は難しくなります。
+				クラスタを健全な状態に戻すためにはリバランスを実行する必要もあります。</p>
+			<p>手動フェイルオーバによりクラスタを管理する場合、クラスタを監視し、問題の発生を検知できるようにします。 問題が発生したら、手動でフェイルオーバを実行し、リバランスを行います。 この手順では、より多くの監視や手動の操作が必要で、加えて、フェイルオーバとリバランスを実行するまでの間、クラスタやデータアクセスが縮退してしまう可能性があります。</p>
+			<p>次のセクションでは二つの手段と、それぞれの問題についてより詳しく解説します。</p>
+			<p><b>自動フェイルオーバの考慮事項</b></p><p>自動でコンポーネントを取り除くには、どんな分散システムでも問題が付き物です。 問題の原因を特定できない場合、または残りのシステムにかかる負荷を理解していない場合、自動フェイルオーバは問題を解決するどころか、より多くの問題を発生させる可能性があります。 次のような状況では、問題を誘発する可能性があります:</p>
       
       <ul>
-        <li><b>Avoiding failover chain-reactions (Thundering herd)</b></li>
-      </ul><p>Imagine a scenario where a Couchbase Server cluster of five nodes is operating at
-        80–90% aggregate capacity in terms of network load. Everything is running well but at the
-        limit of cluster capacity. Imagine a node fails and the software decides to automatically
-        failover that node. It is unlikely that all of the remaining four nodes are be able to
-        successfully handle the additional load.</p><p>The result is that the increased load could
-        lead to another node failing and being automatically failed over. These failures can cascade
-        and lead to the eventual loss of an entire cluster. Clearly having 1/5th of the requests not
-        being serviced due to single node failure would be more desirable than none of the requests
-        being serviced due to an entire cluster failure.</p><p>The solution in this case is to
-        continue cluster operations with the single node failure, add a new server to the cluster to
-        handle the missing capacity, mark the failed node for removal and then rebalance. This way
-        there is a brief partial outage rather than an entire cluster being disabled.</p><p>One
-        alternate preventative solution is to ensure there is excess capacity to handle unexpected
-        node failures and allow replicas to take over.</p>
+        <li><b>フェイルオーバによる連鎖反応(Thundering Herd)の回避</b></li>
+      </ul><p>5ノードのCouchbase Serverクラスタが、ネットワーク負荷キャパシティの80-90%で稼働しているとします。 すべては順調に稼働していますが、クラスタのキャパシティは限界です。 ノード障害が発生し、ソフトウェアが自動的にノードをフェイルオーバしたとします。 残りの4ノードでは負荷が増大し、正常に処理することはできないでしょう。</p><p>結果として負荷が増加することで、他のノードもダウンし、自動的にフェイルオーバされてしまいます。 これらの障害は連鎖し、結果的にクラスタ全体の消失へとつながる可能性があります。 単一ノード障害発生時には、1/5のリクエストを処理できない方が、クラスタ全体の障害によってまったくリクエストを処理できないことよりも理想的であることは明確です。</p><p>この場合の解決策は、単一ノード障害が発生してもクラスタの運用を続け、新しいサーバをクラスタに追加し、失われたキャパシティを補填して、ダウンしたノードを削除としてマークし、リバランスを実行することです。
+				こうすれば、クラスタ全体が利用不可となる代わりに、部分的な停止で済みます。</p>
+			<p>もう一つの予防策は、予期せぬノード障害発生時にも十分な余剰のキャパシティを確保し、レプリカへの引き継ぎができるようにすることです。</p>
       
       <ul>
-        <li><b>Handling failovers with network partitions</b></li>
-      </ul><p>In case of network partition or split-brain where the failure of a network device
-        causes a network to be split, Couchbase implements automatic failover with the following
-        restrictions:</p><ul>
-        <li>Automatic failover requires a minimum of three (3) nodes per cluster. This prevents a
-          2-node cluster from having both nodes fail each other over in the face of a network
-          partition and protects the data integrity and consistency.</li>
-        <li>Automatic failover occurs only if exactly one (1) node is down. This prevents a network
-          partition from causing two or more halves of a cluster from failing each other over and
-          protects the data integrity and consistency.</li>
-        <li>Automatic failover occurs only once before requiring administrative action. This
-          prevents cascading failovers and subsequent performance and stability degradation. In many
-          cases, it is better to not have access to a small part of the dataset rather than having a
-          cluster continuously degrade itself to the point of being non-functional.</li>
-        <li>Automatic failover implements a 30 second delay when a node fails before it performs an
-          automatic failover. This prevents transient network issues or slowness from causing a node
-          to be failed over when it shouldn’t be.</li>
-      </ul><p>If a network partition occurs, automatic failover occurs if and only if automatic
-        failover is allowed by the specified restrictions. For example, if a single node is
-        partitioned out of a cluster of five (5), it is automatically failed over. If more than one
-        (1) node is partitioned off, autofailover does not occur. After that, administrative action
-        is required for a reset. In the event that another node fails before the automatic failover
-        is reset, no automatic failover occurs. </p><ul>
-        <li><b>Handling misbehaving nodes</b></li>
-      </ul><p>There are cases where one node loses connectivity to the cluster or functions as if it
-        has lost connectivity to the cluster. If you enable it to automatically failover the rest of
-        the cluster, that node is able to create a cluster-of-one. The result for your cluster is a
-        similar partition situation we described previously.</p><p>In this case you should make sure
-        there is spare node capacity in your cluster and failover the node with network issues. If
-        you determine there is not enough capacity, add a node to handle the capacity after your
-        failover the node with issues.</p><p><b>Manual or monitored failover</b></p><p>Performing
-        manual failover through monitoring can take two forms, either by human monitoring or by
-        using a system external to the Couchbase Server cluster. An external monitoring system can
-        monitor both the cluster and the node environment and make a more information-driven
-        decision. If you choose a manual failover solution, there are also issues you should be
-        aware of. Although automated failover has potential issues, choosing to use manual or
-        monitored failover is not without potential problems.</p><ul>
-        <li><b>Human intervention</b></li>
-      </ul><p>One option is to have a human operator respond to alerts and make a decision on what
-        to do. Humans are uniquely capable of considering a wide range of data, observations and
-        experiences to best resolve a situation. Many organizations disallow automated failover
-        without human consideration of the implications. The drawback of using human intervention is
-        that it will be slower to respond than using a computer-based monitoring system.</p><ul>
-        <li><b>External monitoring</b></li>
-      </ul><p>Another option is to have a system monitoring the cluster via the Couchbase REST API.
-        Such an external system is in a good position to failover nodes because it can take into
-        account system components that are outside the scope of Couchbase Server.</p><p>For example
-        monitoring software can observe that a network switch is failing and that there is a
-        dependency on that switch by the Couchbase cluster. The system can determine that failing
-        Couchbase Server nodes will not help the situation and will therefore not failover the
-        node.</p><p>The monitoring system can also determine that components around Couchbase Server
-        are functioning and that various nodes in the cluster are healthy. If the monitoring system
-        determines the problem is only with a single node and remaining nodes in the cluster can
-        support aggregate traffic, then the system may failover the node using the REST API or
-        command-line tools.</p></section>
+        <li><b>ネットワーク分断とフェイルオーバ</b></li>
+      </ul><p>ネットワークデバイスの故障が原因でネットワークが分割されてしまう、ネットワーク分断やスプリットブレインの状況を考慮し、Couchbaseは以下の制約付きで自動フェイルオーバを実装しています:</p>
+		<ul>
+			<li>自動フェイルオーバは最低でも1クラスタに3台のノードが必要。
+				これは、ネットワーク分断が発生した際に、2ノードのクラスタがお互いのノードをフェイルオーバすることを防ぎ、データの整合性と一貫性を保護するためです。</li>
+				<li>自動フェイルオーバはノードが1台だけダウンしたときのみ実行される。
+					これはネットワーク分断発生時に、2つ以上の部分的なクラスタがお互いをフェイルオーバすることを防ぎ、データの整合性と一貫性を保護するためです。</li>
+				<li>自動フェイルオーバは管理操作を必要とする前に一度だけ発動する。
+					これは、フェイルオーバの連鎖や、以後の性能や安定性の劣化を防ぐためです。
+					多くの場合、クラスタが機能できなくなるまで劣化し続けるよりも、データセットの小さな部分にアクセスできなくなる方が望ましいでしょう。</li>
+				<li>自動フェイルオーバはノードがダウンしてから自動フェイルオーバを実行するまでに30秒の遅延時間を設けています。
+					これは一時的なネットワーク障害や、システムの遅延によって、誤ってノードがフェイルオーバされることを防ぎます。</li>
+      </ul><p>ネットワーク分断の際、特定の制限により許可された場合のみ、自動フェイルオーバが実行されます。 例えば、5ノードのクラスタで、1つのノードだけが分断された場合、それは自動でフェイルオーバされます。
+				2つ以上のノードが分断された場合、自動フェイルオーバは実行されません。 自動フェイルオーバ後、リセットする管理操作が必要になります。 自動フェイルオーバをリセットする前に、他のノードがダウンすると、自動フェイルオーバは実行されません。 </p><ul>
+        <li><b>不正に動作しているノードへの対処</b></li>
+      </ul><p>あるノードがクラスタへの接続を失ったか、クラスタへの接続を失ったかのように動作する場合があります。 クラスタで自動フェイルオーバを有効にしている場合、そのノードは単一ノードのクラスタとなります。 結果としてこのクラスタは前述の分断状態と同様になります。</p><p>この場合、ネットワークに問題があるノードをフェイルオーバするために十分なノードがクラスタに存在することを確認してください。
+				十分なキャパシティが無いと判断した場合、ノードを追加し、問題のノードをフェイルオーバした後にキャパシティを補填します。</p>
+			<p><b>手動フェイルオーバとモニタリング</b></p><p>モニタリング経由で手動フェイルオーバを行う場合、二つ方法があり、一つは人による監視、もう一つはCouchbase Serverクラスタの外部システムを利用する方法です。
+			 外部モニタリングシステムはクラスタやノードの実行環境を監視でき、より多くの情報を元に判断できるようになります。
+				手動フェイルオーバの手法を選択した場合、このほかにも意識すべき問題があります。
+				自動フェイルオーバは潜在的な問題がありますが、手動またはモニタリングによるフェイルオーバにも潜在的な問題があります。</p><ul>
+        <li><b>人の介入</b></li>
+				</ul><p>アラートに対して次の行動に関する意思決定をする人員を確保することは一つの選択肢です。
+				人間が広範囲のデータ、観測、経験を考慮し、最適な方法で状況を解決できるユニークな存在です。
+				多くの組織では、人が影響に対する考慮をしないままにフェイルオーバを自動化することを許可していません。
+				人の介入を行うことの問題点はコンピュータベースのモニタリングシステムを利用することに比べ、対応が遅くなるということです。</p><ul>
+        <li><b>外部モニタリング</b></li>
+      </ul><p>もう一つの選択肢はCouchbase REST APIを利用してクラスタをモニタリングするシステムを利用することです。
+        このような外部システムは、Couchbase Serverのスコープ外のシステムコンポーネントに関しても考慮できるため、ノードのフェイルオーバにとって優位な位置に存在します。</p>
+			<p>例えば、モニタリングソフトウェアは、Couchbaseクラスタが依存するネットワークスイッチがダウンしていることを検知できます。 システムはCouchbase Serverノードをフェイルオーバしても状況は改善しないことが分かるため、ノードのフェイルオーバはしません。</p>
+			<p>モニタリングシステムはCouchbase Server周辺のコンポーネントが機能しているか、クラスタ内の様々なノードが健全であるかを判断することもできます。
+				モニタリングシステムが、問題は単一のノードだけで起きており、クラスタ内の残りのノードで集約したトラフィックを処理できると判断すれば、システムからREST APIやコマンドラインツールを利用してそのノードをフェイルオーバすることもできます。</p></section>
 
-    <section><title>Using automatic failover</title><p>There are a number of restrictions on
-        automatic failover in Couchbase Server. This is to help prevent some issues that can occur
-        when you use automatic failover. </p><ul>
-        <li><p><b>Disabled by Default</b> Automatic failover is disabled by default. This prevents
-            Couchbase Server from using automatic failover without you explicitly enabling
-          it.</p></li>
-        <li><p><b>Minimum Nodes</b> Automatic failover is only available on clusters of at least
-            three nodes.</p></li>
-      </ul><p>If two or more nodes go down at the same time within a specified delay period, the
-        automatic failover system will not failover any nodes.</p><ul>
-        <li><p><b>Required Intervention</b> Automatic failover will only fail over one node before
-            requiring human intervention. This is to prevent a chain reaction failure of all nodes
-            in the cluster.</p></li>
-        <li><p><b>Failover Delay</b> There is a minimum 30 second delay before a node will be failed
-            over. This time can be raised, but the software is hard coded to perform multiple pings
-            of a node that may be down. This is to prevent failover of a functioning but slow node
-            or to prevent network connection issues from triggering failover. </p></li>
-      </ul><p>You can use the REST API to configure an email notification that will be sent by
-        Couchbase Server if any node failures occur and node is automatically failed over. </p>
-      <p>Once an automatic failover has occurred, the Couchbase Cluster is relying on other nodes to
-        serve replicated data. You should initiate a rebalance to return your cluster to a fully
-        functioning state. </p>
-      <p><b>Resetting the Automatic failover counter</b></p><p>After a node has been automatically
-        failed over, Couchbase Server increments an internal counter that indicates if a node has
-        been failed over. This counter prevents the server from automatically failing over
-        additional nodes until you identify the issue that caused the failover and resolve it. If
-        the internal counter indicates a node has failed over, the server will no longer
-        automatically failover additional nodes in the cluster. You will need to re-enable automatic
-        failover in a cluster by resetting this counter.</p><p>Important</p><p>Reset the automatic
-        failover only after the node issue is resolved, rebalance occurs, and the cluster is
-        restored to a fully functioning state.</p><p>You can reset the counter using the REST
-        API:</p><codeblock><codeph>&gt; curl -i -u cluster-username:cluster-password \
+    <section><title>自動フェイルオーバの利用</title><p>Couchbase Serverの自動フェイルオーバには多くの制約があります。 これは自動フェイルオーバを利用する際に発生する可能性のある問題を回避するためです。 </p><ul>
+        <li><p><b>デフォルトでは無効</b> 自動フェイルオーバはデフォルトでは無効となっています。 これは明示的に有効とされるまで、Couchbase Serverが自動フェイルオーバを利用することを防止するためです。</p></li>
+        <li><p><b>最小ノード数</b> 自動フェイルオーバは最低でも3台のノードそ持つクラスタでしか利用できません。</p></li>
+      </ul><p>設定された遅延時間内に、同時に2台以上のノードがダウンした場合、自動フェイルオーバシステムはいずれのノードもフェイルオーバしません。</p><ul>
+				<li><p><b>人の介入が必要</b> 自動フェイルオーバは、人の介入が必要になる前に一つのノードだけをフェイルオーバします。
+						これはクラスタ内の全ノードがダウンする連鎖反応を防止するためです。</p></li>
+				<li><p><b>フェイルオーバの遅延時間</b> ノードがフェイルオーバされるまでに、最低でも30秒の遅延時間が必要です。
+						この時間を延ばすことはできますが、ソフトウェアはダウンしているかもしれないノードに対して複数回の死活監視を実行するようにハードコーディングされています。
+						これは機能しているが遅いノードのフェイルオーバや、ネットワーク接続問題によりフェイルオーバが発動することを防ぐためです。 </p></li>
+      </ul><p>REST APIを利用して、ノード障害が発生し、ノードが自動でフェイルオーバされた際にCouchbase Serverがメールで通知を送信するように設定することができます。 </p>
+      <p>自動フェイルオーバが発生した後、Couchbaseクラスタは他のノードがレプリカデータを提供できることに依存しています。 クラスタを完全に機能する状態へと戻すためにリバランスを実行すべきです。 </p>
+      <p><b>自動フェイルオーバカウンタのリセット</b></p><p>ノードが自動的にフェイルオーバされた後、Couchbase Serverはノードがフェイルオーバされたことを示す内部カウンタをインクリメントします。
+				このカウンタは、フェイルオーバを引き起こした問題が特定され、解決されるまで、その他のノードが自動的にフェイルオーバされることを防止します。
+				内部カウンタでノードがフェイルオーバされたことを示している場合、サーバはクラスタ内の他のノードを自動フェイルオーバしません。 このカウンタをリセットして、クラスタ内の自動フェイルオーバを再度有効にする必要があります。</p>
+			<p>重要</p><p>自動フェイルオーバはノードの問題が解決し、クラスタが完全に機能する状態に戻ってからリセットしてください。</p>
+			<p>REST APIを利用してカウンタをリセットできます:</p><codeblock><codeph>&gt; curl -i -u cluster-username:cluster-password \
     http://localhost:8091/settings/autoFailover/resetCount
 </codeph></codeblock>
     </section>
-    <section><title>Initiating a node failover</title><p>If you need to remove a node from the
-        cluster due to hardware or system failure, you need to indicate the failover status for that
-        node. This causes Couchbase Server to use replicated data from other functioning nodes in
-        the cluster.</p>
+    <section><title>ノードのフェイルオーバを実行する</title><p>ハードウェアやシステム障害によりクラスタからノードを削除する必要がある場合、そのノードのフェイルオーバを実行する必要があります。
+				これは、Couchbase Serverが、クラスタ内の他の機能しているノードからレプリカデータを利用するということです。</p>
       
-      <note type="important">Do not use failover to remove a functioning node from the cluster for
-        administration or upgrade operations. This is because initiating a failover for a node
-        activates replicated data at other nodes which reduces the overall capacity of the cluster.
-        Data from the failover node that has not yet been replicated at other nodes or persisted on
-        disk will be lost. </note>
+			<note type="important">運用管理、またはアップグレード操作として、機能しているノードをクラスタから削除するためにフェイルオーバを利用しないでください。
+				これはフェイルオーバを実行すると、他のノードのレプリカデータがアクティブとなり、クラスタ全体のキャパシティが縮小してしまうからです。
+        フェイルオーバされるノード上の、他のノードにレプリケートされていない、もしくはディスクに永続化されていないデータは消失します。 </note>
         
-        <p>You can provide the
-        failover status for a node with two different methods:</p><ul>
-        <li><b>Using the Web Console</b></li>
-      </ul><p>Go to the <codeph>Management -&gt; Server Nodes</codeph> section of the Web Console.
-        Find the node that you want to failover, and click the <codeph>Fail Over</codeph> button.
-        You can only failover nodes that the cluster has identified as being Down.</p><p>Web Console
-        will display a warning message.</p><p>Click <codeph>Fail Over</codeph> to indicate the node
-        is failed over. You can also choose to <codeph>Cancel</codeph>.</p><ul>
-        <li><b>Using the Command-line</b></li>
-      </ul><p>You can failover one or more nodes using the <codeph>failover</codeph> command in
-          <codeph>couchbase-cli</codeph>. To failover the node, you must specify the IP address and
-        port, if not the standard port for the node you want to failover. For
-        example:</p><codeblock><codeph>```
+        <p>ノードのフェイルオーバは二つの方法で実行できます:</p><ul>
+        <li><b>Webコンソールの利用</b></li>
+      </ul><p>Webコンソールの<codeph>Management -&gt; Server Nodes</codeph> セクションに移動します。
+        フェイルオーバしたいノードの<codeph>Fail Over</codeph>ボタンをクリックします。
+				クラスタがDownとして判定したノードのみフェイルオーバできます。</p><p>Webコンソールに警告メッセージが表示されます。</p><p><codeph>Fail Over</codeph>をクリックし、ノードをフェイルオーバします。
+				<codeph>Cancel</codeph>を選択することもできます。</p><ul>
+        <li><b>コマンドラインツールの利用</b></li>
+				</ul><p><codeph>couchbase-cli</codeph>の<codeph>failover</codeph>コマンドを利用して、複数のノードをフェイルオーバできます。
+				ノードをフェイルオーバするには、フェイルオーバするノードのIPアドレスと、標準のポートでない場合はポートを指定します。
+					例:</p><codeblock><codeph>```
 &gt; ﻿couchbase-cli failover --cluster=localhost:8091\
     -u cluster-username -p cluster-password\
     --server-failover=192.168.0.72:8091
 ```
-</codeph></codeblock><p>If
-        successful this indicates the node is failed over.</p><p>After you specify that a node is
-        failed over you should handle the cause of failure and get your cluster back to a fully
-        functional state. </p>
+</codeph></codeblock>
+<p>成功すると、ノードがフェイルオーバされたと表示されます。</p>
+<p>ノードをフェイルオーバした後は問題の原因を解決し、クラスタを完全に機能する状態に戻してください。 </p>
     </section>
-    <section><title>Handling a failover situation</title><p>Any time that you automatically or
-        manually failover a node, the cluster capacity will be reduced. Once a node is failed
-        over:</p><ul>
-        <li><p>The number of available nodes for each data bucket in your cluster will be reduced by
-            one.</p></li>
-        <li><p>Replicated data handled by the failover node will be enabled on other nodes in the
-            cluster.</p></li>
-        <li><p>Remaining nodes will have to handle all incoming requests for data.</p></li>
-      </ul><p>After a node has been failed over, you should perform a rebalance operation. The
-        rebalance operation will:</p><ul>
-        <li><p>Redistribute stored data across the remaining nodes within the cluster.</p></li>
-        <li><p>Recreate replicated data for all buckets at remaining nodes.</p></li>
-        <li><p>Return your cluster to the configured operational state.</p></li>
-      </ul><p>You may decide to add one or more new nodes to the cluster after a failover to return
-        the cluster to a fully functional state. Better yet you may choose to replace the failed
-        node and add additional nodes to provide more capacity than before. </p>
+    <section><title>フェイルオーバ後の対応</title><p>自動でも、手動でもノードをフェイルオーバすると、クラスタのキャパシティは縮小します。 ノードをフェイルオーバしたら:</p><ul>
+        <li><p>クラスタ内の各データバケットに対する利用可能なノード数は一つ減少します。</p></li>
+        <li><p>フェイルオーバしたノードが担当していたデータのレプリカは、クラスタ内の他のノード上で有効化されます。</p></li>
+        <li><p>残りのノードがデータへのリクエストを処理しなくてはなりません。</p></li>
+				</ul><p>ノードをフェイルオーバした後、リバランスを実行すべきです。
+				リバランス操作は:</p><ul>
+        <li><p>クラスタ内の残りのノード間でデータを再分配します。</p></li>
+        <li><p>残りのノードで全バケットのレプリカデータを再作成します。</p></li>
+        <li><p>クラスタを設定された運用可能な状態に復元します。</p></li>
+      </ul><p>クラスタを完全に機能する状態とするために、フェイルオーバ後に一つあるいは複数のノードをクラスタへと追加することもあるでしょう。 障害ノードを交換して、さらにノードを追加すれば、以前よりもキャパシティを拡張することができます。 </p>
     </section>
-    <section><title>Adding back a failed over node</title><p>You can add a failed over node back to
-        the cluster if you identify and fix the issue that caused node failure. After Couchbase
-        Server marks a node as failed over, the data on disk at the node will remain. A failed over
-        node will not longer be <i>synchronized</i> with the rest of the cluster; this means the
-        node will no longer handle data request or receive replicated data.</p><p>When you add a
-        failed over node back into a cluster, the cluster will treat it as if it is a new node. This
-        means that you should rebalance after you add the node to the cluster. This also means that
-        any data stored on disk at that node will be destroyed when you perform this
-          rebalance.</p><p><b>Copy or Delete Data Files before Rejoining
-        Cluster</b></p><p>Therefore, before you add a failed over node back to the cluster, it is
-        best practice to move or delete the persisted data files before you add the node back into
-        the cluster. If you want to keep the files you can copy or move the files to another
-        location such as another disk or EBS volume. When you add a node back into the cluster and
-        then rebalance, data files will be deleted, recreated and repopulated.</p></section>
+    <section><title>フェイルオーバしたノードの再追加</title><p>ノード障害を引き起こした問題を回収できたなら、フェイルオーバしたノードをクラスタに再追加することができます。
+				Couchbase Serverがノードをフェイルオーバとしてマークした後も、データはそのノード上のディスクに残っています。 フェイルオーバされたノードはもはや、元のクラスタと<i>同期されていない</i>状態です; そのノードはデータリクエストを処理することもなく、レプリカデータを受信することもありません。</p>
+			<p>フェイルオーバしたノードをクラスタに再追加する際、クラスタはこれを新規ノードとして扱います。
+				このため、ノードをクラスタに追加後、リバランスが必要です。
+				これは、そのノードのディスクに保存されていたいかなるデータも、リバランスを実行すると削除されることを意味します。</p>
+			<p><b>クラスタへの再追加前にデータをコピーまたは削除する</b></p><p>フェイルオーバしたノードをクラスタに再追加する前に、永続化されたデータファイルを移動するか削除することがベストプラクティスです。
+				ファイルを保持したい場合は、他のディスクやEBSボリュームといった他のロケーションにファイルをコピーまたは移動します。
+				クラスタにノードを再追加しリバランスすると、データファイルは削除され、再作成、再生成されます。</p></section>
   </body>
   <related-links>
     <linklist>

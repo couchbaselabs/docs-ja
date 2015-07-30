@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="rest-template">
-  <title>Reference title</title>
-  <shortdesc>Short reference description.</shortdesc>
+<reference xml:lang="ja" id="rest-template">
+  <title>リファレンスのタイトル</title>
+  <shortdesc>リファレンスの簡潔な説明</shortdesc>
   <refbody>
-    <section><title>Description</title>
+    <section><title>説明</title>
       <p></p>
     </section>
     
-    <section><title>HTTP method and URI</title>
+    <section><title>HTTPメソッドとURI</title>
       <p></p>
       <codeblock></codeblock>
       <table>
@@ -17,46 +17,46 @@
           <colspec colname="col2"/>
           <tbody>
             <row>
-              <entry><b>Request data</b></entry>
+              <entry><b>リクエストデータ</b></entry>
               <entry>None</entry>
             </row>
             <row>
-              <entry><b>Response data</b></entry>
+              <entry><b>レスポンスデータ</b></entry>
               <entry>None</entry>
             </row>
             <row>
-              <entry><b>Authentication required</b></entry>
+              <entry><b>認証の要・不要</b></entry>
               <entry>Yes</entry>
             </row>
           </tbody>
         </tgroup>
       </table>
       
-      <p>Parameters:</p>
+      <p>パラメータ:</p>
     </section>
     
-    <section><title>Syntax</title>
-      <p>Curl request syntax:</p>
+    <section><title>シンタックス</title>
+      <p>Curlリクエストシンタックス:</p>
       <codeblock></codeblock>
       
-      <p>Raw HTTP request syntax:</p>
+      <p>Raw HTTPリクエストシンタックス:</p>
       <codeblock></codeblock>
     </section>
     
-    <section><title>Example</title>
-      <p>Curl request example:</p>
+    <section><title>例</title>
+      <p>Curlリクエスト例:</p>
       <codeblock></codeblock>
       
-      <p>Raw HTTP request example:</p>
+      <p>Raw HTTPリクエスト例:</p>
       <codeblock></codeblock>
     </section>
     
-    <section><title>Response</title>
+    <section><title>レスポンス</title>
       <p></p>
       <codeblock></codeblock>
     </section>
     
-    <section><title>Response codes</title>
+    <section><title>レスポンスコード</title>
       <p></p>
       <codeblock></codeblock>
       <table>
@@ -65,8 +65,8 @@
           <colspec colname="col2" colwidth="2.85*"/>
           <thead>
             <row>
-              <entry>Response codes</entry>
-              <entry>Description</entry>
+              <entry>レスポンスコード</entry>
+              <entry>説明</entry>
             </row>
           </thead>
           <tbody>

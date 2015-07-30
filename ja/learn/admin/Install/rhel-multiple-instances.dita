@@ -1,84 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_fdf_nls_g4">
-  <title>Installing multiple instances</title>
-  <shortdesc>Multiple instances of Couchbase Server can be installed on one physical machine for the LInux operating system. 
-  The number of instances depends on the capacity of the physical machine.</shortdesc>
+<topic xml:lang="ja" id="topic_fdf_nls_g4">
+  <title>複数インスタンスのインストール</title>
+  <shortdesc>Linuxオペレーティングシステムでは、複数のCouchbase Serverインスタンスを１つの物理マシンにインストールさせることができます。
+  (インストール可能な)インスタンスの個数は、物理マシンの処理能力に依存します。</shortdesc>
   <body>
-    <note type="attention">Multiple instances on one machine are allowed only for development purposes.</note>
+    <note type="attention">1つのマシン上に複数のインスタンスをインストールすることは、開発目的に限り利用可能です。</note>
     
-    <section><title>Requirements</title>
-    Make sure that a minumum of 4Gb RAM and 8 Core CPU are available for each Couchbase Server instance.
-        When installing multiple instances on a physical machine, install as one of these two users:
+    <section><title>インストール要件</title>
+    各Couchbase Serverインスタンスごとに、最小構成である4GB RAMと8コアのCPUが利用可能かどうか確認してください。
+        物理マシンに複数インスタンスをインストールするとき、以下の２つのうちいずれかのユーザ権限でインストールします。:
       <ul>
-        <li>sudo user</li>
-        <li>non-root, non-sudo user</li>
+        <li>sudoユーザ</li>
+        <li>非root, 非sudoユーザ</li>
       </ul>
       
-    <note type="note">Refer to the lists of the reserved Couchbase Server network ports and user-defined ports 
-      before creating any new user-defined ports. </note>
+    <note type="note">新たにユーザ定義のポート番号を作る前に、予約されているCouchbase Serverネットワークポート番号のリストと(既に)ユーザ定義されたポート番号をチェックしてください。 </note>
     </section>
     
-      <section><title>Recommendations</title>
-       Install each cluster instance on a
-            different physical machine to provide for data recovery if a failure occurs.
-        <note type="note">The
-              number of Couchbase Servers that can be installed on a physical machine depends on the available RAM and
-              CPU capacities. </note>
+      <section><title>推奨事項</title>
+       障害が発生した場合にデータをリカバリできるように、各クラスタのインスタンスは異なる物理マシンにインストールしてください。
+        <note type="note">
+              インストール可能なCouchbase Serverの個数は、物理マシンのメモリ容量とCPU処理能力に依存します。</note>
         
-        <p>The following graphic shows a cluster configuration with multiple
-                Couchbase instances on a physical machine. In addition, by having three (3) Couchbase Servers in
-                a cluster, each installed on different physical machines, the configuration reduces
-                the risk of data loss from a hardware failure.</p>
+        <p>以下の図は、物理マシン上に複数のCouchbase Serverクラスタを配置した構成例を示しています。
+                このようにすると、1つのクラスタは3つのCouchbase Serverで構成され、各Couchbase Serverはそれぞれ異なる物理マシンにインストールされることになり、
+                ハードウェア障害によるデータロスのリスクが減少します。</p>
         <image href="../images/multi-instance.png" width="720" />
       </section>
     
-    <section><title>Setting up multiple instances</title>
-      <p>To set up multiple instances running on a physical machine:</p>
+    <section><title>複数インスタンスのセットアップ</title>
+      <p>物理マシンに複数のインスタンスをセットアップする手順:</p>
       
       <ol>
-        <li>Install Couchbase Server as a sudo user or as a non-root, non-sudo user. For more
-          information about installing as non-root, non-sudo, see <xref href="rhel-non-root-sudo.dita">Installing as non-root, non-sudo</xref></li>
-        <li>Create user-defined ports in the file <filepath>/opt/couchbase/etc/couchbase/static_config</filepath>.</li>
-        <li>In the <filepath>/etc/security/limits.conf</filepath> file, make sure that the hard and soft limits for the
-          <codeph>nofile</codeph> parameter are set to a value greater than 10240.</li>
-        <li>Change the <codeph>short_name</codeph> parameter that identifies the instance (default: ns_1), to a different
-          <codeph>short_name</codeph> in the <filepath>/opt/couchbase/etc/couchbase/static_config</filepath> file. <ul>
-            <li>The <codeph>short_name</codeph> value must be different for each instance that resides on the same physical
-              server.</li>
+        <li>Couchbase Serverをsudoユーザまたは非rootや非sudoユーザとしてインストールします。
+          非rootや非sudoとしてインストールする方法については<xref href="rhel-non-root-sudo.dita">非ルート権限によるインストール</xref>を参照してください。</li>
+        <li>ポート番号をユーザ定義(で変更)する場合は、<filepath>/opt/couchbase/etc/couchbase/static_config</filepath>に定義してください。</li>
+        <li><filepath>/etc/security/limits.conf</filepath>ファイルの、ハード及びソフトに関する上限設定を確認してください。
+          <codeph>nofile</codeph>パラメータが、10240よりも大きい値が設定されていることを確認してください。</li>
+        <li>各インスタンスを識別する <codeph>short_name</codeph>パラメータ(デフォルト値: ns_1)を変更して
+           <filepath>/opt/couchbase/etc/couchbase/static_config</filepath>ファイルの、<codeph>short_name</codeph>を異なるものにしてください。 <ul>
+            <li>同一の物理サーバ内に配置されている各インスタンスの<codeph>short_name</codeph>の値は、互いに異なっていなければなりません。</li>
           </ul></li>
-        <li>Change the two occurrences of <codeph>short_name</codeph> in the <filepath>/opt/couchbase/bin/couchbase-server</filepath>
-          file. For example, use the <codeph>sed</codeph> utility. <ul>
+        <li><filepath>/opt/couchbase/bin/couchbase-server</filepath>ファイル内に2箇所存在する<codeph>short_name</codeph>を変更してください。
+          以下の例のように、<codeph>sed</codeph>ユーティリティーを使用して変更することができます。<ul>
             <li>
              <codeblock> sed -i ‘s/ns_1/ns_inst1/g’ bin/couchbase-server</codeblock></li>
           </ul></li>
-        <li>Start the Couchbase Server instance.</li>
-        <li>Repeat the steps to install other instances.</li>
+        <li>Couchbase Serverインスタンスを起動します。</li>
+        <li>各インスタンスについて同様のステップを繰り返します。</li>
       </ol>
       
-      <note type="important">While creating a cluster,  make sure that the <codeph>perServer</codeph> RAM quota is
-        calculated looking at the number of instances to be installed on that machine.
-      When configuring a cluster instance, Couchbase Server provides a default value for the
-        perServer RAM quota. This default value is based on the total RAM quota available on the
-        physical machine. Modify this value as needed. 
+      <note type="important">クラスタを生成している間は、当該マシンにインストールされるインスタンスの数に応じて<codeph>perServer</codeph> RAM quotaが計算されていることを
+        確認してください。
+      クラスタインスタンスを構成する際、Couchbase Serverは、
+        perServer RAM quotaにデフォルト値を設定します。このデフォルト値は、物理マシンに搭載されている利用可能なRAM quotaに基づいています。
+        必要に応じてこの値を変更してください。 
       </note>
     </section>
       
-    <section><title>Troubleshooting</title><p>If any bucket created on the
-          nodes appear to be in a pending state, or if rebalance fails with an error <screen>not_all_nodes_are_ready_yet</screen>
-          there could be a mismatch of the <codeph>short_name</codeph> value in the following files:</p>
+    <section><title>トラブルシューティング</title><p>クラスタがペンディング状態のままでバケットを生成した場合や、リバランスが<screen>not_all_nodes_are_ready_yet</screen>エラーとともに失敗した場合は、
+          以下のファイルの<codeph>short_name</codeph>の設定値が一致していない可能性があります。:</p>
       <codeblock>
 /opt/couchbase/bin/couchbase-server
 /opt/couchbase/etc/couchbase/static_config</codeblock>
     </section>
-      <section><title>Limitations</title>
+      <section><title>制限事項</title>
         <ul>
-              <li><cmdname>Cbrecovery</cmdname> is unavailable on customized ports.</li>
-              <li><cmdname>Cbworkloadgen</cmdname> is unavailable.</li>
-              <li>Offline upgrade is unavailable.</li>
-              <li>If a bucket is created on a dedicated port, some of the operations can result in the error 
-               <codeph> could not listen on port xxx</codeph>, even though the operation still succeeds. This error is logged
-                regardless of the port that is used.</li>
+              <li><cmdname>Cbrecovery</cmdname>は、ユーザによりポート番号がカスタマイズされている場合には利用できません。</li>
+              <li><cmdname>Cbworkloadgen</cmdname>は利用できません。</li>
+              <li>オフラインの状態でアップグレードをすることはできません。</li>
+              <li>バケットが専用ポートを指定して生成されている場合、いくつかのオペレーションでは 
+               <codeph> could not listen on port xxx</codeph>というエラーが返却されることがあります。
+                オペレーションが結果的に成功したとしても、このエラー(メッセージ自体)は、このポートが使用されているかどうかに関わりなくログとして出力されます。</li>
             </ul>
     </section>
   </body>
