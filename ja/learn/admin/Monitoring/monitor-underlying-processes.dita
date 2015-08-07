@@ -1,35 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic1635">
-  <title>Underlying server processes</title>
-  <shortdesc>There are several server processes that constantly run in Couchbase Server.</shortdesc>
+<topic xml:lang="ja" id="topic1635">
+  <title>内部サーバプロセス</title>
+  <shortdesc>Couchbase Server内部で常に稼働しているいくつかのプロセスがあります。</shortdesc>
   <body>
-    <p>These processes occur whether
-      or not the server is actively handling reads/writes or handling other operations from a client
-      application. Right after you start up a node, you may notice a spike in CPU utilization, and
-      the utilization rate will plateau at some level greater than zero. The following describes the
-      ongoing processes that are running on your node:</p>
+    <p>サーバが参照/更新やその他のオペレーションをクライアントアプリケーションからアクティブに処理しているかどうかによって、これらのプロセスが起動します。 ノードを起動した直後、CPU利用率が上昇し、その後、継続してある程度の利用率となります。 ノード上で継続して稼働するプロセスを以下に説明します:</p>
     <ul>
-      <li><b>beam.smp on Linux: erl.exe on Windows</b></li>
+      <li><b>Linux上のbeam.smp: WIndows上のerl.exe</b></li>
     </ul>
-    <p>These processes are responsible for monitoring and managing all other underlying server
-      processes such as ongoing XDCR replications, cluster operations, and views.</p>
-    <p>There is a separate monitoring/babysitting process running on each node. The process is small
-      and simple and therefore unlikely to crash due to lack of memory. It is responsible for
-      spawning and monitoring the second, larger process for cluster management, XDCR and views. It
-      also spawns and monitors the processes for Moxi and memcached. If any of these three processes
-      fail, the monitoring process will re-spawn them.</p>
-    <p>The main benefit of this approach is that an Erlang VM crash will not cause the Moxi and
-      memcached processes to also crash. You will also see two <codeph>beam.smp</codeph> or
-        <codeph>erl.exe</codeph> processes running on Linux or Windows respectively.</p>
-    <p>The set of log files for this monitoring process is <codeph>ns_server.babysitter.log</codeph>
-      which you can collect with <codeph>cbcollect_info</codeph>. </p>
+    <p>これらのプロセスは、実行中のXDCRレプリケーション、クラスタオペレーション、Viewなどの内部サーバプロセス全てに対する、モニタリング、管理を担っています。</p>
+    <p>各ノード上では、別のモニタリング/管理用プロセスも起動しています。 このプロセスは軽量でシンプルであり、メモリ不足でクラッシュするようなことはありません。 これは、クラスタ管理、XDCR、View用に、二つ目のより大きなプロセスを起動し、モニタリングする役割を担っています。 Moxiとmemcachedプロセスの起動とモニタリングも行います。 これら三つのプロセスのいずれかがダウンすると、モニタリングプロセスはそれらを再起動します。</p>
+    <p>この手法の利点の一つは、Erlang VMがクラッシュしても、Moxiやmemcachedプロセスがクラッッシュすることはないということです。 この他に、LinuxかWindowsかに応じて、<codeph>beam.smp</codeph>、または<codeph>erl.exe</codeph>の二つのプロセスが起動します。</p>
+    <p>このモニタリングプロセスのログファイルは<codeph>ns_server.babysitter.log</codeph>で、<codeph>cbcollect_info</codeph>によって収集することができます。</p>
     <ul>
-      <li><b>memcached</b> : This process is responsible for caching items in RAM and persisting
-          them to disk.</li>
-      <li><b>moxi</b> : This process enables third-party memcached clients to connect to the
-          server.</li>
+      <li><b>memcached</b> : このプロセスはアイテムをRAM上にキャッシュし、それらをディスクに永続化します。</li>
+      <li><b>moxi</b> : このプロセスは、サードパーティのmemcachedクライアントを利用したサーバへの接続を可能としています。</li>
     </ul>
   </body>
   <related-links>
