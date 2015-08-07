@@ -1,31 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic1360">
-  <title>Port numbers and accessing different buckets</title>
+<topic xml:lang="ja" id="topic1360">
+  <title>ポート番号と、異なるバケットへの接続</title>
   <body>
-    <p>In a Couchbase Server cluster, any communication (stats or data) to a port <i>other</i> than
-      11210 will result in the request going through a Moxi process. This means that any stats
-      request will be aggregated across the cluster (and may produce some inconsistencies or
-      confusion when looking at stats that are not “aggregatable”).</p>
-    <p>In general, it is best to run all your stat commands against port 11210 which will always
-      give you the information for the specific node that you are sending the request to. It is a
-      best practice to then aggregate the relevant data across nodes at a higher level (in your own
-      script or monitoring system).</p>
-    <p>When you run the below commands (and all stats commands) without supplying a bucket name
-      and/or password, they will return results for the default bucket and produce an error if one
-      does not exist.</p>
-    <p>To access a bucket other than the default, you will need to supply the bucket name and
-      password on the end of the command. Any bucket created on a dedicated port does not require a
-      password.</p>
-    <p>The TCP/IP port allocation on Windows by default includes a restricted number of ports
-      available for client communication. </p>
+    <p>Couchbase Serverクラスタ内では、11210 <i>以外</i> のポートに対する全ての通信(統計情報やデータ)は、Moxiプロセスを経由してリクエストされます。
+			全ての統計情報のリクエストはクラスタ全体で集約されることを意味します(中には"集約できない"統計もあるため、混乱することもあるかもしれません)。</p>
+    <p>一般的に、リクエストを送信したノードに関する情報を常に返すことができるので、全ての統計情報に関するコマンドは、11210に対して実行するのがベストです。
+			書くノードの関連するデータを、上位レベル(独自のスクリプトやモニタリングシステム)で集約することがベストプラクティスです。</p>
+    <p>以下のコマンド(そして全てのstatsコマンド)をバケット名とパスワードを指定せずに実行すると、デフォルトバケットに対する実行結果を返却します。デフォルトバケットが存在しない場合、エラーとなります。</p>
+    <p>デフォルト以外のバケットにアクセスするには、バケット名とパスワードをコマンドの最後に指定する必要があります。 専用のポートに割り当てられたバケットにはパスワードは不要です。</p>
+    <p>WindowsでのTCP/IPポート割り当てでは、デフォルトではクライアント通信用に利用できるポート数が制限されています。 </p>
   </body>
   <related-links>
     <linklist>
       <link href="http://msdn.microsoft.com/en-us/library/aa560610(v=bts.20).aspx" scope="external"
         format="html">
-        <linktext>MSDN: Avoiding TCP/IP Port Exhaustion</linktext>
+        <linktext>MSDN: TCP/IPポート枯渇の回避方法</linktext>
       </link>
     </linklist>
   </related-links>

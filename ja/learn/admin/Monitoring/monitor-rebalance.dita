@@ -1,71 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="topic_rnp_cyf_q4">
-  <title>Monitoring a rebalance operation</title>
-  <shortdesc>Monitoring of the system during and
-    immediately after rebalancing is needed until replication is completed
-    successfully.</shortdesc>
+<topic xml:lang="ja" id="topic_rnp_cyf_q4">
+  <title>リバランス操作のモニタリング</title>
+  <shortdesc>リバランス中、およびリバランス直後に、レプリケーションが完了するまで、システムをモニタリングする必要があります。</shortdesc>
   <body>
-    <p>As Couchbase Server
-      moves vBuckets within the cluster, Couchbase Web Console provides a detailed rebalancing report. You can view the same
-        statistics via a REST API call. If you click on the drop-down list next to each node, you can view the
-        detailed rebalance status:</p>
+		<p>Couchbase ServerがvBucketをクラスタ内で移動する際、CouchbaseのWebコンソールはリバランスに関する詳細なレポートを提供します。
+			REST API呼び出しでも同様の統計情報を参照できます。 各ノードの隣にあるドロップダウンをクリックすると、詳細なリバランス状態を確認できます:</p>
   
           <fig><image href="../images/rebalance_detail_report.png" width="720"></image></fig>
 
     
-    <p>The section <wintitle>Data being transferred out</wintitle> shows that a
-          node sends data to other nodes during rebalance.</p>
-         <p>The section <wintitle>Data being transferred in</wintitle> shows that a node receives data from other nodes during rebalance.</p>
-      <p>A node can be a source, a destination, or both the source and the destination for data. The progress report
-          displays the following information:</p>
+    <p><wintitle>Data being transferred out</wintitle>セクションは、リバランス中にノードがデータを他のノードへと送信している様子を示します。</p>
+         <p><wintitle>Data being transferred in</wintitle>は、リバランス中にノードが他のノードからデータを受信する様子を示します。</p>
+      <p>ノードはデータの送信元、送信先、またはその両方になることもあります。 進捗のレポートは以下の情報を表示します:</p>
     
     <ul>
-            <li><itemgroup><b>Bucket</b>:</itemgroup> Name of bucket undergoing rebalance. Number of buckets transferred during
-              rebalancing out of total buckets in a cluster.</li>
-            <li><itemgroup><b>Total number of keys</b>:</itemgroup> Total number of keys to be transferred during 
-              rebalancing.</li>
-            <li><itemgroup><b>Estimated number of keys</b>:</itemgroup> Number of keys transferred during rebalancing.</li>
-            <li><itemgroup><b>Number of Active# vBuckets and Replica# vBuckets</b>:</itemgroup> Number of active vBuckets and
-              replica vBuckets to be transferred as part of rebalancing.</li>
+            <li><itemgroup><b>Bucket</b>:</itemgroup> リバランス中のバケット名。 クラスタ内のバケット内のリバランスで転送されたバケットの数。</li>
+            <li><itemgroup><b>Total number of keys</b>:</itemgroup> リバランス中に転送されたキーの数。</li>
+            <li><itemgroup><b>Estimated number of keys</b>:</itemgroup> リバランス中に転送されたキーの数。</li>
+            <li><itemgroup><b>Number of Active# vBuckets and Replica# vBuckets</b>:</itemgroup> リバランスによって転送されたアクティブvBucketとレプリカvBucketの数。</li>
           </ul>
     
-    <p>You can also use <codeph>cbstats</codeph> to see underlying rebalance statistics.</p>
+    <p><codeph>cbstats</codeph>を利用して内部のリバランス統計情報を確認することもできます。</p>
     
-    <section><title>Backfilling</title>
-      <p>The first stage of replication reads all data for a given active vBucket and sends it to
-        the server that is responsible for the replica. This can put increased load on the disk as
-        well as network bandwidth, but it is not designed to impact any client activity. You can
-        monitor the progress of this task by watching for ongoing TAP disk fetches. You can also
-        watch <codeph>cbstats tap</codeph>, for example:</p>
+    <section><title>バックフィル</title>
+      <p>レプリケーションの第一段階では、あるアクティブvBucketの全データを読み込み、それをレプリカを担当するサーバへと送信します。 これにより、ディスクやネットワーク帯域の負荷が上昇することがありますが、クライアントとのやりとりに影響を与えないように設計されています。
+				このタスクの進捗状況は継続中のTAPディスクフェッチを監視することでモニタリングできます。 <codeph>cbstats tap</codeph>を監視することもできます、例:</p>
       
       <codeblock>cbstats &lt;node_IP&gt;:11210 -b bucket_name -p bucket_password tap | grep backfill</codeblock>
       
-      <p>This returns a list of TAP backfill processes and whether they are still running (<codeph>true</codeph>) or done
-        (<codeph>false</codeph>). During the backfill process for a particular TAP stream, the output is as
-        follows:</p><codeblock><codeph>eq_tapq:replication_building_485_'n_1@127.0.0.1':backfill_completed: false
+      <p>これはTAPのバックフィルプロセスリストを返し、まだ実行中( <codeph>true</codeph> )か、完了しているか( <codeph>false</codeph> )を確認できます。 特定のTAPストリームに対してバックフィルプロセスを実行中の場合、次のような出力になります:</p><codeblock><codeph>eq_tapq:replication_building_485_'n_1@127.0.0.1':backfill_completed: false
  eq_tapq:replication_building_485_'n_1@127.0.0.1':backfill_start_timestamp: 1371675343
  eq_tapq:replication_building_485_'n_1@127.0.0.1':flags: 85 (ack,backfill,vblist,checkpoints)
  eq_tapq:replication_building_485_'n_1@127.0.0.1':pending_backfill: true
  eq_tapq:replication_building_485_'n_1@127.0.0.1':pending_disk_backfill: true
- eq_tapq:replication_building_485_'n_1@127.0.0.1':queue_backfillremaining: 202</codeph></codeblock><p>When
-   all have completed, you should see the Total Item count ( <codeph>curr_items_tot</codeph> ) be
-   equal to the number of active items multiplied by replica count. The output you see for a TAP
-   stream after backfill completes is as
-   follows:</p><codeblock><codeph>eq_tapq:replication_building_485_'n_1@127.0.0.1':backfill_completed: true
+ eq_tapq:replication_building_485_'n_1@127.0.0.1':queue_backfillremaining: 202</codeph></codeblock><p>すべてが完了すると、総アイテム数(<codeph>curr_items_tot</codeph>)がアクティブアイテム数にレプリカ数を掛けたと等しくなります。 TAPストリームのバックフィルが完了すると、以下のような出力となります:</p><codeblock><codeph>eq_tapq:replication_building_485_'n_1@127.0.0.1':backfill_completed: true
  eq_tapq:replication_building_485_'n_1@127.0.0.1':backfill_start_timestamp: 1371675343
  eq_tapq:replication_building_485_'n_1@127.0.0.1':flags: 85 (ack,backfill,vblist,checkpoints)
  eq_tapq:replication_building_485_'n_1@127.0.0.1':pending_backfill: false
  eq_tapq:replication_building_485_'n_1@127.0.0.1':pending_disk_backfill: false
- eq_tapq:replication_building_485_'n_1@127.0.0.1':queue_backfillremaining: 0</codeph></codeblock><p>If
-   you are continuously adding data to the system, these values may not correspond exactly at a
-   given instant in time. However you should be able to determine whether there is a significant
-   difference between the two figures.</p></section>
+ eq_tapq:replication_building_485_'n_1@127.0.0.1':queue_backfillremaining: 0</codeph></codeblock><p>継続的にシステムへデータを追加している場合、これらの値はある時点で完全に一致しないこともあります。 しかしながら、これら二つの数値で極端に差がないかを確認することは重要です。</p></section>
    
-    <section><title>Draining</title> <p>After the backfill process is complete, all nodes that had replicas materialized on them
-      have to persist these items to disk. It is important to continue monitoring the disk
-      write queue and memory usage until the rebalancing operation has been completed, to ensure that
-      the cluster is able to keep up with the write load and required disk I/O.</p></section>
+    <section><title>ドレイン</title> <p>バックフィルプロセスが完了した後、レプリカをマテリアライズしたすべてのノードはそれらのアイテムをディスクへ永続化しなくてはなりません。 ディスク書き込みキューとメモリ利用量を、リバランス処理が完了するまで継続してモニタリングし、クラスタが更新負荷に追いつくことができ、十分なディスクI/Oがあるかを確認することが重要です。</p></section>
  
   </body>
   

@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic3970">
-  <title>Couchbase Server statistics</title>
-  <shortdesc>Couchbase Server provides statistics at multiple levels throughout the cluster.</shortdesc>
+<topic xml:lang="ja" id="topic3970">
+  <title>Couchbase Serverの統計情報</title>
+  <shortdesc>Couchbase Serverは複数のレベルの、クラスタに関する統計情報を提供します。</shortdesc>
   <body>
-    <p>The statistics
-      used for regular monitoring, capacity planning and to identify the performance characteristics
-      of your cluster deployment. The most visible statistics are those in the Web UI, but
-      components such as the REST interface, the proxy and individual nodes have directly accessible
-      statistics interfaces.</p>
-    <section><title>REST interface statistics</title><p>To interact with statistics provided by
-        REST, use the Couchbase web console. 
-        This GUI gathers statistics via REST and displays them to your browser.
-        The REST interface has a set of resources that provide access to the current and historic
-        statistics the cluster gathers and stores.</p></section>
+    <p>定常的なモニタリング、キャパシティプランニング、性能特性の特定に統計情報を利用できます。 最も重要な統計情報はWeb UIに表示されていますが、RESTインタフェース、プロキシ、そして個々のノードは統計情報に直接アクセス可能なインタフェースも持っています。</p>
+    <section><title>RESTインタフェースの統計情報</title><p>RESTで提供される統計情報にアクセスするには、Couchbase Webコンソールを利用します。 
+        このGUIはREST経由で統計情報を収集し、ブラウザ上に表示します。
+        RESTインタフェースには、クラスタが収集して保存している、現在と過去の統計情報へのアクセスを提供するリソースがあります。</p></section>
     
-    <section><title>Couchbase Server node statistics</title><p>Detailed stats documentation can be found in the
-        repository.</p><p>Along with stats at the REST and UI level, individual nodes can also be
-        queried for statistics either through a client which uses binary protocol or through the
-          cbstats utility.</p><p>For
-        example:</p><codeblock><codeph>&gt; cbstats localhost:11210 all
+    <section><title>Couchbase Serverノードの統計情報</title><p>このリポジトリで詳細な統計情報のドキュメントが参照できます。</p><p>RESTとUIでの統計情報に加え、個々のノードではバイナリプロトコルを利用するクライアント、またはcbstatsユーティリティを利用して、統計情報をクエリできます。</p><p>例:</p><codeblock><codeph>&gt; cbstats localhost:11210 all
  auth_cmds:                   9
  auth_errors:                 0
  bucket_conns:                10
@@ -33,12 +23,9 @@
  cmd_get:                     134250
  cmd_set:                     115750
 …
-</codeph></codeblock><p>The
-        most commonly needed statistics are surfaced through the Web Console and have descriptions
-        there and in the associated documentation. Software developers and system administrators
-        wanting lower level information have it available through the stats interface.</p><p>There
-        are seven commands available through the stats interface:</p><ul>
-        <li><p><codeph>stats</codeph> (referred to as ‘all’)</p></li>
+</codeph></codeblock><p>最も一般的に必要とされる統計情報はWebコンソールに表示されており、Webコンソール上や関連するドキュメントに解説があります。 より低レベルの情報を必要とするソフトウェア開発者やシステム管理者は、statsインタフェースを利用できます。</p>
+			<p>statsインタフェースでは7つのコマンドが利用できます:</p><ul>
+        <li><p><codeph>stats</codeph> (‘all’)</p></li>
         <li><p><codeph>dispatcher</codeph></p></li>
         <li><p><codeph>hash</codeph></p></li>
         <li><p><codeph>tap</codeph></p></li>
@@ -46,11 +33,8 @@
         <li><p><codeph>vkey</codeph></p></li>
         <li><p><codeph>reset</codeph></p></li>
       </ul></section>
-    <section><title>stats command</title><p>This displays a large list of statistics related to the
-        Couchbase process including the underlying engine (ep_* stats).</p></section>
-    <section><title>dispatcher command</title><p>This statistic shows what the dispatcher is
-        currently
-        doing:</p><codeblock><codeph>dispatcher
+    <section><title>statsコマンド</title><p>このコマンドはCouchbaseの内部エンジン(ep_* 統計)を含むプロセスに関連する多くの統計情報を出力します。</p></section>
+    <section><title>dispatcherコマンド</title><p>この統計情報は現在のdispatcher実行内容を表示します:</p><codeblock><codeph>dispatcher
      runtime: 45ms
        state: dispatcher_running
       status: running
@@ -58,38 +42,23 @@
 nio_dispatcher
        state: dispatcher_running
       status: idle
-</codeph></codeblock><p>The
-        first entry, dispatcher, monitors the process responsible for disk access. The second entry
-        is a non-IO (non disk) dispatcher. There may also be a ro_dispatcher present if
-        the engine is allowing concurrent reads and writes. When a task is actually running on a
-        given dispatcher, the “runtime” tells you how long the current task has been running. Newer
-        versions will show you a log of recently run dispatcher jobs so you can see what’s been
-        happening.</p></section>
+		</codeph></codeblock><p>最初のエントリ、dispatcherは、ディスクアクセスを担当するプロセスをモニタリングします。
+		二つ目のエントリは、非IO(ディスク以外)のディスパッチャです。 エンジンが同時並列の参照、更新を許可している場合、ro_dispatcherも表示されます。 あるディスパッチャでタスクが実行されている場合、"runtime"に現在のタスク実行経過時間が表示されます。
+				新しいバージョンでは、直近で実行されたディスパッチャジョブのログが表示され、実行内容を確認できます。</p></section>
     
-    <section><title>Changing statistics collection</title>
-      <p>The default Couchbase Server statistics
-        collection is set to collect every second. The tuning that is available for statistic
-        collection is by collecting statistics less frequently. </p>
-      <note type="note">If statistic
-        collection is changed from the default, the Couchbase service must be restarted.</note>
+    <section><title>統計情報収集の変更</title>
+      <p>デフォルトでCouchbase Server統計情報は、毎秒収集されます。 統計情報の収集間隔をチューニングし、収集間隔を広げることができます。 </p>
+      <note type="note">デフォルトから統計情報の収集間隔を変更すると、Couchbase Serverを再起動する必要があります。</note>
       
-      <p>To change statistic collection:</p><ol>
-        <li>Log in as root or sudo and navigate to the directory where Couchbase is installed. For
-          example: <codeph>/opt/couchbase/etc/couchbase/static_config</codeph></li>
-        <li>Edit the static_config file.</li>
-        <li>Add the following parameter: <codeph>grab_stats_every_n_ticks, 10</codeph>, where 10 is the number of
-          ticks. In the Couchbase environment one tick is one second (default). It is recommended
-          that the statistics collection be more frequent (and accurate). However, assign an
-          appropriate tick value for you environment.</li>
-        <li>Restart the Couchbase service.</li>
-      </ol><p>After restarting the Couchbase service, the statistics collection rate is changed.</p></section>
+      <p>統計情報収集設定の変更:</p><ol>
+        <li>rootでログインするか、sudoを利用し、Couchbaseがインストールされたディレクトリへ移動します。 例: <codeph>/opt/couchbase/etc/couchbase/static_config</codeph></li>
+        <li>static_configファイルを編集します。</li>
+        <li>以下のパラメータを追記します: <codeph>grab_stats_every_n_ticks, 10</codeph>、ここで10は時間単位の数です。 Couchbaseの環境では時間単位は秒(デフォルト)です。 より頻繁に(正確に)統計情報を収集することを推奨します。 しかしながら、お使いの環境に応じて収集間隔を設定してください。</li>
+        <li>Couchbaseサービスを再起動します。</li>
+      </ol><p>Couchbaseサービスを再起動すると、統計情報収集間隔が変更されます。</p></section>
     
-    <section><title>Changing the stats file location</title><p>The default stats
-          file location is <codeph>/opt/couchbase/var/lib/couchbase/stats</codeph>, however, if you
-          want to change the default stats file location, create a symlink location to the new
-          directory.</p>
-      <note type="note">When creating a symlink, stop and restart the Couchbase
-          service. </note></section>
+    <section><title>統計情報ファイル保存場所の変更</title><p>デフォルトの統計情報ファイル保存場所は<codeph>/opt/couchbase/var/lib/couchbase/stats</codeph>です、ファイルの保存場所をデフォルトから変更する場合、新規ディレクトリにシンボリックリンクを作成してください。</p>
+      <note type="note">シンボリックリンクを作成する際は、Couchbaseサービスを停止し、再起動してください。 </note></section>
   </body>
   <related-links>
     <linklist>
@@ -97,7 +66,7 @@ nio_dispatcher
       <link href="../CLI/cbstats-intro.dita"></link>
       <link href="http://github.com/membase/ep-engine/blob/master/docs/stats.org" scope="external"
         format="html">
-        <linktext>Detailed stats documentation</linktext>
+        <linktext>statsの詳細なドキュメント</linktext>
       </link>
       
     </linklist>

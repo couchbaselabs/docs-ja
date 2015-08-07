@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic xml:lang="en-us" id="topic3000">
-  <title>Couchbase Server Moxi statistics</title>
-  <shortdesc>Regular memcached clients can request statistics through the memcached stats command.</shortdesc>
+<topic xml:lang="ja" id="topic3000">
+  <title>Couchbase Server Moxi統計情報</title>
+  <shortdesc>通常のmemcachedクライアントであれば、memcachedのstatsコマンドを利用して統計情報をリクエストできます。</shortdesc>
   <body>
-    <p>Moxi, as part of it’s support of memcached protocol, has support for the memcached
-        <codeph>stats</codeph> command. The stats command accepts optional arguments, and in the case of
-      Moxi, there is a stats proxy sub-command. A detailed description of statistics available
-      through Moxi can be found in the Moxi 1.8 Manual.</p>
-    <p>For example, one simple client one may use is the commonly available netcat (output elided
-      with ellipses):</p>
+    <p>Moxiはmemcachedプロトコルをサポートしており、memcachedの<codeph>stats</codeph>にも対応しています。 statsコマンドにはオプションの引数がありますが、Moxiでは、proxyサブコマンドが利用できます。 Moxiで利用可能な統計情報の詳細な解説はMoxi 1.8マニュアルをご参照ください。</p>
+    <p>例えば、シンプルなクライアントで広く利用可能なものとして、netcatがあります (出力は...で省略しています):</p>
     <codeblock><codeph>$ echo "stats proxy" | nc localhost 11211
 STAT basic:version 1.6.0
 STAT basic:nthreads 5
@@ -73,7 +69,7 @@ END
   <related-links>
     <linklist>
       <link href="http://docs.couchbase.com/moxi-manual-1.8" scope="external" format="html">
-        <linktext>Moxi 1.8 Manual</linktext>
+        <linktext>Moxi 1.8 マニュアル</linktext>
       </link>
     </linklist>
   </related-links>
